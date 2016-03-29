@@ -17,7 +17,7 @@ build() {
   # export title="title here"
   source "$PWD/$1/metadata"
   export content="$(cat $PWD/$1/content.html)"
-  source "$PWD/template.html" > "gen/$(echo "$1" | cut -d. -f1).html"
+  source "$PWD/template.html.sh" > "gen/$(echo "$1" | cut -d. -f1).html"
 }
 
 install_page() {
