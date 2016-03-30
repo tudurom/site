@@ -1,3 +1,64 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+@font-face {
+  font-family: "Envy Code R";
+  font-style: normal;
+  font-weight: 100;
+  src: url("/fonts/TTF/Envy-Code-R.ttf");
+}
+
 body {
-  font-family: monospace;
+  background-color: #273941;
+  font-family: "Roboto Mono", monospace;
+}
+
+main {
+  display: block;
+  position: absolute;
+  top: 10vh;
+  left: 15vw;
+  max-width: 70vw;
+  color: #c0c5ce;
+}
+
+h1 {
+  color: #6dc2a3;
+  font-family: "Envy Code R";
+  font-weight: bold;
+  font-size: 2em;
+}
+
+h2 {
+  color: #a66363;
+  font-size: 1.5em;
+  font-family: "Envy Code R";
+  font-weight: bold;
+}
+
+h3 {
+  font-family: "Envy Code R";
+  font-weight: normal;
+  color: #63a69b;
+  font-size: 1.5em;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: #6385a6;
+}
+
+a:visited {
+  color: #456472;
+}
+
+code {
+  font-family: "Roboto Mono", monospace;
+  color: #eff1f5;
+}
+
+pre code {
+  font-family: "Roboto Mono", monospace;
+  color: #c0c5ce;
 }

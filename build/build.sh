@@ -44,5 +44,6 @@ install_page "gen/index.html" "../index.html"
 
 install_page "css/" "../css"
 install_page "js/" "../js"
+install_page "fonts/" "../fonts"
 
 exit 0
