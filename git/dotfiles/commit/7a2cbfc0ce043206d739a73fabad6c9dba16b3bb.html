@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Forgot vis config - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/7a2cbfc0ce043206d739a73fabad6c9dba16b3bb.html">7a2cbfc0ce043206d739a73fabad6c9dba16b3bb</a>
+<b>parent</b> <a href="../commit/4eb96929216e2f5c093aab4c6c62c92d42f01c64.html">4eb96929216e2f5c093aab4c6c62c92d42f01c64</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Sat Jan  2 15:38:26 2016
+
+Forgot vis config
+
+<b>Diffstat:</b>
+ home/.vis/colors/rainbow | 31 ++++++++++++++++++++++-
+ home/.vis/config         | 68 +++++++++++++++++++++++++++++++++++++++++++++++++-
+ home/.vis/vis.log        |  0
+ 3 files changed, 99 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.vis/colors/rainbow.html">home/.vis/colors/rainbow</a> b/<a href="../file/home/.vis/colors/rainbow.html">home/.vis/colors/rainbow</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,31 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#4040ff
+</a><a href="#h0-1" id="h0-1" class="i">+#2c56fc
+</a><a href="#h0-2" id="h0-2" class="i">+#2a59fc
+</a><a href="#h0-3" id="h0-3" class="i">+#1180ed
+</a><a href="#h0-4" id="h0-4" class="i">+#04a6d5
+</a><a href="#h0-5" id="h0-5" class="i">+#02abd1
+</a><a href="#h0-6" id="h0-6" class="i">+#03d2aa
+</a><a href="#h0-7" id="h0-7" class="i">+#04d6a5
+</a><a href="#h0-8" id="h0-8" class="i">+#12ee7f
+</a><a href="#h0-9" id="h0-9" class="i">+#2bfc58
+</a><a href="#h0-10" id="h0-10" class="i">+#2dfc55
+</a><a href="#h0-11" id="h0-11" class="i">+#56fc2d
+</a><a href="#h0-12" id="h0-12" class="i">+#59fc2a
+</a><a href="#h0-13" id="h0-13" class="i">+#80ed11
+</a><a href="#h0-14" id="h0-14" class="i">+#a6d503
+</a><a href="#h0-15" id="h0-15" class="i">+#abd103
+</a><a href="#h0-16" id="h0-16" class="i">+#d2aa03
+</a><a href="#h0-17" id="h0-17" class="i">+#d6a504
+</a><a href="#h0-18" id="h0-18" class="i">+#ee7f12
+</a><a href="#h0-19" id="h0-19" class="i">+#fc582b
+</a><a href="#h0-20" id="h0-20" class="i">+#fc552d
+</a><a href="#h0-21" id="h0-21" class="i">+#fc2c56
+</a><a href="#h0-22" id="h0-22" class="i">+#fc2a58
+</a><a href="#h0-23" id="h0-23" class="i">+#ed1180
+</a><a href="#h0-24" id="h0-24" class="i">+#d503a6
+</a><a href="#h0-25" id="h0-25" class="i">+#d102ab
+</a><a href="#h0-26" id="h0-26" class="i">+#aa03d2
+</a><a href="#h0-27" id="h0-27" class="i">+#a504d6
+</a><a href="#h0-28" id="h0-28" class="i">+#7f12ee
+</a><a href="#h0-29" id="h0-29" class="i">+#582bfc
+</a><a href="#h0-30" id="h0-30" class="i">+#552dfc
+</a><b>diff --git a/<a href="../file/home/.vis/config.html">home/.vis/config</a> b/<a href="../file/home/.vis/config.html">home/.vis/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,68 @@
+</a><a href="#h0-0" id="h0-0" class="i">+##Refresh rate of the visualizers. A really high refresh rate may cause screen tearing. Default is 20.
+</a><a href="#h0-1" id="h0-1" class="i">+visualizer.fps=30
+</a><a href="#h0-2" id="h0-2" class="i">+
+</a><a href="#h0-3" id="h0-3" class="i">+##Defaults to &quot;/tmp/mpd.fifo&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+#mpd.fifo.path=/tmp/mpd.fifo
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+##If set to false the visualizers will use mono mode instead of stereo. Some visualizers will
+</a><a href="#h0-7" id="h0-7" class="i">+##behave differently when mono is enabled. For example, spectrum show two sets of bars.
+</a><a href="#h0-8" id="h0-8" class="i">+#audio.stereo.enabled=false
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+##Specifies how often the visualizer will change in seconds. 0 means do not rotate. Default is 0.
+</a><a href="#h0-11" id="h0-11" class="i">+#visualizer.rotation.secs=10
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a><a href="#h0-13" id="h0-13" class="i">+##Configures the samples rate and the cutoff frequencies.
+</a><a href="#h0-14" id="h0-14" class="i">+#audio.sampling.frequency=44100
+</a><a href="#h0-15" id="h0-15" class="i">+#audio.low.cutoff.frequency=22050
+</a><a href="#h0-16" id="h0-16" class="i">+#audio.high.cutoff.frequency=30
+</a><a href="#h0-17" id="h0-17" class="i">+#audio.low.cutoff.frequency=50
+</a><a href="#h0-18" id="h0-18" class="i">+#audio.high.cutoff.frequency=10000
+</a><a href="#h0-19" id="h0-19" class="i">+
+</a><a href="#h0-20" id="h0-20" class="i">+
+</a><a href="#h0-21" id="h0-21" class="i">+##Configures the visualizers and the order they are in. Available visualizers are spectrum,lorenz,ellipse.
+</a><a href="#h0-22" id="h0-22" class="i">+##Defaults to spectrum,ellipse,lorenz
+</a><a href="#h0-23" id="h0-23" class="i">+#visualizers=spectrum,ellipse,lorenz
+</a><a href="#h0-24" id="h0-24" class="i">+
+</a><a href="#h0-25" id="h0-25" class="i">+
+</a><a href="#h0-26" id="h0-26" class="i">+##Configures what character the spectrum visualizer will use. Specifying a space (e.g &quot; &quot;) means the
+</a><a href="#h0-27" id="h0-27" class="i">+##background will be colored instead of the character. Defaults to &quot; &quot;.
+</a><a href="#h0-28" id="h0-28" class="i">+#visualizer.spectrum.character=#
+</a><a href="#h0-29" id="h0-29" class="i">+
+</a><a href="#h0-30" id="h0-30" class="i">+##Spectrum bar width. Defaults to 1.
+</a><a href="#h0-31" id="h0-31" class="i">+#visualizer.spectrum.bar.width=2
+</a><a href="#h0-32" id="h0-32" class="i">+
+</a><a href="#h0-33" id="h0-33" class="i">+##The amount of space between each bar in the spectrum visualizer. Defaults to 1. It&apos;s possible to set this to
+</a><a href="#h0-34" id="h0-34" class="i">+##zero to have no space between bars
+</a><a href="#h0-35" id="h0-35" class="i">+#visualizer.spectrum.bar.spacing=1
+</a><a href="#h0-36" id="h0-36" class="i">+
+</a><a href="#h0-37" id="h0-37" class="i">+##Available smoothing options are monstercat, sgs, none.
+</a><a href="#h0-38" id="h0-38" class="i">+visualizer.spectrum.smoothing.mode=monstercat
+</a><a href="#h0-39" id="h0-39" class="i">+
+</a><a href="#h0-40" id="h0-40" class="i">+##This configures the falloff effect on the spectrum visualizer. Available falloff options are fill,top,none.
+</a><a href="#h0-41" id="h0-41" class="i">+##Defaults to &quot;fill&quot;
+</a><a href="#h0-42" id="h0-42" class="i">+#visualizer.spectrum.falloff.mode=fill
+</a><a href="#h0-43" id="h0-43" class="i">+
+</a><a href="#h0-44" id="h0-44" class="i">+##Configures how fast the falloff character falls. This is an exponential falloff so values usually look
+</a><a href="#h0-45" id="h0-45" class="i">+##best 0.9+ and small changes in this value can have a large effect. Defaults to 0.99
+</a><a href="#h0-46" id="h0-46" class="i">+visualizer.spectrum.falloff.weight=0.99
+</a><a href="#h0-47" id="h0-47" class="i">+
+</a><a href="#h0-48" id="h0-48" class="i">+##This configures the sgs smoothing effect on the spectrum visualizer. More points spreads out the smoothing
+</a><a href="#h0-49" id="h0-49" class="i">+##effect and increasing passes runs the smoother multiple times on reach run. Defaults are points=3 and passes=1
+</a><a href="#h0-50" id="h0-50" class="i">+#visualizer.sgs.smoothing.points=3
+</a><a href="#h0-51" id="h0-51" class="i">+#visualizer.sgs.smoothing.passes=1
+</a><a href="#h0-52" id="h0-52" class="i">+
+</a><a href="#h0-53" id="h0-53" class="i">+
+</a><a href="#h0-54" id="h0-54" class="i">+##Configures what character the ellipse visualizer will use. Specifying a space (e.g &quot; &quot;) means the
+</a><a href="#h0-55" id="h0-55" class="i">+##background will be colored instead of the character. Defaults to &quot;█&quot;.
+</a><a href="#h0-56" id="h0-56" class="i">+#visualizer.ellipse.character=#
+</a><a href="#h0-57" id="h0-57" class="i">+
+</a><a href="#h0-58" id="h0-58" class="i">+##The radius of each color ring in the ellipse visualizer. Defaults to 2.
+</a><a href="#h0-59" id="h0-59" class="i">+#visualizer.ellipse.radius=2
+</a><a href="#h0-60" id="h0-60" class="i">+
+</a><a href="#h0-61" id="h0-61" class="i">+
+</a><a href="#h0-62" id="h0-62" class="i">+##Configures what character the lorenz visualizer will use. Specifying a space (e.g &quot; &quot;) means the
+</a><a href="#h0-63" id="h0-63" class="i">+##background will be colored instead of the character. Defaults to &quot;█&quot;.
+</a><a href="#h0-64" id="h0-64" class="i">+#visualizer.lorenz.character=#
+</a><a href="#h0-65" id="h0-65" class="i">+
+</a><a href="#h0-66" id="h0-66" class="i">+##Specifies the color scheme. The color scheme must be in ~/.vis/colors/ directory. Default is &quot;colors&quot;
+</a><a href="#h0-67" id="h0-67" class="i">+colors.scheme=rainbow
+</a><b>diff --git a/<a href="../file/home/.vis/vis.log.html">home/.vis/vis.log</a> b/<a href="../file/home/.vis/vis.log.html">home/.vis/vis.log</a></b>
+</pre>
+</div>
+</body>
+</html>

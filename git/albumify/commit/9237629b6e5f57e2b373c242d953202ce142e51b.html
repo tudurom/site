@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Validation trickery - albumify - Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="albumify.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>albumify</h1><span class="desc">Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/9237629b6e5f57e2b373c242d953202ce142e51b.html">9237629b6e5f57e2b373c242d953202ce142e51b</a>
+<b>parent</b> <a href="../commit/a054d3e44b4b73fd0d08508cddebc38adcbb82be.html">a054d3e44b4b73fd0d08508cddebc38adcbb82be</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Fri Jan 22 15:11:09 2016
+
+Validation trickery
+
+<b>Diffstat:</b>
+ css/style.css |  3 ++-
+ index.html    | 20 +++++++++++---------
+ js/make.js    |  3 ++-
+ 3 files changed, 15 insertions(+), 11 deletions(-)
+<hr/><b>diff --git a/<a href="../file/css/style.css.html">css/style.css</a> b/<a href="../file/css/style.css.html">css/style.css</a></b>
+<a href="#h0" id="h0" class="h">@@ -165,10 +165,11 @@ textarea {
+</a> 
+ /* Buttons {{{ */
+ 
+<a href="#h0-3" id="h0-3" class="d">-button {
+</a><a href="#h0-4" id="h0-4" class="i">+input[type=&quot;submit&quot;], button {
+</a>     border: none;
+     display: inline-block;
+     font-size: 1em;
+<a href="#h0-8" id="h0-8" class="i">+    font-family: &quot;Roboto Condensed&quot;, sans-serif;
+</a>     margin: 15px 2px 15px;
+     transition: .2s;
+     width: 150px;
+<b>diff --git a/<a href="../file/index.html.html">index.html</a> b/<a href="../file/index.html.html">index.html</a></b>
+<a href="#h0" id="h0" class="h">@@ -14,18 +14,20 @@
+</a>         &lt;hr /&gt;
+ 
+         &lt;div class=&quot;wrap&quot;&gt;
+<a href="#h0-3" id="h0-3" class="d">-            &lt;h3 class=&quot;number&quot;&gt;Album&lt;/h3&gt;
+</a><a href="#h0-4" id="h0-4" class="d">-            &lt;p class=&quot;label&quot;&gt;Album Title&lt;/p&gt;
+</a><a href="#h0-5" id="h0-5" class="d">-            &lt;input type=&quot;text&quot; id=&quot;atitleInput&quot;/&gt;
+</a><a href="#h0-6" id="h0-6" class="i">+            &lt;form&gt;
+</a><a href="#h0-7" id="h0-7" class="i">+              &lt;h3 class=&quot;number&quot;&gt;Album&lt;/h3&gt;
+</a><a href="#h0-8" id="h0-8" class="i">+              &lt;p class=&quot;label&quot;&gt;Album Title&lt;/p&gt;
+</a><a href="#h0-9" id="h0-9" class="i">+              &lt;input type=&quot;text&quot; id=&quot;atitleInput&quot; required /&gt;
+</a> 
+<a href="#h0-11" id="h0-11" class="d">-            &lt;p class=&quot;label&quot;&gt;Album Description&lt;/p&gt;
+</a><a href="#h0-12" id="h0-12" class="d">-            &lt;textarea rows=&quot;5&quot; cols=&quot;25&quot; id=&quot;adescInput&quot;&gt;&lt;/textarea&gt;
+</a><a href="#h0-13" id="h0-13" class="i">+              &lt;p class=&quot;label&quot;&gt;Album Description&lt;/p&gt;
+</a><a href="#h0-14" id="h0-14" class="i">+              &lt;textarea rows=&quot;5&quot; cols=&quot;25&quot; id=&quot;adescInput&quot;&gt;&lt;/textarea&gt;
+</a> 
+<a href="#h0-16" id="h0-16" class="d">-            &lt;div class=&quot;container&quot;&gt;&lt;/div&gt;
+</a><a href="#h0-17" id="h0-17" class="i">+              &lt;div class=&quot;container&quot;&gt;&lt;/div&gt;
+</a> 
+<a href="#h0-19" id="h0-19" class="d">-            &lt;button id=&quot;generate&quot;&gt;Generate!&lt;/button&gt;
+</a><a href="#h0-20" id="h0-20" class="d">-            &lt;button id=&quot;addFrame&quot;&gt;Add Image&lt;/button&gt;
+</a><a href="#h0-21" id="h0-21" class="d">-            &lt;div class=&quot;link&quot;&gt;&lt;/div&gt;
+</a><a href="#h0-22" id="h0-22" class="i">+              &lt;input type=&quot;submit&quot; id=&quot;generate&quot; value=&quot;Generate!&quot;&gt;
+</a><a href="#h0-23" id="h0-23" class="i">+              &lt;button id=&quot;addFrame&quot;&gt;Add Image&lt;/button&gt;
+</a><a href="#h0-24" id="h0-24" class="i">+              &lt;div class=&quot;link&quot;&gt;&lt;/div&gt;
+</a><a href="#h0-25" id="h0-25" class="i">+            &lt;/form&gt;
+</a>         &lt;/div&gt;
+ 
+         &lt;a href=&quot;https://github.com/tudurom/albumify&quot;&gt;&lt;img style=&quot;position: absolute; top: 0; right: 0; border: 0;&quot; src=&quot;https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67&quot; alt=&quot;Fork me on GitHub&quot; data-canonical-src=&quot;https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png&quot;&gt;&lt;/a&gt;
+<b>diff --git a/<a href="../file/js/make.js.html">js/make.js</a> b/<a href="../file/js/make.js.html">js/make.js</a></b>
+<a href="#h0" id="h0" class="h">@@ -28,7 +28,8 @@ $(document).ready(function () {
+</a>   $(&apos;#addFrame&apos;).on(&apos;click&apos;, function () {
+     addFrame($(&apos;.frame&apos;).length);
+   });
+<a href="#h0-3" id="h0-3" class="d">-  $(&apos;#generate&apos;).on(&apos;click&apos;, function () {
+</a><a href="#h0-4" id="h0-4" class="i">+  $(&apos;form&apos;).on(&apos;submit&apos;, function (e) {
+</a><a href="#h0-5" id="h0-5" class="i">+    e.preventDefault();
+</a>     console.debug(btoa(regen()));
+     $(&apos;.link&apos;).html(`&lt;a href=&quot;view.html#${btoa(regen())}&quot;&gt;${window.location.href}view.html#${btoa(regen())}&lt;/a&gt;`);
+   });
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Quirk - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/5c6610690f46375d36f3a8a3d51f237dabd22c7d.html">5c6610690f46375d36f3a8a3d51f237dabd22c7d</a>
+<b>parent</b> <a href="../commit/075e9a3dc57d59593e58057ccef43be8cabe02e1.html">075e9a3dc57d59593e58057ccef43be8cabe02e1</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Wed Mar 23 20:29:09 2016
+
+Quirk
+
+<b>Diffstat:</b>
+ scripts/.scripts/url-open  | 13 +++++++++++++
+ st                         |  2 +-
+ wmrc/.scripts/startwmutils |  2 ++
+ 3 files changed, 16 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a href="../file/scripts/.scripts/url-open.html">scripts/.scripts/url-open</a> b/<a href="../file/scripts/.scripts/url-open.html">scripts/.scripts/url-open</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,13 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#!/bin/dash
+</a><a href="#h0-1" id="h0-1" class="i">+# Reads list of urls, shows them in a nice menu and then opens the selected url
+</a><a href="#h0-2" id="h0-2" class="i">+# (c) tudurom 2016 - wtfpl
+</a><a href="#h0-3" id="h0-3" class="i">+#
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+monitor_width=&quot;$(dattr -w $(ppd))&quot;
+</a><a href="#h0-6" id="h0-6" class="i">+font=&quot;-benis-lemon-medium-r-normal--10-110-75-75-m-50-ISO8859-1&quot;
+</a><a href="#h0-7" id="h0-7" class="i">+
+</a><a href="#h0-8" id="h0-8" class="i">+while read -r line; do
+</a><a href="#h0-9" id="h0-9" class="i">+  echo $line
+</a><a href="#h0-10" id="h0-10" class="i">+done | dmenu -s 0 -nf &quot;#71c2af&quot; -nb &quot;#273941&quot; -sb &quot;#1d2a30&quot; -sf &quot;#c27171&quot; -i -h 30 -w &quot;${monitor_width}&quot; -x 0 -y 0 -fn &quot;${font}&quot; -p &quot;&gt;&quot; -l 3 | xargs -r xdg-open
+</a><a href="#h0-11" id="h0-11" class="i">+
+</a><a href="#h0-12" id="h0-12" class="i">+# vim: set ft=sh :
+</a><b>diff --git a/<a href="../file/st.html">st</a> b/<a href="../file/st.html">st</a></b>
+<a href="#h0" id="h0" class="h">@@ -1 +1 @@
+</a><a href="#h0-0" id="h0-0" class="d">-Subproject commit 010b59a39aafb93174e2085d1d09bc1d0194ad1c
+</a><a href="#h0-1" id="h0-1" class="i">+Subproject commit a2d8b8a866a550704199cb0a002c1f3af4c7d4d0
+</a><b>diff --git a/<a href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a> b/<a href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a></b>
+<a href="#h0" id="h0" class="h">@@ -9,3 +9,5 @@ wew | wewhandle &amp;
+</a> wall-e &amp;
+ statusbar &amp;
+ xwait
+<a href="#h0-3" id="h0-3" class="i">+
+</a><a href="#h0-4" id="h0-4" class="i">+# vim: set ft=sh :
+</a></pre>
+</div>
+</body>
+</html>

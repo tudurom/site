@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Cleaned up a little - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/8de5616b61a122e79c1622d9ba6a9f2464d14c6f.html">8de5616b61a122e79c1622d9ba6a9f2464d14c6f</a>
+<b>parent</b> <a href="../commit/cbf1743f696721e5df75a27ea2fb96d86c00ea5d.html">cbf1743f696721e5df75a27ea2fb96d86c00ea5d</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Mon Feb  8 20:03:01 2016
+
+Cleaned up a little
+
+<b>Diffstat:</b>
+ home/.config/luakit/modes.lua   | 163 +--------
+ home/.config/luakit/webview.lua | 350 +-----------------
+ home/.config/luakit/window.lua  | 859 +-----------------------------------------
+ 3 files changed, 0 insertions(+), 1372 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.config/luakit/modes.lua.html">home/.config/luakit/modes.lua</a> b/<a href="../file/home/.config/luakit/modes.lua.html">home/.config/luakit/modes.lua</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,163 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">--------------------------------
+</a><a href="#h0-1" id="h0-1" class="d">--- luakit mode configuration --
+</a><a href="#h0-2" id="h0-2" class="d">--------------------------------
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">--- Table of modes and their callback hooks
+</a><a href="#h0-5" id="h0-5" class="d">-local modes = {}
+</a><a href="#h0-6" id="h0-6" class="d">-local lousy = require &quot;lousy&quot;
+</a><a href="#h0-7" id="h0-7" class="d">-local join = lousy.util.table.join
+</a><a href="#h0-8" id="h0-8" class="d">-local order = 0
+</a><a href="#h0-9" id="h0-9" class="d">-
+</a><a href="#h0-10" id="h0-10" class="d">--- Add new mode table (optionally merges with original mode)
+</a><a href="#h0-11" id="h0-11" class="d">-function new_mode(name, desc, mode, replace)
+</a><a href="#h0-12" id="h0-12" class="d">-    assert(string.match(name, &quot;^[%w-_]+$&quot;), &quot;invalid mode name: &quot; .. name)
+</a><a href="#h0-13" id="h0-13" class="d">-    -- Detect optional description
+</a><a href="#h0-14" id="h0-14" class="d">-    if type(desc) == &quot;table&quot; then
+</a><a href="#h0-15" id="h0-15" class="d">-        desc, mode, replace = nil, desc, mode
+</a><a href="#h0-16" id="h0-16" class="d">-    end
+</a><a href="#h0-17" id="h0-17" class="d">-    local traceback = debug.traceback(&quot;Creation traceback:&quot;, 2)
+</a><a href="#h0-18" id="h0-18" class="d">-    order = order + 1
+</a><a href="#h0-19" id="h0-19" class="d">-    modes[name] = join({ order = order, traceback = traceback },
+</a><a href="#h0-20" id="h0-20" class="d">-        (not replace and modes[name]) or {}, mode or {},
+</a><a href="#h0-21" id="h0-21" class="d">-        { name = name, desc = desc })
+</a><a href="#h0-22" id="h0-22" class="d">-end
+</a><a href="#h0-23" id="h0-23" class="d">-
+</a><a href="#h0-24" id="h0-24" class="d">--- Get mode table
+</a><a href="#h0-25" id="h0-25" class="d">-function get_mode(name) return modes[name] end
+</a><a href="#h0-26" id="h0-26" class="d">-
+</a><a href="#h0-27" id="h0-27" class="d">-function get_modes() return lousy.util.table.clone(modes) end
+</a><a href="#h0-28" id="h0-28" class="d">-
+</a><a href="#h0-29" id="h0-29" class="d">--- Attach window &amp; input bar signals for mode hooks
+</a><a href="#h0-30" id="h0-30" class="d">-window.init_funcs.modes_setup = function (w)
+</a><a href="#h0-31" id="h0-31" class="d">-    -- Calls the `enter` and `leave` mode hooks.
+</a><a href="#h0-32" id="h0-32" class="d">-    w:add_signal(&quot;mode-changed&quot;, function (_, name, ...)
+</a><a href="#h0-33" id="h0-33" class="d">-        local leave = (w.mode or {}).leave
+</a><a href="#h0-34" id="h0-34" class="d">-
+</a><a href="#h0-35" id="h0-35" class="d">-        -- Get new modes functions/hooks/data
+</a><a href="#h0-36" id="h0-36" class="d">-        local mode = assert(modes[name], &quot;invalid mode: &quot; .. name)
+</a><a href="#h0-37" id="h0-37" class="d">-
+</a><a href="#h0-38" id="h0-38" class="d">-        -- Call last modes leave hook.
+</a><a href="#h0-39" id="h0-39" class="d">-        if leave then leave(w) end
+</a><a href="#h0-40" id="h0-40" class="d">-
+</a><a href="#h0-41" id="h0-41" class="d">-        -- Create w.mode object
+</a><a href="#h0-42" id="h0-42" class="d">-        w.mode = mode
+</a><a href="#h0-43" id="h0-43" class="d">-
+</a><a href="#h0-44" id="h0-44" class="d">-        -- Update window binds
+</a><a href="#h0-45" id="h0-45" class="d">-        w:update_binds(name)
+</a><a href="#h0-46" id="h0-46" class="d">-
+</a><a href="#h0-47" id="h0-47" class="d">-        -- Call new modes enter hook.
+</a><a href="#h0-48" id="h0-48" class="d">-        if mode.enter then mode.enter(w, ...) end
+</a><a href="#h0-49" id="h0-49" class="d">-
+</a><a href="#h0-50" id="h0-50" class="d">-        w:emit_signal(&quot;mode-entered&quot;, mode)
+</a><a href="#h0-51" id="h0-51" class="d">-    end)
+</a><a href="#h0-52" id="h0-52" class="d">-
+</a><a href="#h0-53" id="h0-53" class="d">-    local input = w.ibar.input
+</a><a href="#h0-54" id="h0-54" class="d">-
+</a><a href="#h0-55" id="h0-55" class="d">-    -- Calls the changed hook on input widget changed.
+</a><a href="#h0-56" id="h0-56" class="d">-    input:add_signal(&quot;changed&quot;, function ()
+</a><a href="#h0-57" id="h0-57" class="d">-        local changed = w.mode.changed
+</a><a href="#h0-58" id="h0-58" class="d">-        if changed then changed(w, input.text) end
+</a><a href="#h0-59" id="h0-59" class="d">-    end)
+</a><a href="#h0-60" id="h0-60" class="d">-
+</a><a href="#h0-61" id="h0-61" class="d">-    input:add_signal(&quot;property::position&quot;, function ()
+</a><a href="#h0-62" id="h0-62" class="d">-        local move_cursor = w.mode.move_cursor
+</a><a href="#h0-63" id="h0-63" class="d">-        if move_cursor then move_cursor(w, input.position) end
+</a><a href="#h0-64" id="h0-64" class="d">-    end)
+</a><a href="#h0-65" id="h0-65" class="d">-
+</a><a href="#h0-66" id="h0-66" class="d">-    -- Calls the `activate` hook on input widget activate.
+</a><a href="#h0-67" id="h0-67" class="d">-    input:add_signal(&quot;activate&quot;, function ()
+</a><a href="#h0-68" id="h0-68" class="d">-        local mode = w.mode
+</a><a href="#h0-69" id="h0-69" class="d">-        if mode and mode.activate then
+</a><a href="#h0-70" id="h0-70" class="d">-            local text, hist = input.text, mode.history
+</a><a href="#h0-71" id="h0-71" class="d">-            if mode.activate(w, text) == false then return end
+</a><a href="#h0-72" id="h0-72" class="d">-            -- Check if last history item is identical
+</a><a href="#h0-73" id="h0-73" class="d">-            if hist and hist.items and hist.items[hist.len or -1] ~= text then
+</a><a href="#h0-74" id="h0-74" class="d">-                table.insert(hist.items, text)
+</a><a href="#h0-75" id="h0-75" class="d">-            end
+</a><a href="#h0-76" id="h0-76" class="d">-        end
+</a><a href="#h0-77" id="h0-77" class="d">-    end)
+</a><a href="#h0-78" id="h0-78" class="d">-end
+</a><a href="#h0-79" id="h0-79" class="d">-
+</a><a href="#h0-80" id="h0-80" class="d">--- Add mode related window methods
+</a><a href="#h0-81" id="h0-81" class="d">-window.methods.set_mode = lousy.mode.set
+</a><a href="#h0-82" id="h0-82" class="d">-local mget = lousy.mode.get
+</a><a href="#h0-83" id="h0-83" class="d">-window.methods.is_mode = function (w, name) return name == mget(w) end
+</a><a href="#h0-84" id="h0-84" class="d">-
+</a><a href="#h0-85" id="h0-85" class="d">--- Setup normal mode
+</a><a href="#h0-86" id="h0-86" class="d">-new_mode(&quot;normal&quot;, [[When luakit first starts you will find yourself in this
+</a><a href="#h0-87" id="h0-87" class="d">-    mode.]], {
+</a><a href="#h0-88" id="h0-88" class="d">-    enter = function (w)
+</a><a href="#h0-89" id="h0-89" class="d">-        w:set_prompt()
+</a><a href="#h0-90" id="h0-90" class="d">-        w:set_input()
+</a><a href="#h0-91" id="h0-91" class="d">-    end,
+</a><a href="#h0-92" id="h0-92" class="d">-})
+</a><a href="#h0-93" id="h0-93" class="d">-
+</a><a href="#h0-94" id="h0-94" class="d">-new_mode(&quot;all&quot;, [[Special meta-mode in which the bindings for this mode are
+</a><a href="#h0-95" id="h0-95" class="d">-    present in all modes.]])
+</a><a href="#h0-96" id="h0-96" class="d">-
+</a><a href="#h0-97" id="h0-97" class="d">--- Setup insert mode
+</a><a href="#h0-98" id="h0-98" class="d">-new_mode(&quot;insert&quot;, [[When clicking on form fields luakit will enter the insert
+</a><a href="#h0-99" id="h0-99" class="d">-    mode which allows you to enter text in form fields without accidentally
+</a><a href="#h0-100" id="h0-100" class="d">-    triggering normal mode bindings.]], {
+</a><a href="#h0-101" id="h0-101" class="d">-    enter = function (w)
+</a><a href="#h0-102" id="h0-102" class="d">-        w:set_prompt(&quot;-- INSERT --&quot;)
+</a><a href="#h0-103" id="h0-103" class="d">-        w:set_input()
+</a><a href="#h0-104" id="h0-104" class="d">-        w.view:focus()
+</a><a href="#h0-105" id="h0-105" class="d">-    end,
+</a><a href="#h0-106" id="h0-106" class="d">-    -- Send key events to webview
+</a><a href="#h0-107" id="h0-107" class="d">-    passthrough = true,
+</a><a href="#h0-108" id="h0-108" class="d">-})
+</a><a href="#h0-109" id="h0-109" class="d">-
+</a><a href="#h0-110" id="h0-110" class="d">-new_mode(&quot;passthrough&quot;, [[Luakit will pass every key event to the WebView
+</a><a href="#h0-111" id="h0-111" class="d">-    until the user presses Escape.]], {
+</a><a href="#h0-112" id="h0-112" class="d">-    enter = function (w)
+</a><a href="#h0-113" id="h0-113" class="d">-        w:set_prompt(&quot;-- PASS THROUGH --&quot;)
+</a><a href="#h0-114" id="h0-114" class="d">-        w:set_input()
+</a><a href="#h0-115" id="h0-115" class="d">-    end,
+</a><a href="#h0-116" id="h0-116" class="d">-    -- Send key events to webview
+</a><a href="#h0-117" id="h0-117" class="d">-    passthrough = true,
+</a><a href="#h0-118" id="h0-118" class="d">-    -- Don&apos;t exit mode when clicking outside of form fields
+</a><a href="#h0-119" id="h0-119" class="d">-    reset_on_focus = false,
+</a><a href="#h0-120" id="h0-120" class="d">-    -- Don&apos;t exit mode on navigation
+</a><a href="#h0-121" id="h0-121" class="d">-    reset_on_navigation = false,
+</a><a href="#h0-122" id="h0-122" class="d">-})
+</a><a href="#h0-123" id="h0-123" class="d">-
+</a><a href="#h0-124" id="h0-124" class="d">--- Setup command mode
+</a><a href="#h0-125" id="h0-125" class="d">-new_mode(&quot;command&quot;, [[Enter commands.]], {
+</a><a href="#h0-126" id="h0-126" class="d">-    enter = function (w)
+</a><a href="#h0-127" id="h0-127" class="d">-        w:set_prompt()
+</a><a href="#h0-128" id="h0-128" class="d">-        w:set_input(&quot;:&quot;)
+</a><a href="#h0-129" id="h0-129" class="d">-    end,
+</a><a href="#h0-130" id="h0-130" class="d">-    changed = function (w, text)
+</a><a href="#h0-131" id="h0-131" class="d">-        -- Auto-exit command mode if user backspaces &quot;:&quot; in the input bar.
+</a><a href="#h0-132" id="h0-132" class="d">-        if not string.match(text, &quot;^:&quot;) then w:set_mode() end
+</a><a href="#h0-133" id="h0-133" class="d">-    end,
+</a><a href="#h0-134" id="h0-134" class="d">-    activate = function (w, text)
+</a><a href="#h0-135" id="h0-135" class="d">-        w:set_mode()
+</a><a href="#h0-136" id="h0-136" class="d">-        local cmd = string.sub(text, 2)
+</a><a href="#h0-137" id="h0-137" class="d">-        if not string.find(cmd, &quot;%S&quot;) then return end
+</a><a href="#h0-138" id="h0-138" class="d">-
+</a><a href="#h0-139" id="h0-139" class="d">-        local success, match = xpcall(
+</a><a href="#h0-140" id="h0-140" class="d">-            function () return w:match_cmd(cmd) end,
+</a><a href="#h0-141" id="h0-141" class="d">-            function (err) w:error(debug.traceback(err, 3)) end)
+</a><a href="#h0-142" id="h0-142" class="d">-
+</a><a href="#h0-143" id="h0-143" class="d">-        if success and not match then
+</a><a href="#h0-144" id="h0-144" class="d">-            w:error(string.format(&quot;Not a browser command: %q&quot;, cmd))
+</a><a href="#h0-145" id="h0-145" class="d">-        end
+</a><a href="#h0-146" id="h0-146" class="d">-    end,
+</a><a href="#h0-147" id="h0-147" class="d">-    history = {maxlen = 50},
+</a><a href="#h0-148" id="h0-148" class="d">-})
+</a><a href="#h0-149" id="h0-149" class="d">-
+</a><a href="#h0-150" id="h0-150" class="d">-new_mode(&quot;lua&quot;, [[Execute arbitrary Lua commands within the luakit
+</a><a href="#h0-151" id="h0-151" class="d">-    environment.]], {
+</a><a href="#h0-152" id="h0-152" class="d">-    enter = function (w)
+</a><a href="#h0-153" id="h0-153" class="d">-        w:set_prompt(&quot;&gt;&quot;)
+</a><a href="#h0-154" id="h0-154" class="d">-        w:set_input(&quot;&quot;)
+</a><a href="#h0-155" id="h0-155" class="d">-    end,
+</a><a href="#h0-156" id="h0-156" class="d">-    activate = function (w, text)
+</a><a href="#h0-157" id="h0-157" class="d">-        w:set_input(&quot;&quot;)
+</a><a href="#h0-158" id="h0-158" class="d">-        local ret = assert(loadstring(&quot;return function(w) return &quot;..text..&quot; end&quot;))()(w)
+</a><a href="#h0-159" id="h0-159" class="d">-        if ret then print(ret) end
+</a><a href="#h0-160" id="h0-160" class="d">-    end,
+</a><a href="#h0-161" id="h0-161" class="d">-    history = {maxlen = 50},
+</a><a href="#h0-162" id="h0-162" class="d">-})
+</a><b>diff --git a/<a href="../file/home/.config/luakit/webview.lua.html">home/.config/luakit/webview.lua</a> b/<a href="../file/home/.config/luakit/webview.lua.html">home/.config/luakit/webview.lua</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,350 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">---------------------------
+</a><a href="#h0-1" id="h0-1" class="d">--- WebKit WebView class --
+</a><a href="#h0-2" id="h0-2" class="d">---------------------------
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">--- Webview class table
+</a><a href="#h0-5" id="h0-5" class="d">-webview = {}
+</a><a href="#h0-6" id="h0-6" class="d">-
+</a><a href="#h0-7" id="h0-7" class="d">--- Table of functions which are called on new webview widgets.
+</a><a href="#h0-8" id="h0-8" class="d">-webview.init_funcs = {
+</a><a href="#h0-9" id="h0-9" class="d">-    -- Set useragent
+</a><a href="#h0-10" id="h0-10" class="d">-    set_useragent = function (view, w)
+</a><a href="#h0-11" id="h0-11" class="d">-        view.user_agent = globals.useragent
+</a><a href="#h0-12" id="h0-12" class="d">-    end,
+</a><a href="#h0-13" id="h0-13" class="d">-
+</a><a href="#h0-14" id="h0-14" class="d">-    -- Check if checking ssl certificates
+</a><a href="#h0-15" id="h0-15" class="d">-    checking_ssl = function (view, w)
+</a><a href="#h0-16" id="h0-16" class="d">-        local ca_file = soup.ssl_ca_file
+</a><a href="#h0-17" id="h0-17" class="d">-        if ca_file and os.exists(ca_file) then
+</a><a href="#h0-18" id="h0-18" class="d">-            w.checking_ssl = true
+</a><a href="#h0-19" id="h0-19" class="d">-        end
+</a><a href="#h0-20" id="h0-20" class="d">-    end,
+</a><a href="#h0-21" id="h0-21" class="d">-
+</a><a href="#h0-22" id="h0-22" class="d">-    -- Update window and tab titles
+</a><a href="#h0-23" id="h0-23" class="d">-    title_update = function (view, w)
+</a><a href="#h0-24" id="h0-24" class="d">-        view:add_signal(&quot;property::title&quot;, function (v)
+</a><a href="#h0-25" id="h0-25" class="d">-            w:update_tablist()
+</a><a href="#h0-26" id="h0-26" class="d">-            if w.view == v then
+</a><a href="#h0-27" id="h0-27" class="d">-                w:update_win_title()
+</a><a href="#h0-28" id="h0-28" class="d">-            end
+</a><a href="#h0-29" id="h0-29" class="d">-        end)
+</a><a href="#h0-30" id="h0-30" class="d">-    end,
+</a><a href="#h0-31" id="h0-31" class="d">-
+</a><a href="#h0-32" id="h0-32" class="d">-    -- Update uri label in statusbar
+</a><a href="#h0-33" id="h0-33" class="d">-    uri_update = function (view, w)
+</a><a href="#h0-34" id="h0-34" class="d">-        view:add_signal(&quot;property::uri&quot;, function (v)
+</a><a href="#h0-35" id="h0-35" class="d">-            w:update_tablist()
+</a><a href="#h0-36" id="h0-36" class="d">-            if w.view == v then
+</a><a href="#h0-37" id="h0-37" class="d">-                w:update_uri()
+</a><a href="#h0-38" id="h0-38" class="d">-            end
+</a><a href="#h0-39" id="h0-39" class="d">-        end)
+</a><a href="#h0-40" id="h0-40" class="d">-    end,
+</a><a href="#h0-41" id="h0-41" class="d">-
+</a><a href="#h0-42" id="h0-42" class="d">-    -- Update history indicator
+</a><a href="#h0-43" id="h0-43" class="d">-    hist_update = function (view, w)
+</a><a href="#h0-44" id="h0-44" class="d">-        view:add_signal(&quot;load-status&quot;, function (v, status)
+</a><a href="#h0-45" id="h0-45" class="d">-            if w.view == v then
+</a><a href="#h0-46" id="h0-46" class="d">-                w:update_hist()
+</a><a href="#h0-47" id="h0-47" class="d">-            end
+</a><a href="#h0-48" id="h0-48" class="d">-        end)
+</a><a href="#h0-49" id="h0-49" class="d">-    end,
+</a><a href="#h0-50" id="h0-50" class="d">-
+</a><a href="#h0-51" id="h0-51" class="d">-    -- Update tab titles
+</a><a href="#h0-52" id="h0-52" class="d">-    tablist_update = function (view, w)
+</a><a href="#h0-53" id="h0-53" class="d">-        view:add_signal(&quot;load-status&quot;, function (v, status)
+</a><a href="#h0-54" id="h0-54" class="d">-            if status == &quot;provisional&quot; or status == &quot;finished&quot; or status == &quot;failed&quot; then
+</a><a href="#h0-55" id="h0-55" class="d">-                w:update_tablist()
+</a><a href="#h0-56" id="h0-56" class="d">-            end
+</a><a href="#h0-57" id="h0-57" class="d">-        end)
+</a><a href="#h0-58" id="h0-58" class="d">-    end,
+</a><a href="#h0-59" id="h0-59" class="d">-
+</a><a href="#h0-60" id="h0-60" class="d">-    -- Update scroll widget
+</a><a href="#h0-61" id="h0-61" class="d">-    scroll_update = function (view, w)
+</a><a href="#h0-62" id="h0-62" class="d">-        view:add_signal(&quot;expose&quot;, function (v)
+</a><a href="#h0-63" id="h0-63" class="d">-            if w.view == v then
+</a><a href="#h0-64" id="h0-64" class="d">-                w:update_scroll()
+</a><a href="#h0-65" id="h0-65" class="d">-            end
+</a><a href="#h0-66" id="h0-66" class="d">-        end)
+</a><a href="#h0-67" id="h0-67" class="d">-    end,
+</a><a href="#h0-68" id="h0-68" class="d">-
+</a><a href="#h0-69" id="h0-69" class="d">-    -- Update progress widget
+</a><a href="#h0-70" id="h0-70" class="d">-    progress_update = function (view, w)
+</a><a href="#h0-71" id="h0-71" class="d">-        for _, sig in ipairs({&quot;load-status&quot;, &quot;property::progress&quot;}) do
+</a><a href="#h0-72" id="h0-72" class="d">-            view:add_signal(sig, function (v)
+</a><a href="#h0-73" id="h0-73" class="d">-                if w.view == v then
+</a><a href="#h0-74" id="h0-74" class="d">-                    w:update_progress()
+</a><a href="#h0-75" id="h0-75" class="d">-                    w:update_ssl()
+</a><a href="#h0-76" id="h0-76" class="d">-                end
+</a><a href="#h0-77" id="h0-77" class="d">-            end)
+</a><a href="#h0-78" id="h0-78" class="d">-        end
+</a><a href="#h0-79" id="h0-79" class="d">-    end,
+</a><a href="#h0-80" id="h0-80" class="d">-
+</a><a href="#h0-81" id="h0-81" class="d">-    -- Display hovered link in statusbar
+</a><a href="#h0-82" id="h0-82" class="d">-    link_hover_display = function (view, w)
+</a><a href="#h0-83" id="h0-83" class="d">-        view:add_signal(&quot;link-hover&quot;, function (v, link)
+</a><a href="#h0-84" id="h0-84" class="d">-            if w.view == v and link then
+</a><a href="#h0-85" id="h0-85" class="d">-                w:update_uri(link)
+</a><a href="#h0-86" id="h0-86" class="d">-            end
+</a><a href="#h0-87" id="h0-87" class="d">-        end)
+</a><a href="#h0-88" id="h0-88" class="d">-        view:add_signal(&quot;link-unhover&quot;, function (v)
+</a><a href="#h0-89" id="h0-89" class="d">-            if w.view == v then
+</a><a href="#h0-90" id="h0-90" class="d">-                w:update_uri()
+</a><a href="#h0-91" id="h0-91" class="d">-            end
+</a><a href="#h0-92" id="h0-92" class="d">-        end)
+</a><a href="#h0-93" id="h0-93" class="d">-    end,
+</a><a href="#h0-94" id="h0-94" class="d">-
+</a><a href="#h0-95" id="h0-95" class="d">-    -- Clicking a form field automatically enters insert mode.
+</a><a href="#h0-96" id="h0-96" class="d">-    form_insert_mode = function (view, w)
+</a><a href="#h0-97" id="h0-97" class="d">-        view:add_signal(&quot;button-press&quot;, function (v, mods, button, context)
+</a><a href="#h0-98" id="h0-98" class="d">-            -- Clear start search marker
+</a><a href="#h0-99" id="h0-99" class="d">-            (w.search_state or {}).marker = nil
+</a><a href="#h0-100" id="h0-100" class="d">-
+</a><a href="#h0-101" id="h0-101" class="d">-            if button == 1 and context.editable then
+</a><a href="#h0-102" id="h0-102" class="d">-                view:emit_signal(&quot;form-active&quot;)
+</a><a href="#h0-103" id="h0-103" class="d">-            end
+</a><a href="#h0-104" id="h0-104" class="d">-        end)
+</a><a href="#h0-105" id="h0-105" class="d">-        -- Emit root-active event in button release to prevent &quot;missing&quot;
+</a><a href="#h0-106" id="h0-106" class="d">-        -- buttons or links when the input bar hides.
+</a><a href="#h0-107" id="h0-107" class="d">-        view:add_signal(&quot;button-release&quot;, function (v, mods, button, context)
+</a><a href="#h0-108" id="h0-108" class="d">-            if button == 1 and not context.editable then
+</a><a href="#h0-109" id="h0-109" class="d">-                view:emit_signal(&quot;root-active&quot;)
+</a><a href="#h0-110" id="h0-110" class="d">-            end
+</a><a href="#h0-111" id="h0-111" class="d">-        end)
+</a><a href="#h0-112" id="h0-112" class="d">-        view:add_signal(&quot;form-active&quot;, function ()
+</a><a href="#h0-113" id="h0-113" class="d">-            if not w.mode.passthrough then
+</a><a href="#h0-114" id="h0-114" class="d">-                w:set_mode(&quot;insert&quot;)
+</a><a href="#h0-115" id="h0-115" class="d">-            end
+</a><a href="#h0-116" id="h0-116" class="d">-        end)
+</a><a href="#h0-117" id="h0-117" class="d">-        view:add_signal(&quot;root-active&quot;, function ()
+</a><a href="#h0-118" id="h0-118" class="d">-            if w.mode.reset_on_focus ~= false then
+</a><a href="#h0-119" id="h0-119" class="d">-                w:set_mode()
+</a><a href="#h0-120" id="h0-120" class="d">-            end
+</a><a href="#h0-121" id="h0-121" class="d">-        end)
+</a><a href="#h0-122" id="h0-122" class="d">-    end,
+</a><a href="#h0-123" id="h0-123" class="d">-
+</a><a href="#h0-124" id="h0-124" class="d">-    -- Catch keys in non-passthrough modes
+</a><a href="#h0-125" id="h0-125" class="d">-    mode_key_filter = function (view, w)
+</a><a href="#h0-126" id="h0-126" class="d">-        view:add_signal(&quot;key-press&quot;, function ()
+</a><a href="#h0-127" id="h0-127" class="d">-            if not w.mode.passthrough then
+</a><a href="#h0-128" id="h0-128" class="d">-                return true
+</a><a href="#h0-129" id="h0-129" class="d">-            end
+</a><a href="#h0-130" id="h0-130" class="d">-        end)
+</a><a href="#h0-131" id="h0-131" class="d">-    end,
+</a><a href="#h0-132" id="h0-132" class="d">-
+</a><a href="#h0-133" id="h0-133" class="d">-    -- Try to match a button event to a users button binding else let the
+</a><a href="#h0-134" id="h0-134" class="d">-    -- press hit the webview.
+</a><a href="#h0-135" id="h0-135" class="d">-    button_bind_match = function (view, w)
+</a><a href="#h0-136" id="h0-136" class="d">-        view:add_signal(&quot;button-release&quot;, function (v, mods, button, context)
+</a><a href="#h0-137" id="h0-137" class="d">-            (w.search_state or {}).marker = nil
+</a><a href="#h0-138" id="h0-138" class="d">-            if w:hit(mods, button, { context = context }) then
+</a><a href="#h0-139" id="h0-139" class="d">-                return true
+</a><a href="#h0-140" id="h0-140" class="d">-            end
+</a><a href="#h0-141" id="h0-141" class="d">-        end)
+</a><a href="#h0-142" id="h0-142" class="d">-    end,
+</a><a href="#h0-143" id="h0-143" class="d">-
+</a><a href="#h0-144" id="h0-144" class="d">-    -- Reset the mode on navigation
+</a><a href="#h0-145" id="h0-145" class="d">-    mode_reset_on_nav = function (view, w)
+</a><a href="#h0-146" id="h0-146" class="d">-        view:add_signal(&quot;load-status&quot;, function (v, status)
+</a><a href="#h0-147" id="h0-147" class="d">-            if status == &quot;provisional&quot; and w.view == v then
+</a><a href="#h0-148" id="h0-148" class="d">-                if w.mode.reset_on_navigation ~= false then
+</a><a href="#h0-149" id="h0-149" class="d">-                    w:set_mode()
+</a><a href="#h0-150" id="h0-150" class="d">-                end
+</a><a href="#h0-151" id="h0-151" class="d">-            end
+</a><a href="#h0-152" id="h0-152" class="d">-        end)
+</a><a href="#h0-153" id="h0-153" class="d">-    end,
+</a><a href="#h0-154" id="h0-154" class="d">-
+</a><a href="#h0-155" id="h0-155" class="d">-    -- Domain properties
+</a><a href="#h0-156" id="h0-156" class="d">-    domain_properties = function (view, w)
+</a><a href="#h0-157" id="h0-157" class="d">-        view:add_signal(&quot;load-status&quot;, function (v, status)
+</a><a href="#h0-158" id="h0-158" class="d">-            if status ~= &quot;committed&quot; or v.uri == &quot;about:blank&quot; then return end
+</a><a href="#h0-159" id="h0-159" class="d">-            -- Get domain
+</a><a href="#h0-160" id="h0-160" class="d">-            local domain = lousy.uri.parse(v.uri).host
+</a><a href="#h0-161" id="h0-161" class="d">-            -- Strip leading www.
+</a><a href="#h0-162" id="h0-162" class="d">-            domain = string.match(domain or &quot;&quot;, &quot;^www%.(.+)&quot;) or domain or &quot;all&quot;
+</a><a href="#h0-163" id="h0-163" class="d">-            -- Build list of domain props tables to join &amp; load.
+</a><a href="#h0-164" id="h0-164" class="d">-            -- I.e. for luakit.org load .luakit.org, luakit.org, .org
+</a><a href="#h0-165" id="h0-165" class="d">-            local props = {domain_props.all or {}, domain_props[domain] or {}}
+</a><a href="#h0-166" id="h0-166" class="d">-            repeat
+</a><a href="#h0-167" id="h0-167" class="d">-                table.insert(props, 2, domain_props[&quot;.&quot;..domain] or {})
+</a><a href="#h0-168" id="h0-168" class="d">-                domain = string.match(domain, &quot;%.(.+)&quot;)
+</a><a href="#h0-169" id="h0-169" class="d">-            until not domain
+</a><a href="#h0-170" id="h0-170" class="d">-            -- Join all property tables
+</a><a href="#h0-171" id="h0-171" class="d">-            for k, v in pairs(lousy.util.table.join(unpack(props))) do
+</a><a href="#h0-172" id="h0-172" class="d">-                info(&quot;Domain prop: %s = %s (%s)&quot;, k, tostring(v), domain)
+</a><a href="#h0-173" id="h0-173" class="d">-                view[k] = v
+</a><a href="#h0-174" id="h0-174" class="d">-            end
+</a><a href="#h0-175" id="h0-175" class="d">-        end)
+</a><a href="#h0-176" id="h0-176" class="d">-    end,
+</a><a href="#h0-177" id="h0-177" class="d">-
+</a><a href="#h0-178" id="h0-178" class="d">-    -- Action to take on mime type decision request.
+</a><a href="#h0-179" id="h0-179" class="d">-    mime_decision = function (view, w)
+</a><a href="#h0-180" id="h0-180" class="d">-        -- Return true to accept or false to reject from this signal.
+</a><a href="#h0-181" id="h0-181" class="d">-        view:add_signal(&quot;mime-type-decision&quot;, function (v, uri, mime)
+</a><a href="#h0-182" id="h0-182" class="d">-            info(&quot;Requested link: %s (%s)&quot;, uri, mime)
+</a><a href="#h0-183" id="h0-183" class="d">-            -- i.e. block binary files like *.exe
+</a><a href="#h0-184" id="h0-184" class="d">-            --if mime == &quot;application/octet-stream&quot; then
+</a><a href="#h0-185" id="h0-185" class="d">-            --    return false
+</a><a href="#h0-186" id="h0-186" class="d">-            --end
+</a><a href="#h0-187" id="h0-187" class="d">-        end)
+</a><a href="#h0-188" id="h0-188" class="d">-    end,
+</a><a href="#h0-189" id="h0-189" class="d">-
+</a><a href="#h0-190" id="h0-190" class="d">-    -- Action to take on window open request.
+</a><a href="#h0-191" id="h0-191" class="d">-    --window_decision = function (view, w)
+</a><a href="#h0-192" id="h0-192" class="d">-    --    view:add_signal(&quot;new-window-decision&quot;, function (v, uri, reason)
+</a><a href="#h0-193" id="h0-193" class="d">-    --        if reason == &quot;link-clicked&quot; then
+</a><a href="#h0-194" id="h0-194" class="d">-    --            window.new({uri})
+</a><a href="#h0-195" id="h0-195" class="d">-    --        else
+</a><a href="#h0-196" id="h0-196" class="d">-    --            w:new_tab(uri)
+</a><a href="#h0-197" id="h0-197" class="d">-    --        end
+</a><a href="#h0-198" id="h0-198" class="d">-    --        return true
+</a><a href="#h0-199" id="h0-199" class="d">-    --    end)
+</a><a href="#h0-200" id="h0-200" class="d">-    --end,
+</a><a href="#h0-201" id="h0-201" class="d">-
+</a><a href="#h0-202" id="h0-202" class="d">-    create_webview = function (view, w)
+</a><a href="#h0-203" id="h0-203" class="d">-        -- Return a newly created webview in a new tab
+</a><a href="#h0-204" id="h0-204" class="d">-        view:add_signal(&quot;create-web-view&quot;, function (v)
+</a><a href="#h0-205" id="h0-205" class="d">-            return w:new_tab()
+</a><a href="#h0-206" id="h0-206" class="d">-        end)
+</a><a href="#h0-207" id="h0-207" class="d">-    end,
+</a><a href="#h0-208" id="h0-208" class="d">-
+</a><a href="#h0-209" id="h0-209" class="d">-    -- Creates context menu popup from table (and nested tables).
+</a><a href="#h0-210" id="h0-210" class="d">-    -- Use `true` for menu separators.
+</a><a href="#h0-211" id="h0-211" class="d">-    --populate_popup = function (view, w)
+</a><a href="#h0-212" id="h0-212" class="d">-    --    view:add_signal(&quot;populate-popup&quot;, function (v)
+</a><a href="#h0-213" id="h0-213" class="d">-    --        return {
+</a><a href="#h0-214" id="h0-214" class="d">-    --            true,
+</a><a href="#h0-215" id="h0-215" class="d">-    --            { &quot;_Toggle Source&quot;, function () w:toggle_source() end },
+</a><a href="#h0-216" id="h0-216" class="d">-    --            { &quot;_Zoom&quot;, {
+</a><a href="#h0-217" id="h0-217" class="d">-    --                { &quot;Zoom _In&quot;,    function () w:zoom_in()  end },
+</a><a href="#h0-218" id="h0-218" class="d">-    --                { &quot;Zoom _Out&quot;,   function () w:zoom_out() end },
+</a><a href="#h0-219" id="h0-219" class="d">-    --                true,
+</a><a href="#h0-220" id="h0-220" class="d">-    --                { &quot;Zoom _Reset&quot;, function () w:zoom_set() end }, }, },
+</a><a href="#h0-221" id="h0-221" class="d">-    --        }
+</a><a href="#h0-222" id="h0-222" class="d">-    --    end)
+</a><a href="#h0-223" id="h0-223" class="d">-    --end,
+</a><a href="#h0-224" id="h0-224" class="d">-
+</a><a href="#h0-225" id="h0-225" class="d">-    -- Action to take on resource request.
+</a><a href="#h0-226" id="h0-226" class="d">-    resource_request_decision = function (view, w)
+</a><a href="#h0-227" id="h0-227" class="d">-        view:add_signal(&quot;resource-request-starting&quot;, function(v, uri)
+</a><a href="#h0-228" id="h0-228" class="d">-            info(&quot;Requesting: %s&quot;, uri)
+</a><a href="#h0-229" id="h0-229" class="d">-            -- Return false to cancel the request.
+</a><a href="#h0-230" id="h0-230" class="d">-        end)
+</a><a href="#h0-231" id="h0-231" class="d">-    end,
+</a><a href="#h0-232" id="h0-232" class="d">-}
+</a><a href="#h0-233" id="h0-233" class="d">-
+</a><a href="#h0-234" id="h0-234" class="d">--- These methods are present when you index a window instance and no window
+</a><a href="#h0-235" id="h0-235" class="d">--- method is found in `window.methods`. The window then checks if there is an
+</a><a href="#h0-236" id="h0-236" class="d">--- active webview and calls the following methods with the given view instance
+</a><a href="#h0-237" id="h0-237" class="d">--- as the first argument. All methods must take `view` &amp; `w` as the first two
+</a><a href="#h0-238" id="h0-238" class="d">--- arguments.
+</a><a href="#h0-239" id="h0-239" class="d">-webview.methods = {
+</a><a href="#h0-240" id="h0-240" class="d">-    -- Reload with or without ignoring cache
+</a><a href="#h0-241" id="h0-241" class="d">-    reload = function (view, w, bypass_cache)
+</a><a href="#h0-242" id="h0-242" class="d">-        if bypass_cache then
+</a><a href="#h0-243" id="h0-243" class="d">-            view:reload_bypass_cache()
+</a><a href="#h0-244" id="h0-244" class="d">-        else
+</a><a href="#h0-245" id="h0-245" class="d">-            view:reload()
+</a><a href="#h0-246" id="h0-246" class="d">-        end
+</a><a href="#h0-247" id="h0-247" class="d">-    end,
+</a><a href="#h0-248" id="h0-248" class="d">-
+</a><a href="#h0-249" id="h0-249" class="d">-    -- Toggle source view
+</a><a href="#h0-250" id="h0-250" class="d">-    toggle_source = function (view, w, show)
+</a><a href="#h0-251" id="h0-251" class="d">-        if show == nil then
+</a><a href="#h0-252" id="h0-252" class="d">-            view.view_source = not view.view_source
+</a><a href="#h0-253" id="h0-253" class="d">-        else
+</a><a href="#h0-254" id="h0-254" class="d">-            view.view_source = show
+</a><a href="#h0-255" id="h0-255" class="d">-        end
+</a><a href="#h0-256" id="h0-256" class="d">-        view:reload()
+</a><a href="#h0-257" id="h0-257" class="d">-    end,
+</a><a href="#h0-258" id="h0-258" class="d">-
+</a><a href="#h0-259" id="h0-259" class="d">-    -- Zoom functions
+</a><a href="#h0-260" id="h0-260" class="d">-    zoom_in = function (view, w, step, full_zoom)
+</a><a href="#h0-261" id="h0-261" class="d">-        view.full_content_zoom = not not full_zoom
+</a><a href="#h0-262" id="h0-262" class="d">-        step = step or globals.zoom_step or 0.1
+</a><a href="#h0-263" id="h0-263" class="d">-        view.zoom_level = view.zoom_level + step
+</a><a href="#h0-264" id="h0-264" class="d">-    end,
+</a><a href="#h0-265" id="h0-265" class="d">-
+</a><a href="#h0-266" id="h0-266" class="d">-    zoom_out = function (view, w, step, full_zoom)
+</a><a href="#h0-267" id="h0-267" class="d">-        view.full_content_zoom = not not full_zoom
+</a><a href="#h0-268" id="h0-268" class="d">-        step = step or globals.zoom_step or 0.1
+</a><a href="#h0-269" id="h0-269" class="d">-        view.zoom_level = math.max(0.01, view.zoom_level) - step
+</a><a href="#h0-270" id="h0-270" class="d">-    end,
+</a><a href="#h0-271" id="h0-271" class="d">-
+</a><a href="#h0-272" id="h0-272" class="d">-    zoom_set = function (view, w, level, full_zoom)
+</a><a href="#h0-273" id="h0-273" class="d">-        view.full_content_zoom = not not full_zoom
+</a><a href="#h0-274" id="h0-274" class="d">-        view.zoom_level = level or 1.0
+</a><a href="#h0-275" id="h0-275" class="d">-    end,
+</a><a href="#h0-276" id="h0-276" class="d">-
+</a><a href="#h0-277" id="h0-277" class="d">-    -- History traversing functions
+</a><a href="#h0-278" id="h0-278" class="d">-    back = function (view, w, n)
+</a><a href="#h0-279" id="h0-279" class="d">-        view:go_back(n or 1)
+</a><a href="#h0-280" id="h0-280" class="d">-    end,
+</a><a href="#h0-281" id="h0-281" class="d">-
+</a><a href="#h0-282" id="h0-282" class="d">-    forward = function (view, w, n)
+</a><a href="#h0-283" id="h0-283" class="d">-        view:go_forward(n or 1)
+</a><a href="#h0-284" id="h0-284" class="d">-    end,
+</a><a href="#h0-285" id="h0-285" class="d">-}
+</a><a href="#h0-286" id="h0-286" class="d">-
+</a><a href="#h0-287" id="h0-287" class="d">-function webview.methods.scroll(view, w, new)
+</a><a href="#h0-288" id="h0-288" class="d">-    local s = view.scroll
+</a><a href="#h0-289" id="h0-289" class="d">-    for _, axis in ipairs{ &quot;x&quot;, &quot;y&quot; } do
+</a><a href="#h0-290" id="h0-290" class="d">-        -- Relative px movement
+</a><a href="#h0-291" id="h0-291" class="d">-        if rawget(new, axis..&quot;rel&quot;) then
+</a><a href="#h0-292" id="h0-292" class="d">-            s[axis] = s[axis] + new[axis..&quot;rel&quot;]
+</a><a href="#h0-293" id="h0-293" class="d">-
+</a><a href="#h0-294" id="h0-294" class="d">-        -- Relative page movement
+</a><a href="#h0-295" id="h0-295" class="d">-        elseif rawget(new, axis .. &quot;pagerel&quot;) then
+</a><a href="#h0-296" id="h0-296" class="d">-            s[axis] = s[axis] + math.ceil(s[axis..&quot;page_size&quot;] * new[axis..&quot;pagerel&quot;])
+</a><a href="#h0-297" id="h0-297" class="d">-
+</a><a href="#h0-298" id="h0-298" class="d">-        -- Absolute px movement
+</a><a href="#h0-299" id="h0-299" class="d">-        elseif rawget(new, axis) then
+</a><a href="#h0-300" id="h0-300" class="d">-            local n = new[axis]
+</a><a href="#h0-301" id="h0-301" class="d">-            if n == -1 then
+</a><a href="#h0-302" id="h0-302" class="d">-                s[axis] = s[axis..&quot;max&quot;]
+</a><a href="#h0-303" id="h0-303" class="d">-            else
+</a><a href="#h0-304" id="h0-304" class="d">-                s[axis] = n
+</a><a href="#h0-305" id="h0-305" class="d">-            end
+</a><a href="#h0-306" id="h0-306" class="d">-
+</a><a href="#h0-307" id="h0-307" class="d">-        -- Absolute page movement
+</a><a href="#h0-308" id="h0-308" class="d">-        elseif rawget(new, axis..&quot;page&quot;) then
+</a><a href="#h0-309" id="h0-309" class="d">-            s[axis] = math.ceil(s[axis..&quot;page_size&quot;] * new[axis..&quot;page&quot;])
+</a><a href="#h0-310" id="h0-310" class="d">-
+</a><a href="#h0-311" id="h0-311" class="d">-        -- Absolute percent movement
+</a><a href="#h0-312" id="h0-312" class="d">-        elseif rawget(new, axis .. &quot;pct&quot;) then
+</a><a href="#h0-313" id="h0-313" class="d">-            s[axis] = math.ceil(s[axis..&quot;max&quot;] * (new[axis..&quot;pct&quot;]/100))
+</a><a href="#h0-314" id="h0-314" class="d">-        end
+</a><a href="#h0-315" id="h0-315" class="d">-    end
+</a><a href="#h0-316" id="h0-316" class="d">-end
+</a><a href="#h0-317" id="h0-317" class="d">-
+</a><a href="#h0-318" id="h0-318" class="d">-function webview.new(w)
+</a><a href="#h0-319" id="h0-319" class="d">-    local view = widget{type = &quot;webview&quot;}
+</a><a href="#h0-320" id="h0-320" class="d">-
+</a><a href="#h0-321" id="h0-321" class="d">-    view.show_scrollbars = false
+</a><a href="#h0-322" id="h0-322" class="d">-    view.enforce_96_dpi = false
+</a><a href="#h0-323" id="h0-323" class="d">-
+</a><a href="#h0-324" id="h0-324" class="d">-    -- Call webview init functions
+</a><a href="#h0-325" id="h0-325" class="d">-    for k, func in pairs(webview.init_funcs) do
+</a><a href="#h0-326" id="h0-326" class="d">-        func(view, w)
+</a><a href="#h0-327" id="h0-327" class="d">-    end
+</a><a href="#h0-328" id="h0-328" class="d">-    return view
+</a><a href="#h0-329" id="h0-329" class="d">-end
+</a><a href="#h0-330" id="h0-330" class="d">-
+</a><a href="#h0-331" id="h0-331" class="d">--- Insert webview method lookup on window structure
+</a><a href="#h0-332" id="h0-332" class="d">-table.insert(window.indexes, 1, function (w, k)
+</a><a href="#h0-333" id="h0-333" class="d">-    if k == &quot;view&quot; then
+</a><a href="#h0-334" id="h0-334" class="d">-        local view = w.tabs[w.tabs:current()]
+</a><a href="#h0-335" id="h0-335" class="d">-        if view and type(view) == &quot;widget&quot; and view.type == &quot;webview&quot; then
+</a><a href="#h0-336" id="h0-336" class="d">-            w.view = view
+</a><a href="#h0-337" id="h0-337" class="d">-            return view
+</a><a href="#h0-338" id="h0-338" class="d">-        end
+</a><a href="#h0-339" id="h0-339" class="d">-    end
+</a><a href="#h0-340" id="h0-340" class="d">-    -- Lookup webview method
+</a><a href="#h0-341" id="h0-341" class="d">-    local func = webview.methods[k]
+</a><a href="#h0-342" id="h0-342" class="d">-    if not func then return end
+</a><a href="#h0-343" id="h0-343" class="d">-    local view = w.view
+</a><a href="#h0-344" id="h0-344" class="d">-    if view then
+</a><a href="#h0-345" id="h0-345" class="d">-        return function (_, ...) return func(view, w, ...) end
+</a><a href="#h0-346" id="h0-346" class="d">-    end
+</a><a href="#h0-347" id="h0-347" class="d">-end)
+</a><a href="#h0-348" id="h0-348" class="d">-
+</a><a href="#h0-349" id="h0-349" class="d">--- vim: et:sw=4:ts=8:sts=4:tw=80
+</a><b>diff --git a/<a href="../file/home/.config/luakit/window.lua.html">home/.config/luakit/window.lua</a> b/<a href="../file/home/.config/luakit/window.lua.html">home/.config/luakit/window.lua</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,859 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-------------------
+</a><a href="#h0-1" id="h0-1" class="d">--- Window class --
+</a><a href="#h0-2" id="h0-2" class="d">-------------------
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-require &quot;lfs&quot;
+</a><a href="#h0-5" id="h0-5" class="d">-
+</a><a href="#h0-6" id="h0-6" class="d">--- Window class table
+</a><a href="#h0-7" id="h0-7" class="d">-window = {}
+</a><a href="#h0-8" id="h0-8" class="d">-
+</a><a href="#h0-9" id="h0-9" class="d">--- List of active windows by window widget
+</a><a href="#h0-10" id="h0-10" class="d">-window.bywidget = setmetatable({}, { __mode = &quot;k&quot; })
+</a><a href="#h0-11" id="h0-11" class="d">-
+</a><a href="#h0-12" id="h0-12" class="d">--- Widget construction aliases
+</a><a href="#h0-13" id="h0-13" class="d">-local function entry()    return widget{type=&quot;entry&quot;}    end
+</a><a href="#h0-14" id="h0-14" class="d">-local function eventbox() return widget{type=&quot;eventbox&quot;} end
+</a><a href="#h0-15" id="h0-15" class="d">-local function hbox()     return widget{type=&quot;hbox&quot;}     end
+</a><a href="#h0-16" id="h0-16" class="d">-local function label()    return widget{type=&quot;label&quot;}    end
+</a><a href="#h0-17" id="h0-17" class="d">-local function notebook() return widget{type=&quot;notebook&quot;} end
+</a><a href="#h0-18" id="h0-18" class="d">-local function vbox()     return widget{type=&quot;vbox&quot;}     end
+</a><a href="#h0-19" id="h0-19" class="d">-
+</a><a href="#h0-20" id="h0-20" class="d">--- Build and pack window widgets
+</a><a href="#h0-21" id="h0-21" class="d">-function window.build()
+</a><a href="#h0-22" id="h0-22" class="d">-    -- Create a table for widgets and state variables for a window
+</a><a href="#h0-23" id="h0-23" class="d">-    local w = {
+</a><a href="#h0-24" id="h0-24" class="d">-        win    = widget{type=&quot;window&quot;},
+</a><a href="#h0-25" id="h0-25" class="d">-        ebox   = eventbox(),
+</a><a href="#h0-26" id="h0-26" class="d">-        layout = vbox(),
+</a><a href="#h0-27" id="h0-27" class="d">-        paned  = widget{type=&quot;vpaned&quot;},
+</a><a href="#h0-28" id="h0-28" class="d">-        tabs   = notebook(),
+</a><a href="#h0-29" id="h0-29" class="d">-        -- Tablist widget
+</a><a href="#h0-30" id="h0-30" class="d">-        tablist = lousy.widget.tablist(),
+</a><a href="#h0-31" id="h0-31" class="d">-        -- Status bar widgets
+</a><a href="#h0-32" id="h0-32" class="d">-        sbar = {
+</a><a href="#h0-33" id="h0-33" class="d">-            layout = hbox(),
+</a><a href="#h0-34" id="h0-34" class="d">-            ebox   = eventbox(),
+</a><a href="#h0-35" id="h0-35" class="d">-            -- Left aligned widgets
+</a><a href="#h0-36" id="h0-36" class="d">-            l = {
+</a><a href="#h0-37" id="h0-37" class="d">-                layout = hbox(),
+</a><a href="#h0-38" id="h0-38" class="d">-                ebox   = eventbox(),
+</a><a href="#h0-39" id="h0-39" class="d">-                uri    = label(),
+</a><a href="#h0-40" id="h0-40" class="d">-                hist   = label(),
+</a><a href="#h0-41" id="h0-41" class="d">-                loaded = label(),
+</a><a href="#h0-42" id="h0-42" class="d">-            },
+</a><a href="#h0-43" id="h0-43" class="d">-            -- Fills space between the left and right aligned widgets
+</a><a href="#h0-44" id="h0-44" class="d">-            sep = eventbox(),
+</a><a href="#h0-45" id="h0-45" class="d">-            -- Right aligned widgets
+</a><a href="#h0-46" id="h0-46" class="d">-            r = {
+</a><a href="#h0-47" id="h0-47" class="d">-                layout = hbox(),
+</a><a href="#h0-48" id="h0-48" class="d">-                ebox   = eventbox(),
+</a><a href="#h0-49" id="h0-49" class="d">-                buf    = label(),
+</a><a href="#h0-50" id="h0-50" class="d">-                ssl    = label(),
+</a><a href="#h0-51" id="h0-51" class="d">-                tabi   = label(),
+</a><a href="#h0-52" id="h0-52" class="d">-                scroll = label(),
+</a><a href="#h0-53" id="h0-53" class="d">-            },
+</a><a href="#h0-54" id="h0-54" class="d">-        },
+</a><a href="#h0-55" id="h0-55" class="d">-
+</a><a href="#h0-56" id="h0-56" class="d">-        -- Vertical menu window widget (completion results, bookmarks, qmarks, ..)
+</a><a href="#h0-57" id="h0-57" class="d">-        menu = lousy.widget.menu(),
+</a><a href="#h0-58" id="h0-58" class="d">-
+</a><a href="#h0-59" id="h0-59" class="d">-        -- Input bar widgets
+</a><a href="#h0-60" id="h0-60" class="d">-        ibar = {
+</a><a href="#h0-61" id="h0-61" class="d">-            layout  = hbox(),
+</a><a href="#h0-62" id="h0-62" class="d">-            ebox    = eventbox(),
+</a><a href="#h0-63" id="h0-63" class="d">-            prompt  = label(),
+</a><a href="#h0-64" id="h0-64" class="d">-            input   = entry(),
+</a><a href="#h0-65" id="h0-65" class="d">-        },
+</a><a href="#h0-66" id="h0-66" class="d">-        closed_tabs = {}
+</a><a href="#h0-67" id="h0-67" class="d">-    }
+</a><a href="#h0-68" id="h0-68" class="d">-
+</a><a href="#h0-69" id="h0-69" class="d">-    -- Assemble window
+</a><a href="#h0-70" id="h0-70" class="d">-    w.ebox.child = w.paned
+</a><a href="#h0-71" id="h0-71" class="d">-    w.paned:pack1(w.layout)
+</a><a href="#h0-72" id="h0-72" class="d">-    w.win.child = w.ebox
+</a><a href="#h0-73" id="h0-73" class="d">-
+</a><a href="#h0-74" id="h0-74" class="d">-    -- Pack tablist
+</a><a href="#h0-75" id="h0-75" class="d">-    w.layout:pack(w.tablist.widget)
+</a><a href="#h0-76" id="h0-76" class="d">-
+</a><a href="#h0-77" id="h0-77" class="d">-    -- Pack notebook
+</a><a href="#h0-78" id="h0-78" class="d">-    w.layout:pack(w.tabs, { expand = true, fill = true })
+</a><a href="#h0-79" id="h0-79" class="d">-
+</a><a href="#h0-80" id="h0-80" class="d">-    -- Pack left-aligned statusbar elements
+</a><a href="#h0-81" id="h0-81" class="d">-    local l = w.sbar.l
+</a><a href="#h0-82" id="h0-82" class="d">-    l.layout:pack(l.uri)
+</a><a href="#h0-83" id="h0-83" class="d">-    l.layout:pack(l.hist)
+</a><a href="#h0-84" id="h0-84" class="d">-    l.layout:pack(l.loaded)
+</a><a href="#h0-85" id="h0-85" class="d">-    l.ebox.child = l.layout
+</a><a href="#h0-86" id="h0-86" class="d">-
+</a><a href="#h0-87" id="h0-87" class="d">-    -- Pack right-aligned statusbar elements
+</a><a href="#h0-88" id="h0-88" class="d">-    local r = w.sbar.r
+</a><a href="#h0-89" id="h0-89" class="d">-    r.layout:pack(r.buf)
+</a><a href="#h0-90" id="h0-90" class="d">-    r.layout:pack(r.ssl)
+</a><a href="#h0-91" id="h0-91" class="d">-    r.layout:pack(r.tabi)
+</a><a href="#h0-92" id="h0-92" class="d">-    r.layout:pack(r.scroll)
+</a><a href="#h0-93" id="h0-93" class="d">-    r.ebox.child = r.layout
+</a><a href="#h0-94" id="h0-94" class="d">-
+</a><a href="#h0-95" id="h0-95" class="d">-    -- Pack status bar elements
+</a><a href="#h0-96" id="h0-96" class="d">-    local s = w.sbar
+</a><a href="#h0-97" id="h0-97" class="d">-    s.layout:pack(l.ebox)
+</a><a href="#h0-98" id="h0-98" class="d">-    s.layout:pack(s.sep, { expand = true, fill = true })
+</a><a href="#h0-99" id="h0-99" class="d">-    s.layout:pack(r.ebox)
+</a><a href="#h0-100" id="h0-100" class="d">-    s.ebox.child = s.layout
+</a><a href="#h0-101" id="h0-101" class="d">-    w.layout:pack(s.ebox)
+</a><a href="#h0-102" id="h0-102" class="d">-
+</a><a href="#h0-103" id="h0-103" class="d">-    -- Pack menu widget
+</a><a href="#h0-104" id="h0-104" class="d">-    w.layout:pack(w.menu.widget)
+</a><a href="#h0-105" id="h0-105" class="d">-    w.menu:hide()
+</a><a href="#h0-106" id="h0-106" class="d">-
+</a><a href="#h0-107" id="h0-107" class="d">-    -- Pack input bar
+</a><a href="#h0-108" id="h0-108" class="d">-    local i = w.ibar
+</a><a href="#h0-109" id="h0-109" class="d">-    i.layout:pack(i.prompt)
+</a><a href="#h0-110" id="h0-110" class="d">-    i.layout:pack(i.input, { expand = true, fill = true })
+</a><a href="#h0-111" id="h0-111" class="d">-    i.ebox.child = i.layout
+</a><a href="#h0-112" id="h0-112" class="d">-    w.layout:pack(i.ebox)
+</a><a href="#h0-113" id="h0-113" class="d">-
+</a><a href="#h0-114" id="h0-114" class="d">-    -- Other settings
+</a><a href="#h0-115" id="h0-115" class="d">-    i.input.show_frame = false
+</a><a href="#h0-116" id="h0-116" class="d">-    w.tabs.show_tabs = false
+</a><a href="#h0-117" id="h0-117" class="d">-    l.loaded:hide()
+</a><a href="#h0-118" id="h0-118" class="d">-    l.hist:hide()
+</a><a href="#h0-119" id="h0-119" class="d">-    l.uri.selectable = true
+</a><a href="#h0-120" id="h0-120" class="d">-    r.ssl:hide()
+</a><a href="#h0-121" id="h0-121" class="d">-
+</a><a href="#h0-122" id="h0-122" class="d">-    -- Allows indexing of window struct by window widget
+</a><a href="#h0-123" id="h0-123" class="d">-    window.bywidget[w.win] = w
+</a><a href="#h0-124" id="h0-124" class="d">-
+</a><a href="#h0-125" id="h0-125" class="d">-    return w
+</a><a href="#h0-126" id="h0-126" class="d">-end
+</a><a href="#h0-127" id="h0-127" class="d">-
+</a><a href="#h0-128" id="h0-128" class="d">--- Table of functions to call on window creation. Normally used to add signal
+</a><a href="#h0-129" id="h0-129" class="d">--- handlers to the new windows widgets.
+</a><a href="#h0-130" id="h0-130" class="d">-window.init_funcs = {
+</a><a href="#h0-131" id="h0-131" class="d">-    -- Attach notebook widget signals
+</a><a href="#h0-132" id="h0-132" class="d">-    notebook_signals = function (w)
+</a><a href="#h0-133" id="h0-133" class="d">-        w.tabs:add_signal(&quot;page-added&quot;, function (nbook, view, idx)
+</a><a href="#h0-134" id="h0-134" class="d">-            luakit.idle_add(function ()
+</a><a href="#h0-135" id="h0-135" class="d">-                w:update_tab_count()
+</a><a href="#h0-136" id="h0-136" class="d">-                w:update_tablist()
+</a><a href="#h0-137" id="h0-137" class="d">-                return false
+</a><a href="#h0-138" id="h0-138" class="d">-            end)
+</a><a href="#h0-139" id="h0-139" class="d">-        end)
+</a><a href="#h0-140" id="h0-140" class="d">-        w.tabs:add_signal(&quot;switch-page&quot;, function (nbook, view, idx)
+</a><a href="#h0-141" id="h0-141" class="d">-            w.view = nil
+</a><a href="#h0-142" id="h0-142" class="d">-            w:set_mode()
+</a><a href="#h0-143" id="h0-143" class="d">-            -- Update widgets after tab switch
+</a><a href="#h0-144" id="h0-144" class="d">-            luakit.idle_add(function ()
+</a><a href="#h0-145" id="h0-145" class="d">-                w:update_tab_count()
+</a><a href="#h0-146" id="h0-146" class="d">-                w:update_win_title()
+</a><a href="#h0-147" id="h0-147" class="d">-                w:update_uri()
+</a><a href="#h0-148" id="h0-148" class="d">-                w:update_progress()
+</a><a href="#h0-149" id="h0-149" class="d">-                w:update_tablist()
+</a><a href="#h0-150" id="h0-150" class="d">-                w:update_buf()
+</a><a href="#h0-151" id="h0-151" class="d">-                w:update_ssl()
+</a><a href="#h0-152" id="h0-152" class="d">-                w:update_hist()
+</a><a href="#h0-153" id="h0-153" class="d">-                return false
+</a><a href="#h0-154" id="h0-154" class="d">-            end)
+</a><a href="#h0-155" id="h0-155" class="d">-        end)
+</a><a href="#h0-156" id="h0-156" class="d">-        w.tabs:add_signal(&quot;page-reordered&quot;, function (nbook, view, idx)
+</a><a href="#h0-157" id="h0-157" class="d">-            w:update_tab_count()
+</a><a href="#h0-158" id="h0-158" class="d">-            w:update_tablist()
+</a><a href="#h0-159" id="h0-159" class="d">-        end)
+</a><a href="#h0-160" id="h0-160" class="d">-    end,
+</a><a href="#h0-161" id="h0-161" class="d">-
+</a><a href="#h0-162" id="h0-162" class="d">-    last_win_check = function (w)
+</a><a href="#h0-163" id="h0-163" class="d">-        w.win:add_signal(&quot;destroy&quot;, function ()
+</a><a href="#h0-164" id="h0-164" class="d">-            -- call the quit function if this was the last window left
+</a><a href="#h0-165" id="h0-165" class="d">-            if #luakit.windows == 0 then luakit.quit() end
+</a><a href="#h0-166" id="h0-166" class="d">-            if w.close_win then w:close_win() end
+</a><a href="#h0-167" id="h0-167" class="d">-        end)
+</a><a href="#h0-168" id="h0-168" class="d">-    end,
+</a><a href="#h0-169" id="h0-169" class="d">-
+</a><a href="#h0-170" id="h0-170" class="d">-    key_press_match = function (w)
+</a><a href="#h0-171" id="h0-171" class="d">-        w.win:add_signal(&quot;key-press&quot;, function (_, mods, key)
+</a><a href="#h0-172" id="h0-172" class="d">-            -- Match &amp; exec a bind
+</a><a href="#h0-173" id="h0-173" class="d">-            local success, match = xpcall(
+</a><a href="#h0-174" id="h0-174" class="d">-                function () return w:hit(mods, key) end,
+</a><a href="#h0-175" id="h0-175" class="d">-                function (err) w:error(debug.traceback(err, 3)) end)
+</a><a href="#h0-176" id="h0-176" class="d">-
+</a><a href="#h0-177" id="h0-177" class="d">-            if success and match then
+</a><a href="#h0-178" id="h0-178" class="d">-                return true
+</a><a href="#h0-179" id="h0-179" class="d">-            end
+</a><a href="#h0-180" id="h0-180" class="d">-        end)
+</a><a href="#h0-181" id="h0-181" class="d">-    end,
+</a><a href="#h0-182" id="h0-182" class="d">-
+</a><a href="#h0-183" id="h0-183" class="d">-    tablist_tab_click = function (w)
+</a><a href="#h0-184" id="h0-184" class="d">-        w.tablist:add_signal(&quot;tab-clicked&quot;, function (_, index, mods, button)
+</a><a href="#h0-185" id="h0-185" class="d">-            if button == 1 then
+</a><a href="#h0-186" id="h0-186" class="d">-                w.tabs:switch(index)
+</a><a href="#h0-187" id="h0-187" class="d">-                return true
+</a><a href="#h0-188" id="h0-188" class="d">-            elseif button == 2 then
+</a><a href="#h0-189" id="h0-189" class="d">-                w:close_tab(w.tabs[index])
+</a><a href="#h0-190" id="h0-190" class="d">-                return true
+</a><a href="#h0-191" id="h0-191" class="d">-            end
+</a><a href="#h0-192" id="h0-192" class="d">-        end)
+</a><a href="#h0-193" id="h0-193" class="d">-    end,
+</a><a href="#h0-194" id="h0-194" class="d">-
+</a><a href="#h0-195" id="h0-195" class="d">-    apply_window_theme = function (w)
+</a><a href="#h0-196" id="h0-196" class="d">-        local s, i = w.sbar, w.ibar
+</a><a href="#h0-197" id="h0-197" class="d">-
+</a><a href="#h0-198" id="h0-198" class="d">-        -- Set foregrounds
+</a><a href="#h0-199" id="h0-199" class="d">-        for wi, v in pairs({
+</a><a href="#h0-200" id="h0-200" class="d">-            [s.l.uri]    = theme.uri_sbar_fg,
+</a><a href="#h0-201" id="h0-201" class="d">-            [s.l.hist]   = theme.hist_sbar_fg,
+</a><a href="#h0-202" id="h0-202" class="d">-            [s.l.loaded] = theme.sbar_loaded_fg,
+</a><a href="#h0-203" id="h0-203" class="d">-            [s.r.buf]    = theme.buf_sbar_fg,
+</a><a href="#h0-204" id="h0-204" class="d">-            [s.r.tabi]   = theme.tabi_sbar_fg,
+</a><a href="#h0-205" id="h0-205" class="d">-            [s.r.scroll] = theme.scroll_sbar_fg,
+</a><a href="#h0-206" id="h0-206" class="d">-            [i.prompt]   = theme.prompt_ibar_fg,
+</a><a href="#h0-207" id="h0-207" class="d">-            [i.input]    = theme.input_ibar_fg,
+</a><a href="#h0-208" id="h0-208" class="d">-        }) do wi.fg = v end
+</a><a href="#h0-209" id="h0-209" class="d">-
+</a><a href="#h0-210" id="h0-210" class="d">-        -- Set backgrounds
+</a><a href="#h0-211" id="h0-211" class="d">-        for wi, v in pairs({
+</a><a href="#h0-212" id="h0-212" class="d">-            [s.l.ebox]   = theme.sbar_bg,
+</a><a href="#h0-213" id="h0-213" class="d">-            [s.r.ebox]   = theme.sbar_bg,
+</a><a href="#h0-214" id="h0-214" class="d">-            [s.sep]      = theme.sbar_bg,
+</a><a href="#h0-215" id="h0-215" class="d">-            [s.ebox]     = theme.sbar_bg,
+</a><a href="#h0-216" id="h0-216" class="d">-            [i.ebox]     = theme.ibar_bg,
+</a><a href="#h0-217" id="h0-217" class="d">-            [i.input]    = theme.input_ibar_bg,
+</a><a href="#h0-218" id="h0-218" class="d">-        }) do wi.bg = v end
+</a><a href="#h0-219" id="h0-219" class="d">-
+</a><a href="#h0-220" id="h0-220" class="d">-        -- Set fonts
+</a><a href="#h0-221" id="h0-221" class="d">-        for wi, v in pairs({
+</a><a href="#h0-222" id="h0-222" class="d">-            [s.l.uri]    = theme.uri_sbar_font,
+</a><a href="#h0-223" id="h0-223" class="d">-            [s.l.hist]   = theme.hist_sbar_font,
+</a><a href="#h0-224" id="h0-224" class="d">-            [s.l.loaded] = theme.sbar_loaded_font,
+</a><a href="#h0-225" id="h0-225" class="d">-            [s.r.buf]    = theme.buf_sbar_font,
+</a><a href="#h0-226" id="h0-226" class="d">-            [s.r.ssl]    = theme.ssl_sbar_font,
+</a><a href="#h0-227" id="h0-227" class="d">-            [s.r.tabi]   = theme.tabi_sbar_font,
+</a><a href="#h0-228" id="h0-228" class="d">-            [s.r.scroll] = theme.scroll_sbar_font,
+</a><a href="#h0-229" id="h0-229" class="d">-            [i.prompt]   = theme.prompt_ibar_font,
+</a><a href="#h0-230" id="h0-230" class="d">-            [i.input]    = theme.input_ibar_font,
+</a><a href="#h0-231" id="h0-231" class="d">-        }) do wi.font = v end
+</a><a href="#h0-232" id="h0-232" class="d">-    end,
+</a><a href="#h0-233" id="h0-233" class="d">-
+</a><a href="#h0-234" id="h0-234" class="d">-    set_default_size = function (w)
+</a><a href="#h0-235" id="h0-235" class="d">-        local size = globals.default_window_size or &quot;800x600&quot;
+</a><a href="#h0-236" id="h0-236" class="d">-        if string.match(size, &quot;^%d+x%d+$&quot;) then
+</a><a href="#h0-237" id="h0-237" class="d">-            w.win:set_default_size(string.match(size, &quot;^(%d+)x(%d+)$&quot;))
+</a><a href="#h0-238" id="h0-238" class="d">-        else
+</a><a href="#h0-239" id="h0-239" class="d">-            warn(&quot;E: window.lua: invalid window size: %q&quot;, size)
+</a><a href="#h0-240" id="h0-240" class="d">-        end
+</a><a href="#h0-241" id="h0-241" class="d">-    end,
+</a><a href="#h0-242" id="h0-242" class="d">-
+</a><a href="#h0-243" id="h0-243" class="d">-    set_window_icon = function (w)
+</a><a href="#h0-244" id="h0-244" class="d">-        local path = (luakit.dev_paths and os.exists(&quot;./extras/luakit.png&quot;)) or
+</a><a href="#h0-245" id="h0-245" class="d">-            os.exists(&quot;/usr/share/pixmaps/luakit.png&quot;)
+</a><a href="#h0-246" id="h0-246" class="d">-        if path then w.win.icon = path end
+</a><a href="#h0-247" id="h0-247" class="d">-    end,
+</a><a href="#h0-248" id="h0-248" class="d">-
+</a><a href="#h0-249" id="h0-249" class="d">-    clear_urgency_hint = function (w)
+</a><a href="#h0-250" id="h0-250" class="d">-        w.win:add_signal(&quot;focus&quot;, function ()
+</a><a href="#h0-251" id="h0-251" class="d">-            w.win.urgency_hint = false
+</a><a href="#h0-252" id="h0-252" class="d">-        end)
+</a><a href="#h0-253" id="h0-253" class="d">-    end,
+</a><a href="#h0-254" id="h0-254" class="d">-}
+</a><a href="#h0-255" id="h0-255" class="d">-
+</a><a href="#h0-256" id="h0-256" class="d">--- Helper functions which operate on the window widgets or structure.
+</a><a href="#h0-257" id="h0-257" class="d">-window.methods = {
+</a><a href="#h0-258" id="h0-258" class="d">-    -- Wrapper around the bind plugin&apos;s hit method
+</a><a href="#h0-259" id="h0-259" class="d">-    hit = function (w, mods, key, opts)
+</a><a href="#h0-260" id="h0-260" class="d">-        local opts = lousy.util.table.join(opts or {}, {
+</a><a href="#h0-261" id="h0-261" class="d">-            enable_buffer = w:is_mode(&quot;normal&quot;),
+</a><a href="#h0-262" id="h0-262" class="d">-            buffer = w.buffer,
+</a><a href="#h0-263" id="h0-263" class="d">-        })
+</a><a href="#h0-264" id="h0-264" class="d">-
+</a><a href="#h0-265" id="h0-265" class="d">-        local caught, newbuf = lousy.bind.hit(w, w.binds, mods, key, opts)
+</a><a href="#h0-266" id="h0-266" class="d">-        if w.win then -- Check binding didn&apos;t cause window to exit
+</a><a href="#h0-267" id="h0-267" class="d">-            w.buffer = newbuf
+</a><a href="#h0-268" id="h0-268" class="d">-            w:update_buf()
+</a><a href="#h0-269" id="h0-269" class="d">-        end
+</a><a href="#h0-270" id="h0-270" class="d">-        return caught
+</a><a href="#h0-271" id="h0-271" class="d">-    end,
+</a><a href="#h0-272" id="h0-272" class="d">-
+</a><a href="#h0-273" id="h0-273" class="d">-    -- Wrapper around the bind plugin&apos;s match_cmd method
+</a><a href="#h0-274" id="h0-274" class="d">-    match_cmd = function (w, buffer)
+</a><a href="#h0-275" id="h0-275" class="d">-        return lousy.bind.match_cmd(w, get_mode(&quot;command&quot;).binds, buffer)
+</a><a href="#h0-276" id="h0-276" class="d">-    end,
+</a><a href="#h0-277" id="h0-277" class="d">-
+</a><a href="#h0-278" id="h0-278" class="d">-    -- enter command or characters into command line
+</a><a href="#h0-279" id="h0-279" class="d">-    enter_cmd = function (w, cmd, opts)
+</a><a href="#h0-280" id="h0-280" class="d">-        w:set_mode(&quot;command&quot;)
+</a><a href="#h0-281" id="h0-281" class="d">-        w:set_input(cmd, opts)
+</a><a href="#h0-282" id="h0-282" class="d">-    end,
+</a><a href="#h0-283" id="h0-283" class="d">-
+</a><a href="#h0-284" id="h0-284" class="d">-    -- run command as if typed into the command line
+</a><a href="#h0-285" id="h0-285" class="d">-    run_cmd = function (w, cmd, opts)
+</a><a href="#h0-286" id="h0-286" class="d">-        w:enter_cmd(cmd, opts)
+</a><a href="#h0-287" id="h0-287" class="d">-        w:activate()
+</a><a href="#h0-288" id="h0-288" class="d">-    end,
+</a><a href="#h0-289" id="h0-289" class="d">-
+</a><a href="#h0-290" id="h0-290" class="d">-    -- insert a string into the command line at the current cursor position
+</a><a href="#h0-291" id="h0-291" class="d">-    insert_cmd = function (w, str)
+</a><a href="#h0-292" id="h0-292" class="d">-        if not str then return end
+</a><a href="#h0-293" id="h0-293" class="d">-        local i = w.ibar.input
+</a><a href="#h0-294" id="h0-294" class="d">-        local text = i.text
+</a><a href="#h0-295" id="h0-295" class="d">-        local pos = i.position
+</a><a href="#h0-296" id="h0-296" class="d">-        local left, right = string.sub(text, 1, pos), string.sub(text, pos+1)
+</a><a href="#h0-297" id="h0-297" class="d">-        i.text = left .. str .. right
+</a><a href="#h0-298" id="h0-298" class="d">-        i.position = pos + #str
+</a><a href="#h0-299" id="h0-299" class="d">-    end,
+</a><a href="#h0-300" id="h0-300" class="d">-
+</a><a href="#h0-301" id="h0-301" class="d">-    -- Emulates pressing the Return key in input field
+</a><a href="#h0-302" id="h0-302" class="d">-    activate = function (w)
+</a><a href="#h0-303" id="h0-303" class="d">-        w.ibar.input:emit_signal(&quot;activate&quot;)
+</a><a href="#h0-304" id="h0-304" class="d">-    end,
+</a><a href="#h0-305" id="h0-305" class="d">-
+</a><a href="#h0-306" id="h0-306" class="d">-    del_word = function (w)
+</a><a href="#h0-307" id="h0-307" class="d">-        local i = w.ibar.input
+</a><a href="#h0-308" id="h0-308" class="d">-        local text = i.text
+</a><a href="#h0-309" id="h0-309" class="d">-        local pos = i.position
+</a><a href="#h0-310" id="h0-310" class="d">-        if text and #text &gt; 1 and pos &gt; 1 then
+</a><a href="#h0-311" id="h0-311" class="d">-            local left, right = string.sub(text, 2, pos), string.sub(text, pos+1)
+</a><a href="#h0-312" id="h0-312" class="d">-            if not string.find(left, &quot;%s&quot;) then
+</a><a href="#h0-313" id="h0-313" class="d">-                left = &quot;&quot;
+</a><a href="#h0-314" id="h0-314" class="d">-            elseif string.find(left, &quot;%w+%s*$&quot;) then
+</a><a href="#h0-315" id="h0-315" class="d">-                left = string.sub(left, 0, string.find(left, &quot;%w+%s*$&quot;) - 1)
+</a><a href="#h0-316" id="h0-316" class="d">-            elseif string.find(left, &quot;%W+%s*$&quot;) then
+</a><a href="#h0-317" id="h0-317" class="d">-                left = string.sub(left, 0, string.find(left, &quot;%W+%s*$&quot;) - 1)
+</a><a href="#h0-318" id="h0-318" class="d">-            end
+</a><a href="#h0-319" id="h0-319" class="d">-            i.text =  string.sub(text, 1, 1) .. left .. right
+</a><a href="#h0-320" id="h0-320" class="d">-            i.position = #left + 1
+</a><a href="#h0-321" id="h0-321" class="d">-        end
+</a><a href="#h0-322" id="h0-322" class="d">-    end,
+</a><a href="#h0-323" id="h0-323" class="d">-
+</a><a href="#h0-324" id="h0-324" class="d">-    del_line = function (w)
+</a><a href="#h0-325" id="h0-325" class="d">-        local i = w.ibar.input
+</a><a href="#h0-326" id="h0-326" class="d">-        if not string.match(i.text, &quot;^[:/?]$&quot;) then
+</a><a href="#h0-327" id="h0-327" class="d">-            i.text = string.sub(i.text, 1, 1)
+</a><a href="#h0-328" id="h0-328" class="d">-            i.position = -1
+</a><a href="#h0-329" id="h0-329" class="d">-        end
+</a><a href="#h0-330" id="h0-330" class="d">-    end,
+</a><a href="#h0-331" id="h0-331" class="d">-
+</a><a href="#h0-332" id="h0-332" class="d">-    del_backward_char = function (w)
+</a><a href="#h0-333" id="h0-333" class="d">-        local i = w.ibar.input
+</a><a href="#h0-334" id="h0-334" class="d">-        local text = i.text
+</a><a href="#h0-335" id="h0-335" class="d">-        local pos = i.position
+</a><a href="#h0-336" id="h0-336" class="d">-
+</a><a href="#h0-337" id="h0-337" class="d">-        if pos &gt; 1 then
+</a><a href="#h0-338" id="h0-338" class="d">-            i.text = string.sub(text, 0, pos - 1) .. string.sub(text, pos + 1)
+</a><a href="#h0-339" id="h0-339" class="d">-            i.position = pos - 1
+</a><a href="#h0-340" id="h0-340" class="d">-        end
+</a><a href="#h0-341" id="h0-341" class="d">-    end,
+</a><a href="#h0-342" id="h0-342" class="d">-
+</a><a href="#h0-343" id="h0-343" class="d">-    del_forward_char = function (w)
+</a><a href="#h0-344" id="h0-344" class="d">-        local i = w.ibar.input
+</a><a href="#h0-345" id="h0-345" class="d">-        local text = i.text
+</a><a href="#h0-346" id="h0-346" class="d">-        local pos = i.position
+</a><a href="#h0-347" id="h0-347" class="d">-
+</a><a href="#h0-348" id="h0-348" class="d">-        i.text = string.sub(text, 0, pos) .. string.sub(text, pos + 2)
+</a><a href="#h0-349" id="h0-349" class="d">-        i.position = pos
+</a><a href="#h0-350" id="h0-350" class="d">-    end,
+</a><a href="#h0-351" id="h0-351" class="d">-
+</a><a href="#h0-352" id="h0-352" class="d">-    beg_line = function (w)
+</a><a href="#h0-353" id="h0-353" class="d">-        local i = w.ibar.input
+</a><a href="#h0-354" id="h0-354" class="d">-        i.position = 1
+</a><a href="#h0-355" id="h0-355" class="d">-    end,
+</a><a href="#h0-356" id="h0-356" class="d">-
+</a><a href="#h0-357" id="h0-357" class="d">-    end_line = function (w)
+</a><a href="#h0-358" id="h0-358" class="d">-        local i = w.ibar.input
+</a><a href="#h0-359" id="h0-359" class="d">-        i.position = -1
+</a><a href="#h0-360" id="h0-360" class="d">-    end,
+</a><a href="#h0-361" id="h0-361" class="d">-
+</a><a href="#h0-362" id="h0-362" class="d">-    forward_char = function (w)
+</a><a href="#h0-363" id="h0-363" class="d">-        local i = w.ibar.input
+</a><a href="#h0-364" id="h0-364" class="d">-        i.position = i.position + 1
+</a><a href="#h0-365" id="h0-365" class="d">-    end,
+</a><a href="#h0-366" id="h0-366" class="d">-
+</a><a href="#h0-367" id="h0-367" class="d">-    backward_char = function (w)
+</a><a href="#h0-368" id="h0-368" class="d">-        local i = w.ibar.input
+</a><a href="#h0-369" id="h0-369" class="d">-        local pos = i.position
+</a><a href="#h0-370" id="h0-370" class="d">-        if pos &gt; 1 then
+</a><a href="#h0-371" id="h0-371" class="d">-            i.position = pos - 1
+</a><a href="#h0-372" id="h0-372" class="d">-        end
+</a><a href="#h0-373" id="h0-373" class="d">-    end,
+</a><a href="#h0-374" id="h0-374" class="d">-
+</a><a href="#h0-375" id="h0-375" class="d">-    forward_word = function (w)
+</a><a href="#h0-376" id="h0-376" class="d">-        local i = w.ibar.input
+</a><a href="#h0-377" id="h0-377" class="d">-        local text = i.text
+</a><a href="#h0-378" id="h0-378" class="d">-        local pos = i.position
+</a><a href="#h0-379" id="h0-379" class="d">-        if text and #text &gt; 1 then
+</a><a href="#h0-380" id="h0-380" class="d">-            local right = string.sub(text, pos+1)
+</a><a href="#h0-381" id="h0-381" class="d">-            if string.find(right, &quot;%w+&quot;) then
+</a><a href="#h0-382" id="h0-382" class="d">-                local _, move = string.find(right, &quot;%w+&quot;)
+</a><a href="#h0-383" id="h0-383" class="d">-                i.position = pos + move
+</a><a href="#h0-384" id="h0-384" class="d">-            end
+</a><a href="#h0-385" id="h0-385" class="d">-        end
+</a><a href="#h0-386" id="h0-386" class="d">-    end,
+</a><a href="#h0-387" id="h0-387" class="d">-
+</a><a href="#h0-388" id="h0-388" class="d">-    backward_word = function (w)
+</a><a href="#h0-389" id="h0-389" class="d">-        local i = w.ibar.input
+</a><a href="#h0-390" id="h0-390" class="d">-        local text = i.text
+</a><a href="#h0-391" id="h0-391" class="d">-        local pos = i.position
+</a><a href="#h0-392" id="h0-392" class="d">-        if text and #text &gt; 1 and pos &gt; 1 then
+</a><a href="#h0-393" id="h0-393" class="d">-            local left = string.reverse(string.sub(text, 2, pos))
+</a><a href="#h0-394" id="h0-394" class="d">-            if string.find(left, &quot;%w+&quot;) then
+</a><a href="#h0-395" id="h0-395" class="d">-                local _, move = string.find(left, &quot;%w+&quot;)
+</a><a href="#h0-396" id="h0-396" class="d">-                i.position = pos - move
+</a><a href="#h0-397" id="h0-397" class="d">-            end
+</a><a href="#h0-398" id="h0-398" class="d">-        end
+</a><a href="#h0-399" id="h0-399" class="d">-    end,
+</a><a href="#h0-400" id="h0-400" class="d">-
+</a><a href="#h0-401" id="h0-401" class="d">-    -- Shows a notification until the next keypress of the user.
+</a><a href="#h0-402" id="h0-402" class="d">-    notify = function (w, msg, set_mode)
+</a><a href="#h0-403" id="h0-403" class="d">-        if set_mode ~= false then w:set_mode() end
+</a><a href="#h0-404" id="h0-404" class="d">-        w:set_prompt(msg, { fg = theme.notif_fg, bg = theme.notif_bg })
+</a><a href="#h0-405" id="h0-405" class="d">-    end,
+</a><a href="#h0-406" id="h0-406" class="d">-
+</a><a href="#h0-407" id="h0-407" class="d">-    warning = function (w, msg, set_mode)
+</a><a href="#h0-408" id="h0-408" class="d">-        if set_mode ~= false then w:set_mode() end
+</a><a href="#h0-409" id="h0-409" class="d">-        w:set_prompt(msg, { fg = theme.warning_fg, bg = theme.warning_bg })
+</a><a href="#h0-410" id="h0-410" class="d">-    end,
+</a><a href="#h0-411" id="h0-411" class="d">-
+</a><a href="#h0-412" id="h0-412" class="d">-    error = function (w, msg, set_mode)
+</a><a href="#h0-413" id="h0-413" class="d">-        if set_mode ~= false then w:set_mode() end
+</a><a href="#h0-414" id="h0-414" class="d">-        w:set_prompt(&quot;Error: &quot;..msg, { fg = theme.error_fg, bg = theme.error_bg })
+</a><a href="#h0-415" id="h0-415" class="d">-    end,
+</a><a href="#h0-416" id="h0-416" class="d">-
+</a><a href="#h0-417" id="h0-417" class="d">-    -- Set and display the prompt
+</a><a href="#h0-418" id="h0-418" class="d">-    set_prompt = function (w, text, opts)
+</a><a href="#h0-419" id="h0-419" class="d">-        local prompt, ebox, opts = w.ibar.prompt, w.ibar.ebox, opts or {}
+</a><a href="#h0-420" id="h0-420" class="d">-        prompt:hide()
+</a><a href="#h0-421" id="h0-421" class="d">-        -- Set theme
+</a><a href="#h0-422" id="h0-422" class="d">-        fg, bg = opts.fg or theme.ibar_fg, opts.bg or theme.ibar_bg
+</a><a href="#h0-423" id="h0-423" class="d">-        if prompt.fg ~= fg then prompt.fg = fg end
+</a><a href="#h0-424" id="h0-424" class="d">-        if ebox.bg ~= bg then ebox.bg = bg end
+</a><a href="#h0-425" id="h0-425" class="d">-        -- Set text or remain hidden
+</a><a href="#h0-426" id="h0-426" class="d">-        if text then
+</a><a href="#h0-427" id="h0-427" class="d">-            prompt.text = lousy.util.escape(text)
+</a><a href="#h0-428" id="h0-428" class="d">-            prompt:show()
+</a><a href="#h0-429" id="h0-429" class="d">-        end
+</a><a href="#h0-430" id="h0-430" class="d">-    end,
+</a><a href="#h0-431" id="h0-431" class="d">-
+</a><a href="#h0-432" id="h0-432" class="d">-    -- Set display and focus the input bar
+</a><a href="#h0-433" id="h0-433" class="d">-    set_input = function (w, text, opts)
+</a><a href="#h0-434" id="h0-434" class="d">-        local input, opts = w.ibar.input, opts or {}
+</a><a href="#h0-435" id="h0-435" class="d">-        input:hide()
+</a><a href="#h0-436" id="h0-436" class="d">-        -- Set theme
+</a><a href="#h0-437" id="h0-437" class="d">-        fg, bg = opts.fg or theme.ibar_fg, opts.bg or theme.ibar_bg
+</a><a href="#h0-438" id="h0-438" class="d">-        if input.fg ~= fg then input.fg = fg end
+</a><a href="#h0-439" id="h0-439" class="d">-        if input.bg ~= bg then input.bg = bg end
+</a><a href="#h0-440" id="h0-440" class="d">-        -- Set text or remain hidden
+</a><a href="#h0-441" id="h0-441" class="d">-        if text then
+</a><a href="#h0-442" id="h0-442" class="d">-            input.text = &quot;&quot;
+</a><a href="#h0-443" id="h0-443" class="d">-            input:show()
+</a><a href="#h0-444" id="h0-444" class="d">-            input:focus()
+</a><a href="#h0-445" id="h0-445" class="d">-            input.text = text
+</a><a href="#h0-446" id="h0-446" class="d">-            input.position = opts.pos or -1
+</a><a href="#h0-447" id="h0-447" class="d">-        end
+</a><a href="#h0-448" id="h0-448" class="d">-    end,
+</a><a href="#h0-449" id="h0-449" class="d">-
+</a><a href="#h0-450" id="h0-450" class="d">-    -- GUI content update functions
+</a><a href="#h0-451" id="h0-451" class="d">-    update_tab_count = function (w)
+</a><a href="#h0-452" id="h0-452" class="d">-        w.sbar.r.tabi.text = string.format(&quot;[%d/%d]&quot;, w.tabs:current(), w.tabs:count())
+</a><a href="#h0-453" id="h0-453" class="d">-    end,
+</a><a href="#h0-454" id="h0-454" class="d">-
+</a><a href="#h0-455" id="h0-455" class="d">-    update_win_title = function (w)
+</a><a href="#h0-456" id="h0-456" class="d">-        local uri, title = w.view.uri, w.view.title
+</a><a href="#h0-457" id="h0-457" class="d">-        title = (title or &quot;luakit&quot;) .. ((uri and &quot; - &quot; .. uri) or &quot;&quot;)
+</a><a href="#h0-458" id="h0-458" class="d">-        local max = globals.max_title_len or 80
+</a><a href="#h0-459" id="h0-459" class="d">-        if #title &gt; max then title = string.sub(title, 1, max) .. &quot;...&quot; end
+</a><a href="#h0-460" id="h0-460" class="d">-        w.win.title = title
+</a><a href="#h0-461" id="h0-461" class="d">-    end,
+</a><a href="#h0-462" id="h0-462" class="d">-
+</a><a href="#h0-463" id="h0-463" class="d">-    update_uri = function (w, link)
+</a><a href="#h0-464" id="h0-464" class="d">-        w.sbar.l.uri.text = lousy.util.escape((link and &quot;Link: &quot; .. link)
+</a><a href="#h0-465" id="h0-465" class="d">-            or (w.view and w.view.uri) or &quot;about:blank&quot;)
+</a><a href="#h0-466" id="h0-466" class="d">-    end,
+</a><a href="#h0-467" id="h0-467" class="d">-
+</a><a href="#h0-468" id="h0-468" class="d">-    update_progress = function (w)
+</a><a href="#h0-469" id="h0-469" class="d">-        local p = w.view.progress
+</a><a href="#h0-470" id="h0-470" class="d">-        local loaded = w.sbar.l.loaded
+</a><a href="#h0-471" id="h0-471" class="d">-        if not w.view:loading() or p == 1 then
+</a><a href="#h0-472" id="h0-472" class="d">-            loaded:hide()
+</a><a href="#h0-473" id="h0-473" class="d">-        else
+</a><a href="#h0-474" id="h0-474" class="d">-            loaded:show()
+</a><a href="#h0-475" id="h0-475" class="d">-            loaded.text = string.format(&quot;(%d%%)&quot;, p * 100)
+</a><a href="#h0-476" id="h0-476" class="d">-        end
+</a><a href="#h0-477" id="h0-477" class="d">-    end,
+</a><a href="#h0-478" id="h0-478" class="d">-
+</a><a href="#h0-479" id="h0-479" class="d">-    update_scroll = function (w)
+</a><a href="#h0-480" id="h0-480" class="d">-        local scroll, label = w.view.scroll, w.sbar.r.scroll
+</a><a href="#h0-481" id="h0-481" class="d">-        local y, max, text = scroll.y, scroll.ymax
+</a><a href="#h0-482" id="h0-482" class="d">-        if     max == 0   then text = &quot;All&quot;
+</a><a href="#h0-483" id="h0-483" class="d">-        elseif y   == 0   then text = &quot;Top&quot;
+</a><a href="#h0-484" id="h0-484" class="d">-        elseif y   == max then text = &quot;Bot&quot;
+</a><a href="#h0-485" id="h0-485" class="d">-        else text = string.format(&quot;%2d%%&quot;, (y / max) * 100)
+</a><a href="#h0-486" id="h0-486" class="d">-        end
+</a><a href="#h0-487" id="h0-487" class="d">-        if label.text ~= text then label.text = text end
+</a><a href="#h0-488" id="h0-488" class="d">-    end,
+</a><a href="#h0-489" id="h0-489" class="d">-
+</a><a href="#h0-490" id="h0-490" class="d">-    update_ssl = function (w)
+</a><a href="#h0-491" id="h0-491" class="d">-        local trusted = w.view:ssl_trusted()
+</a><a href="#h0-492" id="h0-492" class="d">-        local ssl = w.sbar.r.ssl
+</a><a href="#h0-493" id="h0-493" class="d">-        if trusted ~= nil and not w.checking_ssl then
+</a><a href="#h0-494" id="h0-494" class="d">-            ssl.fg = theme.notrust_fg
+</a><a href="#h0-495" id="h0-495" class="d">-            ssl.text = &quot;(nocheck)&quot;
+</a><a href="#h0-496" id="h0-496" class="d">-            ssl:show()
+</a><a href="#h0-497" id="h0-497" class="d">-        elseif trusted == true then
+</a><a href="#h0-498" id="h0-498" class="d">-            ssl.fg = theme.trust_fg
+</a><a href="#h0-499" id="h0-499" class="d">-            ssl.text = &quot;(trust)&quot;
+</a><a href="#h0-500" id="h0-500" class="d">-            ssl:show()
+</a><a href="#h0-501" id="h0-501" class="d">-        elseif trusted == false then
+</a><a href="#h0-502" id="h0-502" class="d">-            ssl.fg = theme.notrust_fg
+</a><a href="#h0-503" id="h0-503" class="d">-            ssl.text = &quot;(notrust)&quot;
+</a><a href="#h0-504" id="h0-504" class="d">-            ssl:show()
+</a><a href="#h0-505" id="h0-505" class="d">-        else
+</a><a href="#h0-506" id="h0-506" class="d">-            ssl:hide()
+</a><a href="#h0-507" id="h0-507" class="d">-        end
+</a><a href="#h0-508" id="h0-508" class="d">-    end,
+</a><a href="#h0-509" id="h0-509" class="d">-
+</a><a href="#h0-510" id="h0-510" class="d">-    update_hist = function (w)
+</a><a href="#h0-511" id="h0-511" class="d">-        local hist = w.sbar.l.hist
+</a><a href="#h0-512" id="h0-512" class="d">-        local back, forward = w.view:can_go_back(), w.view:can_go_forward()
+</a><a href="#h0-513" id="h0-513" class="d">-        local s = (back and &quot;+&quot; or &quot;&quot;) .. (forward and &quot;-&quot; or &quot;&quot;)
+</a><a href="#h0-514" id="h0-514" class="d">-        if s ~= &quot;&quot; then
+</a><a href="#h0-515" id="h0-515" class="d">-            hist.text = &apos;[&apos;..s..&apos;]&apos;
+</a><a href="#h0-516" id="h0-516" class="d">-            hist:show()
+</a><a href="#h0-517" id="h0-517" class="d">-        else
+</a><a href="#h0-518" id="h0-518" class="d">-            hist:hide()
+</a><a href="#h0-519" id="h0-519" class="d">-        end
+</a><a href="#h0-520" id="h0-520" class="d">-    end,
+</a><a href="#h0-521" id="h0-521" class="d">-
+</a><a href="#h0-522" id="h0-522" class="d">-    update_buf = function (w)
+</a><a href="#h0-523" id="h0-523" class="d">-        local buf = w.sbar.r.buf
+</a><a href="#h0-524" id="h0-524" class="d">-        if w.buffer then
+</a><a href="#h0-525" id="h0-525" class="d">-            buf.text = lousy.util.escape(string.format(&quot; %-3s&quot;, w.buffer))
+</a><a href="#h0-526" id="h0-526" class="d">-            buf:show()
+</a><a href="#h0-527" id="h0-527" class="d">-        else
+</a><a href="#h0-528" id="h0-528" class="d">-            buf:hide()
+</a><a href="#h0-529" id="h0-529" class="d">-        end
+</a><a href="#h0-530" id="h0-530" class="d">-    end,
+</a><a href="#h0-531" id="h0-531" class="d">-
+</a><a href="#h0-532" id="h0-532" class="d">-    update_binds = function (w, mode)
+</a><a href="#h0-533" id="h0-533" class="d">-        -- Generate the list of active key &amp; buffer binds for this mode
+</a><a href="#h0-534" id="h0-534" class="d">-        w.binds = lousy.util.table.join((get_mode(mode) or {}).binds or {}, get_mode(&apos;all&apos;).binds or {})
+</a><a href="#h0-535" id="h0-535" class="d">-        -- Clear &amp; hide buffer
+</a><a href="#h0-536" id="h0-536" class="d">-        w.buffer = nil
+</a><a href="#h0-537" id="h0-537" class="d">-        w:update_buf()
+</a><a href="#h0-538" id="h0-538" class="d">-    end,
+</a><a href="#h0-539" id="h0-539" class="d">-
+</a><a href="#h0-540" id="h0-540" class="d">-    update_tablist = function (w)
+</a><a href="#h0-541" id="h0-541" class="d">-        local current = w.tabs:current()
+</a><a href="#h0-542" id="h0-542" class="d">-        local fg, bg, nfg, snfg = theme.tab_fg, theme.tab_bg, theme.tab_ntheme, theme.selected_ntheme
+</a><a href="#h0-543" id="h0-543" class="d">-        local lfg, bfg, gfg = theme.tab_loading_fg, theme.tab_notrust_fg, theme.tab_trust_fg
+</a><a href="#h0-544" id="h0-544" class="d">-        local escape = lousy.util.escape
+</a><a href="#h0-545" id="h0-545" class="d">-        local tabs, tfmt = {}, &apos; &lt;span foreground=&quot;%s&quot;&gt;%s&lt;/span&gt; %s&apos;
+</a><a href="#h0-546" id="h0-546" class="d">-
+</a><a href="#h0-547" id="h0-547" class="d">-        for i, view in ipairs(w.tabs.children) do
+</a><a href="#h0-548" id="h0-548" class="d">-            -- Get tab number theme
+</a><a href="#h0-549" id="h0-549" class="d">-            local ntheme = nfg
+</a><a href="#h0-550" id="h0-550" class="d">-            if view:loading() then -- Show loading on all tabs
+</a><a href="#h0-551" id="h0-551" class="d">-                ntheme = lfg
+</a><a href="#h0-552" id="h0-552" class="d">-            elseif current == i then -- Show ssl trusted/untrusted on current tab
+</a><a href="#h0-553" id="h0-553" class="d">-                local trusted = view:ssl_trusted()
+</a><a href="#h0-554" id="h0-554" class="d">-                ntheme = snfg
+</a><a href="#h0-555" id="h0-555" class="d">-                if trusted == false or (trusted ~= nil and not w.checking_ssl) then
+</a><a href="#h0-556" id="h0-556" class="d">-                    ntheme = bfg
+</a><a href="#h0-557" id="h0-557" class="d">-                elseif trusted then
+</a><a href="#h0-558" id="h0-558" class="d">-                    ntheme = gfg
+</a><a href="#h0-559" id="h0-559" class="d">-                end
+</a><a href="#h0-560" id="h0-560" class="d">-            end
+</a><a href="#h0-561" id="h0-561" class="d">-            local title = view.title or view.uri or &quot;(Untitled)&quot;
+</a><a href="#h0-562" id="h0-562" class="d">-            tabs[i] = {
+</a><a href="#h0-563" id="h0-563" class="d">-                title = string.format(tfmt, ntheme or fg, i, escape(title)),
+</a><a href="#h0-564" id="h0-564" class="d">-                fg = (current == i and theme.tab_selected_fg) or fg,
+</a><a href="#h0-565" id="h0-565" class="d">-                bg = (current == i and theme.tab_selected_bg) or bg,
+</a><a href="#h0-566" id="h0-566" class="d">-            }
+</a><a href="#h0-567" id="h0-567" class="d">-        end
+</a><a href="#h0-568" id="h0-568" class="d">-
+</a><a href="#h0-569" id="h0-569" class="d">-        if #tabs &lt; 2 then tabs, current = {}, 0 end
+</a><a href="#h0-570" id="h0-570" class="d">-        w.tablist:update(tabs, current)
+</a><a href="#h0-571" id="h0-571" class="d">-    end,
+</a><a href="#h0-572" id="h0-572" class="d">-
+</a><a href="#h0-573" id="h0-573" class="d">-    new_tab = function (w, arg, switch, order)
+</a><a href="#h0-574" id="h0-574" class="d">-        local view
+</a><a href="#h0-575" id="h0-575" class="d">-        -- Use blank tab first
+</a><a href="#h0-576" id="h0-576" class="d">-        if w.has_blank and w.tabs:count() == 1 and w.tabs[1].uri == &quot;about:blank&quot; then
+</a><a href="#h0-577" id="h0-577" class="d">-            view = w.tabs[1]
+</a><a href="#h0-578" id="h0-578" class="d">-        end
+</a><a href="#h0-579" id="h0-579" class="d">-        w.has_blank = nil
+</a><a href="#h0-580" id="h0-580" class="d">-        -- Make new webview widget
+</a><a href="#h0-581" id="h0-581" class="d">-        if not view then
+</a><a href="#h0-582" id="h0-582" class="d">-            view = webview.new(w)
+</a><a href="#h0-583" id="h0-583" class="d">-            -- Get tab order function
+</a><a href="#h0-584" id="h0-584" class="d">-            if not order and taborder then
+</a><a href="#h0-585" id="h0-585" class="d">-                order = (switch == false and taborder.default_bg)
+</a><a href="#h0-586" id="h0-586" class="d">-                    or taborder.default
+</a><a href="#h0-587" id="h0-587" class="d">-            end
+</a><a href="#h0-588" id="h0-588" class="d">-            pos = w.tabs:insert((order and order(w, view)) or -1, view)
+</a><a href="#h0-589" id="h0-589" class="d">-            if switch ~= false then w.tabs:switch(pos) end
+</a><a href="#h0-590" id="h0-590" class="d">-        end
+</a><a href="#h0-591" id="h0-591" class="d">-        -- Load uri or webview history table
+</a><a href="#h0-592" id="h0-592" class="d">-        if type(arg) == &quot;string&quot; then view.uri = arg
+</a><a href="#h0-593" id="h0-593" class="d">-        elseif type(arg) == &quot;table&quot; then view.history = arg end
+</a><a href="#h0-594" id="h0-594" class="d">-        -- Update statusbar widgets
+</a><a href="#h0-595" id="h0-595" class="d">-        w:update_tab_count()
+</a><a href="#h0-596" id="h0-596" class="d">-        w:update_tablist()
+</a><a href="#h0-597" id="h0-597" class="d">-        return view
+</a><a href="#h0-598" id="h0-598" class="d">-    end,
+</a><a href="#h0-599" id="h0-599" class="d">-
+</a><a href="#h0-600" id="h0-600" class="d">-    -- close the current tab
+</a><a href="#h0-601" id="h0-601" class="d">-    close_tab = function (w, view, blank_last)
+</a><a href="#h0-602" id="h0-602" class="d">-        view = view or w.view
+</a><a href="#h0-603" id="h0-603" class="d">-        -- Treat a blank last tab as an empty notebook (if blank_last=true)
+</a><a href="#h0-604" id="h0-604" class="d">-        if blank_last ~= false and w.tabs:count() == 1 then
+</a><a href="#h0-605" id="h0-605" class="d">-            if not view:loading() and view.uri == &quot;about:blank&quot; then return end
+</a><a href="#h0-606" id="h0-606" class="d">-            w:new_tab(&quot;about:blank&quot;, false)
+</a><a href="#h0-607" id="h0-607" class="d">-            w.has_blank = true
+</a><a href="#h0-608" id="h0-608" class="d">-        end
+</a><a href="#h0-609" id="h0-609" class="d">-        -- Save tab history
+</a><a href="#h0-610" id="h0-610" class="d">-        local tab = {hist = view.history,}
+</a><a href="#h0-611" id="h0-611" class="d">-        -- And relative location
+</a><a href="#h0-612" id="h0-612" class="d">-        local index = w.tabs:indexof(view)
+</a><a href="#h0-613" id="h0-613" class="d">-        if index ~= 1 then tab.after = w.tabs[index-1] end
+</a><a href="#h0-614" id="h0-614" class="d">-        table.insert(w.closed_tabs, tab)
+</a><a href="#h0-615" id="h0-615" class="d">-        view:destroy()
+</a><a href="#h0-616" id="h0-616" class="d">-        w:update_tab_count()
+</a><a href="#h0-617" id="h0-617" class="d">-        w:update_tablist()
+</a><a href="#h0-618" id="h0-618" class="d">-    end,
+</a><a href="#h0-619" id="h0-619" class="d">-
+</a><a href="#h0-620" id="h0-620" class="d">-    close_win = function (w, force)
+</a><a href="#h0-621" id="h0-621" class="d">-        -- Ask plugins if it&apos;s OK to close last window
+</a><a href="#h0-622" id="h0-622" class="d">-        if not force and (#luakit.windows == 1) then
+</a><a href="#h0-623" id="h0-623" class="d">-            local emsg = luakit.emit_signal(&quot;can-close&quot;, w)
+</a><a href="#h0-624" id="h0-624" class="d">-            if emsg then
+</a><a href="#h0-625" id="h0-625" class="d">-                assert(type(emsg) == &quot;string&quot;, &quot;invalid exit error message&quot;)
+</a><a href="#h0-626" id="h0-626" class="d">-                w:error(string.format(&quot;Can&apos;t close luakit: %s (force close &quot;
+</a><a href="#h0-627" id="h0-627" class="d">-                    .. &quot;with :q! or :wq!)&quot;, emsg))
+</a><a href="#h0-628" id="h0-628" class="d">-                return false
+</a><a href="#h0-629" id="h0-629" class="d">-            end
+</a><a href="#h0-630" id="h0-630" class="d">-        end
+</a><a href="#h0-631" id="h0-631" class="d">-
+</a><a href="#h0-632" id="h0-632" class="d">-        w:emit_signal(&quot;close&quot;)
+</a><a href="#h0-633" id="h0-633" class="d">-
+</a><a href="#h0-634" id="h0-634" class="d">-        -- Close all tabs
+</a><a href="#h0-635" id="h0-635" class="d">-        while w.tabs:count() ~= 0 do
+</a><a href="#h0-636" id="h0-636" class="d">-            w:close_tab(nil, false)
+</a><a href="#h0-637" id="h0-637" class="d">-        end
+</a><a href="#h0-638" id="h0-638" class="d">-
+</a><a href="#h0-639" id="h0-639" class="d">-        -- Destroy tablist
+</a><a href="#h0-640" id="h0-640" class="d">-        w.tablist:destroy()
+</a><a href="#h0-641" id="h0-641" class="d">-
+</a><a href="#h0-642" id="h0-642" class="d">-        -- Remove from window index
+</a><a href="#h0-643" id="h0-643" class="d">-        window.bywidget[w.win] = nil
+</a><a href="#h0-644" id="h0-644" class="d">-
+</a><a href="#h0-645" id="h0-645" class="d">-        -- Clear window struct
+</a><a href="#h0-646" id="h0-646" class="d">-        w = setmetatable(w, {})
+</a><a href="#h0-647" id="h0-647" class="d">-
+</a><a href="#h0-648" id="h0-648" class="d">-        -- Recursively remove widgets from window
+</a><a href="#h0-649" id="h0-649" class="d">-        local children = lousy.util.recursive_remove(w.win)
+</a><a href="#h0-650" id="h0-650" class="d">-        -- Destroy all widgets
+</a><a href="#h0-651" id="h0-651" class="d">-        for i, c in ipairs(lousy.util.table.join(children, {w.win})) do
+</a><a href="#h0-652" id="h0-652" class="d">-            if c.hide then c:hide() end
+</a><a href="#h0-653" id="h0-653" class="d">-            c:destroy()
+</a><a href="#h0-654" id="h0-654" class="d">-        end
+</a><a href="#h0-655" id="h0-655" class="d">-
+</a><a href="#h0-656" id="h0-656" class="d">-        -- Remove all window table vars
+</a><a href="#h0-657" id="h0-657" class="d">-        for k, _ in pairs(w) do w[k] = nil end
+</a><a href="#h0-658" id="h0-658" class="d">-
+</a><a href="#h0-659" id="h0-659" class="d">-        -- Quit if closed last window
+</a><a href="#h0-660" id="h0-660" class="d">-        if #luakit.windows == 0 then luakit.quit() end
+</a><a href="#h0-661" id="h0-661" class="d">-    end,
+</a><a href="#h0-662" id="h0-662" class="d">-
+</a><a href="#h0-663" id="h0-663" class="d">-    -- Navigate current view or open new tab
+</a><a href="#h0-664" id="h0-664" class="d">-    navigate = function (w, uri, view)
+</a><a href="#h0-665" id="h0-665" class="d">-        view = view or w.view
+</a><a href="#h0-666" id="h0-666" class="d">-        if view then
+</a><a href="#h0-667" id="h0-667" class="d">-            local js = string.match(uri, &quot;^javascript:(.+)$&quot;)
+</a><a href="#h0-668" id="h0-668" class="d">-            if js then
+</a><a href="#h0-669" id="h0-669" class="d">-                return view:eval_js(luakit.uri_decode(js))
+</a><a href="#h0-670" id="h0-670" class="d">-            end
+</a><a href="#h0-671" id="h0-671" class="d">-            view.uri = uri
+</a><a href="#h0-672" id="h0-672" class="d">-        else
+</a><a href="#h0-673" id="h0-673" class="d">-            return w:new_tab(uri)
+</a><a href="#h0-674" id="h0-674" class="d">-        end
+</a><a href="#h0-675" id="h0-675" class="d">-    end,
+</a><a href="#h0-676" id="h0-676" class="d">-
+</a><a href="#h0-677" id="h0-677" class="d">-    -- Save, restart luakit and reload session.
+</a><a href="#h0-678" id="h0-678" class="d">-    restart = function (w)
+</a><a href="#h0-679" id="h0-679" class="d">-        -- Generate luakit launch command.
+</a><a href="#h0-680" id="h0-680" class="d">-        local args = {({string.gsub(luakit.execpath, &quot; &quot;, &quot;\\ &quot;)})[1]}
+</a><a href="#h0-681" id="h0-681" class="d">-        if luakit.verbose then table.insert(args, &quot;-v&quot;) end
+</a><a href="#h0-682" id="h0-682" class="d">-        -- Relaunch without libunique bindings?
+</a><a href="#h0-683" id="h0-683" class="d">-        if luakit.nounique then table.insert(args, &quot;-U&quot;) end
+</a><a href="#h0-684" id="h0-684" class="d">-
+</a><a href="#h0-685" id="h0-685" class="d">-        -- Get new config path
+</a><a href="#h0-686" id="h0-686" class="d">-        local conf
+</a><a href="#h0-687" id="h0-687" class="d">-        if luakit.confpath ~= &quot;/etc/xdg/luakit/rc.lua&quot; and os.exists(luakit.confpath) then
+</a><a href="#h0-688" id="h0-688" class="d">-            conf = luakit.confpath
+</a><a href="#h0-689" id="h0-689" class="d">-            table.insert(args, string.format(&quot;-c %q&quot;, conf))
+</a><a href="#h0-690" id="h0-690" class="d">-        end
+</a><a href="#h0-691" id="h0-691" class="d">-
+</a><a href="#h0-692" id="h0-692" class="d">-        -- Check config has valid syntax
+</a><a href="#h0-693" id="h0-693" class="d">-        local cmd = table.concat(args, &quot; &quot;)
+</a><a href="#h0-694" id="h0-694" class="d">-        if luakit.spawn_sync(cmd .. &quot; -k&quot;) ~= 0 then
+</a><a href="#h0-695" id="h0-695" class="d">-            return w:error(&quot;Cannot restart, syntax error in configuration file&quot;..((conf and &quot;: &quot;..conf) or &quot;.&quot;))
+</a><a href="#h0-696" id="h0-696" class="d">-        end
+</a><a href="#h0-697" id="h0-697" class="d">-
+</a><a href="#h0-698" id="h0-698" class="d">-        -- Save session.
+</a><a href="#h0-699" id="h0-699" class="d">-        local wins = {}
+</a><a href="#h0-700" id="h0-700" class="d">-        for _, w in pairs(window.bywidget) do table.insert(wins, w) end
+</a><a href="#h0-701" id="h0-701" class="d">-        session.save(wins)
+</a><a href="#h0-702" id="h0-702" class="d">-
+</a><a href="#h0-703" id="h0-703" class="d">-        -- Replace current process with new luakit instance.
+</a><a href="#h0-704" id="h0-704" class="d">-        luakit.exec(cmd)
+</a><a href="#h0-705" id="h0-705" class="d">-    end,
+</a><a href="#h0-706" id="h0-706" class="d">-
+</a><a href="#h0-707" id="h0-707" class="d">-    -- Intelligent open command which can detect a uri or search argument.
+</a><a href="#h0-708" id="h0-708" class="d">-    search_open = function (w, arg)
+</a><a href="#h0-709" id="h0-709" class="d">-        local lstring = lousy.util.string
+</a><a href="#h0-710" id="h0-710" class="d">-        local match, find = string.match, string.find
+</a><a href="#h0-711" id="h0-711" class="d">-
+</a><a href="#h0-712" id="h0-712" class="d">-        -- Detect blank uris
+</a><a href="#h0-713" id="h0-713" class="d">-        if not arg or match(arg, &quot;^%s*$&quot;) then return &quot;about:blank&quot; end
+</a><a href="#h0-714" id="h0-714" class="d">-
+</a><a href="#h0-715" id="h0-715" class="d">-        -- Strip whitespace and split by whitespace into args table
+</a><a href="#h0-716" id="h0-716" class="d">-        local args = lstring.split(lstring.strip(arg))
+</a><a href="#h0-717" id="h0-717" class="d">-
+</a><a href="#h0-718" id="h0-718" class="d">-        -- Guess if first argument is an address, search engine, file
+</a><a href="#h0-719" id="h0-719" class="d">-        if #args == 1 then
+</a><a href="#h0-720" id="h0-720" class="d">-            local uri = args[1]
+</a><a href="#h0-721" id="h0-721" class="d">-            if uri == &quot;about:blank&quot; then return uri end
+</a><a href="#h0-722" id="h0-722" class="d">-
+</a><a href="#h0-723" id="h0-723" class="d">-            -- Check if search engine name
+</a><a href="#h0-724" id="h0-724" class="d">-            if search_engines[uri] then
+</a><a href="#h0-725" id="h0-725" class="d">-                return string.format(search_engines[uri], &quot;&quot;)
+</a><a href="#h0-726" id="h0-726" class="d">-            end
+</a><a href="#h0-727" id="h0-727" class="d">-
+</a><a href="#h0-728" id="h0-728" class="d">-            -- Navigate if . or / in uri (I.e. domains, IP&apos;s, scheme://)
+</a><a href="#h0-729" id="h0-729" class="d">-            if find(uri, &quot;%.&quot;) or find(uri, &quot;/&quot;) then return uri end
+</a><a href="#h0-730" id="h0-730" class="d">-
+</a><a href="#h0-731" id="h0-731" class="d">-            -- Navigate if this is a javascript-uri
+</a><a href="#h0-732" id="h0-732" class="d">-            if find(uri, &quot;^javascript:&quot;) then return uri end
+</a><a href="#h0-733" id="h0-733" class="d">-
+</a><a href="#h0-734" id="h0-734" class="d">-            -- Valid hostnames to check
+</a><a href="#h0-735" id="h0-735" class="d">-            local hosts = { &quot;localhost&quot; }
+</a><a href="#h0-736" id="h0-736" class="d">-            if globals.load_etc_hosts ~= false then
+</a><a href="#h0-737" id="h0-737" class="d">-                hosts = lousy.util.get_etc_hosts()
+</a><a href="#h0-738" id="h0-738" class="d">-            end
+</a><a href="#h0-739" id="h0-739" class="d">-
+</a><a href="#h0-740" id="h0-740" class="d">-            -- Check hostnames
+</a><a href="#h0-741" id="h0-741" class="d">-            for _, h in pairs(hosts) do
+</a><a href="#h0-742" id="h0-742" class="d">-                if h == uri or match(uri, &quot;^&quot;..h..&quot;:%d+$&quot;) then return uri end
+</a><a href="#h0-743" id="h0-743" class="d">-            end
+</a><a href="#h0-744" id="h0-744" class="d">-
+</a><a href="#h0-745" id="h0-745" class="d">-            -- Check for file in filesystem
+</a><a href="#h0-746" id="h0-746" class="d">-            if globals.check_filepath ~= false then
+</a><a href="#h0-747" id="h0-747" class="d">-                if lfs.attributes(uri) then return &quot;file://&quot; .. uri end
+</a><a href="#h0-748" id="h0-748" class="d">-            end
+</a><a href="#h0-749" id="h0-749" class="d">-        end
+</a><a href="#h0-750" id="h0-750" class="d">-
+</a><a href="#h0-751" id="h0-751" class="d">-        -- Find search engine (or use search_engines.default)
+</a><a href="#h0-752" id="h0-752" class="d">-        local engine = &quot;default&quot;
+</a><a href="#h0-753" id="h0-753" class="d">-        if args[1] and search_engines[args[1]] then
+</a><a href="#h0-754" id="h0-754" class="d">-            engine = args[1]
+</a><a href="#h0-755" id="h0-755" class="d">-            table.remove(args, 1)
+</a><a href="#h0-756" id="h0-756" class="d">-        end
+</a><a href="#h0-757" id="h0-757" class="d">-
+</a><a href="#h0-758" id="h0-758" class="d">-        -- URI encode search terms
+</a><a href="#h0-759" id="h0-759" class="d">-        local terms = luakit.uri_encode(table.concat(args, &quot; &quot;))
+</a><a href="#h0-760" id="h0-760" class="d">-        return string.format(search_engines[engine], terms)
+</a><a href="#h0-761" id="h0-761" class="d">-    end,
+</a><a href="#h0-762" id="h0-762" class="d">-
+</a><a href="#h0-763" id="h0-763" class="d">-    -- Increase (or decrease) the last found number in the current uri
+</a><a href="#h0-764" id="h0-764" class="d">-    inc_uri = function (w, arg)
+</a><a href="#h0-765" id="h0-765" class="d">-        local uri = string.gsub(w.view.uri, &quot;(%d+)([^0-9]*)$&quot;, function (num, rest)
+</a><a href="#h0-766" id="h0-766" class="d">-            return string.format(&quot;%0&quot;..#num..&quot;d&quot;, tonumber(num) + (arg or 1)) .. rest
+</a><a href="#h0-767" id="h0-767" class="d">-        end)
+</a><a href="#h0-768" id="h0-768" class="d">-        return uri
+</a><a href="#h0-769" id="h0-769" class="d">-    end,
+</a><a href="#h0-770" id="h0-770" class="d">-
+</a><a href="#h0-771" id="h0-771" class="d">-    -- Tab traversing functions
+</a><a href="#h0-772" id="h0-772" class="d">-    next_tab = function (w, n)
+</a><a href="#h0-773" id="h0-773" class="d">-        w.tabs:switch((((n or 1) + w.tabs:current() -1) % w.tabs:count()) + 1)
+</a><a href="#h0-774" id="h0-774" class="d">-    end,
+</a><a href="#h0-775" id="h0-775" class="d">-
+</a><a href="#h0-776" id="h0-776" class="d">-    prev_tab = function (w, n)
+</a><a href="#h0-777" id="h0-777" class="d">-        w.tabs:switch(((w.tabs:current() - (n or 1) -1) % w.tabs:count()) + 1)
+</a><a href="#h0-778" id="h0-778" class="d">-    end,
+</a><a href="#h0-779" id="h0-779" class="d">-
+</a><a href="#h0-780" id="h0-780" class="d">-    goto_tab = function (w, n)
+</a><a href="#h0-781" id="h0-781" class="d">-        if n and (n == -1 or n &gt; 0) then
+</a><a href="#h0-782" id="h0-782" class="d">-            return w.tabs:switch((n &lt;= w.tabs:count() and n) or -1)
+</a><a href="#h0-783" id="h0-783" class="d">-        end
+</a><a href="#h0-784" id="h0-784" class="d">-    end,
+</a><a href="#h0-785" id="h0-785" class="d">-
+</a><a href="#h0-786" id="h0-786" class="d">-    -- For each tab, switches to that tab and calls the given function passing
+</a><a href="#h0-787" id="h0-787" class="d">-    -- it the view contained in the tab.
+</a><a href="#h0-788" id="h0-788" class="d">-    each_tab = function (w, fn)
+</a><a href="#h0-789" id="h0-789" class="d">-        for index = 1, w.tabs:count() do
+</a><a href="#h0-790" id="h0-790" class="d">-            w:goto_tab(index)
+</a><a href="#h0-791" id="h0-791" class="d">-            fn(w.tabs[index])
+</a><a href="#h0-792" id="h0-792" class="d">-        end
+</a><a href="#h0-793" id="h0-793" class="d">-    end,
+</a><a href="#h0-794" id="h0-794" class="d">-
+</a><a href="#h0-795" id="h0-795" class="d">-    -- If argument is form-active or root-active, emits signal. Ignores all
+</a><a href="#h0-796" id="h0-796" class="d">-    -- other signals.
+</a><a href="#h0-797" id="h0-797" class="d">-    emit_form_root_active_signal = function (w, s)
+</a><a href="#h0-798" id="h0-798" class="d">-        if s == &quot;form-active&quot; then
+</a><a href="#h0-799" id="h0-799" class="d">-            w.view:emit_signal(&quot;form-active&quot;)
+</a><a href="#h0-800" id="h0-800" class="d">-        elseif s == &quot;root-active&quot; then
+</a><a href="#h0-801" id="h0-801" class="d">-            w.view:emit_signal(&quot;root-active&quot;)
+</a><a href="#h0-802" id="h0-802" class="d">-        end
+</a><a href="#h0-803" id="h0-803" class="d">-    end,
+</a><a href="#h0-804" id="h0-804" class="d">-}
+</a><a href="#h0-805" id="h0-805" class="d">-
+</a><a href="#h0-806" id="h0-806" class="d">--- Ordered list of class index functions. Other classes (E.g. webview) are able
+</a><a href="#h0-807" id="h0-807" class="d">--- to add their own index functions to this list.
+</a><a href="#h0-808" id="h0-808" class="d">-window.indexes = {
+</a><a href="#h0-809" id="h0-809" class="d">-    -- Find function in window.methods first
+</a><a href="#h0-810" id="h0-810" class="d">-    function (w, k) return window.methods[k] end
+</a><a href="#h0-811" id="h0-811" class="d">-}
+</a><a href="#h0-812" id="h0-812" class="d">-
+</a><a href="#h0-813" id="h0-813" class="d">--- Create new window
+</a><a href="#h0-814" id="h0-814" class="d">-function window.new(uris)
+</a><a href="#h0-815" id="h0-815" class="d">-    local w = window.build()
+</a><a href="#h0-816" id="h0-816" class="d">-
+</a><a href="#h0-817" id="h0-817" class="d">-    -- Set window metatable
+</a><a href="#h0-818" id="h0-818" class="d">-    setmetatable(w, {
+</a><a href="#h0-819" id="h0-819" class="d">-        __index = function (_, k)
+</a><a href="#h0-820" id="h0-820" class="d">-            -- Check widget structure first
+</a><a href="#h0-821" id="h0-821" class="d">-            local v = rawget(w, k)
+</a><a href="#h0-822" id="h0-822" class="d">-            if v then return v end
+</a><a href="#h0-823" id="h0-823" class="d">-            -- Call each window index function
+</a><a href="#h0-824" id="h0-824" class="d">-            for _, index in ipairs(window.indexes) do
+</a><a href="#h0-825" id="h0-825" class="d">-                v = index(w, k)
+</a><a href="#h0-826" id="h0-826" class="d">-                if v then return v end
+</a><a href="#h0-827" id="h0-827" class="d">-            end
+</a><a href="#h0-828" id="h0-828" class="d">-        end,
+</a><a href="#h0-829" id="h0-829" class="d">-    })
+</a><a href="#h0-830" id="h0-830" class="d">-
+</a><a href="#h0-831" id="h0-831" class="d">-    -- Setup window widget for signals
+</a><a href="#h0-832" id="h0-832" class="d">-    lousy.signal.setup(w)
+</a><a href="#h0-833" id="h0-833" class="d">-
+</a><a href="#h0-834" id="h0-834" class="d">-    -- Call window init functions
+</a><a href="#h0-835" id="h0-835" class="d">-    for _, func in pairs(window.init_funcs) do
+</a><a href="#h0-836" id="h0-836" class="d">-        func(w)
+</a><a href="#h0-837" id="h0-837" class="d">-    end
+</a><a href="#h0-838" id="h0-838" class="d">-
+</a><a href="#h0-839" id="h0-839" class="d">-    -- Populate notebook with tabs
+</a><a href="#h0-840" id="h0-840" class="d">-    for _, uri in ipairs(uris or {}) do
+</a><a href="#h0-841" id="h0-841" class="d">-        w:new_tab(w:search_open(uri), false)
+</a><a href="#h0-842" id="h0-842" class="d">-    end
+</a><a href="#h0-843" id="h0-843" class="d">-
+</a><a href="#h0-844" id="h0-844" class="d">-    -- Make sure something is loaded
+</a><a href="#h0-845" id="h0-845" class="d">-    if w.tabs:count() == 0 then
+</a><a href="#h0-846" id="h0-846" class="d">-        w:new_tab(w:search_open(globals.homepage), false)
+</a><a href="#h0-847" id="h0-847" class="d">-    end
+</a><a href="#h0-848" id="h0-848" class="d">-
+</a><a href="#h0-849" id="h0-849" class="d">-    -- Set initial mode
+</a><a href="#h0-850" id="h0-850" class="d">-    w:set_mode()
+</a><a href="#h0-851" id="h0-851" class="d">-
+</a><a href="#h0-852" id="h0-852" class="d">-    -- Show window
+</a><a href="#h0-853" id="h0-853" class="d">-    w.win:show()
+</a><a href="#h0-854" id="h0-854" class="d">-
+</a><a href="#h0-855" id="h0-855" class="d">-    return w
+</a><a href="#h0-856" id="h0-856" class="d">-end
+</a><a href="#h0-857" id="h0-857" class="d">-
+</a><a href="#h0-858" id="h0-858" class="d">--- vim: et:sw=4:ts=8:sts=4:tw=80
+</a></pre>
+</div>
+</body>
+</html>

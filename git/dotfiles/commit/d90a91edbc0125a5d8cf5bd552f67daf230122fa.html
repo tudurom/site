@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Focused windows can be moved with the mouse - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/d90a91edbc0125a5d8cf5bd552f67daf230122fa.html">d90a91edbc0125a5d8cf5bd552f67daf230122fa</a>
+<b>parent</b> <a href="../commit/29a3e8c252ac1d77c84353a509c3aa59cd6d6be5.html">29a3e8c252ac1d77c84353a509c3aa59cd6d6be5</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Tue Mar  8 22:54:32 2016
+
+Focused windows can be moved with the mouse
+
+<b>Diffstat:</b>
+ wmrc/.config/sxhkd/sxhkdrc_wmutils | 3 +++
+ 1 file changed, 3 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/wmrc/.config/sxhkd/sxhkdrc_wmutils.html">wmrc/.config/sxhkd/sxhkdrc_wmutils</a> b/<a href="../file/wmrc/.config/sxhkd/sxhkdrc_wmutils.html">wmrc/.config/sxhkd/sxhkdrc_wmutils</a></b>
+<a href="#h0" id="h0" class="h">@@ -137,3 +137,6 @@ super + t
+</a> 
+ alt + @button1
+   focusw $(windowat $(wmp))
+<a href="#h0-3" id="h0-3" class="i">+
+</a><a href="#h0-4" id="h0-4" class="i">+ctrl + !button1
+</a><a href="#h0-5" id="h0-5" class="i">+  chwso -r $(pfw); wmv -a %i %i $(pfw)
+</a></pre>
+</div>
+</body>
+</html>

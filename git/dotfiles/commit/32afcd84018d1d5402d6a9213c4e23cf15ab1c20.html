@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Fuck LuaKit - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/32afcd84018d1d5402d6a9213c4e23cf15ab1c20.html">32afcd84018d1d5402d6a9213c4e23cf15ab1c20</a>
+<b>parent</b> <a href="../commit/8de5616b61a122e79c1622d9ba6a9f2464d14c6f.html">8de5616b61a122e79c1622d9ba6a9f2464d14c6f</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Mon Feb  8 20:10:39 2016
+
+Fuck LuaKit
+
+<b>Diffstat:</b>
+ home/.config/luakit/binds.lua      | 588 +--------------------------------------
+ home/.config/luakit/globals.lua    |  83 +-----
+ home/.config/luakit/luakit-adblock |   1 +-
+ home/.config/luakit/rc.lua         | 184 +------------
+ home/.config/luakit/theme.lua      |  69 +----
+ home/.config/sxhkd/sxhkdrc         |   2 +-
+ 6 files changed, 1 insertion(+), 926 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.config/luakit/binds.lua.html">home/.config/luakit/binds.lua</a> b/<a href="../file/home/.config/luakit/binds.lua.html">home/.config/luakit/binds.lua</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,588 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">------------------
+</a><a href="#h0-1" id="h0-1" class="d">--- Keybindings --
+</a><a href="#h0-2" id="h0-2" class="d">------------------
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">--- Binding aliases
+</a><a href="#h0-5" id="h0-5" class="d">-local key, buf, but = lousy.bind.key, lousy.bind.buf, lousy.bind.but
+</a><a href="#h0-6" id="h0-6" class="d">-local cmd, any = lousy.bind.cmd, lousy.bind.any
+</a><a href="#h0-7" id="h0-7" class="d">-
+</a><a href="#h0-8" id="h0-8" class="d">--- Util aliases
+</a><a href="#h0-9" id="h0-9" class="d">-local match, join = string.match, lousy.util.table.join
+</a><a href="#h0-10" id="h0-10" class="d">-local strip, split = lousy.util.string.strip, lousy.util.string.split
+</a><a href="#h0-11" id="h0-11" class="d">-
+</a><a href="#h0-12" id="h0-12" class="d">--- Globals or defaults that are used in binds
+</a><a href="#h0-13" id="h0-13" class="d">-local scroll_step = globals.scroll_step or 20
+</a><a href="#h0-14" id="h0-14" class="d">-local zoom_step = globals.zoom_step or 0.1
+</a><a href="#h0-15" id="h0-15" class="d">-
+</a><a href="#h0-16" id="h0-16" class="d">--- Add binds to a mode
+</a><a href="#h0-17" id="h0-17" class="d">-function add_binds(mode, binds, before)
+</a><a href="#h0-18" id="h0-18" class="d">-    assert(binds and type(binds) == &quot;table&quot;, &quot;invalid binds table type: &quot; .. type(binds))
+</a><a href="#h0-19" id="h0-19" class="d">-    mode = type(mode) ~= &quot;table&quot; and {mode} or mode
+</a><a href="#h0-20" id="h0-20" class="d">-    for _, m in ipairs(mode) do
+</a><a href="#h0-21" id="h0-21" class="d">-        local mdata = get_mode(m)
+</a><a href="#h0-22" id="h0-22" class="d">-        if mdata and before then
+</a><a href="#h0-23" id="h0-23" class="d">-            mdata.binds = join(binds, mdata.binds or {})
+</a><a href="#h0-24" id="h0-24" class="d">-        elseif mdata then
+</a><a href="#h0-25" id="h0-25" class="d">-            mdata.binds = mdata.binds or {}
+</a><a href="#h0-26" id="h0-26" class="d">-            for _, b in ipairs(binds) do table.insert(mdata.binds, b) end
+</a><a href="#h0-27" id="h0-27" class="d">-        else
+</a><a href="#h0-28" id="h0-28" class="d">-            new_mode(m, { binds = binds })
+</a><a href="#h0-29" id="h0-29" class="d">-        end
+</a><a href="#h0-30" id="h0-30" class="d">-    end
+</a><a href="#h0-31" id="h0-31" class="d">-end
+</a><a href="#h0-32" id="h0-32" class="d">-
+</a><a href="#h0-33" id="h0-33" class="d">--- Add commands to command mode
+</a><a href="#h0-34" id="h0-34" class="d">-function add_cmds(cmds, before)
+</a><a href="#h0-35" id="h0-35" class="d">-    add_binds(&quot;command&quot;, cmds, before)
+</a><a href="#h0-36" id="h0-36" class="d">-end
+</a><a href="#h0-37" id="h0-37" class="d">-
+</a><a href="#h0-38" id="h0-38" class="d">--- Adds the default menu widget bindings to a mode
+</a><a href="#h0-39" id="h0-39" class="d">-menu_binds = {
+</a><a href="#h0-40" id="h0-40" class="d">-    -- Navigate items
+</a><a href="#h0-41" id="h0-41" class="d">-    key({},          &quot;j&quot;,       function (w) w.menu:move_down() end),
+</a><a href="#h0-42" id="h0-42" class="d">-    key({},          &quot;k&quot;,       function (w) w.menu:move_up()   end),
+</a><a href="#h0-43" id="h0-43" class="d">-    key({},          &quot;Down&quot;,    function (w) w.menu:move_down() end),
+</a><a href="#h0-44" id="h0-44" class="d">-    key({},          &quot;Up&quot;,      function (w) w.menu:move_up()   end),
+</a><a href="#h0-45" id="h0-45" class="d">-    key({},          &quot;Tab&quot;,     function (w) w.menu:move_down() end),
+</a><a href="#h0-46" id="h0-46" class="d">-    key({&quot;Shift&quot;},   &quot;Tab&quot;,     function (w) w.menu:move_up()   end),
+</a><a href="#h0-47" id="h0-47" class="d">-}
+</a><a href="#h0-48" id="h0-48" class="d">-
+</a><a href="#h0-49" id="h0-49" class="d">--- Add binds to special mode &quot;all&quot; which adds its binds to all modes.
+</a><a href="#h0-50" id="h0-50" class="d">-add_binds(&quot;all&quot;, {
+</a><a href="#h0-51" id="h0-51" class="d">-    key({}, &quot;Escape&quot;, &quot;Return to `normal` mode.&quot;,
+</a><a href="#h0-52" id="h0-52" class="d">-        function (w) w:set_mode() end),
+</a><a href="#h0-53" id="h0-53" class="d">-
+</a><a href="#h0-54" id="h0-54" class="d">-    key({&quot;Control&quot;}, &quot;[&quot;, &quot;Return to `normal` mode.&quot;,
+</a><a href="#h0-55" id="h0-55" class="d">-        function (w) w:set_mode() end),
+</a><a href="#h0-56" id="h0-56" class="d">-
+</a><a href="#h0-57" id="h0-57" class="d">-    -- Mouse bindings
+</a><a href="#h0-58" id="h0-58" class="d">-    but({}, 8, &quot;Go back.&quot;,
+</a><a href="#h0-59" id="h0-59" class="d">-        function (w) w:back() end),
+</a><a href="#h0-60" id="h0-60" class="d">-
+</a><a href="#h0-61" id="h0-61" class="d">-    but({}, 9, &quot;Go forward.&quot;,
+</a><a href="#h0-62" id="h0-62" class="d">-        function (w) w:forward() end),
+</a><a href="#h0-63" id="h0-63" class="d">-
+</a><a href="#h0-64" id="h0-64" class="d">-    -- Open link in new tab or navigate to selection
+</a><a href="#h0-65" id="h0-65" class="d">-    but({}, 2, [[Open link under mouse cursor in new tab or navigate to the
+</a><a href="#h0-66" id="h0-66" class="d">-        contents of `luakit.selection.primary`.]],
+</a><a href="#h0-67" id="h0-67" class="d">-        function (w, m)
+</a><a href="#h0-68" id="h0-68" class="d">-            -- Ignore button 2 clicks in form fields
+</a><a href="#h0-69" id="h0-69" class="d">-            if not m.context.editable then
+</a><a href="#h0-70" id="h0-70" class="d">-                -- Open hovered uri in new tab
+</a><a href="#h0-71" id="h0-71" class="d">-                local uri = w.view.hovered_uri
+</a><a href="#h0-72" id="h0-72" class="d">-                if uri then
+</a><a href="#h0-73" id="h0-73" class="d">-                    w:new_tab(uri, false)
+</a><a href="#h0-74" id="h0-74" class="d">-                else -- Open selection in current tab
+</a><a href="#h0-75" id="h0-75" class="d">-                    uri = luakit.selection.primary
+</a><a href="#h0-76" id="h0-76" class="d">-                    if uri then w:navigate(w:search_open(uri)) end
+</a><a href="#h0-77" id="h0-77" class="d">-                end
+</a><a href="#h0-78" id="h0-78" class="d">-            end
+</a><a href="#h0-79" id="h0-79" class="d">-        end),
+</a><a href="#h0-80" id="h0-80" class="d">-
+</a><a href="#h0-81" id="h0-81" class="d">-    -- Open link in new tab when Ctrl-clicked.
+</a><a href="#h0-82" id="h0-82" class="d">-    but({&quot;Control&quot;}, 1, &quot;Open link under mouse cursor in new tab.&quot;,
+</a><a href="#h0-83" id="h0-83" class="d">-        function (w, m)
+</a><a href="#h0-84" id="h0-84" class="d">-            local uri = w.view.hovered_uri
+</a><a href="#h0-85" id="h0-85" class="d">-            if uri then
+</a><a href="#h0-86" id="h0-86" class="d">-                w:new_tab(uri, false)
+</a><a href="#h0-87" id="h0-87" class="d">-            end
+</a><a href="#h0-88" id="h0-88" class="d">-        end),
+</a><a href="#h0-89" id="h0-89" class="d">-
+</a><a href="#h0-90" id="h0-90" class="d">-    -- Zoom binds
+</a><a href="#h0-91" id="h0-91" class="d">-    but({&quot;Control&quot;}, 4, &quot;Increase text zoom level.&quot;,
+</a><a href="#h0-92" id="h0-92" class="d">-        function (w, m) w:zoom_in() end),
+</a><a href="#h0-93" id="h0-93" class="d">-
+</a><a href="#h0-94" id="h0-94" class="d">-    but({&quot;Control&quot;}, 5, &quot;Reduce text zoom level.&quot;,
+</a><a href="#h0-95" id="h0-95" class="d">-        function (w, m) w:zoom_out() end),
+</a><a href="#h0-96" id="h0-96" class="d">-
+</a><a href="#h0-97" id="h0-97" class="d">-    -- Horizontal mouse scroll binds
+</a><a href="#h0-98" id="h0-98" class="d">-    but({&quot;Shift&quot;}, 4, &quot;Scroll left.&quot;,
+</a><a href="#h0-99" id="h0-99" class="d">-        function (w, m) w:scroll{ xrel = -scroll_step } end),
+</a><a href="#h0-100" id="h0-100" class="d">-
+</a><a href="#h0-101" id="h0-101" class="d">-    but({&quot;Shift&quot;}, 5, &quot;Scroll right.&quot;,
+</a><a href="#h0-102" id="h0-102" class="d">-        function (w, m) w:scroll{ xrel =  scroll_step } end),
+</a><a href="#h0-103" id="h0-103" class="d">-})
+</a><a href="#h0-104" id="h0-104" class="d">-
+</a><a href="#h0-105" id="h0-105" class="d">-add_binds(&quot;normal&quot;, {
+</a><a href="#h0-106" id="h0-106" class="d">-    -- Autoparse the `[count]` before a binding and re-call the hit function
+</a><a href="#h0-107" id="h0-107" class="d">-    -- with the count removed and added to the opts table.
+</a><a href="#h0-108" id="h0-108" class="d">-    any([[Meta-binding to detect the `^[count]` syntax. The `[count]` is parsed
+</a><a href="#h0-109" id="h0-109" class="d">-        and stripped from the internal buffer string and the value assigned to
+</a><a href="#h0-110" id="h0-110" class="d">-        `state.count`. Then `lousy.bind.hit()` is re-called with the modified
+</a><a href="#h0-111" id="h0-111" class="d">-        buffer string &amp; original modifier state.
+</a><a href="#h0-112" id="h0-112" class="d">-
+</a><a href="#h0-113" id="h0-113" class="d">-        #### Example binding
+</a><a href="#h0-114" id="h0-114" class="d">-
+</a><a href="#h0-115" id="h0-115" class="d">-            lousy.bind.key({}, &quot;%&quot;, function (w, state)
+</a><a href="#h0-116" id="h0-116" class="d">-                w:scroll{ ypct = state.count }
+</a><a href="#h0-117" id="h0-117" class="d">-            end, { count = 0 })
+</a><a href="#h0-118" id="h0-118" class="d">-
+</a><a href="#h0-119" id="h0-119" class="d">-        This binding demonstrates several concepts. Firstly that you are able to
+</a><a href="#h0-120" id="h0-120" class="d">-        specify per-binding default values of `count`. In this case if the user
+</a><a href="#h0-121" id="h0-121" class="d">-        types `&quot;%&quot;` the document will be scrolled vertically to `0%` (the top).
+</a><a href="#h0-122" id="h0-122" class="d">-
+</a><a href="#h0-123" id="h0-123" class="d">-        If the user types `&quot;100%&quot;` then the document will be scrolled to `100%`
+</a><a href="#h0-124" id="h0-124" class="d">-        (the bottom). All without the need to use `lousy.bind.buf` bindings
+</a><a href="#h0-125" id="h0-125" class="d">-        everywhere and or using a `^(%d*)` pattern prefix on every binding which
+</a><a href="#h0-126" id="h0-126" class="d">-        would like to make use of the `[count]` syntax.]],
+</a><a href="#h0-127" id="h0-127" class="d">-        function (w, m)
+</a><a href="#h0-128" id="h0-128" class="d">-            local count, buf
+</a><a href="#h0-129" id="h0-129" class="d">-            if m.buffer then
+</a><a href="#h0-130" id="h0-130" class="d">-                count = string.match(m.buffer, &quot;^(%d+)&quot;)
+</a><a href="#h0-131" id="h0-131" class="d">-            end
+</a><a href="#h0-132" id="h0-132" class="d">-            if count then
+</a><a href="#h0-133" id="h0-133" class="d">-                buf = string.sub(m.buffer, #count + 1, (m.updated_buf and -2) or -1)
+</a><a href="#h0-134" id="h0-134" class="d">-                local opts = join(m, {count = tonumber(count)})
+</a><a href="#h0-135" id="h0-135" class="d">-                opts.buffer = (#buf &gt; 0 and buf) or nil
+</a><a href="#h0-136" id="h0-136" class="d">-                if lousy.bind.hit(w, m.binds, m.mods, m.key, opts) then
+</a><a href="#h0-137" id="h0-137" class="d">-                    return true
+</a><a href="#h0-138" id="h0-138" class="d">-                end
+</a><a href="#h0-139" id="h0-139" class="d">-            end
+</a><a href="#h0-140" id="h0-140" class="d">-            return false
+</a><a href="#h0-141" id="h0-141" class="d">-        end),
+</a><a href="#h0-142" id="h0-142" class="d">-
+</a><a href="#h0-143" id="h0-143" class="d">-    key({}, &quot;i&quot;, &quot;Enter `insert` mode.&quot;,
+</a><a href="#h0-144" id="h0-144" class="d">-        function (w) w:set_mode(&quot;insert&quot;)  end),
+</a><a href="#h0-145" id="h0-145" class="d">-
+</a><a href="#h0-146" id="h0-146" class="d">-    key({}, &quot;:&quot;, &quot;Enter `command` mode.&quot;,
+</a><a href="#h0-147" id="h0-147" class="d">-        function (w) w:set_mode(&quot;command&quot;) end),
+</a><a href="#h0-148" id="h0-148" class="d">-
+</a><a href="#h0-149" id="h0-149" class="d">-    -- Scrolling
+</a><a href="#h0-150" id="h0-150" class="d">-    key({}, &quot;j&quot;, &quot;Scroll document down.&quot;,
+</a><a href="#h0-151" id="h0-151" class="d">-        function (w) w:scroll{ yrel =  scroll_step } end),
+</a><a href="#h0-152" id="h0-152" class="d">-
+</a><a href="#h0-153" id="h0-153" class="d">-    key({}, &quot;k&quot;, &quot;Scroll document up.&quot;,
+</a><a href="#h0-154" id="h0-154" class="d">-        function (w) w:scroll{ yrel = -scroll_step } end),
+</a><a href="#h0-155" id="h0-155" class="d">-
+</a><a href="#h0-156" id="h0-156" class="d">-    key({}, &quot;h&quot;, &quot;Scroll document left.&quot;,
+</a><a href="#h0-157" id="h0-157" class="d">-        function (w) w:scroll{ xrel = -scroll_step } end),
+</a><a href="#h0-158" id="h0-158" class="d">-
+</a><a href="#h0-159" id="h0-159" class="d">-    key({}, &quot;l&quot;, &quot;Scroll document right.&quot;,
+</a><a href="#h0-160" id="h0-160" class="d">-        function (w) w:scroll{ xrel =  scroll_step } end),
+</a><a href="#h0-161" id="h0-161" class="d">-
+</a><a href="#h0-162" id="h0-162" class="d">-    key({}, &quot;Down&quot;, &quot;Scroll document down.&quot;,
+</a><a href="#h0-163" id="h0-163" class="d">-        function (w) w:scroll{ yrel =  scroll_step } end),
+</a><a href="#h0-164" id="h0-164" class="d">-
+</a><a href="#h0-165" id="h0-165" class="d">-    key({}, &quot;Up&quot;,   &quot;Scroll document up.&quot;,
+</a><a href="#h0-166" id="h0-166" class="d">-        function (w) w:scroll{ yrel = -scroll_step } end),
+</a><a href="#h0-167" id="h0-167" class="d">-
+</a><a href="#h0-168" id="h0-168" class="d">-    key({}, &quot;Left&quot;, &quot;Scroll document left.&quot;,
+</a><a href="#h0-169" id="h0-169" class="d">-        function (w) w:scroll{ xrel = -scroll_step } end),
+</a><a href="#h0-170" id="h0-170" class="d">-
+</a><a href="#h0-171" id="h0-171" class="d">-    key({}, &quot;Right&quot;, &quot;Scroll document right.&quot;,
+</a><a href="#h0-172" id="h0-172" class="d">-        function (w) w:scroll{ xrel =  scroll_step } end),
+</a><a href="#h0-173" id="h0-173" class="d">-
+</a><a href="#h0-174" id="h0-174" class="d">-    key({}, &quot;^&quot;, &quot;Scroll to the absolute left of the document.&quot;,
+</a><a href="#h0-175" id="h0-175" class="d">-        function (w) w:scroll{ x =  0 } end),
+</a><a href="#h0-176" id="h0-176" class="d">-
+</a><a href="#h0-177" id="h0-177" class="d">-    key({}, &quot;$&quot;, &quot;Scroll to the absolute right of the document.&quot;,
+</a><a href="#h0-178" id="h0-178" class="d">-        function (w) w:scroll{ x = -1 } end),
+</a><a href="#h0-179" id="h0-179" class="d">-
+</a><a href="#h0-180" id="h0-180" class="d">-    key({}, &quot;0&quot;, &quot;Scroll to the absolute left of the document.&quot;,
+</a><a href="#h0-181" id="h0-181" class="d">-        function (w, m)
+</a><a href="#h0-182" id="h0-182" class="d">-            if not m.count then w:scroll{ y = 0 } else return false end
+</a><a href="#h0-183" id="h0-183" class="d">-        end),
+</a><a href="#h0-184" id="h0-184" class="d">-
+</a><a href="#h0-185" id="h0-185" class="d">-    key({&quot;Control&quot;}, &quot;e&quot;, &quot;Scroll document down.&quot;,
+</a><a href="#h0-186" id="h0-186" class="d">-        function (w) w:scroll{ yrel =  scroll_step } end),
+</a><a href="#h0-187" id="h0-187" class="d">-
+</a><a href="#h0-188" id="h0-188" class="d">-    key({&quot;Control&quot;}, &quot;y&quot;, &quot;Scroll document up.&quot;,
+</a><a href="#h0-189" id="h0-189" class="d">-        function (w) w:scroll{ yrel = -scroll_step } end),
+</a><a href="#h0-190" id="h0-190" class="d">-
+</a><a href="#h0-191" id="h0-191" class="d">-    key({&quot;Control&quot;}, &quot;d&quot;, &quot;Scroll half page down.&quot;,
+</a><a href="#h0-192" id="h0-192" class="d">-        function (w) w:scroll{ ypagerel =  0.5 } end),
+</a><a href="#h0-193" id="h0-193" class="d">-
+</a><a href="#h0-194" id="h0-194" class="d">-    key({&quot;Control&quot;}, &quot;u&quot;, &quot;Scroll half page up.&quot;,
+</a><a href="#h0-195" id="h0-195" class="d">-        function (w) w:scroll{ ypagerel = -0.5 } end),
+</a><a href="#h0-196" id="h0-196" class="d">-
+</a><a href="#h0-197" id="h0-197" class="d">-    key({&quot;Control&quot;}, &quot;f&quot;, &quot;Scroll page down.&quot;,
+</a><a href="#h0-198" id="h0-198" class="d">-        function (w) w:scroll{ ypagerel =  1.0 } end),
+</a><a href="#h0-199" id="h0-199" class="d">-
+</a><a href="#h0-200" id="h0-200" class="d">-    key({&quot;Control&quot;}, &quot;b&quot;, &quot;Scroll page up.&quot;,
+</a><a href="#h0-201" id="h0-201" class="d">-        function (w) w:scroll{ ypagerel = -1.0 } end),
+</a><a href="#h0-202" id="h0-202" class="d">-
+</a><a href="#h0-203" id="h0-203" class="d">-    key({}, &quot;space&quot;, &quot;Scroll page down.&quot;,
+</a><a href="#h0-204" id="h0-204" class="d">-        function (w) w:scroll{ ypagerel =  1.0 } end),
+</a><a href="#h0-205" id="h0-205" class="d">-
+</a><a href="#h0-206" id="h0-206" class="d">-    key({&quot;Shift&quot;}, &quot;space&quot;, &quot;Scroll page up.&quot;,
+</a><a href="#h0-207" id="h0-207" class="d">-        function (w) w:scroll{ ypagerel = -1.0 } end),
+</a><a href="#h0-208" id="h0-208" class="d">-
+</a><a href="#h0-209" id="h0-209" class="d">-    key({}, &quot;BackSpace&quot;, &quot;Scroll page up.&quot;,
+</a><a href="#h0-210" id="h0-210" class="d">-        function (w) w:scroll{ ypagerel = -1.0 } end),
+</a><a href="#h0-211" id="h0-211" class="d">-
+</a><a href="#h0-212" id="h0-212" class="d">-    key({}, &quot;Page_Down&quot;, &quot;Scroll page down.&quot;,
+</a><a href="#h0-213" id="h0-213" class="d">-        function (w) w:scroll{ ypagerel =  1.0 } end),
+</a><a href="#h0-214" id="h0-214" class="d">-
+</a><a href="#h0-215" id="h0-215" class="d">-    key({}, &quot;Page_Up&quot;, &quot;Scroll page up.&quot;,
+</a><a href="#h0-216" id="h0-216" class="d">-        function (w) w:scroll{ ypagerel = -1.0 } end),
+</a><a href="#h0-217" id="h0-217" class="d">-
+</a><a href="#h0-218" id="h0-218" class="d">-    key({}, &quot;Home&quot;, &quot;Go to the end of the document.&quot;,
+</a><a href="#h0-219" id="h0-219" class="d">-        function (w) w:scroll{ y =  0 } end),
+</a><a href="#h0-220" id="h0-220" class="d">-
+</a><a href="#h0-221" id="h0-221" class="d">-    key({}, &quot;End&quot;, &quot;Go to the top of the document.&quot;,
+</a><a href="#h0-222" id="h0-222" class="d">-        function (w) w:scroll{ y = -1 } end),
+</a><a href="#h0-223" id="h0-223" class="d">-
+</a><a href="#h0-224" id="h0-224" class="d">-    -- Specific scroll
+</a><a href="#h0-225" id="h0-225" class="d">-    buf(&quot;^gg$&quot;, &quot;Go to the top of the document.&quot;,
+</a><a href="#h0-226" id="h0-226" class="d">-        function (w, b, m) w:scroll{ ypct = m.count } end, {count=0}),
+</a><a href="#h0-227" id="h0-227" class="d">-
+</a><a href="#h0-228" id="h0-228" class="d">-    buf(&quot;^G$&quot;, &quot;Go to the bottom of the document.&quot;,
+</a><a href="#h0-229" id="h0-229" class="d">-        function (w, b, m) w:scroll{ ypct = m.count } end, {count=100}),
+</a><a href="#h0-230" id="h0-230" class="d">-
+</a><a href="#h0-231" id="h0-231" class="d">-    buf(&quot;^%%$&quot;, &quot;Go to `[count]` percent of the document.&quot;,
+</a><a href="#h0-232" id="h0-232" class="d">-        function (w, b, m) w:scroll{ ypct = m.count } end),
+</a><a href="#h0-233" id="h0-233" class="d">-
+</a><a href="#h0-234" id="h0-234" class="d">-    -- Zooming
+</a><a href="#h0-235" id="h0-235" class="d">-    key({}, &quot;+&quot;, &quot;Enlarge text zoom of the current page.&quot;,
+</a><a href="#h0-236" id="h0-236" class="d">-        function (w, m) w:zoom_in(zoom_step * m.count) end, {count=1}),
+</a><a href="#h0-237" id="h0-237" class="d">-
+</a><a href="#h0-238" id="h0-238" class="d">-    key({}, &quot;-&quot;, &quot;Reduce text zom of the current page.&quot;,
+</a><a href="#h0-239" id="h0-239" class="d">-        function (w, m) w:zoom_out(zoom_step * m.count) end, {count=1}),
+</a><a href="#h0-240" id="h0-240" class="d">-
+</a><a href="#h0-241" id="h0-241" class="d">-    key({}, &quot;=&quot;, &quot;Reset zoom level.&quot;,
+</a><a href="#h0-242" id="h0-242" class="d">-        function (w, m) w:zoom_set() end),
+</a><a href="#h0-243" id="h0-243" class="d">-
+</a><a href="#h0-244" id="h0-244" class="d">-    buf(&quot;^z[iI]$&quot;, [[Enlarge text zoom of current page with `zi` or `zI` to
+</a><a href="#h0-245" id="h0-245" class="d">-        reduce full zoom.]],
+</a><a href="#h0-246" id="h0-246" class="d">-        function (w, b, m)
+</a><a href="#h0-247" id="h0-247" class="d">-            w:zoom_in(zoom_step  * m.count, b == &quot;zI&quot;)
+</a><a href="#h0-248" id="h0-248" class="d">-        end, {count=1}),
+</a><a href="#h0-249" id="h0-249" class="d">-
+</a><a href="#h0-250" id="h0-250" class="d">-    buf(&quot;^z[oO]$&quot;, [[Reduce text zoom of current page with `zo` or `zO` to
+</a><a href="#h0-251" id="h0-251" class="d">-        reduce full zoom.]],
+</a><a href="#h0-252" id="h0-252" class="d">-        function (w, b, m)
+</a><a href="#h0-253" id="h0-253" class="d">-            w:zoom_out(zoom_step * m.count, b == &quot;zO&quot;)
+</a><a href="#h0-254" id="h0-254" class="d">-        end, {count=1}),
+</a><a href="#h0-255" id="h0-255" class="d">-
+</a><a href="#h0-256" id="h0-256" class="d">-    -- Zoom reset or specific zoom ([count]zZ for full content zoom)
+</a><a href="#h0-257" id="h0-257" class="d">-    buf(&quot;^z[zZ]$&quot;, [[Set current page zoom to `[count]` percent with
+</a><a href="#h0-258" id="h0-258" class="d">-        `[count]zz`, use `[count]zZ` to set full zoom percent.]],
+</a><a href="#h0-259" id="h0-259" class="d">-        function (w, b, m)
+</a><a href="#h0-260" id="h0-260" class="d">-            w:zoom_set(m.count/100, b == &quot;zZ&quot;)
+</a><a href="#h0-261" id="h0-261" class="d">-        end, {count=100}),
+</a><a href="#h0-262" id="h0-262" class="d">-
+</a><a href="#h0-263" id="h0-263" class="d">-    -- Fullscreen
+</a><a href="#h0-264" id="h0-264" class="d">-    key({}, &quot;F11&quot;, &quot;Toggle fullscreen mode.&quot;,
+</a><a href="#h0-265" id="h0-265" class="d">-        function (w) w.win.fullscreen = not w.win.fullscreen end),
+</a><a href="#h0-266" id="h0-266" class="d">-
+</a><a href="#h0-267" id="h0-267" class="d">-    -- Clipboard
+</a><a href="#h0-268" id="h0-268" class="d">-    key({}, &quot;p&quot;, [[Open a URL based on the current primary selection contents
+</a><a href="#h0-269" id="h0-269" class="d">-        in the current tab.]],
+</a><a href="#h0-270" id="h0-270" class="d">-        function (w)
+</a><a href="#h0-271" id="h0-271" class="d">-            local uri = luakit.selection.primary
+</a><a href="#h0-272" id="h0-272" class="d">-            if not uri then w:notify(&quot;No primary selection...&quot;) return end
+</a><a href="#h0-273" id="h0-273" class="d">-            w:navigate(w:search_open(uri))
+</a><a href="#h0-274" id="h0-274" class="d">-        end),
+</a><a href="#h0-275" id="h0-275" class="d">-
+</a><a href="#h0-276" id="h0-276" class="d">-    key({}, &quot;P&quot;, [[Open a URL based on the current primary selection contents
+</a><a href="#h0-277" id="h0-277" class="d">-        in `[count=1]` new tab(s).]],
+</a><a href="#h0-278" id="h0-278" class="d">-        function (w, m)
+</a><a href="#h0-279" id="h0-279" class="d">-            local uri = luakit.selection.primary
+</a><a href="#h0-280" id="h0-280" class="d">-            if not uri then w:notify(&quot;No primary selection...&quot;) return end
+</a><a href="#h0-281" id="h0-281" class="d">-            for i = 1, m.count do w:new_tab(w:search_open(uri)) end
+</a><a href="#h0-282" id="h0-282" class="d">-        end, {count = 1}),
+</a><a href="#h0-283" id="h0-283" class="d">-
+</a><a href="#h0-284" id="h0-284" class="d">-    -- Yanking
+</a><a href="#h0-285" id="h0-285" class="d">-    key({}, &quot;y&quot;, &quot;Yank current URI to primary selection.&quot;,
+</a><a href="#h0-286" id="h0-286" class="d">-        function (w)
+</a><a href="#h0-287" id="h0-287" class="d">-            local uri = string.gsub(w.view.uri or &quot;&quot;, &quot; &quot;, &quot;%%20&quot;)
+</a><a href="#h0-288" id="h0-288" class="d">-            luakit.selection.primary = uri
+</a><a href="#h0-289" id="h0-289" class="d">-            w:notify(&quot;Yanked uri: &quot; .. uri)
+</a><a href="#h0-290" id="h0-290" class="d">-        end),
+</a><a href="#h0-291" id="h0-291" class="d">-
+</a><a href="#h0-292" id="h0-292" class="d">-    -- Commands
+</a><a href="#h0-293" id="h0-293" class="d">-    key({&quot;Control&quot;}, &quot;a&quot;, &quot;Increment last number in URL.&quot;,
+</a><a href="#h0-294" id="h0-294" class="d">-        function (w) w:navigate(w:inc_uri(1)) end),
+</a><a href="#h0-295" id="h0-295" class="d">-
+</a><a href="#h0-296" id="h0-296" class="d">-    key({&quot;Control&quot;}, &quot;x&quot;, &quot;Decrement last number in URL.&quot;,
+</a><a href="#h0-297" id="h0-297" class="d">-        function (w) w:navigate(w:inc_uri(-1)) end),
+</a><a href="#h0-298" id="h0-298" class="d">-
+</a><a href="#h0-299" id="h0-299" class="d">-    key({}, &quot;o&quot;, &quot;Open one or more URLs.&quot;,
+</a><a href="#h0-300" id="h0-300" class="d">-        function (w) w:enter_cmd(&quot;:open &quot;) end),
+</a><a href="#h0-301" id="h0-301" class="d">-
+</a><a href="#h0-302" id="h0-302" class="d">-    key({}, &quot;t&quot;, &quot;Open one or more URLs in a new tab.&quot;,
+</a><a href="#h0-303" id="h0-303" class="d">-        function (w) w:enter_cmd(&quot;:tabopen &quot;) end),
+</a><a href="#h0-304" id="h0-304" class="d">-
+</a><a href="#h0-305" id="h0-305" class="d">-    key({}, &quot;w&quot;, &quot;Open one or more URLs in a new window.&quot;,
+</a><a href="#h0-306" id="h0-306" class="d">-        function (w) w:enter_cmd(&quot;:winopen &quot;) end),
+</a><a href="#h0-307" id="h0-307" class="d">-
+</a><a href="#h0-308" id="h0-308" class="d">-    key({}, &quot;O&quot;, &quot;Open one or more URLs based on current location.&quot;,
+</a><a href="#h0-309" id="h0-309" class="d">-        function (w) w:enter_cmd(&quot;:open &quot; .. (w.view.uri or &quot;&quot;)) end),
+</a><a href="#h0-310" id="h0-310" class="d">-
+</a><a href="#h0-311" id="h0-311" class="d">-    key({}, &quot;T&quot;,
+</a><a href="#h0-312" id="h0-312" class="d">-        &quot;Open one or more URLs based on current location in a new tab.&quot;,
+</a><a href="#h0-313" id="h0-313" class="d">-        function (w) w:enter_cmd(&quot;:tabopen &quot; .. (w.view.uri or &quot;&quot;)) end),
+</a><a href="#h0-314" id="h0-314" class="d">-
+</a><a href="#h0-315" id="h0-315" class="d">-    key({}, &quot;W&quot;,
+</a><a href="#h0-316" id="h0-316" class="d">-        &quot;Open one or more URLs based on current locaton in a new window.&quot;,
+</a><a href="#h0-317" id="h0-317" class="d">-        function (w) w:enter_cmd(&quot;:winopen &quot; .. (w.view.uri or &quot;&quot;)) end),
+</a><a href="#h0-318" id="h0-318" class="d">-
+</a><a href="#h0-319" id="h0-319" class="d">-    -- History
+</a><a href="#h0-320" id="h0-320" class="d">-    key({}, &quot;H&quot;, &quot;Go back in the browser history `[count=1]` items.&quot;,
+</a><a href="#h0-321" id="h0-321" class="d">-        function (w, m) w:back(m.count) end),
+</a><a href="#h0-322" id="h0-322" class="d">-
+</a><a href="#h0-323" id="h0-323" class="d">-    key({}, &quot;L&quot;, &quot;Go forward in the browser history `[count=1]` times.&quot;,
+</a><a href="#h0-324" id="h0-324" class="d">-        function (w, m) w:forward(m.count) end),
+</a><a href="#h0-325" id="h0-325" class="d">-
+</a><a href="#h0-326" id="h0-326" class="d">-    key({}, &quot;XF86Back&quot;, &quot;Go back in the browser history.&quot;,
+</a><a href="#h0-327" id="h0-327" class="d">-        function (w, m) w:back(m.count) end),
+</a><a href="#h0-328" id="h0-328" class="d">-
+</a><a href="#h0-329" id="h0-329" class="d">-    key({}, &quot;XF86Forward&quot;, &quot;Go forward in the browser history.&quot;,
+</a><a href="#h0-330" id="h0-330" class="d">-        function (w, m) w:forward(m.count) end),
+</a><a href="#h0-331" id="h0-331" class="d">-
+</a><a href="#h0-332" id="h0-332" class="d">-    key({&quot;Control&quot;}, &quot;o&quot;, &quot;Go back in the browser history.&quot;,
+</a><a href="#h0-333" id="h0-333" class="d">-        function (w, m) w:back(m.count) end),
+</a><a href="#h0-334" id="h0-334" class="d">-
+</a><a href="#h0-335" id="h0-335" class="d">-    key({&quot;Control&quot;}, &quot;i&quot;, &quot;Go forward in the browser history.&quot;,
+</a><a href="#h0-336" id="h0-336" class="d">-        function (w, m) w:forward(m.count) end),
+</a><a href="#h0-337" id="h0-337" class="d">-
+</a><a href="#h0-338" id="h0-338" class="d">-    -- Tab
+</a><a href="#h0-339" id="h0-339" class="d">-    key({&quot;Control&quot;}, &quot;Page_Up&quot;, &quot;Go to previous tab.&quot;,
+</a><a href="#h0-340" id="h0-340" class="d">-        function (w) w:prev_tab() end),
+</a><a href="#h0-341" id="h0-341" class="d">-
+</a><a href="#h0-342" id="h0-342" class="d">-    key({&quot;Control&quot;}, &quot;Page_Down&quot;, &quot;Go to next tab.&quot;,
+</a><a href="#h0-343" id="h0-343" class="d">-        function (w) w:next_tab() end),
+</a><a href="#h0-344" id="h0-344" class="d">-
+</a><a href="#h0-345" id="h0-345" class="d">-    key({&quot;Control&quot;}, &quot;Tab&quot;, &quot;Go to next tab.&quot;,
+</a><a href="#h0-346" id="h0-346" class="d">-        function (w) w:next_tab() end),
+</a><a href="#h0-347" id="h0-347" class="d">-
+</a><a href="#h0-348" id="h0-348" class="d">-    key({&quot;Shift&quot;,&quot;Control&quot;}, &quot;Tab&quot;, &quot;Go to previous tab.&quot;,
+</a><a href="#h0-349" id="h0-349" class="d">-        function (w) w:prev_tab() end),
+</a><a href="#h0-350" id="h0-350" class="d">-
+</a><a href="#h0-351" id="h0-351" class="d">-    buf(&quot;^gT$&quot;, &quot;Go to previous tab.&quot;,
+</a><a href="#h0-352" id="h0-352" class="d">-        function (w) w:prev_tab() end),
+</a><a href="#h0-353" id="h0-353" class="d">-
+</a><a href="#h0-354" id="h0-354" class="d">-    buf(&quot;^gt$&quot;, &quot;Go to next tab (or `[count]` nth tab).&quot;,
+</a><a href="#h0-355" id="h0-355" class="d">-        function (w, b, m)
+</a><a href="#h0-356" id="h0-356" class="d">-            if not w:goto_tab(m.count) then w:next_tab() end
+</a><a href="#h0-357" id="h0-357" class="d">-        end, {count=0}),
+</a><a href="#h0-358" id="h0-358" class="d">-
+</a><a href="#h0-359" id="h0-359" class="d">-    buf(&quot;^g0$&quot;, &quot;Go to first tab.&quot;,
+</a><a href="#h0-360" id="h0-360" class="d">-        function (w) w:goto_tab(1) end),
+</a><a href="#h0-361" id="h0-361" class="d">-
+</a><a href="#h0-362" id="h0-362" class="d">-    buf(&quot;^g$$&quot;, &quot;Go to last tab.&quot;,
+</a><a href="#h0-363" id="h0-363" class="d">-        function (w) w:goto_tab(-1) end),
+</a><a href="#h0-364" id="h0-364" class="d">-
+</a><a href="#h0-365" id="h0-365" class="d">-    key({&quot;Control&quot;}, &quot;t&quot;, &quot;Open a new tab.&quot;,
+</a><a href="#h0-366" id="h0-366" class="d">-        function (w) w:new_tab(globals.homepage) end),
+</a><a href="#h0-367" id="h0-367" class="d">-
+</a><a href="#h0-368" id="h0-368" class="d">-    key({&quot;Control&quot;}, &quot;w&quot;, &quot;Close current tab.&quot;,
+</a><a href="#h0-369" id="h0-369" class="d">-        function (w) w:close_tab() end),
+</a><a href="#h0-370" id="h0-370" class="d">-
+</a><a href="#h0-371" id="h0-371" class="d">-    key({}, &quot;d&quot;, &quot;Close current tab (or `[count]` tabs).&quot;,
+</a><a href="#h0-372" id="h0-372" class="d">-        function (w, m) for i=1,m.count do w:close_tab() end end, {count=1}),
+</a><a href="#h0-373" id="h0-373" class="d">-
+</a><a href="#h0-374" id="h0-374" class="d">-    key({}, &quot;&lt;&quot;, &quot;Reorder tab left `[count=1]` positions.&quot;,
+</a><a href="#h0-375" id="h0-375" class="d">-        function (w, m)
+</a><a href="#h0-376" id="h0-376" class="d">-            w.tabs:reorder(w.view, w.tabs:current() - m.count)
+</a><a href="#h0-377" id="h0-377" class="d">-        end, {count=1}),
+</a><a href="#h0-378" id="h0-378" class="d">-
+</a><a href="#h0-379" id="h0-379" class="d">-    key({}, &quot;&gt;&quot;, &quot;Reorder tab right `[count=1]` positions.&quot;,
+</a><a href="#h0-380" id="h0-380" class="d">-        function (w, m)
+</a><a href="#h0-381" id="h0-381" class="d">-            w.tabs:reorder(w.view,
+</a><a href="#h0-382" id="h0-382" class="d">-                (w.tabs:current() + m.count) % w.tabs:count())
+</a><a href="#h0-383" id="h0-383" class="d">-        end, {count=1}),
+</a><a href="#h0-384" id="h0-384" class="d">-
+</a><a href="#h0-385" id="h0-385" class="d">-    buf(&quot;^gH$&quot;, &quot;Open homepage in new tab.&quot;,
+</a><a href="#h0-386" id="h0-386" class="d">-        function (w) w:new_tab(globals.homepage) end),
+</a><a href="#h0-387" id="h0-387" class="d">-
+</a><a href="#h0-388" id="h0-388" class="d">-    buf(&quot;^gh$&quot;, &quot;Open homepage.&quot;,
+</a><a href="#h0-389" id="h0-389" class="d">-        function (w) w:navigate(globals.homepage) end),
+</a><a href="#h0-390" id="h0-390" class="d">-
+</a><a href="#h0-391" id="h0-391" class="d">-    buf(&quot;^gy$&quot;, &quot;Duplicate current tab.&quot;,
+</a><a href="#h0-392" id="h0-392" class="d">-        function (w) w:new_tab(w.view.history or &quot;&quot;) end),
+</a><a href="#h0-393" id="h0-393" class="d">-
+</a><a href="#h0-394" id="h0-394" class="d">-    key({}, &quot;r&quot;, &quot;Reload current tab.&quot;,
+</a><a href="#h0-395" id="h0-395" class="d">-        function (w) w:reload() end),
+</a><a href="#h0-396" id="h0-396" class="d">-
+</a><a href="#h0-397" id="h0-397" class="d">-    key({}, &quot;R&quot;, &quot;Reload current tab (skipping cache).&quot;,
+</a><a href="#h0-398" id="h0-398" class="d">-        function (w) w:reload(true) end),
+</a><a href="#h0-399" id="h0-399" class="d">-
+</a><a href="#h0-400" id="h0-400" class="d">-    key({&quot;Control&quot;}, &quot;c&quot;, &quot;Stop loading the current tab.&quot;,
+</a><a href="#h0-401" id="h0-401" class="d">-        function (w) w.view:stop() end),
+</a><a href="#h0-402" id="h0-402" class="d">-
+</a><a href="#h0-403" id="h0-403" class="d">-    key({&quot;Control&quot;, &quot;Shift&quot;}, &quot;R&quot;, &quot;Restart luakit (reloading configs).&quot;,
+</a><a href="#h0-404" id="h0-404" class="d">-        function (w) w:restart() end),
+</a><a href="#h0-405" id="h0-405" class="d">-
+</a><a href="#h0-406" id="h0-406" class="d">-    -- Window
+</a><a href="#h0-407" id="h0-407" class="d">-    buf(&quot;^ZZ$&quot;, &quot;Quit and save the session.&quot;,
+</a><a href="#h0-408" id="h0-408" class="d">-        function (w) w:save_session() w:close_win() end),
+</a><a href="#h0-409" id="h0-409" class="d">-
+</a><a href="#h0-410" id="h0-410" class="d">-    buf(&quot;^ZQ$&quot;, &quot;Quit and don&apos;t save the session.&quot;,
+</a><a href="#h0-411" id="h0-411" class="d">-        function (w) w:close_win() end),
+</a><a href="#h0-412" id="h0-412" class="d">-
+</a><a href="#h0-413" id="h0-413" class="d">-    buf(&quot;^D$&quot;,  &quot;Quit and don&apos;t save the session.&quot;,
+</a><a href="#h0-414" id="h0-414" class="d">-        function (w) w:close_win() end),
+</a><a href="#h0-415" id="h0-415" class="d">-
+</a><a href="#h0-416" id="h0-416" class="d">-    -- Enter passthrough mode
+</a><a href="#h0-417" id="h0-417" class="d">-    key({&quot;Control&quot;}, &quot;z&quot;,
+</a><a href="#h0-418" id="h0-418" class="d">-        &quot;Enter `passthrough` mode, ignores all luakit keybindings.&quot;,
+</a><a href="#h0-419" id="h0-419" class="d">-        function (w) w:set_mode(&quot;passthrough&quot;) end),
+</a><a href="#h0-420" id="h0-420" class="d">-})
+</a><a href="#h0-421" id="h0-421" class="d">-
+</a><a href="#h0-422" id="h0-422" class="d">-add_binds(&quot;insert&quot;, {
+</a><a href="#h0-423" id="h0-423" class="d">-    key({&quot;Control&quot;}, &quot;z&quot;,
+</a><a href="#h0-424" id="h0-424" class="d">-        &quot;Enter `passthrough` mode, ignores all luakit keybindings.&quot;,
+</a><a href="#h0-425" id="h0-425" class="d">-        function (w) w:set_mode(&quot;passthrough&quot;) end),
+</a><a href="#h0-426" id="h0-426" class="d">-})
+</a><a href="#h0-427" id="h0-427" class="d">-
+</a><a href="#h0-428" id="h0-428" class="d">-readline_bindings = {
+</a><a href="#h0-429" id="h0-429" class="d">-    key({&quot;Shift&quot;}, &quot;Insert&quot;,
+</a><a href="#h0-430" id="h0-430" class="d">-        &quot;Insert contents of primary selection at cursor position.&quot;,
+</a><a href="#h0-431" id="h0-431" class="d">-        function (w) w:insert_cmd(luakit.selection.primary) end),
+</a><a href="#h0-432" id="h0-432" class="d">-
+</a><a href="#h0-433" id="h0-433" class="d">-    key({&quot;Control&quot;}, &quot;w&quot;, &quot;Delete previous word.&quot;,
+</a><a href="#h0-434" id="h0-434" class="d">-        function (w) w:del_word() end),
+</a><a href="#h0-435" id="h0-435" class="d">-
+</a><a href="#h0-436" id="h0-436" class="d">-    key({&quot;Control&quot;}, &quot;u&quot;, &quot;Delete until beginning of current line.&quot;,
+</a><a href="#h0-437" id="h0-437" class="d">-        function (w) w:del_line() end),
+</a><a href="#h0-438" id="h0-438" class="d">-
+</a><a href="#h0-439" id="h0-439" class="d">-    key({&quot;Control&quot;}, &quot;h&quot;, &quot;Delete character to the left.&quot;,
+</a><a href="#h0-440" id="h0-440" class="d">-        function (w) w:del_backward_char() end),
+</a><a href="#h0-441" id="h0-441" class="d">-
+</a><a href="#h0-442" id="h0-442" class="d">-    key({&quot;Control&quot;}, &quot;d&quot;, &quot;Delete character to the right.&quot;,
+</a><a href="#h0-443" id="h0-443" class="d">-        function (w) w:del_forward_char() end),
+</a><a href="#h0-444" id="h0-444" class="d">-
+</a><a href="#h0-445" id="h0-445" class="d">-    key({&quot;Control&quot;}, &quot;a&quot;, &quot;Move cursor to beginning of current line.&quot;,
+</a><a href="#h0-446" id="h0-446" class="d">-        function (w) w:beg_line() end),
+</a><a href="#h0-447" id="h0-447" class="d">-
+</a><a href="#h0-448" id="h0-448" class="d">-    key({&quot;Control&quot;}, &quot;e&quot;, &quot;Move cursor to end of current line.&quot;,
+</a><a href="#h0-449" id="h0-449" class="d">-        function (w) w:end_line() end),
+</a><a href="#h0-450" id="h0-450" class="d">-
+</a><a href="#h0-451" id="h0-451" class="d">-    key({&quot;Control&quot;}, &quot;f&quot;, &quot;Move cursor forward one character.&quot;,
+</a><a href="#h0-452" id="h0-452" class="d">-        function (w) w:forward_char() end),
+</a><a href="#h0-453" id="h0-453" class="d">-
+</a><a href="#h0-454" id="h0-454" class="d">-    key({&quot;Control&quot;}, &quot;b&quot;, &quot;Move cursor backward one character.&quot;,
+</a><a href="#h0-455" id="h0-455" class="d">-        function (w) w:backward_char() end),
+</a><a href="#h0-456" id="h0-456" class="d">-
+</a><a href="#h0-457" id="h0-457" class="d">-    key({&quot;Mod1&quot;}, &quot;f&quot;, &quot;Move cursor forward one word.&quot;,
+</a><a href="#h0-458" id="h0-458" class="d">-        function (w) w:forward_word() end),
+</a><a href="#h0-459" id="h0-459" class="d">-
+</a><a href="#h0-460" id="h0-460" class="d">-    key({&quot;Mod1&quot;}, &quot;b&quot;, &quot;Move cursor backward one word.&quot;,
+</a><a href="#h0-461" id="h0-461" class="d">-        function (w) w:backward_word() end),
+</a><a href="#h0-462" id="h0-462" class="d">-}
+</a><a href="#h0-463" id="h0-463" class="d">-
+</a><a href="#h0-464" id="h0-464" class="d">-add_binds({&quot;command&quot;, &quot;search&quot;}, readline_bindings)
+</a><a href="#h0-465" id="h0-465" class="d">-
+</a><a href="#h0-466" id="h0-466" class="d">--- Switching tabs with Mod1+{1,2,3,...}
+</a><a href="#h0-467" id="h0-467" class="d">-mod1binds = {}
+</a><a href="#h0-468" id="h0-468" class="d">-for i=1,10 do
+</a><a href="#h0-469" id="h0-469" class="d">-    table.insert(mod1binds,
+</a><a href="#h0-470" id="h0-470" class="d">-        key({&quot;Mod1&quot;}, tostring(i % 10), &quot;Jump to tab at index &quot;..i..&quot;.&quot;,
+</a><a href="#h0-471" id="h0-471" class="d">-            function (w) w.tabs:switch(i) end))
+</a><a href="#h0-472" id="h0-472" class="d">-end
+</a><a href="#h0-473" id="h0-473" class="d">-add_binds(&quot;normal&quot;, mod1binds)
+</a><a href="#h0-474" id="h0-474" class="d">-
+</a><a href="#h0-475" id="h0-475" class="d">--- Command bindings which are matched in the &quot;command&quot; mode from text
+</a><a href="#h0-476" id="h0-476" class="d">--- entered into the input bar.
+</a><a href="#h0-477" id="h0-477" class="d">-add_cmds({
+</a><a href="#h0-478" id="h0-478" class="d">-    buf(&quot;^%S+!&quot;,
+</a><a href="#h0-479" id="h0-479" class="d">-        [[Detect bang syntax in `:command!` and recursively calls
+</a><a href="#h0-480" id="h0-480" class="d">-        `lousy.bind.match_cmd(..)` removing the bang from the command string
+</a><a href="#h0-481" id="h0-481" class="d">-        and setting `bang = true` in the bind opts table.]],
+</a><a href="#h0-482" id="h0-482" class="d">-        function (w, cmd, opts)
+</a><a href="#h0-483" id="h0-483" class="d">-            local cmd, args = string.match(cmd, &quot;^(%S+)!+(.*)&quot;)
+</a><a href="#h0-484" id="h0-484" class="d">-            if cmd then
+</a><a href="#h0-485" id="h0-485" class="d">-                opts = join(opts, { bang = true })
+</a><a href="#h0-486" id="h0-486" class="d">-                return lousy.bind.match_cmd(w, opts.binds, cmd .. args, opts)
+</a><a href="#h0-487" id="h0-487" class="d">-            end
+</a><a href="#h0-488" id="h0-488" class="d">-        end),
+</a><a href="#h0-489" id="h0-489" class="d">-
+</a><a href="#h0-490" id="h0-490" class="d">-    cmd(&quot;c[lose]&quot;, &quot;Close current tab.&quot;,
+</a><a href="#h0-491" id="h0-491" class="d">-        function (w) w:close_tab() end),
+</a><a href="#h0-492" id="h0-492" class="d">-
+</a><a href="#h0-493" id="h0-493" class="d">-    cmd(&quot;print&quot;, &quot;Print current page.&quot;,
+</a><a href="#h0-494" id="h0-494" class="d">-        function (w) w.view:eval_js(&quot;print()&quot;) end),
+</a><a href="#h0-495" id="h0-495" class="d">-
+</a><a href="#h0-496" id="h0-496" class="d">-    cmd(&quot;stop&quot;, &quot;Stop loading.&quot;,
+</a><a href="#h0-497" id="h0-497" class="d">-        function (w) w.view:stop() end),
+</a><a href="#h0-498" id="h0-498" class="d">-
+</a><a href="#h0-499" id="h0-499" class="d">-    cmd(&quot;reload&quot;, &quot;Reload page&quot;,
+</a><a href="#h0-500" id="h0-500" class="d">-        function (w) w:reload() end),
+</a><a href="#h0-501" id="h0-501" class="d">-
+</a><a href="#h0-502" id="h0-502" class="d">-    cmd(&quot;restart&quot;, &quot;Restart browser (reload config files).&quot;,
+</a><a href="#h0-503" id="h0-503" class="d">-        function (w) w:restart() end),
+</a><a href="#h0-504" id="h0-504" class="d">-
+</a><a href="#h0-505" id="h0-505" class="d">-    cmd(&quot;write&quot;, &quot;Save current session.&quot;,
+</a><a href="#h0-506" id="h0-506" class="d">-        function (w) w:save_session() end),
+</a><a href="#h0-507" id="h0-507" class="d">-
+</a><a href="#h0-508" id="h0-508" class="d">-    cmd(&quot;noh[lsearch]&quot;, &quot;Clear search highlighting.&quot;,
+</a><a href="#h0-509" id="h0-509" class="d">-        function (w) w:clear_search() end),
+</a><a href="#h0-510" id="h0-510" class="d">-
+</a><a href="#h0-511" id="h0-511" class="d">-    cmd(&quot;back&quot;, &quot;Go back in the browser history `[count=1]` items.&quot;,
+</a><a href="#h0-512" id="h0-512" class="d">-        function (w, a) w:back(tonumber(a) or 1) end),
+</a><a href="#h0-513" id="h0-513" class="d">-
+</a><a href="#h0-514" id="h0-514" class="d">-    cmd(&quot;f[orward]&quot;, &quot;Go forward in the browser history `[count=1]` items.&quot;,
+</a><a href="#h0-515" id="h0-515" class="d">-        function (w, a) w:forward(tonumber(a) or 1) end),
+</a><a href="#h0-516" id="h0-516" class="d">-
+</a><a href="#h0-517" id="h0-517" class="d">-    cmd(&quot;inc[rease]&quot;, &quot;Increment last number in URL.&quot;,
+</a><a href="#h0-518" id="h0-518" class="d">-        function (w, a) w:navigate(w:inc_uri(tonumber(a) or 1)) end),
+</a><a href="#h0-519" id="h0-519" class="d">-
+</a><a href="#h0-520" id="h0-520" class="d">-    cmd(&quot;o[pen]&quot;, &quot;Open one or more URLs.&quot;,
+</a><a href="#h0-521" id="h0-521" class="d">-        function (w, a) w:navigate(w:search_open(a)) end),
+</a><a href="#h0-522" id="h0-522" class="d">-
+</a><a href="#h0-523" id="h0-523" class="d">-    cmd(&quot;t[abopen]&quot;, &quot;Open one or more URLs in a new tab.&quot;,
+</a><a href="#h0-524" id="h0-524" class="d">-        function (w, a) w:new_tab(w:search_open(a)) end),
+</a><a href="#h0-525" id="h0-525" class="d">-
+</a><a href="#h0-526" id="h0-526" class="d">-    cmd(&quot;w[inopen]&quot;, &quot;Open one or more URLs in a new window.&quot;,
+</a><a href="#h0-527" id="h0-527" class="d">-        function (w, a) window.new{w:search_open(a)} end),
+</a><a href="#h0-528" id="h0-528" class="d">-
+</a><a href="#h0-529" id="h0-529" class="d">-    cmd({&quot;javascript&quot;, &quot;js&quot;}, &quot;Evaluate JavaScript snippet.&quot;,
+</a><a href="#h0-530" id="h0-530" class="d">-        function (w, a) w.view:eval_js(a) end),
+</a><a href="#h0-531" id="h0-531" class="d">-
+</a><a href="#h0-532" id="h0-532" class="d">-    -- Tab manipulation commands
+</a><a href="#h0-533" id="h0-533" class="d">-    cmd(&quot;tab&quot;, &quot;Execute command and open result in new tab.&quot;,
+</a><a href="#h0-534" id="h0-534" class="d">-        function (w, a) w:new_tab() w:run_cmd(&quot;:&quot; .. a) end),
+</a><a href="#h0-535" id="h0-535" class="d">-
+</a><a href="#h0-536" id="h0-536" class="d">-    cmd(&quot;tabd[o]&quot;, &quot;Execute command in each tab.&quot;,
+</a><a href="#h0-537" id="h0-537" class="d">-        function (w, a) w:each_tab(function (v) w:run_cmd(&quot;:&quot; .. a) end) end),
+</a><a href="#h0-538" id="h0-538" class="d">-
+</a><a href="#h0-539" id="h0-539" class="d">-    cmd(&quot;tabdu[plicate]&quot;, &quot;Duplicate current tab.&quot;,
+</a><a href="#h0-540" id="h0-540" class="d">-        function (w) w:new_tab(w.view.history) end),
+</a><a href="#h0-541" id="h0-541" class="d">-
+</a><a href="#h0-542" id="h0-542" class="d">-    cmd(&quot;tabfir[st]&quot;, &quot;Switch to first tab.&quot;,
+</a><a href="#h0-543" id="h0-543" class="d">-        function (w) w:goto_tab(1) end),
+</a><a href="#h0-544" id="h0-544" class="d">-
+</a><a href="#h0-545" id="h0-545" class="d">-    cmd(&quot;tabl[ast]&quot;, &quot;Switch to last tab.&quot;,
+</a><a href="#h0-546" id="h0-546" class="d">-        function (w) w:goto_tab(-1) end),
+</a><a href="#h0-547" id="h0-547" class="d">-
+</a><a href="#h0-548" id="h0-548" class="d">-    cmd(&quot;tabn[ext]&quot;, &quot;Switch to the next tab.&quot;,
+</a><a href="#h0-549" id="h0-549" class="d">-        function (w) w:next_tab() end),
+</a><a href="#h0-550" id="h0-550" class="d">-
+</a><a href="#h0-551" id="h0-551" class="d">-    cmd(&quot;tabp[revious]&quot;, &quot;Switch to the previous tab.&quot;,
+</a><a href="#h0-552" id="h0-552" class="d">-        function (w) w:prev_tab() end),
+</a><a href="#h0-553" id="h0-553" class="d">-
+</a><a href="#h0-554" id="h0-554" class="d">-    cmd(&quot;q[uit]&quot;, &quot;Close the current window.&quot;,
+</a><a href="#h0-555" id="h0-555" class="d">-        function (w, a, o) w:close_win(o.bang) end),
+</a><a href="#h0-556" id="h0-556" class="d">-
+</a><a href="#h0-557" id="h0-557" class="d">-    cmd({&quot;viewsource&quot;, &quot;vs&quot;}, &quot;View the source code of the current document.&quot;,
+</a><a href="#h0-558" id="h0-558" class="d">-        function (w, a, o) w:toggle_source(not o.bang and true or nil) end),
+</a><a href="#h0-559" id="h0-559" class="d">-
+</a><a href="#h0-560" id="h0-560" class="d">-    cmd({&quot;wqall&quot;, &quot;wq&quot;}, &quot;Save the session and quit.&quot;,
+</a><a href="#h0-561" id="h0-561" class="d">-        function (w, a, o) w:save_session() w:close_win(o.bang) end),
+</a><a href="#h0-562" id="h0-562" class="d">-
+</a><a href="#h0-563" id="h0-563" class="d">-    cmd(&quot;lua&quot;, &quot;Evaluate Lua snippet.&quot;, function (w, a)
+</a><a href="#h0-564" id="h0-564" class="d">-        if a then
+</a><a href="#h0-565" id="h0-565" class="d">-            local ret = assert(
+</a><a href="#h0-566" id="h0-566" class="d">-                loadstring(&quot;return function(w) return &quot;..a..&quot; end&quot;))()(w)
+</a><a href="#h0-567" id="h0-567" class="d">-            if ret then print(ret) end
+</a><a href="#h0-568" id="h0-568" class="d">-        else
+</a><a href="#h0-569" id="h0-569" class="d">-            w:set_mode(&quot;lua&quot;)
+</a><a href="#h0-570" id="h0-570" class="d">-        end
+</a><a href="#h0-571" id="h0-571" class="d">-    end),
+</a><a href="#h0-572" id="h0-572" class="d">-
+</a><a href="#h0-573" id="h0-573" class="d">-    cmd(&quot;dump&quot;, &quot;Dump current tabs html to file.&quot;,
+</a><a href="#h0-574" id="h0-574" class="d">-        function (w, a)
+</a><a href="#h0-575" id="h0-575" class="d">-            local fname = string.gsub(w.win.title, &apos;[^%w%.%-]&apos;, &apos;_&apos;)..&apos;.html&apos; -- sanitize filename
+</a><a href="#h0-576" id="h0-576" class="d">-            local file = a or luakit.save_file(&quot;Save file&quot;, w.win, xdg.download_dir or &apos;.&apos;, fname)
+</a><a href="#h0-577" id="h0-577" class="d">-            if file then
+</a><a href="#h0-578" id="h0-578" class="d">-                local fd = assert(io.open(file, &quot;w&quot;), &quot;failed to open: &quot; .. file)
+</a><a href="#h0-579" id="h0-579" class="d">-                local html = assert(w.view:eval_js(&quot;document.documentElement.outerHTML&quot;), &quot;Unable to get HTML&quot;)
+</a><a href="#h0-580" id="h0-580" class="d">-                assert(fd:write(html), &quot;unable to save html&quot;)
+</a><a href="#h0-581" id="h0-581" class="d">-                io.close(fd)
+</a><a href="#h0-582" id="h0-582" class="d">-                w:notify(&quot;Dumped HTML to: &quot; .. file)
+</a><a href="#h0-583" id="h0-583" class="d">-            end
+</a><a href="#h0-584" id="h0-584" class="d">-        end),
+</a><a href="#h0-585" id="h0-585" class="d">-})
+</a><a href="#h0-586" id="h0-586" class="d">-
+</a><a href="#h0-587" id="h0-587" class="d">--- vim: et:sw=4:ts=8:sts=4:tw=80
+</a><b>diff --git a/<a href="../file/home/.config/luakit/globals.lua.html">home/.config/luakit/globals.lua</a> b/<a href="../file/home/.config/luakit/globals.lua.html">home/.config/luakit/globals.lua</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,83 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">--- Global variables for luakit
+</a><a href="#h0-1" id="h0-1" class="d">-globals = {
+</a><a href="#h0-2" id="h0-2" class="d">-    homepage            = &quot;about:blank/&quot;,
+</a><a href="#h0-3" id="h0-3" class="d">-    scroll_step         = 40,
+</a><a href="#h0-4" id="h0-4" class="d">-    zoom_step           = 0.1,
+</a><a href="#h0-5" id="h0-5" class="d">-    max_cmd_history     = 100,
+</a><a href="#h0-6" id="h0-6" class="d">-    max_srch_history    = 100,
+</a><a href="#h0-7" id="h0-7" class="d">-    default_window_size = &quot;800x600&quot;,
+</a><a href="#h0-8" id="h0-8" class="d">-
+</a><a href="#h0-9" id="h0-9" class="d">- -- Disables loading of hostnames from /etc/hosts (for large host files)
+</a><a href="#h0-10" id="h0-10" class="d">- -- load_etc_hosts      = false,
+</a><a href="#h0-11" id="h0-11" class="d">- -- Disables checking if a filepath exists in search_open function
+</a><a href="#h0-12" id="h0-12" class="d">- -- check_filepath      = false,
+</a><a href="#h0-13" id="h0-13" class="d">-}
+</a><a href="#h0-14" id="h0-14" class="d">-
+</a><a href="#h0-15" id="h0-15" class="d">--- Make useragent
+</a><a href="#h0-16" id="h0-16" class="d">-local _, arch = luakit.spawn_sync(&quot;uname -sm&quot;)
+</a><a href="#h0-17" id="h0-17" class="d">--- Only use the luakit version if in date format (reduces identifiability)
+</a><a href="#h0-18" id="h0-18" class="d">-local lkv = string.match(luakit.version, &quot;^(%d+.%d+.%d+)&quot;)
+</a><a href="#h0-19" id="h0-19" class="d">-globals.useragent = string.format(&quot;Mozilla/5.0 (%s) AppleWebKit/%s+ (KHTML, like Gecko) Chrome/24 WebKitGTK+/%s luakit%s&quot;, -- Notice the Chrome hack
+</a><a href="#h0-20" id="h0-20" class="d">-    string.sub(arch, 1, -2), luakit.webkit_user_agent_version,
+</a><a href="#h0-21" id="h0-21" class="d">-    luakit.webkit_version, (lkv and (&quot;/&quot; .. lkv)) or &quot;&quot;)
+</a><a href="#h0-22" id="h0-22" class="d">-
+</a><a href="#h0-23" id="h0-23" class="d">--- Search common locations for a ca file which is used for ssl connection validation.
+</a><a href="#h0-24" id="h0-24" class="d">-local ca_files = {
+</a><a href="#h0-25" id="h0-25" class="d">-    -- $XDG_DATA_HOME/luakit/ca-certificates.crt
+</a><a href="#h0-26" id="h0-26" class="d">-    luakit.data_dir .. &quot;/ca-certificates.crt&quot;,
+</a><a href="#h0-27" id="h0-27" class="d">-    &quot;/etc/certs/ca-certificates.crt&quot;,
+</a><a href="#h0-28" id="h0-28" class="d">-    &quot;/etc/ssl/certs/ca-certificates.crt&quot;,
+</a><a href="#h0-29" id="h0-29" class="d">-}
+</a><a href="#h0-30" id="h0-30" class="d">--- Use the first ca-file found
+</a><a href="#h0-31" id="h0-31" class="d">-for _, ca_file in ipairs(ca_files) do
+</a><a href="#h0-32" id="h0-32" class="d">-    if os.exists(ca_file) then
+</a><a href="#h0-33" id="h0-33" class="d">-        soup.ssl_ca_file = ca_file
+</a><a href="#h0-34" id="h0-34" class="d">-        break
+</a><a href="#h0-35" id="h0-35" class="d">-    end
+</a><a href="#h0-36" id="h0-36" class="d">-end
+</a><a href="#h0-37" id="h0-37" class="d">-
+</a><a href="#h0-38" id="h0-38" class="d">--- Change to stop navigation sites with invalid or expired ssl certificates
+</a><a href="#h0-39" id="h0-39" class="d">-soup.ssl_strict = false
+</a><a href="#h0-40" id="h0-40" class="d">-
+</a><a href="#h0-41" id="h0-41" class="d">--- Set cookie acceptance policy
+</a><a href="#h0-42" id="h0-42" class="d">-cookie_policy = { always = 0, never = 1, no_third_party = 2 }
+</a><a href="#h0-43" id="h0-43" class="d">-soup.accept_policy = cookie_policy.always
+</a><a href="#h0-44" id="h0-44" class="d">-
+</a><a href="#h0-45" id="h0-45" class="d">--- List of search engines. Each item must contain a single %s which is
+</a><a href="#h0-46" id="h0-46" class="d">--- replaced by URI encoded search terms. All other occurances of the percent
+</a><a href="#h0-47" id="h0-47" class="d">--- character (%) may need to be escaped by placing another % before or after
+</a><a href="#h0-48" id="h0-48" class="d">--- it to avoid collisions with lua&apos;s string.format characters.
+</a><a href="#h0-49" id="h0-49" class="d">--- See: http://www.lua.org/manual/5.1/manual.html#pdf-string.format
+</a><a href="#h0-50" id="h0-50" class="d">-search_engines = {
+</a><a href="#h0-51" id="h0-51" class="d">-    duckduckgo  = &quot;https://duckduckgo.com/?q=%s&quot;,
+</a><a href="#h0-52" id="h0-52" class="d">-    github      = &quot;https://github.com/search?q=%s&quot;,
+</a><a href="#h0-53" id="h0-53" class="d">-    google      = &quot;https://google.com/search?q=%s&quot;,
+</a><a href="#h0-54" id="h0-54" class="d">-    imdb        = &quot;http://www.imdb.com/find?s=all&amp;q=%s&quot;,
+</a><a href="#h0-55" id="h0-55" class="d">-    wikipedia   = &quot;https://en.wikipedia.org/wiki/Special:Search?search=%s&quot;,
+</a><a href="#h0-56" id="h0-56" class="d">-}
+</a><a href="#h0-57" id="h0-57" class="d">-
+</a><a href="#h0-58" id="h0-58" class="d">--- Set google as fallback search engine
+</a><a href="#h0-59" id="h0-59" class="d">-search_engines.default = search_engines.duckduckgo
+</a><a href="#h0-60" id="h0-60" class="d">--- Use this instead to disable auto-searching
+</a><a href="#h0-61" id="h0-61" class="d">---search_engines.default = &quot;%s&quot;
+</a><a href="#h0-62" id="h0-62" class="d">-
+</a><a href="#h0-63" id="h0-63" class="d">--- Per-domain webview properties
+</a><a href="#h0-64" id="h0-64" class="d">--- See http://webkitgtk.org/reference/webkitgtk/stable/WebKitWebSettings.html
+</a><a href="#h0-65" id="h0-65" class="d">-domain_props = { --[[
+</a><a href="#h0-66" id="h0-66" class="d">-    [&quot;all&quot;] = {
+</a><a href="#h0-67" id="h0-67" class="d">-        enable_scripts          = false,
+</a><a href="#h0-68" id="h0-68" class="d">-        enable_plugins          = false,
+</a><a href="#h0-69" id="h0-69" class="d">-        enable_private_browsing = false,
+</a><a href="#h0-70" id="h0-70" class="d">-        user_stylesheet_uri     = &quot;&quot;,
+</a><a href="#h0-71" id="h0-71" class="d">-    },
+</a><a href="#h0-72" id="h0-72" class="d">-    [&quot;youtube.com&quot;] = {
+</a><a href="#h0-73" id="h0-73" class="d">-        enable_scripts = true,
+</a><a href="#h0-74" id="h0-74" class="d">-        enable_plugins = true,
+</a><a href="#h0-75" id="h0-75" class="d">-    },
+</a><a href="#h0-76" id="h0-76" class="d">-    [&quot;bbs.archlinux.org&quot;] = {
+</a><a href="#h0-77" id="h0-77" class="d">-        user_stylesheet_uri     = &quot;file://&quot; .. luakit.data_dir .. &quot;/styles/dark.css&quot;,
+</a><a href="#h0-78" id="h0-78" class="d">-        enable_private_browsing = true,
+</a><a href="#h0-79" id="h0-79" class="d">-    }, ]]
+</a><a href="#h0-80" id="h0-80" class="d">-}
+</a><a href="#h0-81" id="h0-81" class="d">-
+</a><a href="#h0-82" id="h0-82" class="d">--- vim: et:sw=4:ts=8:sts=4:tw=80
+</a><b>diff --git a/<a href="../file/home/.config/luakit/luakit-adblock.html">home/.config/luakit/luakit-adblock</a> b/<a href="../file/home/.config/luakit/luakit-adblock.html">home/.config/luakit/luakit-adblock</a></b>
+<a href="#h0" id="h0" class="h">@@ -1 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-Subproject commit 865340c70921cccb1f3c490c2d4dd09bef269f16
+</a><b>diff --git a/<a href="../file/home/.config/luakit/rc.lua.html">home/.config/luakit/rc.lua</a> b/<a href="../file/home/.config/luakit/rc.lua.html">home/.config/luakit/rc.lua</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,184 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">------------------------------------------------------------------------
+</a><a href="#h0-1" id="h0-1" class="d">--- luakit configuration file, more information at http://luakit.org/ --
+</a><a href="#h0-2" id="h0-2" class="d">------------------------------------------------------------------------
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-require &quot;lfs&quot;
+</a><a href="#h0-5" id="h0-5" class="d">-
+</a><a href="#h0-6" id="h0-6" class="d">-if unique then
+</a><a href="#h0-7" id="h0-7" class="d">-    unique.new(&quot;org.luakit&quot;)
+</a><a href="#h0-8" id="h0-8" class="d">-    -- Check for a running luakit instance
+</a><a href="#h0-9" id="h0-9" class="d">-    if unique.is_running() then
+</a><a href="#h0-10" id="h0-10" class="d">-        if uris[1] then
+</a><a href="#h0-11" id="h0-11" class="d">-            for _, uri in ipairs(uris) do
+</a><a href="#h0-12" id="h0-12" class="d">-                if lfs.attributes(uri) then uri = os.abspath(uri) end
+</a><a href="#h0-13" id="h0-13" class="d">-                unique.send_message(&quot;tabopen &quot; .. uri)
+</a><a href="#h0-14" id="h0-14" class="d">-            end
+</a><a href="#h0-15" id="h0-15" class="d">-        else
+</a><a href="#h0-16" id="h0-16" class="d">-            unique.send_message(&quot;winopen&quot;)
+</a><a href="#h0-17" id="h0-17" class="d">-        end
+</a><a href="#h0-18" id="h0-18" class="d">-        luakit.quit()
+</a><a href="#h0-19" id="h0-19" class="d">-    end
+</a><a href="#h0-20" id="h0-20" class="d">-end
+</a><a href="#h0-21" id="h0-21" class="d">-
+</a><a href="#h0-22" id="h0-22" class="d">--- Load library of useful functions for luakit
+</a><a href="#h0-23" id="h0-23" class="d">-require &quot;lousy&quot;
+</a><a href="#h0-24" id="h0-24" class="d">-
+</a><a href="#h0-25" id="h0-25" class="d">--- Small util functions to print output (info prints only when luakit.verbose is true)
+</a><a href="#h0-26" id="h0-26" class="d">-function warn(...) io.stderr:write(string.format(...) .. &quot;\n&quot;) end
+</a><a href="#h0-27" id="h0-27" class="d">-function info(...) if luakit.verbose then io.stdout:write(string.format(...) .. &quot;\n&quot;) end end
+</a><a href="#h0-28" id="h0-28" class="d">-
+</a><a href="#h0-29" id="h0-29" class="d">--- Load users global config
+</a><a href="#h0-30" id="h0-30" class="d">--- (&quot;$XDG_CONFIG_HOME/luakit/globals.lua&quot; or &quot;/etc/xdg/luakit/globals.lua&quot;)
+</a><a href="#h0-31" id="h0-31" class="d">-require &quot;globals&quot;
+</a><a href="#h0-32" id="h0-32" class="d">-
+</a><a href="#h0-33" id="h0-33" class="d">--- Load users theme
+</a><a href="#h0-34" id="h0-34" class="d">--- (&quot;$XDG_CONFIG_HOME/luakit/theme.lua&quot; or &quot;/etc/xdg/luakit/theme.lua&quot;)
+</a><a href="#h0-35" id="h0-35" class="d">-lousy.theme.init(lousy.util.find_config(&quot;theme.lua&quot;))
+</a><a href="#h0-36" id="h0-36" class="d">-theme = assert(lousy.theme.get(), &quot;failed to load theme&quot;)
+</a><a href="#h0-37" id="h0-37" class="d">-
+</a><a href="#h0-38" id="h0-38" class="d">--- Load users window class
+</a><a href="#h0-39" id="h0-39" class="d">--- (&quot;$XDG_CONFIG_HOME/luakit/window.lua&quot; or &quot;/etc/xdg/luakit/window.lua&quot;)
+</a><a href="#h0-40" id="h0-40" class="d">-require &quot;window&quot;
+</a><a href="#h0-41" id="h0-41" class="d">-
+</a><a href="#h0-42" id="h0-42" class="d">--- Load users webview class
+</a><a href="#h0-43" id="h0-43" class="d">--- (&quot;$XDG_CONFIG_HOME/luakit/webview.lua&quot; or &quot;/etc/xdg/luakit/webview.lua&quot;)
+</a><a href="#h0-44" id="h0-44" class="d">-require &quot;webview&quot;
+</a><a href="#h0-45" id="h0-45" class="d">-
+</a><a href="#h0-46" id="h0-46" class="d">--- Load users mode configuration
+</a><a href="#h0-47" id="h0-47" class="d">--- (&quot;$XDG_CONFIG_HOME/luakit/modes.lua&quot; or &quot;/etc/xdg/luakit/modes.lua&quot;)
+</a><a href="#h0-48" id="h0-48" class="d">-require &quot;modes&quot;
+</a><a href="#h0-49" id="h0-49" class="d">-
+</a><a href="#h0-50" id="h0-50" class="d">--- Load users keybindings
+</a><a href="#h0-51" id="h0-51" class="d">--- (&quot;$XDG_CONFIG_HOME/luakit/binds.lua&quot; or &quot;/etc/xdg/luakit/binds.lua&quot;)
+</a><a href="#h0-52" id="h0-52" class="d">-require &quot;binds&quot;
+</a><a href="#h0-53" id="h0-53" class="d">-
+</a><a href="#h0-54" id="h0-54" class="d">-----------------------------------
+</a><a href="#h0-55" id="h0-55" class="d">--- Optional user script loading --
+</a><a href="#h0-56" id="h0-56" class="d">-----------------------------------
+</a><a href="#h0-57" id="h0-57" class="d">-
+</a><a href="#h0-58" id="h0-58" class="d">-require &quot;webinspector&quot;
+</a><a href="#h0-59" id="h0-59" class="d">-
+</a><a href="#h0-60" id="h0-60" class="d">--- Add sqlite3 cookiejar
+</a><a href="#h0-61" id="h0-61" class="d">-require &quot;cookies&quot;
+</a><a href="#h0-62" id="h0-62" class="d">-
+</a><a href="#h0-63" id="h0-63" class="d">--- Cookie blocking by domain (extends cookies module)
+</a><a href="#h0-64" id="h0-64" class="d">--- Add domains to the whitelist at &quot;$XDG_CONFIG_HOME/luakit/cookie.whitelist&quot;
+</a><a href="#h0-65" id="h0-65" class="d">--- and blacklist at &quot;$XDG_CONFIG_HOME/luakit/cookie.blacklist&quot;.
+</a><a href="#h0-66" id="h0-66" class="d">--- Each domain must be on it&apos;s own line and you may use &quot;*&quot; as a
+</a><a href="#h0-67" id="h0-67" class="d">--- wildcard character (I.e. &quot;*google.com&quot;)
+</a><a href="#h0-68" id="h0-68" class="d">---require &quot;cookie_blocking&quot;
+</a><a href="#h0-69" id="h0-69" class="d">-
+</a><a href="#h0-70" id="h0-70" class="d">--- Block all cookies by default (unless whitelisted)
+</a><a href="#h0-71" id="h0-71" class="d">---cookies.default_allow = false
+</a><a href="#h0-72" id="h0-72" class="d">-
+</a><a href="#h0-73" id="h0-73" class="d">--- Add uzbl-like form filling
+</a><a href="#h0-74" id="h0-74" class="d">-require &quot;formfiller&quot;
+</a><a href="#h0-75" id="h0-75" class="d">-
+</a><a href="#h0-76" id="h0-76" class="d">--- Add proxy support &amp; manager
+</a><a href="#h0-77" id="h0-77" class="d">-require &quot;proxy&quot;
+</a><a href="#h0-78" id="h0-78" class="d">-
+</a><a href="#h0-79" id="h0-79" class="d">--- Add quickmarks support &amp; manager
+</a><a href="#h0-80" id="h0-80" class="d">-require &quot;quickmarks&quot;
+</a><a href="#h0-81" id="h0-81" class="d">-
+</a><a href="#h0-82" id="h0-82" class="d">--- Add session saving/loading support
+</a><a href="#h0-83" id="h0-83" class="d">-require &quot;session&quot;
+</a><a href="#h0-84" id="h0-84" class="d">-
+</a><a href="#h0-85" id="h0-85" class="d">--- Add command to list closed tabs &amp; bind to open closed tabs
+</a><a href="#h0-86" id="h0-86" class="d">-require &quot;undoclose&quot;
+</a><a href="#h0-87" id="h0-87" class="d">-
+</a><a href="#h0-88" id="h0-88" class="d">--- Add command to list tab history items
+</a><a href="#h0-89" id="h0-89" class="d">-require &quot;tabhistory&quot;
+</a><a href="#h0-90" id="h0-90" class="d">-
+</a><a href="#h0-91" id="h0-91" class="d">--- Add greasemonkey-like javascript userscript support
+</a><a href="#h0-92" id="h0-92" class="d">-require &quot;userscripts&quot;
+</a><a href="#h0-93" id="h0-93" class="d">-
+</a><a href="#h0-94" id="h0-94" class="d">--- Add bookmarks support
+</a><a href="#h0-95" id="h0-95" class="d">-require &quot;bookmarks&quot;
+</a><a href="#h0-96" id="h0-96" class="d">-require &quot;bookmarks_chrome&quot;
+</a><a href="#h0-97" id="h0-97" class="d">-
+</a><a href="#h0-98" id="h0-98" class="d">--- Add download support
+</a><a href="#h0-99" id="h0-99" class="d">-require &quot;downloads&quot;
+</a><a href="#h0-100" id="h0-100" class="d">-require &quot;downloads_chrome&quot;
+</a><a href="#h0-101" id="h0-101" class="d">-
+</a><a href="#h0-102" id="h0-102" class="d">--- Example using xdg-open for opening downloads / showing download folders
+</a><a href="#h0-103" id="h0-103" class="d">-downloads.add_signal(&quot;open-file&quot;, function (file, mime)
+</a><a href="#h0-104" id="h0-104" class="d">-    luakit.spawn(string.format(&quot;xdg-open %q&quot;, file))
+</a><a href="#h0-105" id="h0-105" class="d">-    return true
+</a><a href="#h0-106" id="h0-106" class="d">-end)
+</a><a href="#h0-107" id="h0-107" class="d">-
+</a><a href="#h0-108" id="h0-108" class="d">--- Add vimperator-like link hinting &amp; following
+</a><a href="#h0-109" id="h0-109" class="d">-require &quot;follow&quot;
+</a><a href="#h0-110" id="h0-110" class="d">-
+</a><a href="#h0-111" id="h0-111" class="d">--- Use a custom charater set for hint labels
+</a><a href="#h0-112" id="h0-112" class="d">---local s = follow.label_styles
+</a><a href="#h0-113" id="h0-113" class="d">---follow.label_maker = s.sort(s.reverse(s.charset(&quot;asdfqwerzxcv&quot;)))
+</a><a href="#h0-114" id="h0-114" class="d">-
+</a><a href="#h0-115" id="h0-115" class="d">--- Match only hint labels
+</a><a href="#h0-116" id="h0-116" class="d">---follow.pattern_maker = follow.pattern_styles.match_label
+</a><a href="#h0-117" id="h0-117" class="d">-
+</a><a href="#h0-118" id="h0-118" class="d">--- Add command history
+</a><a href="#h0-119" id="h0-119" class="d">-require &quot;cmdhist&quot;
+</a><a href="#h0-120" id="h0-120" class="d">-
+</a><a href="#h0-121" id="h0-121" class="d">--- Add search mode &amp; binds
+</a><a href="#h0-122" id="h0-122" class="d">-require &quot;search&quot;
+</a><a href="#h0-123" id="h0-123" class="d">-
+</a><a href="#h0-124" id="h0-124" class="d">--- Add ordering of new tabs
+</a><a href="#h0-125" id="h0-125" class="d">-require &quot;taborder&quot;
+</a><a href="#h0-126" id="h0-126" class="d">-
+</a><a href="#h0-127" id="h0-127" class="d">--- Save web history
+</a><a href="#h0-128" id="h0-128" class="d">-require &quot;history&quot;
+</a><a href="#h0-129" id="h0-129" class="d">-require &quot;history_chrome&quot;
+</a><a href="#h0-130" id="h0-130" class="d">-
+</a><a href="#h0-131" id="h0-131" class="d">-require &quot;introspector&quot;
+</a><a href="#h0-132" id="h0-132" class="d">-
+</a><a href="#h0-133" id="h0-133" class="d">--- Add command completion
+</a><a href="#h0-134" id="h0-134" class="d">-require &quot;completion&quot;
+</a><a href="#h0-135" id="h0-135" class="d">-
+</a><a href="#h0-136" id="h0-136" class="d">--- NoScript plugin, toggle scripts and or plugins on a per-domain basis.
+</a><a href="#h0-137" id="h0-137" class="d">--- `,ts` to toggle scripts, `,tp` to toggle plugins, `,tr` to reset.
+</a><a href="#h0-138" id="h0-138" class="d">--- Remove all &quot;enable_scripts&quot; &amp; &quot;enable_plugins&quot; lines from your
+</a><a href="#h0-139" id="h0-139" class="d">--- domain_props table (in config/globals.lua) as this module will conflict.
+</a><a href="#h0-140" id="h0-140" class="d">---require &quot;noscript&quot;
+</a><a href="#h0-141" id="h0-141" class="d">-
+</a><a href="#h0-142" id="h0-142" class="d">-require &quot;./luakit-adblock/adblock&quot;
+</a><a href="#h0-143" id="h0-143" class="d">-require &quot;./luakit-adblock/adblock_chrome&quot;
+</a><a href="#h0-144" id="h0-144" class="d">-
+</a><a href="#h0-145" id="h0-145" class="d">-require &quot;follow_selected&quot;
+</a><a href="#h0-146" id="h0-146" class="d">-require &quot;go_input&quot;
+</a><a href="#h0-147" id="h0-147" class="d">-require &quot;go_next_prev&quot;
+</a><a href="#h0-148" id="h0-148" class="d">-require &quot;go_up&quot;
+</a><a href="#h0-149" id="h0-149" class="d">-
+</a><a href="#h0-150" id="h0-150" class="d">------------------------------
+</a><a href="#h0-151" id="h0-151" class="d">--- End user script loading --
+</a><a href="#h0-152" id="h0-152" class="d">------------------------------
+</a><a href="#h0-153" id="h0-153" class="d">-
+</a><a href="#h0-154" id="h0-154" class="d">--- Restore last saved session
+</a><a href="#h0-155" id="h0-155" class="d">-local w = (session and session.restore())
+</a><a href="#h0-156" id="h0-156" class="d">-if w then
+</a><a href="#h0-157" id="h0-157" class="d">-    for i, uri in ipairs(uris) do
+</a><a href="#h0-158" id="h0-158" class="d">-        w:new_tab(uri, i == 1)
+</a><a href="#h0-159" id="h0-159" class="d">-    end
+</a><a href="#h0-160" id="h0-160" class="d">-else
+</a><a href="#h0-161" id="h0-161" class="d">-    -- Or open new window
+</a><a href="#h0-162" id="h0-162" class="d">-    window.new(uris)
+</a><a href="#h0-163" id="h0-163" class="d">-end
+</a><a href="#h0-164" id="h0-164" class="d">-
+</a><a href="#h0-165" id="h0-165" class="d">--------------------------------------------
+</a><a href="#h0-166" id="h0-166" class="d">--- Open URIs from other luakit instances --
+</a><a href="#h0-167" id="h0-167" class="d">--------------------------------------------
+</a><a href="#h0-168" id="h0-168" class="d">-
+</a><a href="#h0-169" id="h0-169" class="d">-if unique then
+</a><a href="#h0-170" id="h0-170" class="d">-    unique.add_signal(&quot;message&quot;, function (msg, screen)
+</a><a href="#h0-171" id="h0-171" class="d">-        local cmd, arg = string.match(msg, &quot;^(%S+)%s*(.*)&quot;)
+</a><a href="#h0-172" id="h0-172" class="d">-        local w = lousy.util.table.values(window.bywidget)[1]
+</a><a href="#h0-173" id="h0-173" class="d">-        if cmd == &quot;tabopen&quot; then
+</a><a href="#h0-174" id="h0-174" class="d">-            w:new_tab(arg)
+</a><a href="#h0-175" id="h0-175" class="d">-        elseif cmd == &quot;winopen&quot; then
+</a><a href="#h0-176" id="h0-176" class="d">-            w = window.new((arg ~= &quot;&quot;) and { arg } or {})
+</a><a href="#h0-177" id="h0-177" class="d">-        end
+</a><a href="#h0-178" id="h0-178" class="d">-        w.win.screen = screen
+</a><a href="#h0-179" id="h0-179" class="d">-        w.win.urgency_hint = true
+</a><a href="#h0-180" id="h0-180" class="d">-    end)
+</a><a href="#h0-181" id="h0-181" class="d">-end
+</a><a href="#h0-182" id="h0-182" class="d">-
+</a><a href="#h0-183" id="h0-183" class="d">--- vim: et:sw=4:ts=8:sts=4:tw=80
+</a><b>diff --git a/<a href="../file/home/.config/luakit/theme.lua.html">home/.config/luakit/theme.lua</a> b/<a href="../file/home/.config/luakit/theme.lua.html">home/.config/luakit/theme.lua</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,69 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">---------------------------
+</a><a href="#h0-1" id="h0-1" class="d">--- Default luakit theme --
+</a><a href="#h0-2" id="h0-2" class="d">---------------------------
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-local theme = {}
+</a><a href="#h0-5" id="h0-5" class="d">-
+</a><a href="#h0-6" id="h0-6" class="d">--- Default settings
+</a><a href="#h0-7" id="h0-7" class="d">-theme.font = &quot;monospace normal 9&quot;
+</a><a href="#h0-8" id="h0-8" class="d">-theme.fg   = &quot;#fff&quot;
+</a><a href="#h0-9" id="h0-9" class="d">-theme.bg   = &quot;#000&quot;
+</a><a href="#h0-10" id="h0-10" class="d">-
+</a><a href="#h0-11" id="h0-11" class="d">--- Genaral colours
+</a><a href="#h0-12" id="h0-12" class="d">-theme.success_fg = &quot;#0f0&quot;
+</a><a href="#h0-13" id="h0-13" class="d">-theme.loaded_fg  = &quot;#33AADD&quot;
+</a><a href="#h0-14" id="h0-14" class="d">-theme.error_fg = &quot;#FFF&quot;
+</a><a href="#h0-15" id="h0-15" class="d">-theme.error_bg = &quot;#F00&quot;
+</a><a href="#h0-16" id="h0-16" class="d">-
+</a><a href="#h0-17" id="h0-17" class="d">--- Warning colours
+</a><a href="#h0-18" id="h0-18" class="d">-theme.warning_fg = &quot;#F00&quot;
+</a><a href="#h0-19" id="h0-19" class="d">-theme.warning_bg = &quot;#FFF&quot;
+</a><a href="#h0-20" id="h0-20" class="d">-
+</a><a href="#h0-21" id="h0-21" class="d">--- Notification colours
+</a><a href="#h0-22" id="h0-22" class="d">-theme.notif_fg = &quot;#444&quot;
+</a><a href="#h0-23" id="h0-23" class="d">-theme.notif_bg = &quot;#FFF&quot;
+</a><a href="#h0-24" id="h0-24" class="d">-
+</a><a href="#h0-25" id="h0-25" class="d">--- Menu colours
+</a><a href="#h0-26" id="h0-26" class="d">-theme.menu_fg                   = &quot;#000&quot;
+</a><a href="#h0-27" id="h0-27" class="d">-theme.menu_bg                   = &quot;#fff&quot;
+</a><a href="#h0-28" id="h0-28" class="d">-theme.menu_selected_fg          = &quot;#000&quot;
+</a><a href="#h0-29" id="h0-29" class="d">-theme.menu_selected_bg          = &quot;#FF0&quot;
+</a><a href="#h0-30" id="h0-30" class="d">-theme.menu_title_bg             = &quot;#fff&quot;
+</a><a href="#h0-31" id="h0-31" class="d">-theme.menu_primary_title_fg     = &quot;#f00&quot;
+</a><a href="#h0-32" id="h0-32" class="d">-theme.menu_secondary_title_fg   = &quot;#666&quot;
+</a><a href="#h0-33" id="h0-33" class="d">-
+</a><a href="#h0-34" id="h0-34" class="d">--- Proxy manager
+</a><a href="#h0-35" id="h0-35" class="d">-theme.proxy_active_menu_fg      = &apos;#000&apos;
+</a><a href="#h0-36" id="h0-36" class="d">-theme.proxy_active_menu_bg      = &apos;#FFF&apos;
+</a><a href="#h0-37" id="h0-37" class="d">-theme.proxy_inactive_menu_fg    = &apos;#888&apos;
+</a><a href="#h0-38" id="h0-38" class="d">-theme.proxy_inactive_menu_bg    = &apos;#FFF&apos;
+</a><a href="#h0-39" id="h0-39" class="d">-
+</a><a href="#h0-40" id="h0-40" class="d">--- Statusbar specific
+</a><a href="#h0-41" id="h0-41" class="d">-theme.sbar_fg         = &quot;#fff&quot;
+</a><a href="#h0-42" id="h0-42" class="d">-theme.sbar_bg         = &quot;#000&quot;
+</a><a href="#h0-43" id="h0-43" class="d">-
+</a><a href="#h0-44" id="h0-44" class="d">--- Downloadbar specific
+</a><a href="#h0-45" id="h0-45" class="d">-theme.dbar_fg         = &quot;#fff&quot;
+</a><a href="#h0-46" id="h0-46" class="d">-theme.dbar_bg         = &quot;#000&quot;
+</a><a href="#h0-47" id="h0-47" class="d">-theme.dbar_error_fg   = &quot;#F00&quot;
+</a><a href="#h0-48" id="h0-48" class="d">-
+</a><a href="#h0-49" id="h0-49" class="d">--- Input bar specific
+</a><a href="#h0-50" id="h0-50" class="d">-theme.ibar_fg           = &quot;#000&quot;
+</a><a href="#h0-51" id="h0-51" class="d">-theme.ibar_bg           = &quot;#fff&quot;
+</a><a href="#h0-52" id="h0-52" class="d">-
+</a><a href="#h0-53" id="h0-53" class="d">--- Tab label
+</a><a href="#h0-54" id="h0-54" class="d">-theme.tab_fg            = &quot;#888&quot;
+</a><a href="#h0-55" id="h0-55" class="d">-theme.tab_bg            = &quot;#222&quot;
+</a><a href="#h0-56" id="h0-56" class="d">-theme.tab_ntheme        = &quot;#ddd&quot;
+</a><a href="#h0-57" id="h0-57" class="d">-theme.selected_fg       = &quot;#fff&quot;
+</a><a href="#h0-58" id="h0-58" class="d">-theme.selected_bg       = &quot;#000&quot;
+</a><a href="#h0-59" id="h0-59" class="d">-theme.selected_ntheme   = &quot;#ddd&quot;
+</a><a href="#h0-60" id="h0-60" class="d">-theme.loading_fg        = &quot;#33AADD&quot;
+</a><a href="#h0-61" id="h0-61" class="d">-theme.loading_bg        = &quot;#000&quot;
+</a><a href="#h0-62" id="h0-62" class="d">-
+</a><a href="#h0-63" id="h0-63" class="d">--- Trusted/untrusted ssl colours
+</a><a href="#h0-64" id="h0-64" class="d">-theme.trust_fg          = &quot;#0F0&quot;
+</a><a href="#h0-65" id="h0-65" class="d">-theme.notrust_fg        = &quot;#F00&quot;
+</a><a href="#h0-66" id="h0-66" class="d">-
+</a><a href="#h0-67" id="h0-67" class="d">-return theme
+</a><a href="#h0-68" id="h0-68" class="d">--- vim: et:sw=4:ts=8:sts=4:tw=80
+</a><b>diff --git a/<a href="../file/home/.config/sxhkd/sxhkdrc.html">home/.config/sxhkd/sxhkdrc</a> b/<a href="../file/home/.config/sxhkd/sxhkdrc.html">home/.config/sxhkd/sxhkdrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -140,4 +140,4 @@ super + Escape
+</a> 
+ # Shortcuts
+ super + shift + f
+<a href="#h0-3" id="h0-3" class="d">-  firefox &amp;
+</a><a href="#h0-4" id="h0-4" class="i">+  luakit &amp;
+</a></pre>
+</div>
+</body>
+</html>

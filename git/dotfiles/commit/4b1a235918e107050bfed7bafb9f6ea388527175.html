@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Forgot the changes... - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/4b1a235918e107050bfed7bafb9f6ea388527175.html">4b1a235918e107050bfed7bafb9f6ea388527175</a>
+<b>parent</b> <a href="../commit/4167ecc55626a05db8981c4722d3d6b42f5fe045.html">4167ecc55626a05db8981c4722d3d6b42f5fe045</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Fri Dec 25 21:52:22 2015
+
+Forgot the changes...
+
+<b>Diffstat:</b>
+ home/.config/bspwm/bspwmrc  | 11 ++-------
+ home/.config/nvim/init.vim  | 55 ++++++++++++++++++++++++++++++++++++++++++++++-
+ home/.config/sxhkd/sxhkdrc  |  6 ++---
+ home/.scripts/panel         | 19 ++++++++++++++--
+ home/.scripts/panel_bar     | 16 ++++++-------
+ home/.scripts/panel_icons   |  6 +++++-
+ home/.zprezto/runcoms/zshrc |  4 ++-
+ 7 files changed, 95 insertions(+), 22 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.config/bspwm/bspwmrc.html">home/.config/bspwm/bspwmrc</a> b/<a href="../file/home/.config/bspwm/bspwmrc.html">home/.config/bspwm/bspwmrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -9,24 +9,19 @@ bspc config split_ratio         0.50
+</a> bspc config borderless_monocle  false
+ bspc config gapless_monocle     false
+ bspc config focus_by_distance   true
+<a href="#h0-3" id="h0-3" class="d">-bspc config focus_follows_pointer true
+</a><a href="#h0-4" id="h0-4" class="i">+bspc config pointer_follows_focus true
+</a><a href="#h0-5" id="h0-5" class="i">+bspc config pointer_follows_monitor true
+</a> 
+ bspc config normal_border_color &quot;#2b303b&quot;
+ bspc config focused_border_color &quot;#96b5b4&quot;
+ 
+<a href="#h0-10" id="h0-10" class="d">-if [ $(bspc query -M | wc -l) -eq w ]; then
+</a><a href="#h0-11" id="h0-11" class="i">+if [ $(bspc query -M | wc -l) -eq 2 ]; then
+</a>   bspc monitor LVDS-1 -d 6 7 8 9 10
+   bspc monitor DP-3 -d 1 2 3 4 5
+ else
+   bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+ fi
+ 
+<a href="#h0-18" id="h0-18" class="d">-bspc rule -a Gimp desktop=^8 state=floating follow=on
+</a><a href="#h0-19" id="h0-19" class="d">-bspc rule -a Chromium desktop=^2
+</a><a href="#h0-20" id="h0-20" class="d">-bspc rule -a mplayer2 state=floating
+</a><a href="#h0-21" id="h0-21" class="d">-bspc rule -a Kupfer.py focus=on
+</a><a href="#h0-22" id="h0-22" class="d">-bspc rule -a Screenkey manage=off
+</a><a href="#h0-23" id="h0-23" class="d">-
+</a> panel &amp;
+ setwall &amp;
+ xsetroot -cursor_name left_ptr &amp;
+<b>diff --git a/<a href="../file/home/.config/nvim/init.vim.html">home/.config/nvim/init.vim</a> b/<a href="../file/home/.config/nvim/init.vim.html">home/.config/nvim/init.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,55 @@
+</a><a href="#h0-0" id="h0-0" class="i">+set nocompatible              &quot; be iMproved, required
+</a><a href="#h0-1" id="h0-1" class="i">+filetype off                  &quot; required
+</a><a href="#h0-2" id="h0-2" class="i">+
+</a><a href="#h0-3" id="h0-3" class="i">+&quot; set the runtime path to include Vundle and initialize
+</a><a href="#h0-4" id="h0-4" class="i">+set rtp+=~/.vim/bundle/Vundle.vim
+</a><a href="#h0-5" id="h0-5" class="i">+call vundle#begin()
+</a><a href="#h0-6" id="h0-6" class="i">+  &quot; alternatively, pass a path where Vundle should install plugins
+</a><a href="#h0-7" id="h0-7" class="i">+  &quot;call vundle#begin(&apos;~/some/path/here&apos;)
+</a><a href="#h0-8" id="h0-8" class="i">+
+</a><a href="#h0-9" id="h0-9" class="i">+  &quot; let Vundle manage Vundle, required
+</a><a href="#h0-10" id="h0-10" class="i">+  Plugin &apos;VundleVim/Vundle.vim&apos;
+</a><a href="#h0-11" id="h0-11" class="i">+
+</a><a href="#h0-12" id="h0-12" class="i">+  &quot; The following are examples of different formats supported.
+</a><a href="#h0-13" id="h0-13" class="i">+  &quot; Keep Plugin commands between vundle#begin/end.
+</a><a href="#h0-14" id="h0-14" class="i">+  &quot; plugin on GitHub repo
+</a><a href="#h0-15" id="h0-15" class="i">+  Plugin &apos;tpope/vim-fugitive&apos;
+</a><a href="#h0-16" id="h0-16" class="i">+
+</a><a href="#h0-17" id="h0-17" class="i">+  &quot; Set colorscheme
+</a><a href="#h0-18" id="h0-18" class="i">+  Plugin &apos;chriskempson/base16-vim&apos;
+</a><a href="#h0-19" id="h0-19" class="i">+
+</a><a href="#h0-20" id="h0-20" class="i">+  Plugin &apos;scrooloose/nerdtree&apos;
+</a><a href="#h0-21" id="h0-21" class="i">+
+</a><a href="#h0-22" id="h0-22" class="i">+  Plugin &apos;ntpeters/vim-better-whitespace&apos;
+</a><a href="#h0-23" id="h0-23" class="i">+
+</a><a href="#h0-24" id="h0-24" class="i">+  Plugin &apos;Shougo/unite.vim&apos;
+</a><a href="#h0-25" id="h0-25" class="i">+  Plugin &apos;bling/vim-airline&apos;
+</a><a href="#h0-26" id="h0-26" class="i">+
+</a><a href="#h0-27" id="h0-27" class="i">+  &quot; All of your Plugins must be added before the following line
+</a><a href="#h0-28" id="h0-28" class="i">+  call vundle#end()            &quot; required
+</a><a href="#h0-29" id="h0-29" class="i">+  filetype plugin indent on    &quot; required
+</a><a href="#h0-30" id="h0-30" class="i">+  &quot; To ignore plugin indent changes, instead use:
+</a><a href="#h0-31" id="h0-31" class="i">+  &quot;filetype plugin on
+</a><a href="#h0-32" id="h0-32" class="i">+  &quot;
+</a><a href="#h0-33" id="h0-33" class="i">+  &quot; Brief help
+</a><a href="#h0-34" id="h0-34" class="i">+  &quot; :PluginList       - lists configured plugins
+</a><a href="#h0-35" id="h0-35" class="i">+  &quot; :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+</a><a href="#h0-36" id="h0-36" class="i">+  &quot; :PluginSearch foo - searches for foo; append `!` to refresh local cache
+</a><a href="#h0-37" id="h0-37" class="i">+  &quot; :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+</a><a href="#h0-38" id="h0-38" class="i">+  &quot;
+</a><a href="#h0-39" id="h0-39" class="i">+  &quot; see :h vundle for more details or wiki for FAQ
+</a><a href="#h0-40" id="h0-40" class="i">+  &quot; Put your non-Plugin stuff after this line
+</a><a href="#h0-41" id="h0-41" class="i">+
+</a><a href="#h0-42" id="h0-42" class="i">+syntax enable
+</a><a href="#h0-43" id="h0-43" class="i">+set number
+</a><a href="#h0-44" id="h0-44" class="i">+set tabstop=2
+</a><a href="#h0-45" id="h0-45" class="i">+set expandtab
+</a><a href="#h0-46" id="h0-46" class="i">+set shiftwidth=2
+</a><a href="#h0-47" id="h0-47" class="i">+set smartindent
+</a><a href="#h0-48" id="h0-48" class="i">+set cindent
+</a><a href="#h0-49" id="h0-49" class="i">+set t_Co=256
+</a><a href="#h0-50" id="h0-50" class="i">+let base16colorspace=256
+</a><a href="#h0-51" id="h0-51" class="i">+colorscheme base16-ocean
+</a><a href="#h0-52" id="h0-52" class="i">+set background=dark
+</a><a href="#h0-53" id="h0-53" class="i">+let g:airline_powerline_fonts = 1
+</a><a href="#h0-54" id="h0-54" class="i">+set laststatus=2
+</a><b>diff --git a/<a href="../file/home/.config/sxhkd/sxhkdrc.html">home/.config/sxhkd/sxhkdrc</a> b/<a href="../file/home/.config/sxhkd/sxhkdrc.html">home/.config/sxhkd/sxhkdrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -7,13 +7,13 @@ super + shift + x
+</a>   lock.sh
+ 
+ XF86AudioRaiseVolume
+<a href="#h0-3" id="h0-3" class="d">-  amixer -D pulse sset Master 5%+ unmute
+</a><a href="#h0-4" id="h0-4" class="i">+  amixer sset Master 5%+ unmute
+</a> 
+ XF86AudioLowerVolume
+<a href="#h0-7" id="h0-7" class="d">-  amixer -D pulse sset Master 5%- unmute
+</a><a href="#h0-8" id="h0-8" class="i">+  amixer sset Master 5%- unmute
+</a> 
+ XF86AudioMute
+<a href="#h0-11" id="h0-11" class="d">-  amixer -D pulse sset Master toggle
+</a><a href="#h0-12" id="h0-12" class="i">+  amixer sset Master toggle
+</a> 
+ XF86MonBrightnessUp
+   xbacklight -inc 10%
+<b>diff --git a/<a href="../file/home/.scripts/panel.html">home/.scripts/panel</a> b/<a href="../file/home/.scripts/panel.html">home/.scripts/panel</a></b>
+<a href="#h0" id="h0" class="h">@@ -22,7 +22,20 @@ clock -sf &apos;S%a %d %B %H:%M&apos; &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a> # Volume
+ while true; do
+   # Not quering pulse because it uses a hell lot of CPU
+<a href="#h0-3" id="h0-3" class="d">-  echo -e &quot;V$(amixer get Master | grep &apos;Mono: Playback&apos; | grep -o &apos;...%&apos; | sed &apos;s/\[//&apos; | sed &apos;s/%//&apos; | sed &apos;s/ //&apos;)&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+  state=$(amixer get Master | grep &apos;Mono: Playback&apos; | grep &apos;\[on]&apos;)
+</a><a href="#h0-5" id="h0-5" class="i">+  volume=$(amixer get Master | grep &apos;Mono: Playback&apos; | grep -o &apos;...%&apos; | sed &apos;s/\[//&apos; | sed &apos;s/%//&apos; | sed &apos;s/ //&apos;)
+</a><a href="#h0-6" id="h0-6" class="i">+  if [ $state ]; then
+</a><a href="#h0-7" id="h0-7" class="i">+    if [ $volume -ge 50 ]; then
+</a><a href="#h0-8" id="h0-8" class="i">+      vicon=$ICON_VOLUME
+</a><a href="#h0-9" id="h0-9" class="i">+    elif [ $volume -gt 0 ] &amp;&amp; [ $volume -lt 50 ]; then
+</a><a href="#h0-10" id="h0-10" class="i">+      vicon=$ICON_VOLUME_LOW
+</a><a href="#h0-11" id="h0-11" class="i">+    else
+</a><a href="#h0-12" id="h0-12" class="i">+      vicon=$ICON_VOLUME_LOW
+</a><a href="#h0-13" id="h0-13" class="i">+    fi
+</a><a href="#h0-14" id="h0-14" class="i">+  else
+</a><a href="#h0-15" id="h0-15" class="i">+    vicon=$ICON_MUTE
+</a><a href="#h0-16" id="h0-16" class="i">+  fi
+</a><a href="#h0-17" id="h0-17" class="i">+  echo -e &quot;V$(icon $vicon) $volume&quot;
+</a>   sleep $REFRESH_VOLUME
+ done &gt; &quot;$PANEL_FIFO&quot; &amp;
+ 
+<a href="#h1" id="h1" class="h">@@ -44,8 +57,10 @@ while true; do
+</a>   sleep $REFRESH_MUSIC
+ done &gt; &quot;$PANEL_FIFO&quot; &amp;
+ 
+<a href="#h1-3" id="h1-3" class="i">+# Battery percentage and time until full charge/discharge
+</a> while true; do
+<a href="#h1-5" id="h1-5" class="d">-  ~/.scripts/i3blocks/battery | read batt_status
+</a><a href="#h1-6" id="h1-6" class="i">+  #~/.scripts/i3blocks/battery | read batt_status
+</a><a href="#h1-7" id="h1-7" class="i">+  batt_status=&quot;$(~/.scripts/battery $ICON_BATTERY_CHARGING $ICON_BATTERY_FULL $ICON_BATTERY_HALF $ICON_BATTERY_EMPTY 2)&quot;
+</a>   echo &quot;B$batt_status&quot;
+   sleep $REFRESH_BATTERY
+ done &gt; &quot;$PANEL_FIFO&quot; &amp;
+<b>diff --git a/<a href="../file/home/.scripts/panel_bar.html">home/.scripts/panel_bar</a> b/<a href="../file/home/.scripts/panel_bar.html">home/.scripts/panel_bar</a></b>
+<a href="#h0" id="h0" class="h">@@ -43,7 +43,7 @@ while read -r line ; do
+</a> 			while [ $# -gt 0 ] ; do
+ 				item=$1
+ 				name=${item#?}
+<a href="#h0-3" id="h0-3" class="d">-        name=&quot;%{A:bspc desktop -f $name:}${name}%{A}&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+        name=&quot;%{A:bspc desktop -f $name:} ${name} %{A}&quot;
+</a> 				case $item in
+ 					#M*)
+ 					#	# active monitor
+<a href="#h1" id="h1" class="h">@@ -59,27 +59,27 @@ while read -r line ; do
+</a> 					#	;;
+ 					O*)
+ 						# focused occupied desktop
+<a href="#h1-3" id="h1-3" class="d">-						wm_infos=&quot;$wm_infos%{+u} ${name} %{-u}&quot;
+</a><a href="#h1-4" id="h1-4" class="i">+						wm_infos=&quot;$wm_infos%{+u}${name}%{-u}&quot;
+</a> 						;;
+ 					F*)
+ 						# focused free desktop
+<a href="#h1-8" id="h1-8" class="d">-						wm_infos=&quot;$wm_infos%{+u} ${name} %{-u}&quot;
+</a><a href="#h1-9" id="h1-9" class="i">+						wm_infos=&quot;$wm_infos%{+u}${name}%{-u}&quot;
+</a> 						;;
+ 					U*)
+ 						# focused urgent desktop
+<a href="#h1-13" id="h1-13" class="d">-						wm_infos=&quot;$wm_infos%{B$COLOR_URGENT}%{+u} ${name} %{-u}%{B-}&quot;
+</a><a href="#h1-14" id="h1-14" class="i">+						wm_infos=&quot;$wm_infos%{B$COLOR_URGENT}%{+u}${name}%{-u}%{B-}&quot;
+</a> 						;;
+ 					o*)
+ 						# occupied desktop
+<a href="#h1-18" id="h1-18" class="d">-						wm_infos=&quot;$wm_infos ${name} &quot;
+</a><a href="#h1-19" id="h1-19" class="i">+						wm_infos=&quot;$wm_infos${name}&quot;
+</a> 						;;
+ 					f*)
+ 						# free desktop
+<a href="#h1-23" id="h1-23" class="d">-						wm_infos=&quot;$wm_infos ${name} &quot;
+</a><a href="#h1-24" id="h1-24" class="i">+						wm_infos=&quot;$wm_infos${name}&quot;
+</a> 						;;
+ 					u*)
+ 						# urgent desktop
+<a href="#h1-28" id="h1-28" class="d">-						wm_infos=&quot;$wm_infos%{B$COLOR_URGENT} ${name} %{B-}&quot;
+</a><a href="#h1-29" id="h1-29" class="i">+						wm_infos=&quot;$wm_infos%{B$COLOR_URGENT}${name}%{B-}&quot;
+</a> 						;;
+ 					#L*)
+ 					#	# layout
+<a href="#h2" id="h2" class="h">@@ -90,5 +90,5 @@ while read -r line ; do
+</a> 			done
+ 			;;
+ 	esac
+<a href="#h2-3" id="h2-3" class="d">-  echo -e &quot;%{U$COLOR_UNDERLINE}%{l}${wm_infos} $separator ${title}%{r}$(icon $ICON_BATTERY)${battery} $separator $(icon $ICON_VOLUME) ${volume} $separator $(icon $ICON_CLOCK)${time} $separator ${playing} &quot;
+</a><a href="#h2-4" id="h2-4" class="i">+  echo -e &quot;%{U$COLOR_UNDERLINE}%{l}${wm_infos} $separator ${title}%{r}${battery} $separator ${volume} $separator $(icon $ICON_CLOCK)${time} $separator ${playing} &quot;
+</a> done
+<b>diff --git a/<a href="../file/home/.scripts/panel_icons.html">home/.scripts/panel_icons</a> b/<a href="../file/home/.scripts/panel_icons.html">home/.scripts/panel_icons</a></b>
+<a href="#h0" id="h0" class="h">@@ -12,9 +12,15 @@ function icon()
+</a> }
+ 
+ ICON_VOLUME=&quot;\ue050&quot;
+<a href="#h0-3" id="h0-3" class="i">+ICON_VOLUME_LOW=&quot;\ue04e&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+ICON_MUTE=&quot;\ue04f&quot;
+</a> ICON_CLOCK=&quot;\ue015&quot;
+ ICON_LEFT=&quot;\u00ab&quot;
+ ICON_PLAY=&quot;\ue058&quot;
+ ICON_PAUSE=&quot;\ue059&quot;
+ ICON_STOP=&quot;\ue057&quot;
+ ICON_BATTERY=&quot;\ue238&quot;
+<a href="#h0-11" id="h0-11" class="i">+ICON_BATTERY_CHARGING=&quot;\ue200&quot;
+</a><a href="#h0-12" id="h0-12" class="i">+ICON_BATTERY_FULL=&quot;\ue1ff&quot;
+</a><a href="#h0-13" id="h0-13" class="i">+ICON_BATTERY_HALF=&quot;\ue1fe&quot;
+</a><a href="#h0-14" id="h0-14" class="i">+ICON_BATTERY_EMPTY=&quot;\ue1fd&quot;
+</a><b>diff --git a/<a href="../file/home/.zprezto/runcoms/zshrc.html">home/.zprezto/runcoms/zshrc</a> b/<a href="../file/home/.zprezto/runcoms/zshrc.html">home/.zprezto/runcoms/zshrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -16,7 +16,9 @@ export TERM=xterm-256color
+</a> export EDITOR=vim
+ export VISUAL=vim
+ alias :q=exit
+<a href="#h0-3" id="h0-3" class="d">-export PATH=&quot;$(ruby -e &apos;print Gem.user_dir&apos;)/bin:$HOME/.scripts:$PATH&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+alias vim=nvim
+</a><a href="#h0-5" id="h0-5" class="i">+export GOPATH=$HOME/Go
+</a><a href="#h0-6" id="h0-6" class="i">+export PATH=&quot;$(ruby -e &apos;print Gem.user_dir&apos;)/bin:$HOME/.scripts:$GOPATH/bin:$PATH&quot;
+</a> export PATH=&quot;$HOME/.rbenv/bin:$PATH&quot;
+ eval &quot;$(rbenv init -)&quot;
+ 
+</pre>
+</div>
+</body>
+</html>

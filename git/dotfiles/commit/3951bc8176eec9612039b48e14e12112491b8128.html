@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>fetch config - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/3951bc8176eec9612039b48e14e12112491b8128.html">3951bc8176eec9612039b48e14e12112491b8128</a>
+<b>parent</b> <a href="../commit/b399bfb6fa7caef388f8e6b53c2b41e3cc80d703.html">b399bfb6fa7caef388f8e6b53c2b41e3cc80d703</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Wed Feb 10 17:51:21 2016
+
+fetch config
+
+<b>Diffstat:</b>
+ home/.config/fetch/config | 140 ++++++++++++++++++++++++++++++++++-------------
+ home/.scripts/info.sh     | 131 +--------------------------------------------
+ 2 files changed, 103 insertions(+), 168 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.config/fetch/config.html">home/.config/fetch/config</a> b/<a href="../file/home/.config/fetch/config.html">home/.config/fetch/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -16,29 +16,52 @@ export LANGUAGE=C
+</a> # See this wiki page for more info:
+ # https://github.com/dylanaraps/fetch/wiki/Customizing-Info
+ printinfo () {
+<a href="#h0-3" id="h0-3" class="i">+    c00=$&apos;\e[0;30m&apos;
+</a><a href="#h0-4" id="h0-4" class="i">+    c01=$&apos;\e[0;31m&apos;
+</a><a href="#h0-5" id="h0-5" class="i">+    c02=$&apos;\e[0;32m&apos;
+</a><a href="#h0-6" id="h0-6" class="i">+    c03=$&apos;\e[0;33m&apos;
+</a><a href="#h0-7" id="h0-7" class="i">+    c04=$&apos;\e[0;34m&apos;
+</a><a href="#h0-8" id="h0-8" class="i">+    c05=$&apos;\e[0;35m&apos;
+</a><a href="#h0-9" id="h0-9" class="i">+    c06=$&apos;\e[0;36m&apos;
+</a><a href="#h0-10" id="h0-10" class="i">+    c07=$&apos;\e[0;37m&apos;
+</a><a href="#h0-11" id="h0-11" class="i">+    c08=$&apos;\e[1;30m&apos;
+</a><a href="#h0-12" id="h0-12" class="i">+    c09=$&apos;\e[1;31m&apos;
+</a><a href="#h0-13" id="h0-13" class="i">+    c10=$&apos;\e[1;32m&apos;
+</a><a href="#h0-14" id="h0-14" class="i">+    c11=$&apos;\e[1;33m&apos;
+</a><a href="#h0-15" id="h0-15" class="i">+    c12=$&apos;\e[1;34m&apos;
+</a><a href="#h0-16" id="h0-16" class="i">+    c13=$&apos;\e[1;35m&apos;
+</a><a href="#h0-17" id="h0-17" class="i">+    c14=$&apos;\e[1;36m&apos;
+</a><a href="#h0-18" id="h0-18" class="i">+    c15=$&apos;\e[1;37m&apos;
+</a><a href="#h0-19" id="h0-19" class="i">+
+</a><a href="#h0-20" id="h0-20" class="i">+    f0=$&apos;\e[1;30m&apos;
+</a><a href="#h0-21" id="h0-21" class="i">+    f1=$&apos;\e[1;37m&apos;
+</a><a href="#h0-22" id="h0-22" class="i">+    f2=$&apos;\e[0;37m&apos;
+</a><a href="#h0-23" id="h0-23" class="i">+
+</a>     info linebreak
+ 
+     info title
+     info underline
+ 
+<a href="#h0-29" id="h0-29" class="d">-    info &quot;OS&quot; distro
+</a><a href="#h0-30" id="h0-30" class="d">-    info &quot;Kernel&quot; kernel
+</a><a href="#h0-31" id="h0-31" class="d">-    info &quot;Uptime&quot; uptime
+</a><a href="#h0-32" id="h0-32" class="d">-    info &quot;Packages&quot; packages
+</a><a href="#h0-33" id="h0-33" class="d">-    info &quot;Shell&quot; shell
+</a><a href="#h0-34" id="h0-34" class="d">-    info &quot;Window Manager&quot; windowmanager
+</a><a href="#h0-35" id="h0-35" class="d">-    info &quot;GTK Theme&quot; gtktheme
+</a><a href="#h0-36" id="h0-36" class="d">-    info &quot;Icons&quot; gtkicons
+</a><a href="#h0-37" id="h0-37" class="d">-    info &quot;CPU&quot; cpu
+</a><a href="#h0-38" id="h0-38" class="d">-    info &quot;GPU&quot; gpu
+</a><a href="#h0-39" id="h0-39" class="d">-    info &quot;Memory&quot; memory
+</a><a href="#h0-40" id="h0-40" class="d">-
+</a><a href="#h0-41" id="h0-41" class="d">-    info &quot;Birthday&quot; birthday
+</a><a href="#h0-42" id="h0-42" class="d">-    info &quot;Battery&quot; battery
+</a><a href="#h0-43" id="h0-43" class="d">-    # info &quot;Font&quot; gtkfont
+</a><a href="#h0-44" id="h0-44" class="i">+    info &quot;${c00}▉▉  | $(tput sgr0)$(tput setaf 1)OS&quot; distro
+</a><a href="#h0-45" id="h0-45" class="i">+    info &quot;${c08}  ▉▉| $(tput sgr0)$(tput setaf 1)Kernel&quot; kernel
+</a><a href="#h0-46" id="h0-46" class="i">+    info &quot;${c01}▉▉  | $(tput sgr0)$(tput setaf 1)Uptime&quot; uptime
+</a><a href="#h0-47" id="h0-47" class="i">+    info &quot;${c09}  ▉▉| $(tput sgr0)$(tput setaf 1)Packages&quot; packages
+</a><a href="#h0-48" id="h0-48" class="i">+    info &quot;${c02}▉▉  | $(tput sgr0)$(tput setaf 1)Shell&quot; shell
+</a><a href="#h0-49" id="h0-49" class="i">+    info &quot;${c10}  ▉▉| $(tput sgr0)$(tput setaf 1)Window Manager&quot; windowmanager
+</a><a href="#h0-50" id="h0-50" class="i">+    info &quot;${c03}▉▉  | $(tput sgr0)$(tput setaf 1)GTK Theme&quot; gtktheme
+</a><a href="#h0-51" id="h0-51" class="i">+    info &quot;${c11}  ▉▉| $(tput sgr0)$(tput setaf 1)Icons&quot; gtkicons
+</a><a href="#h0-52" id="h0-52" class="i">+    info &quot;${c04}▉▉  | $(tput sgr0)$(tput setaf 1)CPU&quot; cpu
+</a><a href="#h0-53" id="h0-53" class="i">+    info &quot;${c12}  ▉▉| $(tput sgr0)$(tput setaf 1)GPU&quot; gpu
+</a><a href="#h0-54" id="h0-54" class="i">+    info &quot;${c05}▉▉  | $(tput sgr0)$(tput setaf 1)Memory&quot; memory
+</a><a href="#h0-55" id="h0-55" class="i">+
+</a><a href="#h0-56" id="h0-56" class="i">+    info &quot;${c13}  ▉▉| $(tput sgr0)$(tput setaf 1)Font&quot; gtkfont
+</a>     # info &quot;Disk&quot; disk
+     # info &quot;Resolution&quot; resolution
+<a href="#h0-59" id="h0-59" class="d">-    info &quot;Song&quot; song
+</a><a href="#h0-60" id="h0-60" class="i">+    # info &quot;Battery&quot; battery
+</a><a href="#h0-61" id="h0-61" class="i">+    # info &quot;Local IP&quot; localip
+</a><a href="#h0-62" id="h0-62" class="i">+    # info &quot;Public IP&quot; publicip
+</a><a href="#h0-63" id="h0-63" class="i">+    info &quot;${c06}▉▉  | $(tput sgr0)$(tput setaf 1)Birthday&quot; birthday
+</a><a href="#h0-64" id="h0-64" class="i">+    info &quot;${c14}  ▉▉| $(tput sgr0)$(tput setaf 1)Song&quot; song
+</a>     # info &quot;Visual Style&quot; visualstyle
+ 
+     info linebreak
+<a href="#h1" id="h1" class="h">@@ -60,6 +83,10 @@ kernel_shorthand=&quot;on&quot;
+</a> # --osx_buildversion on/off
+ osx_buildversion=&quot;on&quot;
+ 
+<a href="#h1-3" id="h1-3" class="i">+# Show &apos;x86_64&apos; and &apos;x86&apos; in &apos;Distro:&apos; output.
+</a><a href="#h1-4" id="h1-4" class="i">+# --os_arch on/off
+</a><a href="#h1-5" id="h1-5" class="i">+os_arch=&quot;on&quot;
+</a><a href="#h1-6" id="h1-6" class="i">+
+</a> 
+ # Uptime
+ 
+<a href="#h2" id="h2" class="h">@@ -111,10 +138,33 @@ gtk2=&quot;on&quot;
+</a> gtk3=&quot;on&quot;
+ 
+ 
+<a href="#h2-3" id="h2-3" class="i">+# Battery
+</a><a href="#h2-4" id="h2-4" class="i">+
+</a><a href="#h2-5" id="h2-5" class="i">+# Which battery to display.
+</a><a href="#h2-6" id="h2-6" class="i">+# By default we display all batteries.
+</a><a href="#h2-7" id="h2-7" class="i">+# NOTE: Only works on Linux.
+</a><a href="#h2-8" id="h2-8" class="i">+# --battery_num all, 0, 1, 2, etc
+</a><a href="#h2-9" id="h2-9" class="i">+battery_num=&quot;all&quot;
+</a><a href="#h2-10" id="h2-10" class="i">+
+</a><a href="#h2-11" id="h2-11" class="i">+# Whether or not to print each battery on the same line.
+</a><a href="#h2-12" id="h2-12" class="i">+# By default each battery gets its own line and title.
+</a><a href="#h2-13" id="h2-13" class="i">+# NOTE: Only works on Linux.
+</a><a href="#h2-14" id="h2-14" class="i">+# --battery_shorthand on/off
+</a><a href="#h2-15" id="h2-15" class="i">+battery_shorthand=&quot;off&quot;
+</a><a href="#h2-16" id="h2-16" class="i">+
+</a><a href="#h2-17" id="h2-17" class="i">+
+</a><a href="#h2-18" id="h2-18" class="i">+# IP Address
+</a><a href="#h2-19" id="h2-19" class="i">+
+</a><a href="#h2-20" id="h2-20" class="i">+# Website to ping for the public IP
+</a><a href="#h2-21" id="h2-21" class="i">+# --ip_host url
+</a><a href="#h2-22" id="h2-22" class="i">+public_ip_host=&quot;http://ident.me&quot;
+</a><a href="#h2-23" id="h2-23" class="i">+
+</a><a href="#h2-24" id="h2-24" class="i">+
+</a> # Birthday
+ 
+ # Whether to show a long pretty output
+ # or a shortened one
+<a href="#h2-29" id="h2-29" class="i">+# NOTE: Long pretty output doesn&apos;t work on OpenBSD or NetBSD.
+</a> # --birthday_shorthand on/off
+ birthday_shorthand=&quot;off&quot;
+ 
+<a href="#h3" id="h3" class="h">@@ -141,7 +191,6 @@ block_width=3
+</a> # }}}
+ 
+ # Text Colors {{{
+<a href="#h3-3" id="h3-3" class="d">-# --colors 1 2 3 4 5
+</a> 
+ 
+ # --title_color num
+<a href="#h4" id="h4" class="h">@@ -152,7 +201,7 @@ title_color=4
+</a> at_color=6
+ 
+ # --subtitle_color num
+<a href="#h4-3" id="h4-3" class="d">-subtitle_color=6
+</a><a href="#h4-4" id="h4-4" class="i">+subtitle_color=1
+</a> 
+ # --colon_color num
+ colon_color=8
+<a href="#h5" id="h5" class="h">@@ -161,7 +210,7 @@ colon_color=8
+</a> underline_color=8
+ 
+ # --info_color num
+<a href="#h5-3" id="h5-3" class="d">-info_color=7
+</a><a href="#h5-4" id="h5-4" class="i">+info_color=6
+</a> 
+ 
+ # }}}
+<a href="#h6" id="h6" class="h">@@ -175,15 +224,15 @@ line_wrap=&quot;on&quot;
+</a> 
+ # Toggle bold text
+ # --bold on/off
+<a href="#h6-3" id="h6-3" class="d">-bold=&quot;off&quot;
+</a><a href="#h6-4" id="h6-4" class="i">+bold=&quot;on&quot;
+</a> 
+<a href="#h6-6" id="h6-6" class="d">-# Toggle title underline
+</a><a href="#h6-7" id="h6-7" class="i">+# Enable/Disable Underline
+</a> # --underline on/off
+<a href="#h6-9" id="h6-9" class="d">-underline=&quot;off&quot;
+</a><a href="#h6-10" id="h6-10" class="i">+underline=&quot;on&quot;
+</a> 
+ # Underline character
+ # --underline_char char
+<a href="#h6-14" id="h6-14" class="d">-underline_char=&quot;─&quot;
+</a><a href="#h6-15" id="h6-15" class="i">+underline_char=&quot;-&quot;
+</a> 
+ # Prompt height
+ # You should only have to change this if your
+<a href="#h7" id="h7" class="h">@@ -202,7 +251,7 @@ prompt_height=1
+</a> image=&quot;wall&quot;
+ 
+ # Thumbnail directory
+<a href="#h7-3" id="h7-3" class="d">-imgtempdir=&quot;$HOME/.fetchimages&quot;
+</a><a href="#h7-4" id="h7-4" class="i">+thumbnail_dir=&quot;$HOME/.cache/thumbnails/fetch&quot;
+</a> 
+ # Image Backend
+ # Which program to draw images with
+<a href="#h8" id="h8" class="h">@@ -213,15 +262,6 @@ image_backend=&quot;w3m&quot;
+</a> # Some systems have this in another location
+ w3m_img_path=&quot;/usr/lib/w3m/w3mimgdisplay&quot;
+ 
+<a href="#h8-3" id="h8-3" class="d">-# Split Size
+</a><a href="#h8-4" id="h8-4" class="d">-# Sizing for the img and text splits
+</a><a href="#h8-5" id="h8-5" class="d">-# The larger the value the less space fetch will take up.
+</a><a href="#h8-6" id="h8-6" class="d">-# The default value of 2 splits the image and text at
+</a><a href="#h8-7" id="h8-7" class="d">-# half terminal width each.
+</a><a href="#h8-8" id="h8-8" class="d">-# A value of 3 splits them at a third width each and etc.
+</a><a href="#h8-9" id="h8-9" class="d">-# --split_size num
+</a><a href="#h8-10" id="h8-10" class="d">-split_size=2
+</a><a href="#h8-11" id="h8-11" class="d">-
+</a> # Image position
+ # Only works with the w3m backend
+ # --image_position left/right
+<a href="#h9" id="h9" class="h">@@ -241,8 +281,14 @@ crop_mode=&quot;normal&quot;
+</a> crop_offset=&quot;center&quot;
+ 
+ # Font width
+<a href="#h9-3" id="h9-3" class="i">+# --font_width num
+</a> # Used when calculating dynamic image size
+<a href="#h9-5" id="h9-5" class="d">-font_width=7
+</a><a href="#h9-6" id="h9-6" class="i">+font_width=5
+</a><a href="#h9-7" id="h9-7" class="i">+
+</a><a href="#h9-8" id="h9-8" class="i">+# Image size
+</a><a href="#h9-9" id="h9-9" class="i">+# The image is half the terminal width by default.
+</a><a href="#h9-10" id="h9-10" class="i">+# --size half, px
+</a><a href="#h9-11" id="h9-11" class="i">+image_size=&quot;half&quot;
+</a> 
+ # Right gap between image and text
+ # --gap num
+<a href="#h10" id="h10" class="h">@@ -266,11 +312,14 @@ xoffset=0
+</a> # --ascii &apos;distro&apos;, path/to/ascii
+ ascii=&quot;distro&quot;
+ 
+<a href="#h10-3" id="h10-3" class="d">-# Ascii color
+</a><a href="#h10-4" id="h10-4" class="i">+# Ascii colors
+</a> # When this is set to distro it will use your
+ # ditro&apos;s colors to color the ascii.
+<a href="#h10-7" id="h10-7" class="d">-# --ascii_color distro, number
+</a><a href="#h10-8" id="h10-8" class="d">-ascii_color=&quot;distro&quot;
+</a><a href="#h10-9" id="h10-9" class="i">+# NOTE: You can also set this to a range of colors
+</a><a href="#h10-10" id="h10-10" class="i">+# which will allow you to custom color distro logos
+</a><a href="#h10-11" id="h10-11" class="i">+# --ascii_colors distro
+</a><a href="#h10-12" id="h10-12" class="i">+# --ascii_colors 2 4 5 6
+</a><a href="#h10-13" id="h10-13" class="i">+ascii_colors=(distro)
+</a> 
+ 
+ # }}}
+<a href="#h11" id="h11" class="h">@@ -303,6 +352,7 @@ scrot_name=&quot;fetch-%Y-%m-%d-%H:%M.png&quot;
+</a> 
+ 
+ # Enable/Disable config file
+<a href="#h11-3" id="h11-3" class="i">+# --config off, none
+</a> config=&quot;on&quot;
+ 
+ # Path to custom config file location
+<a href="#h12" id="h12" class="h">@@ -311,3 +361,19 @@ config_file=&quot;$HOME/.config/fetch/config&quot;
+</a> 
+ 
+ # }}}
+<a href="#h12-3" id="h12-3" class="i">+
+</a><a href="#h12-4" id="h12-4" class="i">+# Other Options {{{
+</a><a href="#h12-5" id="h12-5" class="i">+
+</a><a href="#h12-6" id="h12-6" class="i">+# Separator to use in stdout mode.
+</a><a href="#h12-7" id="h12-7" class="i">+# --stdout_separator string
+</a><a href="#h12-8" id="h12-8" class="i">+stdout_separator=&quot;    &quot;
+</a><a href="#h12-9" id="h12-9" class="i">+
+</a><a href="#h12-10" id="h12-10" class="i">+# Hide/Show the title in stdout mode.
+</a><a href="#h12-11" id="h12-11" class="i">+# --stdout_title on/off
+</a><a href="#h12-12" id="h12-12" class="i">+stdout_title=&quot;off&quot;
+</a><a href="#h12-13" id="h12-13" class="i">+
+</a><a href="#h12-14" id="h12-14" class="i">+# Hide/Show each info&apos;s subtitle in stdout mode.
+</a><a href="#h12-15" id="h12-15" class="i">+# --stdout_subtitles on/off
+</a><a href="#h12-16" id="h12-16" class="i">+stdout_subtitles=&quot;on&quot;
+</a><a href="#h12-17" id="h12-17" class="i">+
+</a><a href="#h12-18" id="h12-18" class="i">+# }}}
+</a><b>diff --git a/<a href="../file/home/.scripts/info.sh.html">home/.scripts/info.sh</a> b/<a href="../file/home/.scripts/info.sh.html">home/.scripts/info.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,131 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="d">-#
+</a><a href="#h0-2" id="h0-2" class="d">-# info.sh - displays info about wm, font, gtk theme
+</a><a href="#h0-3" id="h0-3" class="d">-# copied from z3bra&apos;s blog
+</a><a href="#h0-4" id="h0-4" class="d">-# modified by tudurom
+</a><a href="#h0-5" id="h0-5" class="d">-#
+</a><a href="#h0-6" id="h0-6" class="d">-lines=23
+</a><a href="#h0-7" id="h0-7" class="d">-clear
+</a><a href="#h0-8" id="h0-8" class="d">-c00=$&apos;\e[0;30m&apos;
+</a><a href="#h0-9" id="h0-9" class="d">-c01=$&apos;\e[0;31m&apos;
+</a><a href="#h0-10" id="h0-10" class="d">-c02=$&apos;\e[0;32m&apos;
+</a><a href="#h0-11" id="h0-11" class="d">-c03=$&apos;\e[0;33m&apos;
+</a><a href="#h0-12" id="h0-12" class="d">-c04=$&apos;\e[0;34m&apos;
+</a><a href="#h0-13" id="h0-13" class="d">-c05=$&apos;\e[0;35m&apos;
+</a><a href="#h0-14" id="h0-14" class="d">-c06=$&apos;\e[0;36m&apos;
+</a><a href="#h0-15" id="h0-15" class="d">-c07=$&apos;\e[0;37m&apos;
+</a><a href="#h0-16" id="h0-16" class="d">-c08=$&apos;\e[1;30m&apos;
+</a><a href="#h0-17" id="h0-17" class="d">-c09=$&apos;\e[1;31m&apos;
+</a><a href="#h0-18" id="h0-18" class="d">-c10=$&apos;\e[1;32m&apos;
+</a><a href="#h0-19" id="h0-19" class="d">-c11=$&apos;\e[1;33m&apos;
+</a><a href="#h0-20" id="h0-20" class="d">-c12=$&apos;\e[1;34m&apos;
+</a><a href="#h0-21" id="h0-21" class="d">-c13=$&apos;\e[1;35m&apos;
+</a><a href="#h0-22" id="h0-22" class="d">-c14=$&apos;\e[1;36m&apos;
+</a><a href="#h0-23" id="h0-23" class="d">-c15=$&apos;\e[1;37m&apos;
+</a><a href="#h0-24" id="h0-24" class="d">-
+</a><a href="#h0-25" id="h0-25" class="d">-f0=$&apos;\e[1;30m&apos;
+</a><a href="#h0-26" id="h0-26" class="d">-f1=$&apos;\e[1;37m&apos;
+</a><a href="#h0-27" id="h0-27" class="d">-f2=$&apos;\e[0;37m&apos;
+</a><a href="#h0-28" id="h0-28" class="d">-
+</a><a href="#h0-29" id="h0-29" class="d">-kernel=$(uname -rmo)
+</a><a href="#h0-30" id="h0-30" class="d">-system=$(sed &apos;s/\s*[\(\\]\+.*$//&apos; /etc/issue)
+</a><a href="#h0-31" id="h0-31" class="d">-
+</a><a href="#h0-32" id="h0-32" class="d">-crop_offset=&quot;center&quot;
+</a><a href="#h0-33" id="h0-33" class="d">-xoffset=400
+</a><a href="#h0-34" id="h0-34" class="d">-yoffset=0
+</a><a href="#h0-35" id="h0-35" class="d">-imgtempdir=&quot;$HOME/.fetchimages&quot;
+</a><a href="#h0-36" id="h0-36" class="d">-fontwidth=30
+</a><a href="#h0-37" id="h0-37" class="d">-gap=4
+</a><a href="#h0-38" id="h0-38" class="d">-img=$(awk &apos;/feh/ {printf $3}&apos; &quot;$HOME/.fehbg&quot; | sed -e &quot;s/&apos;//g&quot;)
+</a><a href="#h0-39" id="h0-39" class="d">-# Image size is half of the terminal
+</a><a href="#h0-40" id="h0-40" class="d">-imgsize=$((((lines - 1) * fontwidth) / 2))
+</a><a href="#h0-41" id="h0-41" class="d">-# Padding is half the terminal width + gap
+</a><a href="#h0-42" id="h0-42" class="d">-padding=$(($(tput cols) / 2 + gap))
+</a><a href="#h0-43" id="h0-43" class="d">-imgname=&quot;$crop_offset-${img##*/}&quot;
+</a><a href="#h0-44" id="h0-44" class="d">-
+</a><a href="#h0-45" id="h0-45" class="d">-# This check allows you to resize the image at launch
+</a><a href="#h0-46" id="h0-46" class="d">-if [ -f &quot;$imgtempdir/$imgname&quot; ]; then
+</a><a href="#h0-47" id="h0-47" class="d">-    imgheight=$(identify -format &quot;%h&quot; &quot;$imgtempdir/$imgname&quot;)
+</a><a href="#h0-48" id="h0-48" class="d">-    [ $imgheight != $imgsize ] &amp;&amp; rm &quot;$imgtempdir/$imgname&quot;
+</a><a href="#h0-49" id="h0-49" class="d">-fi
+</a><a href="#h0-50" id="h0-50" class="d">-
+</a><a href="#h0-51" id="h0-51" class="d">-# Check to see if the tempfile exists before we do any cropping.
+</a><a href="#h0-52" id="h0-52" class="d">-if [ ! -f &quot;$imgtempdir/$imgname&quot; ]; then
+</a><a href="#h0-53" id="h0-53" class="d">-  # Check if the directory exists and create it if it doesn&apos;t
+</a><a href="#h0-54" id="h0-54" class="d">-  [ ! -d &quot;$imgtempdir&quot; ] &amp;&amp; (mkdir &quot;$imgtempdir&quot; || exit)
+</a><a href="#h0-55" id="h0-55" class="d">-
+</a><a href="#h0-56" id="h0-56" class="d">-  # Get wallpaper size so that we can do a better crop
+</a><a href="#h0-57" id="h0-57" class="d">-  size=($(identify -format &quot;%w %h&quot; $img))
+</a><a href="#h0-58" id="h0-58" class="d">-
+</a><a href="#h0-59" id="h0-59" class="d">-  # This checks to see if height is geater than width
+</a><a href="#h0-60" id="h0-60" class="d">-  # so we can do a better crop of portrait images.
+</a><a href="#h0-61" id="h0-61" class="d">-  if [ ${size[1]} -gt ${size[0]} ]; then
+</a><a href="#h0-62" id="h0-62" class="d">-    size=${size[0]}
+</a><a href="#h0-63" id="h0-63" class="d">-  else
+</a><a href="#h0-64" id="h0-64" class="d">-    size=${size[1]}
+</a><a href="#h0-65" id="h0-65" class="d">-  fi
+</a><a href="#h0-66" id="h0-66" class="d">-
+</a><a href="#h0-67" id="h0-67" class="d">-  # Crop the image and save it to  the $imgtempdir
+</a><a href="#h0-68" id="h0-68" class="d">-  # By default we crop a square in the center of the image which is
+</a><a href="#h0-69" id="h0-69" class="d">-  # &quot;image height x image height&quot;.
+</a><a href="#h0-70" id="h0-70" class="d">-  # We then resize it to the image size specified above.
+</a><a href="#h0-71" id="h0-71" class="d">-  # (default 128x128 px, uses var $height)
+</a><a href="#h0-72" id="h0-72" class="d">-  # This way we get a full image crop with the speed benefit
+</a><a href="#h0-73" id="h0-73" class="d">-  # of a tiny image.
+</a><a href="#h0-74" id="h0-74" class="d">-  convert \
+</a><a href="#h0-75" id="h0-75" class="d">-    -crop &quot;$size&quot;x&quot;$size&quot;+0+0 \
+</a><a href="#h0-76" id="h0-76" class="d">-    -gravity $crop_offset &quot;$img&quot; \
+</a><a href="#h0-77" id="h0-77" class="d">-    -resize &quot;$imgsize&quot;x&quot;$imgsize&quot; &quot;$imgtempdir/$imgname&quot;
+</a><a href="#h0-78" id="h0-78" class="d">-fi
+</a><a href="#h0-79" id="h0-79" class="d">-
+</a><a href="#h0-80" id="h0-80" class="d">-if [ -n &quot;$DISPLAY&quot; ]; then
+</a><a href="#h0-81" id="h0-81" class="d">-    WM=$(xprop -root _NET_SUPPORTING_WM_CHECK)
+</a><a href="#h0-82" id="h0-82" class="d">-    wmname=$(xprop -id ${WM//* } _NET_WM_NAME | sed -re &apos;s/.*= &quot;(.*)&quot;/\1/&apos;)
+</a><a href="#h0-83" id="h0-83" class="d">-    fon=$(xrdb -query | sed -n &apos;s/^UR.*\*font:\s*//p&apos;)
+</a><a href="#h0-84" id="h0-84" class="d">-    if [[ $fon =~ &quot;xft&quot; ]]; then
+</a><a href="#h0-85" id="h0-85" class="d">-        termfn=$(echo $fon | sed -re &apos;s/xft:((\w+\s\w+)+):.*/\1/&apos;)
+</a><a href="#h0-86" id="h0-86" class="d">-    else
+</a><a href="#h0-87" id="h0-87" class="d">-        termfn=$(echo $fon | sed -re &apos;s/^-\w+-(\w+)-.*/\1/&apos;)
+</a><a href="#h0-88" id="h0-88" class="d">-    fi
+</a><a href="#h0-89" id="h0-89" class="d">-    systfn=$(sed -n &apos;s/^.*font.*&quot;\(.*\)&quot;.*$/\1/p&apos; ~/.gtkrc-2.0)
+</a><a href="#h0-90" id="h0-90" class="d">-    gtktheme=$(sed -n &apos;s/^gtk-theme.*&quot;\(.*\)&quot;.*$/\1/p&apos; ~/.gtkrc-2.0)
+</a><a href="#h0-91" id="h0-91" class="d">-    icons=$(sed -n &apos;s/^.*icon.*&quot;\(.*\)&quot;.*$/\1/p&apos; ~/.gtkrc-2.0)
+</a><a href="#h0-92" id="h0-92" class="d">-else
+</a><a href="#h0-93" id="h0-93" class="d">-    wmname=&quot;none&quot;
+</a><a href="#h0-94" id="h0-94" class="d">-    termfn=&quot;none&quot;
+</a><a href="#h0-95" id="h0-95" class="d">-    systfn=&quot;none&quot;
+</a><a href="#h0-96" id="h0-96" class="d">-fi
+</a><a href="#h0-97" id="h0-97" class="d">-
+</a><a href="#h0-98" id="h0-98" class="d">-pkgnum=$(pacman -Q | wc -l)
+</a><a href="#h0-99" id="h0-99" class="d">-birthd=$(sed -n &apos;1s/^\[\([0-9-]*\).*$/\1/p&apos; /var/log/pacman.log | tr - .)
+</a><a href="#h0-100" id="h0-100" class="d">-
+</a><a href="#h0-101" id="h0-101" class="d">-cat &lt;&lt; EOF
+</a><a href="#h0-102" id="h0-102" class="d">-
+</a><a href="#h0-103" id="h0-103" class="d">-
+</a><a href="#h0-104" id="h0-104" class="d">-
+</a><a href="#h0-105" id="h0-105" class="d">-    ${c00}▉▉  | ${f1}OS ${f0}........... $f2$system
+</a><a href="#h0-106" id="h0-106" class="d">-    ${c08}  ▉▉| ${f1}name ${f0}......... $f2$HOSTNAME
+</a><a href="#h0-107" id="h0-107" class="d">-    ${c01}▉▉  | ${f1}birth day${f0}..... $f2$birthd
+</a><a href="#h0-108" id="h0-108" class="d">-    ${c09}  ▉▉| ${f1}packages ${f0}..... $f2$pkgnum
+</a><a href="#h0-109" id="h0-109" class="d">-    ${c02}▉▉  |
+</a><a href="#h0-110" id="h0-110" class="d">-    ${c10}  ▉▉| ${f1}kernel ${f0}....... $f2$kernel
+</a><a href="#h0-111" id="h0-111" class="d">-    ${c03}▉▉  | ${f1}wm ${f0}........... $f2$wmname
+</a><a href="#h0-112" id="h0-112" class="d">-    ${c11}  ▉▉| ${f1}shell ${f0}........ $f2$SHELL
+</a><a href="#h0-113" id="h0-113" class="d">-    ${c04}▉▉  |
+</a><a href="#h0-114" id="h0-114" class="d">-    ${c12}  ▉▉| ${f1}terminal ${f0}..... $f2$TERM
+</a><a href="#h0-115" id="h0-115" class="d">-    ${c05}▉▉  | ${f1}term font ${f0}.... $f2$termfn
+</a><a href="#h0-116" id="h0-116" class="d">-    ${c13}  ▉▉| ${f1}system font ${f0}.. $f2$systfn
+</a><a href="#h0-117" id="h0-117" class="d">-    ${c06}▉▉  |
+</a><a href="#h0-118" id="h0-118" class="d">-    ${c14}  ▉▉| ${f1}gtk theme ${f0}.... $f2$gtktheme
+</a><a href="#h0-119" id="h0-119" class="d">-    ${c07}▉▉  | ${f1}icon theme ${f0}... $f2$icons
+</a><a href="#h0-120" id="h0-120" class="d">-    ${c15}  ▉▉|
+</a><a href="#h0-121" id="h0-121" class="d">-
+</a><a href="#h0-122" id="h0-122" class="d">-
+</a><a href="#h0-123" id="h0-123" class="d">-
+</a><a href="#h0-124" id="h0-124" class="d">-EOF
+</a><a href="#h0-125" id="h0-125" class="d">-img=&quot;$imgtempdir/$imgname&quot;
+</a><a href="#h0-126" id="h0-126" class="d">-if type -p /usr/lib/w3m/w3mimgdisplay &gt;/dev/null 2&gt;&amp;1; then
+</a><a href="#h0-127" id="h0-127" class="d">-  printf &quot;0;1;$xoffset;$yoffset;$imgsize;$imgsize;;;;;$img\n4;\n3;&quot; |\
+</a><a href="#h0-128" id="h0-128" class="d">-    /usr/lib/w3m/w3mimgdisplay
+</a><a href="#h0-129" id="h0-129" class="d">-fi
+</a><a href="#h0-130" id="h0-130" class="d">-
+</a></pre>
+</div>
+</body>
+</html>

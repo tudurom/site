@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Added .scripts README - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/717ce0e4158291fece6543d9e9cc777fd3d042e3.html">717ce0e4158291fece6543d9e9cc777fd3d042e3</a>
+<b>parent</b> <a href="../commit/7cfe65f7fe102db0165040c36f3ef65773281f44.html">7cfe65f7fe102db0165040c36f3ef65773281f44</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Wed Feb 17 15:12:47 2016
+
+Added .scripts README
+
+<b>Diffstat:</b>
+ home/.scripts/README.md | 44 +++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 43 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a href="../file/home/.scripts/README.md.html">home/.scripts/README.md</a> b/<a href="../file/home/.scripts/README.md.html">home/.scripts/README.md</a></b>
+<a href="#h0" id="h0" class="h">@@ -1 +1,43 @@
+</a><a href="#h0-0" id="h0-0" class="d">-###### Coming soon....
+</a><a href="#h0-1" id="h0-1" class="i">+```
+</a><a href="#h0-2" id="h0-2" class="i">+.
+</a><a href="#h0-3" id="h0-3" class="i">+├── 256colors2.pl - just some color script
+</a><a href="#h0-4" id="h0-4" class="i">+├── adjustbalance - adjusts volume balance for my strange speaker setup
+</a><a href="#h0-5" id="h0-5" class="i">+├── base16-ocean.dark.sh - sets the base16-coean color scheme. Not using it now.
+</a><a href="#h0-6" id="h0-6" class="i">+├── battery - Get battery status. Very big hack.
+</a><a href="#h0-7" id="h0-7" class="i">+├── byzanz-record-region - Record region of the screen
+</a><a href="#h0-8" id="h0-8" class="i">+├── clint - my note-taking script. This is a git submodule and it has its own repo at http://github.com/tudurom/clint
+</a><a href="#h0-9" id="h0-9" class="i">+├── colors - script used for the bar in the HLWM setup
+</a><a href="#h0-10" id="h0-10" class="i">+├── colortest - color script
+</a><a href="#h0-11" id="h0-11" class="i">+├── colortest2 - ditto
+</a><a href="#h0-12" id="h0-12" class="i">+├── desktop - HLWM stuff
+</a><a href="#h0-13" id="h0-13" class="i">+│   ├── launch - launch rofi.
+</a><a href="#h0-14" id="h0-14" class="i">+│   └── panel
+</a><a href="#h0-15" id="h0-15" class="i">+│       ├── panel - launch panel
+</a><a href="#h0-16" id="h0-16" class="i">+│       ├── panel.rb - main panel script
+</a><a href="#h0-17" id="h0-17" class="i">+│       └── volume - get volume
+</a><a href="#h0-18" id="h0-18" class="i">+├── exitbspwm - still alpha.
+</a><a href="#h0-19" id="h0-19" class="i">+├── gifbackground - sets an animated gif as a wallpaper. Just for the looks (I bet you can&apos;t do this on Windows pretty easily)
+</a><a href="#h0-20" id="h0-20" class="i">+├── i3blocks - i3blocks scripts
+</a><a href="#h0-21" id="h0-21" class="i">+│   ├── battery
+</a><a href="#h0-22" id="h0-22" class="i">+│   ├── music
+</a><a href="#h0-23" id="h0-23" class="i">+│   └── volume
+</a><a href="#h0-24" id="h0-24" class="i">+├── lock.sh - lock screen
+</a><a href="#h0-25" id="h0-25" class="i">+├── notifyd - notify script - listens for libnotify notification and then shows a nice bar
+</a><a href="#h0-26" id="h0-26" class="i">+├── panel - panel launcher script
+</a><a href="#h0-27" id="h0-27" class="i">+├── panel_bar - manipulates data
+</a><a href="#h0-28" id="h0-28" class="i">+├── panel_colors - color variables
+</a><a href="#h0-29" id="h0-29" class="i">+├── panel_config - config variables and monitor detection code
+</a><a href="#h0-30" id="h0-30" class="i">+├── panel_icons - icon variables
+</a><a href="#h0-31" id="h0-31" class="i">+├── primerun - for dynamic graphics with PRIME (see Arch wiki). Not using it.
+</a><a href="#h0-32" id="h0-32" class="i">+├── problemhelper - runs CS problem solve and prints useful data
+</a><a href="#h0-33" id="h0-33" class="i">+├── README.md
+</a><a href="#h0-34" id="h0-34" class="i">+├── refreshfonts - reload bitmap fonts
+</a><a href="#h0-35" id="h0-35" class="i">+├── run_dmenu - yeah. Using it!
+</a><a href="#h0-36" id="h0-36" class="i">+├── scaffoldsolution - script that generates the directory structure for a CS problem solve for http://varena.ro
+</a><a href="#h0-37" id="h0-37" class="i">+├── screenlayout - sets the screen layout.
+</a><a href="#h0-38" id="h0-38" class="i">+├── setcolor - for the panel used in the HLWM setup
+</a><a href="#h0-39" id="h0-39" class="i">+├── setwall - set wallpaper.
+</a><a href="#h0-40" id="h0-40" class="i">+├── volume - get volume. I think I have 3 eact copies of this script in this dir
+</a><a href="#h0-41" id="h0-41" class="i">+├── woodo - sudo woodo!
+</a><a href="#h0-42" id="h0-42" class="i">+└── zalgo - zalgo text generator
+</a><a href="#h0-43" id="h0-43" class="i">+```
+</a></pre>
+</div>
+</body>
+</html>

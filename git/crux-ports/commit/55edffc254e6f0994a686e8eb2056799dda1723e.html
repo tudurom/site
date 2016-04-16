@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>update - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/55edffc254e6f0994a686e8eb2056799dda1723e.html">55edffc254e6f0994a686e8eb2056799dda1723e</a>
+<b>parent</b> <a href="../commit/b96daee9507e9dd36e54899a94b36a4d69420584.html">b96daee9507e9dd36e54899a94b36a4d69420584</a>
+<b>Author:</b> ix &lt;<a href="mailto:arcetera@openmailbox.org">arcetera@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat Feb 27 20:49:07 2016
+
+update
+
+<b>Diffstat:</b>
+ fetch/.footprint                                 | 54 +------------------------
+ fetch/Pkgfile                                    | 26 +++--------
+ lemonbar-border/.footprint                       |  7 +++-
+ lemonbar-border/.md5sum                          |  0
+ lemonbar-border/Pkgfile                          | 24 +++++++++++-
+ lemonbar-border/lemonbar-border                  |  1 +-
+ lemonbar-border/lemonbar-border#git-1.pkg.tar.gz | Bin 0 -&gt; 18813 bytes
+ neofetch/.footprint                              | 57 +++++++++++++++++++++++++-
+ neofetch/.md5sum                                 |  0
+ neofetch/Pkgfile                                 | 25 +++++++++++-
+ tbclock/.md5sum                                  |  1 +-
+ tbclock/Pkgfile                                  | 20 +++++++++-
+ tbclock/tbclock#1.10-1.pkg.tar.gz                | Bin 0 -&gt; 11985 bytes
+ tbclock/tbclock-1.10.tar.gz                      | Bin 0 -&gt; 12357 bytes
+ urc/urc                                          |  1 +-
+ urc/urc#git-4.pkg.tar.gz                         | Bin 0 -&gt; 3755 bytes
+ 16 files changed, 146 insertions(+), 70 deletions(-)
+<hr/><b>diff --git a/<a href="../file/fetch/.footprint.html">fetch/.footprint</a> b/<a href="../file/fetch/.footprint.html">fetch/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,56 +1,4 @@
+</a> drwxr-xr-x	root/root	usr/
+<a href="#h0-1" id="h0-1" class="d">-drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h0-2" id="h0-2" class="d">--rwxr-xr-x	root/root	usr/bin/fetch
+</a> drwxr-xr-x	root/root	usr/share/
+ drwxr-xr-x	root/root	usr/share/fetch/
+<a href="#h0-5" id="h0-5" class="d">-drwxr-xr-x	root/root	usr/share/fetch/ascii/
+</a><a href="#h0-6" id="h0-6" class="d">-drwxr-xr-x	root/root	usr/share/fetch/ascii/distro/
+</a><a href="#h0-7" id="h0-7" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/antergos
+</a><a href="#h0-8" id="h0-8" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/arch
+</a><a href="#h0-9" id="h0-9" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/blag
+</a><a href="#h0-10" id="h0-10" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/centos
+</a><a href="#h0-11" id="h0-11" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/chakra
+</a><a href="#h0-12" id="h0-12" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/chapeau
+</a><a href="#h0-13" id="h0-13" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/chrome
+</a><a href="#h0-14" id="h0-14" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/crux
+</a><a href="#h0-15" id="h0-15" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/debian
+</a><a href="#h0-16" id="h0-16" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/deepin
+</a><a href="#h0-17" id="h0-17" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/elementary
+</a><a href="#h0-18" id="h0-18" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/exherbo
+</a><a href="#h0-19" id="h0-19" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/fedora
+</a><a href="#h0-20" id="h0-20" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/freebsd
+</a><a href="#h0-21" id="h0-21" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/frugalware
+</a><a href="#h0-22" id="h0-22" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/funtoo
+</a><a href="#h0-23" id="h0-23" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/gentoo
+</a><a href="#h0-24" id="h0-24" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/gnewsense
+</a><a href="#h0-25" id="h0-25" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/kali
+</a><a href="#h0-26" id="h0-26" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/kaos
+</a><a href="#h0-27" id="h0-27" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/lmde
+</a><a href="#h0-28" id="h0-28" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/mac
+</a><a href="#h0-29" id="h0-29" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/mageia
+</a><a href="#h0-30" id="h0-30" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/manjaro
+</a><a href="#h0-31" id="h0-31" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/mint
+</a><a href="#h0-32" id="h0-32" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/netbsd
+</a><a href="#h0-33" id="h0-33" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/nixos
+</a><a href="#h0-34" id="h0-34" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/openbsd
+</a><a href="#h0-35" id="h0-35" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/openmandriva
+</a><a href="#h0-36" id="h0-36" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/opensuse
+</a><a href="#h0-37" id="h0-37" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/parabola
+</a><a href="#h0-38" id="h0-38" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/pclinuxos
+</a><a href="#h0-39" id="h0-39" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/peppermint
+</a><a href="#h0-40" id="h0-40" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/puppy
+</a><a href="#h0-41" id="h0-41" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/raspbian
+</a><a href="#h0-42" id="h0-42" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/redhat
+</a><a href="#h0-43" id="h0-43" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/sabayon
+</a><a href="#h0-44" id="h0-44" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/sailfishos
+</a><a href="#h0-45" id="h0-45" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/scientific
+</a><a href="#h0-46" id="h0-46" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/slackware
+</a><a href="#h0-47" id="h0-47" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/solus
+</a><a href="#h0-48" id="h0-48" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/tails
+</a><a href="#h0-49" id="h0-49" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/trisquel
+</a><a href="#h0-50" id="h0-50" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/ubuntu
+</a><a href="#h0-51" id="h0-51" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/void
+</a><a href="#h0-52" id="h0-52" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/windows
+</a><a href="#h0-53" id="h0-53" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/windows10
+</a><a href="#h0-54" id="h0-54" class="d">--rwxr-xr-x	root/root	usr/share/fetch/ascii/distro/zorin
+</a><a href="#h0-55" id="h0-55" class="d">--rwxr-xr-x	root/root	usr/share/fetch/config
+</a><a href="#h0-56" id="h0-56" class="i">+-rw-r--r--	root/root	usr/share/fetch/deleteme (EMPTY)
+</a><b>diff --git a/<a href="../file/fetch/Pkgfile.html">fetch/Pkgfile</a> b/<a href="../file/fetch/Pkgfile.html">fetch/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,25 +1,17 @@
+</a><a href="#h0-0" id="h0-0" class="d">-# Description: A fast, highly customizable system information script.
+</a><a href="#h0-1" id="h0-1" class="d">-# URL:         https://github.com/dylanaraps/fetch
+</a><a href="#h0-2" id="h0-2" class="d">-# Packager:    ix, arcetera@openmailbox.org
+</a><a href="#h0-3" id="h0-3" class="d">-# Depends on:  git xorg-xprop
+</a><a href="#h0-4" id="h0-4" class="d">-# Optional:    scrot xorg-xdpyinfo
+</a><a href="#h0-5" id="h0-5" class="i">+# Description: Transitional package.
+</a><a href="#h0-6" id="h0-6" class="i">+# URL:         https://github.com/dylanaraps/neofetch
+</a><a href="#h0-7" id="h0-7" class="i">+# Packager:    ix, arcetera at openmailbox dot org
+</a><a href="#h0-8" id="h0-8" class="i">+# Depends on:  neofetch
+</a> 
+ name=fetch
+<a href="#h0-11" id="h0-11" class="d">-version=git
+</a><a href="#h0-12" id="h0-12" class="d">-release=1
+</a><a href="#h0-13" id="h0-13" class="i">+version=0.0
+</a><a href="#h0-14" id="h0-14" class="i">+release=2
+</a> source=()
+ 
+ build() {
+<a href="#h0-18" id="h0-18" class="d">-	cd $PKGMK_SOURCE_DIR
+</a><a href="#h0-19" id="h0-19" class="i">+  mkdir -p $PKG/usr/share/fetch
+</a> 
+<a href="#h0-21" id="h0-21" class="d">-	if cd $name; then
+</a><a href="#h0-22" id="h0-22" class="d">-		git fetch -q; git reset --hard origin/master
+</a><a href="#h0-23" id="h0-23" class="d">-	else
+</a><a href="#h0-24" id="h0-24" class="d">-		git clone https://github.com/dylanaraps/fetch.git -b master $name
+</a><a href="#h0-25" id="h0-25" class="d">-		cd $name
+</a><a href="#h0-26" id="h0-26" class="d">-	fi
+</a><a href="#h0-27" id="h0-27" class="i">+  :&gt; $PKG/usr/share/fetch/deleteme
+</a> 
+<a href="#h0-29" id="h0-29" class="d">-	make DESTDIR=$PKG install
+</a><a href="#h0-30" id="h0-30" class="i">+  echo &quot;You can remove this package.&quot;
+</a> }
+<a href="#h0-32" id="h0-32" class="d">-
+</a><a href="#h0-33" id="h0-33" class="d">-# vim: set noet :
+</a><b>diff --git a/<a href="../file/lemonbar-border/.footprint.html">lemonbar-border/.footprint</a> b/<a href="../file/lemonbar-border/.footprint.html">lemonbar-border/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,7 @@
+</a><a href="#h0-0" id="h0-0" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h0-1" id="h0-1" class="i">+drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h0-2" id="h0-2" class="i">+-rwxr-xr-x	root/root	usr/bin/lemonbar
+</a><a href="#h0-3" id="h0-3" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-4" id="h0-4" class="i">+drwxr-xr-x	root/root	usr/share/man/
+</a><a href="#h0-5" id="h0-5" class="i">+drwxr-xr-x	root/root	usr/share/man/man1/
+</a><a href="#h0-6" id="h0-6" class="i">+-rw-r--r--	root/root	usr/share/man/man1/lemonbar.1.gz
+</a><b>diff --git a/<a href="../file/lemonbar-border/.md5sum.html">lemonbar-border/.md5sum</a> b/<a href="../file/lemonbar-border/.md5sum.html">lemonbar-border/.md5sum</a></b>
+<b>diff --git a/<a href="../file/lemonbar-border/Pkgfile.html">lemonbar-border/Pkgfile</a> b/<a href="../file/lemonbar-border/Pkgfile.html">lemonbar-border/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,24 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Description: Lemonbar with borders.
+</a><a href="#h0-1" id="h0-1" class="i">+# URL:         https://github.com/krypt-n/bar
+</a><a href="#h0-2" id="h0-2" class="i">+# Packager:    ix, arcetera@openmailbox.org
+</a><a href="#h0-3" id="h0-3" class="i">+# Depends on:  xorg-libxcb
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+name=lemonbar-border
+</a><a href="#h0-6" id="h0-6" class="i">+version=git
+</a><a href="#h0-7" id="h0-7" class="i">+release=1
+</a><a href="#h0-8" id="h0-8" class="i">+source=()
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+build() {
+</a><a href="#h0-11" id="h0-11" class="i">+	cd $PKGMK_SOURCE_DIR
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a><a href="#h0-13" id="h0-13" class="i">+	if cd $name; then
+</a><a href="#h0-14" id="h0-14" class="i">+		git fetch -q; git reset --hard origin/xft-port
+</a><a href="#h0-15" id="h0-15" class="i">+	else
+</a><a href="#h0-16" id="h0-16" class="i">+		git clone git://github.com/dark-yux/bar -b xft-port $name
+</a><a href="#h0-17" id="h0-17" class="i">+		cd $name
+</a><a href="#h0-18" id="h0-18" class="i">+	fi
+</a><a href="#h0-19" id="h0-19" class="i">+
+</a><a href="#h0-20" id="h0-20" class="i">+	make all doc
+</a><a href="#h0-21" id="h0-21" class="i">+	install -Dm755 lemonbar   $PKG/usr/bin/lemonbar
+</a><a href="#h0-22" id="h0-22" class="i">+	install -Dm644 lemonbar.1 $PKG/usr/share/man/man1/lemonbar.1
+</a><a href="#h0-23" id="h0-23" class="i">+}
+</a><b>diff --git a/<a href="../file/lemonbar-border/lemonbar-border.html">lemonbar-border/lemonbar-border</a> b/<a href="../file/lemonbar-border/lemonbar-border.html">lemonbar-border/lemonbar-border</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+Subproject commit 08de101b458827f969f659e8da6c8d1d2bd573fb
+</a><b>diff --git a/<a href="../file/lemonbar-border/lemonbar-border#git-1.pkg.tar.gz.html">lemonbar-border/lemonbar-border#git-1.pkg.tar.gz</a> b/<a href="../file/lemonbar-border/lemonbar-border#git-1.pkg.tar.gz.html">lemonbar-border/lemonbar-border#git-1.pkg.tar.gz</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/neofetch/.footprint.html">neofetch/.footprint</a> b/<a href="../file/neofetch/.footprint.html">neofetch/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,57 @@
+</a><a href="#h0-0" id="h0-0" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h0-1" id="h0-1" class="i">+drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h0-2" id="h0-2" class="i">+-rwxr-xr-x	root/root	usr/bin/neofetch
+</a><a href="#h0-3" id="h0-3" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-4" id="h0-4" class="i">+drwxr-xr-x	root/root	usr/share/neofetch/
+</a><a href="#h0-5" id="h0-5" class="i">+drwxr-xr-x	root/root	usr/share/neofetch/ascii/
+</a><a href="#h0-6" id="h0-6" class="i">+drwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/
+</a><a href="#h0-7" id="h0-7" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/antergos
+</a><a href="#h0-8" id="h0-8" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/arch
+</a><a href="#h0-9" id="h0-9" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/blag
+</a><a href="#h0-10" id="h0-10" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/bunsenlabs
+</a><a href="#h0-11" id="h0-11" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/centos
+</a><a href="#h0-12" id="h0-12" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/chakra
+</a><a href="#h0-13" id="h0-13" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/chapeau
+</a><a href="#h0-14" id="h0-14" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/chrome
+</a><a href="#h0-15" id="h0-15" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/crux
+</a><a href="#h0-16" id="h0-16" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/debian
+</a><a href="#h0-17" id="h0-17" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/deepin
+</a><a href="#h0-18" id="h0-18" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/elementary
+</a><a href="#h0-19" id="h0-19" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/exherbo
+</a><a href="#h0-20" id="h0-20" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/fedora
+</a><a href="#h0-21" id="h0-21" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/freebsd
+</a><a href="#h0-22" id="h0-22" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/frugalware
+</a><a href="#h0-23" id="h0-23" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/funtoo
+</a><a href="#h0-24" id="h0-24" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/gentoo
+</a><a href="#h0-25" id="h0-25" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/gnewsense
+</a><a href="#h0-26" id="h0-26" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/kali
+</a><a href="#h0-27" id="h0-27" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/kaos
+</a><a href="#h0-28" id="h0-28" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/lmde
+</a><a href="#h0-29" id="h0-29" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/mac
+</a><a href="#h0-30" id="h0-30" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/mageia
+</a><a href="#h0-31" id="h0-31" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/manjaro
+</a><a href="#h0-32" id="h0-32" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/mint
+</a><a href="#h0-33" id="h0-33" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/netbsd
+</a><a href="#h0-34" id="h0-34" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/nixos
+</a><a href="#h0-35" id="h0-35" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/openbsd
+</a><a href="#h0-36" id="h0-36" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/openmandriva
+</a><a href="#h0-37" id="h0-37" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/opensuse
+</a><a href="#h0-38" id="h0-38" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/parabola
+</a><a href="#h0-39" id="h0-39" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/pclinuxos
+</a><a href="#h0-40" id="h0-40" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/peppermint
+</a><a href="#h0-41" id="h0-41" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/puppy
+</a><a href="#h0-42" id="h0-42" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/raspbian
+</a><a href="#h0-43" id="h0-43" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/redhat
+</a><a href="#h0-44" id="h0-44" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/sabayon
+</a><a href="#h0-45" id="h0-45" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/sailfishos
+</a><a href="#h0-46" id="h0-46" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/scientific
+</a><a href="#h0-47" id="h0-47" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/slackware
+</a><a href="#h0-48" id="h0-48" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/solus
+</a><a href="#h0-49" id="h0-49" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/tails
+</a><a href="#h0-50" id="h0-50" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/trisquel
+</a><a href="#h0-51" id="h0-51" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/ubuntu
+</a><a href="#h0-52" id="h0-52" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/void
+</a><a href="#h0-53" id="h0-53" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/windows
+</a><a href="#h0-54" id="h0-54" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/windows10
+</a><a href="#h0-55" id="h0-55" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/zorin
+</a><a href="#h0-56" id="h0-56" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/config
+</a><b>diff --git a/<a href="../file/neofetch/.md5sum.html">neofetch/.md5sum</a> b/<a href="../file/neofetch/.md5sum.html">neofetch/.md5sum</a></b>
+<b>diff --git a/<a href="../file/neofetch/Pkgfile.html">neofetch/Pkgfile</a> b/<a href="../file/neofetch/Pkgfile.html">neofetch/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,25 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Description: A fast, highly customizable system information script.
+</a><a href="#h0-1" id="h0-1" class="i">+# URL:         https://github.com/dylanaraps/neofetch
+</a><a href="#h0-2" id="h0-2" class="i">+# Packager:    ix, arcetera@openmailbox.org
+</a><a href="#h0-3" id="h0-3" class="i">+# Depends on:  git xorg-xprop
+</a><a href="#h0-4" id="h0-4" class="i">+# Optional:    scrot xorg-xdpyinfo
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+name=neofetch
+</a><a href="#h0-7" id="h0-7" class="i">+version=git
+</a><a href="#h0-8" id="h0-8" class="i">+release=2
+</a><a href="#h0-9" id="h0-9" class="i">+source=()
+</a><a href="#h0-10" id="h0-10" class="i">+
+</a><a href="#h0-11" id="h0-11" class="i">+build() {
+</a><a href="#h0-12" id="h0-12" class="i">+	cd $PKGMK_SOURCE_DIR
+</a><a href="#h0-13" id="h0-13" class="i">+
+</a><a href="#h0-14" id="h0-14" class="i">+	if cd $name; then
+</a><a href="#h0-15" id="h0-15" class="i">+		git fetch -q; git reset --hard origin/master
+</a><a href="#h0-16" id="h0-16" class="i">+	else
+</a><a href="#h0-17" id="h0-17" class="i">+		git clone https://github.com/dylanaraps/neofetch.git -b master $name
+</a><a href="#h0-18" id="h0-18" class="i">+		cd $name
+</a><a href="#h0-19" id="h0-19" class="i">+	fi
+</a><a href="#h0-20" id="h0-20" class="i">+
+</a><a href="#h0-21" id="h0-21" class="i">+	make DESTDIR=$PKG install
+</a><a href="#h0-22" id="h0-22" class="i">+}
+</a><a href="#h0-23" id="h0-23" class="i">+
+</a><a href="#h0-24" id="h0-24" class="i">+# vim: set noet :
+</a><b>diff --git a/<a href="../file/tbclock/.md5sum.html">tbclock/.md5sum</a> b/<a href="../file/tbclock/.md5sum.html">tbclock/.md5sum</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+0a0b499120603776a05daf283d18cb38  tbclock-1.10.tar.gz
+</a><b>diff --git a/<a href="../file/tbclock/Pkgfile.html">tbclock/Pkgfile</a> b/<a href="../file/tbclock/Pkgfile.html">tbclock/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,20 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Description: A ncurses binary clock.
+</a><a href="#h0-1" id="h0-1" class="i">+# URL:         https://tamentis.com/projects/tbclock/
+</a><a href="#h0-2" id="h0-2" class="i">+# Packager:    Name and email go here.
+</a><a href="#h0-3" id="h0-3" class="i">+# Maintainer:  6c37 Team, https://github.com/6c37/crux-ports/issues
+</a><a href="#h0-4" id="h0-4" class="i">+# Depends on:
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+name=tbclock
+</a><a href="#h0-7" id="h0-7" class="i">+version=1.10
+</a><a href="#h0-8" id="h0-8" class="i">+release=1
+</a><a href="#h0-9" id="h0-9" class="i">+source=(https://tamentis.com/projects/tbclock/files/$name-$version.tar.gz)
+</a><a href="#h0-10" id="h0-10" class="i">+
+</a><a href="#h0-11" id="h0-11" class="i">+build() {
+</a><a href="#h0-12" id="h0-12" class="i">+	cd $name-$version
+</a><a href="#h0-13" id="h0-13" class="i">+
+</a><a href="#h0-14" id="h0-14" class="i">+	./configure
+</a><a href="#h0-15" id="h0-15" class="i">+	make
+</a><a href="#h0-16" id="h0-16" class="i">+
+</a><a href="#h0-17" id="h0-17" class="i">+	install -Dm755 tbclock $PKG/usr/bin/tbclock
+</a><a href="#h0-18" id="h0-18" class="i">+	install -Dm644 tbclock.1 $PKG/usr/share/man/man1/tbclock.1
+</a><a href="#h0-19" id="h0-19" class="i">+}
+</a><b>diff --git a/<a href="../file/tbclock/tbclock#1.10-1.pkg.tar.gz.html">tbclock/tbclock#1.10-1.pkg.tar.gz</a> b/<a href="../file/tbclock/tbclock#1.10-1.pkg.tar.gz.html">tbclock/tbclock#1.10-1.pkg.tar.gz</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/tbclock/tbclock-1.10.tar.gz.html">tbclock/tbclock-1.10.tar.gz</a> b/<a href="../file/tbclock/tbclock-1.10.tar.gz.html">tbclock/tbclock-1.10.tar.gz</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/urc/urc.html">urc/urc</a> b/<a href="../file/urc/urc.html">urc/urc</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+Subproject commit 2cd7e85f1860f9d10b5936b593e279ae4a107189
+</a><b>diff --git a/<a href="../file/urc/urc#git-4.pkg.tar.gz.html">urc/urc#git-4.pkg.tar.gz</a> b/<a href="../file/urc/urc#git-4.pkg.tar.gz.html">urc/urc#git-4.pkg.tar.gz</a></b>
+Binary files differ
+</pre>
+</div>
+</body>
+</html>

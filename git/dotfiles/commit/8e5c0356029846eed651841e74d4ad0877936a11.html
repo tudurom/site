@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Colorscheme changes - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/8e5c0356029846eed651841e74d4ad0877936a11.html">8e5c0356029846eed651841e74d4ad0877936a11</a>
+<b>parent</b> <a href="../commit/6efc79dd89e34c9ff5010a395dca24c849255fe8.html">6efc79dd89e34c9ff5010a395dca24c849255fe8</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Thu Feb 11 11:08:56 2016
+
+Colorscheme changes
+
+<b>Diffstat:</b>
+ home/.Xresources                    |  6 ++-
+ home/.config/nvim/colors/shblah.vim |  8 +--
+ home/.config/nvim/init.vim          | 98 +++++++++++++++++++++++---------------
+ home/.crosssh.sh                    |  6 ++-
+ home/.mkshrc                        |  6 ++-
+ home/.tmux.conf                     |  6 ++-
+ home/.xinitrc                       |  6 ++-
+ home/.xres/colors/cloudy            |  4 +-
+ 8 files changed, 97 insertions(+), 43 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.Xresources.html">home/.Xresources</a> b/<a href="../file/home/.Xresources.html">home/.Xresources</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,3 +1,9 @@
+</a><a href="#h0-0" id="h0-0" class="i">+! ╻ ╻┏━┓┏━╸┏━┓┏━┓╻ ╻┏━┓┏━╸┏━╸┏━┓
+</a><a href="#h0-1" id="h0-1" class="i">+! ┏╋┛┣┳┛┣╸ ┗━┓┃ ┃┃ ┃┣┳┛┃  ┣╸ ┗━┓
+</a><a href="#h0-2" id="h0-2" class="i">+! ╹ ╹╹┗╸┗━╸┗━┛┗━┛┗━┛╹┗╸┗━╸┗━╸┗━┛
+</a><a href="#h0-3" id="h0-3" class="i">+! by tudurom
+</a><a href="#h0-4" id="h0-4" class="i">+! managed like they are supposed to be
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a> #include &quot;.xres/xft&quot;
+ #include &quot;.xres/rofi&quot;
+ #include &quot;.xres/colors/cloudy&quot;
+<b>diff --git a/<a href="../file/home/.config/nvim/colors/shblah.vim.html">home/.config/nvim/colors/shblah.vim</a> b/<a href="../file/home/.config/nvim/colors/shblah.vim.html">home/.config/nvim/colors/shblah.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -30,20 +30,20 @@ highlight Error        term=NONE cterm=NONE ctermfg=0    ctermbg=1
+</a> highlight ErrorMsg     term=NONE cterm=bold ctermfg=1    ctermbg=0
+ highlight FoldColumn   term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+ highlight Folded       term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+<a href="#h0-3" id="h0-3" class="d">-highlight Function     term=NONE cterm=NONE ctermfg=6    ctermbg=NONE
+</a><a href="#h0-4" id="h0-4" class="d">-highlight Identifier   term=NONE cterm=NONE ctermfg=2    ctermbg=NONE
+</a><a href="#h0-5" id="h0-5" class="i">+highlight Function     term=NONE cterm=bold ctermfg=1    ctermbg=NONE
+</a><a href="#h0-6" id="h0-6" class="i">+highlight Identifier   term=NONE cterm=NONE ctermfg=1    ctermbg=NONE
+</a> highlight IncSearch    term=NONE cterm=bold ctermfg=5    ctermbg=5
+ highlight NonText      term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+ highlight Normal       term=NONE cterm=NONE ctermfg=7    ctermbg=NONE
+ highlight Pmenu        term=NONE cterm=NONE ctermfg=0    ctermbg=7
+ highlight PreProc      term=NONE cterm=bold ctermfg=6    ctermbg=NONE
+ highlight Search       term=NONE cterm=bold ctermfg=7    ctermbg=5
+<a href="#h0-13" id="h0-13" class="d">-highlight Special      term=NONE cterm=bold ctermfg=1    ctermbg=NONE
+</a><a href="#h0-14" id="h0-14" class="i">+highlight Special      term=NONE cterm=NONE ctermfg=2    ctermbg=NONE
+</a> highlight SpecialKey   term=NONE cterm=NONE ctermfg=0    ctermbg=NONE
+ highlight Statement    term=NONE cterm=NONE ctermfg=4    ctermbg=NONE
+ highlight StatusLine   term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+ &quot; highlight StatusLineNC term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+<a href="#h0-19" id="h0-19" class="d">-highlight String       term=NONE cterm=NONE ctermfg=1    ctermbg=NONE
+</a><a href="#h0-20" id="h0-20" class="i">+highlight String       term=NONE cterm=NONE ctermfg=2    ctermbg=NONE
+</a> highlight TabLineSel   term=NONE cterm=bold ctermfg=7    ctermbg=NONE
+ highlight Todo         term=NONE cterm=bold ctermfg=7    ctermbg=1
+ highlight Type         term=NONE cterm=bold ctermfg=4    ctermbg=NONE
+<b>diff --git a/<a href="../file/home/.config/nvim/init.vim.html">home/.config/nvim/init.vim</a> b/<a href="../file/home/.config/nvim/init.vim.html">home/.config/nvim/init.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,75 +1,106 @@
+</a><a href="#h0-0" id="h0-0" class="d">-&quot;  ╻ ╻╻┏┳┓┏━┓┏━╸
+</a><a href="#h0-1" id="h0-1" class="d">-&quot;  ┃┏┛┃┃┃┃┣┳┛┃
+</a><a href="#h0-2" id="h0-2" class="d">-&quot; ╹┗┛ ╹╹ ╹╹┗╸┗━╸
+</a><a href="#h0-3" id="h0-3" class="i">+&quot; ╻┏┓╻╻╺┳╸ ╻ ╻╻┏┳┓
+</a><a href="#h0-4" id="h0-4" class="i">+&quot; ┃┃┗┫┃ ┃  ┃┏┛┃┃┃┃
+</a><a href="#h0-5" id="h0-5" class="i">+&quot; ╹╹ ╹╹ ╹ ╹┗┛ ╹╹ ╹
+</a><a href="#h0-6" id="h0-6" class="i">+&quot; init.vim written with extensibility in mind
+</a> 
+ set nocompatible              &quot; be iMproved, required
+ filetype off                  &quot; required
+ 
+ &quot; Plugins {{{
+<a href="#h0-12" id="h0-12" class="d">-call plug#begin(&apos;~/.config/nvim/plugged&apos;)
+</a><a href="#h0-13" id="h0-13" class="i">+  call plug#begin(&apos;~/.config/nvim/plugged&apos;)
+</a> 
+   &quot; Colorschemes
+   Plug &apos;chriskempson/base16-vim&apos;
+   Plug &apos;noahfrederick/vim-noctu&apos;
+ 
+<a href="#h0-19" id="h0-19" class="i">+  &quot; Focusing
+</a><a href="#h0-20" id="h0-20" class="i">+  Plug &apos;junegunn/goyo.vim&apos;
+</a><a href="#h0-21" id="h0-21" class="i">+
+</a>   &quot; Others
+<a href="#h0-23" id="h0-23" class="i">+  &quot; File tree. Sometimes useful and sometimes it looks good
+</a>   Plug &apos;scrooloose/nerdtree&apos;
+ 
+<a href="#h0-26" id="h0-26" class="i">+  &quot; For obvious reasons
+</a>   Plug &apos;ntpeters/vim-better-whitespace&apos;
+ 
+<a href="#h0-29" id="h0-29" class="i">+  &quot; Statusline
+</a><a href="#h0-30" id="h0-30" class="i">+  Plug &apos;itchyny/lightline.vim&apos;
+</a><a href="#h0-31" id="h0-31" class="i">+
+</a><a href="#h0-32" id="h0-32" class="i">+  &quot; Syntax plugins
+</a>   Plug &apos;gabrielelana/vim-markdown&apos;
+<a href="#h0-34" id="h0-34" class="i">+  Plug &apos;othree/html5.vim&apos;
+</a> 
+<a href="#h0-36" id="h0-36" class="d">-  Plug &apos;bling/vim-airline&apos;
+</a><a href="#h0-37" id="h0-37" class="i">+  &quot; Simple tab completion
+</a><a href="#h0-38" id="h0-38" class="i">+  &quot;Plug &apos;ervandew/supertab&apos;
+</a><a href="#h0-39" id="h0-39" class="i">+  Plug &apos;valloric/youcompleteme&apos;
+</a> 
+<a href="#h0-41" id="h0-41" class="d">-  Plug &apos;ervandew/supertab&apos;
+</a><a href="#h0-42" id="h0-42" class="i">+  Plug &apos;airblade/vim-gitgutter&apos;
+</a> 
+<a href="#h0-44" id="h0-44" class="d">-  &quot; Focus...
+</a><a href="#h0-45" id="h0-45" class="d">-  Plug &apos;junegunn/goyo.vim&apos;
+</a><a href="#h0-46" id="h0-46" class="d">-  Plug &apos;junegunn/limelight.vim&apos;
+</a><a href="#h0-47" id="h0-47" class="i">+  &quot; One plugin to rule them all
+</a><a href="#h0-48" id="h0-48" class="i">+  Plug &apos;sheerun/vim-polyglot&apos;
+</a> 
+   call plug#end()            &quot; required
+   filetype plugin indent on    &quot; required
+ &quot; }}}
+ 
+ &quot; Essential things {{{
+<a href="#h0-55" id="h0-55" class="d">-  syntax enable
+</a><a href="#h0-56" id="h0-56" class="d">-  set number
+</a><a href="#h0-57" id="h0-57" class="i">+
+</a><a href="#h0-58" id="h0-58" class="i">+  &quot; Syntax and tabs
+</a><a href="#h0-59" id="h0-59" class="i">+  syntax enable &quot; Enable syntax highlighting, duh
+</a><a href="#h0-60" id="h0-60" class="i">+  set number    &quot; Looks better
+</a>   set tabstop=2
+   set expandtab
+   set shiftwidth=2
+   set smartindent
+   set cindent
+<a href="#h0-66" id="h0-66" class="i">+  &quot; Make things snappy
+</a><a href="#h0-67" id="h0-67" class="i">+  set updatetime=250
+</a><a href="#h0-68" id="h0-68" class="i">+  &quot; Fold markers
+</a><a href="#h0-69" id="h0-69" class="i">+  set fdm=marker
+</a><a href="#h0-70" id="h0-70" class="i">+  &quot; ingorecase + smartcase
+</a><a href="#h0-71" id="h0-71" class="i">+  set ignorecase
+</a><a href="#h0-72" id="h0-72" class="i">+  set smartcase
+</a><a href="#h0-73" id="h0-73" class="i">+  &quot; Make it natural
+</a><a href="#h0-74" id="h0-74" class="i">+  set splitright
+</a><a href="#h0-75" id="h0-75" class="i">+&quot; }}}
+</a><a href="#h0-76" id="h0-76" class="i">+
+</a><a href="#h0-77" id="h0-77" class="i">+&quot; Keybindings {{{
+</a><a href="#h0-78" id="h0-78" class="i">+
+</a><a href="#h0-79" id="h0-79" class="i">+  &quot; C-d to hide find results
+</a><a href="#h0-80" id="h0-80" class="i">+  nnoremap &lt;silent&gt; &lt;C-d&gt; :noh&lt;CR&gt;
+</a><a href="#h0-81" id="h0-81" class="i">+  tnoremap &lt;Esc&gt; &lt;C-\&gt;&lt;C-n&gt;
+</a><a href="#h0-82" id="h0-82" class="i">+
+</a> &quot; }}}
+ 
+ &quot; Colors {{{
+   set t_Co=256
+<a href="#h0-87" id="h0-87" class="d">-  let base16colorspace=256
+</a>   set background=dark
+<a href="#h0-89" id="h0-89" class="d">-  &quot;colorscheme base16-ocean
+</a><a href="#h0-90" id="h0-90" class="d">-  &quot;colo noctu
+</a>   colo shblah
+ &quot; }}}
+ 
+<a href="#h0-94" id="h0-94" class="d">-&quot; Airline {{{
+</a><a href="#h0-95" id="h0-95" class="d">-  &quot; let g:airline_powerline_fonts = 1
+</a><a href="#h0-96" id="h0-96" class="d">-  let g:airline_left_sep=&apos;▓▒░&apos;
+</a><a href="#h0-97" id="h0-97" class="d">-  let g:airline_right_sep=&apos;░▒▓&apos;
+</a><a href="#h0-98" id="h0-98" class="d">-  &quot;let g:airline_theme=&apos;term&apos;
+</a><a href="#h0-99" id="h0-99" class="d">-  set laststatus=2
+</a><a href="#h0-100" id="h0-100" class="d">-&quot; }}}
+</a><a href="#h0-101" id="h0-101" class="d">-
+</a> &quot; NERD things {{{
+   &quot; Toggle NERDTree
+   map &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;
+ &quot; }}}
+ 
+<a href="#h0-107" id="h0-107" class="d">-&quot; Goyo settings {{{
+</a><a href="#h0-108" id="h0-108" class="d">-  let g:goyo_width=&apos;80%&apos;
+</a><a href="#h0-109" id="h0-109" class="d">-  let g:goyo_height=&apos;90%&apos;
+</a><a href="#h0-110" id="h0-110" class="i">+&quot; Statusline {{{
+</a><a href="#h0-111" id="h0-111" class="i">+  set laststatus=2
+</a><a href="#h0-112" id="h0-112" class="i">+  let g:lightline = {
+</a><a href="#h0-113" id="h0-113" class="i">+    \ &apos;colorscheme&apos;: &apos;cloudy&apos;,
+</a><a href="#h0-114" id="h0-114" class="i">+    \ &apos;active&apos;: {
+</a><a href="#h0-115" id="h0-115" class="i">+    \   &apos;left&apos;: [ [ &apos;filename&apos; ],
+</a><a href="#h0-116" id="h0-116" class="i">+    \             [ &apos;readonly&apos;, &apos;fugitive&apos; ] ],
+</a><a href="#h0-117" id="h0-117" class="i">+    \   &apos;right&apos;: [ [ &apos;percent&apos;, &apos;lineinfo&apos; ],
+</a><a href="#h0-118" id="h0-118" class="i">+    \              [ &apos;fileencoding&apos;, &apos;filetype&apos; ],
+</a><a href="#h0-119" id="h0-119" class="i">+    \              [ &apos;fileformat&apos;, &apos;syntastic&apos; ] ]
+</a><a href="#h0-120" id="h0-120" class="i">+    \ },
+</a><a href="#h0-121" id="h0-121" class="i">+    \ &apos;separator&apos;: { &apos;left&apos;: &apos;▓▒░&apos;, &apos;right&apos;: &apos;░▒▓&apos; },
+</a><a href="#h0-122" id="h0-122" class="i">+    \ &apos;subseparator&apos;: { &apos;left&apos;: &apos;▒&apos;, &apos;right&apos;: &apos;░&apos; }
+</a><a href="#h0-123" id="h0-123" class="i">+    \ }
+</a> &quot; }}}
+ 
+ &quot; Clipboard setting {{{
+<a href="#h0-127" id="h0-127" class="d">-  set clipboard=unnamed
+</a><a href="#h0-128" id="h0-128" class="i">+  set clipboard+=unnamedplus
+</a> &quot; }}}
+ 
+ &quot; Word wrapping {{{
+<a href="#h1" id="h1" class="h">@@ -80,18 +111,11 @@ call plug#begin(&apos;~/.config/nvim/plugged&apos;)
+</a>   set wrapmargin=0
+ &quot; }}}
+ 
+<a href="#h1-3" id="h1-3" class="d">-&quot; Code folding {{{
+</a><a href="#h1-4" id="h1-4" class="d">-  set fdm=marker
+</a><a href="#h1-5" id="h1-5" class="d">-  map &lt;C-d&gt; za
+</a><a href="#h1-6" id="h1-6" class="i">+&quot; Focusing {{{
+</a><a href="#h1-7" id="h1-7" class="i">+  let g:goyo_width=&apos;80%&apos;
+</a><a href="#h1-8" id="h1-8" class="i">+  let g:goyo_height=&apos;90%&apos;
+</a> &quot; }}}
+ 
+ &quot; Completion {{{
+<a href="#h1-12" id="h1-12" class="d">-  filetype plugin on
+</a><a href="#h1-13" id="h1-13" class="d">-  set omnifunc=syntaxcomplete#Complete
+</a><a href="#h1-14" id="h1-14" class="d">-&quot; }}}
+</a><a href="#h1-15" id="h1-15" class="d">-
+</a><a href="#h1-16" id="h1-16" class="d">-&quot; Focus... {{{
+</a><a href="#h1-17" id="h1-17" class="d">-  let g:limelight_conceal_ctermfg = &apos;gray&apos;
+</a><a href="#h1-18" id="h1-18" class="d">-  autocmd! User GoyoEnter Limelight
+</a><a href="#h1-19" id="h1-19" class="d">-  autocmd! User GoyoLeave Limelight!
+</a><a href="#h1-20" id="h1-20" class="i">+  let g:deoplete#enable_at_startup = 1
+</a> &quot; }}}
+<b>diff --git a/<a href="../file/home/.crosssh.sh.html">home/.crosssh.sh</a> b/<a href="../file/home/.crosssh.sh.html">home/.crosssh.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,3 +1,9 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# ┏━╸┏━┓┏━┓┏━┓┏━┓┏━┓╻ ╻
+</a><a href="#h0-1" id="h0-1" class="i">+# ┃  ┣┳┛┃ ┃┗━┓┗━┓┗━┓┣━┫
+</a><a href="#h0-2" id="h0-2" class="i">+# ┗━╸╹┗╸┗━┛┗━┛┗━┛┗━┛╹ ╹
+</a><a href="#h0-3" id="h0-3" class="i">+# by tudurom
+</a><a href="#h0-4" id="h0-4" class="i">+# bits shared between different shells (bash, mksh, zsh)
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a> export EDITOR=nvim
+ export VISUAL=nvim
+ export GOPATH=$HOME/Go
+<b>diff --git a/<a href="../file/home/.mkshrc.html">home/.mkshrc</a> b/<a href="../file/home/.mkshrc.html">home/.mkshrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,3 +1,9 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# ┏┳┓╻┏ ┏━┓╻ ╻
+</a><a href="#h0-1" id="h0-1" class="i">+# ┃┃┃┣┻┓┗━┓┣━┫
+</a><a href="#h0-2" id="h0-2" class="i">+# ╹ ╹╹ ╹┗━┛╹ ╹
+</a><a href="#h0-3" id="h0-3" class="i">+# by tudurom
+</a><a href="#h0-4" id="h0-4" class="i">+# not sucking since forever
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a> source ~/.crosssh.sh
+ 
+ HISTFILE=&quot;$HOME/.mksh_history&quot;
+<b>diff --git a/<a href="../file/home/.tmux.conf.html">home/.tmux.conf</a> b/<a href="../file/home/.tmux.conf.html">home/.tmux.conf</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,3 +1,9 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# ╺┳╸┏┳┓╻ ╻╻ ╻
+</a><a href="#h0-1" id="h0-1" class="i">+#  ┃ ┃┃┃┃ ┃┏╋┛
+</a><a href="#h0-2" id="h0-2" class="i">+#  ╹ ╹ ╹┗━┛╹ ╹
+</a><a href="#h0-3" id="h0-3" class="i">+#  by tudurom
+</a><a href="#h0-4" id="h0-4" class="i">+#  completely detached
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a> # Set prefix to Control-F
+ unbind C-b
+ set-option -g prefix C-f
+<b>diff --git a/<a href="../file/home/.xinitrc.html">home/.xinitrc</a> b/<a href="../file/home/.xinitrc.html">home/.xinitrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,5 +1,11 @@
+</a> #!/bin/sh
+ 
+<a href="#h0-2" id="h0-2" class="i">+#  ╻ ╻╻┏┓╻╻╺┳╸┏━┓┏━╸
+</a><a href="#h0-3" id="h0-3" class="i">+#  ┏╋┛┃┃┗┫┃ ┃ ┣┳┛┃
+</a><a href="#h0-4" id="h0-4" class="i">+# ╹╹ ╹╹╹ ╹╹ ╹ ╹┗╸┗━╸
+</a><a href="#h0-5" id="h0-5" class="i">+# by tudurom
+</a><a href="#h0-6" id="h0-6" class="i">+# no login manager since forever
+</a><a href="#h0-7" id="h0-7" class="i">+
+</a> # Strange things from de default .xinitrc {{{
+ userresources=$HOME/.Xresources
+ usermodmap=$HOME/.Xmodmap
+<b>diff --git a/<a href="../file/home/.xres/colors/cloudy.html">home/.xres/colors/cloudy</a> b/<a href="../file/home/.xres/colors/cloudy.html">home/.xres/colors/cloudy</a></b>
+<a href="#h0" id="h0" class="h">@@ -18,8 +18,8 @@ URxvt.cursorColor: #eff1f5
+</a> *.color9:       #c27171
+ 
+ ! green
+<a href="#h0-3" id="h0-3" class="d">-*.color2:       #63a66e
+</a><a href="#h0-4" id="h0-4" class="d">-*.color10:      #70c27e
+</a><a href="#h0-5" id="h0-5" class="i">+*.color2:       #63a690
+</a><a href="#h0-6" id="h0-6" class="i">+*.color10:      #6dc2a3
+</a> 
+ ! yellow
+ *.color3:       #a6a663
+</pre>
+</div>
+</body>
+</html>

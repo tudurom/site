@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Colorscheme changes - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/7940821e0e7774750083049d293ee3b48b44bf94.html">7940821e0e7774750083049d293ee3b48b44bf94</a>
+<b>parent</b> <a href="../commit/a574cf7b6210dac386b66bebc4f41ad9b5c10e79.html">a574cf7b6210dac386b66bebc4f41ad9b5c10e79</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Fri Jan  8 23:48:26 2016
+
+Colorscheme changes
+
+<b>Diffstat:</b>
+ home/.asoundrc                  |  2 ++
+ home/.config/bspwm/bspwmrc      |  1 -
+ home/.config/nvim/init.vim      |  8 ++++++--
+ home/.scripts/info.sh           | 13 +++++++------
+ home/.scripts/lock.sh           |  2 +-
+ home/.scripts/panel_bar         |  2 +-
+ home/.zprezto/runcoms/zpreztorc |  3 ++-
+ home/.zprezto/runcoms/zshrc     | 12 ++++++++----
+ 8 files changed, 27 insertions(+), 16 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.asoundrc.html">home/.asoundrc</a> b/<a href="../file/home/.asoundrc.html">home/.asoundrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,3 +1,5 @@
+</a><a href="#h0-0" id="h0-0" class="i">+defaults.pcm.rate_converter &quot;samplerate_best&quot;
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a> pcm.!default {
+   type hw
+   card 0
+<b>diff --git a/<a href="../file/home/.config/bspwm/bspwmrc.html">home/.config/bspwm/bspwmrc</a> b/<a href="../file/home/.config/bspwm/bspwmrc.html">home/.config/bspwm/bspwmrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -9,7 +9,6 @@ bspc config split_ratio         0.50
+</a> bspc config borderless_monocle  false
+ bspc config gapless_monocle     false
+ bspc config focus_by_distance   true
+<a href="#h0-3" id="h0-3" class="d">-bspc config pointer_follows_monitor true
+</a> 
+ bspc config normal_border_color &quot;#373e4d&quot;
+ bspc config focused_border_color &quot;#96b5b4&quot;
+<b>diff --git a/<a href="../file/home/.config/nvim/init.vim.html">home/.config/nvim/init.vim</a> b/<a href="../file/home/.config/nvim/init.vim.html">home/.config/nvim/init.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -29,6 +29,8 @@ call vundle#begin()
+</a>   Plugin &apos;Shougo/unite.vim&apos;
+   Plugin &apos;bling/vim-airline&apos;
+   Plugin &apos;Valloric/YouCompleteMe&apos;
+<a href="#h0-3" id="h0-3" class="i">+  Plugin &apos;mustache/vim-mustache-handlebars&apos;
+</a><a href="#h0-4" id="h0-4" class="i">+  Plugin &apos;noahfrederick/vim-noctu&apos;
+</a> 
+   &quot; All of your Plugins must be added before the following line
+   call vundle#end()            &quot; required
+<a href="#h1" id="h1" class="h">@@ -56,14 +58,16 @@ call vundle#begin()
+</a> 
+ &quot; Colors
+   set t_Co=256
+<a href="#h1-3" id="h1-3" class="d">-  let base16colorspace=256
+</a><a href="#h1-4" id="h1-4" class="d">-  colorscheme base16-ocean
+</a><a href="#h1-5" id="h1-5" class="i">+  &quot;let base16colorspace=256
+</a><a href="#h1-6" id="h1-6" class="i">+  &quot;colorscheme base16-ocean
+</a><a href="#h1-7" id="h1-7" class="i">+  colorscheme noctu
+</a>   set background=dark
+ 
+ &quot; Airline things
+   &quot; let g:airline_powerline_fonts = 1
+   let g:airline_left_sep=&apos;▓▒░&apos;
+   let g:airline_right_sep=&apos;░▒▓&apos;
+<a href="#h1-14" id="h1-14" class="i">+  let g:airline_theme=&apos;term&apos;
+</a>   set laststatus=2
+ 
+ &quot; NERD things
+<b>diff --git a/<a href="../file/home/.scripts/info.sh.html">home/.scripts/info.sh</a> b/<a href="../file/home/.scripts/info.sh.html">home/.scripts/info.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -4,7 +4,7 @@
+</a> # copied from z3bra&apos;s blog
+ # modified by tudurom
+ #
+<a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="i">+clear
+</a> c00=$&apos;\e[0;30m&apos;
+ c01=$&apos;\e[0;31m&apos;
+ c02=$&apos;\e[0;32m&apos;
+<a href="#h1" id="h1" class="h">@@ -76,11 +76,6 @@ if [ ! -f &quot;$imgtempdir/$imgname&quot; ]; then
+</a>     -gravity $crop_offset &quot;$img&quot; \
+     -resize &quot;$imgsize&quot;x&quot;$imgsize&quot; &quot;$imgtempdir/$imgname&quot;
+ fi
+<a href="#h1-3" id="h1-3" class="d">-img=&quot;$imgtempdir/$imgname&quot;
+</a><a href="#h1-4" id="h1-4" class="d">-if type -p /usr/lib/w3m/w3mimgdisplay &gt;/dev/null 2&gt;&amp;1; then
+</a><a href="#h1-5" id="h1-5" class="d">-  printf &quot;0;1;$xoffset;$yoffset;$imgsize;$imgsize;;;;;$img\n4;\n3;&quot; |\
+</a><a href="#h1-6" id="h1-6" class="d">-    /usr/lib/w3m/w3mimgdisplay
+</a><a href="#h1-7" id="h1-7" class="d">-fi
+</a> 
+ if [ -n &quot;$DISPLAY&quot; ]; then
+     WM=$(xprop -root _NET_SUPPORTING_WM_CHECK)
+<a href="#h2" id="h2" class="h">@@ -127,3 +122,9 @@ cat &lt;&lt; EOF
+</a> 
+ 
+ EOF
+<a href="#h2-3" id="h2-3" class="i">+img=&quot;$imgtempdir/$imgname&quot;
+</a><a href="#h2-4" id="h2-4" class="i">+if type -p /usr/lib/w3m/w3mimgdisplay &gt;/dev/null 2&gt;&amp;1; then
+</a><a href="#h2-5" id="h2-5" class="i">+  printf &quot;0;1;$xoffset;$yoffset;$imgsize;$imgsize;;;;;$img\n4;\n3;&quot; |\
+</a><a href="#h2-6" id="h2-6" class="i">+    /usr/lib/w3m/w3mimgdisplay
+</a><a href="#h2-7" id="h2-7" class="i">+fi
+</a><a href="#h2-8" id="h2-8" class="i">+
+</a><b>diff --git a/<a href="../file/home/.scripts/lock.sh.html">home/.scripts/lock.sh</a> b/<a href="../file/home/.scripts/lock.sh.html">home/.scripts/lock.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -7,6 +7,6 @@ if [ &quot;$(playerctl status)&quot; = &quot;Playing&quot;  ] ; then
+</a>   playerctl pause
+ fi
+ i3lock -u -i /tmp/screen.png
+<a href="#h0-3" id="h0-3" class="d">-#systemctl suspend
+</a><a href="#h0-4" id="h0-4" class="i">+systemctl suspend
+</a> rm /tmp/screen.png
+ 
+<b>diff --git a/<a href="../file/home/.scripts/panel_bar.html">home/.scripts/panel_bar</a> b/<a href="../file/home/.scripts/panel_bar.html">home/.scripts/panel_bar</a></b>
+<a href="#h0" id="h0" class="h">@@ -17,7 +17,7 @@ separator=&quot;%{F$COLOR_SEPARATOR}|%{F-}&quot;
+</a> while read -r line ; do
+ 	case $line in
+     PS*)
+<a href="#h0-3" id="h0-3" class="d">-      playing=&quot;%{A1:mpc toggle:}%{A2:urxvt -e /usr/bin/cava &amp;:}%{A3:mpc stop:}${line#??}%{A}%{A}%{A}&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+      playing=&quot;%{A1:mpc toggle:}%{A2:urxvt -e /usr/bin/cava &amp;:}%{A3:mpc stop:}%{A4:mpc next:}%{A5:mpc prev:}${line#??}%{A}%{A}%{A}%{A}%{A}&quot;
+</a>       ;;
+ 		S*)
+ 			# clock output
+<b>diff --git a/<a href="../file/home/.zprezto/runcoms/zpreztorc.html">home/.zprezto/runcoms/zpreztorc</a> b/<a href="../file/home/.zprezto/runcoms/zpreztorc.html">home/.zprezto/runcoms/zpreztorc</a></b>
+<a href="#h0" id="h0" class="h">@@ -32,7 +32,8 @@ zstyle &apos;:prezto:load&apos; pmodule \
+</a>   &apos;spectrum&apos; \
+   &apos;utility&apos; \
+   &apos;completion&apos; \
+<a href="#h0-3" id="h0-3" class="d">-  &apos;prompt&apos;
+</a><a href="#h0-4" id="h0-4" class="i">+  &apos;prompt&apos; \
+</a><a href="#h0-5" id="h0-5" class="i">+  &apos;syntax-highlighting&apos;
+</a> 
+ #
+ # Editor
+<b>diff --git a/<a href="../file/home/.zprezto/runcoms/zshrc.html">home/.zprezto/runcoms/zshrc</a> b/<a href="../file/home/.zprezto/runcoms/zshrc.html">home/.zprezto/runcoms/zshrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -11,8 +11,7 @@ if [[ -s &quot;${ZDOTDIR:-$HOME}/.zprezto/init.zsh&quot; ]]; then
+</a> fi
+ 
+ # Customize to your needs...
+<a href="#h0-3" id="h0-3" class="d">-# export TERM=xterm-256color
+</a><a href="#h0-4" id="h0-4" class="d">-export TERM=xterm-256color
+</a><a href="#h0-5" id="h0-5" class="i">+#export TERM=xterm-256color
+</a> export EDITOR=nvim
+ export VISUAL=nvim
+ export GOPATH=$HOME/Go
+<a href="#h1" id="h1" class="h">@@ -22,10 +21,11 @@ eval &quot;$(rbenv init -)&quot;
+</a> 
+ # Aliases aka hacks
+ alias :q=exit
+<a href="#h1-3" id="h1-3" class="d">-alias vim=nvim
+</a><a href="#h1-4" id="h1-4" class="i">+#alias vim=nvim
+</a> alias irb=pry
+<a href="#h1-6" id="h1-6" class="i">+alias ccat=pygmentize
+</a> 
+<a href="#h1-8" id="h1-8" class="d">-source ~/.scripts/base16-ocean.dark.sh
+</a><a href="#h1-9" id="h1-9" class="i">+#source ~/.scripts/base16-ocean.dark.sh
+</a> source &quot;$HOME/.homesick/repos/homeshick/homeshick.sh&quot;
+ 
+ # Vi mode
+<a href="#h2" id="h2" class="h">@@ -48,5 +48,9 @@ testnet() {
+</a>   done
+ }
+ 
+<a href="#h2-3" id="h2-3" class="i">+cless() {
+</a><a href="#h2-4" id="h2-4" class="i">+  pygmentize -f terminal &quot;$1&quot; | less -R
+</a><a href="#h2-5" id="h2-5" class="i">+}
+</a><a href="#h2-6" id="h2-6" class="i">+
+</a> # Set window title to &quot;username@hostname: directory&quot;
+ precmd () {print -Pn &quot;\e]0;%n@%m: %~\a&quot;}
+</pre>
+</div>
+</body>
+</html>

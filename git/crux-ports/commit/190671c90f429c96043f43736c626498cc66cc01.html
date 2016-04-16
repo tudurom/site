@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>new pkg: keepassx2 - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/190671c90f429c96043f43736c626498cc66cc01.html">190671c90f429c96043f43736c626498cc66cc01</a>
+<b>parent</b> <a href="../commit/ae7a84f567324836747993a8c8cd5d56982e96ca.html">ae7a84f567324836747993a8c8cd5d56982e96ca</a>
+<b>Author:</b> arcetera &lt;<a href="mailto:arcticsn0wdev@gmail.com">arcticsn0wdev@gmail.com</a>&gt;
+<b>Date:</b>   Wed Dec  2 20:02:07 2015
+
+new pkg: keepassx2
+
+<b>Diffstat:</b>
+ keepassx2/.footprint | 220 ++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ keepassx2/.md5sum    |   1 +-
+ keepassx2/Pkgfile    |  23 +++++-
+ 3 files changed, 244 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/keepassx2/.footprint.html">keepassx2/.footprint</a> b/<a href="../file/keepassx2/.footprint.html">keepassx2/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,220 @@
+</a><a href="#h0-0" id="h0-0" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h0-1" id="h0-1" class="i">+drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h0-2" id="h0-2" class="i">+-rwxr-xr-x	root/root	usr/bin/keepassx
+</a><a href="#h0-3" id="h0-3" class="i">+drwxr-xr-x	root/root	usr/lib64/
+</a><a href="#h0-4" id="h0-4" class="i">+drwxr-xr-x	root/root	usr/lib64/keepassx/
+</a><a href="#h0-5" id="h0-5" class="i">+-rwxr-xr-x	root/root	usr/lib64/keepassx/libkeepassx-autotype-x11.so
+</a><a href="#h0-6" id="h0-6" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-7" id="h0-7" class="i">+drwxr-xr-x	root/root	usr/share/applications/
+</a><a href="#h0-8" id="h0-8" class="i">+-rw-r--r--	root/root	usr/share/applications/keepassx.desktop
+</a><a href="#h0-9" id="h0-9" class="i">+drwxr-xr-x	root/root	usr/share/icons/
+</a><a href="#h0-10" id="h0-10" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/
+</a><a href="#h0-11" id="h0-11" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/128x128/
+</a><a href="#h0-12" id="h0-12" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/128x128/apps/
+</a><a href="#h0-13" id="h0-13" class="i">+-rw-r--r--	root/root	usr/share/icons/hicolor/128x128/apps/keepassx.png
+</a><a href="#h0-14" id="h0-14" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/128x128/mimetypes/
+</a><a href="#h0-15" id="h0-15" class="i">+-rw-r--r--	root/root	usr/share/icons/hicolor/128x128/mimetypes/application-x-keepassx.png
+</a><a href="#h0-16" id="h0-16" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/16x16/
+</a><a href="#h0-17" id="h0-17" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/16x16/actions/
+</a><a href="#h0-18" id="h0-18" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/16x16/apps/
+</a><a href="#h0-19" id="h0-19" class="i">+-rw-r--r--	root/root	usr/share/icons/hicolor/16x16/apps/keepassx.png
+</a><a href="#h0-20" id="h0-20" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/16x16/mimetypes/
+</a><a href="#h0-21" id="h0-21" class="i">+-rw-r--r--	root/root	usr/share/icons/hicolor/16x16/mimetypes/application-x-keepassx.png
+</a><a href="#h0-22" id="h0-22" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/22x22/
+</a><a href="#h0-23" id="h0-23" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/22x22/actions/
+</a><a href="#h0-24" id="h0-24" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/22x22/mimetypes/
+</a><a href="#h0-25" id="h0-25" class="i">+-rw-r--r--	root/root	usr/share/icons/hicolor/22x22/mimetypes/application-x-keepassx.png
+</a><a href="#h0-26" id="h0-26" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/22x22/status/
+</a><a href="#h0-27" id="h0-27" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/24x24/
+</a><a href="#h0-28" id="h0-28" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/24x24/apps/
+</a><a href="#h0-29" id="h0-29" class="i">+-rw-r--r--	root/root	usr/share/icons/hicolor/24x24/apps/keepassx.png
+</a><a href="#h0-30" id="h0-30" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/256x256/
+</a><a href="#h0-31" id="h0-31" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/256x256/apps/
+</a><a href="#h0-32" id="h0-32" class="i">+-rw-r--r--	root/root	usr/share/icons/hicolor/256x256/apps/keepassx.png
+</a><a href="#h0-33" id="h0-33" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/32x32/
+</a><a href="#h0-34" id="h0-34" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/32x32/apps/
+</a><a href="#h0-35" id="h0-35" class="i">+-rw-r--r--	root/root	usr/share/icons/hicolor/32x32/apps/keepassx.png
+</a><a href="#h0-36" id="h0-36" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/32x32/mimetypes/
+</a><a href="#h0-37" id="h0-37" class="i">+-rw-r--r--	root/root	usr/share/icons/hicolor/32x32/mimetypes/application-x-keepassx.png
+</a><a href="#h0-38" id="h0-38" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/48x48/
+</a><a href="#h0-39" id="h0-39" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/48x48/apps/
+</a><a href="#h0-40" id="h0-40" class="i">+-rw-r--r--	root/root	usr/share/icons/hicolor/48x48/apps/keepassx.png
+</a><a href="#h0-41" id="h0-41" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/64x64/
+</a><a href="#h0-42" id="h0-42" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/64x64/apps/
+</a><a href="#h0-43" id="h0-43" class="i">+-rw-r--r--	root/root	usr/share/icons/hicolor/64x64/apps/keepassx.png
+</a><a href="#h0-44" id="h0-44" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/64x64/mimetypes/
+</a><a href="#h0-45" id="h0-45" class="i">+-rw-r--r--	root/root	usr/share/icons/hicolor/64x64/mimetypes/application-x-keepassx.png
+</a><a href="#h0-46" id="h0-46" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/scalable/
+</a><a href="#h0-47" id="h0-47" class="i">+drwxr-xr-x	root/root	usr/share/icons/hicolor/scalable/apps/
+</a><a href="#h0-48" id="h0-48" class="i">+-rw-r--r--	root/root	usr/share/icons/hicolor/scalable/apps/keepassx.svgz
+</a><a href="#h0-49" id="h0-49" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/
+</a><a href="#h0-50" id="h0-50" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/
+</a><a href="#h0-51" id="h0-51" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/
+</a><a href="#h0-52" id="h0-52" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/128x128/
+</a><a href="#h0-53" id="h0-53" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/128x128/apps/
+</a><a href="#h0-54" id="h0-54" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/128x128/apps/keepassx.png
+</a><a href="#h0-55" id="h0-55" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/128x128/mimetypes/
+</a><a href="#h0-56" id="h0-56" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/128x128/mimetypes/application-x-keepassx.png
+</a><a href="#h0-57" id="h0-57" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/16x16/
+</a><a href="#h0-58" id="h0-58" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/16x16/actions/
+</a><a href="#h0-59" id="h0-59" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/application-exit.png
+</a><a href="#h0-60" id="h0-60" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/auto-type.png
+</a><a href="#h0-61" id="h0-61" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/configure.png
+</a><a href="#h0-62" id="h0-62" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/database-change-key.png
+</a><a href="#h0-63" id="h0-63" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/document-close.png
+</a><a href="#h0-64" id="h0-64" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/document-edit.png
+</a><a href="#h0-65" id="h0-65" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/document-encrypt.png
+</a><a href="#h0-66" id="h0-66" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/document-new.png
+</a><a href="#h0-67" id="h0-67" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/document-open.png
+</a><a href="#h0-68" id="h0-68" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/document-save-as.png
+</a><a href="#h0-69" id="h0-69" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/document-save.png
+</a><a href="#h0-70" id="h0-70" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/edit-clear-locationbar-ltr.png
+</a><a href="#h0-71" id="h0-71" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/edit-clear-locationbar-rtl.png
+</a><a href="#h0-72" id="h0-72" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/entry-clone.png
+</a><a href="#h0-73" id="h0-73" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/entry-delete.png
+</a><a href="#h0-74" id="h0-74" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/entry-edit.png
+</a><a href="#h0-75" id="h0-75" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/entry-new.png
+</a><a href="#h0-76" id="h0-76" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/group-delete.png
+</a><a href="#h0-77" id="h0-77" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/group-edit.png
+</a><a href="#h0-78" id="h0-78" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/group-new.png
+</a><a href="#h0-79" id="h0-79" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/help-about.png
+</a><a href="#h0-80" id="h0-80" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/password-copy.png
+</a><a href="#h0-81" id="h0-81" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/password-generate.png
+</a><a href="#h0-82" id="h0-82" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/password-show-off.png
+</a><a href="#h0-83" id="h0-83" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/password-show-on.png
+</a><a href="#h0-84" id="h0-84" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/system-search.png
+</a><a href="#h0-85" id="h0-85" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/actions/username-copy.png
+</a><a href="#h0-86" id="h0-86" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/16x16/apps/
+</a><a href="#h0-87" id="h0-87" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/apps/keepassx.png
+</a><a href="#h0-88" id="h0-88" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/16x16/mimetypes/
+</a><a href="#h0-89" id="h0-89" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/16x16/mimetypes/application-x-keepassx.png
+</a><a href="#h0-90" id="h0-90" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/22x22/
+</a><a href="#h0-91" id="h0-91" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/22x22/actions/
+</a><a href="#h0-92" id="h0-92" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/actions/dialog-close.png
+</a><a href="#h0-93" id="h0-93" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/actions/dialog-ok.png
+</a><a href="#h0-94" id="h0-94" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/actions/document-encrypt.png
+</a><a href="#h0-95" id="h0-95" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/actions/document-open.png
+</a><a href="#h0-96" id="h0-96" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/actions/document-save.png
+</a><a href="#h0-97" id="h0-97" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/actions/entry-delete.png
+</a><a href="#h0-98" id="h0-98" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/actions/entry-edit.png
+</a><a href="#h0-99" id="h0-99" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/actions/entry-new.png
+</a><a href="#h0-100" id="h0-100" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/actions/password-copy.png
+</a><a href="#h0-101" id="h0-101" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/actions/system-search.png
+</a><a href="#h0-102" id="h0-102" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/actions/username-copy.png
+</a><a href="#h0-103" id="h0-103" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/22x22/mimetypes/
+</a><a href="#h0-104" id="h0-104" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/mimetypes/application-x-keepassx.png
+</a><a href="#h0-105" id="h0-105" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/22x22/status/
+</a><a href="#h0-106" id="h0-106" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/status/dialog-error.png
+</a><a href="#h0-107" id="h0-107" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/status/dialog-information.png
+</a><a href="#h0-108" id="h0-108" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/22x22/status/dialog-warning.png
+</a><a href="#h0-109" id="h0-109" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/24x24/
+</a><a href="#h0-110" id="h0-110" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/24x24/apps/
+</a><a href="#h0-111" id="h0-111" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/24x24/apps/keepassx.png
+</a><a href="#h0-112" id="h0-112" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/256x256/
+</a><a href="#h0-113" id="h0-113" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/256x256/apps/
+</a><a href="#h0-114" id="h0-114" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/256x256/apps/keepassx.png
+</a><a href="#h0-115" id="h0-115" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/32x32/
+</a><a href="#h0-116" id="h0-116" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/32x32/apps/
+</a><a href="#h0-117" id="h0-117" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/32x32/apps/keepassx.png
+</a><a href="#h0-118" id="h0-118" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/32x32/mimetypes/
+</a><a href="#h0-119" id="h0-119" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/32x32/mimetypes/application-x-keepassx.png
+</a><a href="#h0-120" id="h0-120" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/48x48/
+</a><a href="#h0-121" id="h0-121" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/48x48/apps/
+</a><a href="#h0-122" id="h0-122" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/48x48/apps/keepassx.png
+</a><a href="#h0-123" id="h0-123" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/64x64/
+</a><a href="#h0-124" id="h0-124" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/64x64/apps/
+</a><a href="#h0-125" id="h0-125" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/64x64/apps/keepassx.png
+</a><a href="#h0-126" id="h0-126" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/64x64/mimetypes/
+</a><a href="#h0-127" id="h0-127" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/64x64/mimetypes/application-x-keepassx.png
+</a><a href="#h0-128" id="h0-128" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/scalable/
+</a><a href="#h0-129" id="h0-129" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/application/scalable/apps/
+</a><a href="#h0-130" id="h0-130" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/application/scalable/apps/keepassx.svgz
+</a><a href="#h0-131" id="h0-131" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/icons/database/
+</a><a href="#h0-132" id="h0-132" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C00_Password.png
+</a><a href="#h0-133" id="h0-133" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C01_Package_Network.png
+</a><a href="#h0-134" id="h0-134" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C02_MessageBox_Warning.png
+</a><a href="#h0-135" id="h0-135" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C03_Server.png
+</a><a href="#h0-136" id="h0-136" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C04_Klipper.png
+</a><a href="#h0-137" id="h0-137" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C05_Edu_Languages.png
+</a><a href="#h0-138" id="h0-138" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C06_KCMDF.png
+</a><a href="#h0-139" id="h0-139" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C07_Kate.png
+</a><a href="#h0-140" id="h0-140" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C08_Socket.png
+</a><a href="#h0-141" id="h0-141" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C09_Identity.png
+</a><a href="#h0-142" id="h0-142" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C10_Kontact.png
+</a><a href="#h0-143" id="h0-143" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C11_Camera.png
+</a><a href="#h0-144" id="h0-144" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C12_IRKickFlash.png
+</a><a href="#h0-145" id="h0-145" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C13_KGPG_Key3.png
+</a><a href="#h0-146" id="h0-146" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C14_Laptop_Power.png
+</a><a href="#h0-147" id="h0-147" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C15_Scanner.png
+</a><a href="#h0-148" id="h0-148" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C16_Mozilla_Firebird.png
+</a><a href="#h0-149" id="h0-149" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C17_CDROM_Unmount.png
+</a><a href="#h0-150" id="h0-150" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C18_Display.png
+</a><a href="#h0-151" id="h0-151" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C19_Mail_Generic.png
+</a><a href="#h0-152" id="h0-152" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C20_Misc.png
+</a><a href="#h0-153" id="h0-153" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C21_KOrganizer.png
+</a><a href="#h0-154" id="h0-154" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C22_ASCII.png
+</a><a href="#h0-155" id="h0-155" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C23_Icons.png
+</a><a href="#h0-156" id="h0-156" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C24_Connect_Established.png
+</a><a href="#h0-157" id="h0-157" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C25_Folder_Mail.png
+</a><a href="#h0-158" id="h0-158" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C26_FileSave.png
+</a><a href="#h0-159" id="h0-159" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C27_NFS_Unmount.png
+</a><a href="#h0-160" id="h0-160" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C28_QuickTime.png
+</a><a href="#h0-161" id="h0-161" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C29_KGPG_Term.png
+</a><a href="#h0-162" id="h0-162" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C30_Konsole.png
+</a><a href="#h0-163" id="h0-163" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C31_FilePrint.png
+</a><a href="#h0-164" id="h0-164" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C32_FSView.png
+</a><a href="#h0-165" id="h0-165" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C33_Run.png
+</a><a href="#h0-166" id="h0-166" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C34_Configure.png
+</a><a href="#h0-167" id="h0-167" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C35_KRFB.png
+</a><a href="#h0-168" id="h0-168" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C36_Ark.png
+</a><a href="#h0-169" id="h0-169" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C37_KPercentage.png
+</a><a href="#h0-170" id="h0-170" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C38_Samba_Unmount.png
+</a><a href="#h0-171" id="h0-171" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C39_History.png
+</a><a href="#h0-172" id="h0-172" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C40_Mail_Find.png
+</a><a href="#h0-173" id="h0-173" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C41_VectorGfx.png
+</a><a href="#h0-174" id="h0-174" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C42_KCMMemory.png
+</a><a href="#h0-175" id="h0-175" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C43_EditTrash.png
+</a><a href="#h0-176" id="h0-176" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C44_KNotes.png
+</a><a href="#h0-177" id="h0-177" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C45_Cancel.png
+</a><a href="#h0-178" id="h0-178" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C46_Help.png
+</a><a href="#h0-179" id="h0-179" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C47_KPackage.png
+</a><a href="#h0-180" id="h0-180" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C48_Folder.png
+</a><a href="#h0-181" id="h0-181" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C49_Folder_Blue_Open.png
+</a><a href="#h0-182" id="h0-182" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C50_Folder_Tar.png
+</a><a href="#h0-183" id="h0-183" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C51_Decrypted.png
+</a><a href="#h0-184" id="h0-184" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C52_Encrypted.png
+</a><a href="#h0-185" id="h0-185" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C53_Apply.png
+</a><a href="#h0-186" id="h0-186" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C54_Signature.png
+</a><a href="#h0-187" id="h0-187" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C55_Thumbnail.png
+</a><a href="#h0-188" id="h0-188" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C56_KAddressBook.png
+</a><a href="#h0-189" id="h0-189" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C57_View_Text.png
+</a><a href="#h0-190" id="h0-190" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C58_KGPG.png
+</a><a href="#h0-191" id="h0-191" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C59_Package_Development.png
+</a><a href="#h0-192" id="h0-192" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C60_KFM_Home.png
+</a><a href="#h0-193" id="h0-193" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C61_Services.png
+</a><a href="#h0-194" id="h0-194" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C62_Tux.png
+</a><a href="#h0-195" id="h0-195" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C63_Feather.png
+</a><a href="#h0-196" id="h0-196" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C64_Apple.png
+</a><a href="#h0-197" id="h0-197" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C65_W.png
+</a><a href="#h0-198" id="h0-198" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C66_Money.png
+</a><a href="#h0-199" id="h0-199" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C67_Certificate.png
+</a><a href="#h0-200" id="h0-200" class="i">+-rw-r--r--	root/root	usr/share/keepassx/icons/database/C68_BlackBerry.png
+</a><a href="#h0-201" id="h0-201" class="i">+drwxr-xr-x	root/root	usr/share/keepassx/translations/
+</a><a href="#h0-202" id="h0-202" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_cs.qm
+</a><a href="#h0-203" id="h0-203" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_da.qm
+</a><a href="#h0-204" id="h0-204" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_de.qm
+</a><a href="#h0-205" id="h0-205" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_en_plurals.qm
+</a><a href="#h0-206" id="h0-206" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_es.qm
+</a><a href="#h0-207" id="h0-207" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_fr.qm
+</a><a href="#h0-208" id="h0-208" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_id.qm
+</a><a href="#h0-209" id="h0-209" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_it.qm
+</a><a href="#h0-210" id="h0-210" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_ja.qm
+</a><a href="#h0-211" id="h0-211" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_nl_NL.qm
+</a><a href="#h0-212" id="h0-212" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_pt_PT.qm
+</a><a href="#h0-213" id="h0-213" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_ru.qm
+</a><a href="#h0-214" id="h0-214" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_sv.qm
+</a><a href="#h0-215" id="h0-215" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_zh_CN.qm
+</a><a href="#h0-216" id="h0-216" class="i">+-rw-r--r--	root/root	usr/share/keepassx/translations/keepassx_zh_TW.qm
+</a><a href="#h0-217" id="h0-217" class="i">+drwxr-xr-x	root/root	usr/share/mime/
+</a><a href="#h0-218" id="h0-218" class="i">+drwxr-xr-x	root/root	usr/share/mime/packages/
+</a><a href="#h0-219" id="h0-219" class="i">+-rw-r--r--	root/root	usr/share/mime/packages/keepassx.xml
+</a><b>diff --git a/<a href="../file/keepassx2/.md5sum.html">keepassx2/.md5sum</a> b/<a href="../file/keepassx2/.md5sum.html">keepassx2/.md5sum</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+95114e6719d12eb9a1e3ac618b7bd275  keepassx-2.0-beta2.tar.gz
+</a><b>diff --git a/<a href="../file/keepassx2/Pkgfile.html">keepassx2/Pkgfile</a> b/<a href="../file/keepassx2/Pkgfile.html">keepassx2/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,23 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Description: An Open-Source KeePass compatible password manager
+</a><a href="#h0-1" id="h0-1" class="i">+# URL:         https://keepassx.org
+</a><a href="#h0-2" id="h0-2" class="i">+# Packager:    arcetera, echo iue@trnspljc.890 | tr ietursnpl890jc acprlsurecomed
+</a><a href="#h0-3" id="h0-3" class="i">+# Depends on:  qt4 xorg-libxtst
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+name=keepassx2
+</a><a href="#h0-6" id="h0-6" class="i">+version=2.0b2
+</a><a href="#h0-7" id="h0-7" class="i">+release=1
+</a><a href="#h0-8" id="h0-8" class="i">+source=(https://www.keepassx.org/releases/2.0-beta2/keepassx-2.0-beta2.tar.gz)
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+build() {
+</a><a href="#h0-11" id="h0-11" class="i">+  cd keepassx-2.0-beta2
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a><a href="#h0-13" id="h0-13" class="i">+  mkdir build
+</a><a href="#h0-14" id="h0-14" class="i">+  cd build
+</a><a href="#h0-15" id="h0-15" class="i">+
+</a><a href="#h0-16" id="h0-16" class="i">+  cmake \
+</a><a href="#h0-17" id="h0-17" class="i">+         -DCMAKE_BUILD_TYPE=&quot;Release&quot; \
+</a><a href="#h0-18" id="h0-18" class="i">+         -DCMAKE_INSTALL_PREFIX=&quot;/usr&quot; ..
+</a><a href="#h0-19" id="h0-19" class="i">+ 
+</a><a href="#h0-20" id="h0-20" class="i">+  make
+</a><a href="#h0-21" id="h0-21" class="i">+  make install DESTDIR=$PKG
+</a><a href="#h0-22" id="h0-22" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>

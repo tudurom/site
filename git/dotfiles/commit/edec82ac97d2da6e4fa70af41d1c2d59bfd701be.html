@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>DAMN BSPWM - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/edec82ac97d2da6e4fa70af41d1c2d59bfd701be.html">edec82ac97d2da6e4fa70af41d1c2d59bfd701be</a>
+<b>parent</b> <a href="../commit/4b1a235918e107050bfed7bafb9f6ea388527175.html">4b1a235918e107050bfed7bafb9f6ea388527175</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Mon Dec 28 00:47:07 2015
+
+DAMN BSPWM
+
+<b>Diffstat:</b>
+ home/.config/bspwm/bspwmrc  |  3 +--
+ home/.config/sxhkd/sxhkdrc  | 34 +++++++++++++++++-----------------
+ home/.scripts/panel         | 13 ++++++++++---
+ home/.zprezto/runcoms/zshrc | 17 +++++++++++++----
+ 4 files changed, 41 insertions(+), 26 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.config/bspwm/bspwmrc.html">home/.config/bspwm/bspwmrc</a> b/<a href="../file/home/.config/bspwm/bspwmrc.html">home/.config/bspwm/bspwmrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -9,14 +9,13 @@ bspc config split_ratio         0.50
+</a> bspc config borderless_monocle  false
+ bspc config gapless_monocle     false
+ bspc config focus_by_distance   true
+<a href="#h0-3" id="h0-3" class="d">-bspc config pointer_follows_focus true
+</a> bspc config pointer_follows_monitor true
+ 
+ bspc config normal_border_color &quot;#2b303b&quot;
+ bspc config focused_border_color &quot;#96b5b4&quot;
+ 
+ if [ $(bspc query -M | wc -l) -eq 2 ]; then
+<a href="#h0-10" id="h0-10" class="d">-  bspc monitor LVDS-1 -d 6 7 8 9 10
+</a><a href="#h0-11" id="h0-11" class="i">+  bspc monitor LVDS-0 -d 6 7 8 9 10
+</a>   bspc monitor DP-3 -d 1 2 3 4 5
+ else
+   bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+<b>diff --git a/<a href="../file/home/.config/sxhkd/sxhkdrc.html">home/.config/sxhkd/sxhkdrc</a> b/<a href="../file/home/.config/sxhkd/sxhkdrc.html">home/.config/sxhkd/sxhkdrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -39,11 +39,10 @@ XF86AudioPrev
+</a> 
+ # Quit bspwm and kill the panel
+ super + alt + Escape
+<a href="#h0-3" id="h0-3" class="d">-	bspc quit &amp;&amp; pkill panel
+</a><a href="#h0-4" id="h0-4" class="d">-
+</a><a href="#h0-5" id="h0-5" class="i">+  ~/.scripts/exitbspwm
+</a> # Close the focused window
+ super + w
+<a href="#h0-8" id="h0-8" class="d">-	bspc window -c
+</a><a href="#h0-9" id="h0-9" class="i">+	bspc node -c
+</a> 
+ # Toggle monocle layout
+ super + n
+<a href="#h1" id="h1" class="h">@@ -51,34 +50,35 @@ super + n
+</a> 
+ # Change selected window&apos;s mode into tiled, pseudo-tiled, floating or fullscreen
+ super + {t,p,s,f}
+<a href="#h1-3" id="h1-3" class="d">-	bspc window -t {tiled,pseudo_tiled,floating,fullscreen}
+</a><a href="#h1-4" id="h1-4" class="i">+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+</a> 
+ # Focus the last window/desktop
+ super + {grave,Tab}
+<a href="#h1-8" id="h1-8" class="d">-	bspc {window,desktop} -f last
+</a><a href="#h1-9" id="h1-9" class="i">+	bspc {node,desktop} -f last
+</a> 
+ # Swap the focused window with the last window
+ super + apostrophe
+<a href="#h1-13" id="h1-13" class="d">-	bspc window -s last
+</a><a href="#h1-14" id="h1-14" class="i">+	bspc node -s last
+</a> 
+ # Focus the next older/newer window
+ super + {o,i}
+ 	bspc control --record-history off; \
+<a href="#h1-19" id="h1-19" class="d">-	bspc window {older,newer} -f; \
+</a><a href="#h1-20" id="h1-20" class="i">+	bspc node {older,newer} -f; \
+</a> 	bspc control --record-history on
+ 
+ 
+ super + y
+<a href="#h1-25" id="h1-25" class="d">-	bspc window -w last.!automatic
+</a><a href="#h1-26" id="h1-26" class="i">+	bspc node -w last.!automatic
+</a> 
+ super + m
+<a href="#h1-29" id="h1-29" class="d">-	bspc window -s biggest
+</a><a href="#h1-30" id="h1-30" class="i">+	bspc node -s biggest
+</a><a href="#h1-31" id="h1-31" class="i">+
+</a> 
+ super + {_,shift + }{h,j,k,l}
+<a href="#h1-34" id="h1-34" class="d">-	bspc window -{f,s} {left,down,up,right}
+</a><a href="#h1-35" id="h1-35" class="i">+	bspc node -{f,s} {left,down,up,right}
+</a> 
+ super + {_,shift + }c
+<a href="#h1-38" id="h1-38" class="d">-	bspc window -f {next,prev}
+</a><a href="#h1-39" id="h1-39" class="i">+	bspc node -f {next,prev}
+</a> 
+ super + {comma,period}
+ 	bspc desktop -C {backward,forward}
+<a href="#h2" id="h2" class="h">@@ -87,25 +87,25 @@ super + bracket{left,right}
+</a> 	bspc desktop -f {prev,next}
+ 
+ super + ctrl + {h,j,k,l}
+<a href="#h2-3" id="h2-3" class="d">-	bspc window -p {left,down,up,right}
+</a><a href="#h2-4" id="h2-4" class="i">+	bspc node -p {left,down,up,right}
+</a> 
+ super + ctrl + {_,shift + }space
+<a href="#h2-7" id="h2-7" class="d">-	bspc {window -p cancel,desktop -c}
+</a><a href="#h2-8" id="h2-8" class="i">+	bspc {node -p cancel,desktop -c}
+</a> 
+ super + alt + {h,j,k,l}
+<a href="#h2-11" id="h2-11" class="d">-	bspc window -e {left -10,down +10,up -10,right +10}
+</a><a href="#h2-12" id="h2-12" class="i">+	bspc node -e {left -10,down +10,up -10,right +10}
+</a> 
+ super + alt + shift + {h,j,k,l}
+<a href="#h2-15" id="h2-15" class="d">-	bspc window -e {right -10,up +10,down -10,left +10}
+</a><a href="#h2-16" id="h2-16" class="i">+	bspc node -e {right -10,up +10,down -10,left +10}
+</a> 
+ super + ctrl + {1-9}
+<a href="#h2-19" id="h2-19" class="d">-	bspc window -r 0.{1-9}
+</a><a href="#h2-20" id="h2-20" class="i">+	bspc node -r 0.{1-9}
+</a> 
+ super + {Left,Down,Up,Right}
+ 	xdo move {-x -20,-y +20,-y -20,-x +20}
+ 
+ super + {_,shift + }{1-9,0}
+<a href="#h2-26" id="h2-26" class="d">-	bspc {desktop -f,window -d} &apos;^{1-9,10}&apos;
+</a><a href="#h2-27" id="h2-27" class="i">+	bspc {desktop -f,node -d} &apos;^{1-9,10}&apos;
+</a> 
+ ~button1
+ 	bspc pointer -g focus
+<b>diff --git a/<a href="../file/home/.scripts/panel.html">home/.scripts/panel</a> b/<a href="../file/home/.scripts/panel.html">home/.scripts/panel</a></b>
+<a href="#h0" id="h0" class="h">@@ -3,6 +3,8 @@
+</a> . panel_config
+ . panel_icons
+ 
+<a href="#h0-3" id="h0-3" class="i">+#EPOCH=1
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a> if [ $(pgrep -cx panel) -gt 1 ] ; then
+ 	printf &quot;%s\n&quot; &quot;The panel is already running.&quot; &gt;&amp;2
+ exit 1
+<a href="#h1" id="h1" class="h">@@ -13,11 +15,16 @@ trap &apos;trap - TERM; kill 0&apos; INT TERM QUIT EXIT
+</a> [ -e &quot;$PANEL_FIFO&quot; ] &amp;&amp; rm &quot;$PANEL_FIFO&quot;
+ mkfifo &quot;$PANEL_FIFO&quot;
+ 
+<a href="#h1-3" id="h1-3" class="d">-
+</a> bspc config top_padding $PANEL_HEIGHT
+<a href="#h1-5" id="h1-5" class="d">-bspc control --subscribe &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h1-6" id="h1-6" class="i">+#bspc control --subscribe &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h1-7" id="h1-7" class="i">+bspc subscribe &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a> xtitle -sf &apos;T%s&apos; &gt; &quot;$PANEL_FIFO&quot; &amp;
+<a href="#h1-9" id="h1-9" class="d">-clock -sf &apos;S%a %d %B %H:%M&apos; &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h1-10" id="h1-10" class="i">+if [ $EPOCH -eq 1 ]; then
+</a><a href="#h1-11" id="h1-11" class="i">+  clock_format=&apos;%s&apos;
+</a><a href="#h1-12" id="h1-12" class="i">+else
+</a><a href="#h1-13" id="h1-13" class="i">+  clock_format=&apos;%a %d %B %H:%M&apos;
+</a><a href="#h1-14" id="h1-14" class="i">+fi
+</a><a href="#h1-15" id="h1-15" class="i">+clock -sf &quot;S$clock_format&quot; -i 10 &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a> 
+ # Volume
+ while true; do
+<b>diff --git a/<a href="../file/home/.zprezto/runcoms/zshrc.html">home/.zprezto/runcoms/zshrc</a> b/<a href="../file/home/.zprezto/runcoms/zshrc.html">home/.zprezto/runcoms/zshrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -13,15 +13,18 @@ fi
+</a> # Customize to your needs...
+ # export TERM=xterm-256color
+ export TERM=xterm-256color
+<a href="#h0-3" id="h0-3" class="d">-export EDITOR=vim
+</a><a href="#h0-4" id="h0-4" class="d">-export VISUAL=vim
+</a><a href="#h0-5" id="h0-5" class="d">-alias :q=exit
+</a><a href="#h0-6" id="h0-6" class="d">-alias vim=nvim
+</a><a href="#h0-7" id="h0-7" class="i">+export EDITOR=nvim
+</a><a href="#h0-8" id="h0-8" class="i">+export VISUAL=nvim
+</a> export GOPATH=$HOME/Go
+ export PATH=&quot;$(ruby -e &apos;print Gem.user_dir&apos;)/bin:$HOME/.scripts:$GOPATH/bin:$PATH&quot;
+ export PATH=&quot;$HOME/.rbenv/bin:$PATH&quot;
+ eval &quot;$(rbenv init -)&quot;
+ 
+<a href="#h0-14" id="h0-14" class="i">+# Aliases aka hacks
+</a><a href="#h0-15" id="h0-15" class="i">+alias :q=exit
+</a><a href="#h0-16" id="h0-16" class="i">+alias vim=nvim
+</a><a href="#h0-17" id="h0-17" class="i">+alias irb=pry
+</a><a href="#h0-18" id="h0-18" class="i">+
+</a> source ~/.scripts/base16-ocean.dark.sh
+ source &quot;$HOME/.homesick/repos/homeshick/homeshick.sh&quot;
+ 
+<a href="#h1" id="h1" class="h">@@ -39,5 +42,11 @@ pclean() {
+</a>   sudo pacman -Rsn $(pacman -Qdtq)
+ }
+ 
+<a href="#h1-3" id="h1-3" class="i">+testnet() {
+</a><a href="#h1-4" id="h1-4" class="i">+  while true; do
+</a><a href="#h1-5" id="h1-5" class="i">+    ping google.com
+</a><a href="#h1-6" id="h1-6" class="i">+  done
+</a><a href="#h1-7" id="h1-7" class="i">+}
+</a><a href="#h1-8" id="h1-8" class="i">+
+</a> # Set window title to &quot;username@hostname: directory&quot;
+ precmd () {print -Pn &quot;\e]0;%n@%m: %~\a&quot;}
+</pre>
+</div>
+</body>
+</html>

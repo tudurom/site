@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Details... - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/2bce0f56bdff1305004a4debaa3351cf6c6c17c7.html">2bce0f56bdff1305004a4debaa3351cf6c6c17c7</a>
+<b>parent</b> <a href="../commit/601a41ce84fbd834c4cdb8180b3f91052ae36b61.html">601a41ce84fbd834c4cdb8180b3f91052ae36b61</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Mon Mar 21 19:12:35 2016
+
+Details...
+
+<b>Diffstat:</b>
+ wmrc/.scripts/cornerw   | 2 +-
+ wmrc/.scripts/wewhandle | 5 +----
+ 2 files changed, 2 insertions(+), 5 deletions(-)
+<hr/><b>diff --git a/<a href="../file/wmrc/.scripts/cornerw.html">wmrc/.scripts/cornerw</a> b/<a href="../file/wmrc/.scripts/cornerw.html">wmrc/.scripts/cornerw</a></b>
+<a href="#h0" id="h0" class="h">@@ -33,7 +33,7 @@ case $1 in
+</a>     y=$(( screen_height - height - 2 * border_width - GENERAL_GAP))
+     ;;
+   md)
+<a href="#h0-3" id="h0-3" class="d">-    x=$(( screen_width / 2 - width /  2 - border_width ))
+</a><a href="#h0-4" id="h0-4" class="i">+    x=$(( (screen_width - width - 2 * border_width) / 2 ))
+</a>     y=$(( screen_height / 2 - height / 2 - border_width ))
+ esac
+ 
+<b>diff --git a/<a href="../file/wmrc/.scripts/wewhandle.html">wmrc/.scripts/wewhandle</a> b/<a href="../file/wmrc/.scripts/wewhandle.html">wmrc/.scripts/wewhandle</a></b>
+<a href="#h0" id="h0" class="h">@@ -4,8 +4,7 @@
+</a> # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h0-3" id="h0-3" class="d">-while IFS=: read ev wid; do
+</a><a href="#h0-4" id="h0-4" class="d">-  #sleep 0.1
+</a><a href="#h0-5" id="h0-5" class="i">+while IFS=: read -r ev wid; do
+</a>   case $ev in
+     # Window creation
+     16)
+<a href="#h1" id="h1" class="h">@@ -18,7 +17,6 @@ while IFS=: read ev wid; do
+</a>     19)
+       if ! wattr o $wid; then
+         focusw $wid
+<a href="#h1-3" id="h1-3" class="d">-        #test $(lsw | wc -l) -ge 1 &amp;&amp; hsetroot -fill $BLUR
+</a>       fi
+       ;;
+ 
+<a href="#h2" id="h2" class="h">@@ -27,7 +25,6 @@ while IFS=: read ev wid; do
+</a>       if ! wattr $(pfw); then
+         focusw $(closestw prev)
+         groaw # Force cleanup
+<a href="#h2-3" id="h2-3" class="d">-        #test -z &quot;$(lsw)&quot; &amp;&amp; hsetroot -fill $WALL
+</a>       fi
+       ;;
+   esac
+</pre>
+</div>
+</body>
+</html>

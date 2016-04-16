@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>It&apos;s all about details - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/15b5613148e7ddabeb929d724687e77c6792fb3c.html">15b5613148e7ddabeb929d724687e77c6792fb3c</a>
+<b>parent</b> <a href="../commit/7e6e1c4715cdfbb39622dd565e19d10670d6c4c8.html">7e6e1c4715cdfbb39622dd565e19d10670d6c4c8</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Tue Mar 15 16:06:41 2016
+
+It&apos;s all about details
+
+<b>Diffstat:</b>
+ wallpapers/wallpapers/neos.jpg | Bin 0 -&gt; 2820887 bytes
+ wmrc/.scripts/statusbar        | 16 +++++++++-------
+ wmrc/.scripts/tilew            |  4 +++-
+ 3 files changed, 12 insertions(+), 8 deletions(-)
+<hr/><b>diff --git a/<a href="../file/wallpapers/wallpapers/neos.jpg.html">wallpapers/wallpapers/neos.jpg</a> b/<a href="../file/wallpapers/wallpapers/neos.jpg.html">wallpapers/wallpapers/neos.jpg</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a> b/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a></b>
+<a href="#h0" id="h0" class="h">@@ -31,8 +31,10 @@
+</a>   C13=&quot;$(xrq &apos;*color13&apos;)&quot;
+   C14=&quot;$(xrq &apos;*color14&apos;)&quot;
+   C15=&quot;$(xrq &apos;*color15&apos;)&quot;
+<a href="#h0-3" id="h0-3" class="d">-  CF=&quot;$(xrq &apos;*foreground&apos;)&quot;
+</a><a href="#h0-4" id="h0-4" class="d">-  CB=&quot;$(xrq &apos;*background&apos;)&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+  #CF=&quot;$(xrq &apos;*foreground&apos;)&quot;
+</a><a href="#h0-6" id="h0-6" class="i">+  CF=&quot;$C6&quot;
+</a><a href="#h0-7" id="h0-7" class="i">+  #CB=&quot;$(xrq &apos;*background&apos;)&quot;
+</a><a href="#h0-8" id="h0-8" class="i">+  CB=&quot;#1d2a30&quot;
+</a> 
+   # TERMINATE THIS HERO
+   trap &apos;trap - TERM; kill 0&apos; INT TERM QUIT EXIT
+<a href="#h1" id="h1" class="h">@@ -58,7 +60,7 @@
+</a>   # Gonna position it centered and respect the gaps
+   BAR_OPTS=&quot;${BAR_OPTS} -g ${BAR_WIDTH}x${BAR_HEIGHT}+${BAR_X}+${BAR_Y}&quot;
+   # Colors
+<a href="#h1-3" id="h1-3" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -B ${CB} -F ${CF} -U ${C9}&quot;
+</a><a href="#h1-4" id="h1-4" class="i">+  BAR_OPTS=&quot;${BAR_OPTS} -B ${CB} -F ${CF} -U ${C1}&quot;
+</a>   BAR_OPTS=&quot;${BAR_OPTS} -u 2&quot;
+   BAR_OPTS=&quot;${BAR_OPTS} -f ${PANEL_FONT} -f ${PANEL_ICON_FONT}&quot;
+ 
+<a href="#h2" id="h2" class="h">@@ -103,14 +105,14 @@
+</a> 
+   # CPU Usage
+   while true; do
+<a href="#h2-3" id="h2-3" class="d">-    echo &quot;P%{F$C4}%{F-} $(mpstat | grep -A 5 &quot;%idle&quot; | tail -n 1 | awk -F &quot; &quot; &apos;{print 100 -  $ 12}&apos;a)%&quot;
+</a><a href="#h2-4" id="h2-4" class="i">+    echo &quot;P%{F$C12}%{F-} $(mpstat | grep -A 5 &quot;%idle&quot; | tail -n 1 | awk -F &quot; &quot; &apos;{print 100 -  $ 12}&apos;a)%&quot;
+</a>     sleep 1
+   done &gt; &quot;$FIFO_PATH&quot; &amp;
+ 
+   # Memory usage
+   while true; do
+     # Why bother getting the RAM, when I can use neofetch&apos;s &quot;hidden&quot; feature ;)
+<a href="#h2-11" id="h2-11" class="d">-    echo &quot;R%{F$C1}%{F-} $(neofetch --stdout memory | cut -d&apos; &apos; -f1)&quot;
+</a><a href="#h2-12" id="h2-12" class="i">+    echo &quot;R%{F$C9}%{F-} $(neofetch --stdout memory | cut -d&apos; &apos; -f1)&quot;
+</a>     sleep 1
+   done &gt; &quot;$FIFO_PATH&quot; &amp;
+ 
+<a href="#h3" id="h3" class="h">@@ -128,7 +130,7 @@
+</a>     else
+       vicon=
+     fi
+<a href="#h3-3" id="h3-3" class="d">-    echo &quot;V%{A3:amixer sset Master toggle:}%{A4:amixer sset Master 5%+ unmute:}%{A5:amixer sset Master 5%- unmute:}%{F$C2}$vicon%{F-} $volume%{A}%{A}%{A}&quot;
+</a><a href="#h3-4" id="h3-4" class="i">+    echo &quot;V%{A3:amixer sset Master toggle:}%{A4:amixer sset Master 5%+ unmute:}%{A5:amixer sset Master 5%- unmute:}%{F$C10}$vicon%{F-} $volume%{A}%{A}%{A}&quot;
+</a>     sleep 0.5
+   done &gt; &quot;$FIFO_PATH&quot; &amp;
+ 
+<a href="#h4" id="h4" class="h">@@ -170,7 +172,7 @@
+</a>           ;;
+       esac
+       if groaw -p $gid; then
+<a href="#h4-3" id="h4-3" class="d">-        g_this_out=&quot;%{+u} ${g_icon} %{-u}&quot;
+</a><a href="#h4-4" id="h4-4" class="i">+        g_this_out=&quot;%{+u} %{F$C6}${g_icon}%{F-} %{-u}&quot;
+</a>       else
+         g_this_out=&quot; ${g_icon} &quot;
+       fi
+<b>diff --git a/<a href="../file/wmrc/.scripts/tilew.html">wmrc/.scripts/tilew</a> b/<a href="../file/wmrc/.scripts/tilew.html">wmrc/.scripts/tilew</a></b>
+<a href="#h0" id="h0" class="h">@@ -8,7 +8,7 @@
+</a> # default values for gaps and master area
+ PANEL=${PANEL:-$(( 2 * GENERAL_GAP + PANEL_STATUS_HEIGHT + 2 ))}
+ GAP=${GAP:-$GENERAL_GAP}
+<a href="#h0-3" id="h0-3" class="d">-MASTER=${MASTER:-900}
+</a><a href="#h0-4" id="h0-4" class="i">+MASTER=${MASTER:-940}
+</a> 
+ # get current window id and its borderwidth
+ PFW=$(pfw)
+<a href="#h1" id="h1" class="h">@@ -39,3 +39,5 @@ for wid in $(lsw|grep -v $PFW); do
+</a>     wtp $X $Y $W $H $wid
+     Y=$((Y + H + GAP + 2*BW))
+ done
+<a href="#h1-3" id="h1-3" class="i">+
+</a><a href="#h1-4" id="h1-4" class="i">+# vim: set ft=sh :
+</a></pre>
+</div>
+</body>
+</html>

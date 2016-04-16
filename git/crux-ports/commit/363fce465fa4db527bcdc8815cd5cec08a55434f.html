@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>libwebp: Update footprint. - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/363fce465fa4db527bcdc8815cd5cec08a55434f.html">363fce465fa4db527bcdc8815cd5cec08a55434f</a>
+<b>parent</b> <a href="../commit/d78f6e2fffda3091bafe86a8780b556de4232292.html">d78f6e2fffda3091bafe86a8780b556de4232292</a>
+<b>Author:</b> ix &lt;<a href="mailto:arcetera@openmailbox.org">arcetera@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Mar  4 21:03:27 2016
+
+libwebp: Update footprint.
+
+<b>Diffstat:</b>
+ libwebp/.footprint                 | 22 ++++++++++++++++++++++
+ libwebp/.md5sum                    |  1 +
+ libwebp/libwebp#0.5.0-1.pkg.tar.gz | Bin 0 -&gt; 564336 bytes
+ libwebp/v0.5.0.tar.gz              | Bin 0 -&gt; 712491 bytes
+ 4 files changed, 23 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/libwebp/.footprint.html">libwebp/.footprint</a> b/<a href="../file/libwebp/.footprint.html">libwebp/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,22 @@
+</a><a href="#h0-0" id="h0-0" class="i">+drwxr-xr-x	arc/users	usr/
+</a><a href="#h0-1" id="h0-1" class="i">+drwxr-xr-x	arc/users	usr/bin/
+</a><a href="#h0-2" id="h0-2" class="i">+-rwxr-xr-x	arc/users	usr/bin/cwebp
+</a><a href="#h0-3" id="h0-3" class="i">+-rwxr-xr-x	arc/users	usr/bin/dwebp
+</a><a href="#h0-4" id="h0-4" class="i">+drwxr-xr-x	arc/users	usr/include/
+</a><a href="#h0-5" id="h0-5" class="i">+drwxr-xr-x	arc/users	usr/include/webp/
+</a><a href="#h0-6" id="h0-6" class="i">+-rw-r--r--	arc/users	usr/include/webp/decode.h
+</a><a href="#h0-7" id="h0-7" class="i">+-rw-r--r--	arc/users	usr/include/webp/encode.h
+</a><a href="#h0-8" id="h0-8" class="i">+-rw-r--r--	arc/users	usr/include/webp/types.h
+</a><a href="#h0-9" id="h0-9" class="i">+drwxr-xr-x	arc/users	usr/lib/
+</a><a href="#h0-10" id="h0-10" class="i">+-rw-r--r--	arc/users	usr/lib/libwebp.a
+</a><a href="#h0-11" id="h0-11" class="i">+-rwxr-xr-x	arc/users	usr/lib/libwebp.la
+</a><a href="#h0-12" id="h0-12" class="i">+lrwxrwxrwx	arc/users	usr/lib/libwebp.so -&gt; libwebp.so.6.0.0
+</a><a href="#h0-13" id="h0-13" class="i">+lrwxrwxrwx	arc/users	usr/lib/libwebp.so.6 -&gt; libwebp.so.6.0.0
+</a><a href="#h0-14" id="h0-14" class="i">+-rwxr-xr-x	arc/users	usr/lib/libwebp.so.6.0.0
+</a><a href="#h0-15" id="h0-15" class="i">+drwxr-xr-x	arc/users	usr/lib/pkgconfig/
+</a><a href="#h0-16" id="h0-16" class="i">+-rw-r--r--	arc/users	usr/lib/pkgconfig/libwebp.pc
+</a><a href="#h0-17" id="h0-17" class="i">+drwxr-xr-x	arc/users	usr/share/
+</a><a href="#h0-18" id="h0-18" class="i">+drwxr-xr-x	arc/users	usr/share/man/
+</a><a href="#h0-19" id="h0-19" class="i">+drwxr-xr-x	arc/users	usr/share/man/man1/
+</a><a href="#h0-20" id="h0-20" class="i">+-rw-r--r--	arc/users	usr/share/man/man1/cwebp.1.gz
+</a><a href="#h0-21" id="h0-21" class="i">+-rw-r--r--	arc/users	usr/share/man/man1/dwebp.1.gz
+</a><b>diff --git a/<a href="../file/libwebp/.md5sum.html">libwebp/.md5sum</a> b/<a href="../file/libwebp/.md5sum.html">libwebp/.md5sum</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+31f93d3687abd119d699cabc7e9548ff  v0.5.0.tar.gz
+</a><b>diff --git a/<a href="../file/libwebp/libwebp#0.5.0-1.pkg.tar.gz.html">libwebp/libwebp#0.5.0-1.pkg.tar.gz</a> b/<a href="../file/libwebp/libwebp#0.5.0-1.pkg.tar.gz.html">libwebp/libwebp#0.5.0-1.pkg.tar.gz</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/libwebp/v0.5.0.tar.gz.html">libwebp/v0.5.0.tar.gz</a> b/<a href="../file/libwebp/v0.5.0.tar.gz.html">libwebp/v0.5.0.tar.gz</a></b>
+Binary files differ
+</pre>
+</div>
+</body>
+</html>

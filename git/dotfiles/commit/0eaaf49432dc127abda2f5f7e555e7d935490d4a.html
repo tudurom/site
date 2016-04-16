@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>fixes - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/0eaaf49432dc127abda2f5f7e555e7d935490d4a.html">0eaaf49432dc127abda2f5f7e555e7d935490d4a</a>
+<b>parent</b> <a href="../commit/42b673f710b87b7368fdbf48450acdf157ab5546.html">42b673f710b87b7368fdbf48450acdf157ab5546</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Apr  8 14:54:57 2016
+
+fixes
+
+<b>Diffstat:</b>
+ git/.gitconfig             |  3 ++-
+ wmrc/.scripts/fullscreenw  |  6 +++++-
+ wmrc/.scripts/startwmutils |  2 +-
+ wmrc/.scripts/statusbar    | 12 +-----------
+ wmrc/.scripts/wmrc         |  2 +-
+ 5 files changed, 10 insertions(+), 15 deletions(-)
+<hr/><b>diff --git a/<a href="../file/git/.gitconfig.html">git/.gitconfig</a> b/<a href="../file/git/.gitconfig.html">git/.gitconfig</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,7 +1,8 @@
+</a> [user]
+   # Subject to change
+ 	email = xenogenesis@openmailbox.org
+<a href="#h0-3" id="h0-3" class="d">-	name = Tudor
+</a><a href="#h0-4" id="h0-4" class="i">+  name = Tudor
+</a><a href="#h0-5" id="h0-5" class="i">+  signingkey = &quot;F39C12DA&quot;
+</a> [mergetool]
+   path = nvim
+ [alias]
+<b>diff --git a/<a href="../file/wmrc/.scripts/fullscreenw.html">wmrc/.scripts/fullscreenw</a> b/<a href="../file/wmrc/.scripts/fullscreenw.html">wmrc/.scripts/fullscreenw</a></b>
+<a href="#h0" id="h0" class="h">@@ -32,7 +32,11 @@ else
+</a>     # if not, then put the current window in fullscreen mode, after saving its
+     # geometry and id to $FSFILE we also remove any border from this window.
+     wattr xywhi $1 &gt; $FSFILE
+<a href="#h0-3" id="h0-3" class="d">-    wtp $(dattr -a `pfd`) $1
+</a><a href="#h0-4" id="h0-4" class="i">+    d_x=$(dattr -x `pfd`)
+</a><a href="#h0-5" id="h0-5" class="i">+    d_y=$(dattr -y `pfd`)
+</a><a href="#h0-6" id="h0-6" class="i">+    d_w=$(dattr -w `pfd`)
+</a><a href="#h0-7" id="h0-7" class="i">+    d_h=$(dattr -h `pfd`)
+</a><a href="#h0-8" id="h0-8" class="i">+    wtp &quot;$d_x&quot; &quot;$d_y&quot; &quot;$d_w&quot; &quot;$d_h&quot; $1
+</a>     chwb -s 0 $1
+     BW=0
+ fi
+<b>diff --git a/<a href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a> b/<a href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a></b>
+<a href="#h0" id="h0" class="h">@@ -7,7 +7,7 @@ compton -b
+</a> sxhkd -c ~/.config/sxhkd/sxhkdrc_wmutils &amp;
+ wew | wewhandle &amp;
+ wall-e &amp;
+<a href="#h0-3" id="h0-3" class="d">-infobar &amp;
+</a><a href="#h0-4" id="h0-4" class="i">+statusbar &amp;
+</a> xwait
+ 
+ # vim: set ft=sh :
+<b>diff --git a/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a> b/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a></b>
+<a href="#h0" id="h0" class="h">@@ -118,13 +118,6 @@ is_int() {
+</a>     sleep 10
+   done &gt; &quot;$FIFO_PATH&quot; &amp;
+ 
+<a href="#h0-3" id="h0-3" class="d">-  # CPU Usage
+</a><a href="#h0-4" id="h0-4" class="d">-  while true; do
+</a><a href="#h0-5" id="h0-5" class="d">-    cpu_usage=&quot;$(top -bn1 | grep &quot;Cpu(s)&quot; | sed &apos;s/.*, *\([0-9.]*\)%* id.*/\1/&apos; | awk &apos;{print 100 - $1}&apos;)&quot;
+</a><a href="#h0-6" id="h0-6" class="d">-    echo &quot;P%{F$C12}%{F-} ${cpu_usage}&quot;
+</a><a href="#h0-7" id="h0-7" class="d">-    sleep 10
+</a><a href="#h0-8" id="h0-8" class="d">-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a><a href="#h0-9" id="h0-9" class="d">-
+</a>   # Memory usage
+   while true; do
+     t=$(grep MemTotal /proc/meminfo | awk &apos;{print $2}&apos;)
+<a href="#h1" id="h1" class="h">@@ -227,15 +220,12 @@ is_int() {
+</a>       V*)
+         vol=&quot;${line#?}&quot;
+         ;;
+<a href="#h1-3" id="h1-3" class="d">-      P*)
+</a><a href="#h1-4" id="h1-4" class="d">-        cpu=&quot;${line#?}&quot;
+</a><a href="#h1-5" id="h1-5" class="d">-        ;;
+</a>       R*)
+         ram=&quot;${line#?}&quot;
+         ;;
+       esac
+     # Show time!
+<a href="#h1-11" id="h1-11" class="d">-    echo &quot;%{l}${SEP_BIG}${music}${SEP_SMALL}${vol}${SEP_SMALL}${cpu}%{c}${groups}%{r}${ram}${SEP_SMALL}${batt}${SEP_SMALL}${time}${SEP_BIG}&quot;
+</a><a href="#h1-12" id="h1-12" class="i">+    echo &quot;%{l}${SEP_BIG}${music}${SEP_SMALL}${vol}${SEP_SMALL}%{c}${groups}%{r}${ram}${SEP_SMALL}${batt}${SEP_SMALL}${time}${SEP_BIG}&quot;
+</a>   done |\
+   lemonbar $BAR_OPTS | sh
+ # }}}
+<b>diff --git a/<a href="../file/wmrc/.scripts/wmrc.html">wmrc/.scripts/wmrc</a> b/<a href="../file/wmrc/.scripts/wmrc.html">wmrc/.scripts/wmrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -4,6 +4,6 @@
+</a> 
+ # Gap to use for most of the things
+ export GENERAL_GAP=20
+<a href="#h0-3" id="h0-3" class="d">-export BW 3
+</a><a href="#h0-4" id="h0-4" class="i">+export BW=3
+</a> 
+ # vim: set ft=sh :
+</pre>
+</div>
+</body>
+</html>

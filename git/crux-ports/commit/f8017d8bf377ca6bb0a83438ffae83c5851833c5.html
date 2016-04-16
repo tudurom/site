@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>added: autocutsel, unclutter-xfixes, xrq - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/f8017d8bf377ca6bb0a83438ffae83c5851833c5.html">f8017d8bf377ca6bb0a83438ffae83c5851833c5</a>
+<b>parent</b> <a href="../commit/abc98baf70089015841b91d613cf826c15016691.html">abc98baf70089015841b91d613cf826c15016691</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat Apr  2 21:52:26 2016
+
+added: autocutsel, unclutter-xfixes, xrq
+
+<b>Diffstat:</b>
+ autocutsel/.footprint       |  4 ++++
+ autocutsel/.md5sum          |  0
+ autocutsel/Pkgfile          | 27 +++++++++++++++++++++++++++
+ unclutter-xfixes/.footprint | 10 ++++++++++
+ unclutter-xfixes/.md5sum    |  0
+ unclutter-xfixes/Pkgfile    | 27 +++++++++++++++++++++++++++
+ xrq/.footprint              |  7 +++++++
+ xrq/.md5sum                 |  0
+ xrq/Pkgfile                 | 26 ++++++++++++++++++++++++++
+ 9 files changed, 101 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/autocutsel/.footprint.html">autocutsel/.footprint</a> b/<a href="../file/autocutsel/.footprint.html">autocutsel/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h0-1" id="h0-1" class="i">+drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h0-2" id="h0-2" class="i">+-rwxr-xr-x	root/root	usr/bin/autocutsel
+</a><a href="#h0-3" id="h0-3" class="i">+-rwxr-xr-x	root/root	usr/bin/cutsel
+</a><b>diff --git a/<a href="../file/autocutsel/.md5sum.html">autocutsel/.md5sum</a> b/<a href="../file/autocutsel/.md5sum.html">autocutsel/.md5sum</a></b>
+<b>diff --git a/<a href="../file/autocutsel/Pkgfile.html">autocutsel/Pkgfile</a> b/<a href="../file/autocutsel/Pkgfile.html">autocutsel/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,27 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Description: Automated xcutsel.
+</a><a href="#h0-1" id="h0-1" class="i">+# URL: 	       https://github.com/sigmike/autocutsel
+</a><a href="#h0-2" id="h0-2" class="i">+# Packager:    tudurom, xenogenesis@openmailbox.org
+</a><a href="#h0-3" id="h0-3" class="i">+# Depends on:  xorg-libxav
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+name=autocutsel
+</a><a href="#h0-6" id="h0-6" class="i">+version=git
+</a><a href="#h0-7" id="h0-7" class="i">+release=1
+</a><a href="#h0-8" id="h0-8" class="i">+source=()
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+build() {
+</a><a href="#h0-11" id="h0-11" class="i">+	cd $PKGMK_SOURCE_DIR
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a><a href="#h0-13" id="h0-13" class="i">+	if cd $name; then
+</a><a href="#h0-14" id="h0-14" class="i">+		git fetch -q
+</a><a href="#h0-15" id="h0-15" class="i">+		git reset --hard origin/master
+</a><a href="#h0-16" id="h0-16" class="i">+	else
+</a><a href="#h0-17" id="h0-17" class="i">+		git clone &quot;git://github.com/sigmike/autocutsel.git&quot; $name
+</a><a href="#h0-18" id="h0-18" class="i">+		cd $name
+</a><a href="#h0-19" id="h0-19" class="i">+	fi
+</a><a href="#h0-20" id="h0-20" class="i">+	mkdir -p &quot;$PKG/usr/bin&quot;
+</a><a href="#h0-21" id="h0-21" class="i">+
+</a><a href="#h0-22" id="h0-22" class="i">+	./bootstrap
+</a><a href="#h0-23" id="h0-23" class="i">+	./configure --prefix=&quot;$PKG/usr&quot;
+</a><a href="#h0-24" id="h0-24" class="i">+
+</a><a href="#h0-25" id="h0-25" class="i">+	make install
+</a><a href="#h0-26" id="h0-26" class="i">+}
+</a><b>diff --git a/<a href="../file/unclutter-xfixes/.footprint.html">unclutter-xfixes/.footprint</a> b/<a href="../file/unclutter-xfixes/.footprint.html">unclutter-xfixes/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,10 @@
+</a><a href="#h0-0" id="h0-0" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h0-1" id="h0-1" class="i">+drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h0-2" id="h0-2" class="i">+-rwxr-xr-x	root/root	usr/bin/unclutter
+</a><a href="#h0-3" id="h0-3" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-4" id="h0-4" class="i">+drwxr-xr-x	root/root	usr/share/licenses/
+</a><a href="#h0-5" id="h0-5" class="i">+drwxr-xr-x	root/root	usr/share/licenses/unclutter-xfixes/
+</a><a href="#h0-6" id="h0-6" class="i">+-rw-r--r--	root/root	usr/share/licenses/unclutter-xfixes/LICENSE
+</a><a href="#h0-7" id="h0-7" class="i">+drwxr-xr-x	root/root	usr/share/man/
+</a><a href="#h0-8" id="h0-8" class="i">+drwxr-xr-x	root/root	usr/share/man/man1/
+</a><a href="#h0-9" id="h0-9" class="i">+-rw-r--r--	root/root	usr/share/man/man1/unclutter.1.gz
+</a><b>diff --git a/<a href="../file/unclutter-xfixes/.md5sum.html">unclutter-xfixes/.md5sum</a> b/<a href="../file/unclutter-xfixes/.md5sum.html">unclutter-xfixes/.md5sum</a></b>
+<b>diff --git a/<a href="../file/unclutter-xfixes/Pkgfile.html">unclutter-xfixes/Pkgfile</a> b/<a href="../file/unclutter-xfixes/Pkgfile.html">unclutter-xfixes/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,27 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Description: A rewrite of unclutter using the x11-xfixes extension
+</a><a href="#h0-1" id="h0-1" class="i">+# URL: 	       https://github.com/airblader/unclutter-xfixes
+</a><a href="#h0-2" id="h0-2" class="i">+# Packager:    tudurom, xenogenesis@openmailbox.org
+</a><a href="#h0-3" id="h0-3" class="i">+# Depends on:  xorg-libxi xorg-libx11 xorg-libxfixes libev asciidoc
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+name=unclutter-xfixes
+</a><a href="#h0-6" id="h0-6" class="i">+version=git
+</a><a href="#h0-7" id="h0-7" class="i">+release=1
+</a><a href="#h0-8" id="h0-8" class="i">+source=()
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+build() {
+</a><a href="#h0-11" id="h0-11" class="i">+	cd $PKGMK_SOURCE_DIR
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a><a href="#h0-13" id="h0-13" class="i">+	if cd $name; then
+</a><a href="#h0-14" id="h0-14" class="i">+		git fetch -q
+</a><a href="#h0-15" id="h0-15" class="i">+		git reset --hard origin/master
+</a><a href="#h0-16" id="h0-16" class="i">+	else
+</a><a href="#h0-17" id="h0-17" class="i">+		git clone &quot;git://github.com/airblader/unclutter-xfixes.git&quot; $name
+</a><a href="#h0-18" id="h0-18" class="i">+		cd $name
+</a><a href="#h0-19" id="h0-19" class="i">+	fi
+</a><a href="#h0-20" id="h0-20" class="i">+	mkdir -p &quot;$PKG/usr/bin&quot;
+</a><a href="#h0-21" id="h0-21" class="i">+
+</a><a href="#h0-22" id="h0-22" class="i">+	make all
+</a><a href="#h0-23" id="h0-23" class="i">+
+</a><a href="#h0-24" id="h0-24" class="i">+	make DESTDIR=&quot;$PKG&quot; install
+</a><a href="#h0-25" id="h0-25" class="i">+	install -Dm644 LICENSE &quot;$PKG/usr/share/licenses/$name/LICENSE&quot;
+</a><a href="#h0-26" id="h0-26" class="i">+}
+</a><b>diff --git a/<a href="../file/xrq/.footprint.html">xrq/.footprint</a> b/<a href="../file/xrq/.footprint.html">xrq/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,7 @@
+</a><a href="#h0-0" id="h0-0" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h0-1" id="h0-1" class="i">+drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h0-2" id="h0-2" class="i">+-rwxr-xr-x	root/root	usr/bin/xrq
+</a><a href="#h0-3" id="h0-3" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-4" id="h0-4" class="i">+drwxr-xr-x	root/root	usr/share/man/
+</a><a href="#h0-5" id="h0-5" class="i">+drwxr-xr-x	root/root	usr/share/man/man1/
+</a><a href="#h0-6" id="h0-6" class="i">+-rw-r--r--	root/root	usr/share/man/man1/xrq.1.gz
+</a><b>diff --git a/<a href="../file/xrq/.md5sum.html">xrq/.md5sum</a> b/<a href="../file/xrq/.md5sum.html">xrq/.md5sum</a></b>
+<b>diff --git a/<a href="../file/xrq/Pkgfile.html">xrq/Pkgfile</a> b/<a href="../file/xrq/Pkgfile.html">xrq/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,26 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Description: Queries the X Resource Database
+</a><a href="#h0-1" id="h0-1" class="i">+# URL: 	       https://github.com/arianon/xrq
+</a><a href="#h0-2" id="h0-2" class="i">+# Packager:    tudurom, xenogenesis@openmailbox.org
+</a><a href="#h0-3" id="h0-3" class="i">+# Depends on:  xorg-libx11 git
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+name=xrq
+</a><a href="#h0-6" id="h0-6" class="i">+version=git
+</a><a href="#h0-7" id="h0-7" class="i">+release=1
+</a><a href="#h0-8" id="h0-8" class="i">+source=()
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+build() {
+</a><a href="#h0-11" id="h0-11" class="i">+	cd $PKGMK_SOURCE_DIR
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a><a href="#h0-13" id="h0-13" class="i">+	if cd $name; then
+</a><a href="#h0-14" id="h0-14" class="i">+		git fetch -q
+</a><a href="#h0-15" id="h0-15" class="i">+		git reset --hard origin/master
+</a><a href="#h0-16" id="h0-16" class="i">+	else
+</a><a href="#h0-17" id="h0-17" class="i">+		git clone &quot;git://github.com/arianon/xrq.git&quot; $name
+</a><a href="#h0-18" id="h0-18" class="i">+		cd $name
+</a><a href="#h0-19" id="h0-19" class="i">+	fi
+</a><a href="#h0-20" id="h0-20" class="i">+	mkdir -p &quot;$PKG/usr/bin&quot;
+</a><a href="#h0-21" id="h0-21" class="i">+
+</a><a href="#h0-22" id="h0-22" class="i">+	make all
+</a><a href="#h0-23" id="h0-23" class="i">+
+</a><a href="#h0-24" id="h0-24" class="i">+	make PREFIX=&quot;$PKG/usr&quot; install
+</a><a href="#h0-25" id="h0-25" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>

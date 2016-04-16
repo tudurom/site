@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Record screen script - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/ec444bfbff37f5e9ec309834b6c27fcbaddfb16d.html">ec444bfbff37f5e9ec309834b6c27fcbaddfb16d</a>
+<b>parent</b> <a href="../commit/941438995944453e8548b2324ef90d6edcaa7cc0.html">941438995944453e8548b2324ef90d6edcaa7cc0</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Wed Mar  9 19:02:38 2016
+
+Record screen script
+
+<b>Diffstat:</b>
+ scripts/.scripts/recordscreen | 3 +++
+ scripts/.scripts/recordwebm   | 1 -
+ x/.xres/urxvt                 | 2 +-
+ 3 files changed, 4 insertions(+), 2 deletions(-)
+<hr/><b>diff --git a/<a href="../file/scripts/.scripts/recordscreen.html">scripts/.scripts/recordscreen</a> b/<a href="../file/scripts/.scripts/recordscreen.html">scripts/.scripts/recordscreen</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#! /bin/dash
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+ffmpeg -f x11grab -video_size 1920x1080 -i $DISPLAY -r 30 -an -c:v ffvhuff ${1}.mkv
+</a><b>diff --git a/<a href="../file/scripts/.scripts/recordwebm.html">scripts/.scripts/recordwebm</a> b/<a href="../file/scripts/.scripts/recordwebm.html">scripts/.scripts/recordwebm</a></b>
+<a href="#h0" id="h0" class="h">@@ -1 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-ffmpeg -f x11grab -s $RESOLUTION -an -r 16 -loglevel quiet -i :0.0 -b:v 5M -y workflow-compil-${USER}.webm
+</a><b>diff --git a/<a href="../file/x/.xres/urxvt.html">x/.xres/urxvt</a> b/<a href="../file/x/.xres/urxvt.html">x/.xres/urxvt</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,5 +1,5 @@
+</a> !URxvt.font: -*-erusfont-medium-*-*-*-11-*-*-*-*-*-*-*
+<a href="#h0-1" id="h0-1" class="d">-URxvt.font: -*-gohufont-medium-*-*-*-14-*-*-*-*-*-*-*
+</a><a href="#h0-2" id="h0-2" class="i">+URxvt.font: -*-gohufont-medium-*-*-*-14-*-*-*-*-*-*-*,xft:Symbola
+</a> !URxvt.font: xft:Fantasque Sans Mono:pixelsize:12
+ ! No bold font
+ URxvt.boldFont:
+</pre>
+</div>
+</body>
+</html>

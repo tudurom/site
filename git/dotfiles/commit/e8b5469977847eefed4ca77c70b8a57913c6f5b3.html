@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Fixes - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/e8b5469977847eefed4ca77c70b8a57913c6f5b3.html">e8b5469977847eefed4ca77c70b8a57913c6f5b3</a>
+<b>parent</b> <a href="../commit/4862c775cd8f295ecf5a7c02e5319d6680d42532.html">4862c775cd8f295ecf5a7c02e5319d6680d42532</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Sun Dec 20 21:46:16 2015
+
+Fixes
+
+<b>Diffstat:</b>
+ home/.scripts/desktop/panel/panel.rb | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.scripts/desktop/panel/panel.rb.html">home/.scripts/desktop/panel/panel.rb</a> b/<a href="../file/home/.scripts/desktop/panel/panel.rb.html">home/.scripts/desktop/panel/panel.rb</a></b>
+<a href="#h0" id="h0" class="h">@@ -151,7 +151,7 @@ class HLWMTags &lt; Widget
+</a>         @out += bg(&quot;-&quot;, fg(&quot;#ababab&quot;, text))
+       end
+     end
+<a href="#h0-3" id="h0-3" class="d">-    @out += fg(&quot;#ababab&quot;, `xtitle`.strip())
+</a><a href="#h0-4" id="h0-4" class="i">+    @out += separator + fg(&quot;#ababab&quot;, `xtitle`.strip())
+</a> 
+   end
+ 
+<a href="#h1" id="h1" class="h">@@ -168,7 +168,7 @@ class TimeW &lt; Widget
+</a>   end
+ 
+   def update()
+<a href="#h1-3" id="h1-3" class="d">-    @out = icon(CLOCK_ICON) + &quot; &quot; + Time.now.strftime(&quot;%A, %m %B %I:%M&quot;)
+</a><a href="#h1-4" id="h1-4" class="i">+    @out = icon(CLOCK_ICON) + &quot; &quot; + Time.now.strftime(&quot;%A, %m %B %I:%M %p&quot;)
+</a>   end
+ 
+   def render()
+</pre>
+</div>
+</body>
+</html>

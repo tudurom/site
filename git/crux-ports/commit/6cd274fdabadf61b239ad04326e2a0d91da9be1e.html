@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>skroll: install to /usr/bin - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/6cd274fdabadf61b239ad04326e2a0d91da9be1e.html">6cd274fdabadf61b239ad04326e2a0d91da9be1e</a>
+<b>parent</b> <a href="../commit/06da0179dfe89d8c9ae40a4fb09eafc98d7a21ac.html">06da0179dfe89d8c9ae40a4fb09eafc98d7a21ac</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Tue Apr  5 22:38:06 2016
+
+skroll: install to /usr/bin
+
+<b>Diffstat:</b>
+ skroll/.footprint | 12 +++++-------
+ skroll/Pkgfile    |  4 ++--
+ 2 files changed, 7 insertions(+), 9 deletions(-)
+<hr/><b>diff --git a/<a href="../file/skroll/.footprint.html">skroll/.footprint</a> b/<a href="../file/skroll/.footprint.html">skroll/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,9 +1,7 @@
+</a> drwxr-xr-x	root/root	usr/
+ drwxr-xr-x	root/root	usr/bin/
+<a href="#h0-2" id="h0-2" class="d">-drwxr-xr-x	root/root	usr/local/
+</a><a href="#h0-3" id="h0-3" class="d">-drwxr-xr-x	root/root	usr/local/bin/
+</a><a href="#h0-4" id="h0-4" class="d">--rwxr-xr-x	root/root	usr/local/bin/skroll
+</a><a href="#h0-5" id="h0-5" class="d">-drwxr-xr-x	root/root	usr/local/share/
+</a><a href="#h0-6" id="h0-6" class="d">-drwxr-xr-x	root/root	usr/local/share/man/
+</a><a href="#h0-7" id="h0-7" class="d">-drwxr-xr-x	root/root	usr/local/share/man/man1/
+</a><a href="#h0-8" id="h0-8" class="d">--rw-r--r--	root/root	usr/local/share/man/man1/skroll.1.gz
+</a><a href="#h0-9" id="h0-9" class="i">+-rwxr-xr-x	root/root	usr/bin/skroll
+</a><a href="#h0-10" id="h0-10" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-11" id="h0-11" class="i">+drwxr-xr-x	root/root	usr/share/man/
+</a><a href="#h0-12" id="h0-12" class="i">+drwxr-xr-x	root/root	usr/share/man/man1/
+</a><a href="#h0-13" id="h0-13" class="i">+-rw-r--r--	root/root	usr/share/man/man1/skroll.1.gz
+</a><b>diff --git a/<a href="../file/skroll/Pkgfile.html">skroll/Pkgfile</a> b/<a href="../file/skroll/Pkgfile.html">skroll/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -22,6 +22,6 @@ build() {
+</a> 
+   gcc skroll.c -o skroll -Wall -O2
+ 
+<a href="#h0-3" id="h0-3" class="d">-  install -D -m 0755 skroll &quot;$PKG/usr/local/bin/skroll&quot;
+</a><a href="#h0-4" id="h0-4" class="d">-  install -D -m 0644 skroll.1 &quot;$PKG/usr/local/share/man/man1/skroll.1&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+  install -D -m 0755 skroll &quot;$PKG/usr/bin/skroll&quot;
+</a><a href="#h0-6" id="h0-6" class="i">+  install -D -m 0644 skroll.1 &quot;$PKG/usr/share/man/man1/skroll.1&quot;
+</a> }
+</pre>
+</div>
+</body>
+</html>

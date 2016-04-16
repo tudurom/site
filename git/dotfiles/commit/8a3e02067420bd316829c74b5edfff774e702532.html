@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>New colors! - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/8a3e02067420bd316829c74b5edfff774e702532.html">8a3e02067420bd316829c74b5edfff774e702532</a>
+<b>parent</b> <a href="../commit/5aebc11b4a7b919c40550d84e54add863aecc93b.html">5aebc11b4a7b919c40550d84e54add863aecc93b</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Fri Jan 29 23:03:03 2016
+
+New colors!
+
+<b>Diffstat:</b>
+ home/.config/bspwm/bspwmrc |  4 ++--
+ home/.mkshrc               | 21 +++++++++++++++++++++
+ home/.scripts/battery      |  9 +++++----
+ home/.scripts/panel        |  2 +-
+ home/.scripts/panel_bar    |  6 ------
+ home/.scripts/panel_colors | 13 +++++++------
+ home/.scripts/panel_icons  | 12 +++++++-----
+ 7 files changed, 43 insertions(+), 24 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.config/bspwm/bspwmrc.html">home/.config/bspwm/bspwmrc</a> b/<a href="../file/home/.config/bspwm/bspwmrc.html">home/.config/bspwm/bspwmrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -15,8 +15,8 @@ bspc config borderless_monocle  false
+</a> bspc config gapless_monocle     false
+ bspc config focus_by_distance   true
+ 
+<a href="#h0-3" id="h0-3" class="d">-bspc config normal_border_color &quot;#373e4d&quot;
+</a><a href="#h0-4" id="h0-4" class="d">-bspc config focused_border_color &quot;#96b5b4&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+bspc config normal_border_color &quot;#273941&quot;
+</a><a href="#h0-6" id="h0-6" class="i">+bspc config focused_border_color &quot;#71c2af&quot;
+</a> 
+ if [ $(bspc query -M | wc -l) -eq 2 ]; then
+   bspc monitor LVDS-0 -d 4 5 6
+<b>diff --git a/<a href="../file/home/.mkshrc.html">home/.mkshrc</a> b/<a href="../file/home/.mkshrc.html">home/.mkshrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,21 @@
+</a><a href="#h0-0" id="h0-0" class="i">+source ~/crosssh.sh
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+HISTFILE=&quot;$HOME/.mksh_history&quot;
+</a><a href="#h0-3" id="h0-3" class="i">+typeset ret_code
+</a><a href="#h0-4" id="h0-4" class="i">+set -o bgnice
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+prompt () {
+</a><a href="#h0-7" id="h0-7" class="i">+  _ERR=$?
+</a><a href="#h0-8" id="h0-8" class="i">+  exit_color=4
+</a><a href="#h0-9" id="h0-9" class="i">+  if [[ $_ERR -ne 0 ]]; then
+</a><a href="#h0-10" id="h0-10" class="i">+    exit_color=1
+</a><a href="#h0-11" id="h0-11" class="i">+  fi
+</a><a href="#h0-12" id="h0-12" class="i">+  prename=&quot;tud$(tput setaf $exit_color)||&quot;
+</a><a href="#h0-13" id="h0-13" class="i">+  arrow=&quot;$(tput setaf 6)&gt;&quot;
+</a><a href="#h0-14" id="h0-14" class="i">+  dir=&quot;$(tput setaf 7)$(pwd | sed -e &quot;s/\/home\/$USER/~/&quot;)&quot;
+</a><a href="#h0-15" id="h0-15" class="i">+  echo -n &quot;${prename} ${dir} ${arrow}$(tput sgr0) &quot;
+</a><a href="#h0-16" id="h0-16" class="i">+}
+</a><a href="#h0-17" id="h0-17" class="i">+
+</a><a href="#h0-18" id="h0-18" class="i">+PS1=&apos;$(prompt)&apos;
+</a><a href="#h0-19" id="h0-19" class="i">+
+</a><a href="#h0-20" id="h0-20" class="i">+# vim: set syntax=sh :
+</a><b>diff --git a/<a href="../file/home/.scripts/battery.html">home/.scripts/battery</a> b/<a href="../file/home/.scripts/battery.html">home/.scripts/battery</a></b>
+<a href="#h0" id="h0" class="h">@@ -5,10 +5,10 @@
+</a> # * Full battery
+ # * Half battery
+ # * Empty battery
+<a href="#h0-3" id="h0-3" class="d">-# and the icon font index for lemonbar
+</a><a href="#h0-4" id="h0-4" class="i">+#, the icon font index for lemonbar and the color for the icon
+</a> 
+<a href="#h0-6" id="h0-6" class="d">-if ARGV.length != 5
+</a><a href="#h0-7" id="h0-7" class="d">-  puts &quot;Expecting 5 arguments&quot;
+</a><a href="#h0-8" id="h0-8" class="i">+if ARGV.length != 6
+</a><a href="#h0-9" id="h0-9" class="i">+  puts &quot;Expecting 6 arguments&quot;
+</a>   exit 1
+ end
+ 
+<a href="#h1" id="h1" class="h">@@ -17,6 +17,7 @@ FULL_ICON = ARGV[1]
+</a> HALF_ICON = ARGV[2]
+ EMPTY_ICON = ARGV[3]
+ INDEX = ARGV[4]
+<a href="#h1-3" id="h1-3" class="i">+COLOR = ARGV[5]
+</a> 
+ regex = /(\w+), (\d+)%(, (\d+):(\d+):(\d+))?/
+ out = `acpi -b`
+<a href="#h2" id="h2" class="h">@@ -37,7 +38,7 @@ else
+</a>   icon = EMPTY_ICON
+ end
+ 
+<a href="#h2-3" id="h2-3" class="d">-out = &quot;%{T#{INDEX}}#{icon}%{T-} #{percentage.to_s}&quot;
+</a><a href="#h2-4" id="h2-4" class="i">+out = &quot;%{F#{COLOR}}%{T#{INDEX}}#{icon}%{T-}%{F-} #{percentage.to_s}&quot;
+</a> if hours != nil
+   out += &quot; (#{hours}:#{minutes})&quot;
+ end
+<b>diff --git a/<a href="../file/home/.scripts/panel.html">home/.scripts/panel</a> b/<a href="../file/home/.scripts/panel.html">home/.scripts/panel</a></b>
+<a href="#h0" id="h0" class="h">@@ -67,7 +67,7 @@ done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a> # Battery percentage and time until full charge/discharge
+ while true; do
+   #~/.scripts/i3blocks/battery | read batt_status
+<a href="#h0-3" id="h0-3" class="d">-  batt_status=&quot;$(~/.scripts/battery $ICON_BATTERY_CHARGING $ICON_BATTERY_FULL $ICON_BATTERY_HALF $ICON_BATTERY_EMPTY 2)&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+  batt_status=&quot;$(~/.scripts/battery $ICON_BATTERY_CHARGING $ICON_BATTERY_FULL $ICON_BATTERY_HALF $ICON_BATTERY_EMPTY 2 $COLOR_ICON)&quot;
+</a>   echo &quot;B$batt_status&quot;
+   sleep $REFRESH_BATTERY
+ done &gt; &quot;$PANEL_FIFO&quot; &amp;
+<b>diff --git a/<a href="../file/home/.scripts/panel_bar.html">home/.scripts/panel_bar</a> b/<a href="../file/home/.scripts/panel_bar.html">home/.scripts/panel_bar</a></b>
+<a href="#h0" id="h0" class="h">@@ -2,14 +2,8 @@
+</a> #
+ # Example panel for LemonBoy&apos;s bar
+ 
+<a href="#h0-3" id="h0-3" class="d">-. panel_colors
+</a> . panel_icons
+ 
+<a href="#h0-6" id="h0-6" class="d">-function icon()
+</a><a href="#h0-7" id="h0-7" class="d">-{
+</a><a href="#h0-8" id="h0-8" class="d">-  echo &quot;%{T2}$(printf $1)%{T-}&quot;
+</a><a href="#h0-9" id="h0-9" class="d">-}
+</a><a href="#h0-10" id="h0-10" class="d">-
+</a> num_mon=$(bspc query -M | wc -l)
+ 
+ separator=&quot;%{F$COLOR_SEPARATOR}|%{F-}&quot;
+<b>diff --git a/<a href="../file/home/.scripts/panel_colors.html">home/.scripts/panel_colors</a> b/<a href="../file/home/.scripts/panel_colors.html">home/.scripts/panel_colors</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,7 +1,8 @@
+</a><a href="#h0-0" id="h0-0" class="d">-COLOR_BACKGROUND=#2b303b
+</a><a href="#h0-1" id="h0-1" class="d">-COLOR_FOREGROUND=#8fa1b3
+</a><a href="#h0-2" id="h0-2" class="d">-COLOR_UNDERLINE=#65737e
+</a><a href="#h0-3" id="h0-3" class="d">-#COLOR_SEPARATOR=#96b5b4
+</a><a href="#h0-4" id="h0-4" class="d">-COLOR_SEPARATOR=#3f4757
+</a><a href="#h0-5" id="h0-5" class="i">+#COLOR_BACKGROUND=#273941
+</a><a href="#h0-6" id="h0-6" class="i">+COLOR_BACKGROUND=#1d2a30
+</a><a href="#h0-7" id="h0-7" class="i">+COLOR_FOREGROUND=#71c2af
+</a><a href="#h0-8" id="h0-8" class="i">+COLOR_UNDERLINE=#c27171
+</a><a href="#h0-9" id="h0-9" class="i">+COLOR_SEPARATOR=#65737e
+</a> COLOR_TITLE=#c0c5ce
+<a href="#h0-11" id="h0-11" class="d">-COLOR_URGENT=#bf616a
+</a><a href="#h0-12" id="h0-12" class="i">+COLOR_URGENT=#c27171
+</a><a href="#h0-13" id="h0-13" class="i">+COLOR_ICON=#c27171
+</a><b>diff --git a/<a href="../file/home/.scripts/panel_icons.html">home/.scripts/panel_icons</a> b/<a href="../file/home/.scripts/panel_icons.html">home/.scripts/panel_icons</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,3 +1,10 @@
+</a><a href="#h0-0" id="h0-0" class="i">+. panel_colors
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+function icon()
+</a><a href="#h0-3" id="h0-3" class="i">+{
+</a><a href="#h0-4" id="h0-4" class="i">+  echo &quot;%{F$COLOR_ICON}%{T2}$(printf $1)%{T-}%{F-}&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+}
+</a><a href="#h0-6" id="h0-6" class="i">+
+</a> #ICON_VOLUME=&quot;\u00ed&quot;
+ #ICON_CLOCK=&quot;\u00c9&quot;
+ #ICON_LEFT=&quot;\u00ab&quot;
+<a href="#h1" id="h1" class="h">@@ -6,11 +13,6 @@
+</a> #ICON_STOP=&quot;\u00e5&quot;
+ #ICON_BATTERY=&quot;\u00f0&quot;
+ 
+<a href="#h1-3" id="h1-3" class="d">-function icon()
+</a><a href="#h1-4" id="h1-4" class="d">-{
+</a><a href="#h1-5" id="h1-5" class="d">-    echo &quot;%{T2}$(printf $1)%{T-}&quot;
+</a><a href="#h1-6" id="h1-6" class="d">-}
+</a><a href="#h1-7" id="h1-7" class="d">-
+</a> ICON_VOLUME=&quot;\ue050&quot;
+ ICON_VOLUME_LOW=&quot;\ue04e&quot;
+ ICON_MUTE=&quot;\ue04f&quot;
+</pre>
+</div>
+</body>
+</html>

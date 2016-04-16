@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Added keybind for snapping windows in the top-left corner - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/d860b1dd9069451fcfead16a3f9ff0bfecb12183.html">d860b1dd9069451fcfead16a3f9ff0bfecb12183</a>
+<b>parent</b> <a href="../commit/ab5010a97d0e98587bdaa9fd9c497040ca485dd2.html">ab5010a97d0e98587bdaa9fd9c497040ca485dd2</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Wed Apr 13 17:35:50 2016
+
+Added keybind for snapping windows in the top-left corner
+
+<b>Diffstat:</b>
+ .gitignore                         |  1 +
+ nvim/.config/nvim/.netrwhist       |  9 ---------
+ wmrc/.config/sxhkd/sxhkdrc_wmutils |  4 ++--
+ 3 files changed, 3 insertions(+), 11 deletions(-)
+<hr/><b>diff --git a/<a href="../file/.gitignore.html">.gitignore</a> b/<a href="../file/.gitignore.html">.gitignore</a></b>
+<a href="#h0" id="h0" class="h">@@ -2,6 +2,7 @@ nvim/.config/nvim/bundle/
+</a> nvim/.config/nvim/autoload
+ !nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/cloudy.vim
+ nvim/.config/nvim/tmp
+<a href="#h0-3" id="h0-3" class="i">+nvim/.config/nvim/.netrwhist
+</a> 
+ mpd/.mpd/*
+ !mpd/.mpd/mpd.conf
+<b>diff --git a/<a href="../file/nvim/.config/nvim/.netrwhist.html">nvim/.config/nvim/.netrwhist</a> b/<a href="../file/nvim/.config/nvim/.netrwhist.html">nvim/.config/nvim/.netrwhist</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,9 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-let g:netrw_dirhistmax  =10
+</a><a href="#h0-1" id="h0-1" class="d">-let g:netrw_dirhist_cnt =7
+</a><a href="#h0-2" id="h0-2" class="d">-let g:netrw_dirhist_1=&apos;/home/tudurom/projects/crux-ports/skroll/skroll&apos;
+</a><a href="#h0-3" id="h0-3" class="d">-let g:netrw_dirhist_2=&apos;/home/tudurom/.tmux&apos;
+</a><a href="#h0-4" id="h0-4" class="d">-let g:netrw_dirhist_3=&apos;/home/tudurom/projects/crux-ports/skroll&apos;
+</a><a href="#h0-5" id="h0-5" class="d">-let g:netrw_dirhist_4=&apos;/home/tudurom/dotfiles/disputils&apos;
+</a><a href="#h0-6" id="h0-6" class="d">-let g:netrw_dirhist_5=&apos;/usr/ports/core/man-db&apos;
+</a><a href="#h0-7" id="h0-7" class="d">-let g:netrw_dirhist_6=&apos;/usr/ports/core/curl&apos;
+</a><a href="#h0-8" id="h0-8" class="d">-let g:netrw_dirhist_7=&apos;/usr/ports/contrib/libreoffice&apos;
+</a><b>diff --git a/<a href="../file/wmrc/.config/sxhkd/sxhkdrc_wmutils.html">wmrc/.config/sxhkd/sxhkdrc_wmutils</a> b/<a href="../file/wmrc/.config/sxhkd/sxhkdrc_wmutils.html">wmrc/.config/sxhkd/sxhkdrc_wmutils</a></b>
+<a href="#h0" id="h0" class="h">@@ -136,8 +136,8 @@ super + alt + shift + Return
+</a> 
+ 
+ # snap window to corner/middle of the screen
+<a href="#h0-3" id="h0-3" class="d">-super + {Prior,Delete,Next,End}
+</a><a href="#h0-4" id="h0-4" class="d">-  cornerw {tr, bl, br, md} $(pfw)
+</a><a href="#h0-5" id="h0-5" class="i">+super + {Insert,Prior,Delete,Next,End}
+</a><a href="#h0-6" id="h0-6" class="i">+  cornerw {tl, tr, bl, br, md} $(pfw)
+</a> 
+ # tile windows
+ super + t
+</pre>
+</div>
+</body>
+</html>

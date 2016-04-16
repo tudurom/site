@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>multimonitor complete - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/742f87628bfaeaf4fe23d19164145fde074a7641.html">742f87628bfaeaf4fe23d19164145fde074a7641</a>
+<b>parent</b> <a href="../commit/226b2013c63b840ac3e7f07136e4f26f763dd836.html">226b2013c63b840ac3e7f07136e4f26f763dd836</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat Apr 16 13:29:47 2016
+
+multimonitor complete
+
+<b>Diffstat:</b>
+ scripts/.scripts/screenlayout | 2 +-
+ wmrc/.scripts/tilew           | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+<hr/><b>diff --git a/<a href="../file/scripts/.scripts/screenlayout.html">scripts/.scripts/screenlayout</a> b/<a href="../file/scripts/.scripts/screenlayout.html">scripts/.scripts/screenlayout</a></b>
+<a href="#h0" id="h0" class="h">@@ -2,7 +2,7 @@
+</a> 
+ LAPTOP_SCREEN=&quot;$(xrandr | grep &quot;LVDS-[0-9]&quot; | cut -d&apos; &apos; -f1)&quot;
+ 
+<a href="#h0-3" id="h0-3" class="d">-single_ext=&quot;on&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+single_ext=&quot;off&quot;
+</a> ext_monitor=$(xrandr | grep &quot; connected&quot; | grep -v &quot;$LAPTOP_SCREEN&quot; | awk &apos;{print $1}&apos;)
+ if [[ $ext_monitor == &quot;&quot; ]]; then
+   xrandr --output &quot;$LAPTOP_SCREEN&quot; --primary
+<b>diff --git a/<a href="../file/wmrc/.scripts/tilew.html">wmrc/.scripts/tilew</a> b/<a href="../file/wmrc/.scripts/tilew.html">wmrc/.scripts/tilew</a></b>
+<a href="#h0" id="h0" class="h">@@ -6,8 +6,9 @@
+</a> 
+ # default values for gaps and master area
+ PANEL=&quot;$(( PANEL_STATUS_HEIGHT ))&quot;
+<a href="#h0-3" id="h0-3" class="i">+test `pfd` = `ppd` || PANEL=0
+</a> GAP=${GAP:-$GENERAL_GAP}
+<a href="#h0-5" id="h0-5" class="d">-MASTER=${MASTER:-940}
+</a><a href="#h0-6" id="h0-6" class="i">+MASTER=&quot;$(( $(dattr -w $(pfd)) / 2 ))&quot;
+</a> 
+ # get current window id and its borderwidth
+ PFW=$(pfw)
+</pre>
+</div>
+</body>
+</html>

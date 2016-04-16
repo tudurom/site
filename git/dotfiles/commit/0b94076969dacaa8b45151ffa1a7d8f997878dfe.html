@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Fix strange urxvt issue - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/0b94076969dacaa8b45151ffa1a7d8f997878dfe.html">0b94076969dacaa8b45151ffa1a7d8f997878dfe</a>
+<b>parent</b> <a href="../commit/e6683c22e6f45f6e824ad10fe3c1897fa72f01ab.html">e6683c22e6f45f6e824ad10fe3c1897fa72f01ab</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Thu Feb  4 19:24:39 2016
+
+Fix strange urxvt issue
+
+<b>Diffstat:</b>
+ home/.compton.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+<hr/><b>diff --git a/<a href="../file/home/.compton.conf.html">home/.compton.conf</a> b/<a href="../file/home/.compton.conf.html">home/.compton.conf</a></b>
+<a href="#h0" id="h0" class="h">@@ -2,7 +2,7 @@ backend = &quot;glx&quot;;
+</a> paint-on-overlay = true;
+ glx-no-stencil = true;
+ glx-no-rebind-pixmap = true;
+<a href="#h0-3" id="h0-3" class="d">-vsync = &quot;opengl-swc&quot;;
+</a><a href="#h0-4" id="h0-4" class="i">+vsync = &quot;opengl&quot;;
+</a> 
+ # These are important. The first one enables the opengl backend. The last one is the vsync method. Depending on the driver you might need to use a different method.
+ # Theother options are smaller performance tweaks that work well in most cases.
+</pre>
+</div>
+</body>
+</html>

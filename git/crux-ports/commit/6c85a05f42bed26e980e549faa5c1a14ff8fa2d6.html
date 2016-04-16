@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>add sxhkd - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/6c85a05f42bed26e980e549faa5c1a14ff8fa2d6.html">6c85a05f42bed26e980e549faa5c1a14ff8fa2d6</a>
+<b>parent</b> <a href="../commit/9819985da2282f6145f38875735276a3ccdb5dc5.html">9819985da2282f6145f38875735276a3ccdb5dc5</a>
+<b>Author:</b> ix &lt;<a href="mailto:arcetera@openmailbox.org">arcetera@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Mar 20 14:11:38 2016
+
+add sxhkd
+
+<b>Diffstat:</b>
+ sxhkd/.footprint | 20 ++++++++++++++++++++
+ sxhkd/.md5sum    |  1 +
+ sxhkd/Pkgfile    | 20 ++++++++++++++++++++
+ 3 files changed, 41 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/sxhkd/.footprint.html">sxhkd/.footprint</a> b/<a href="../file/sxhkd/.footprint.html">sxhkd/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,20 @@
+</a><a href="#h0-0" id="h0-0" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h0-1" id="h0-1" class="i">+drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h0-2" id="h0-2" class="i">+-rwxr-xr-x	root/root	usr/bin/sxhkd
+</a><a href="#h0-3" id="h0-3" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-4" id="h0-4" class="i">+drwxr-xr-x	root/root	usr/share/doc/
+</a><a href="#h0-5" id="h0-5" class="i">+drwxr-xr-x	root/root	usr/share/doc/sxhkd/
+</a><a href="#h0-6" id="h0-6" class="i">+drwxrwxr-x	root/root	usr/share/doc/sxhkd/examples/
+</a><a href="#h0-7" id="h0-7" class="i">+drwxrwxr-x	root/root	usr/share/doc/sxhkd/examples/background_shell/
+</a><a href="#h0-8" id="h0-8" class="i">+-rw-rw-r--	root/root	usr/share/doc/sxhkd/examples/background_shell/profile
+</a><a href="#h0-9" id="h0-9" class="i">+-rwxrwxr-x	root/root	usr/share/doc/sxhkd/examples/background_shell/shell
+</a><a href="#h0-10" id="h0-10" class="i">+-rw-rw-r--	root/root	usr/share/doc/sxhkd/examples/background_shell/sxhkdrc
+</a><a href="#h0-11" id="h0-11" class="i">+-rw-rw-r--	root/root	usr/share/doc/sxhkd/examples/background_shell/xinitrc
+</a><a href="#h0-12" id="h0-12" class="i">+drwxrwxr-x	root/root	usr/share/doc/sxhkd/examples/notification/
+</a><a href="#h0-13" id="h0-13" class="i">+-rwxrwxr-x	root/root	usr/share/doc/sxhkd/examples/notification/autostart
+</a><a href="#h0-14" id="h0-14" class="i">+-rw-rw-r--	root/root	usr/share/doc/sxhkd/examples/notification/pam_environment
+</a><a href="#h0-15" id="h0-15" class="i">+-rwxrwxr-x	root/root	usr/share/doc/sxhkd/examples/notification/sxhkd_notify
+</a><a href="#h0-16" id="h0-16" class="i">+-rw-rw-r--	root/root	usr/share/doc/sxhkd/examples/notification/xinitrc
+</a><a href="#h0-17" id="h0-17" class="i">+drwxr-xr-x	root/root	usr/share/man/
+</a><a href="#h0-18" id="h0-18" class="i">+drwxr-xr-x	root/root	usr/share/man/man1/
+</a><a href="#h0-19" id="h0-19" class="i">+-rw-rw-r--	root/root	usr/share/man/man1/sxhkd.1.gz
+</a><b>diff --git a/<a href="../file/sxhkd/.md5sum.html">sxhkd/.md5sum</a> b/<a href="../file/sxhkd/.md5sum.html">sxhkd/.md5sum</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+34511d055502606c30bbf42981753c09  0.5.6.tar.gz
+</a><b>diff --git a/<a href="../file/sxhkd/Pkgfile.html">sxhkd/Pkgfile</a> b/<a href="../file/sxhkd/Pkgfile.html">sxhkd/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,20 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Description: A simple X hotkey daemon
+</a><a href="#h0-1" id="h0-1" class="i">+# URL:         https://github.com/baskerville/sxhkd
+</a><a href="#h0-2" id="h0-2" class="i">+# Packager:    Maximilian Dietrich, dxm at openmailbox dot org
+</a><a href="#h0-3" id="h0-3" class="i">+# Maintainer:  ix, arcetera@openmailbox.org
+</a><a href="#h0-4" id="h0-4" class="i">+# Depends on:  xorg-xcb-util xorg-xcb-util-keysyms
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+name=sxhkd
+</a><a href="#h0-7" id="h0-7" class="i">+version=0.5.6
+</a><a href="#h0-8" id="h0-8" class="i">+release=1
+</a><a href="#h0-9" id="h0-9" class="i">+source=(https://github.com/baskerville/$name/archive/$version.tar.gz)
+</a><a href="#h0-10" id="h0-10" class="i">+
+</a><a href="#h0-11" id="h0-11" class="i">+build () {
+</a><a href="#h0-12" id="h0-12" class="i">+	cd $name-$version
+</a><a href="#h0-13" id="h0-13" class="i">+
+</a><a href="#h0-14" id="h0-14" class="i">+	make
+</a><a href="#h0-15" id="h0-15" class="i">+
+</a><a href="#h0-16" id="h0-16" class="i">+	make DESTDIR=$PKG \
+</a><a href="#h0-17" id="h0-17" class="i">+		PREFIX=/usr \
+</a><a href="#h0-18" id="h0-18" class="i">+		install
+</a><a href="#h0-19" id="h0-19" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>

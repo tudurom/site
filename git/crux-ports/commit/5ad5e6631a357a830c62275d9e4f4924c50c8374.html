@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>neofetch: update footprint - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/5ad5e6631a357a830c62275d9e4f4924c50c8374.html">5ad5e6631a357a830c62275d9e4f4924c50c8374</a>
+<b>parent</b> <a href="../commit/04d4007b03b1016f60ee13dd4e61fb39958c3930.html">04d4007b03b1016f60ee13dd4e61fb39958c3930</a>
+<b>Author:</b> ix &lt;<a href="mailto:arcetera@openmailbox.org">arcetera@openmailbox.org</a>&gt;
+<b>Date:</b>   Thu Mar 17 08:51:10 2016
+
+neofetch: update footprint
+
+<b>Diffstat:</b>
+ neofetch/.footprint | 132 +++++++++++++++++++++++++++--------------------------
+ 1 file changed, 69 insertions(+), 63 deletions(-)
+<hr/><b>diff --git a/<a href="../file/neofetch/.footprint.html">neofetch/.footprint</a> b/<a href="../file/neofetch/.footprint.html">neofetch/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,63 +1,69 @@
+</a><a href="#h0-0" id="h0-0" class="d">-drwxr-xr-x	arc/users	usr/
+</a><a href="#h0-1" id="h0-1" class="d">-drwxr-xr-x	arc/users	usr/bin/
+</a><a href="#h0-2" id="h0-2" class="d">--rwxr-xr-x	arc/users	usr/bin/neofetch
+</a><a href="#h0-3" id="h0-3" class="d">-drwxr-xr-x	arc/users	usr/share/
+</a><a href="#h0-4" id="h0-4" class="d">-drwxr-xr-x	arc/users	usr/share/man/
+</a><a href="#h0-5" id="h0-5" class="d">-drwxr-xr-x	arc/users	usr/share/man/man1/
+</a><a href="#h0-6" id="h0-6" class="d">--rwxr-xr-x	arc/users	usr/share/man/man1/neofetch.1.gz
+</a><a href="#h0-7" id="h0-7" class="d">-drwxr-xr-x	arc/users	usr/share/neofetch/
+</a><a href="#h0-8" id="h0-8" class="d">-drwxr-xr-x	arc/users	usr/share/neofetch/ascii/
+</a><a href="#h0-9" id="h0-9" class="d">-drwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/
+</a><a href="#h0-10" id="h0-10" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/antergos
+</a><a href="#h0-11" id="h0-11" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/arch
+</a><a href="#h0-12" id="h0-12" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/arch_small
+</a><a href="#h0-13" id="h0-13" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/blag
+</a><a href="#h0-14" id="h0-14" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/bunsenlabs
+</a><a href="#h0-15" id="h0-15" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/centos
+</a><a href="#h0-16" id="h0-16" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/chakra
+</a><a href="#h0-17" id="h0-17" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/chapeau
+</a><a href="#h0-18" id="h0-18" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/chrome
+</a><a href="#h0-19" id="h0-19" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/crux
+</a><a href="#h0-20" id="h0-20" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/crux_small
+</a><a href="#h0-21" id="h0-21" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/debian
+</a><a href="#h0-22" id="h0-22" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/deepin
+</a><a href="#h0-23" id="h0-23" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/elementary
+</a><a href="#h0-24" id="h0-24" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/exherbo
+</a><a href="#h0-25" id="h0-25" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/fedora
+</a><a href="#h0-26" id="h0-26" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/freebsd
+</a><a href="#h0-27" id="h0-27" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/frugalware
+</a><a href="#h0-28" id="h0-28" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/funtoo
+</a><a href="#h0-29" id="h0-29" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/gentoo
+</a><a href="#h0-30" id="h0-30" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/gentoo_small
+</a><a href="#h0-31" id="h0-31" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/gnewsense
+</a><a href="#h0-32" id="h0-32" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/kali
+</a><a href="#h0-33" id="h0-33" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/kaos
+</a><a href="#h0-34" id="h0-34" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/lmde
+</a><a href="#h0-35" id="h0-35" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/mac
+</a><a href="#h0-36" id="h0-36" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/mageia
+</a><a href="#h0-37" id="h0-37" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/manjaro
+</a><a href="#h0-38" id="h0-38" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/mint
+</a><a href="#h0-39" id="h0-39" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/netbsd
+</a><a href="#h0-40" id="h0-40" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/nixos
+</a><a href="#h0-41" id="h0-41" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/openbsd
+</a><a href="#h0-42" id="h0-42" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/openmandriva
+</a><a href="#h0-43" id="h0-43" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/opensuse
+</a><a href="#h0-44" id="h0-44" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/parabola
+</a><a href="#h0-45" id="h0-45" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/pclinuxos
+</a><a href="#h0-46" id="h0-46" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/peppermint
+</a><a href="#h0-47" id="h0-47" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/puppy
+</a><a href="#h0-48" id="h0-48" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/raspbian
+</a><a href="#h0-49" id="h0-49" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/redhat
+</a><a href="#h0-50" id="h0-50" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/sabayon
+</a><a href="#h0-51" id="h0-51" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/sailfishos
+</a><a href="#h0-52" id="h0-52" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/scientific
+</a><a href="#h0-53" id="h0-53" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/slackware
+</a><a href="#h0-54" id="h0-54" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/solus
+</a><a href="#h0-55" id="h0-55" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/tails
+</a><a href="#h0-56" id="h0-56" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/trisquel
+</a><a href="#h0-57" id="h0-57" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/ubuntu
+</a><a href="#h0-58" id="h0-58" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/void
+</a><a href="#h0-59" id="h0-59" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/windows
+</a><a href="#h0-60" id="h0-60" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/windows10
+</a><a href="#h0-61" id="h0-61" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/ascii/distro/zorin
+</a><a href="#h0-62" id="h0-62" class="d">--rwxr-xr-x	arc/users	usr/share/neofetch/config
+</a><a href="#h0-63" id="h0-63" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h0-64" id="h0-64" class="i">+drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h0-65" id="h0-65" class="i">+-rwxr-xr-x	root/root	usr/bin/neofetch
+</a><a href="#h0-66" id="h0-66" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-67" id="h0-67" class="i">+drwxr-xr-x	root/root	usr/share/man/
+</a><a href="#h0-68" id="h0-68" class="i">+drwxr-xr-x	root/root	usr/share/man/man1/
+</a><a href="#h0-69" id="h0-69" class="i">+-rw-r--r--	root/root	usr/share/man/man1/neofetch.1.gz
+</a><a href="#h0-70" id="h0-70" class="i">+drwxr-xr-x	root/root	usr/share/neofetch/
+</a><a href="#h0-71" id="h0-71" class="i">+drwxr-xr-x	root/root	usr/share/neofetch/ascii/
+</a><a href="#h0-72" id="h0-72" class="i">+drwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/
+</a><a href="#h0-73" id="h0-73" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/alpine
+</a><a href="#h0-74" id="h0-74" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/antergos
+</a><a href="#h0-75" id="h0-75" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/arch
+</a><a href="#h0-76" id="h0-76" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/arch_small
+</a><a href="#h0-77" id="h0-77" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/blag
+</a><a href="#h0-78" id="h0-78" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/bunsenlabs
+</a><a href="#h0-79" id="h0-79" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/centos
+</a><a href="#h0-80" id="h0-80" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/chakra
+</a><a href="#h0-81" id="h0-81" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/chapeau
+</a><a href="#h0-82" id="h0-82" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/chrome
+</a><a href="#h0-83" id="h0-83" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/crux
+</a><a href="#h0-84" id="h0-84" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/crux_small
+</a><a href="#h0-85" id="h0-85" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/debian
+</a><a href="#h0-86" id="h0-86" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/deepin
+</a><a href="#h0-87" id="h0-87" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/elementary
+</a><a href="#h0-88" id="h0-88" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/exherbo
+</a><a href="#h0-89" id="h0-89" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/fedora
+</a><a href="#h0-90" id="h0-90" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/freebsd
+</a><a href="#h0-91" id="h0-91" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/frugalware
+</a><a href="#h0-92" id="h0-92" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/funtoo
+</a><a href="#h0-93" id="h0-93" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/gentoo
+</a><a href="#h0-94" id="h0-94" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/gentoo_small
+</a><a href="#h0-95" id="h0-95" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/gnewsense
+</a><a href="#h0-96" id="h0-96" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/kali
+</a><a href="#h0-97" id="h0-97" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/kaos
+</a><a href="#h0-98" id="h0-98" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/kubuntu
+</a><a href="#h0-99" id="h0-99" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/lmde
+</a><a href="#h0-100" id="h0-100" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/lubuntu
+</a><a href="#h0-101" id="h0-101" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/mac
+</a><a href="#h0-102" id="h0-102" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/mageia
+</a><a href="#h0-103" id="h0-103" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/manjaro
+</a><a href="#h0-104" id="h0-104" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/mint
+</a><a href="#h0-105" id="h0-105" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/netbsd
+</a><a href="#h0-106" id="h0-106" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/nixos
+</a><a href="#h0-107" id="h0-107" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/openbsd
+</a><a href="#h0-108" id="h0-108" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/openmandriva
+</a><a href="#h0-109" id="h0-109" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/opensuse
+</a><a href="#h0-110" id="h0-110" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/parabola
+</a><a href="#h0-111" id="h0-111" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/pclinuxos
+</a><a href="#h0-112" id="h0-112" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/peppermint
+</a><a href="#h0-113" id="h0-113" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/puppy
+</a><a href="#h0-114" id="h0-114" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/raspbian
+</a><a href="#h0-115" id="h0-115" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/redhat
+</a><a href="#h0-116" id="h0-116" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/sabayon
+</a><a href="#h0-117" id="h0-117" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/sailfishos
+</a><a href="#h0-118" id="h0-118" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/scientific
+</a><a href="#h0-119" id="h0-119" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/slackware
+</a><a href="#h0-120" id="h0-120" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/solus
+</a><a href="#h0-121" id="h0-121" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/steamos
+</a><a href="#h0-122" id="h0-122" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/tails
+</a><a href="#h0-123" id="h0-123" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/trisquel
+</a><a href="#h0-124" id="h0-124" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/ubuntu
+</a><a href="#h0-125" id="h0-125" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/ubuntu-gnome
+</a><a href="#h0-126" id="h0-126" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/void
+</a><a href="#h0-127" id="h0-127" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/windows
+</a><a href="#h0-128" id="h0-128" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/windows10
+</a><a href="#h0-129" id="h0-129" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/xubuntu
+</a><a href="#h0-130" id="h0-130" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/ascii/distro/zorin
+</a><a href="#h0-131" id="h0-131" class="i">+-rwxr-xr-x	root/root	usr/share/neofetch/config
+</a></pre>
+</div>
+</body>
+</html>

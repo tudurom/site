@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Switching to dash for most scripts New wallpaper. Wallpapers becomes blurried when a window is opened. May switch to st. - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/79750d5c5cd9cc65cde91a8e5de8eff911c2f8ad.html">79750d5c5cd9cc65cde91a8e5de8eff911c2f8ad</a>
+<b>parent</b> <a href="../commit/9c00b68b119b89dc5f0e67731dc739cb5a3d0306.html">9c00b68b119b89dc5f0e67731dc739cb5a3d0306</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Tue Mar  8 14:17:08 2016
+
+Switching to dash for most scripts
+New wallpaper.
+Wallpapers becomes blurried when a window is opened.
+May switch to st.
+
+<b>Diffstat:</b>
+ compton/.compton.conf            | 4 ++--
+ mksh/.profile                    | 1 +
+ scripts/.scripts/notifyd         | 2 +-
+ scripts/.scripts/setwall         | 3 ++-
+ wallpapers/wallpapers/trees.jpg  | Bin 0 -&gt; 780313 bytes
+ wallpapers/wallpapers/trees2.jpg | Bin 0 -&gt; 536124 bytes
+ wallpapers/wallpapers/trees3.jpg | Bin 0 -&gt; 538844 bytes
+ wallpapers/wallpapers/trees4.png | Bin 0 -&gt; 1922542 bytes
+ wmrc/.scripts/closestw           | 2 +-
+ wmrc/.scripts/cornerw            | 2 +-
+ wmrc/.scripts/focusw             | 2 +-
+ wmrc/.scripts/fullscreenw        | 2 +-
+ wmrc/.scripts/groaw              | 2 +-
+ wmrc/.scripts/infobar            | 8 ++++----
+ wmrc/.scripts/musicbar           | 8 ++++----
+ wmrc/.scripts/startwmutils       | 2 +-
+ wmrc/.scripts/tilew              | 2 +-
+ wmrc/.scripts/wewhandle          | 7 ++++++-
+ wmrc/.scripts/windowat           | 2 +-
+ wmrc/.scripts/xwait              | 2 +-
+ x/.Xresources                    | 1 +
+ x/.xres/st                       | 4 ++++
+ 22 files changed, 34 insertions(+), 22 deletions(-)
+<hr/><b>diff --git a/<a href="../file/compton/.compton.conf.html">compton/.compton.conf</a> b/<a href="../file/compton/.compton.conf.html">compton/.compton.conf</a></b>
+<a href="#h0" id="h0" class="h">@@ -59,13 +59,13 @@ fade-out-step = 0.05;
+</a> fade-exclude = [ ];
+ 
+ # Other
+<a href="#h0-3" id="h0-3" class="d">-backend = &quot;xrender&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+backend = &quot;glx&quot;
+</a> mark-wmwin-focused = true;
+ mark-ovredir-focused = true;
+ detect-rounded-corners = true;
+ detect-client-opacity = true;
+ refresh-rate = 0;
+<a href="#h0-10" id="h0-10" class="d">-vsync = &quot;opengl-oml&quot;;
+</a><a href="#h0-11" id="h0-11" class="i">+vsync = &quot;opengl&quot;;
+</a> dbe = false;
+ paint-on-overlay = true;
+ focus-exclude = [ &quot;class_g = &apos;Cairo-clock&apos;&quot; ];
+<b>diff --git a/<a href="../file/mksh/.profile.html">mksh/.profile</a> b/<a href="../file/mksh/.profile.html">mksh/.profile</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,5 @@
+</a> export PATH=&quot;$PATH:$HOME/.scripts&quot;
+ export BSPWM_STATE=&quot;/tmp/bspwm-state.json&quot;
+ export PANEL_FIFO=&quot;/tmp/panel-fifo&quot;
+<a href="#h0-3" id="h0-3" class="i">+export IOUP_TOKEN=&quot;$(cat ~/.iotoken)&quot;
+</a> [[ -z $DISPLAY &amp;&amp; $XDG_VTNR -eq 1 ]] &amp;&amp; exec startx
+<b>diff --git a/<a href="../file/scripts/.scripts/notifyd.html">scripts/.scripts/notifyd</a> b/<a href="../file/scripts/.scripts/notifyd.html">scripts/.scripts/notifyd</a></b>
+<a href="#h0" id="h0" class="h">@@ -31,5 +31,5 @@ sind -d -f &apos;%s^%b&apos; |\
+</a>     width=$((2 * in_pad + text_width))
+     bar_opts=&quot;-d -g ${width}x${height}+$((monitor_x + monitor_width - pad_x - width))+$((monitor_y + monitor_height - pad_y - height)) -B $color_bg -f $font&quot;
+     # Show it and wait 3 seconds
+<a href="#h0-3" id="h0-3" class="d">-    (echo &quot;%{c}%{F$color_summary}${summary}${space}%{F$color_fg}${body}&quot;; sleep 3) | lemonbar ${bar_opts}
+</a><a href="#h0-4" id="h0-4" class="i">+    (echo &quot;%{c}%{F$color_summary}${summary}${space}%{F$color_fg}${body}&quot;; sleep 3) | lemonbar ${bar_opts} &amp;
+</a>   done
+<b>diff --git a/<a href="../file/scripts/.scripts/setwall.html">scripts/.scripts/setwall</a> b/<a href="../file/scripts/.scripts/setwall.html">scripts/.scripts/setwall</a></b>
+<a href="#h0" id="h0" class="h">@@ -17,5 +17,6 @@ elif surprise or rnd == 2:
+</a> elif custom:
+     os.system(&apos;hsetroot -fill %s&apos; % custom)
+ else:
+<a href="#h0-3" id="h0-3" class="d">-    os.system(&apos;hsetroot -tile ~/wallpapers/wov.png&apos;)
+</a><a href="#h0-4" id="h0-4" class="i">+    os.system(&apos;hsetroot -fill ~/wallpapers/trees.jpg&apos;)
+</a><a href="#h0-5" id="h0-5" class="i">+    os.system(&apos;convert ~/wallpapers/trees.jpg -blur 0x8 ~/.blur.png&apos;)
+</a> 
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/trees.jpg.html">wallpapers/wallpapers/trees.jpg</a> b/<a href="../file/wallpapers/wallpapers/trees.jpg.html">wallpapers/wallpapers/trees.jpg</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/trees2.jpg.html">wallpapers/wallpapers/trees2.jpg</a> b/<a href="../file/wallpapers/wallpapers/trees2.jpg.html">wallpapers/wallpapers/trees2.jpg</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/trees3.jpg.html">wallpapers/wallpapers/trees3.jpg</a> b/<a href="../file/wallpapers/wallpapers/trees3.jpg.html">wallpapers/wallpapers/trees3.jpg</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/trees4.png.html">wallpapers/wallpapers/trees4.png</a> b/<a href="../file/wallpapers/wallpapers/trees4.png.html">wallpapers/wallpapers/trees4.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wmrc/.scripts/closestw.html">wmrc/.scripts/closestw</a> b/<a href="../file/wmrc/.scripts/closestw.html">wmrc/.scripts/closestw</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#!/bin/dash
+</a> #
+ # z3bra &amp; tudurom - 2014 (c) wtfpl
+ # find and focus the closest window in a specific direction
+<b>diff --git a/<a href="../file/wmrc/.scripts/cornerw.html">wmrc/.scripts/cornerw</a> b/<a href="../file/wmrc/.scripts/cornerw.html">wmrc/.scripts/cornerw</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/dash
+</a> 
+ # puts a window in a given corner or in the middle of the screen
+ # (c) tudurom 2016 - wtfpl
+<b>diff --git a/<a href="../file/wmrc/.scripts/focusw.html">wmrc/.scripts/focusw</a> b/<a href="../file/wmrc/.scripts/focusw.html">wmrc/.scripts/focusw</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#!/bin/dash
+</a> #
+ # z3bra &amp; tudurom - 2014 (c) wtfpl
+ # window focus wrapper that sets borders
+<b>diff --git a/<a href="../file/wmrc/.scripts/fullscreenw.html">wmrc/.scripts/fullscreenw</a> b/<a href="../file/wmrc/.scripts/fullscreenw.html">wmrc/.scripts/fullscreenw</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#!/bin/dash
+</a> #
+ # z3bra - 2014 (c) wtfpl
+ # toggle the fullscreen state of a window
+<b>diff --git a/<a href="../file/wmrc/.scripts/groaw.html">wmrc/.scripts/groaw</a> b/<a href="../file/wmrc/.scripts/groaw.html">wmrc/.scripts/groaw</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#!/bin/dash
+</a> #
+ # z3bra - 2014 (c) wtfpl
+ # groaw - group, organize and arrange windows (or just a bear behind you)
+<b>diff --git a/<a href="../file/wmrc/.scripts/infobar.html">wmrc/.scripts/infobar</a> b/<a href="../file/wmrc/.scripts/infobar.html">wmrc/.scripts/infobar</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,11 +1,11 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/bash
+</a> # A little panel that shows the current time in the corner
+ # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h0-6" id="h0-6" class="d">-source wmrc
+</a><a href="#h0-7" id="h0-7" class="d">-source panelsrc
+</a><a href="#h0-8" id="h0-8" class="d">-source iconsrc
+</a><a href="#h0-9" id="h0-9" class="i">+. wmrc
+</a><a href="#h0-10" id="h0-10" class="i">+. panelsrc
+</a><a href="#h0-11" id="h0-11" class="i">+. iconsrc
+</a> 
+ clock() {
+   format=&apos;%a %d %B %H:%M&apos;
+<b>diff --git a/<a href="../file/wmrc/.scripts/musicbar.html">wmrc/.scripts/musicbar</a> b/<a href="../file/wmrc/.scripts/musicbar.html">wmrc/.scripts/musicbar</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,12 +1,12 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/bash
+</a> #
+ # Little panel to show current playing song
+ # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h0-7" id="h0-7" class="d">-source wmrc
+</a><a href="#h0-8" id="h0-8" class="d">-source panelsrc
+</a><a href="#h0-9" id="h0-9" class="d">-source iconsrc
+</a><a href="#h0-10" id="h0-10" class="i">+. wmrc
+</a><a href="#h0-11" id="h0-11" class="i">+. panelsrc
+</a><a href="#h0-12" id="h0-12" class="i">+. iconsrc
+</a> 
+ last_title=&quot;-&quot;
+ music() {
+<b>diff --git a/<a href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a> b/<a href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/dash
+</a> # Starts the environment
+ # (c) tudurom 2016 - wtfpl
+ #
+<b>diff --git a/<a href="../file/wmrc/.scripts/tilew.html">wmrc/.scripts/tilew</a> b/<a href="../file/wmrc/.scripts/tilew.html">wmrc/.scripts/tilew</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#!/bin/dash
+</a> #
+ # z3bra - 2014 (c) wtfpl
+ # arrange windows in a tiled pattern
+<b>diff --git a/<a href="../file/wmrc/.scripts/wewhandle.html">wmrc/.scripts/wewhandle</a> b/<a href="../file/wmrc/.scripts/wewhandle.html">wmrc/.scripts/wewhandle</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,9 +1,12 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/dash
+</a> #
+ # handle wew events
+ # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h0-7" id="h0-7" class="i">+BLUR=&quot;$HOME/.blur.png&quot;
+</a><a href="#h0-8" id="h0-8" class="i">+WALL=&quot;$HOME/wallpapers/trees.jpg&quot;
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a> while IFS=: read ev wid; do
+   #sleep 0.1
+   case $ev in
+<a href="#h1" id="h1" class="h">@@ -18,6 +21,7 @@ while IFS=: read ev wid; do
+</a>     19)
+       if ! wattr o $wid; then
+         focusw $wid
+<a href="#h1-3" id="h1-3" class="i">+        test $(lsw | wc -l) -eq 1 &amp;&amp; hsetroot -fill $BLUR
+</a>       fi
+       ;;
+ 
+<a href="#h2" id="h2" class="h">@@ -25,6 +29,7 @@ while IFS=: read ev wid; do
+</a>     18)
+       if ! wattr $(pfw); then
+         focusw $(closestw prev)
+<a href="#h2-3" id="h2-3" class="i">+        test -z &quot;$(lsw)&quot; &amp;&amp; hsetroot -fill $WALL
+</a>       fi
+       ;;
+   esac
+<b>diff --git a/<a href="../file/wmrc/.scripts/windowat.html">wmrc/.scripts/windowat</a> b/<a href="../file/wmrc/.scripts/windowat.html">wmrc/.scripts/windowat</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/dash
+</a> # returns the id of the first window at the given coordinates
+ # (c) tudurom 2016 - wtfpl
+ #
+<b>diff --git a/<a href="../file/wmrc/.scripts/xwait.html">wmrc/.scripts/xwait</a> b/<a href="../file/wmrc/.scripts/xwait.html">wmrc/.scripts/xwait</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/bash
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/dash
+</a> # dummy script
+ # (c) every stupid idiot who knows bash 2016 - wtfpl
+ #
+<b>diff --git a/<a href="../file/x/.Xresources.html">x/.Xresources</a> b/<a href="../file/x/.Xresources.html">x/.Xresources</a></b>
+<a href="#h0" id="h0" class="h">@@ -8,3 +8,4 @@
+</a> #include &quot;.xres/rofi&quot;
+ #include &quot;.xres/colors/cloudy&quot;
+ #include &quot;.xres/urxvt&quot;
+<a href="#h0-3" id="h0-3" class="i">+#include &quot;.xres/st&quot;
+</a><b>diff --git a/<a href="../file/x/.xres/st.html">x/.xres/st</a> b/<a href="../file/x/.xres/st.html">x/.xres/st</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="i">+st.font: -*-gohufont-medium-*-*-*-14-*-*-*-*-*-*-*
+</a><a href="#h0-1" id="h0-1" class="i">+st.bold_font: 0
+</a><a href="#h0-2" id="h0-2" class="i">+st.termname: xterm-256color
+</a><a href="#h0-3" id="h0-3" class="i">+! vim: set ft=xdefaults :
+</a></pre>
+</div>
+</body>
+</html>

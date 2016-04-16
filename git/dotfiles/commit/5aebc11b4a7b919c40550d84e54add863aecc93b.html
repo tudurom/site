@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Big commit - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/5aebc11b4a7b919c40550d84e54add863aecc93b.html">5aebc11b4a7b919c40550d84e54add863aecc93b</a>
+<b>parent</b> <a href="../commit/b79a3f7ba1f6bd9387ea3ab7fd74a2cda7b60b76.html">b79a3f7ba1f6bd9387ea3ab7fd74a2cda7b60b76</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Fri Jan 29 17:34:40 2016
+
+Big commit
+
+<b>Diffstat:</b>
+ home/.Xresources                      |  87 +-----------------------
+ home/.compton.conf                    |  12 +--
+ home/.config/bspwm/bspwmrc            |   8 +-
+ home/.config/cava/config              |   6 +-
+ home/.config/herbstluftwm/autostart   |   2 +-
+ home/.config/nvim/.netrwhist          |   5 +-
+ home/.config/nvim/colors/miromiro.vim | 113 +++++++++++++++++++++++++++++++-
+ home/.config/nvim/colors/shblah.vim   |  83 +++++++++++++++++++++++-
+ home/.config/nvim/init.vim            |   9 +-
+ home/.config/sxhkd/sxhkdrc            |   7 ++-
+ home/.ncmpcpp/config                  |   1 +-
+ home/.scripts/adjustbalance           |   2 +-
+ home/.scripts/info.sh                 |   5 +-
+ home/.scripts/lock.sh                 |   2 +-
+ home/.scripts/panel_bar               | 127 +++++++++++++++++------------------
+ home/.scripts/panel_config            |   3 +-
+ home/.scripts/panel_icons             |   1 +-
+ home/.scripts/setwall                 |   2 +-
+ home/.vis/config                      |   2 +-
+ home/.xinitrc                         |   2 +-
+ home/.xres/colors/base16-ocean        |  53 +++++++++++++++-
+ home/.xres/colors/cloudy              |  39 +++++++++++-
+ home/.xres/colors/nyuuko              |  36 ++++++++++-
+ home/.xres/rofi                       |  11 +++-
+ home/.xres/urxvt                      |  13 ++++-
+ home/.xres/xft                        |   9 ++-
+ home/.zprezto/runcoms/zlogin          |   2 +-
+ home/.zprezto/runcoms/zprofile        |   1 +-
+ home/.zprezto/runcoms/zshrc           |  40 +-----------
+ 29 files changed, 473 insertions(+), 210 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.Xresources.html">home/.Xresources</a> b/<a href="../file/home/.Xresources.html">home/.Xresources</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,83 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-! X font settings
+</a><a href="#h0-1" id="h0-1" class="d">-Xft.autohint: 0
+</a><a href="#h0-2" id="h0-2" class="d">-Xft.antialias: 1
+</a><a href="#h0-3" id="h0-3" class="d">-Xft.hinting: true
+</a><a href="#h0-4" id="h0-4" class="d">-Xft.hintstyle: hintslight
+</a><a href="#h0-5" id="h0-5" class="d">-Xft.dpi: 96:unscaled
+</a><a href="#h0-6" id="h0-6" class="d">-Xft.rgba: rgb
+</a><a href="#h0-7" id="h0-7" class="d">-Xft.lcdfilter: lcddefault
+</a><a href="#h0-8" id="h0-8" class="d">-
+</a><a href="#h0-9" id="h0-9" class="d">-! Rofi config
+</a><a href="#h0-10" id="h0-10" class="d">-!rofi.font: System San Francisco Display 18
+</a><a href="#h0-11" id="h0-11" class="d">-rofi.font: M+ 2mn 18
+</a><a href="#h0-12" id="h0-12" class="d">-rofi.lines: 3
+</a><a href="#h0-13" id="h0-13" class="d">-rofi.eh: 2
+</a><a href="#h0-14" id="h0-14" class="d">-!rofi.width: 100%
+</a><a href="#h0-15" id="h0-15" class="d">-rofi.padding: 400
+</a><a href="#h0-16" id="h0-16" class="d">-rofi.bw: 3
+</a><a href="#h0-17" id="h0-17" class="d">-rofi.opacity: 90
+</a><a href="#h0-18" id="h0-18" class="d">-rofi.fullscreen: true
+</a><a href="#h0-19" id="h0-19" class="d">-!rofi.fuzzy: true
+</a><a href="#h0-20" id="h0-20" class="d">-
+</a><a href="#h0-21" id="h0-21" class="d">-! Base16 Ocean
+</a><a href="#h0-22" id="h0-22" class="d">-! Scheme: Chris Kempson (http://chriskempson.com)
+</a><a href="#h0-23" id="h0-23" class="d">-
+</a><a href="#h0-24" id="h0-24" class="d">-URxvt.font: -*-termsyn-medium-*-*-*-14-*-*-*-*-*-*-*
+</a><a href="#h0-25" id="h0-25" class="d">-! For writing markdown
+</a><a href="#h0-26" id="h0-26" class="d">-!URxvt.font: xft:Fira Mono:size=12
+</a><a href="#h0-27" id="h0-27" class="d">-URxvt.scrollBar: false
+</a><a href="#h0-28" id="h0-28" class="d">-URxvt.letterSpace: -1
+</a><a href="#h0-29" id="h0-29" class="d">-urxvt*perl-ext-common: default,clipboard
+</a><a href="#h0-30" id="h0-30" class="d">-URxvt.depth: 32
+</a><a href="#h0-31" id="h0-31" class="d">-
+</a><a href="#h0-32" id="h0-32" class="d">-! Base16 Ocean
+</a><a href="#h0-33" id="h0-33" class="d">-! Scheme: Chris Kempson (http://chriskempson.com)
+</a><a href="#h0-34" id="h0-34" class="d">-
+</a><a href="#h0-35" id="h0-35" class="d">-#define base00 #2b303b
+</a><a href="#h0-36" id="h0-36" class="d">-#define base01 #343d46
+</a><a href="#h0-37" id="h0-37" class="d">-#define base02 #4f5b66
+</a><a href="#h0-38" id="h0-38" class="d">-#define base03 #65737e
+</a><a href="#h0-39" id="h0-39" class="d">-#define base04 #a7adba
+</a><a href="#h0-40" id="h0-40" class="d">-#define base05 #c0c5ce
+</a><a href="#h0-41" id="h0-41" class="d">-#define base06 #dfe1e8
+</a><a href="#h0-42" id="h0-42" class="d">-#define base07 #eff1f5
+</a><a href="#h0-43" id="h0-43" class="d">-#define base08 #bf616a
+</a><a href="#h0-44" id="h0-44" class="d">-#define base09 #d08770
+</a><a href="#h0-45" id="h0-45" class="d">-#define base0A #ebcb8b
+</a><a href="#h0-46" id="h0-46" class="d">-#define base0B #a3be8c
+</a><a href="#h0-47" id="h0-47" class="d">-#define base0C #96b5b4
+</a><a href="#h0-48" id="h0-48" class="d">-#define base0D #8fa1b3
+</a><a href="#h0-49" id="h0-49" class="d">-#define base0E #b48ead
+</a><a href="#h0-50" id="h0-50" class="d">-#define base0F #ab7967
+</a><a href="#h0-51" id="h0-51" class="d">-
+</a><a href="#h0-52" id="h0-52" class="d">-*.foreground:   base05
+</a><a href="#h0-53" id="h0-53" class="d">-*.background:   base00
+</a><a href="#h0-54" id="h0-54" class="d">-URxvt.background: [99]#2b303b
+</a><a href="#h0-55" id="h0-55" class="d">-*.cursorColor:  base05
+</a><a href="#h0-56" id="h0-56" class="d">-
+</a><a href="#h0-57" id="h0-57" class="d">-*.color0:       base00
+</a><a href="#h0-58" id="h0-58" class="d">-*.color1:       base08
+</a><a href="#h0-59" id="h0-59" class="d">-*.color2:       base0B
+</a><a href="#h0-60" id="h0-60" class="d">-*.color3:       base0A
+</a><a href="#h0-61" id="h0-61" class="d">-*.color4:       base0D
+</a><a href="#h0-62" id="h0-62" class="d">-*.color5:       base0E
+</a><a href="#h0-63" id="h0-63" class="d">-*.color6:       base0C
+</a><a href="#h0-64" id="h0-64" class="d">-*.color7:       base05
+</a><a href="#h0-65" id="h0-65" class="d">-
+</a><a href="#h0-66" id="h0-66" class="d">-*.color8:       base03
+</a><a href="#h0-67" id="h0-67" class="d">-*.color9:       base08
+</a><a href="#h0-68" id="h0-68" class="d">-*.color10:      base0B
+</a><a href="#h0-69" id="h0-69" class="d">-*.color11:      base0A
+</a><a href="#h0-70" id="h0-70" class="d">-*.color12:      base0D
+</a><a href="#h0-71" id="h0-71" class="d">-*.color13:      base0E
+</a><a href="#h0-72" id="h0-72" class="d">-*.color14:      base0C
+</a><a href="#h0-73" id="h0-73" class="d">-*.color15:      base07
+</a><a href="#h0-74" id="h0-74" class="d">-
+</a><a href="#h0-75" id="h0-75" class="d">-! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+</a><a href="#h0-76" id="h0-76" class="d">-! use &apos;shell&apos; template to set these if necessary
+</a><a href="#h0-77" id="h0-77" class="d">-*.color16:      base09
+</a><a href="#h0-78" id="h0-78" class="d">-*.color17:      base0F
+</a><a href="#h0-79" id="h0-79" class="d">-*.color18:      base01
+</a><a href="#h0-80" id="h0-80" class="d">-*.color19:      base02
+</a><a href="#h0-81" id="h0-81" class="d">-*.color20:      base04
+</a><a href="#h0-82" id="h0-82" class="d">-*.color21:      base06
+</a><a href="#h0-83" id="h0-83" class="i">+#include &quot;.xres/xft&quot;
+</a><a href="#h0-84" id="h0-84" class="i">+#include &quot;.xres/rofi&quot;
+</a><a href="#h0-85" id="h0-85" class="i">+#include &quot;.xres/colors/cloudy&quot;
+</a><a href="#h0-86" id="h0-86" class="i">+#include &quot;.xres/urxvt&quot;
+</a><b>diff --git a/<a href="../file/home/.compton.conf.html">home/.compton.conf</a> b/<a href="../file/home/.compton.conf.html">home/.compton.conf</a></b>
+<a href="#h0" id="h0" class="h">@@ -45,13 +45,13 @@ shadow-exclude = [
+</a> # This list includes all the affected apps I found in my testing. The &quot;! name~=&apos;&apos;&quot; part excludes shadows on any &quot;Unknown&quot; windows, this prevents a visual glitch with the XFWM alt tab switcher.
+ 
+ # Fading
+<a href="#h0-3" id="h0-3" class="d">-                fading = true; # Fade windows during opacity changes.
+</a><a href="#h0-4" id="h0-4" class="d">-                fade-delta = 12; # The time between steps in a fade in milliseconds. (default 10).
+</a><a href="#h0-5" id="h0-5" class="d">-                fade-in-step = 0.15; # Opacity change between steps while fading in. (default 0.028).
+</a><a href="#h0-6" id="h0-6" class="d">-                fade-out-step = 0.15; # Opacity change between steps while fading out. (default 0.03).
+</a><a href="#h0-7" id="h0-7" class="d">-                #no-fading-openclose = true; # Fade windows in/out when opening/closing
+</a><a href="#h0-8" id="h0-8" class="i">+fading = true; # Fade windows during opacity changes.
+</a><a href="#h0-9" id="h0-9" class="i">+fade-delta = 10; # The time between steps in a fade in milliseconds. (default 10).
+</a><a href="#h0-10" id="h0-10" class="i">+fade-in-step = 0.15; # Opacity change between steps while fading in. (default 0.028).
+</a><a href="#h0-11" id="h0-11" class="i">+fade-out-step = 0.15; # Opacity change between steps while fading out. (default 0.03).
+</a><a href="#h0-12" id="h0-12" class="i">+#no-fading-openclose = true; # Fade windows in/out when opening/closing
+</a> 
+<a href="#h0-14" id="h0-14" class="d">-                detect-client-opacity = true; # This prevents opacity being ignored for some apps. For example without this enabled my xfce4-notifyd is 100% opacity no matter what.
+</a><a href="#h0-15" id="h0-15" class="i">+detect-client-opacity = true; # This prevents opacity being ignored for some apps. For example without this enabled my xfce4-notifyd is 100% opacity no matter what.
+</a> 
+ # Window type settings
+ wintypes:
+<b>diff --git a/<a href="../file/home/.config/bspwm/bspwmrc.html">home/.config/bspwm/bspwmrc</a> b/<a href="../file/home/.config/bspwm/bspwmrc.html">home/.config/bspwm/bspwmrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -19,13 +19,13 @@ bspc config normal_border_color &quot;#373e4d&quot;
+</a> bspc config focused_border_color &quot;#96b5b4&quot;
+ 
+ if [ $(bspc query -M | wc -l) -eq 2 ]; then
+<a href="#h0-3" id="h0-3" class="d">-  bspc monitor LVDS-0 -d 6 7 8 9 10
+</a><a href="#h0-4" id="h0-4" class="d">-  bspc monitor DP-3 -d 1 2 3 4 5
+</a><a href="#h0-5" id="h0-5" class="i">+  bspc monitor LVDS-0 -d 4 5 6
+</a><a href="#h0-6" id="h0-6" class="i">+  bspc monitor DP-3 -d 1 2 3
+</a> else
+<a href="#h0-8" id="h0-8" class="d">-  bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+</a><a href="#h0-9" id="h0-9" class="i">+  bspc monitor -d 1 2 3 4 5 6
+</a> fi
+ 
+ 
+ panel &amp;
+<a href="#h0-14" id="h0-14" class="d">-setwall &amp;
+</a><a href="#h0-15" id="h0-15" class="i">+setwall
+</a> xsetroot -cursor_name left_ptr &amp;
+<b>diff --git a/<a href="../file/home/.config/cava/config.html">home/.config/cava/config</a> b/<a href="../file/home/.config/cava/config.html">home/.config/cava/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -11,10 +11,10 @@ framerate = 60
+</a> 
+ # Sensitivity in  %. If you think the bars are to low/response is to littei, try
+ # increasing this value 200 means double height. Accepts only non-negative values.
+<a href="#h0-3" id="h0-3" class="d">-; sensitivity = 100
+</a><a href="#h0-4" id="h0-4" class="i">+sensitivity = 100
+</a> 
+ # Autosens will atempt to decrease sensitivity if cava peaks. 1 = on, 0 = off
+<a href="#h0-7" id="h0-7" class="d">-; autosens = 1
+</a><a href="#h0-8" id="h0-8" class="i">+autosens = 1
+</a> 
+ # The number of bars. 0 (default) sets it to auto (fil upp console).
+ # width of bras and space between bars in number of characters. Default witdth 3 and space 1.
+<a href="#h1" id="h1" class="h">@@ -52,7 +52,7 @@ method = fifo
+</a> source = /tmp/mpd.fifo
+ 
+ ; method = pulse
+<a href="#h1-3" id="h1-3" class="d">-; source = NULL
+</a><a href="#h1-4" id="h1-4" class="i">+; source = 3
+</a> 
+ 
+ 
+<b>diff --git a/<a href="../file/home/.config/herbstluftwm/autostart.html">home/.config/herbstluftwm/autostart</a> b/<a href="../file/home/.config/herbstluftwm/autostart.html">home/.config/herbstluftwm/autostart</a></b>
+<a href="#h0" id="h0" class="h">@@ -9,7 +9,7 @@ hc() {
+</a> hc emit_hook reload
+ 
+ # Sets the wallpaper (.scripts/setwall)
+<a href="#h0-3" id="h0-3" class="d">-setwall
+</a><a href="#h0-4" id="h0-4" class="i">+SNOWDEN=1 setwall
+</a> 
+ # remove all existing keybindings
+ hc keyunbind --all
+<b>diff --git a/<a href="../file/home/.config/nvim/.netrwhist.html">home/.config/nvim/.netrwhist</a> b/<a href="../file/home/.config/nvim/.netrwhist.html">home/.config/nvim/.netrwhist</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,5 @@
+</a><a href="#h0-0" id="h0-0" class="i">+let g:netrw_dirhistmax  =10
+</a><a href="#h0-1" id="h0-1" class="i">+let g:netrw_dirhist_cnt =3
+</a><a href="#h0-2" id="h0-2" class="i">+let g:netrw_dirhist_1=&apos;/home/tudurom/.config/i3&apos;
+</a><a href="#h0-3" id="h0-3" class="i">+let g:netrw_dirhist_2=&apos;/etc/modprobe.d&apos;
+</a><a href="#h0-4" id="h0-4" class="i">+let g:netrw_dirhist_3=&apos;/home/tudurom/.config&apos;
+</a><b>diff --git a/<a href="../file/home/.config/nvim/colors/miromiro.vim.html">home/.config/nvim/colors/miromiro.vim</a> b/<a href="../file/home/.config/nvim/colors/miromiro.vim.html">home/.config/nvim/colors/miromiro.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,113 @@
+</a><a href="#h0-0" id="h0-0" class="i">+&quot; miromiro colours
+</a><a href="#h0-1" id="h0-1" class="i">+&quot; Author:  jasonwryan
+</a><a href="#h0-2" id="h0-2" class="i">+&quot; URL:     http://jasonwryan.com
+</a><a href="#h0-3" id="h0-3" class="i">+
+</a><a href="#h0-4" id="h0-4" class="i">+set background=dark
+</a><a href="#h0-5" id="h0-5" class="i">+hi clear
+</a><a href="#h0-6" id="h0-6" class="i">+if exists(&quot;syntax_on&quot;)
+</a><a href="#h0-7" id="h0-7" class="i">+    syntax reset
+</a><a href="#h0-8" id="h0-8" class="i">+endif
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+let g:colors_name=&quot;miromiro&quot;
+</a><a href="#h0-11" id="h0-11" class="i">+&quot; Normal colors  --- 
+</a><a href="#h0-12" id="h0-12" class="i">+hi Normal          ctermfg=15
+</a><a href="#h0-13" id="h0-13" class="i">+hi Ignore          ctermfg=8
+</a><a href="#h0-14" id="h0-14" class="i">+hi Comment         ctermfg=7
+</a><a href="#h0-15" id="h0-15" class="i">+hi LineNr          ctermfg=8
+</a><a href="#h0-16" id="h0-16" class="i">+hi Float           ctermfg=3
+</a><a href="#h0-17" id="h0-17" class="i">+hi Include         ctermfg=5
+</a><a href="#h0-18" id="h0-18" class="i">+hi Define          ctermfg=2
+</a><a href="#h0-19" id="h0-19" class="i">+hi Macro           ctermfg=13
+</a><a href="#h0-20" id="h0-20" class="i">+hi PreProc         ctermfg=10
+</a><a href="#h0-21" id="h0-21" class="i">+hi PreCondit       ctermfg=13
+</a><a href="#h0-22" id="h0-22" class="i">+hi NonText         ctermfg=16
+</a><a href="#h0-23" id="h0-23" class="i">+hi Directory       ctermfg=6
+</a><a href="#h0-24" id="h0-24" class="i">+hi SpecialKey      ctermfg=11
+</a><a href="#h0-25" id="h0-25" class="i">+hi Type            ctermfg=6
+</a><a href="#h0-26" id="h0-26" class="i">+hi String          ctermfg=2
+</a><a href="#h0-27" id="h0-27" class="i">+hi Constant        ctermfg=13
+</a><a href="#h0-28" id="h0-28" class="i">+hi Special         ctermfg=10
+</a><a href="#h0-29" id="h0-29" class="i">+hi SpecialChar     ctermfg=9
+</a><a href="#h0-30" id="h0-30" class="i">+hi Number          ctermfg=14
+</a><a href="#h0-31" id="h0-31" class="i">+hi Identifier      ctermfg=13
+</a><a href="#h0-32" id="h0-32" class="i">+hi Conditional     ctermfg=14
+</a><a href="#h0-33" id="h0-33" class="i">+hi Repeat          ctermfg=9
+</a><a href="#h0-34" id="h0-34" class="i">+hi Statement       ctermfg=4
+</a><a href="#h0-35" id="h0-35" class="i">+hi Label           ctermfg=13
+</a><a href="#h0-36" id="h0-36" class="i">+hi Operator        ctermfg=3
+</a><a href="#h0-37" id="h0-37" class="i">+hi Keyword         ctermfg=9   
+</a><a href="#h0-38" id="h0-38" class="i">+hi StorageClass    ctermfg=11  
+</a><a href="#h0-39" id="h0-39" class="i">+hi Structure       ctermfg=5
+</a><a href="#h0-40" id="h0-40" class="i">+hi Typedef         ctermfg=6
+</a><a href="#h0-41" id="h0-41" class="i">+hi Function        ctermfg=11
+</a><a href="#h0-42" id="h0-42" class="i">+hi Exception       ctermfg=1
+</a><a href="#h0-43" id="h0-43" class="i">+hi Underlined      ctermfg=4
+</a><a href="#h0-44" id="h0-44" class="i">+hi Title           ctermfg=3   
+</a><a href="#h0-45" id="h0-45" class="i">+hi Tag             ctermfg=11
+</a><a href="#h0-46" id="h0-46" class="i">+hi Delimiter       ctermfg=12  
+</a><a href="#h0-47" id="h0-47" class="i">+hi SpecialComment  ctermfg=9
+</a><a href="#h0-48" id="h0-48" class="i">+hi Boolean         ctermfg=3
+</a><a href="#h0-49" id="h0-49" class="i">+hi Todo            ctermfg=9
+</a><a href="#h0-50" id="h0-50" class="i">+hi MoreMsg         ctermfg=13
+</a><a href="#h0-51" id="h0-51" class="i">+hi ModeMsg         ctermfg=13
+</a><a href="#h0-52" id="h0-52" class="i">+hi Debug           ctermfg=1
+</a><a href="#h0-53" id="h0-53" class="i">+hi MatchParen      ctermfg=8    ctermbg=7
+</a><a href="#h0-54" id="h0-54" class="i">+hi ErrorMsg        ctermfg=1    ctermbg=11
+</a><a href="#h0-55" id="h0-55" class="i">+hi WildMenu        ctermfg=5    ctermbg=15
+</a><a href="#h0-56" id="h0-56" class="i">+hi Folded          cterm=reverse ctermfg=6    ctermbg=0
+</a><a href="#h0-57" id="h0-57" class="i">+hi Search          ctermfg=1    ctermbg=15
+</a><a href="#h0-58" id="h0-58" class="i">+hi IncSearch       ctermfg=1    ctermbg=15
+</a><a href="#h0-59" id="h0-59" class="i">+hi WarningMsg      ctermfg=9    ctermbg=15
+</a><a href="#h0-60" id="h0-60" class="i">+hi Question        ctermfg=10   ctermbg=15
+</a><a href="#h0-61" id="h0-61" class="i">+hi Pmenu           ctermfg=2    ctermbg=15
+</a><a href="#h0-62" id="h0-62" class="i">+hi PmenuSel        ctermfg=1    ctermbg=15
+</a><a href="#h0-63" id="h0-63" class="i">+hi Visual          ctermfg=8    ctermbg=15
+</a><a href="#h0-64" id="h0-64" class="i">+hi CursorLine      cterm=NONE   ctermbg=233
+</a><a href="#h0-65" id="h0-65" class="i">+hi CursorLineNr    ctermfg=11   ctermbg=233
+</a><a href="#h0-66" id="h0-66" class="i">+hi StatusLine      ctermfg=0    ctermbg=7
+</a><a href="#h0-67" id="h0-67" class="i">+hi StatusLineNC    ctermfg=8    ctermbg=0
+</a><a href="#h0-68" id="h0-68" class="i">+
+</a><a href="#h0-69" id="h0-69" class="i">+&quot; Diff lines ---
+</a><a href="#h0-70" id="h0-70" class="i">+hi DiffLine        ctermbg=4
+</a><a href="#h0-71" id="h0-71" class="i">+hi DiffText        ctermfg=16
+</a><a href="#h0-72" id="h0-72" class="i">+hi DiffAdd         ctermfg=7    ctermbg=5
+</a><a href="#h0-73" id="h0-73" class="i">+hi DiffChange      ctermfg=0    ctermbg=4
+</a><a href="#h0-74" id="h0-74" class="i">+hi DiffDelete      ctermfg=0
+</a><a href="#h0-75" id="h0-75" class="i">+
+</a><a href="#h0-76" id="h0-76" class="i">+&quot; Specific for Vim script  --- 
+</a><a href="#h0-77" id="h0-77" class="i">+hi vimCommentTitle ctermfg=10
+</a><a href="#h0-78" id="h0-78" class="i">+hi vimFold         ctermfg=0    ctermbg=15
+</a><a href="#h0-79" id="h0-79" class="i">+
+</a><a href="#h0-80" id="h0-80" class="i">+&quot; Specific for help files  --- 
+</a><a href="#h0-81" id="h0-81" class="i">+hi helpHyperTextJump ctermfg=11
+</a><a href="#h0-82" id="h0-82" class="i">+
+</a><a href="#h0-83" id="h0-83" class="i">+&quot; JS numbers only ---
+</a><a href="#h0-84" id="h0-84" class="i">+hi javaScriptNumber ctermfg=11 
+</a><a href="#h0-85" id="h0-85" class="i">+
+</a><a href="#h0-86" id="h0-86" class="i">+&quot; Special for HTML ---
+</a><a href="#h0-87" id="h0-87" class="i">+hi htmlTag        ctermfg=6
+</a><a href="#h0-88" id="h0-88" class="i">+hi htmlEndTag     ctermfg=6
+</a><a href="#h0-89" id="h0-89" class="i">+hi htmlTagName    ctermfg=11
+</a><a href="#h0-90" id="h0-90" class="i">+
+</a><a href="#h0-91" id="h0-91" class="i">+&quot; Specific for Perl  --- 
+</a><a href="#h0-92" id="h0-92" class="i">+hi perlSharpBang  ctermfg=10  term=standout
+</a><a href="#h0-93" id="h0-93" class="i">+hi perlStatement  ctermfg=13
+</a><a href="#h0-94" id="h0-94" class="i">+hi perlStatementStorage ctermfg=1
+</a><a href="#h0-95" id="h0-95" class="i">+hi perlVarPlain   ctermfg=3
+</a><a href="#h0-96" id="h0-96" class="i">+hi perlVarPlain2  ctermfg=11
+</a><a href="#h0-97" id="h0-97" class="i">+
+</a><a href="#h0-98" id="h0-98" class="i">+&quot; Specific for Ruby  --- 
+</a><a href="#h0-99" id="h0-99" class="i">+hi rubySharpBang  ctermfg=10  term=standout
+</a><a href="#h0-100" id="h0-100" class="i">+
+</a><a href="#h0-101" id="h0-101" class="i">+&quot; Spell checking  --- 
+</a><a href="#h0-102" id="h0-102" class="i">+if version &gt;= 700
+</a><a href="#h0-103" id="h0-103" class="i">+  hi clear SpellBad
+</a><a href="#h0-104" id="h0-104" class="i">+  hi clear SpellCap
+</a><a href="#h0-105" id="h0-105" class="i">+  hi clear SpellRare
+</a><a href="#h0-106" id="h0-106" class="i">+  hi clear SpellLocal
+</a><a href="#h0-107" id="h0-107" class="i">+  hi SpellBad    ctermfg=9
+</a><a href="#h0-108" id="h0-108" class="i">+  hi SpellCap    ctermfg=3    cterm=underline
+</a><a href="#h0-109" id="h0-109" class="i">+  hi SpellRare   ctermfg=13   cterm=underline
+</a><a href="#h0-110" id="h0-110" class="i">+  hi SpellLocal  cterm=None
+</a><a href="#h0-111" id="h0-111" class="i">+endif
+</a><a href="#h0-112" id="h0-112" class="i">+&quot; vim: foldmethod=marker foldmarker={{{,}}}:
+</a><b>diff --git a/<a href="../file/home/.config/nvim/colors/shblah.vim.html">home/.config/nvim/colors/shblah.vim</a> b/<a href="../file/home/.config/nvim/colors/shblah.vim.html">home/.config/nvim/colors/shblah.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,83 @@
+</a><a href="#h0-0" id="h0-0" class="i">+&quot;
+</a><a href="#h0-1" id="h0-1" class="i">+&quot; Terminal setup.
+</a><a href="#h0-2" id="h0-2" class="i">+&quot;
+</a><a href="#h0-3" id="h0-3" class="i">+set background=dark
+</a><a href="#h0-4" id="h0-4" class="i">+if version &gt; 580
+</a><a href="#h0-5" id="h0-5" class="i">+    highlight clear
+</a><a href="#h0-6" id="h0-6" class="i">+    if exists(&quot;g:syntax_on&quot;)
+</a><a href="#h0-7" id="h0-7" class="i">+        syntax reset
+</a><a href="#h0-8" id="h0-8" class="i">+    endif
+</a><a href="#h0-9" id="h0-9" class="i">+endif
+</a><a href="#h0-10" id="h0-10" class="i">+let g:colors_name=&quot;shblah&quot;
+</a><a href="#h0-11" id="h0-11" class="i">+
+</a><a href="#h0-12" id="h0-12" class="i">+&quot;
+</a><a href="#h0-13" id="h0-13" class="i">+&quot; Highlighting definitions.
+</a><a href="#h0-14" id="h0-14" class="i">+&quot;
+</a><a href="#h0-15" id="h0-15" class="i">+
+</a><a href="#h0-16" id="h0-16" class="i">+    &quot;
+</a><a href="#h0-17" id="h0-17" class="i">+    &quot; Actual colours and styles.
+</a><a href="#h0-18" id="h0-18" class="i">+    &quot;
+</a><a href="#h0-19" id="h0-19" class="i">+    highlight Comment      term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h0-20" id="h0-20" class="i">+    highlight Constant     term=NONE cterm=bold ctermfg=4    ctermbg=NONE
+</a><a href="#h0-21" id="h0-21" class="i">+    highlight Cursor       term=NONE cterm=bold ctermfg=3    ctermbg=NONE
+</a><a href="#h0-22" id="h0-22" class="i">+    highlight CursorLine   term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+</a><a href="#h0-23" id="h0-23" class="i">+    highlight DiffAdd      term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+</a><a href="#h0-24" id="h0-24" class="i">+    highlight DiffChange   term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+</a><a href="#h0-25" id="h0-25" class="i">+    highlight DiffDelete   term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+</a><a href="#h0-26" id="h0-26" class="i">+    highlight Folded       term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h0-27" id="h0-27" class="i">+    highlight Function     term=NONE cterm=bold ctermfg=4    ctermbg=NONE
+</a><a href="#h0-28" id="h0-28" class="i">+    highlight Identifier   term=NONE cterm=bold ctermfg=1    ctermbg=NONE
+</a><a href="#h0-29" id="h0-29" class="i">+    highlight IncSearch    term=NONE cterm=NONE ctermfg=0    ctermbg=NONE
+</a><a href="#h0-30" id="h0-30" class="i">+    highlight NonText      term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h0-31" id="h0-31" class="i">+    highlight Normal       term=NONE cterm=NONE ctermfg=7    ctermbg=NONE
+</a><a href="#h0-32" id="h0-32" class="i">+    highlight Pmenu        term=NONE cterm=NONE ctermfg=0    ctermbg=NONE
+</a><a href="#h0-33" id="h0-33" class="i">+    highlight PreProc      term=NONE cterm=bold ctermfg=5    ctermbg=NONE
+</a><a href="#h0-34" id="h0-34" class="i">+    highlight Search       term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h0-35" id="h0-35" class="i">+    highlight Special      term=NONE cterm=bold ctermfg=2    ctermbg=NONE
+</a><a href="#h0-36" id="h0-36" class="i">+    highlight SpecialKey   term=NONE cterm=NONE ctermfg=2    ctermbg=NONE
+</a><a href="#h0-37" id="h0-37" class="i">+    highlight Statement    term=NONE cterm=bold ctermfg=2    ctermbg=NONE
+</a><a href="#h0-38" id="h0-38" class="i">+    highlight StatusLine   term=NONE cterm=NONE ctermfg=7    ctermbg=NONE
+</a><a href="#h0-39" id="h0-39" class="i">+    highlight StatusLineNC term=NONE cterm=NONE ctermfg=6    ctermbg=NONE
+</a><a href="#h0-40" id="h0-40" class="i">+    highlight String       term=NONE cterm=NONE ctermfg=1    ctermbg=NONE
+</a><a href="#h0-41" id="h0-41" class="i">+    highlight Todo         term=NONE cterm=NONE ctermfg=0    ctermbg=NONE
+</a><a href="#h0-42" id="h0-42" class="i">+    highlight Type         term=NONE cterm=NONE ctermfg=2    ctermbg=NONE
+</a><a href="#h0-43" id="h0-43" class="i">+    highlight VertSplit    term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h0-44" id="h0-44" class="i">+    highlight Visual       term=NONE cterm=bold ctermfg=4    ctermbg=NONE
+</a><a href="#h0-45" id="h0-45" class="i">+
+</a><a href="#h0-46" id="h0-46" class="i">+    &quot;
+</a><a href="#h0-47" id="h0-47" class="i">+    &quot; General highlighting group links.
+</a><a href="#h0-48" id="h0-48" class="i">+    &quot;
+</a><a href="#h0-49" id="h0-49" class="i">+    highlight! link Title           Normal
+</a><a href="#h0-50" id="h0-50" class="i">+    highlight! link LineNr          NonText
+</a><a href="#h0-51" id="h0-51" class="i">+    highlight! link TabLine         StatusLineNC
+</a><a href="#h0-52" id="h0-52" class="i">+    highlight! link TabLineFill     StatusLineNC
+</a><a href="#h0-53" id="h0-53" class="i">+    highlight! link TabLineSel      StatusLine
+</a><a href="#h0-54" id="h0-54" class="i">+    highlight! link VimHiGroup      VimGroup
+</a><a href="#h0-55" id="h0-55" class="i">+
+</a><a href="#h0-56" id="h0-56" class="i">+&quot; Test the actual colorscheme
+</a><a href="#h0-57" id="h0-57" class="i">+syn match Comment      &quot;__Comment.*&quot;
+</a><a href="#h0-58" id="h0-58" class="i">+syn match Constant     &quot;__Constant.*&quot;
+</a><a href="#h0-59" id="h0-59" class="i">+syn match Cursor       &quot;__Cursor.*&quot;
+</a><a href="#h0-60" id="h0-60" class="i">+syn match CursorLine   &quot;__CursorLine.*&quot;
+</a><a href="#h0-61" id="h0-61" class="i">+syn match DiffAdd      &quot;__DiffAdd.*&quot;
+</a><a href="#h0-62" id="h0-62" class="i">+syn match DiffChange   &quot;__DiffChange.*&quot;
+</a><a href="#h0-63" id="h0-63" class="i">+syn match DiffDelete   &quot;__DiffDelete.*&quot;
+</a><a href="#h0-64" id="h0-64" class="i">+syn match Folded       &quot;__Folded.*&quot;
+</a><a href="#h0-65" id="h0-65" class="i">+syn match Function     &quot;__Function.*&quot;
+</a><a href="#h0-66" id="h0-66" class="i">+syn match Identifier   &quot;__Identifier.*&quot;
+</a><a href="#h0-67" id="h0-67" class="i">+syn match IncSearch    &quot;__IncSearch.*&quot;
+</a><a href="#h0-68" id="h0-68" class="i">+syn match NonText      &quot;__NonText.*&quot;
+</a><a href="#h0-69" id="h0-69" class="i">+syn match Normal       &quot;__Normal.*&quot;
+</a><a href="#h0-70" id="h0-70" class="i">+syn match Pmenu        &quot;__Pmenu.*&quot;
+</a><a href="#h0-71" id="h0-71" class="i">+syn match PreProc      &quot;__PreProc.*&quot;
+</a><a href="#h0-72" id="h0-72" class="i">+syn match Search       &quot;__Search.*&quot;
+</a><a href="#h0-73" id="h0-73" class="i">+syn match Special      &quot;__Special.*&quot;
+</a><a href="#h0-74" id="h0-74" class="i">+syn match SpecialKey   &quot;__SpecialKey.*&quot;
+</a><a href="#h0-75" id="h0-75" class="i">+syn match Statement    &quot;__Statement.*&quot;
+</a><a href="#h0-76" id="h0-76" class="i">+syn match StatusLine   &quot;__StatusLine.*&quot;
+</a><a href="#h0-77" id="h0-77" class="i">+syn match StatusLineNC &quot;__StatusLineNC.*&quot;
+</a><a href="#h0-78" id="h0-78" class="i">+syn match String       &quot;__String.*&quot;
+</a><a href="#h0-79" id="h0-79" class="i">+syn match Todo         &quot;__Todo.*&quot;
+</a><a href="#h0-80" id="h0-80" class="i">+syn match Type         &quot;__Type.*&quot;
+</a><a href="#h0-81" id="h0-81" class="i">+syn match VertSplit    &quot;__VertSplit.*&quot;
+</a><a href="#h0-82" id="h0-82" class="i">+syn match Visual       &quot;__Visual.*&quot;
+</a><b>diff --git a/<a href="../file/home/.config/nvim/init.vim.html">home/.config/nvim/init.vim</a> b/<a href="../file/home/.config/nvim/init.vim.html">home/.config/nvim/init.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -21,6 +21,7 @@ call vundle#begin()
+</a> 
+   &quot; Colorschemes
+   Plugin &apos;chriskempson/base16-vim&apos;
+<a href="#h0-3" id="h0-3" class="i">+  Plugin &apos;noahfrederick/vim-noctu&apos;
+</a> 
+   &quot; Others
+   Plugin &apos;scrooloose/nerdtree&apos;
+<a href="#h1" id="h1" class="h">@@ -61,7 +62,9 @@ call vundle#begin()
+</a>   set t_Co=256
+   let base16colorspace=256
+   set background=dark
+<a href="#h1-3" id="h1-3" class="d">-  colorscheme base16-ocean
+</a><a href="#h1-4" id="h1-4" class="i">+  &quot;colorscheme base16-ocean
+</a><a href="#h1-5" id="h1-5" class="i">+  &quot;colo noctu
+</a><a href="#h1-6" id="h1-6" class="i">+  colo shblah
+</a> 
+ &quot; Airline things
+   &quot; let g:airline_powerline_fonts = 1
+<a href="#h2" id="h2" class="h">@@ -83,3 +86,7 @@ call vundle#begin()
+</a>   set nolist
+   set textwidth=0
+   set wrapmargin=0
+<a href="#h2-3" id="h2-3" class="i">+
+</a><a href="#h2-4" id="h2-4" class="i">+&quot; Invisible chars
+</a><a href="#h2-5" id="h2-5" class="i">+  set listchars=eol:¬,space:·
+</a><a href="#h2-6" id="h2-6" class="i">+  set list
+</a><b>diff --git a/<a href="../file/home/.config/sxhkd/sxhkdrc.html">home/.config/sxhkd/sxhkdrc</a> b/<a href="../file/home/.config/sxhkd/sxhkdrc.html">home/.config/sxhkd/sxhkdrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -112,6 +112,9 @@ super + {Left,Down,Up,Right}
+</a> super + {_,shift + }{1-9,0}
+ 	bspc {desktop -f,node -d} &apos;^{1-9,10}&apos;
+ 
+<a href="#h0-3" id="h0-3" class="i">+super + shift + s
+</a><a href="#h0-4" id="h0-4" class="i">+  bspc node -g sticky
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a> ~button1
+ 	bspc pointer -g focus
+ 
+<a href="#h1" id="h1" class="h">@@ -134,3 +137,7 @@ super + space
+</a> # make sxhkd reload its configuration files:
+ super + Escape
+ 	pkill -USR1 -x sxhkd
+<a href="#h1-3" id="h1-3" class="i">+
+</a><a href="#h1-4" id="h1-4" class="i">+# Shortcuts
+</a><a href="#h1-5" id="h1-5" class="i">+super + shift + f
+</a><a href="#h1-6" id="h1-6" class="i">+  firefox &amp;
+</a><b>diff --git a/<a href="../file/home/.ncmpcpp/config.html">home/.ncmpcpp/config</a> b/<a href="../file/home/.ncmpcpp/config.html">home/.ncmpcpp/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -1 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-/home/tudurom/.homesick/repos/dotfiles/home/.ncmpcpp/config</a><a href="#h0-1" id="h0-1" class="d">-
+\ No newline at end of file
+</a><b>diff --git a/<a href="../file/home/.scripts/adjustbalance.html">home/.scripts/adjustbalance</a> b/<a href="../file/home/.scripts/adjustbalance.html">home/.scripts/adjustbalance</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,3 +1,3 @@
+</a> #! /bin/bash
+ 
+<a href="#h0-2" id="h0-2" class="d">-amixer sset Headphone 100%,78%
+</a><a href="#h0-3" id="h0-3" class="i">+amixer sset Headphone 100%,85%
+</a><b>diff --git a/<a href="../file/home/.scripts/info.sh.html">home/.scripts/info.sh</a> b/<a href="../file/home/.scripts/info.sh.html">home/.scripts/info.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -4,6 +4,7 @@
+</a> # copied from z3bra&apos;s blog
+ # modified by tudurom
+ #
+<a href="#h0-3" id="h0-3" class="i">+lines=23
+</a> clear
+ c00=$&apos;\e[0;30m&apos;
+ c01=$&apos;\e[0;31m&apos;
+<a href="#h1" id="h1" class="h">@@ -33,11 +34,11 @@ crop_offset=&quot;center&quot;
+</a> xoffset=400
+ yoffset=0
+ imgtempdir=&quot;$HOME/.fetchimages&quot;
+<a href="#h1-3" id="h1-3" class="d">-fontwidth=5
+</a><a href="#h1-4" id="h1-4" class="i">+fontwidth=30
+</a> gap=4
+ img=$(awk &apos;/feh/ {printf $3}&apos; &quot;$HOME/.fehbg&quot; | sed -e &quot;s/&apos;//g&quot;)
+ # Image size is half of the terminal
+<a href="#h1-8" id="h1-8" class="d">-imgsize=$(($(tput cols) * fontwidth / 2))
+</a><a href="#h1-9" id="h1-9" class="i">+imgsize=$((((lines - 1) * fontwidth) / 2))
+</a> # Padding is half the terminal width + gap
+ padding=$(($(tput cols) / 2 + gap))
+ imgname=&quot;$crop_offset-${img##*/}&quot;
+<b>diff --git a/<a href="../file/home/.scripts/lock.sh.html">home/.scripts/lock.sh</a> b/<a href="../file/home/.scripts/lock.sh.html">home/.scripts/lock.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -7,6 +7,6 @@ if [ &quot;$(playerctl status)&quot; = &quot;Playing&quot;  ] ; then
+</a>   playerctl pause
+ fi
+ i3lock -u -i /tmp/screen.png
+<a href="#h0-3" id="h0-3" class="d">-systemctl suspend
+</a><a href="#h0-4" id="h0-4" class="i">+#systemctl suspend
+</a> rm /tmp/screen.png
+ 
+<b>diff --git a/<a href="../file/home/.scripts/panel_bar.html">home/.scripts/panel_bar</a> b/<a href="../file/home/.scripts/panel_bar.html">home/.scripts/panel_bar</a></b>
+<a href="#h0" id="h0" class="h">@@ -15,18 +15,18 @@ num_mon=$(bspc query -M | wc -l)
+</a> separator=&quot;%{F$COLOR_SEPARATOR}|%{F-}&quot;
+ 
+ while read -r line ; do
+<a href="#h0-3" id="h0-3" class="d">-	case $line in
+</a><a href="#h0-4" id="h0-4" class="i">+  case $line in
+</a>     PS*)
+       playing=&quot;%{A1:mpc toggle:}%{A2:urxvt -e /usr/bin/cava &amp;:}%{A3:mpc stop:}%{A4:mpc next:}%{A5:mpc prev:}${line#??}%{A}%{A}%{A}%{A}%{A}&quot;
+       ;;
+<a href="#h0-8" id="h0-8" class="d">-		S*)
+</a><a href="#h0-9" id="h0-9" class="d">-			# clock output
+</a><a href="#h0-10" id="h0-10" class="d">-			time=&quot; ${line#?}&quot;
+</a><a href="#h0-11" id="h0-11" class="d">-			;;
+</a><a href="#h0-12" id="h0-12" class="d">-		T*)
+</a><a href="#h0-13" id="h0-13" class="d">-			# xtitle output
+</a><a href="#h0-14" id="h0-14" class="d">-			title=&quot; %{T2}%{F$COLOR_TITLE}${line#?}%{F-}%{T-}&quot;
+</a><a href="#h0-15" id="h0-15" class="d">-			;;
+</a><a href="#h0-16" id="h0-16" class="i">+    S*)
+</a><a href="#h0-17" id="h0-17" class="i">+      # clock output
+</a><a href="#h0-18" id="h0-18" class="i">+      time=&quot; ${line#?}&quot;
+</a><a href="#h0-19" id="h0-19" class="i">+      ;;
+</a><a href="#h0-20" id="h0-20" class="i">+    T*)
+</a><a href="#h0-21" id="h0-21" class="i">+      # xtitle output
+</a><a href="#h0-22" id="h0-22" class="i">+      title=&quot; %{T2}%{F$COLOR_TITLE}${line#?}%{F-}%{T-}&quot;
+</a><a href="#h0-23" id="h0-23" class="i">+      ;;
+</a>     B*)
+       # battery output
+       battery=&quot; ${line#?}&quot;
+<a href="#h1" id="h1" class="h">@@ -35,60 +35,61 @@ while read -r line ; do
+</a>       # volume
+       volume=&quot;%{A3:amixer sset Master toggle:}%{A4:amixer sset Master 5%+:}%{A5:amixer sset Master 5%-:}${line#?}%{A}%{A}%{A}&quot;
+       ;;
+<a href="#h1-3" id="h1-3" class="d">-		W*)
+</a><a href="#h1-4" id="h1-4" class="d">-			# bspwm internal state
+</a><a href="#h1-5" id="h1-5" class="d">-			wm_infos=&quot;&quot;
+</a><a href="#h1-6" id="h1-6" class="d">-			IFS=&apos;:&apos;
+</a><a href="#h1-7" id="h1-7" class="d">-			set -- ${line#?}
+</a><a href="#h1-8" id="h1-8" class="d">-			while [ $# -gt 0 ] ; do
+</a><a href="#h1-9" id="h1-9" class="d">-				item=$1
+</a><a href="#h1-10" id="h1-10" class="d">-				name=${item#?}
+</a><a href="#h1-11" id="h1-11" class="i">+    W*)
+</a><a href="#h1-12" id="h1-12" class="i">+      # bspwm internal state
+</a><a href="#h1-13" id="h1-13" class="i">+      wm_infos=&quot;&quot;
+</a><a href="#h1-14" id="h1-14" class="i">+      IFS=&apos;:&apos;
+</a><a href="#h1-15" id="h1-15" class="i">+      set -- ${line#?}
+</a><a href="#h1-16" id="h1-16" class="i">+      while [ $# -gt 0 ] ; do
+</a><a href="#h1-17" id="h1-17" class="i">+        item=$1
+</a><a href="#h1-18" id="h1-18" class="i">+        name=&quot;${item#?}&quot;
+</a><a href="#h1-19" id="h1-19" class="i">+        #name=&quot;$(icon $ICON_CLOCK)&quot;
+</a>         name=&quot;%{A:bspc desktop -f $name:} ${name} %{A}&quot;
+<a href="#h1-21" id="h1-21" class="d">-				case $item in
+</a><a href="#h1-22" id="h1-22" class="d">-					#M*)
+</a><a href="#h1-23" id="h1-23" class="d">-					#	# active monitor
+</a><a href="#h1-24" id="h1-24" class="d">-					#	if [ $num_mon -gt 1 ] ; then
+</a><a href="#h1-25" id="h1-25" class="d">-					#		wm_infos=&quot;$wm_infos %{F$COLOR_ACTIVE_MONITOR_FG}%{B$COLOR_ACTIVE_MONITOR_BG} ${name} %{B-}%{F-}  &quot;
+</a><a href="#h1-26" id="h1-26" class="d">-					#	fi
+</a><a href="#h1-27" id="h1-27" class="d">-					#	;;
+</a><a href="#h1-28" id="h1-28" class="d">-					#m*)
+</a><a href="#h1-29" id="h1-29" class="d">-					#	# inactive monitor
+</a><a href="#h1-30" id="h1-30" class="d">-					#	if [ $num_mon -gt 1 ] ; then
+</a><a href="#h1-31" id="h1-31" class="d">-					#		wm_infos=&quot;$wm_infos %{F$COLOR_INACTIVE_MONITOR_FG}%{B$COLOR_INACTIVE_MONITOR_BG} ${name} %{B-}%{F-}  &quot;
+</a><a href="#h1-32" id="h1-32" class="d">-					#	fi
+</a><a href="#h1-33" id="h1-33" class="d">-					#	;;
+</a><a href="#h1-34" id="h1-34" class="d">-					O*)
+</a><a href="#h1-35" id="h1-35" class="d">-						# focused occupied desktop
+</a><a href="#h1-36" id="h1-36" class="d">-						wm_infos=&quot;$wm_infos%{+u}${name}%{-u}&quot;
+</a><a href="#h1-37" id="h1-37" class="d">-						;;
+</a><a href="#h1-38" id="h1-38" class="d">-					F*)
+</a><a href="#h1-39" id="h1-39" class="d">-						# focused free desktop
+</a><a href="#h1-40" id="h1-40" class="d">-						wm_infos=&quot;$wm_infos%{+u}${name}%{-u}&quot;
+</a><a href="#h1-41" id="h1-41" class="d">-						;;
+</a><a href="#h1-42" id="h1-42" class="d">-					U*)
+</a><a href="#h1-43" id="h1-43" class="d">-						# focused urgent desktop
+</a><a href="#h1-44" id="h1-44" class="d">-						wm_infos=&quot;$wm_infos%{B$COLOR_URGENT}%{+u}${name}%{-u}%{B-}&quot;
+</a><a href="#h1-45" id="h1-45" class="d">-						;;
+</a><a href="#h1-46" id="h1-46" class="d">-					o*)
+</a><a href="#h1-47" id="h1-47" class="d">-						# occupied desktop
+</a><a href="#h1-48" id="h1-48" class="d">-						wm_infos=&quot;$wm_infos${name}&quot;
+</a><a href="#h1-49" id="h1-49" class="d">-						;;
+</a><a href="#h1-50" id="h1-50" class="d">-					f*)
+</a><a href="#h1-51" id="h1-51" class="d">-						# free desktop
+</a><a href="#h1-52" id="h1-52" class="d">-						wm_infos=&quot;$wm_infos${name}&quot;
+</a><a href="#h1-53" id="h1-53" class="d">-						;;
+</a><a href="#h1-54" id="h1-54" class="d">-					u*)
+</a><a href="#h1-55" id="h1-55" class="d">-						# urgent desktop
+</a><a href="#h1-56" id="h1-56" class="d">-						wm_infos=&quot;$wm_infos%{B$COLOR_URGENT}${name}%{B-}&quot;
+</a><a href="#h1-57" id="h1-57" class="d">-						;;
+</a><a href="#h1-58" id="h1-58" class="d">-					#L*)
+</a><a href="#h1-59" id="h1-59" class="d">-					#	# layout
+</a><a href="#h1-60" id="h1-60" class="d">-					#	wm_infos=&quot;$wm_infos  %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${name} %{B-}%{F-}&quot;
+</a><a href="#h1-61" id="h1-61" class="d">-					#	;;
+</a><a href="#h1-62" id="h1-62" class="d">-				esac
+</a><a href="#h1-63" id="h1-63" class="d">-				shift
+</a><a href="#h1-64" id="h1-64" class="d">-			done
+</a><a href="#h1-65" id="h1-65" class="d">-			;;
+</a><a href="#h1-66" id="h1-66" class="d">-	esac
+</a><a href="#h1-67" id="h1-67" class="i">+        case $item in
+</a><a href="#h1-68" id="h1-68" class="i">+          #M*)
+</a><a href="#h1-69" id="h1-69" class="i">+          # # active monitor
+</a><a href="#h1-70" id="h1-70" class="i">+          # if [ $num_mon -gt 1 ] ; then
+</a><a href="#h1-71" id="h1-71" class="i">+          #   wm_infos=&quot;$wm_infos %{F$COLOR_ACTIVE_MONITOR_FG}%{B$COLOR_ACTIVE_MONITOR_BG} ${name} %{B-}%{F-}  &quot;
+</a><a href="#h1-72" id="h1-72" class="i">+          # fi
+</a><a href="#h1-73" id="h1-73" class="i">+          # ;;
+</a><a href="#h1-74" id="h1-74" class="i">+          #m*)
+</a><a href="#h1-75" id="h1-75" class="i">+          # # inactive monitor
+</a><a href="#h1-76" id="h1-76" class="i">+          # if [ $num_mon -gt 1 ] ; then
+</a><a href="#h1-77" id="h1-77" class="i">+          #   wm_infos=&quot;$wm_infos %{F$COLOR_INACTIVE_MONITOR_FG}%{B$COLOR_INACTIVE_MONITOR_BG} ${name} %{B-}%{F-}  &quot;
+</a><a href="#h1-78" id="h1-78" class="i">+          # fi
+</a><a href="#h1-79" id="h1-79" class="i">+          # ;;
+</a><a href="#h1-80" id="h1-80" class="i">+          O*)
+</a><a href="#h1-81" id="h1-81" class="i">+            # focused occupied desktop
+</a><a href="#h1-82" id="h1-82" class="i">+            wm_infos=&quot;$wm_infos%{+u}${name}%{-u}&quot;
+</a><a href="#h1-83" id="h1-83" class="i">+            ;;
+</a><a href="#h1-84" id="h1-84" class="i">+          F*)
+</a><a href="#h1-85" id="h1-85" class="i">+            # focused free desktop
+</a><a href="#h1-86" id="h1-86" class="i">+            wm_infos=&quot;$wm_infos%{+u}${name}%{-u}&quot;
+</a><a href="#h1-87" id="h1-87" class="i">+            ;;
+</a><a href="#h1-88" id="h1-88" class="i">+          U*)
+</a><a href="#h1-89" id="h1-89" class="i">+            # focused urgent desktop
+</a><a href="#h1-90" id="h1-90" class="i">+            wm_infos=&quot;$wm_infos%{B$COLOR_URGENT}%{+u}${name}%{-u}%{B-}&quot;
+</a><a href="#h1-91" id="h1-91" class="i">+            ;;
+</a><a href="#h1-92" id="h1-92" class="i">+          o*)
+</a><a href="#h1-93" id="h1-93" class="i">+            # occupied desktop
+</a><a href="#h1-94" id="h1-94" class="i">+            wm_infos=&quot;$wm_infos${name}&quot;
+</a><a href="#h1-95" id="h1-95" class="i">+            ;;
+</a><a href="#h1-96" id="h1-96" class="i">+          f*)
+</a><a href="#h1-97" id="h1-97" class="i">+            # free desktop
+</a><a href="#h1-98" id="h1-98" class="i">+            wm_infos=&quot;$wm_infos${name}&quot;
+</a><a href="#h1-99" id="h1-99" class="i">+            ;;
+</a><a href="#h1-100" id="h1-100" class="i">+          u*)
+</a><a href="#h1-101" id="h1-101" class="i">+            # urgent desktop
+</a><a href="#h1-102" id="h1-102" class="i">+            wm_infos=&quot;$wm_infos%{B$COLOR_URGENT}${name}%{B-}&quot;
+</a><a href="#h1-103" id="h1-103" class="i">+            ;;
+</a><a href="#h1-104" id="h1-104" class="i">+          #L*)
+</a><a href="#h1-105" id="h1-105" class="i">+          # # layout
+</a><a href="#h1-106" id="h1-106" class="i">+          # wm_infos=&quot;$wm_infos  %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${name} %{B-}%{F-}&quot;
+</a><a href="#h1-107" id="h1-107" class="i">+          # ;;
+</a><a href="#h1-108" id="h1-108" class="i">+        esac
+</a><a href="#h1-109" id="h1-109" class="i">+        shift
+</a><a href="#h1-110" id="h1-110" class="i">+      done
+</a><a href="#h1-111" id="h1-111" class="i">+      ;;
+</a><a href="#h1-112" id="h1-112" class="i">+  esac
+</a>   echo -e &quot;%{U$COLOR_UNDERLINE}%{l}${wm_infos} $separator ${title}%{r}${battery} $separator ${volume} $separator $(icon $ICON_CLOCK)${time} $separator ${playing} &quot;
+ done
+<b>diff --git a/<a href="../file/home/.scripts/panel_config.html">home/.scripts/panel_config</a> b/<a href="../file/home/.scripts/panel_config.html">home/.scripts/panel_config</a></b>
+<a href="#h0" id="h0" class="h">@@ -5,7 +5,8 @@ PANEL_HEIGHT=30
+</a> PANEL_WM_NAME=&quot;lemonbar&quot;
+ #PANEL_FONT_FAMILY=-*-tamsynmod-medium-*-*-*-17-*-*-*-*-*-*-*
+ #PANEL_FONT_FAMILY=-*-envypn-medium-*-*-*-13-*-*-*-*-*-*-*
+<a href="#h0-3" id="h0-3" class="d">-PANEL_FONT_FAMILY=-*-envypn-medium-*-*-*-13-*-*-*-*-*-*-*
+</a><a href="#h0-4" id="h0-4" class="i">+#PANEL_FONT_FAMILY=-*-envypn-medium-*-*-*-13-*-*-*-*-*-*-*
+</a><a href="#h0-5" id="h0-5" class="i">+PANEL_FONT_FAMILY=-*-erusfont-medium-*-*-*-11-*-*-*-*-*-*-*
+</a> PANEL_ICON_FONT_FAMILY=-*-siji-medium-*-*-*-10-*-*-*-*-*-*-*
+ REFRESH_VOLUME=0.5
+ REFRESH_MUSIC=1
+<b>diff --git a/<a href="../file/home/.scripts/panel_icons.html">home/.scripts/panel_icons</a> b/<a href="../file/home/.scripts/panel_icons.html">home/.scripts/panel_icons</a></b>
+<a href="#h0" id="h0" class="h">@@ -24,3 +24,4 @@ ICON_BATTERY_CHARGING=&quot;\ue200&quot;
+</a> ICON_BATTERY_FULL=&quot;\ue1ff&quot;
+ ICON_BATTERY_HALF=&quot;\ue1fe&quot;
+ ICON_BATTERY_EMPTY=&quot;\ue1fd&quot;
+<a href="#h0-3" id="h0-3" class="i">+ICON_CIRCLE=&quot;\ue190&quot;
+</a><b>diff --git a/<a href="../file/home/.scripts/setwall.html">home/.scripts/setwall</a> b/<a href="../file/home/.scripts/setwall.html">home/.scripts/setwall</a></b>
+<a href="#h0" id="h0" class="h">@@ -22,5 +22,5 @@ if donger or date == &apos;01/04&apos;:
+</a> elif surprise or rnd == 2:
+     os.system(&apos;feh --bg-fill ~/Pictures/snowden.jpg&apos;)
+ else:
+<a href="#h0-3" id="h0-3" class="d">-    os.system(&apos;feh --bg-fill ~/Pictures/pixel2.png&apos;)
+</a><a href="#h0-4" id="h0-4" class="i">+    os.system(&apos;feh --bg-fill ~/Pictures/cloud.jpg&apos;)
+</a> 
+<b>diff --git a/<a href="../file/home/.vis/config.html">home/.vis/config</a> b/<a href="../file/home/.vis/config.html">home/.vis/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,5 +1,5 @@
+</a> ##Refresh rate of the visualizers. A really high refresh rate may cause screen tearing. Default is 20.
+<a href="#h0-1" id="h0-1" class="d">-visualizer.fps=30
+</a><a href="#h0-2" id="h0-2" class="i">+visualizer.fps=60
+</a> 
+ ##Defaults to &quot;/tmp/mpd.fifo&quot;
+ #mpd.fifo.path=/tmp/mpd.fifo
+<b>diff --git a/<a href="../file/home/.xinitrc.html">home/.xinitrc</a> b/<a href="../file/home/.xinitrc.html">home/.xinitrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -57,7 +57,7 @@ xset fp rehash
+</a> 
+ #xrandr --output VIRTUAL1 --off --output LVDS1 --mode 1600x900 --pos 1920x180 --rotate normal --output VGA1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+ #xrandr --output VIRTUAL1 --off --output LVDS1 --mode 1600x900 --pos 2128x180 --rotate normal --output VGA1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+<a href="#h0-3" id="h0-3" class="d">-#sh ~/.screenlayout/layout.sh
+</a><a href="#h0-4" id="h0-4" class="i">+sh ~/.screenlayout/layout.sh
+</a> compton -b &amp;
+ mpd &amp;
+ mpDris2 &amp;
+<b>diff --git a/<a href="../file/home/.xres/colors/base16-ocean.html">home/.xres/colors/base16-ocean</a> b/<a href="../file/home/.xres/colors/base16-ocean.html">home/.xres/colors/base16-ocean</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,53 @@
+</a><a href="#h0-0" id="h0-0" class="i">+! Base16 Ocean
+</a><a href="#h0-1" id="h0-1" class="i">+! Scheme: Chris Kempson (http://chriskempson.com)
+</a><a href="#h0-2" id="h0-2" class="i">+
+</a><a href="#h0-3" id="h0-3" class="i">+#define base00 #2b303b
+</a><a href="#h0-4" id="h0-4" class="i">+#define base01 #343d46
+</a><a href="#h0-5" id="h0-5" class="i">+#define base02 #4f5b66
+</a><a href="#h0-6" id="h0-6" class="i">+#define base03 #65737e
+</a><a href="#h0-7" id="h0-7" class="i">+#define base04 #a7adba
+</a><a href="#h0-8" id="h0-8" class="i">+#define base05 #c0c5ce
+</a><a href="#h0-9" id="h0-9" class="i">+#define base06 #dfe1e8
+</a><a href="#h0-10" id="h0-10" class="i">+#define base07 #eff1f5
+</a><a href="#h0-11" id="h0-11" class="i">+#define base08 #bf616a
+</a><a href="#h0-12" id="h0-12" class="i">+#define base09 #d08770
+</a><a href="#h0-13" id="h0-13" class="i">+#define base0A #ebcb8b
+</a><a href="#h0-14" id="h0-14" class="i">+#define base0B #a3be8c
+</a><a href="#h0-15" id="h0-15" class="i">+#define base0C #96b5b4
+</a><a href="#h0-16" id="h0-16" class="i">+#define base0D #8fa1b3
+</a><a href="#h0-17" id="h0-17" class="i">+#define base0E #b48ead
+</a><a href="#h0-18" id="h0-18" class="i">+#define base0F #ab7967
+</a><a href="#h0-19" id="h0-19" class="i">+
+</a><a href="#h0-20" id="h0-20" class="i">+*.foreground:   base05
+</a><a href="#h0-21" id="h0-21" class="i">+*.background:   base00
+</a><a href="#h0-22" id="h0-22" class="i">+URxvt.background: [99]#2b303b
+</a><a href="#h0-23" id="h0-23" class="i">+*.cursorColor:  base05
+</a><a href="#h0-24" id="h0-24" class="i">+
+</a><a href="#h0-25" id="h0-25" class="i">+*.color0:       base00
+</a><a href="#h0-26" id="h0-26" class="i">+*.color1:       base08
+</a><a href="#h0-27" id="h0-27" class="i">+*.color2:       base0B
+</a><a href="#h0-28" id="h0-28" class="i">+*.color3:       base0A
+</a><a href="#h0-29" id="h0-29" class="i">+*.color4:       base0D
+</a><a href="#h0-30" id="h0-30" class="i">+*.color5:       base0E
+</a><a href="#h0-31" id="h0-31" class="i">+*.color6:       base0C
+</a><a href="#h0-32" id="h0-32" class="i">+*.color7:       base05
+</a><a href="#h0-33" id="h0-33" class="i">+
+</a><a href="#h0-34" id="h0-34" class="i">+*.color8:       base03
+</a><a href="#h0-35" id="h0-35" class="i">+*.color9:       base08
+</a><a href="#h0-36" id="h0-36" class="i">+*.color10:      base0B
+</a><a href="#h0-37" id="h0-37" class="i">+*.color11:      base0A
+</a><a href="#h0-38" id="h0-38" class="i">+*.color12:      base0D
+</a><a href="#h0-39" id="h0-39" class="i">+*.color13:      base0E
+</a><a href="#h0-40" id="h0-40" class="i">+*.color14:      base0C
+</a><a href="#h0-41" id="h0-41" class="i">+*.color15:      base07
+</a><a href="#h0-42" id="h0-42" class="i">+
+</a><a href="#h0-43" id="h0-43" class="i">+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+</a><a href="#h0-44" id="h0-44" class="i">+! use &apos;shell&apos; template to set these if necessary
+</a><a href="#h0-45" id="h0-45" class="i">+*.color16:      base09
+</a><a href="#h0-46" id="h0-46" class="i">+*.color17:      base0F
+</a><a href="#h0-47" id="h0-47" class="i">+*.color18:      base01
+</a><a href="#h0-48" id="h0-48" class="i">+*.color19:      base02
+</a><a href="#h0-49" id="h0-49" class="i">+*.color20:      base04
+</a><a href="#h0-50" id="h0-50" class="i">+*.color21:      base06
+</a><a href="#h0-51" id="h0-51" class="i">+
+</a><a href="#h0-52" id="h0-52" class="i">+! vim: set ft=xdefaults :
+</a><b>diff --git a/<a href="../file/home/.xres/colors/cloudy.html">home/.xres/colors/cloudy</a> b/<a href="../file/home/.xres/colors/cloudy.html">home/.xres/colors/cloudy</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,39 @@
+</a><a href="#h0-0" id="h0-0" class="i">+! special
+</a><a href="#h0-1" id="h0-1" class="i">+*.foreground:   #c0c5ce
+</a><a href="#h0-2" id="h0-2" class="i">+*.background:   #273941
+</a><a href="#h0-3" id="h0-3" class="i">+*.cursorColor:  #c0c5ce
+</a><a href="#h0-4" id="h0-4" class="i">+URxvt.cursorColor: #eff1f5
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+! black
+</a><a href="#h0-7" id="h0-7" class="i">+*.color0:       #273941
+</a><a href="#h0-8" id="h0-8" class="i">+*.color8:       #65737e
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+! red
+</a><a href="#h0-11" id="h0-11" class="i">+*.color1:       #c27171
+</a><a href="#h0-12" id="h0-12" class="i">+*.color9:       #c27171
+</a><a href="#h0-13" id="h0-13" class="i">+
+</a><a href="#h0-14" id="h0-14" class="i">+! green
+</a><a href="#h0-15" id="h0-15" class="i">+*.color2:       #71c287
+</a><a href="#h0-16" id="h0-16" class="i">+*.color10:      #71c287
+</a><a href="#h0-17" id="h0-17" class="i">+
+</a><a href="#h0-18" id="h0-18" class="i">+! yellow
+</a><a href="#h0-19" id="h0-19" class="i">+*.color3:       #bfc271
+</a><a href="#h0-20" id="h0-20" class="i">+*.color11:      #bfc271
+</a><a href="#h0-21" id="h0-21" class="i">+
+</a><a href="#h0-22" id="h0-22" class="i">+! blue
+</a><a href="#h0-23" id="h0-23" class="i">+*.color4:       #719bc2
+</a><a href="#h0-24" id="h0-24" class="i">+*.color12:      #719bc2
+</a><a href="#h0-25" id="h0-25" class="i">+
+</a><a href="#h0-26" id="h0-26" class="i">+! magenta
+</a><a href="#h0-27" id="h0-27" class="i">+*.color5:       #c271a1
+</a><a href="#h0-28" id="h0-28" class="i">+*.color13:      #c271a1
+</a><a href="#h0-29" id="h0-29" class="i">+
+</a><a href="#h0-30" id="h0-30" class="i">+! cyan
+</a><a href="#h0-31" id="h0-31" class="i">+*.color6:       #71c2af
+</a><a href="#h0-32" id="h0-32" class="i">+*.color14:      #71c2af
+</a><a href="#h0-33" id="h0-33" class="i">+
+</a><a href="#h0-34" id="h0-34" class="i">+! white
+</a><a href="#h0-35" id="h0-35" class="i">+*.color7:       #c0c5ce
+</a><a href="#h0-36" id="h0-36" class="i">+*.color15:      #eff1f5
+</a><a href="#h0-37" id="h0-37" class="i">+
+</a><a href="#h0-38" id="h0-38" class="i">+! vim: set ft=xdefaults :
+</a><b>diff --git a/<a href="../file/home/.xres/colors/nyuuko.html">home/.xres/colors/nyuuko</a> b/<a href="../file/home/.xres/colors/nyuuko.html">home/.xres/colors/nyuuko</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,36 @@
+</a><a href="#h0-0" id="h0-0" class="i">+! special
+</a><a href="#h0-1" id="h0-1" class="i">+*.foreground:   #f0f0f0
+</a><a href="#h0-2" id="h0-2" class="i">+*.background:   #273941
+</a><a href="#h0-3" id="h0-3" class="i">+*.cursorColor:  #f0f0f0
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+! black
+</a><a href="#h0-6" id="h0-6" class="i">+*.color0:       #273941
+</a><a href="#h0-7" id="h0-7" class="i">+*.color8:       #70858c
+</a><a href="#h0-8" id="h0-8" class="i">+
+</a><a href="#h0-9" id="h0-9" class="i">+! red
+</a><a href="#h0-10" id="h0-10" class="i">+*.color1:       #996363
+</a><a href="#h0-11" id="h0-11" class="i">+*.color9:       #996e63
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a><a href="#h0-13" id="h0-13" class="i">+! green
+</a><a href="#h0-14" id="h0-14" class="i">+*.color2:       #68a18a
+</a><a href="#h0-15" id="h0-15" class="i">+*.color10:      #68a18a
+</a><a href="#h0-16" id="h0-16" class="i">+
+</a><a href="#h0-17" id="h0-17" class="i">+! yellow
+</a><a href="#h0-18" id="h0-18" class="i">+*.color3:       #bf977c
+</a><a href="#h0-19" id="h0-19" class="i">+*.color11:      #bfb27c
+</a><a href="#h0-20" id="h0-20" class="i">+
+</a><a href="#h0-21" id="h0-21" class="i">+! blue
+</a><a href="#h0-22" id="h0-22" class="i">+*.color4:       #6c9aa6
+</a><a href="#h0-23" id="h0-23" class="i">+*.color12:      #6c9aa6
+</a><a href="#h0-24" id="h0-24" class="i">+
+</a><a href="#h0-25" id="h0-25" class="i">+! magenta
+</a><a href="#h0-26" id="h0-26" class="i">+*.color5:       #805b8c
+</a><a href="#h0-27" id="h0-27" class="i">+*.color13:      #805b8c
+</a><a href="#h0-28" id="h0-28" class="i">+
+</a><a href="#h0-29" id="h0-29" class="i">+! cyan
+</a><a href="#h0-30" id="h0-30" class="i">+*.color6:       #7cbfb2
+</a><a href="#h0-31" id="h0-31" class="i">+*.color14:      #7cbfb2
+</a><a href="#h0-32" id="h0-32" class="i">+
+</a><a href="#h0-33" id="h0-33" class="i">+! white
+</a><a href="#h0-34" id="h0-34" class="i">+*.color7:       #f0f0f0
+</a><a href="#h0-35" id="h0-35" class="i">+*.color15:      #f0f0f0
+</a><b>diff --git a/<a href="../file/home/.xres/rofi.html">home/.xres/rofi</a> b/<a href="../file/home/.xres/rofi.html">home/.xres/rofi</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,11 @@
+</a><a href="#h0-0" id="h0-0" class="i">+! Rofi config
+</a><a href="#h0-1" id="h0-1" class="i">+!rofi.font: System San Francisco Display 18
+</a><a href="#h0-2" id="h0-2" class="i">+rofi.font: M+ 2mn 18
+</a><a href="#h0-3" id="h0-3" class="i">+rofi.lines: 3
+</a><a href="#h0-4" id="h0-4" class="i">+rofi.eh: 2
+</a><a href="#h0-5" id="h0-5" class="i">+!rofi.width: 100%
+</a><a href="#h0-6" id="h0-6" class="i">+rofi.padding: 400
+</a><a href="#h0-7" id="h0-7" class="i">+rofi.bw: 3
+</a><a href="#h0-8" id="h0-8" class="i">+rofi.opacity: 90
+</a><a href="#h0-9" id="h0-9" class="i">+rofi.fullscreen: true
+</a><a href="#h0-10" id="h0-10" class="i">+!rofi.fuzzy: true
+</a><b>diff --git a/<a href="../file/home/.xres/urxvt.html">home/.xres/urxvt</a> b/<a href="../file/home/.xres/urxvt.html">home/.xres/urxvt</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,13 @@
+</a><a href="#h0-0" id="h0-0" class="i">+!URxvt.font: -*-termsyn-medium-*-*-*-14-*-*-*-*-*-*-*
+</a><a href="#h0-1" id="h0-1" class="i">+URxvt.font: -*-erusfont-medium-*-*-*-11-*-*-*-*-*-*-*
+</a><a href="#h0-2" id="h0-2" class="i">+! For writing markdown
+</a><a href="#h0-3" id="h0-3" class="i">+!URxvt.font: xft:Fira Mono:size=12
+</a><a href="#h0-4" id="h0-4" class="i">+URxvt.scrollBar: false
+</a><a href="#h0-5" id="h0-5" class="i">+URxvt.letterSpace: 0
+</a><a href="#h0-6" id="h0-6" class="i">+URxvt.cursorBlink: true
+</a><a href="#h0-7" id="h0-7" class="i">+URxvt.cursorUnderline: false
+</a><a href="#h0-8" id="h0-8" class="i">+URxvt.internalBorder: 10
+</a><a href="#h0-9" id="h0-9" class="i">+urxvt*perl-ext-common: default,clipboard
+</a><a href="#h0-10" id="h0-10" class="i">+URxvt.depth: 32
+</a><a href="#h0-11" id="h0-11" class="i">+
+</a><a href="#h0-12" id="h0-12" class="i">+! vim: set ft=xdefaults :
+</a><b>diff --git a/<a href="../file/home/.xres/xft.html">home/.xres/xft</a> b/<a href="../file/home/.xres/xft.html">home/.xres/xft</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,9 @@
+</a><a href="#h0-0" id="h0-0" class="i">+Xft.antialias: 1
+</a><a href="#h0-1" id="h0-1" class="i">+Xft.autohint: 0
+</a><a href="#h0-2" id="h0-2" class="i">+Xft.dpi: 92
+</a><a href="#h0-3" id="h0-3" class="i">+Xft.hinting: 1
+</a><a href="#h0-4" id="h0-4" class="i">+Xft.hintstyle: hintfull
+</a><a href="#h0-5" id="h0-5" class="i">+Xft.lcdfilter: lcddefault
+</a><a href="#h0-6" id="h0-6" class="i">+Xft.rgba: rgb
+</a><a href="#h0-7" id="h0-7" class="i">+
+</a><a href="#h0-8" id="h0-8" class="i">+! vim: set ft=xdefaults :
+</a><b>diff --git a/<a href="../file/home/.zprezto/runcoms/zlogin.html">home/.zprezto/runcoms/zlogin</a> b/<a href="../file/home/.zprezto/runcoms/zlogin.html">home/.zprezto/runcoms/zlogin</a></b>
+<a href="#h0" id="h0" class="h">@@ -22,4 +22,4 @@ if (( $+commands[fortune] )); then
+</a>   fi
+ fi
+ export PANEL_FIFO=&quot;/tmp/panel-fifo&quot;
+<a href="#h0-3" id="h0-3" class="d">-[[ -z $DISPLAY &amp;&amp; $XDG_VTNR -eq 1 ]] &amp;&amp; exec startx
+</a><a href="#h0-4" id="h0-4" class="i">+source ~/.profile
+</a><b>diff --git a/<a href="../file/home/.zprezto/runcoms/zprofile.html">home/.zprezto/runcoms/zprofile</a> b/<a href="../file/home/.zprezto/runcoms/zprofile.html">home/.zprezto/runcoms/zprofile</a></b>
+<a href="#h0" id="h0" class="h">@@ -72,4 +72,3 @@ if [[ ! -d &quot;$TMPDIR&quot; ]]; then
+</a> fi
+ 
+ TMPPREFIX=&quot;${TMPDIR%/}/zsh&quot;
+<a href="#h0-3" id="h0-3" class="d">-export BSPWM_STATE=/tmp/bspwm-state.json
+</a><b>diff --git a/<a href="../file/home/.zprezto/runcoms/zshrc.html">home/.zprezto/runcoms/zshrc</a> b/<a href="../file/home/.zprezto/runcoms/zshrc.html">home/.zprezto/runcoms/zshrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -10,48 +10,12 @@ if [[ -s &quot;${ZDOTDIR:-$HOME}/.zprezto/init.zsh&quot; ]]; then
+</a>   source &quot;${ZDOTDIR:-$HOME}/.zprezto/init.zsh&quot;
+ fi
+ 
+<a href="#h0-3" id="h0-3" class="i">+source ~/crosssh.sh
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a> # Customize to your needs...
+ #export TERM=xterm-256color
+<a href="#h0-7" id="h0-7" class="d">-export EDITOR=nvim
+</a><a href="#h0-8" id="h0-8" class="d">-export VISUAL=nvim
+</a><a href="#h0-9" id="h0-9" class="d">-export GOPATH=$HOME/Go
+</a><a href="#h0-10" id="h0-10" class="d">-export PATH=&quot;$(ruby -e &apos;print Gem.user_dir&apos;)/bin:$HOME/.scripts:$GOPATH/bin:$PATH&quot;
+</a><a href="#h0-11" id="h0-11" class="d">-export PATH=&quot;$HOME/.rbenv/bin:$PATH&quot;
+</a><a href="#h0-12" id="h0-12" class="d">-eval &quot;$(rbenv init -)&quot;
+</a><a href="#h0-13" id="h0-13" class="d">-
+</a><a href="#h0-14" id="h0-14" class="d">-# Aliases aka hacks
+</a><a href="#h0-15" id="h0-15" class="d">-alias :q=exit
+</a><a href="#h0-16" id="h0-16" class="d">-#alias vim=nvim
+</a><a href="#h0-17" id="h0-17" class="d">-alias irb=pry
+</a><a href="#h0-18" id="h0-18" class="d">-alias ccat=pygmentize
+</a><a href="#h0-19" id="h0-19" class="d">-alias ph=problemhelper
+</a><a href="#h0-20" id="h0-20" class="d">-
+</a><a href="#h0-21" id="h0-21" class="d">-source ~/.scripts/base16-ocean.dark.sh
+</a><a href="#h0-22" id="h0-22" class="d">-source &quot;$HOME/.homesick/repos/homeshick/homeshick.sh&quot;
+</a><a href="#h0-23" id="h0-23" class="d">-
+</a><a href="#h0-24" id="h0-24" class="d">-# Vi mode
+</a> bindkey -v
+ export KEYTIMEOUT=1
+ 
+<a href="#h0-28" id="h0-28" class="d">-# The Fuck is real
+</a><a href="#h0-29" id="h0-29" class="d">-eval $(thefuck --alias)
+</a><a href="#h0-30" id="h0-30" class="d">-
+</a><a href="#h0-31" id="h0-31" class="d">-fortune | lolcat
+</a><a href="#h0-32" id="h0-32" class="d">-
+</a><a href="#h0-33" id="h0-33" class="d">-# Remove unnecessary packages
+</a><a href="#h0-34" id="h0-34" class="d">-pclean() {
+</a><a href="#h0-35" id="h0-35" class="d">-  sudo pacman -Rsn $(pacman -Qdtq)
+</a><a href="#h0-36" id="h0-36" class="d">-}
+</a><a href="#h0-37" id="h0-37" class="d">-
+</a><a href="#h0-38" id="h0-38" class="d">-testnet() {
+</a><a href="#h0-39" id="h0-39" class="d">-  while true; do
+</a><a href="#h0-40" id="h0-40" class="d">-    ping google.com
+</a><a href="#h0-41" id="h0-41" class="d">-  done
+</a><a href="#h0-42" id="h0-42" class="d">-}
+</a><a href="#h0-43" id="h0-43" class="d">-
+</a><a href="#h0-44" id="h0-44" class="d">-cless() {
+</a><a href="#h0-45" id="h0-45" class="d">-  pygmentize -f terminal &quot;$1&quot; | less -R
+</a><a href="#h0-46" id="h0-46" class="d">-}
+</a><a href="#h0-47" id="h0-47" class="d">-
+</a> # Set window title to &quot;username@hostname: directory&quot;
+ precmd () {print -Pn &quot;\e]0;%n@%m: %~\a&quot;}
+</pre>
+</div>
+</body>
+</html>

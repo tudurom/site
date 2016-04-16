@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Everything should now use sh instead of dash (dash should be symlinked to sh) disputils now caches all data at startup wmrc configs are loaded in .profile fuck cwm - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/58fd08fd6c17c50a5d4682f8e2d23e25cd3c5a1d.html">58fd08fd6c17c50a5d4682f8e2d23e25cd3c5a1d</a>
+<b>parent</b> <a href="../commit/2a4814865dfae232c21bc63318e16a243d5eafd7.html">2a4814865dfae232c21bc63318e16a243d5eafd7</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Thu Apr  7 21:09:30 2016
+
+Everything should now use sh instead of dash (dash should be symlinked to sh)
+disputils now caches all data at startup
+wmrc configs are loaded in .profile
+fuck cwm
+
+<b>Diffstat:</b>
+ disputils/.scripts/dattr               |   4 +-
+ disputils/.scripts/dump_xrandr         |   5 +-
+ disputils/.scripts/lsd                 |   4 +-
+ disputils/.scripts/ppd                 |   4 +-
+ gtk/.config/gtk-2.0/gtkfilechooser.ini |   4 +-
+ nvim/.config/nvim/.netrwhist           |   3 +-
+ scripts/.scripts/notifyd               |   8 +-
+ shell/.profile                         |   4 +-
+ wmrc/.scripts/betabar                  | 250 +----------------------------------
+ wmrc/.scripts/closestw                 |   2 +-
+ wmrc/.scripts/cornerw                  |  33 +---
+ wmrc/.scripts/dispcache                |   3 +-
+ wmrc/.scripts/focusw                   |   2 +-
+ wmrc/.scripts/fullscreenw              |   2 +-
+ wmrc/.scripts/groaw                    |   2 +-
+ wmrc/.scripts/iconsrc                  |   8 +-
+ wmrc/.scripts/infobar                  |  12 +--
+ wmrc/.scripts/musicbar                 |   4 +-
+ wmrc/.scripts/panelsrc                 |  18 +--
+ wmrc/.scripts/secpanel                 |   4 +-
+ wmrc/.scripts/startwmutils             |   2 +-
+ wmrc/.scripts/statusbar                |  15 +--
+ wmrc/.scripts/tilew                    |   4 +-
+ wmrc/.scripts/wewhandle                |   2 +-
+ wmrc/.scripts/windowat                 |   4 +-
+ wmrc/.scripts/wmrc                     |   7 +-
+ wmrc/.scripts/xwait                    |   2 +-
+ x/.xinitrc                             |   4 +-
+ 28 files changed, 76 insertions(+), 340 deletions(-)
+<hr/><b>diff --git a/<a href="../file/disputils/.scripts/dattr.html">disputils/.scripts/dattr</a> b/<a href="../file/disputils/.scripts/dattr.html">disputils/.scripts/dattr</a></b>
+<a href="#h0" id="h0" class="h">@@ -5,6 +5,8 @@
+</a> # tudurom killed a poor bug
+ #
+ 
+<a href="#h0-3" id="h0-3" class="i">+XRANDR_DUMP=${XRANDR_DUMP:-$HOME/.cache/xrandr_dump}
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a> usage() {
+   echo &quot;usage: $(basename $0) [-axywh] &lt;display&gt;&quot;
+   exit ${1:-0}
+<a href="#h1" id="h1" class="h">@@ -51,7 +53,7 @@ MONITOR=$1
+</a> 
+ [ -z $MONITOR ] &amp;&amp; usage 1
+ 
+<a href="#h1-3" id="h1-3" class="d">-XRANDR_GEO=&quot;$(xrandr | grep -e &quot;^$MONITOR connected&quot; \
+</a><a href="#h1-4" id="h1-4" class="i">+XRANDR_GEO=&quot;$(cat &quot;$XRANDR_DUMP&quot; | grep -e &quot;^$MONITOR connected&quot; \
+</a>   | sed &apos;s/primary //g&apos; \
+   | cut -d&apos; &apos; -f3 \
+   | sed &apos;s/[x\+]/ /g&apos;)&quot;
+<b>diff --git a/<a href="../file/disputils/.scripts/dump_xrandr.html">disputils/.scripts/dump_xrandr</a> b/<a href="../file/disputils/.scripts/dump_xrandr.html">disputils/.scripts/dump_xrandr</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,5 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+XRANDR_DUMP=${XRANDR_DUMP:-$HOME/.cache/xrandr_dump}
+</a><a href="#h0-3" id="h0-3" class="i">+
+</a><a href="#h0-4" id="h0-4" class="i">+xrandr &gt; &quot;$XRANDR_DUMP&quot;
+</a><b>diff --git a/<a href="../file/disputils/.scripts/lsd.html">disputils/.scripts/lsd</a> b/<a href="../file/disputils/.scripts/lsd.html">disputils/.scripts/lsd</a></b>
+<a href="#h0" id="h0" class="h">@@ -5,7 +5,9 @@
+</a> # modified by tudurom to show only currently used displays
+ #
+ 
+<a href="#h0-3" id="h0-3" class="d">-xrandr | grep -e &quot;^.* connected&quot; | \
+</a><a href="#h0-4" id="h0-4" class="i">+XRANDR_DUMP=${XRANDR_DUMP:-$HOME/.cache/xrandr_dump}
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+cat &quot;$XRANDR_DUMP&quot; | grep -e &quot;^.* connected&quot; | \
+</a> while read -r MONITOR; do
+   test1=&quot;$(echo $MONITOR | cut -d&apos; &apos; -f3 | cut -c1-1)&quot;
+   test2=&quot;$(echo $MONITOR | cut -d&apos; &apos; -f4 | cut -c1-1)&quot;
+<b>diff --git a/<a href="../file/disputils/.scripts/ppd.html">disputils/.scripts/ppd</a> b/<a href="../file/disputils/.scripts/ppd.html">disputils/.scripts/ppd</a></b>
+<a href="#h0" id="h0" class="h">@@ -4,4 +4,6 @@
+</a> # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h0-3" id="h0-3" class="d">-xrandr | grep -e &quot;^.* primary&quot; | cut -d&apos; &apos; -f1
+</a><a href="#h0-4" id="h0-4" class="i">+XRANDR_DUMP=${XRANDR_DUMP:-$HOME/.cache/xrandr_dump}
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+cat &quot;$XRANDR_DUMP&quot; | grep -e &quot;^.* primary&quot; | cut -d&apos; &apos; -f1
+</a><b>diff --git a/<a href="../file/gtk/.config/gtk-2.0/gtkfilechooser.ini.html">gtk/.config/gtk-2.0/gtkfilechooser.ini</a> b/<a href="../file/gtk/.config/gtk-2.0/gtkfilechooser.ini.html">gtk/.config/gtk-2.0/gtkfilechooser.ini</a></b>
+<a href="#h0" id="h0" class="h">@@ -2,8 +2,8 @@
+</a> LocationMode=path-bar
+ ShowHidden=false
+ ShowSizeColumn=true
+<a href="#h0-3" id="h0-3" class="d">-GeometryX=603
+</a><a href="#h0-4" id="h0-4" class="d">-GeometryY=274
+</a><a href="#h0-5" id="h0-5" class="i">+GeometryX=734
+</a><a href="#h0-6" id="h0-6" class="i">+GeometryY=184
+</a> GeometryWidth=720
+ GeometryHeight=540
+ SortColumn=name
+<b>diff --git a/<a href="../file/nvim/.config/nvim/.netrwhist.html">nvim/.config/nvim/.netrwhist</a> b/<a href="../file/nvim/.config/nvim/.netrwhist.html">nvim/.config/nvim/.netrwhist</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,5 +1,6 @@
+</a> let g:netrw_dirhistmax  =10
+<a href="#h0-1" id="h0-1" class="d">-let g:netrw_dirhist_cnt =3
+</a><a href="#h0-2" id="h0-2" class="i">+let g:netrw_dirhist_cnt =4
+</a> let g:netrw_dirhist_1=&apos;/home/tudurom/projects/crux-ports/skroll/skroll&apos;
+ let g:netrw_dirhist_2=&apos;/home/tudurom/.tmux&apos;
+ let g:netrw_dirhist_3=&apos;/home/tudurom/projects/crux-ports/skroll&apos;
+<a href="#h0-6" id="h0-6" class="i">+let g:netrw_dirhist_4=&apos;/home/tudurom/dotfiles/disputils&apos;
+</a><b>diff --git a/<a href="../file/scripts/.scripts/notifyd.html">scripts/.scripts/notifyd</a> b/<a href="../file/scripts/.scripts/notifyd.html">scripts/.scripts/notifyd</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,11 +1,11 @@
+</a> #! /bin/sh
+ 
+ # Get coords of the monitor
+<a href="#h0-3" id="h0-3" class="d">-monitor_x=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f1)&quot;
+</a><a href="#h0-4" id="h0-4" class="d">-monitor_y=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f2)&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+monitor_x=&quot;$(dattr -x $(pfd))&quot;
+</a><a href="#h0-6" id="h0-6" class="i">+monitor_y=&quot;$(dattr -y $(pfd))&quot;
+</a> # Get the size of the monitor
+<a href="#h0-8" id="h0-8" class="d">-monitor_width=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f3)&quot;
+</a><a href="#h0-9" id="h0-9" class="d">-monitor_height=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f4)&quot;
+</a><a href="#h0-10" id="h0-10" class="i">+monitor_width=&quot;$(dattr -w $(pfd))&quot;
+</a><a href="#h0-11" id="h0-11" class="i">+monitor_height=&quot;$(dattr -h $(pfd))&quot;
+</a> # Panel size
+ pad_x=&quot;50&quot;
+ pad_y=&quot;30&quot;
+<b>diff --git a/<a href="../file/shell/.profile.html">shell/.profile</a> b/<a href="../file/shell/.profile.html">shell/.profile</a></b>
+<a href="#h0" id="h0" class="h">@@ -4,3 +4,7 @@ export PANEL_FIFO=&quot;/tmp/panel-fifo&quot;
+</a> export IOUP_TOKEN=&quot;$(cat ~/.iotoken)&quot;
+ 
+ export GOROOT=&quot;/usr/lib/go&quot;
+<a href="#h0-3" id="h0-3" class="i">+
+</a><a href="#h0-4" id="h0-4" class="i">+. $HOME/.scripts/wmrc
+</a><a href="#h0-5" id="h0-5" class="i">+. $HOME/.scripts/panelsrc
+</a><a href="#h0-6" id="h0-6" class="i">+. $HOME/.scripts/iconsrc
+</a><b>diff --git a/<a href="../file/wmrc/.scripts/betabar.html">wmrc/.scripts/betabar</a> b/<a href="../file/wmrc/.scripts/betabar.html">wmrc/.scripts/betabar</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,250 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/dash
+</a><a href="#h0-1" id="h0-1" class="d">-#
+</a><a href="#h0-2" id="h0-2" class="d">-# Simple status bar
+</a><a href="#h0-3" id="h0-3" class="d">-# (c) tudurom 2016 - wtfpl
+</a><a href="#h0-4" id="h0-4" class="d">-#
+</a><a href="#h0-5" id="h0-5" class="d">-
+</a><a href="#h0-6" id="h0-6" class="d">-. wmrc
+</a><a href="#h0-7" id="h0-7" class="d">-. panelsrc
+</a><a href="#h0-8" id="h0-8" class="d">-
+</a><a href="#h0-9" id="h0-9" class="d">-# Setup {{{
+</a><a href="#h0-10" id="h0-10" class="d">-
+</a><a href="#h0-11" id="h0-11" class="d">-  # Create fifo
+</a><a href="#h0-12" id="h0-12" class="d">-  FIFO_PATH=/tmp/status.fifo
+</a><a href="#h0-13" id="h0-13" class="d">-  test -e &quot;$FIFO_PATH&quot; &amp;&amp; rm &quot;$FIFO_PATH&quot;
+</a><a href="#h0-14" id="h0-14" class="d">-  mkfifo &quot;$FIFO_PATH&quot;
+</a><a href="#h0-15" id="h0-15" class="d">-
+</a><a href="#h0-16" id="h0-16" class="d">-  # Color definitions
+</a><a href="#h0-17" id="h0-17" class="d">-  C0=&quot;$(xrq &apos;*color0&apos;)&quot;
+</a><a href="#h0-18" id="h0-18" class="d">-  C1=&quot;$(xrq &apos;*color1&apos;)&quot;
+</a><a href="#h0-19" id="h0-19" class="d">-  C2=&quot;$(xrq &apos;*color2&apos;)&quot;
+</a><a href="#h0-20" id="h0-20" class="d">-  C3=&quot;$(xrq &apos;*color3&apos;)&quot;
+</a><a href="#h0-21" id="h0-21" class="d">-  C4=&quot;$(xrq &apos;*color4&apos;)&quot;
+</a><a href="#h0-22" id="h0-22" class="d">-  C5=&quot;$(xrq &apos;*color5&apos;)&quot;
+</a><a href="#h0-23" id="h0-23" class="d">-  C6=&quot;$(xrq &apos;*color6&apos;)&quot;
+</a><a href="#h0-24" id="h0-24" class="d">-  C7=&quot;$(xrq &apos;*color7&apos;)&quot;
+</a><a href="#h0-25" id="h0-25" class="d">-  C8=&quot;$(xrq &apos;*color8&apos;)&quot;
+</a><a href="#h0-26" id="h0-26" class="d">-  C9=&quot;$(xrq &apos;*color9&apos;)&quot;
+</a><a href="#h0-27" id="h0-27" class="d">-  C10=&quot;$(xrq &apos;*color10&apos;)&quot;
+</a><a href="#h0-28" id="h0-28" class="d">-  C11=&quot;$(xrq &apos;*color11&apos;)&quot;
+</a><a href="#h0-29" id="h0-29" class="d">-  C12=&quot;$(xrq &apos;*color12&apos;)&quot;
+</a><a href="#h0-30" id="h0-30" class="d">-  C13=&quot;$(xrq &apos;*color13&apos;)&quot;
+</a><a href="#h0-31" id="h0-31" class="d">-  C14=&quot;$(xrq &apos;*color14&apos;)&quot;
+</a><a href="#h0-32" id="h0-32" class="d">-  C15=&quot;$(xrq &apos;*color15&apos;)&quot;
+</a><a href="#h0-33" id="h0-33" class="d">-  #CF=&quot;$(xrq &apos;*foreground&apos;)&quot;
+</a><a href="#h0-34" id="h0-34" class="d">-  CF=&quot;$C6&quot;
+</a><a href="#h0-35" id="h0-35" class="d">-  #CB=&quot;$(xrq &apos;*background&apos;)&quot;
+</a><a href="#h0-36" id="h0-36" class="d">-  CB=&quot;#1d2a30&quot;
+</a><a href="#h0-37" id="h0-37" class="d">-
+</a><a href="#h0-38" id="h0-38" class="d">-  ROOT_WINDOW=&quot;$(lsw -r)&quot;
+</a><a href="#h0-39" id="h0-39" class="d">-  ROOT_WINDOW_WIDTH=&quot;$(wattr w $ROOT_WINDOW)&quot;
+</a><a href="#h0-40" id="h0-40" class="d">-  ROOT_WINDOW_HEIGHT=&quot;$(wattr h $ROOT_WINDOW)&quot;
+</a><a href="#h0-41" id="h0-41" class="d">-
+</a><a href="#h0-42" id="h0-42" class="d">-  #BAR_WIDTH=&quot;$(echo &quot;$ROOT_WINDOW_WIDTH * 0.7&quot; | bc | cut -d. -f1)&quot;
+</a><a href="#h0-43" id="h0-43" class="d">-  BAR_WIDTH=&quot;$(( ROOT_WINDOW_WIDTH - 2 * GENERAL_GAP ))&quot;
+</a><a href="#h0-44" id="h0-44" class="d">-  BAR_HEIGHT=&quot;$PANEL_STATUS_HEIGHT&quot;
+</a><a href="#h0-45" id="h0-45" class="d">-  #BAR_X=&quot;$(echo &quot;$ROOT_WINDOW_WIDTH * 0.15&quot; | bc | cut -d. -f1)&quot;
+</a><a href="#h0-46" id="h0-46" class="d">-  BAR_X=&quot;$GENERAL_GAP&quot;
+</a><a href="#h0-47" id="h0-47" class="d">-  BAR_Y=&quot;$GENERAL_GAP&quot;
+</a><a href="#h0-48" id="h0-48" class="d">-
+</a><a href="#h0-49" id="h0-49" class="d">-  SEP_SMALL=&quot;    &quot;
+</a><a href="#h0-50" id="h0-50" class="d">-  SEP_BIG=&quot;            &quot;
+</a><a href="#h0-51" id="h0-51" class="d">-
+</a><a href="#h0-52" id="h0-52" class="d">-  GNUMBER=6
+</a><a href="#h0-53" id="h0-53" class="d">-
+</a><a href="#h0-54" id="h0-54" class="d">-  # Bar options
+</a><a href="#h0-55" id="h0-55" class="d">-  BAR_OPTS=&quot;&quot;
+</a><a href="#h0-56" id="h0-56" class="d">-  # Because wmutils
+</a><a href="#h0-57" id="h0-57" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -d -a 30&quot;
+</a><a href="#h0-58" id="h0-58" class="d">-  # Gonna position it centered and respect the gaps
+</a><a href="#h0-59" id="h0-59" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -g ${BAR_WIDTH}x${BAR_HEIGHT}+${BAR_X}+${BAR_Y}&quot;
+</a><a href="#h0-60" id="h0-60" class="d">-  # Colors
+</a><a href="#h0-61" id="h0-61" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -B ${CB} -F ${CF} -U ${C1}&quot;
+</a><a href="#h0-62" id="h0-62" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -u 2&quot;
+</a><a href="#h0-63" id="h0-63" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -f ${PANEL_FONT} -f ${PANEL_ICON_FONT}&quot;
+</a><a href="#h0-64" id="h0-64" class="d">-
+</a><a href="#h0-65" id="h0-65" class="d">-  CPU_ICON=&quot;&quot;
+</a><a href="#h0-66" id="h0-66" class="d">-  RAM_ICON=&quot;&quot;
+</a><a href="#h0-67" id="h0-67" class="d">-
+</a><a href="#h0-68" id="h0-68" class="d">-# }}}
+</a><a href="#h0-69" id="h0-69" class="d">-
+</a><a href="#h0-70" id="h0-70" class="d">-# Gather info {{{
+</a><a href="#h0-71" id="h0-71" class="d">-
+</a><a href="#h0-72" id="h0-72" class="d">-  # Current time
+</a><a href="#h0-73" id="h0-73" class="d">-  time_format=&apos;%a %d %B %H:%M&apos;
+</a><a href="#h0-74" id="h0-74" class="d">-  # If it&apos;s first of April, show the Epoch time
+</a><a href="#h0-75" id="h0-75" class="d">-  test &quot;$(date +&quot;%d %m&quot;)&quot; = &quot;01 04&quot; &amp;&amp; time_format=&apos;%s&apos;
+</a><a href="#h0-76" id="h0-76" class="d">-  while true; do
+</a><a href="#h0-77" id="h0-77" class="d">-    # That LC_ALL=C is to disable localization. Still thinking about it
+</a><a href="#h0-78" id="h0-78" class="d">-    echo &quot;T%{F$C14}%{F-} $(date +&quot;$time_format&quot;)&quot;
+</a><a href="#h0-79" id="h0-79" class="d">-    sleep 1
+</a><a href="#h0-80" id="h0-80" class="d">-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a><a href="#h0-81" id="h0-81" class="d">-
+</a><a href="#h0-82" id="h0-82" class="d">-  # Music
+</a><a href="#h0-83" id="h0-83" class="d">-  while true; do
+</a><a href="#h0-84" id="h0-84" class="d">-    if [ $(mpc status | wc -l) -eq 3 ]; then
+</a><a href="#h0-85" id="h0-85" class="d">-      last_title=&quot;$(mpc status | head -n 1)&quot;
+</a><a href="#h0-86" id="h0-86" class="d">-    elif [ $(mpc status | wc -l) -eq 0 ]; then
+</a><a href="#h0-87" id="h0-87" class="d">-      last_title=&quot;-&quot;
+</a><a href="#h0-88" id="h0-88" class="d">-    fi
+</a><a href="#h0-89" id="h0-89" class="d">-
+</a><a href="#h0-90" id="h0-90" class="d">-    if [ -n &quot;$(mpc status | grep pause)&quot; ]; then
+</a><a href="#h0-91" id="h0-91" class="d">-      icon=&quot;&quot;
+</a><a href="#h0-92" id="h0-92" class="d">-    elif [ -n &quot;$(mpc status | grep playing)&quot; ]; then
+</a><a href="#h0-93" id="h0-93" class="d">-      icon=&quot;&quot;
+</a><a href="#h0-94" id="h0-94" class="d">-    else
+</a><a href="#h0-95" id="h0-95" class="d">-      icon=&quot;&quot;
+</a><a href="#h0-96" id="h0-96" class="d">-    fi
+</a><a href="#h0-97" id="h0-97" class="d">-    echo &quot;M%{A1:mpc toggle:}%{F$C9}${icon}%{F-} ${last_title}%{A}&quot;
+</a><a href="#h0-98" id="h0-98" class="d">-    sleep 0.5
+</a><a href="#h0-99" id="h0-99" class="d">-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a><a href="#h0-100" id="h0-100" class="d">-
+</a><a href="#h0-101" id="h0-101" class="d">-  # Battery status
+</a><a href="#h0-102" id="h0-102" class="d">-  while true; do
+</a><a href="#h0-103" id="h0-103" class="d">-    query=&quot;$(acpi | sed &apos;s/[,:]/ /g&apos; | sed &apos;s/  / /g&apos;)&quot;
+</a><a href="#h0-104" id="h0-104" class="d">-    batt_status=&quot;$(echo $query | cut -d&apos; &apos; -f3)&quot;
+</a><a href="#h0-105" id="h0-105" class="d">-    batt_percentage=&quot;$(echo $query | cut -d&apos; &apos; -f4 | sed &apos;s/%//g&apos;)&quot;
+</a><a href="#h0-106" id="h0-106" class="d">-    if [ &quot;$batt_status&quot; = &quot;Charging&quot; ]; then
+</a><a href="#h0-107" id="h0-107" class="d">-      BATT_ICON=&quot;&quot;
+</a><a href="#h0-108" id="h0-108" class="d">-    elif [ &quot;$batt_percentage&quot; -ge 75 ]; then
+</a><a href="#h0-109" id="h0-109" class="d">-      BATT_ICON=&quot;&quot;
+</a><a href="#h0-110" id="h0-110" class="d">-    elif [ &quot;$batt_percentage&quot; -ge 50 ]; then
+</a><a href="#h0-111" id="h0-111" class="d">-      BATT_ICON=&quot;&quot;
+</a><a href="#h0-112" id="h0-112" class="d">-    else
+</a><a href="#h0-113" id="h0-113" class="d">-      BATT_ICON=&quot;&quot;
+</a><a href="#h0-114" id="h0-114" class="d">-    fi
+</a><a href="#h0-115" id="h0-115" class="d">-    echo &quot;BI$BATT_ICON&quot;
+</a><a href="#h0-116" id="h0-116" class="d">-    echo &quot;B$batt_percentage&quot;
+</a><a href="#h0-117" id="h0-117" class="d">-    sleep 10
+</a><a href="#h0-118" id="h0-118" class="d">-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a><a href="#h0-119" id="h0-119" class="d">-
+</a><a href="#h0-120" id="h0-120" class="d">-  # CPU Usage
+</a><a href="#h0-121" id="h0-121" class="d">-  while true; do
+</a><a href="#h0-122" id="h0-122" class="d">-    echo &quot;P$(mpstat | grep -A 5 &quot;%idle&quot; | tail -n 1 | awk &apos;{print int(100 -  $ 12)}&apos;)&quot;
+</a><a href="#h0-123" id="h0-123" class="d">-    sleep 1
+</a><a href="#h0-124" id="h0-124" class="d">-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a><a href="#h0-125" id="h0-125" class="d">-
+</a><a href="#h0-126" id="h0-126" class="d">-  # Memory usage
+</a><a href="#h0-127" id="h0-127" class="d">-  while true; do
+</a><a href="#h0-128" id="h0-128" class="d">-    # Why bother getting the RAM, when I can use neofetch&apos;s &quot;hidden&quot; feature ;)
+</a><a href="#h0-129" id="h0-129" class="d">-    echo &quot;R$(neofetch --stdout memory | cut -d&apos; &apos; -f1 | sed &apos;s/MB//g&apos;)&quot;
+</a><a href="#h0-130" id="h0-130" class="d">-    sleep 1
+</a><a href="#h0-131" id="h0-131" class="d">-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a><a href="#h0-132" id="h0-132" class="d">-
+</a><a href="#h0-133" id="h0-133" class="d">-  # Volume
+</a><a href="#h0-134" id="h0-134" class="d">-  while true; do
+</a><a href="#h0-135" id="h0-135" class="d">-    # Not quering pulse because it uses a hell lot of CPU
+</a><a href="#h0-136" id="h0-136" class="d">-    state=$(amixer get Master | grep &apos;Mono: Playback&apos; | grep &apos;\[on]&apos;)
+</a><a href="#h0-137" id="h0-137" class="d">-    volume=$(amixer -D pulse get Master | grep &apos;Front Left: Playback&apos; | grep -o &apos;...%&apos; | sed &apos;s/\[//&apos; | sed &apos;s/%//&apos; | sed &apos;s/ //&apos;)
+</a><a href="#h0-138" id="h0-138" class="d">-    if [ &quot;$state&quot; ]; then
+</a><a href="#h0-139" id="h0-139" class="d">-      if [ $volume -ge 50 ]; then
+</a><a href="#h0-140" id="h0-140" class="d">-        vicon=
+</a><a href="#h0-141" id="h0-141" class="d">-      else
+</a><a href="#h0-142" id="h0-142" class="d">-        vicon=
+</a><a href="#h0-143" id="h0-143" class="d">-      fi
+</a><a href="#h0-144" id="h0-144" class="d">-    else
+</a><a href="#h0-145" id="h0-145" class="d">-      vicon=
+</a><a href="#h0-146" id="h0-146" class="d">-    fi
+</a><a href="#h0-147" id="h0-147" class="d">-    echo &quot;VI$vicon&quot;
+</a><a href="#h0-148" id="h0-148" class="d">-    echo &quot;V$volume&quot;
+</a><a href="#h0-149" id="h0-149" class="d">-    sleep 0.5
+</a><a href="#h0-150" id="h0-150" class="d">-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a><a href="#h0-151" id="h0-151" class="d">-
+</a><a href="#h0-152" id="h0-152" class="d">-  # Group status
+</a><a href="#h0-153" id="h0-153" class="d">-  while true; do
+</a><a href="#h0-154" id="h0-154" class="d">-    g_out=&quot;G&quot;
+</a><a href="#h0-155" id="h0-155" class="d">-    # Check each group
+</a><a href="#h0-156" id="h0-156" class="d">-    for gid in $(seq 1 $GNUMBER); do
+</a><a href="#h0-157" id="h0-157" class="d">-      # If we find no icon, fall back to group id
+</a><a href="#h0-158" id="h0-158" class="d">-      g_icon=&quot;$gid&quot;
+</a><a href="#h0-159" id="h0-159" class="d">-      # Get the first window in the group, if there&apos;s any
+</a><a href="#h0-160" id="h0-160" class="d">-      g_window=&quot;$(ls -1 /tmp/groaw/$gid | sort -n | head -n 1)&quot;
+</a><a href="#h0-161" id="h0-161" class="d">-      g_name=&quot;$(xtitle $g_window)&quot;
+</a><a href="#h0-162" id="h0-162" class="d">-
+</a><a href="#h0-163" id="h0-163" class="d">-      case $g_name in
+</a><a href="#h0-164" id="h0-164" class="d">-        *Vimperator*)
+</a><a href="#h0-165" id="h0-165" class="d">-          g_icon=&quot;&quot;
+</a><a href="#h0-166" id="h0-166" class="d">-          ;;
+</a><a href="#h0-167" id="h0-167" class="d">-        *urxvt*)
+</a><a href="#h0-168" id="h0-168" class="d">-          g_icon=&quot;&quot;
+</a><a href="#h0-169" id="h0-169" class="d">-          ;;
+</a><a href="#h0-170" id="h0-170" class="d">-        Transmission)
+</a><a href="#h0-171" id="h0-171" class="d">-          g_icon=&quot;&quot;
+</a><a href="#h0-172" id="h0-172" class="d">-          ;;
+</a><a href="#h0-173" id="h0-173" class="d">-        imv*)
+</a><a href="#h0-174" id="h0-174" class="d">-          g_icon=&quot;&quot;
+</a><a href="#h0-175" id="h0-175" class="d">-          ;;
+</a><a href="#h0-176" id="h0-176" class="d">-        *&quot;File Manager&quot;*)
+</a><a href="#h0-177" id="h0-177" class="d">-          g_icon=&quot;&quot;
+</a><a href="#h0-178" id="h0-178" class="d">-          ;;
+</a><a href="#h0-179" id="h0-179" class="d">-        *LibreOffice*)
+</a><a href="#h0-180" id="h0-180" class="d">-          g_icon=&quot;&quot;
+</a><a href="#h0-181" id="h0-181" class="d">-          ;;
+</a><a href="#h0-182" id="h0-182" class="d">-        *Thunderbird)
+</a><a href="#h0-183" id="h0-183" class="d">-          g_icon=&quot;&quot;
+</a><a href="#h0-184" id="h0-184" class="d">-          ;;
+</a><a href="#h0-185" id="h0-185" class="d">-        *)
+</a><a href="#h0-186" id="h0-186" class="d">-          test -z &quot;$g_name&quot; || g_icon=&quot;&quot;
+</a><a href="#h0-187" id="h0-187" class="d">-          ;;
+</a><a href="#h0-188" id="h0-188" class="d">-      esac
+</a><a href="#h0-189" id="h0-189" class="d">-      if groaw -p $gid; then
+</a><a href="#h0-190" id="h0-190" class="d">-        g_this_out=&quot;%{+u} %{F$C6}${g_icon}%{F-} %{-u}&quot;
+</a><a href="#h0-191" id="h0-191" class="d">-      else
+</a><a href="#h0-192" id="h0-192" class="d">-        g_this_out=&quot; ${g_icon} &quot;
+</a><a href="#h0-193" id="h0-193" class="d">-      fi
+</a><a href="#h0-194" id="h0-194" class="d">-      test -z &quot;$g_name&quot; &amp;&amp; g_this_out=&quot;%{F$C8}${g_this_out}%{F-}&quot;
+</a><a href="#h0-195" id="h0-195" class="d">-      g_this_out=&quot;%{A1:groaw -t ${gid}:}${g_this_out}%{A}&quot;
+</a><a href="#h0-196" id="h0-196" class="d">-      g_out=&quot;${g_out}${g_this_out}&quot;
+</a><a href="#h0-197" id="h0-197" class="d">-    done
+</a><a href="#h0-198" id="h0-198" class="d">-    echo &quot;$g_out&quot;
+</a><a href="#h0-199" id="h0-199" class="d">-    sleep 0.3
+</a><a href="#h0-200" id="h0-200" class="d">-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a><a href="#h0-201" id="h0-201" class="d">-
+</a><a href="#h0-202" id="h0-202" class="d">-# }}}
+</a><a href="#h0-203" id="h0-203" class="d">-
+</a><a href="#h0-204" id="h0-204" class="d">-# Process the data and show it {{{
+</a><a href="#h0-205" id="h0-205" class="d">-
+</a><a href="#h0-206" id="h0-206" class="d">-  cat &quot;$FIFO_PATH&quot; | \
+</a><a href="#h0-207" id="h0-207" class="d">-  while read -r line; do
+</a><a href="#h0-208" id="h0-208" class="d">-    case $line in
+</a><a href="#h0-209" id="h0-209" class="d">-      T*)
+</a><a href="#h0-210" id="h0-210" class="d">-        time=&quot;${line#?}&quot;
+</a><a href="#h0-211" id="h0-211" class="d">-        ;;
+</a><a href="#h0-212" id="h0-212" class="d">-      G*)
+</a><a href="#h0-213" id="h0-213" class="d">-        groups=&quot;${line#?}&quot;
+</a><a href="#h0-214" id="h0-214" class="d">-        ;;
+</a><a href="#h0-215" id="h0-215" class="d">-      M*)
+</a><a href="#h0-216" id="h0-216" class="d">-        music=&quot;${line#?}&quot;
+</a><a href="#h0-217" id="h0-217" class="d">-        ;;
+</a><a href="#h0-218" id="h0-218" class="d">-      BI*)
+</a><a href="#h0-219" id="h0-219" class="d">-        BATT_ICON=&quot;${line#??}&quot;
+</a><a href="#h0-220" id="h0-220" class="d">-        ;;
+</a><a href="#h0-221" id="h0-221" class="d">-      B*)
+</a><a href="#h0-222" id="h0-222" class="d">-        batt=&quot;${line#?}&quot;
+</a><a href="#h0-223" id="h0-223" class="d">-        batt=&quot;%{A1:secpanel &quot;$batt&quot; &amp;:}%{F$C11}$BATT_ICON%{F-}%{A}&quot;
+</a><a href="#h0-224" id="h0-224" class="d">-        ;;
+</a><a href="#h0-225" id="h0-225" class="d">-      VI*)
+</a><a href="#h0-226" id="h0-226" class="d">-        VOL_ICON=&quot;${line#??}&quot;
+</a><a href="#h0-227" id="h0-227" class="d">-        ;;
+</a><a href="#h0-228" id="h0-228" class="d">-      V*)
+</a><a href="#h0-229" id="h0-229" class="d">-        vol=&quot;${line#?}&quot;
+</a><a href="#h0-230" id="h0-230" class="d">-        vol=&quot;%{A1:secpanel &quot;$vol&quot; &amp;:}%{A3:amixer sset Master toggle:}%{A4:amixer sset Master 5%+:}%{A5:amixer sset Master 5%-:}%{F$C10}$VOL_ICON%{F-}%{A}%{A}%{A}%{A}&quot;
+</a><a href="#h0-231" id="h0-231" class="d">-        ;;
+</a><a href="#h0-232" id="h0-232" class="d">-      P*)
+</a><a href="#h0-233" id="h0-233" class="d">-        cpu=&quot;${line#?}&quot;
+</a><a href="#h0-234" id="h0-234" class="d">-        cpu=&quot;%{A1:secpanel &quot;$cpu&quot; &amp;:}%{F$C12}$CPU_ICON%{F-}%{A}&quot;
+</a><a href="#h0-235" id="h0-235" class="d">-        ;;
+</a><a href="#h0-236" id="h0-236" class="d">-      R*)
+</a><a href="#h0-237" id="h0-237" class="d">-        ram=&quot;${line#?}&quot;
+</a><a href="#h0-238" id="h0-238" class="d">-        ram=&quot;%{A1:secpanel &quot;$ram&quot; &amp;:}%{F$C9}$RAM_ICON%{F-}%{A}&quot;
+</a><a href="#h0-239" id="h0-239" class="d">-        ;;
+</a><a href="#h0-240" id="h0-240" class="d">-      esac
+</a><a href="#h0-241" id="h0-241" class="d">-    # Show time!
+</a><a href="#h0-242" id="h0-242" class="d">-    echo &quot;%{l}${SEP_BIG}${time}${SEP_SMALL}${music}%{c}${groups}%{r}${batt}${SEP_SMALL}${vol}${SEP_SMALL}${cpu}${SEP_SMALL}${ram}${SEP_BIG}&quot;
+</a><a href="#h0-243" id="h0-243" class="d">-  done |\
+</a><a href="#h0-244" id="h0-244" class="d">-  lemonbar $BAR_OPTS | dash
+</a><a href="#h0-245" id="h0-245" class="d">-# }}}
+</a><a href="#h0-246" id="h0-246" class="d">-
+</a><a href="#h0-247" id="h0-247" class="d">-wait
+</a><a href="#h0-248" id="h0-248" class="d">-
+</a><a href="#h0-249" id="h0-249" class="d">-# vim: set ft=sh :
+</a><b>diff --git a/<a href="../file/wmrc/.scripts/closestw.html">wmrc/.scripts/closestw</a> b/<a href="../file/wmrc/.scripts/closestw.html">wmrc/.scripts/closestw</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/dash
+</a><a href="#h0-1" id="h0-1" class="i">+#!/bin/sh
+</a> #
+ # z3bra &amp; tudurom - 2014 (c) wtfpl
+ # find and focus the closest window in a specific direction
+<b>diff --git a/<a href="../file/wmrc/.scripts/cornerw.html">wmrc/.scripts/cornerw</a> b/<a href="../file/wmrc/.scripts/cornerw.html">wmrc/.scripts/cornerw</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,39 +1,38 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/dash
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/sh
+</a> #
+<a href="#h0-3" id="h0-3" class="d">-# puts a window in a given corner or in the middle of the screen
+</a><a href="#h0-4" id="h0-4" class="i">+# puts a window in a given corner or in the middle of the scree
+</a> # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h0-8" id="h0-8" class="d">-. wmrc
+</a><a href="#h0-9" id="h0-9" class="d">-. panelsrc
+</a><a href="#h0-10" id="h0-10" class="d">-
+</a> pfw=&quot;${2:-$(pfw)}&quot;
+<a href="#h0-12" id="h0-12" class="d">-screen_width=&quot;$PPD_W&quot;
+</a><a href="#h0-13" id="h0-13" class="d">-screen_height=&quot;$PPD_H&quot;
+</a><a href="#h0-14" id="h0-14" class="i">+screen_width=&quot;$(dattr -w $(pfd))&quot;
+</a><a href="#h0-15" id="h0-15" class="i">+screen_height=&quot;$(dattr -h $(pfd))&quot;
+</a><a href="#h0-16" id="h0-16" class="i">+screen_x=&quot;$(dattr -x $(pfd))&quot;
+</a><a href="#h0-17" id="h0-17" class="i">+screen_y=&quot;$(dattr -y $(pfd))&quot;
+</a> 
+ border_width=&quot;$(wattr b $pfw)&quot;
+ width=&quot;$(wattr w $pfw)&quot;
+ height=&quot;$(wattr h $pfw)&quot;
+ 
+<a href="#h0-23" id="h0-23" class="d">-x=0
+</a><a href="#h0-24" id="h0-24" class="d">-y=0
+</a><a href="#h0-25" id="h0-25" class="i">+x=$screen_x
+</a><a href="#h0-26" id="h0-26" class="i">+y=$screen_y
+</a> 
+ case $1 in
+   tr)
+<a href="#h0-30" id="h0-30" class="d">-    x=$(( screen_width - width - 2 * border_width - GENERAL_GAP ))
+</a><a href="#h0-31" id="h0-31" class="d">-    y=$(( 2 * GENERAL_GAP + PANEL_STATUS_HEIGHT ))
+</a><a href="#h0-32" id="h0-32" class="i">+    x=$(( x + screen_width - width - 2 * border_width - GENERAL_GAP ))
+</a><a href="#h0-33" id="h0-33" class="i">+    y=$(( y + 2 * GENERAL_GAP + PANEL_STATUS_HEIGHT ))
+</a>     ;;
+   bl)
+<a href="#h0-36" id="h0-36" class="d">-    x=$GENERAL_GAP
+</a><a href="#h0-37" id="h0-37" class="d">-    y=$(( screen_height - height - 2 * border_width - GENERAL_GAP ))
+</a><a href="#h0-38" id="h0-38" class="i">+    x=$(( x + $GENERAL_GAP ))
+</a><a href="#h0-39" id="h0-39" class="i">+    y=$(( y + screen_height - height - 2 * border_width - GENERAL_GAP ))
+</a>     ;;
+   br)
+<a href="#h0-42" id="h0-42" class="d">-    x=$(( screen_width - width - 2 * border_width - GENERAL_GAP ))
+</a><a href="#h0-43" id="h0-43" class="d">-    y=$(( screen_height - height - 2 * border_width - GENERAL_GAP))
+</a><a href="#h0-44" id="h0-44" class="i">+    x=$(( x + screen_width - width - 2 * border_width - GENERAL_GAP ))
+</a><a href="#h0-45" id="h0-45" class="i">+    y=$(( y + screen_height - height - 2 * border_width - GENERAL_GAP))
+</a>     ;;
+   md)
+<a href="#h0-48" id="h0-48" class="d">-    x=$(( (screen_width - width - 2 * border_width) / 2 ))
+</a><a href="#h0-49" id="h0-49" class="d">-    y=$(( screen_height / 2 - height / 2 - border_width ))
+</a><a href="#h0-50" id="h0-50" class="i">+    x=$(( x + (screen_width - width - 2 * border_width) / 2 ))
+</a><a href="#h0-51" id="h0-51" class="i">+    y=$(( y + screen_height / 2 - height / 2 - border_width ))
+</a> esac
+ 
+ wtp $x $y $width $height $pfw
+<b>diff --git a/<a href="../file/wmrc/.scripts/dispcache.html">wmrc/.scripts/dispcache</a> b/<a href="../file/wmrc/.scripts/dispcache.html">wmrc/.scripts/dispcache</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,3 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-dattr $(ppd) &gt; &quot;.cache/ppd_sizes&quot;
+</a><b>diff --git a/<a href="../file/wmrc/.scripts/focusw.html">wmrc/.scripts/focusw</a> b/<a href="../file/wmrc/.scripts/focusw.html">wmrc/.scripts/focusw</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/dash
+</a><a href="#h0-1" id="h0-1" class="i">+#!/bin/sh
+</a> #
+ # z3bra &amp; tudurom - 2014 (c) wtfpl
+ # window focus wrapper that sets borders
+<b>diff --git a/<a href="../file/wmrc/.scripts/fullscreenw.html">wmrc/.scripts/fullscreenw</a> b/<a href="../file/wmrc/.scripts/fullscreenw.html">wmrc/.scripts/fullscreenw</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/dash
+</a><a href="#h0-1" id="h0-1" class="i">+#!/bin/sh
+</a> #
+ # z3bra - 2014 (c) wtfpl
+ # toggle the fullscreen state of a window
+<b>diff --git a/<a href="../file/wmrc/.scripts/groaw.html">wmrc/.scripts/groaw</a> b/<a href="../file/wmrc/.scripts/groaw.html">wmrc/.scripts/groaw</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/dash
+</a><a href="#h0-1" id="h0-1" class="i">+#!/bin/sh
+</a> #
+ # z3bra &amp; tudurom - 2014 (c) wtfpl
+ # groaw - group, organize and arrange windows (or just a bear behind you)
+<b>diff --git a/<a href="../file/wmrc/.scripts/iconsrc.html">wmrc/.scripts/iconsrc</a> b/<a href="../file/wmrc/.scripts/iconsrc.html">wmrc/.scripts/iconsrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -3,9 +3,9 @@
+</a> #
+ 
+ # Clock bar
+<a href="#h0-3" id="h0-3" class="d">-ICON_CLOCK=&quot;\ue015&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+export ICON_CLOCK=&quot;\ue015&quot;
+</a> 
+ # Music bar
+<a href="#h0-7" id="h0-7" class="d">-ICON_PLAY=&quot;\ue058&quot;
+</a><a href="#h0-8" id="h0-8" class="d">-ICON_PAUSE=&quot;\ue059&quot;
+</a><a href="#h0-9" id="h0-9" class="d">-ICON_STOP=&quot;\ue057&quot;
+</a><a href="#h0-10" id="h0-10" class="i">+export ICON_PLAY=&quot;\ue058&quot;
+</a><a href="#h0-11" id="h0-11" class="i">+export ICON_PAUSE=&quot;\ue059&quot;
+</a><a href="#h0-12" id="h0-12" class="i">+export ICON_STOP=&quot;\ue057&quot;
+</a><b>diff --git a/<a href="../file/wmrc/.scripts/infobar.html">wmrc/.scripts/infobar</a> b/<a href="../file/wmrc/.scripts/infobar.html">wmrc/.scripts/infobar</a></b>
+<a href="#h0" id="h0" class="h">@@ -3,10 +3,6 @@
+</a> # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h0-3" id="h0-3" class="d">-. wmrc
+</a><a href="#h0-4" id="h0-4" class="d">-. panelsrc
+</a><a href="#h0-5" id="h0-5" class="d">-. iconsrc
+</a><a href="#h0-6" id="h0-6" class="d">-
+</a> clock() {
+   format=&apos;%a %d %B %H:%M&apos;
+   echo -e &quot;%{c}%{T2}%{F$PANEL_ACCENT_COLOR}$ICON_CLOCK%{T-}%{F-} $(date &quot;+$format&quot;)&quot;
+<a href="#h1" id="h1" class="h">@@ -14,10 +10,10 @@ clock() {
+</a> 
+ width=110
+ height=5
+<a href="#h1-3" id="h1-3" class="d">-pd_x=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f1)&quot;
+</a><a href="#h1-4" id="h1-4" class="d">-pd_y=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f2)&quot;
+</a><a href="#h1-5" id="h1-5" class="d">-pd_width=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f3)&quot;
+</a><a href="#h1-6" id="h1-6" class="d">-pd_height=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f4)&quot;
+</a><a href="#h1-7" id="h1-7" class="i">+pd_x=&quot;$(dattr -x $(ppd))&quot;
+</a><a href="#h1-8" id="h1-8" class="i">+pd_y=&quot;$(dattr -y $(ppd))&quot;
+</a><a href="#h1-9" id="h1-9" class="i">+pd_width=&quot;$(dattr -w $(ppd))&quot;
+</a><a href="#h1-10" id="h1-10" class="i">+pd_height=&quot;$(dattr -h $(ppd))&quot;
+</a> 
+ panel_width=$(( width + 2 * GENERAL_GAP ))
+ panel_height=$(( height + 2 * GENERAL_GAP ))
+<b>diff --git a/<a href="../file/wmrc/.scripts/musicbar.html">wmrc/.scripts/musicbar</a> b/<a href="../file/wmrc/.scripts/musicbar.html">wmrc/.scripts/musicbar</a></b>
+<a href="#h0" id="h0" class="h">@@ -4,10 +4,6 @@
+</a> # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h0-3" id="h0-3" class="d">-. wmrc
+</a><a href="#h0-4" id="h0-4" class="d">-. panelsrc
+</a><a href="#h0-5" id="h0-5" class="d">-. iconsrc
+</a><a href="#h0-6" id="h0-6" class="d">-
+</a> last_title=&quot;-&quot;
+ music() {
+   if [ $(mpc status | wc -l ) -eq 3 ]; then
+<b>diff --git a/<a href="../file/wmrc/.scripts/panelsrc.html">wmrc/.scripts/panelsrc</a> b/<a href="../file/wmrc/.scripts/panelsrc.html">wmrc/.scripts/panelsrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,15 +1,13 @@
+</a> # Standard variables for panels
+ # (c) tudurom 2016 - wtfpl
+ 
+<a href="#h0-3" id="h0-3" class="d">-. wmrc
+</a><a href="#h0-4" id="h0-4" class="d">-
+</a><a href="#h0-5" id="h0-5" class="d">-PANEL_FONT=&quot;-*-metis-normal-r-normal--11-90-75-75-p-58-iso10646-1&quot;
+</a><a href="#h0-6" id="h0-6" class="d">-PANEL_ICON_FONT=&quot;-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*&quot;
+</a><a href="#h0-7" id="h0-7" class="d">-PANEL_BG_COLOR=&quot;#1d2a30&quot;
+</a><a href="#h0-8" id="h0-8" class="d">-PANEL_FG_COLOR=&quot;#71c2af&quot;
+</a><a href="#h0-9" id="h0-9" class="d">-PANEL_ACCENT_COLOR=&quot;#c27171&quot;
+</a><a href="#h0-10" id="h0-10" class="d">-PANEL_OPTS=&quot;-d -a 30 -f $PANEL_FONT -f $PANEL_ICON_FONT -B $PANEL_BG_COLOR -F $PANEL_FG_COLOR&quot;
+</a><a href="#h0-11" id="h0-11" class="d">-
+</a><a href="#h0-12" id="h0-12" class="d">-PANEL_STATUS_HEIGHT=&quot;$(( 20 + 10 ))&quot;
+</a><a href="#h0-13" id="h0-13" class="i">+export PANEL_FONT=&quot;-*-metis-normal-r-normal--11-90-75-75-p-58-iso10646-1&quot;
+</a><a href="#h0-14" id="h0-14" class="i">+export PANEL_ICON_FONT=&quot;-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*&quot;
+</a><a href="#h0-15" id="h0-15" class="i">+export PANEL_BG_COLOR=&quot;#1d2a30&quot;
+</a><a href="#h0-16" id="h0-16" class="i">+export PANEL_FG_COLOR=&quot;#71c2af&quot;
+</a><a href="#h0-17" id="h0-17" class="i">+export PANEL_ACCENT_COLOR=&quot;#c27171&quot;
+</a><a href="#h0-18" id="h0-18" class="i">+export PANEL_OPTS=&quot;-d -a 30 -f $PANEL_FONT -f $PANEL_ICON_FONT -B $PANEL_BG_COLOR -F $PANEL_FG_COLOR&quot;
+</a><a href="#h0-19" id="h0-19" class="i">+
+</a><a href="#h0-20" id="h0-20" class="i">+export PANEL_STATUS_HEIGHT=&quot;$(( 20 + 10 ))&quot;
+</a> 
+ # vim: set ft=sh :
+<b>diff --git a/<a href="../file/wmrc/.scripts/secpanel.html">wmrc/.scripts/secpanel</a> b/<a href="../file/wmrc/.scripts/secpanel.html">wmrc/.scripts/secpanel</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,6 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/dash
+</a><a href="#h0-1" id="h0-1" class="d">-. wmrc
+</a><a href="#h0-2" id="h0-2" class="d">-. panelsrc
+</a><a href="#h0-3" id="h0-3" class="i">+#!/bin/sh
+</a> 
+ text=&quot;$1&quot;
+ bar_width=&quot;$(txtw -f &apos;Erusfont&apos; -F &apos;Siji&apos; &quot;$text&quot;)&quot;
+<b>diff --git a/<a href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a> b/<a href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/dash
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/sh
+</a> # Starts the environment
+ # (c) tudurom 2016 - wtfpl
+ #
+<b>diff --git a/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a> b/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,12 +1,9 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/dash
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/sh
+</a> #
+ # &quot;Simple&quot; status bar
+ # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h0-7" id="h0-7" class="d">-. wmrc
+</a><a href="#h0-8" id="h0-8" class="d">-. panelsrc
+</a><a href="#h0-9" id="h0-9" class="d">-
+</a> is_int() {
+   case $1 in
+     &apos;&apos;|*[!0-9]*) return 1 ;;
+<a href="#h1" id="h1" class="h">@@ -43,10 +40,10 @@ is_int() {
+</a>   #CB=&quot;$(xrq &apos;*background&apos;)&quot;
+   CB=&quot;#1d2a30&quot;
+ 
+<a href="#h1-3" id="h1-3" class="d">-  PD_X=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f1)&quot;
+</a><a href="#h1-4" id="h1-4" class="d">-  PD_Y=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f2)&quot;
+</a><a href="#h1-5" id="h1-5" class="d">-  PD_WIDTH=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f3)&quot;
+</a><a href="#h1-6" id="h1-6" class="d">-  PD_HEIGHT=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f4)&quot;
+</a><a href="#h1-7" id="h1-7" class="i">+  PD_X=&quot;$(dattr -x $(ppd))&quot;
+</a><a href="#h1-8" id="h1-8" class="i">+  PD_Y=&quot;$(dattr -y $(ppd))&quot;
+</a><a href="#h1-9" id="h1-9" class="i">+  PD_WIDTH=&quot;$(dattr -w $(ppd))&quot;
+</a><a href="#h1-10" id="h1-10" class="i">+  PD_HEIGHT=&quot;$(dattr -h $(ppd))&quot;
+</a> 
+   BAR_WIDTH=&quot;$(( PD_WIDTH - 2 * GENERAL_GAP ))&quot;
+   BAR_HEIGHT=&quot;$PANEL_STATUS_HEIGHT&quot;
+<a href="#h2" id="h2" class="h">@@ -240,7 +237,7 @@ is_int() {
+</a>     # Show time!
+     echo &quot;%{l}${SEP_BIG}${music}${SEP_SMALL}${vol}${SEP_SMALL}${cpu}%{c}${groups}%{r}${ram}${SEP_SMALL}${batt}${SEP_SMALL}${time}${SEP_BIG}&quot;
+   done |\
+<a href="#h2-3" id="h2-3" class="d">-  lemonbar $BAR_OPTS | dash
+</a><a href="#h2-4" id="h2-4" class="i">+  lemonbar $BAR_OPTS | sh
+</a> # }}}
+ 
+ # vim: set ft=sh :
+<b>diff --git a/<a href="../file/wmrc/.scripts/tilew.html">wmrc/.scripts/tilew</a> b/<a href="../file/wmrc/.scripts/tilew.html">wmrc/.scripts/tilew</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,10 +1,8 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/dash
+</a><a href="#h0-1" id="h0-1" class="i">+#!/bin/sh
+</a> #
+ # z3bra - 2014 (c) wtfpl
+ # arrange windows in a tiled pattern
+ 
+<a href="#h0-6" id="h0-6" class="d">-. wmrc
+</a><a href="#h0-7" id="h0-7" class="d">-
+</a> # default values for gaps and master area
+ #PANEL=${PANEL:-$(( 2 * GENERAL_GAP + PANEL_STATUS_HEIGHT + 2 ))}
+ PANEL=0
+<b>diff --git a/<a href="../file/wmrc/.scripts/wewhandle.html">wmrc/.scripts/wewhandle</a> b/<a href="../file/wmrc/.scripts/wewhandle.html">wmrc/.scripts/wewhandle</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/dash
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/sh
+</a> #
+ # handle wew events
+ # (c) tudurom 2016 - wtfpl
+<b>diff --git a/<a href="../file/wmrc/.scripts/windowat.html">wmrc/.scripts/windowat</a> b/<a href="../file/wmrc/.scripts/windowat.html">wmrc/.scripts/windowat</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,10 +1,8 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/dash
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/sh
+</a> # returns the id of the first window at the given coordinates
+ # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h0-6" id="h0-6" class="d">-# TODO: find a use for this
+</a><a href="#h0-7" id="h0-7" class="d">-
+</a> usage() {
+   echo &quot;usage: $(basename $0) &lt;x&gt; &lt;y&gt;&quot;
+   exit 1
+<b>diff --git a/<a href="../file/wmrc/.scripts/wmrc.html">wmrc/.scripts/wmrc</a> b/<a href="../file/wmrc/.scripts/wmrc.html">wmrc/.scripts/wmrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -3,11 +3,6 @@
+</a> #
+ 
+ # Gap to use for most of the things
+<a href="#h0-3" id="h0-3" class="d">-GENERAL_GAP=20
+</a><a href="#h0-4" id="h0-4" class="d">-
+</a><a href="#h0-5" id="h0-5" class="d">-PPD_X=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f1)&quot;
+</a><a href="#h0-6" id="h0-6" class="d">-PPD_Y=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f2)&quot;
+</a><a href="#h0-7" id="h0-7" class="d">-PPD_W=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f3)&quot;
+</a><a href="#h0-8" id="h0-8" class="d">-PPD_H=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f4)&quot;
+</a><a href="#h0-9" id="h0-9" class="i">+export GENERAL_GAP=20
+</a> 
+ # vim: set ft=sh :
+<b>diff --git a/<a href="../file/wmrc/.scripts/xwait.html">wmrc/.scripts/xwait</a> b/<a href="../file/wmrc/.scripts/xwait.html">wmrc/.scripts/xwait</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/dash
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/sh
+</a> # dummy script
+ # (c) every stupid idiot who knows bash 2016 - wtfpl
+ #
+<b>diff --git a/<a href="../file/x/.xinitrc.html">x/.xinitrc</a> b/<a href="../file/x/.xinitrc.html">x/.xinitrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -78,6 +78,4 @@ fi
+</a> notifyd &amp;
+ xsetroot -cursor_name left_ptr &amp;
+ 
+<a href="#h0-3" id="h0-3" class="d">-dispcache
+</a><a href="#h0-4" id="h0-4" class="d">-
+</a><a href="#h0-5" id="h0-5" class="d">-start_cwm
+</a><a href="#h0-6" id="h0-6" class="i">+start_wmutils
+</a></pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>remove: tldr (moved to 6c37/crux-ports-git) - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/bb9363f585ac5bc79b15853f76787f32e2eba1eb.html">bb9363f585ac5bc79b15853f76787f32e2eba1eb</a>
+<b>parent</b> <a href="../commit/668c4186566bc432bf17a6566d85007507d81652.html">668c4186566bc432bf17a6566d85007507d81652</a>
+<b>Author:</b> ix &lt;<a href="mailto:arcetera@openmailbox.org">arcetera@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Jan 22 18:59:28 2016
+
+remove: tldr (moved to 6c37/crux-ports-git)
+
+<b>Diffstat:</b>
+ dpkg/Pkgfile            | 13 ++++++++++---
+ dpkg/dpkg_1.18.4.tar.xz | Bin 0 -&gt; 4377024 bytes
+ tldr/.md5sum            |  0
+ tldr/Pkgfile            | 25 -------------------------
+ 4 files changed, 10 insertions(+), 28 deletions(-)
+<hr/><b>diff --git a/<a href="../file/dpkg/Pkgfile.html">dpkg/Pkgfile</a> b/<a href="../file/dpkg/Pkgfile.html">dpkg/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,18 +1,25 @@
+</a> # Description: The Debian package manager
+ # URL:         https://wiki.debian.org/Teams/Dpkg
+<a href="#h0-2" id="h0-2" class="d">-# Packager:    arcetera, arcetera@cock.li
+</a><a href="#h0-3" id="h0-3" class="i">+# Packager:    arcetera, arcetera@openmailbox.org
+</a> # Depends on:  
+ 
+ name=dpkg
+ version=1.18.4
+<a href="#h0-8" id="h0-8" class="d">-release=1
+</a><a href="#h0-9" id="h0-9" class="i">+release=3
+</a> source=(http://noodle.portalus.net/debian/pool/main/d/dpkg/dpkg_1.18.4.tar.xz)
+ 
+ build () {
+ 	cd $name-$version
+ 
+<a href="#h0-15" id="h0-15" class="d">-	./configure --prefix=/usr --sysconfdir=/etc
+</a><a href="#h0-16" id="h0-16" class="i">+	./configure \
+</a><a href="#h0-17" id="h0-17" class="i">+	  --prefix=/usr \ 
+</a><a href="#h0-18" id="h0-18" class="i">+	  --sysconfdir=/etc \
+</a><a href="#h0-19" id="h0-19" class="i">+	  --disable-start-stop-daemon \
+</a><a href="#h0-20" id="h0-20" class="i">+	  --disable-update-alternatives \
+</a><a href="#h0-21" id="h0-21" class="i">+	  --disable-dselect
+</a> 
+ 	make
+ 	make DESTDIR=$PKG install
+<a href="#h0-25" id="h0-25" class="i">+
+</a><a href="#h0-26" id="h0-26" class="i">+	mv $PKG/usr/Dpkg.pm $PKG/usr/lib/perl5/5.22/Dpkg.pm # TODO: Please don&apos;t do this
+</a> }
+<b>diff --git a/<a href="../file/dpkg/dpkg_1.18.4.tar.xz.html">dpkg/dpkg_1.18.4.tar.xz</a> b/<a href="../file/dpkg/dpkg_1.18.4.tar.xz.html">dpkg/dpkg_1.18.4.tar.xz</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/tldr/.md5sum.html">tldr/.md5sum</a> b/<a href="../file/tldr/.md5sum.html">tldr/.md5sum</a></b>
+<b>diff --git a/<a href="../file/tldr/Pkgfile.html">tldr/Pkgfile</a> b/<a href="../file/tldr/Pkgfile.html">tldr/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,25 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-# Description: C++ command line client for tldr.
+</a><a href="#h0-1" id="h0-1" class="d">-# URL:         https://github.com/tldr-pages/tldr-cpp-client
+</a><a href="#h0-2" id="h0-2" class="d">-# Packager:    arcetera, arcetera@cock.li
+</a><a href="#h0-3" id="h0-3" class="d">-# Depends on:  git clang
+</a><a href="#h0-4" id="h0-4" class="d">-
+</a><a href="#h0-5" id="h0-5" class="d">-name=tldr
+</a><a href="#h0-6" id="h0-6" class="d">-version=git
+</a><a href="#h0-7" id="h0-7" class="d">-release=1
+</a><a href="#h0-8" id="h0-8" class="d">-source=()
+</a><a href="#h0-9" id="h0-9" class="d">-
+</a><a href="#h0-10" id="h0-10" class="d">-build() {
+</a><a href="#h0-11" id="h0-11" class="d">-	cd $PKGMK_SOURCE_DIR
+</a><a href="#h0-12" id="h0-12" class="d">-
+</a><a href="#h0-13" id="h0-13" class="d">-	if cd $name; then
+</a><a href="#h0-14" id="h0-14" class="d">-		git fetch -q; git reset --hard origin/master
+</a><a href="#h0-15" id="h0-15" class="d">-	else
+</a><a href="#h0-16" id="h0-16" class="d">-		git clone https://github.com/tldr-pages/tldr-cpp-client.git -b master $name
+</a><a href="#h0-17" id="h0-17" class="d">-		cd $name
+</a><a href="#h0-18" id="h0-18" class="d">-	fi
+</a><a href="#h0-19" id="h0-19" class="d">-
+</a><a href="#h0-20" id="h0-20" class="d">-	cd src
+</a><a href="#h0-21" id="h0-21" class="d">-
+</a><a href="#h0-22" id="h0-22" class="d">-	make
+</a><a href="#h0-23" id="h0-23" class="d">-	make PREFIX=$PKG/usr install
+</a><a href="#h0-24" id="h0-24" class="d">-}
+</a></pre>
+</div>
+</body>
+</html>

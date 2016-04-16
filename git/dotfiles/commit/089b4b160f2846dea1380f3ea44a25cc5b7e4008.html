@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>cornerw respects gaps. new multi-monitor scripts - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/089b4b160f2846dea1380f3ea44a25cc5b7e4008.html">089b4b160f2846dea1380f3ea44a25cc5b7e4008</a>
+<b>parent</b> <a href="../commit/d5b77cccbf504a8d56ac0310aeafa371ba0a9d8e.html">d5b77cccbf504a8d56ac0310aeafa371ba0a9d8e</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Mar 18 09:50:38 2016
+
+cornerw respects gaps. new multi-monitor scripts
+
+<b>Diffstat:</b>
+ .gitmodules           | 15 ---------------
+ disputils/.scripts    |  1 +
+ git/.gitconfig        |  2 +-
+ wmrc/.scripts/cornerw |  2 +-
+ 4 files changed, 3 insertions(+), 17 deletions(-)
+<hr/><b>diff --git a/<a href="../file/.gitmodules.html">.gitmodules</a> b/<a href="../file/.gitmodules.html">.gitmodules</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,24 +1,9 @@
+</a><a href="#h0-0" id="h0-0" class="d">-[submodule &quot;home/.scripts/clint&quot;]
+</a><a href="#h0-1" id="h0-1" class="d">-	path = home/.scripts/clint
+</a><a href="#h0-2" id="h0-2" class="d">-	url = https://github.com/tudurom/clint.git
+</a><a href="#h0-3" id="h0-3" class="d">-[submodule &quot;home/.config/luakit/luakit-adblock&quot;]
+</a><a href="#h0-4" id="h0-4" class="d">-	path = home/.config/luakit/luakit-adblock
+</a><a href="#h0-5" id="h0-5" class="d">-	url = https://github.com/Plaque-fcc/luakit-adblock/
+</a> [submodule &quot;home/startpage&quot;]
+ 	path = home/startpage
+ 	url = https://github.com/tudurom/startpage.git
+<a href="#h0-9" id="h0-9" class="d">-[submodule &quot;home/khaled&quot;]
+</a><a href="#h0-10" id="h0-10" class="d">-	path = home/khaled
+</a><a href="#h0-11" id="h0-11" class="d">-	url = https://github.com/onodera-punpun/khaled.git
+</a><a href="#h0-12" id="h0-12" class="d">-[submodule &quot;scripts/clint&quot;]
+</a><a href="#h0-13" id="h0-13" class="d">-	path = scripts/clint
+</a><a href="#h0-14" id="h0-14" class="d">-	url = https://github.com/tudurom/clint.git
+</a> [submodule &quot;scripts/.scripts/clint&quot;]
+ 	path = scripts/.scripts/clint
+ 	url = https://github.com/tudurom/clint.git
+<a href="#h0-18" id="h0-18" class="d">-[submodule &quot;scripts/.scripts/--force&quot;]
+</a><a href="#h0-19" id="h0-19" class="d">-	path = scripts/.scripts/--force
+</a><a href="#h0-20" id="h0-20" class="d">-	url = https://github.com/tudurom/clint.git
+</a> [submodule &quot;startpage/startpage&quot;]
+ 	path = startpage/startpage
+ 	url = https://github.com/tudurom/startpage.git
+<b>diff --git a/<a href="../file/disputils/.scripts.html">disputils/.scripts</a> b/<a href="../file/disputils/.scripts.html">disputils/.scripts</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+Subproject commit 6f7caa895ccd5657fbc031818044990f38eb9a3e
+</a><b>diff --git a/<a href="../file/git/.gitconfig.html">git/.gitconfig</a> b/<a href="../file/git/.gitconfig.html">git/.gitconfig</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,6 +1,6 @@
+</a> [user]
+   # Subject to change
+<a href="#h0-2" id="h0-2" class="d">-	email = tudurom@gmail.com
+</a><a href="#h0-3" id="h0-3" class="i">+	email = xenogenesis@openmailbox.org
+</a> 	name = Tudor
+ [mergetool]
+   path = nvim
+<b>diff --git a/<a href="../file/wmrc/.scripts/cornerw.html">wmrc/.scripts/cornerw</a> b/<a href="../file/wmrc/.scripts/cornerw.html">wmrc/.scripts/cornerw</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,5 +1,5 @@
+</a> #! /bin/dash
+<a href="#h0-1" id="h0-1" class="d">-set -x
+</a><a href="#h0-2" id="h0-2" class="i">+#
+</a> # puts a window in a given corner or in the middle of the screen
+ # (c) tudurom 2016 - wtfpl
+ #
+</pre>
+</div>
+</body>
+</html>

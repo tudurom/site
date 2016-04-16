@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>add man pages - disputils - wmutils/xrandr powered multimonitor display utils
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/58aea1f10d8e38db7fc7f5b3aa260fced5fd4a85.html">58aea1f10d8e38db7fc7f5b3aa260fced5fd4a85</a>
+<b>parent</b> <a href="../commit/5815b2648ba7226688fdb7468e2cc0088fcf7efc.html">5815b2648ba7226688fdb7468e2cc0088fcf7efc</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat Apr 16 15:38:27 2016
+
+add man pages
+
+<b>Diffstat:</b>
+ man/Makefile | 16 ++++++++++++++++
+ man/dattr.1  | 56 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ man/lsd.1    | 16 ++++++++++++++++
+ 3 files changed, 88 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/man/Makefile.html">man/Makefile</a> b/<a href="../file/man/Makefile.html">man/Makefile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,16 @@
+</a><a href="#h0-0" id="h0-0" class="i">+include ../config.mk
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+MAN =           \
+</a><a href="#h0-3" id="h0-3" class="i">+	lsd.1   \
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+.POSIX:
+</a><a href="#h0-6" id="h0-6" class="i">+
+</a><a href="#h0-7" id="h0-7" class="i">+install: $(MAN)
+</a><a href="#h0-8" id="h0-8" class="i">+	mkdir -p $(DESTDIR)$(MANPREFIX)/man1/
+</a><a href="#h0-9" id="h0-9" class="i">+	cp -f $(MAN) $(DESTDIR)$(MANPREFIX)/man1/
+</a><a href="#h0-10" id="h0-10" class="i">+
+</a><a href="#h0-11" id="h0-11" class="i">+uninstall:
+</a><a href="#h0-12" id="h0-12" class="i">+	@echo &quot;uninstalling manpages&quot;
+</a><a href="#h0-13" id="h0-13" class="i">+	@for page in $(MAN); do \
+</a><a href="#h0-14" id="h0-14" class="i">+		rm -f $(DESTDIR)$(MANPREFIX)/man1/$$page; \
+</a><a href="#h0-15" id="h0-15" class="i">+	done
+</a><b>diff --git a/<a href="../file/man/dattr.1.html">man/dattr.1</a> b/<a href="../file/man/dattr.1.html">man/dattr.1</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,56 @@
+</a><a href="#h0-0" id="h0-0" class="i">+&apos;\&quot; e
+</a><a href="#h0-1" id="h0-1" class="i">+.Dd April 16, 2016
+</a><a href="#h0-2" id="h0-2" class="i">+.Dt DATTR 1
+</a><a href="#h0-3" id="h0-3" class="i">+.Os disputils
+</a><a href="#h0-4" id="h0-4" class="i">+.Sh NAME
+</a><a href="#h0-5" id="h0-5" class="i">+.Nm dattr
+</a><a href="#h0-6" id="h0-6" class="i">+.Nd get display attributes
+</a><a href="#h0-7" id="h0-7" class="i">+.Sh SYNOPSIS
+</a><a href="#h0-8" id="h0-8" class="i">+.Nm dattr
+</a><a href="#h0-9" id="h0-9" class="i">+.Op Cm whxy
+</a><a href="#h0-10" id="h0-10" class="i">+.Ar display_id
+</a><a href="#h0-11" id="h0-11" class="i">+.Sh DESCRIPTION
+</a><a href="#h0-12" id="h0-12" class="i">+.Nm
+</a><a href="#h0-13" id="h0-13" class="i">+prints information about the display
+</a><a href="#h0-14" id="h0-14" class="i">+.Ar display_id
+</a><a href="#h0-15" id="h0-15" class="i">+to
+</a><a href="#h0-16" id="h0-16" class="i">+.Dv stdout .
+</a><a href="#h0-17" id="h0-17" class="i">+.Pp
+</a><a href="#h0-18" id="h0-18" class="i">+What information is presented depends on the commands given to
+</a><a href="#h0-19" id="h0-19" class="i">+.Nm .
+</a><a href="#h0-20" id="h0-20" class="i">+The queried arguments are printed in the order they are requested,
+</a><a href="#h0-21" id="h0-21" class="i">+spearated by a space.
+</a><a href="#h0-22" id="h0-22" class="i">+.Bl -tag -display_idth Ds
+</a><a href="#h0-23" id="h0-23" class="i">+.It Cm w
+</a><a href="#h0-24" id="h0-24" class="i">+Print
+</a><a href="#h0-25" id="h0-25" class="i">+.Ar display_id Ns \(cqs width.
+</a><a href="#h0-26" id="h0-26" class="i">+.It Cm h
+</a><a href="#h0-27" id="h0-27" class="i">+Print
+</a><a href="#h0-28" id="h0-28" class="i">+.Ar display_id Ns \(cqs
+</a><a href="#h0-29" id="h0-29" class="i">+height.
+</a><a href="#h0-30" id="h0-30" class="i">+.It Cm x
+</a><a href="#h0-31" id="h0-31" class="i">+Print
+</a><a href="#h0-32" id="h0-32" class="i">+.Ar display_id Ns \(cqs
+</a><a href="#h0-33" id="h0-33" class="i">+.EQ
+</a><a href="#h0-34" id="h0-34" class="i">+x
+</a><a href="#h0-35" id="h0-35" class="i">+.EN
+</a><a href="#h0-36" id="h0-36" class="i">+offset.
+</a><a href="#h0-37" id="h0-37" class="i">+.It Cm y
+</a><a href="#h0-38" id="h0-38" class="i">+Print
+</a><a href="#h0-39" id="h0-39" class="i">+.Ar display_id Ns \(cqs
+</a><a href="#h0-40" id="h0-40" class="i">+.EQ
+</a><a href="#h0-41" id="h0-41" class="i">+y
+</a><a href="#h0-42" id="h0-42" class="i">+.EN
+</a><a href="#h0-43" id="h0-43" class="i">+offset.
+</a><a href="#h0-44" id="h0-44" class="i">+.El
+</a><a href="#h0-45" id="h0-45" class="i">+.Sh ENVIRONMENT
+</a><a href="#h0-46" id="h0-46" class="i">+.Nm
+</a><a href="#h0-47" id="h0-47" class="i">+acts on the X display specified by the
+</a><a href="#h0-48" id="h0-48" class="i">+.Ev DISPLAY
+</a><a href="#h0-49" id="h0-49" class="i">+variable.
+</a><a href="#h0-50" id="h0-50" class="i">+.Sh EXAMPLES
+</a><a href="#h0-51" id="h0-51" class="i">+.Dl $ dattr whxy LVDS-1
+</a><a href="#h0-52" id="h0-52" class="i">+.Dl 1600 900 1920 0
+</a><a href="#h0-53" id="h0-53" class="i">+.Pp
+</a><a href="#h0-54" id="h0-54" class="i">+.Dl $ dattr wh DP-1
+</a><a href="#h0-55" id="h0-55" class="i">+.Dl 1920 1080
+</a><b>diff --git a/<a href="../file/man/lsd.1.html">man/lsd.1</a> b/<a href="../file/man/lsd.1.html">man/lsd.1</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,16 @@
+</a><a href="#h0-0" id="h0-0" class="i">+.Dd April 16, 2016
+</a><a href="#h0-1" id="h0-1" class="i">+.Dt LSD 1
+</a><a href="#h0-2" id="h0-2" class="i">+.Os disputils
+</a><a href="#h0-3" id="h0-3" class="i">+.Sh NAME
+</a><a href="#h0-4" id="h0-4" class="i">+.Nm lsd
+</a><a href="#h0-5" id="h0-5" class="i">+.Nd list connected displays
+</a><a href="#h0-6" id="h0-6" class="i">+.Sh SYNOPSIS
+</a><a href="#h0-7" id="h0-7" class="i">+.Nm
+</a><a href="#h0-8" id="h0-8" class="i">+lists connected displays.
+</a><a href="#h0-9" id="h0-9" class="i">+.Sh ENVIRONMENT
+</a><a href="#h0-10" id="h0-10" class="i">+.Nm
+</a><a href="#h0-11" id="h0-11" class="i">+acts on the X display specified by the
+</a><a href="#h0-12" id="h0-12" class="i">+.Ev DISPLAY
+</a><a href="#h0-13" id="h0-13" class="i">+variable
+</a><a href="#h0-14" id="h0-14" class="i">+.Sh SEE ALSO
+</a><a href="#h0-15" id="h0-15" class="i">+.Xr dattr 1
+</a></pre>
+</div>
+</body>
+</html>

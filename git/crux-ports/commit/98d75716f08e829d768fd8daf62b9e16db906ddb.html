@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>urc: style fixes, use new scripts - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/98d75716f08e829d768fd8daf62b9e16db906ddb.html">98d75716f08e829d768fd8daf62b9e16db906ddb</a>
+<b>parent</b> <a href="../commit/2ac73dc2680d56a1f6aca4d66d51fed04205f099.html">2ac73dc2680d56a1f6aca4d66d51fed04205f099</a>
+<b>Author:</b> ix &lt;<a href="mailto:arcetera@openmailbox.org">arcetera@openmailbox.org</a>&gt;
+<b>Date:</b>   Mon Feb 22 21:06:15 2016
+
+urc: style fixes, use new scripts
+
+<b>Diffstat:</b>
+ urc/Pkgfile | 30 ++++++++++++++++--------------
+ 1 file changed, 16 insertions(+), 14 deletions(-)
+<hr/><b>diff --git a/<a href="../file/urc/Pkgfile.html">urc/Pkgfile</a> b/<a href="../file/urc/Pkgfile.html">urc/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,25 +1,27 @@
+</a> # Description: Minimal rc script.
+ # URL:         https://github.com/ix/urc
+<a href="#h0-2" id="h0-2" class="d">-# Packager:    arcetera, arcetera@openmailbox.org
+</a><a href="#h0-3" id="h0-3" class="d">-# Maintainer:  arcetera, arcetera@openmailbox.org
+</a><a href="#h0-4" id="h0-4" class="i">+# Packager:    ix, arcetera@openmailbox.org
+</a> # Depends on:  git busybox sinit
+ 
+ name=urc
+ version=git
+<a href="#h0-9" id="h0-9" class="d">-release=2
+</a><a href="#h0-10" id="h0-10" class="i">+release=3
+</a> source=()
+ 
+<a href="#h0-13" id="h0-13" class="d">-build () {
+</a><a href="#h0-14" id="h0-14" class="d">-	cd $PKGMK_SOURCE_DIR
+</a><a href="#h0-15" id="h0-15" class="i">+build() {
+</a><a href="#h0-16" id="h0-16" class="i">+		cd $PKGMK_SOURCE_DIR
+</a> 
+<a href="#h0-18" id="h0-18" class="d">-	if cd $name; then
+</a><a href="#h0-19" id="h0-19" class="d">-		git fetch -q; git reset --hard origin/master
+</a><a href="#h0-20" id="h0-20" class="d">-	else
+</a><a href="#h0-21" id="h0-21" class="d">-		git clone git://github.com/ix/urc $name
+</a><a href="#h0-22" id="h0-22" class="d">-		cd $name
+</a><a href="#h0-23" id="h0-23" class="d">-	fi
+</a><a href="#h0-24" id="h0-24" class="i">+		if cd $name; then
+</a><a href="#h0-25" id="h0-25" class="i">+				git fetch -q; git reset --hard origin/master
+</a><a href="#h0-26" id="h0-26" class="i">+		else
+</a><a href="#h0-27" id="h0-27" class="i">+				git clone git://github.com/ix/urc $name
+</a><a href="#h0-28" id="h0-28" class="i">+				cd $name
+</a><a href="#h0-29" id="h0-29" class="i">+		fi
+</a> 
+<a href="#h0-31" id="h0-31" class="d">-	install -Dm755 urc $PKG/sbin/urc
+</a><a href="#h0-32" id="h0-32" class="d">-	install -Dm644 urc.conf $PKG/etc/urc.conf
+</a><a href="#h0-33" id="h0-33" class="d">-  install -Dm644 urc.8 $PKG/usr/share/man/man8/urc.8
+</a><a href="#h0-34" id="h0-34" class="i">+		install -Dm755 urc $PKG/sbin/urc
+</a><a href="#h0-35" id="h0-35" class="i">+		install -Dm755 reboot $PKG/sbin/reboot
+</a><a href="#h0-36" id="h0-36" class="i">+		install -Dm755 poweroff $PKG/sbin/poweroff
+</a><a href="#h0-37" id="h0-37" class="i">+		ln -s $PKG/sbin/poweroff $PKG/sbin/shutdown
+</a><a href="#h0-38" id="h0-38" class="i">+		install -Dm644 urc.conf $PKG/etc/urc.conf
+</a><a href="#h0-39" id="h0-39" class="i">+		install -Dm644 urc.8 $PKG/usr/share/man/man8/urc.8
+</a> }
+</pre>
+</div>
+</body>
+</html>

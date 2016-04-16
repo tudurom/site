@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Colorized man - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/ad0c6d4352144724840a0b0225b04eefd43e7670.html">ad0c6d4352144724840a0b0225b04eefd43e7670</a>
+<b>parent</b> <a href="../commit/8a3e02067420bd316829c74b5edfff774e702532.html">8a3e02067420bd316829c74b5edfff774e702532</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Sat Jan 30 13:37:04 2016
+
+Colorized man
+
+<b>Diffstat:</b>
+ home/.mkshrc     | 12 ++++++++++++
+ home/.xres/urxvt |  1 -
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a href="../file/home/.mkshrc.html">home/.mkshrc</a> b/<a href="../file/home/.mkshrc.html">home/.mkshrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -18,4 +18,16 @@ prompt () {
+</a> 
+ PS1=&apos;$(prompt)&apos;
+ 
+<a href="#h0-3" id="h0-3" class="i">+# Colored man pages
+</a><a href="#h0-4" id="h0-4" class="i">+man() {
+</a><a href="#h0-5" id="h0-5" class="i">+    env LESS_TERMCAP_mb=$&apos;\E[01;31m&apos; \
+</a><a href="#h0-6" id="h0-6" class="i">+    LESS_TERMCAP_md=$&apos;\E[01;38;5;74m&apos; \
+</a><a href="#h0-7" id="h0-7" class="i">+    LESS_TERMCAP_me=$&apos;\E[0m&apos; \
+</a><a href="#h0-8" id="h0-8" class="i">+    LESS_TERMCAP_se=$&apos;\E[0m&apos; \
+</a><a href="#h0-9" id="h0-9" class="i">+    LESS_TERMCAP_so=$&apos;\E[38;5;246m&apos; \
+</a><a href="#h0-10" id="h0-10" class="i">+    LESS_TERMCAP_ue=$&apos;\E[0m&apos; \
+</a><a href="#h0-11" id="h0-11" class="i">+    LESS_TERMCAP_us=$&apos;\E[04;38;5;146m&apos; \
+</a><a href="#h0-12" id="h0-12" class="i">+    man &quot;$@&quot;
+</a><a href="#h0-13" id="h0-13" class="i">+}
+</a><a href="#h0-14" id="h0-14" class="i">+
+</a> # vim: set syntax=sh :
+<b>diff --git a/<a href="../file/home/.xres/urxvt.html">home/.xres/urxvt</a> b/<a href="../file/home/.xres/urxvt.html">home/.xres/urxvt</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,3 @@
+</a><a href="#h0-0" id="h0-0" class="d">-!URxvt.font: -*-termsyn-medium-*-*-*-14-*-*-*-*-*-*-*
+</a> URxvt.font: -*-erusfont-medium-*-*-*-11-*-*-*-*-*-*-*
+ ! For writing markdown
+ !URxvt.font: xft:Fira Mono:size=12
+</pre>
+</div>
+</body>
+</html>

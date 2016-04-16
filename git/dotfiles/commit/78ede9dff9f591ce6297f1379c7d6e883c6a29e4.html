@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Tweak tweak - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/78ede9dff9f591ce6297f1379c7d6e883c6a29e4.html">78ede9dff9f591ce6297f1379c7d6e883c6a29e4</a>
+<b>parent</b> <a href="../commit/30555c767100c3763ec77e92b3fe7ee2b26004f2.html">30555c767100c3763ec77e92b3fe7ee2b26004f2</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Wed Mar  2 14:46:55 2016
+
+Tweak tweak
+
+<b>Diffstat:</b>
+ cava/.config/cava/config      |  2 +-
+ gtk/.config/gtk-3.0/bookmarks |  1 +-
+ mksh/.crosssh.sh              |  1 +-
+ scripts/.scripts/gitio        | 87 ++++++++++++++++++++++++++++++++++++++++++++-
+ 4 files changed, 90 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a href="../file/cava/.config/cava/config.html">cava/.config/cava/config</a> b/<a href="../file/cava/.config/cava/config.html">cava/.config/cava/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -64,7 +64,7 @@ source = /tmp/mpd.fifo
+</a> # visual styles, may be &apos;stereo&apos; or &apos;mono&apos;.
+ # Stereo mirrors both channels with low frequencies in center.
+ # Mono avrages both channels and outputs left to right lowest to highest frequencies
+<a href="#h0-3" id="h0-3" class="d">-style = stereo
+</a><a href="#h0-4" id="h0-4" class="i">+style = mono
+</a> 
+ 
+ [color]
+<b>diff --git a/<a href="../file/gtk/.config/gtk-3.0/bookmarks.html">gtk/.config/gtk-3.0/bookmarks</a> b/<a href="../file/gtk/.config/gtk-3.0/bookmarks.html">gtk/.config/gtk-3.0/bookmarks</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+file:///gamez
+</a><b>diff --git a/<a href="../file/mksh/.crosssh.sh.html">mksh/.crosssh.sh</a> b/<a href="../file/mksh/.crosssh.sh.html">mksh/.crosssh.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -32,6 +32,7 @@ alias tswitch=&quot;tmux switch -t&quot;
+</a> alias tkill=&quot;tmux kill-session -t&quot;
+ alias rm=&quot;rm -i&quot;
+ alias fkh=&quot;fortune khaled&quot;
+<a href="#h0-3" id="h0-3" class="i">+alias ls=&quot;ls -N&quot;
+</a> export LESS=&apos;-F -g -i -M -R -S -w -X -z-4&apos;
+ 
+ #source ~/.scripts/base16-ocean.dark.sh
+<b>diff --git a/<a href="../file/scripts/.scripts/gitio.html">scripts/.scripts/gitio</a> b/<a href="../file/scripts/.scripts/gitio.html">scripts/.scripts/gitio</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,87 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#
+</a><a href="#h0-2" id="h0-2" class="i">+#          ██   ██      ██
+</a><a href="#h0-3" id="h0-3" class="i">+#   █████ ░░   ░██     ░░
+</a><a href="#h0-4" id="h0-4" class="i">+#  ██░░░██ ██ ██████    ██  ██████
+</a><a href="#h0-5" id="h0-5" class="i">+# ░██  ░██░██░░░██░    ░██ ██░░░░██
+</a><a href="#h0-6" id="h0-6" class="i">+# ░░██████░██  ░██     ░██░██   ░██
+</a><a href="#h0-7" id="h0-7" class="i">+#  ░░░░░██░██  ░██     ░██░██   ░██
+</a><a href="#h0-8" id="h0-8" class="i">+#   █████ ░██  ░░██  ██░██░░██████
+</a><a href="#h0-9" id="h0-9" class="i">+#  ░░░░░  ░░    ░░  ░░ ░░  ░░░░░░
+</a><a href="#h0-10" id="h0-10" class="i">+#
+</a><a href="#h0-11" id="h0-11" class="i">+# create short / vanity github urls
+</a><a href="#h0-12" id="h0-12" class="i">+#         ▟▙
+</a><a href="#h0-13" id="h0-13" class="i">+# ▟▒░░░░░░░▜▙▜████████████████████████████████▛
+</a><a href="#h0-14" id="h0-14" class="i">+# ▜▒░░░░░░░▟▛▟▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▛
+</a><a href="#h0-15" id="h0-15" class="i">+#         ▜▛
+</a><a href="#h0-16" id="h0-16" class="i">+# xero / syntax-samurai &lt;http://git.io/gitio.sh&gt;
+</a><a href="#h0-17" id="h0-17" class="i">+
+</a><a href="#h0-18" id="h0-18" class="i">+usage () {
+</a><a href="#h0-19" id="h0-19" class="i">+    cat &lt;&lt;EOF
+</a><a href="#h0-20" id="h0-20" class="i">+
+</a><a href="#h0-21" id="h0-21" class="i">+         ▟▙
+</a><a href="#h0-22" id="h0-22" class="i">+ ▟▒░░░░░░░▜▙▜████████████████████████████████▛
+</a><a href="#h0-23" id="h0-23" class="i">+ ▜▒░░░░░░░▟▛▟▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▛
+</a><a href="#h0-24" id="h0-24" class="i">+         ▜▛
+</a><a href="#h0-25" id="h0-25" class="i">+
+</a><a href="#h0-26" id="h0-26" class="i">+ create short / vanity github urls
+</a><a href="#h0-27" id="h0-27" class="i">+ usage: $(basename $0) http://github.com/something [-v mini]
+</a><a href="#h0-28" id="h0-28" class="i">+ 
+</a><a href="#h0-29" id="h0-29" class="i">+ options:
+</a><a href="#h0-30" id="h0-30" class="i">+  -v   shortlink
+</a><a href="#h0-31" id="h0-31" class="i">+  -h   display this screen
+</a><a href="#h0-32" id="h0-32" class="i">+EOF
+</a><a href="#h0-33" id="h0-33" class="i">+  exit 0
+</a><a href="#h0-34" id="h0-34" class="i">+}
+</a><a href="#h0-35" id="h0-35" class="i">+
+</a><a href="#h0-36" id="h0-36" class="i">+err() {
+</a><a href="#h0-37" id="h0-37" class="i">+  echo $1
+</a><a href="#h0-38" id="h0-38" class="i">+  usage	
+</a><a href="#h0-39" id="h0-39" class="i">+}
+</a><a href="#h0-40" id="h0-40" class="i">+
+</a><a href="#h0-41" id="h0-41" class="i">+optstest() {
+</a><a href="#h0-42" id="h0-42" class="i">+  found=0
+</a><a href="#h0-43" id="h0-43" class="i">+  for arg in &quot;$@&quot;
+</a><a href="#h0-44" id="h0-44" class="i">+  do
+</a><a href="#h0-45" id="h0-45" class="i">+    if echo $arg | cut -d/ -f3 | grep -q &quot;github.com\|raw.githubusercontent.com&quot;
+</a><a href="#h0-46" id="h0-46" class="i">+    then
+</a><a href="#h0-47" id="h0-47" class="i">+      GHURL=$arg
+</a><a href="#h0-48" id="h0-48" class="i">+      found=1
+</a><a href="#h0-49" id="h0-49" class="i">+    elif [ $arg = &quot;-h&quot; ]
+</a><a href="#h0-50" id="h0-50" class="i">+    then
+</a><a href="#h0-51" id="h0-51" class="i">+      usage
+</a><a href="#h0-52" id="h0-52" class="i">+    elif [ $arg = &quot;-v&quot; ]
+</a><a href="#h0-53" id="h0-53" class="i">+    then
+</a><a href="#h0-54" id="h0-54" class="i">+      :
+</a><a href="#h0-55" id="h0-55" class="i">+    else
+</a><a href="#h0-56" id="h0-56" class="i">+      VANITY=$arg
+</a><a href="#h0-57" id="h0-57" class="i">+    fi
+</a><a href="#h0-58" id="h0-58" class="i">+  done
+</a><a href="#h0-59" id="h0-59" class="i">+  if [ $found = 0 ]
+</a><a href="#h0-60" id="h0-60" class="i">+  then
+</a><a href="#h0-61" id="h0-61" class="i">+    err &quot; must be a valid github.com url!&quot;
+</a><a href="#h0-62" id="h0-62" class="i">+  fi
+</a><a href="#h0-63" id="h0-63" class="i">+}
+</a><a href="#h0-64" id="h0-64" class="i">+
+</a><a href="#h0-65" id="h0-65" class="i">+case $# in
+</a><a href="#h0-66" id="h0-66" class="i">+  1)
+</a><a href="#h0-67" id="h0-67" class="i">+    optstest $1 ;;
+</a><a href="#h0-68" id="h0-68" class="i">+  3)
+</a><a href="#h0-69" id="h0-69" class="i">+    optstest $1 $2 $3 ;;
+</a><a href="#h0-70" id="h0-70" class="i">+  *)
+</a><a href="#h0-71" id="h0-71" class="i">+    err &quot; invalid number of arguments!&quot; ;;
+</a><a href="#h0-72" id="h0-72" class="i">+esac
+</a><a href="#h0-73" id="h0-73" class="i">+
+</a><a href="#h0-74" id="h0-74" class="i">+if [ -z &quot;$VANITY&quot; ]
+</a><a href="#h0-75" id="h0-75" class="i">+then
+</a><a href="#h0-76" id="h0-76" class="i">+  url=`curl -is http://git.io -F &quot;url=$GHURL&quot; | grep -i &quot;location&quot; | cut -d&apos; &apos; -f2`
+</a><a href="#h0-77" id="h0-77" class="i">+else
+</a><a href="#h0-78" id="h0-78" class="i">+  url=`curl -is http://git.io -F &quot;url=$GHURL&quot; -F &quot;code=$VANITY&quot; | grep -i &quot;location&quot; | cut -d&apos; &apos; -f2`
+</a><a href="#h0-79" id="h0-79" class="i">+fi
+</a><a href="#h0-80" id="h0-80" class="i">+
+</a><a href="#h0-81" id="h0-81" class="i">+if [ -z $url ]
+</a><a href="#h0-82" id="h0-82" class="i">+then
+</a><a href="#h0-83" id="h0-83" class="i">+  err &quot; must be a valid github.com url!&quot;
+</a><a href="#h0-84" id="h0-84" class="i">+else
+</a><a href="#h0-85" id="h0-85" class="i">+  echo $url
+</a><a href="#h0-86" id="h0-86" class="i">+fi
+</a></pre>
+</div>
+</body>
+</html>

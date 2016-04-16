@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Clean up - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/be56a75ee674fd8c39465054c4406ba71aa9399d.html">be56a75ee674fd8c39465054c4406ba71aa9399d</a>
+<b>parent</b> <a href="../commit/7a34f087e88c161d6f084af1778d4c415415de08.html">7a34f087e88c161d6f084af1778d4c415415de08</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Tue Dec  8 20:18:22 2015
+
+Clean up
+
+<b>Diffstat:</b>
+ home/.asoundrc                        |    4 +-
+ home/.config/i3/config                |   10 +-
+ home/.scripts/i3blocks/music          |    6 +-
+ home/.scripts/i3blocks/volume         |    2 +-
+ home/.scripts/optiprime               |    3 +-
+ home/.scripts/pacsize                 |   16 +-
+ home/.zcompcache/SYS_ALL_UNITS        |    4 +-
+ home/.zcompcache/SYS_REALLY_ALL_UNITS |    4 +-
+ home/.zcompdump                       | 1570 +----------------------------------
+ home/.zcompdump.zwc                   | Bin 83240 -&gt; 0 bytes
+ home/.zprezto/runcoms/zshrc           |    2 +-
+ 11 files changed, 13 insertions(+), 1608 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.asoundrc.html">home/.asoundrc</a> b/<a href="../file/home/.asoundrc.html">home/.asoundrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,9 +1,9 @@
+</a> pcm.!default {
+   type hw
+<a href="#h0-2" id="h0-2" class="d">-  card 0
+</a><a href="#h0-3" id="h0-3" class="i">+  card 1
+</a> }
+ 
+ ctl.!default {
+   type hw
+<a href="#h0-8" id="h0-8" class="d">-  card 0
+</a><a href="#h0-9" id="h0-9" class="i">+  card 1
+</a> }
+<b>diff --git a/<a href="../file/home/.config/i3/config.html">home/.config/i3/config</a> b/<a href="../file/home/.config/i3/config.html">home/.config/i3/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -122,12 +122,13 @@ bindsym $mod+Shift+0 move container to workspace 10
+</a> bindsym $mod+F1 move workspace to output left
+ bindsym $mod+F2 move workspace to output right
+ 
+<a href="#h0-3" id="h0-3" class="i">+set $mixer pulse
+</a> 
+ # Multimedia keys
+<a href="#h0-6" id="h0-6" class="d">-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute # raise
+</a><a href="#h0-7" id="h0-7" class="d">-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute # decrease
+</a><a href="#h0-8" id="h0-8" class="i">+bindsym XF86AudioRaiseVolume exec amixer -q -D $mixer sset Master 5%+ unmute # raise
+</a><a href="#h0-9" id="h0-9" class="i">+bindsym XF86AudioLowerVolume exec amixer -q -D $mixer sset Master 5%- unmute # decrease
+</a> 
+<a href="#h0-11" id="h0-11" class="d">-bindsym XF86AudioMute exec amixer -q set Master mute # mute
+</a><a href="#h0-12" id="h0-12" class="i">+bindsym XF86AudioMute exec amixer -q -D $mixer sset Master toggle # mute
+</a> 
+ bindsym XF86AudioPlay exec playerctl play-pause
+ bindsym XF86AudioNext exec playerctl next
+<a href="#h1" id="h1" class="h">@@ -139,7 +140,7 @@ bindsym $mod+Shift+c reload
+</a> bindsym $mod+Shift+r restart
+ # exit i3 (logs you out of your X session)
+ #bindsym $mod+Shift+e exec &quot;i3-nagbar -t warning -m &apos;You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.&apos; -b &apos;Yes, exit i3&apos; &apos;i3-msg exit&apos;&quot;
+<a href="#h1-3" id="h1-3" class="d">-bindsym $mod+Shift+e exec &quot;i3-nagbar -t warning -m &apos;You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.&apos; -b &apos;Aye, exit i3&apos; &apos;i3-msg exit&apos;&quot;
+</a><a href="#h1-4" id="h1-4" class="i">+bindsym $mod+Shift+e exec &quot;i3-nagbar -t warning -m &apos;You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.&apos; -b &apos;Aye, exit i3&apos; &apos;i3-msg exit&apos; -b &apos;Shutdown&apos; &apos;poweroff&apos; -b &apos;Reboot&apos; &apos;reboot&apos;&quot;
+</a> 
+ 
+ # resize window (you can also use the mouse for that)
+<a href="#h2" id="h2" class="h">@@ -174,6 +175,7 @@ assign [class=&quot;Codeblocks&quot;]         $workspace2
+</a> assign [class=&quot;URxvt&quot;]              $workspace4
+ assign [class=&quot;libreoffice-writer&quot;] $workspace5
+ assign [class=&quot;Rhythmbox&quot;]          $workspace6
+<a href="#h2-3" id="h2-3" class="i">+assign [class=&quot;Lollypop&quot;]           $workspace6
+</a> 
+ #set $bg-color 	         #2f343f
+ #set $bg-color 	         #0c1922
+<b>diff --git a/<a href="../file/home/.scripts/i3blocks/music.html">home/.scripts/i3blocks/music</a> b/<a href="../file/home/.scripts/i3blocks/music.html">home/.scripts/i3blocks/music</a></b>
+<a href="#h0" id="h0" class="h">@@ -11,7 +11,7 @@ else
+</a> fi
+ 
+ case $BLOCK_BUTTON in
+<a href="#h0-3" id="h0-3" class="d">-  1) playerctl play-pause &amp;;;
+</a><a href="#h0-4" id="h0-4" class="d">-  4) playerctl next &amp;;;
+</a><a href="#h0-5" id="h0-5" class="d">-  5) playerctl previous &amp;;;
+</a><a href="#h0-6" id="h0-6" class="i">+  1) playerctl play-pause &amp; ;;
+</a><a href="#h0-7" id="h0-7" class="i">+  4) playerctl next &amp; ;;
+</a><a href="#h0-8" id="h0-8" class="i">+  5) playerctl previous &amp; ;;
+</a> esac
+<b>diff --git a/<a href="../file/home/.scripts/i3blocks/volume.html">home/.scripts/i3blocks/volume</a> b/<a href="../file/home/.scripts/i3blocks/volume.html">home/.scripts/i3blocks/volume</a></b>
+<a href="#h0" id="h0" class="h">@@ -64,7 +64,7 @@ format() {
+</a> 
+ case $BLOCK_BUTTON in
+   # launch pavucontrol when clicked
+<a href="#h0-3" id="h0-3" class="d">-  1) pavucontrol &amp;;;
+</a><a href="#h0-4" id="h0-4" class="i">+  1) pavucontrol &amp; ;;
+</a>   3) amixer -q -D $MIXER sset $SCONTROL $(capability) toggle ;;  # right click, mute/unmute
+   4) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}+ unmute ;; # scroll up, increase
+   5) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}- unmute ;; # scroll down, decrease
+<b>diff --git a/<a href="../file/home/.scripts/optiprime.html">home/.scripts/optiprime</a> b/<a href="../file/home/.scripts/optiprime.html">home/.scripts/optiprime</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,3 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-vblank_mode=0 primusrun &quot;$@&quot;
+</a><b>diff --git a/<a href="../file/home/.scripts/pacsize.html">home/.scripts/pacsize</a> b/<a href="../file/home/.scripts/pacsize.html">home/.scripts/pacsize</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,16 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/usr/bin/env python
+</a><a href="#h0-1" id="h0-1" class="d">-import re
+</a><a href="#h0-2" id="h0-2" class="d">-import os
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-class Package:
+</a><a href="#h0-5" id="h0-5" class="d">-    def __init__(self,name,size):
+</a><a href="#h0-6" id="h0-6" class="d">-        self.name = name
+</a><a href="#h0-7" id="h0-7" class="d">-        self.size = int(round(float(size)))
+</a><a href="#h0-8" id="h0-8" class="d">-    def __repr__(self):
+</a><a href="#h0-9" id="h0-9" class="d">-        return `self.size`+&quot; &quot;+self.name    
+</a><a href="#h0-10" id="h0-10" class="d">-    def __cmp__(self,other):
+</a><a href="#h0-11" id="h0-11" class="d">-        return cmp(other.size,self.size) #desc
+</a><a href="#h0-12" id="h0-12" class="d">-
+</a><a href="#h0-13" id="h0-13" class="d">-paclist = []        
+</a><a href="#h0-14" id="h0-14" class="d">-
+</a><a href="#h0-15" id="h0-15" class="d">-re_name = re.compile(r&apos;Name\s*:\s*(\S+)&apos;)
+</a><b>diff --git a/<a href="../file/home/.zcompcache/SYS_ALL_UNITS.html">home/.zcompcache/SYS_ALL_UNITS</a> b/<a href="../file/home/.zcompcache/SYS_ALL_UNITS.html">home/.zcompcache/SYS_ALL_UNITS</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-_sys_all_units=( ${(Q)&quot;${(z)$(&lt;&lt;\EO:_sys_all_units
+</a><a href="#h0-1" id="h0-1" class="d">-&apos;proc-sys-fs-binfmt_misc.automount&apos; &apos;dev-disk-by\x2did-ata\x2dHGST_HTS725050A7E630_TF755AY9JTDNSB.device&apos; &apos;dev-disk-by\x2did-ata\x2dHGST_HTS725050A7E630_TF755AY9JTDNSB\x2dpart1.device&apos; &apos;dev-disk-by\x2did-ata\x2dHGST_HTS725050A7E630_TF755AY9JTDNSB\x2dpart2.device&apos; &apos;dev-disk-by\x2did-ata\x2dHGST_HTS725050A7E630_TF755AY9JTDNSB\x2dpart3.device&apos; &apos;dev-disk-by\x2did-ata\x2dHGST_HTS725050A7E630_TF755AY9JTDNSB\x2dpart4.device&apos; &apos;dev-disk-by\x2did-ata\x2dHGST_HTS725050A7E630_TF755AY9JTDNSB\x2dpart5.device&apos; &apos;dev-disk-by\x2did-ata\x2dHGST_HTS725050A7E630_TF755AY9JTDNSB\x2dpart6.device&apos; &apos;dev-disk-by\x2did-ata\x2dKINGSTON_SNVP325S2128GB_204S10IDT73Z.device&apos; &apos;dev-disk-by\x2did-ata\x2dKINGSTON_SNVP325S2128GB_204S10IDT73Z\x2dpart1.device&apos; &apos;dev-disk-by\x2did-ata\x2dKINGSTON_SNVP325S2128GB_204S10IDT73Z\x2dpart2.device&apos; &apos;dev-disk-by\x2did-ata\x2dKINGSTON_SNVP325S2128GB_204S10IDT73Z\x2dpart3.device&apos; &apos;dev-disk-by\x2did-wwn\x2d0x5000cca662e74779.device&apos; &apos;dev-disk-by\x2did-wwn\x2d0x5000cca662e74779\x2dpart1.device&apos; &apos;dev-disk-by\x2did-wwn\x2d0x5000cca662e74779\x2dpart2.device&apos; &apos;dev-disk-by\x2did-wwn\x2d0x5000cca662e74779\x2dpart3.device&apos; &apos;dev-disk-by\x2did-wwn\x2d0x5000cca662e74779\x2dpart4.device&apos; &apos;dev-disk-by\x2did-wwn\x2d0x5000cca662e74779\x2dpart5.device&apos; &apos;dev-disk-by\x2did-wwn\x2d0x5000cca662e74779\x2dpart6.device&apos; &apos;dev-disk-by\x2dlabel-boot.device&apos; &apos;dev-disk-by\x2dlabel-home.device&apos; &apos;dev-disk-by\x2dlabel-Lenovo_Recovery.device&apos; &apos;dev-disk-by\x2dlabel-os.device&apos; &apos;dev-disk-by\x2dlabel-SYSTEM_DRV.device&apos; &apos;dev-disk-by\x2dlabel-Windows8_OS.device&apos; &apos;dev-disk-by\x2dlabel-WINRE_DRV.device&apos; &apos;dev-disk-by\x2dpartlabel-Basic\x5cx20data\x5cx20partition.device&apos; &apos;dev-disk-by\x2dpartlabel-EFI\x5cx20system\x5cx20partition.device&apos; &apos;dev-disk-by\x2dpartlabel-Microsoft\x5cx20reserved\x5cx20partition.device&apos; &apos;dev-disk-by\x2dpartuuid-1bb32a42\x2d68f6\x2d4b2f\x2d9518\x2d0dcdef02738b.device&apos; &apos;dev-disk-by\x2dpartuuid-3265a882\x2d1c74\x2d4de6\x2d9fca\x2d853f5f5890c2.device&apos; &apos;dev-disk-by\x2dpartuuid-59e7a0a2\x2dc84f\x2d4a8e\x2da83d\x2d3040bdd02663.device&apos; &apos;dev-disk-by\x2dpartuuid-86470317\x2d9510\x2d416a\x2d8940\x2d2e308c738e23.device&apos; &apos;dev-disk-by\x2dpartuuid-bb10ddaa\x2dff2b\x2d4c18\x2db086\x2da1c6d88f7259.device&apos; &apos;dev-disk-by\x2dpartuuid-c91b0037\x2dfc50\x2d4589\x2d846c\x2dcefac28b79fe.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d1.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d1\x2dpart1.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d1\x2dpart2.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d1\x2dpart3.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d1\x2dpart4.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d1\x2dpart5.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d1\x2dpart6.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d2.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d2\x2dpart1.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d2\x2dpart2.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d2\x2dpart3.device&apos; &apos;dev-disk-by\x2duuid-343A56923A56514A.device&apos; &apos;dev-disk-by\x2duuid-3531762d\x2deb66\x2d4363\x2d96c2\x2d831788fb12c2.device&apos; &apos;dev-disk-by\x2duuid-54b9bbb3\x2d9aa0\x2d4b84\x2dbd00\x2d391e12420ba6.device&apos; &apos;dev-disk-by\x2duuid-745D\x2d1B74.device&apos; &apos;dev-disk-by\x2duuid-92F860B8F8609BEB.device&apos; &apos;dev-disk-by\x2duuid-b3a75b25\x2dcdda\x2d4082\x2d8506\x2df712038e6966.device&apos; &apos;dev-disk-by\x2duuid-C0C65AEBC65AE168.device&apos; &apos;dev-disk-by\x2duuid-C66201AB6201A0F3.device&apos; &apos;dev-rfkill.device&apos; &apos;dev-sda.device&apos; &apos;dev-sda1.device&apos; &apos;dev-sda2.device&apos; &apos;dev-sda3.device&apos; &apos;dev-sda4.device&apos; &apos;dev-sda5.device&apos; &apos;dev-sda6.device&apos; &apos;dev-sdb.device&apos; &apos;dev-sdb1.device&apos; &apos;dev-sdb2.device&apos; &apos;dev-sdb3.device&apos; &apos;dev-ttyS0.device&apos; &apos;dev-ttyS1.device&apos; &apos;dev-ttyS2.device&apos; &apos;dev-ttyS3.device&apos; &apos;sys-devices-pci0000:00-0000:00:02.0-drm-card0-card0\x2dLVDS\x2d1-intel_backlight.device&apos; &apos;sys-devices-pci0000:00-0000:00:14.0-usb2-2\x2d1-2\x2d1.2-2\x2d1.2:1.0-sound-card0.device&apos; &apos;sys-devices-pci0000:00-0000:00:19.0-net-enp0s25.device&apos; &apos;sys-devices-pci0000:00-0000:00:1a.0-usb1-1\x2d1-1\x2d1.4-1\x2d1.4:1.0-bluetooth-hci0.device&apos; &apos;sys-devices-pci0000:00-0000:00:1b.0-sound-card1.device&apos; &apos;sys-devices-pci0000:00-0000:00:1c.1-0000:03:00.0-net-wlp3s0.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda1.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda2.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda3.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda4.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda5.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda6.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata2-host1-target1:0:0-1:0:0:0-block-sdb-sdb1.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata2-host1-target1:0:0-1:0:0:0-block-sdb-sdb2.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata2-host1-target1:0:0-1:0:0:0-block-sdb-sdb3.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata2-host1-target1:0:0-1:0:0:0-block-sdb.device&apos; &apos;sys-devices-platform-serial8250-tty-ttyS0.device&apos; &apos;sys-devices-platform-serial8250-tty-ttyS1.device&apos; &apos;sys-devices-platform-serial8250-tty-ttyS2.device&apos; &apos;sys-devices-platform-serial8250-tty-ttyS3.device&apos; &apos;sys-devices-virtual-misc-rfkill.device&apos; &apos;sys-module-configfs.device&apos; &apos;sys-module-fuse.device&apos; &apos;sys-subsystem-bluetooth-devices-hci0.device&apos; &apos;sys-subsystem-net-devices-enp0s25.device&apos; &apos;sys-subsystem-net-devices-wlp3s0.device&apos; &apos;-.mount&apos; &apos;boot.mount&apos; &apos;dev-hugepages.mount&apos; &apos;dev-mqueue.mount&apos; &apos;home.mount&apos; &apos;proc-sys-fs-binfmt_misc.mount&apos; &apos;run-user-1000-gvfs.mount&apos; &apos;run-user-1000.mount&apos; &apos;sys-fs-fuse-connections.mount&apos; &apos;sys-kernel-config.mount&apos; &apos;sys-kernel-debug.mount&apos; &apos;tmp.mount&apos; &apos;var-lib-machines.mount&apos; &apos;systemd-ask-password-console.path&apos; &apos;systemd-ask-password-wall.path&apos; &apos;init.scope&apos; &apos;session-c1.scope&apos; &apos;alsa-restore.service&apos; &apos;alsa-state.service&apos; &apos;auditd.service&apos; &apos;bumblebeed.service&apos; &apos;dbus.service&apos; &apos;dhcpcd.service&apos; &apos;display-manager.service&apos; &apos;dm-event.service&apos; &apos;emergency.service&apos; &apos;getty@tty1.service&apos; &apos;kmod-static-nodes.service&apos; &apos;ldconfig.service&apos; &apos;lm_sensors.service&apos; &apos;logrotate.service&apos; &apos;lvm2-lvmetad.service&apos; &apos;man-db.service&apos; &apos;mkinitcpio-generate-shutdown-ramfs.service&apos; &apos;netctl.service&apos; &apos;netctl@wlp3s0\x2dROless2.service&apos; &apos;NetworkManager.service&apos; &apos;plymouth-quit-wait.service&apos; &apos;plymouth-start.service&apos; &apos;polkit.service&apos; &apos;rescue.service&apos; &apos;rtkit-daemon.service&apos; &apos;shadow.service&apos; &apos;syslog.service&apos; &apos;systemd-ask-password-console.service&apos; &apos;systemd-ask-password-wall.service&apos; &apos;systemd-backlight@backlight:intel_backlight.service&apos; &apos;systemd-binfmt.service&apos; &apos;systemd-firstboot.service&apos; &apos;systemd-fsck-root.service&apos; &apos;systemd-fsck@dev-disk-by\x2duuid-3531762d\x2deb66\x2d4363\x2d96c2\x2d831788fb12c2.service&apos; &apos;systemd-fsck@dev-disk-by\x2duuid-b3a75b25\x2dcdda\x2d4082\x2d8506\x2df712038e6966.service&apos; &apos;systemd-hwdb-update.service&apos; &apos;systemd-initctl.service&apos; &apos;systemd-journal-catalog-update.service&apos; &apos;systemd-journal-flush.service&apos; &apos;systemd-journald.service&apos; &apos;systemd-logind.service&apos; &apos;systemd-machine-id-commit.service&apos; &apos;systemd-modules-load.service&apos; &apos;systemd-random-seed.service&apos; &apos;systemd-remount-fs.service&apos; &apos;systemd-rfkill.service&apos; &apos;systemd-sysctl.service&apos; &apos;systemd-sysusers.service&apos; &apos;systemd-tmpfiles-clean.service&apos; &apos;systemd-tmpfiles-setup-dev.service&apos; &apos;systemd-tmpfiles-setup.service&apos; &apos;systemd-udev-trigger.service&apos; &apos;systemd-udevd.service&apos; &apos;systemd-update-done.service&apos; &apos;systemd-update-utmp.service&apos; &apos;systemd-user-sessions.service&apos; &apos;systemd-vconsole-setup.service&apos; &apos;thinkfan.service&apos; &apos;udisks2.service&apos; &apos;user@1000.service&apos; &apos;wpa_supplicant.service&apos; &apos;-.slice&apos; &apos;system-getty.slice&apos; &apos;system-netctl.slice&apos; &apos;system-systemd\x2dbacklight.slice&apos; &apos;system-systemd\x2dfsck.slice&apos; &apos;system.slice&apos; &apos;user-1000.slice&apos; &apos;user.slice&apos; &apos;dbus.socket&apos; &apos;dm-event.socket&apos; &apos;lvm2-lvmetad.socket&apos; &apos;syslog.socket&apos; &apos;systemd-initctl.socket&apos; &apos;systemd-journald-audit.socket&apos; &apos;systemd-journald-dev-log.socket&apos; &apos;systemd-journald.socket&apos; &apos;systemd-rfkill.socket&apos; &apos;systemd-udevd-control.socket&apos; &apos;systemd-udevd-kernel.socket&apos; &apos;basic.target&apos; &apos;bluetooth.target&apos; &apos;cryptsetup.target&apos; &apos;emergency.target&apos; &apos;getty.target&apos; &apos;graphical.target&apos; &apos;local-fs-pre.target&apos; &apos;local-fs.target&apos; &apos;multi-user.target&apos; &apos;network-pre.target&apos; &apos;network.target&apos; &apos;nss-user-lookup.target&apos; &apos;paths.target&apos; &apos;remote-fs-pre.target&apos; &apos;remote-fs.target&apos; &apos;rescue.target&apos; &apos;shutdown.target&apos; &apos;slices.target&apos; &apos;sockets.target&apos; &apos;sound.target&apos; &apos;swap.target&apos; &apos;sysinit.target&apos; &apos;time-sync.target&apos; &apos;timers.target&apos; &apos;umount.target&apos; &apos;logrotate.timer&apos; &apos;man-db.timer&apos; &apos;shadow.timer&apos; &apos;systemd-tmpfiles-clean.timer&apos;
+</a><a href="#h0-2" id="h0-2" class="d">-EO:_sys_all_units
+</a><a href="#h0-3" id="h0-3" class="d">-)}&quot;} )
+</a><b>diff --git a/<a href="../file/home/.zcompcache/SYS_REALLY_ALL_UNITS.html">home/.zcompcache/SYS_REALLY_ALL_UNITS</a> b/<a href="../file/home/.zcompcache/SYS_REALLY_ALL_UNITS.html">home/.zcompcache/SYS_REALLY_ALL_UNITS</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-_sys_really_all_units=( ${(Q)&quot;${(z)$(&lt;&lt;\EO:_sys_really_all_units
+</a><a href="#h0-1" id="h0-1" class="d">-&apos;proc-sys-fs-binfmt_misc.automount&apos; &apos;dev-disk-by\x2did-ata\x2dHGST_HTS725050A7E630_TF755AY9JTDNSB.device&apos; &apos;dev-disk-by\x2did-ata\x2dHGST_HTS725050A7E630_TF755AY9JTDNSB\x2dpart1.device&apos; &apos;dev-disk-by\x2did-ata\x2dHGST_HTS725050A7E630_TF755AY9JTDNSB\x2dpart2.device&apos; &apos;dev-disk-by\x2did-ata\x2dHGST_HTS725050A7E630_TF755AY9JTDNSB\x2dpart3.device&apos; &apos;dev-disk-by\x2did-ata\x2dHGST_HTS725050A7E630_TF755AY9JTDNSB\x2dpart4.device&apos; &apos;dev-disk-by\x2did-ata\x2dHGST_HTS725050A7E630_TF755AY9JTDNSB\x2dpart5.device&apos; &apos;dev-disk-by\x2did-ata\x2dHGST_HTS725050A7E630_TF755AY9JTDNSB\x2dpart6.device&apos; &apos;dev-disk-by\x2did-ata\x2dKINGSTON_SNVP325S2128GB_204S10IDT73Z.device&apos; &apos;dev-disk-by\x2did-ata\x2dKINGSTON_SNVP325S2128GB_204S10IDT73Z\x2dpart1.device&apos; &apos;dev-disk-by\x2did-ata\x2dKINGSTON_SNVP325S2128GB_204S10IDT73Z\x2dpart2.device&apos; &apos;dev-disk-by\x2did-ata\x2dKINGSTON_SNVP325S2128GB_204S10IDT73Z\x2dpart3.device&apos; &apos;dev-disk-by\x2did-wwn\x2d0x5000cca662e74779.device&apos; &apos;dev-disk-by\x2did-wwn\x2d0x5000cca662e74779\x2dpart1.device&apos; &apos;dev-disk-by\x2did-wwn\x2d0x5000cca662e74779\x2dpart2.device&apos; &apos;dev-disk-by\x2did-wwn\x2d0x5000cca662e74779\x2dpart3.device&apos; &apos;dev-disk-by\x2did-wwn\x2d0x5000cca662e74779\x2dpart4.device&apos; &apos;dev-disk-by\x2did-wwn\x2d0x5000cca662e74779\x2dpart5.device&apos; &apos;dev-disk-by\x2did-wwn\x2d0x5000cca662e74779\x2dpart6.device&apos; &apos;dev-disk-by\x2dlabel-boot.device&apos; &apos;dev-disk-by\x2dlabel-home.device&apos; &apos;dev-disk-by\x2dlabel-Lenovo_Recovery.device&apos; &apos;dev-disk-by\x2dlabel-os.device&apos; &apos;dev-disk-by\x2dlabel-SYSTEM_DRV.device&apos; &apos;dev-disk-by\x2dlabel-Windows8_OS.device&apos; &apos;dev-disk-by\x2dlabel-WINRE_DRV.device&apos; &apos;dev-disk-by\x2dpartlabel-Basic\x5cx20data\x5cx20partition.device&apos; &apos;dev-disk-by\x2dpartlabel-EFI\x5cx20system\x5cx20partition.device&apos; &apos;dev-disk-by\x2dpartlabel-Microsoft\x5cx20reserved\x5cx20partition.device&apos; &apos;dev-disk-by\x2dpartuuid-1bb32a42\x2d68f6\x2d4b2f\x2d9518\x2d0dcdef02738b.device&apos; &apos;dev-disk-by\x2dpartuuid-3265a882\x2d1c74\x2d4de6\x2d9fca\x2d853f5f5890c2.device&apos; &apos;dev-disk-by\x2dpartuuid-59e7a0a2\x2dc84f\x2d4a8e\x2da83d\x2d3040bdd02663.device&apos; &apos;dev-disk-by\x2dpartuuid-86470317\x2d9510\x2d416a\x2d8940\x2d2e308c738e23.device&apos; &apos;dev-disk-by\x2dpartuuid-bb10ddaa\x2dff2b\x2d4c18\x2db086\x2da1c6d88f7259.device&apos; &apos;dev-disk-by\x2dpartuuid-c91b0037\x2dfc50\x2d4589\x2d846c\x2dcefac28b79fe.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d1.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d1\x2dpart1.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d1\x2dpart2.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d1\x2dpart3.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d1\x2dpart4.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d1\x2dpart5.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d1\x2dpart6.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d2.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d2\x2dpart1.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d2\x2dpart2.device&apos; &apos;dev-disk-by\x2dpath-pci\x2d0000:00:1f.2\x2data\x2d2\x2dpart3.device&apos; &apos;dev-disk-by\x2duuid-343A56923A56514A.device&apos; &apos;dev-disk-by\x2duuid-3531762d\x2deb66\x2d4363\x2d96c2\x2d831788fb12c2.device&apos; &apos;dev-disk-by\x2duuid-54b9bbb3\x2d9aa0\x2d4b84\x2dbd00\x2d391e12420ba6.device&apos; &apos;dev-disk-by\x2duuid-745D\x2d1B74.device&apos; &apos;dev-disk-by\x2duuid-92F860B8F8609BEB.device&apos; &apos;dev-disk-by\x2duuid-b3a75b25\x2dcdda\x2d4082\x2d8506\x2df712038e6966.device&apos; &apos;dev-disk-by\x2duuid-C0C65AEBC65AE168.device&apos; &apos;dev-disk-by\x2duuid-C66201AB6201A0F3.device&apos; &apos;dev-rfkill.device&apos; &apos;dev-sda.device&apos; &apos;dev-sda1.device&apos; &apos;dev-sda2.device&apos; &apos;dev-sda3.device&apos; &apos;dev-sda4.device&apos; &apos;dev-sda5.device&apos; &apos;dev-sda6.device&apos; &apos;dev-sdb.device&apos; &apos;dev-sdb1.device&apos; &apos;dev-sdb2.device&apos; &apos;dev-sdb3.device&apos; &apos;dev-ttyS0.device&apos; &apos;dev-ttyS1.device&apos; &apos;dev-ttyS2.device&apos; &apos;dev-ttyS3.device&apos; &apos;sys-devices-pci0000:00-0000:00:02.0-drm-card0-card0\x2dLVDS\x2d1-intel_backlight.device&apos; &apos;sys-devices-pci0000:00-0000:00:14.0-usb2-2\x2d1-2\x2d1.2-2\x2d1.2:1.0-sound-card0.device&apos; &apos;sys-devices-pci0000:00-0000:00:19.0-net-enp0s25.device&apos; &apos;sys-devices-pci0000:00-0000:00:1a.0-usb1-1\x2d1-1\x2d1.4-1\x2d1.4:1.0-bluetooth-hci0.device&apos; &apos;sys-devices-pci0000:00-0000:00:1b.0-sound-card1.device&apos; &apos;sys-devices-pci0000:00-0000:00:1c.1-0000:03:00.0-net-wlp3s0.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda1.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda2.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda3.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda4.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda5.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda6.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata2-host1-target1:0:0-1:0:0:0-block-sdb-sdb1.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata2-host1-target1:0:0-1:0:0:0-block-sdb-sdb2.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata2-host1-target1:0:0-1:0:0:0-block-sdb-sdb3.device&apos; &apos;sys-devices-pci0000:00-0000:00:1f.2-ata2-host1-target1:0:0-1:0:0:0-block-sdb.device&apos; &apos;sys-devices-platform-serial8250-tty-ttyS0.device&apos; &apos;sys-devices-platform-serial8250-tty-ttyS1.device&apos; &apos;sys-devices-platform-serial8250-tty-ttyS2.device&apos; &apos;sys-devices-platform-serial8250-tty-ttyS3.device&apos; &apos;sys-devices-virtual-misc-rfkill.device&apos; &apos;sys-module-configfs.device&apos; &apos;sys-module-fuse.device&apos; &apos;sys-subsystem-bluetooth-devices-hci0.device&apos; &apos;sys-subsystem-net-devices-enp0s25.device&apos; &apos;sys-subsystem-net-devices-wlp3s0.device&apos; &apos;-.mount&apos; &apos;boot.mount&apos; &apos;dev-hugepages.mount&apos; &apos;dev-mqueue.mount&apos; &apos;home.mount&apos; &apos;proc-sys-fs-binfmt_misc.mount&apos; &apos;run-user-1000-gvfs.mount&apos; &apos;run-user-1000.mount&apos; &apos;sys-fs-fuse-connections.mount&apos; &apos;sys-kernel-config.mount&apos; &apos;sys-kernel-debug.mount&apos; &apos;tmp.mount&apos; &apos;var-lib-machines.mount&apos; &apos;systemd-ask-password-console.path&apos; &apos;systemd-ask-password-wall.path&apos; &apos;init.scope&apos; &apos;session-c1.scope&apos; &apos;alsa-restore.service&apos; &apos;alsa-state.service&apos; &apos;auditd.service&apos; &apos;bumblebeed.service&apos; &apos;dbus.service&apos; &apos;dhcpcd.service&apos; &apos;display-manager.service&apos; &apos;dm-event.service&apos; &apos;emergency.service&apos; &apos;getty@tty1.service&apos; &apos;kmod-static-nodes.service&apos; &apos;ldconfig.service&apos; &apos;lm_sensors.service&apos; &apos;logrotate.service&apos; &apos;lvm2-lvmetad.service&apos; &apos;man-db.service&apos; &apos;mkinitcpio-generate-shutdown-ramfs.service&apos; &apos;netctl.service&apos; &apos;netctl@wlp3s0\x2dROless2.service&apos; &apos;NetworkManager.service&apos; &apos;plymouth-quit-wait.service&apos; &apos;plymouth-start.service&apos; &apos;polkit.service&apos; &apos;rescue.service&apos; &apos;rtkit-daemon.service&apos; &apos;shadow.service&apos; &apos;syslog.service&apos; &apos;systemd-ask-password-console.service&apos; &apos;systemd-ask-password-wall.service&apos; &apos;systemd-backlight@backlight:intel_backlight.service&apos; &apos;systemd-binfmt.service&apos; &apos;systemd-firstboot.service&apos; &apos;systemd-fsck-root.service&apos; &apos;systemd-fsck@dev-disk-by\x2duuid-3531762d\x2deb66\x2d4363\x2d96c2\x2d831788fb12c2.service&apos; &apos;systemd-fsck@dev-disk-by\x2duuid-b3a75b25\x2dcdda\x2d4082\x2d8506\x2df712038e6966.service&apos; &apos;systemd-hwdb-update.service&apos; &apos;systemd-initctl.service&apos; &apos;systemd-journal-catalog-update.service&apos; &apos;systemd-journal-flush.service&apos; &apos;systemd-journald.service&apos; &apos;systemd-logind.service&apos; &apos;systemd-machine-id-commit.service&apos; &apos;systemd-modules-load.service&apos; &apos;systemd-random-seed.service&apos; &apos;systemd-remount-fs.service&apos; &apos;systemd-rfkill.service&apos; &apos;systemd-sysctl.service&apos; &apos;systemd-sysusers.service&apos; &apos;systemd-tmpfiles-clean.service&apos; &apos;systemd-tmpfiles-setup-dev.service&apos; &apos;systemd-tmpfiles-setup.service&apos; &apos;systemd-udev-trigger.service&apos; &apos;systemd-udevd.service&apos; &apos;systemd-update-done.service&apos; &apos;systemd-update-utmp.service&apos; &apos;systemd-user-sessions.service&apos; &apos;systemd-vconsole-setup.service&apos; &apos;thinkfan.service&apos; &apos;udisks2.service&apos; &apos;user@1000.service&apos; &apos;wpa_supplicant.service&apos; &apos;-.slice&apos; &apos;system-getty.slice&apos; &apos;system-netctl.slice&apos; &apos;system-systemd\x2dbacklight.slice&apos; &apos;system-systemd\x2dfsck.slice&apos; &apos;system.slice&apos; &apos;user-1000.slice&apos; &apos;user.slice&apos; &apos;dbus.socket&apos; &apos;dm-event.socket&apos; &apos;lvm2-lvmetad.socket&apos; &apos;syslog.socket&apos; &apos;systemd-initctl.socket&apos; &apos;systemd-journald-audit.socket&apos; &apos;systemd-journald-dev-log.socket&apos; &apos;systemd-journald.socket&apos; &apos;systemd-rfkill.socket&apos; &apos;systemd-udevd-control.socket&apos; &apos;systemd-udevd-kernel.socket&apos; &apos;basic.target&apos; &apos;bluetooth.target&apos; &apos;cryptsetup.target&apos; &apos;emergency.target&apos; &apos;getty.target&apos; &apos;graphical.target&apos; &apos;local-fs-pre.target&apos; &apos;local-fs.target&apos; &apos;multi-user.target&apos; &apos;network-pre.target&apos; &apos;network.target&apos; &apos;nss-user-lookup.target&apos; &apos;paths.target&apos; &apos;remote-fs-pre.target&apos; &apos;remote-fs.target&apos; &apos;rescue.target&apos; &apos;shutdown.target&apos; &apos;slices.target&apos; &apos;sockets.target&apos; &apos;sound.target&apos; &apos;swap.target&apos; &apos;sysinit.target&apos; &apos;time-sync.target&apos; &apos;timers.target&apos; &apos;umount.target&apos; &apos;logrotate.timer&apos; &apos;man-db.timer&apos; &apos;shadow.timer&apos; &apos;systemd-tmpfiles-clean.timer&apos; &apos;org.freedesktop.hostname1.busname&apos; &apos;org.freedesktop.import1.busname&apos; &apos;org.freedesktop.locale1.busname&apos; &apos;org.freedesktop.login1.busname&apos; &apos;org.freedesktop.machine1.busname&apos; &apos;org.freedesktop.network1.busname&apos; &apos;org.freedesktop.resolve1.busname&apos; &apos;org.freedesktop.systemd1.busname&apos; &apos;org.freedesktop.timedate1.busname&apos; &apos;autovt@.service&apos; &apos;avahi-daemon.service&apos; &apos;avahi-dnsconfd.service&apos; &apos;blk-availability.service&apos; &apos;canberra-system-bootup.service&apos; &apos;canberra-system-shutdown-reboot.service&apos; &apos;canberra-system-shutdown.service&apos; &apos;colord.service&apos; &apos;console-getty.service&apos; &apos;console-shell.service&apos; &apos;container-getty@.service&apos; &apos;dbus-org.freedesktop.hostname1.service&apos; &apos;dbus-org.freedesktop.import1.service&apos; &apos;dbus-org.freedesktop.locale1.service&apos; &apos;dbus-org.freedesktop.login1.service&apos; &apos;dbus-org.freedesktop.machine1.service&apos; &apos;dbus-org.freedesktop.network1.service&apos; &apos;dbus-org.freedesktop.NetworkManager.service&apos; &apos;dbus-org.freedesktop.nm-dispatcher.service&apos; &apos;dbus-org.freedesktop.resolve1.service&apos; &apos;dbus-org.freedesktop.timedate1.service&apos; &apos;debug-shell.service&apos; &apos;dhclient@.service&apos; &apos;dhcpcd@.service&apos; &apos;fancontrol.service&apos; &apos;fluidsynth.service&apos; &apos;fstrim.service&apos; &apos;ftpd.service&apos; &apos;geoclue.service&apos; &apos;getty@.service&apos; &apos;git-daemon@.service&apos; &apos;gpm.service&apos; &apos;healthd.service&apos; &apos;initrd-cleanup.service&apos; &apos;initrd-parse-etc.service&apos; &apos;initrd-switch-root.service&apos; &apos;initrd-udevadm-cleanup-db.service&apos; &apos;ip6tables.service&apos; &apos;iptables.service&apos; &apos;krb5-kadmind.service&apos; &apos;krb5-kdc.service&apos; &apos;krb5-kpropd.service&apos; &apos;krb5-kpropd@.service&apos; &apos;lvm2-monitor.service&apos; &apos;lvm2-pvscan@.service&apos; &apos;mdadm-grow-continue@.service&apos; &apos;mdadm-last-resort@.service&apos; &apos;mdmon@.service&apos; &apos;mdmonitor.service&apos; &apos;mpd.service&apos; &apos;netctl-auto@.service&apos; &apos;netctl-ifplugd@.service&apos; &apos;netctl-sleep.service&apos; &apos;netctl@.service&apos; &apos;NetworkManager-dispatcher.service&apos; &apos;NetworkManager-wait-online.service&apos; &apos;nscd.service&apos; &apos;nvidia-persistenced.service&apos; &apos;quotaon.service&apos; &apos;rlogin@.service&apos; &apos;rsh@.service&apos; &apos;sensord.service&apos; &apos;serial-getty@.service&apos; &apos;speech-dispatcherd.service&apos; &apos;systemd-backlight@.service&apos; &apos;systemd-bootchart.service&apos; &apos;systemd-bus-proxyd.service&apos; &apos;systemd-exit.service&apos; &apos;systemd-fsck@.service&apos; &apos;systemd-halt.service&apos; &apos;systemd-hibernate-resume@.service&apos; &apos;systemd-hibernate.service&apos; &apos;systemd-hostnamed.service&apos; &apos;systemd-hybrid-sleep.service&apos; &apos;systemd-importd.service&apos; &apos;systemd-journal-gatewayd.service&apos; &apos;systemd-journal-remote.service&apos; &apos;systemd-journal-upload.service&apos; &apos;systemd-kexec.service&apos; &apos;systemd-localed.service&apos; &apos;systemd-machined.service&apos; &apos;systemd-networkd-wait-online.service&apos; &apos;systemd-networkd.service&apos; &apos;systemd-nspawn@.service&apos; &apos;systemd-poweroff.service&apos; &apos;systemd-quotacheck.service&apos; &apos;systemd-reboot.service&apos; &apos;systemd-resolved.service&apos; &apos;systemd-suspend.service&apos; &apos;systemd-timedated.service&apos; &apos;systemd-timesyncd.service&apos; &apos;systemd-udev-settle.service&apos; &apos;systemd-update-utmp-runlevel.service&apos; &apos;talk.service&apos; &apos;teamd@.service&apos; &apos;telnet@.service&apos; &apos;user@.service&apos; &apos;uuidd.service&apos; &apos;wpa_supplicant-nl80211@.service&apos; &apos;wpa_supplicant-wired@.service&apos; &apos;wpa_supplicant@.service&apos; &apos;machine.slice&apos; &apos;avahi-daemon.socket&apos; &apos;git-daemon.socket&apos; &apos;krb5-kpropd.socket&apos; &apos;mpd.socket&apos; &apos;rlogin.socket&apos; &apos;rsh.socket&apos; &apos;systemd-bus-proxyd.socket&apos; &apos;systemd-journal-gatewayd.socket&apos; &apos;systemd-journal-remote.socket&apos; &apos;systemd-networkd.socket&apos; &apos;talk.socket&apos; &apos;telnet.socket&apos; &apos;uuidd.socket&apos; &apos;busnames.target&apos; &apos;cryptsetup-pre.target&apos; &apos;ctrl-alt-del.target&apos; &apos;default.target&apos; &apos;exit.target&apos; &apos;final.target&apos; &apos;halt.target&apos; &apos;hibernate.target&apos; &apos;hybrid-sleep.target&apos; &apos;initrd-fs.target&apos; &apos;initrd-root-fs.target&apos; &apos;initrd-switch-root.target&apos; &apos;initrd.target&apos; &apos;kexec.target&apos; &apos;machines.target&apos; &apos;network-online.target&apos; &apos;nss-lookup.target&apos; &apos;poweroff.target&apos; &apos;printer.target&apos; &apos;reboot.target&apos; &apos;rpcbind.target&apos; &apos;sigpwr.target&apos; &apos;sleep.target&apos; &apos;smartcard.target&apos; &apos;suspend.target&apos; &apos;system-update.target&apos; &apos;fstrim.timer&apos; &apos;mdadm-last-resort@.timer&apos;
+</a><a href="#h0-2" id="h0-2" class="d">-EO:_sys_really_all_units
+</a><a href="#h0-3" id="h0-3" class="d">-)}&quot;} )
+</a><b>diff --git a/<a href="../file/home/.zcompdump.html">home/.zcompdump</a> b/<a href="../file/home/.zcompdump.html">home/.zcompdump</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,1570 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#files: 754	version: 5.1.1
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-_comps=(
+</a><a href="#h0-3" id="h0-3" class="d">-&apos;-&apos; &apos;_precommand&apos;
+</a><a href="#h0-4" id="h0-4" class="d">-&apos;.&apos; &apos;_source&apos;
+</a><a href="#h0-5" id="h0-5" class="d">-&apos;5g&apos; &apos;_go&apos;
+</a><a href="#h0-6" id="h0-6" class="d">-&apos;5l&apos; &apos;_go&apos;
+</a><a href="#h0-7" id="h0-7" class="d">-&apos;6g&apos; &apos;_go&apos;
+</a><a href="#h0-8" id="h0-8" class="d">-&apos;6l&apos; &apos;_go&apos;
+</a><a href="#h0-9" id="h0-9" class="d">-&apos;8g&apos; &apos;_go&apos;
+</a><a href="#h0-10" id="h0-10" class="d">-&apos;8l&apos; &apos;_go&apos;
+</a><a href="#h0-11" id="h0-11" class="d">-&apos;a2ps&apos; &apos;_a2ps&apos;
+</a><a href="#h0-12" id="h0-12" class="d">-&apos;aaaa&apos; &apos;_hosts&apos;
+</a><a href="#h0-13" id="h0-13" class="d">-&apos;aap&apos; &apos;_aap&apos;
+</a><a href="#h0-14" id="h0-14" class="d">-&apos;ack&apos; &apos;_ack&apos;
+</a><a href="#h0-15" id="h0-15" class="d">-&apos;ack2&apos; &apos;_ack&apos;
+</a><a href="#h0-16" id="h0-16" class="d">-&apos;ack-grep&apos; &apos;_ack&apos;
+</a><a href="#h0-17" id="h0-17" class="d">-&apos;ack-standalone&apos; &apos;_ack&apos;
+</a><a href="#h0-18" id="h0-18" class="d">-&apos;acpi&apos; &apos;_acpi&apos;
+</a><a href="#h0-19" id="h0-19" class="d">-&apos;acpitool&apos; &apos;_acpitool&apos;
+</a><a href="#h0-20" id="h0-20" class="d">-&apos;acroread&apos; &apos;_acroread&apos;
+</a><a href="#h0-21" id="h0-21" class="d">-&apos;adb&apos; &apos;_adb&apos;
+</a><a href="#h0-22" id="h0-22" class="d">-&apos;add-zsh-hook&apos; &apos;_add-zsh-hook&apos;
+</a><a href="#h0-23" id="h0-23" class="d">-&apos;admin&apos; &apos;_sccs&apos;
+</a><a href="#h0-24" id="h0-24" class="d">-&apos;ag&apos; &apos;_ag&apos;
+</a><a href="#h0-25" id="h0-25" class="d">-&apos;ali&apos; &apos;_mh&apos;
+</a><a href="#h0-26" id="h0-26" class="d">-&apos;alias&apos; &apos;_alias&apos;
+</a><a href="#h0-27" id="h0-27" class="d">-&apos;amaya&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-28" id="h0-28" class="d">-&apos;analyseplugin&apos; &apos;_analyseplugin&apos;
+</a><a href="#h0-29" id="h0-29" class="d">-&apos;android&apos; &apos;_android&apos;
+</a><a href="#h0-30" id="h0-30" class="d">-&apos;animate&apos; &apos;_imagemagick&apos;
+</a><a href="#h0-31" id="h0-31" class="d">-&apos;anno&apos; &apos;_mh&apos;
+</a><a href="#h0-32" id="h0-32" class="d">-&apos;ansible&apos; &apos;_ansible&apos;
+</a><a href="#h0-33" id="h0-33" class="d">-&apos;ansible-galaxy&apos; &apos;_ansible-galaxy&apos;
+</a><a href="#h0-34" id="h0-34" class="d">-&apos;ansible-playbook&apos; &apos;_ansible-playbook&apos;
+</a><a href="#h0-35" id="h0-35" class="d">-&apos;ant&apos; &apos;_ant&apos;
+</a><a href="#h0-36" id="h0-36" class="d">-&apos;antiword&apos; &apos;_antiword&apos;
+</a><a href="#h0-37" id="h0-37" class="d">-&apos;aoss&apos; &apos;_precommand&apos;
+</a><a href="#h0-38" id="h0-38" class="d">-&apos;apache2ctl&apos; &apos;_apachectl&apos;
+</a><a href="#h0-39" id="h0-39" class="d">-&apos;apachectl&apos; &apos;_apachectl&apos;
+</a><a href="#h0-40" id="h0-40" class="d">-&apos;apm&apos; &apos;_apm&apos;
+</a><a href="#h0-41" id="h0-41" class="d">-&apos;appletviewer&apos; &apos;_java&apos;
+</a><a href="#h0-42" id="h0-42" class="d">-&apos;apropos&apos; &apos;_man&apos;
+</a><a href="#h0-43" id="h0-43" class="d">-&apos;apvlv&apos; &apos;_pdf&apos;
+</a><a href="#h0-44" id="h0-44" class="d">-&apos;arena&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-45" id="h0-45" class="d">-&apos;arp&apos; &apos;_arp&apos;
+</a><a href="#h0-46" id="h0-46" class="d">-&apos;arping&apos; &apos;_arping&apos;
+</a><a href="#h0-47" id="h0-47" class="d">-&apos;-array-value-&apos; &apos;_value&apos;
+</a><a href="#h0-48" id="h0-48" class="d">-&apos;artisan&apos; &apos;_artisan&apos;
+</a><a href="#h0-49" id="h0-49" class="d">-&apos;-assign-parameter-&apos; &apos;_assign&apos;
+</a><a href="#h0-50" id="h0-50" class="d">-&apos;at&apos; &apos;_at&apos;
+</a><a href="#h0-51" id="h0-51" class="d">-&apos;atach&apos; &apos;_atach&apos;
+</a><a href="#h0-52" id="h0-52" class="d">-&apos;atq&apos; &apos;_at&apos;
+</a><a href="#h0-53" id="h0-53" class="d">-&apos;atrm&apos; &apos;_at&apos;
+</a><a href="#h0-54" id="h0-54" class="d">-&apos;attr&apos; &apos;_attr&apos;
+</a><a href="#h0-55" id="h0-55" class="d">-&apos;augtool&apos; &apos;_augeas&apos;
+</a><a href="#h0-56" id="h0-56" class="d">-&apos;autoload&apos; &apos;_typeset&apos;
+</a><a href="#h0-57" id="h0-57" class="d">-&apos;awk&apos; &apos;_awk&apos;
+</a><a href="#h0-58" id="h0-58" class="d">-&apos;bash&apos; &apos;_sh&apos;
+</a><a href="#h0-59" id="h0-59" class="d">-&apos;batch&apos; &apos;_at&apos;
+</a><a href="#h0-60" id="h0-60" class="d">-&apos;baz&apos; &apos;_baz&apos;
+</a><a href="#h0-61" id="h0-61" class="d">-&apos;_beep&apos; &apos;_beep&apos;
+</a><a href="#h0-62" id="h0-62" class="d">-&apos;bg&apos; &apos;_jobs_bg&apos;
+</a><a href="#h0-63" id="h0-63" class="d">-&apos;bindkey&apos; &apos;_bindkey&apos;
+</a><a href="#h0-64" id="h0-64" class="d">-&apos;bison&apos; &apos;_bison&apos;
+</a><a href="#h0-65" id="h0-65" class="d">-&apos;bmake&apos; &apos;_make&apos;
+</a><a href="#h0-66" id="h0-66" class="d">-&apos;bogofilter&apos; &apos;_bogofilter&apos;
+</a><a href="#h0-67" id="h0-67" class="d">-&apos;bogotune&apos; &apos;_bogofilter&apos;
+</a><a href="#h0-68" id="h0-68" class="d">-&apos;bogoutil&apos; &apos;_bogofilter&apos;
+</a><a href="#h0-69" id="h0-69" class="d">-&apos;boot2docker&apos; &apos;_boot2docker&apos;
+</a><a href="#h0-70" id="h0-70" class="d">-&apos;bootctl&apos; &apos;_bootctl&apos;
+</a><a href="#h0-71" id="h0-71" class="d">-&apos;bower&apos; &apos;_bower&apos;
+</a><a href="#h0-72" id="h0-72" class="d">-&apos;bpython&apos; &apos;_bpython&apos;
+</a><a href="#h0-73" id="h0-73" class="d">-&apos;bpython2&apos; &apos;_bpython&apos;
+</a><a href="#h0-74" id="h0-74" class="d">-&apos;-brace-parameter-&apos; &apos;_brace_parameter&apos;
+</a><a href="#h0-75" id="h0-75" class="d">-&apos;brctl&apos; &apos;_brctl&apos;
+</a><a href="#h0-76" id="h0-76" class="d">-&apos;brew&apos; &apos;_brew&apos;
+</a><a href="#h0-77" id="h0-77" class="d">-&apos;bsdgrep&apos; &apos;_grep&apos;
+</a><a href="#h0-78" id="h0-78" class="d">-&apos;btdownloadcurses&apos; &apos;_bittorrent&apos;
+</a><a href="#h0-79" id="h0-79" class="d">-&apos;btdownloadgui&apos; &apos;_bittorrent&apos;
+</a><a href="#h0-80" id="h0-80" class="d">-&apos;btdownloadheadless&apos; &apos;_bittorrent&apos;
+</a><a href="#h0-81" id="h0-81" class="d">-&apos;btlaunchmany&apos; &apos;_bittorrent&apos;
+</a><a href="#h0-82" id="h0-82" class="d">-&apos;btlaunchmanycurses&apos; &apos;_bittorrent&apos;
+</a><a href="#h0-83" id="h0-83" class="d">-&apos;btmakemetafile&apos; &apos;_bittorrent&apos;
+</a><a href="#h0-84" id="h0-84" class="d">-&apos;btreannounce&apos; &apos;_bittorrent&apos;
+</a><a href="#h0-85" id="h0-85" class="d">-&apos;btrename&apos; &apos;_bittorrent&apos;
+</a><a href="#h0-86" id="h0-86" class="d">-&apos;btrfs&apos; &apos;_btrfs&apos;
+</a><a href="#h0-87" id="h0-87" class="d">-&apos;btshowmetainfo&apos; &apos;_bittorrent&apos;
+</a><a href="#h0-88" id="h0-88" class="d">-&apos;bttrack&apos; &apos;_bittorrent&apos;
+</a><a href="#h0-89" id="h0-89" class="d">-&apos;buildhash&apos; &apos;_ispell&apos;
+</a><a href="#h0-90" id="h0-90" class="d">-&apos;builtin&apos; &apos;_builtin&apos;
+</a><a href="#h0-91" id="h0-91" class="d">-&apos;bundle&apos; &apos;_bundle&apos;
+</a><a href="#h0-92" id="h0-92" class="d">-&apos;bunzip2&apos; &apos;_bzip2&apos;
+</a><a href="#h0-93" id="h0-93" class="d">-&apos;burst&apos; &apos;_mh&apos;
+</a><a href="#h0-94" id="h0-94" class="d">-&apos;busctl&apos; &apos;_busctl&apos;
+</a><a href="#h0-95" id="h0-95" class="d">-&apos;bzcat&apos; &apos;_bzip2&apos;
+</a><a href="#h0-96" id="h0-96" class="d">-&apos;bzip2&apos; &apos;_bzip2&apos;
+</a><a href="#h0-97" id="h0-97" class="d">-&apos;bzip2recover&apos; &apos;_bzip2&apos;
+</a><a href="#h0-98" id="h0-98" class="d">-&apos;bzr&apos; &apos;_bzr&apos;
+</a><a href="#h0-99" id="h0-99" class="d">-&apos;c++&apos; &apos;_gcc&apos;
+</a><a href="#h0-100" id="h0-100" class="d">-&apos;cabal&apos; &apos;_cabal&apos;
+</a><a href="#h0-101" id="h0-101" class="d">-&apos;cal&apos; &apos;_cal&apos;
+</a><a href="#h0-102" id="h0-102" class="d">-&apos;calendar&apos; &apos;_calendar&apos;
+</a><a href="#h0-103" id="h0-103" class="d">-&apos;cap&apos; &apos;_cap&apos;
+</a><a href="#h0-104" id="h0-104" class="d">-&apos;cask&apos; &apos;_cask&apos;
+</a><a href="#h0-105" id="h0-105" class="d">-&apos;cat&apos; &apos;_cat&apos;
+</a><a href="#h0-106" id="h0-106" class="d">-&apos;catchsegv&apos; &apos;_precommand&apos;
+</a><a href="#h0-107" id="h0-107" class="d">-&apos;cc&apos; &apos;_gcc&apos;
+</a><a href="#h0-108" id="h0-108" class="d">-&apos;ccal&apos; &apos;_ccal&apos;
+</a><a href="#h0-109" id="h0-109" class="d">-&apos;cd&apos; &apos;_cd&apos;
+</a><a href="#h0-110" id="h0-110" class="d">-&apos;cdc&apos; &apos;_sccs&apos;
+</a><a href="#h0-111" id="h0-111" class="d">-&apos;cdcd&apos; &apos;_cdcd&apos;
+</a><a href="#h0-112" id="h0-112" class="d">-&apos;cdls&apos; &apos;_cdls_popdls_pushdls&apos;
+</a><a href="#h0-113" id="h0-113" class="d">-&apos;cdr&apos; &apos;_cdr&apos;
+</a><a href="#h0-114" id="h0-114" class="d">-&apos;cdrdao&apos; &apos;_cdrdao&apos;
+</a><a href="#h0-115" id="h0-115" class="d">-&apos;cdrecord&apos; &apos;_cdrecord&apos;
+</a><a href="#h0-116" id="h0-116" class="d">-&apos;celery&apos; &apos;_celery&apos;
+</a><a href="#h0-117" id="h0-117" class="d">-&apos;certtool&apos; &apos;_gnutls&apos;
+</a><a href="#h0-118" id="h0-118" class="d">-&apos;cftp&apos; &apos;_twisted&apos;
+</a><a href="#h0-119" id="h0-119" class="d">-&apos;chage&apos; &apos;_users&apos;
+</a><a href="#h0-120" id="h0-120" class="d">-&apos;chdir&apos; &apos;_cd&apos;
+</a><a href="#h0-121" id="h0-121" class="d">-&apos;chfn&apos; &apos;_users&apos;
+</a><a href="#h0-122" id="h0-122" class="d">-&apos;chgrp&apos; &apos;_chown&apos;
+</a><a href="#h0-123" id="h0-123" class="d">-&apos;chimera&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-124" id="h0-124" class="d">-&apos;chkconfig&apos; &apos;_chkconfig&apos;
+</a><a href="#h0-125" id="h0-125" class="d">-&apos;chmod&apos; &apos;_chmod&apos;
+</a><a href="#h0-126" id="h0-126" class="d">-&apos;choc&apos; &apos;_choc&apos;
+</a><a href="#h0-127" id="h0-127" class="d">-&apos;chown&apos; &apos;_chown&apos;
+</a><a href="#h0-128" id="h0-128" class="d">-&apos;chpass&apos; &apos;_chsh&apos;
+</a><a href="#h0-129" id="h0-129" class="d">-&apos;chrt&apos; &apos;_chrt&apos;
+</a><a href="#h0-130" id="h0-130" class="d">-&apos;chsh&apos; &apos;_chsh&apos;
+</a><a href="#h0-131" id="h0-131" class="d">-&apos;ci&apos; &apos;_rcs&apos;
+</a><a href="#h0-132" id="h0-132" class="d">-&apos;ckeygen&apos; &apos;_twisted&apos;
+</a><a href="#h0-133" id="h0-133" class="d">-&apos;clang&apos; &apos;_gcc&apos;
+</a><a href="#h0-134" id="h0-134" class="d">-&apos;clang++&apos; &apos;_gcc&apos;
+</a><a href="#h0-135" id="h0-135" class="d">-&apos;clay&apos; &apos;_clay&apos;
+</a><a href="#h0-136" id="h0-136" class="d">-&apos;clear&apos; &apos;_nothing&apos;
+</a><a href="#h0-137" id="h0-137" class="d">-&apos;cmake&apos; &apos;_cmake&apos;
+</a><a href="#h0-138" id="h0-138" class="d">-&apos;cmp&apos; &apos;_cmp&apos;
+</a><a href="#h0-139" id="h0-139" class="d">-&apos;co&apos; &apos;_rcs&apos;
+</a><a href="#h0-140" id="h0-140" class="d">-&apos;coffee&apos; &apos;_coffee&apos;
+</a><a href="#h0-141" id="h0-141" class="d">-&apos;comb&apos; &apos;_sccs&apos;
+</a><a href="#h0-142" id="h0-142" class="d">-&apos;combine&apos; &apos;_imagemagick&apos;
+</a><a href="#h0-143" id="h0-143" class="d">-&apos;combinediff&apos; &apos;_patchutils&apos;
+</a><a href="#h0-144" id="h0-144" class="d">-&apos;comm&apos; &apos;_comm&apos;
+</a><a href="#h0-145" id="h0-145" class="d">-&apos;command&apos; &apos;_command&apos;
+</a><a href="#h0-146" id="h0-146" class="d">-&apos;-command-&apos; &apos;_autocd&apos;
+</a><a href="#h0-147" id="h0-147" class="d">-&apos;-command-line-&apos; &apos;_normal&apos;
+</a><a href="#h0-148" id="h0-148" class="d">-&apos;comp&apos; &apos;_mh&apos;
+</a><a href="#h0-149" id="h0-149" class="d">-&apos;compadd&apos; &apos;_compadd&apos;
+</a><a href="#h0-150" id="h0-150" class="d">-&apos;compdef&apos; &apos;_compdef&apos;
+</a><a href="#h0-151" id="h0-151" class="d">-&apos;composer&apos; &apos;_composer&apos;
+</a><a href="#h0-152" id="h0-152" class="d">-&apos;composite&apos; &apos;_imagemagick&apos;
+</a><a href="#h0-153" id="h0-153" class="d">-&apos;compress&apos; &apos;_compress&apos;
+</a><a href="#h0-154" id="h0-154" class="d">-&apos;conch&apos; &apos;_twisted&apos;
+</a><a href="#h0-155" id="h0-155" class="d">-&apos;-condition-&apos; &apos;_condition&apos;
+</a><a href="#h0-156" id="h0-156" class="d">-&apos;config.status&apos; &apos;_configure&apos;
+</a><a href="#h0-157" id="h0-157" class="d">-&apos;configure&apos; &apos;_configure&apos;
+</a><a href="#h0-158" id="h0-158" class="d">-&apos;console&apos; &apos;_console&apos;
+</a><a href="#h0-159" id="h0-159" class="d">-&apos;convert&apos; &apos;_imagemagick&apos;
+</a><a href="#h0-160" id="h0-160" class="d">-&apos;coredumpctl&apos; &apos;_coredumpctl&apos;
+</a><a href="#h0-161" id="h0-161" class="d">-&apos;cowsay&apos; &apos;_cowsay&apos;
+</a><a href="#h0-162" id="h0-162" class="d">-&apos;cowthink&apos; &apos;_cowsay&apos;
+</a><a href="#h0-163" id="h0-163" class="d">-&apos;cp&apos; &apos;_cp&apos;
+</a><a href="#h0-164" id="h0-164" class="d">-&apos;cpanm&apos; &apos;_cpanm&apos;
+</a><a href="#h0-165" id="h0-165" class="d">-&apos;cpio&apos; &apos;_cpio&apos;
+</a><a href="#h0-166" id="h0-166" class="d">-&apos;cplay&apos; &apos;_cplay&apos;
+</a><a href="#h0-167" id="h0-167" class="d">-&apos;createdb&apos; &apos;_pgsql_utils&apos;
+</a><a href="#h0-168" id="h0-168" class="d">-&apos;createuser&apos; &apos;_pgsql_utils&apos;
+</a><a href="#h0-169" id="h0-169" class="d">-&apos;crsh&apos; &apos;_cssh&apos;
+</a><a href="#h0-170" id="h0-170" class="d">-&apos;cryptsetup&apos; &apos;_cryptsetup&apos;
+</a><a href="#h0-171" id="h0-171" class="d">-&apos;csh&apos; &apos;_sh&apos;
+</a><a href="#h0-172" id="h0-172" class="d">-&apos;cssh&apos; &apos;_cssh&apos;
+</a><a href="#h0-173" id="h0-173" class="d">-&apos;curl&apos; &apos;_urls&apos;
+</a><a href="#h0-174" id="h0-174" class="d">-&apos;cut&apos; &apos;_cut&apos;
+</a><a href="#h0-175" id="h0-175" class="d">-&apos;cvs&apos; &apos;_cvs&apos;
+</a><a href="#h0-176" id="h0-176" class="d">-&apos;darcs&apos; &apos;_darcs&apos;
+</a><a href="#h0-177" id="h0-177" class="d">-&apos;date&apos; &apos;_date&apos;
+</a><a href="#h0-178" id="h0-178" class="d">-&apos;dbus-monitor&apos; &apos;_dbus&apos;
+</a><a href="#h0-179" id="h0-179" class="d">-&apos;dbus-send&apos; &apos;_dbus&apos;
+</a><a href="#h0-180" id="h0-180" class="d">-&apos;dcop&apos; &apos;_dcop&apos;
+</a><a href="#h0-181" id="h0-181" class="d">-&apos;dcopclient&apos; &apos;_dcop&apos;
+</a><a href="#h0-182" id="h0-182" class="d">-&apos;dcopfind&apos; &apos;_dcop&apos;
+</a><a href="#h0-183" id="h0-183" class="d">-&apos;dcopobject&apos; &apos;_dcop&apos;
+</a><a href="#h0-184" id="h0-184" class="d">-&apos;dcopref&apos; &apos;_dcop&apos;
+</a><a href="#h0-185" id="h0-185" class="d">-&apos;dcopstart&apos; &apos;_dcop&apos;
+</a><a href="#h0-186" id="h0-186" class="d">-&apos;dd&apos; &apos;_dd&apos;
+</a><a href="#h0-187" id="h0-187" class="d">-&apos;debuild&apos; &apos;_debuild&apos;
+</a><a href="#h0-188" id="h0-188" class="d">-&apos;declare&apos; &apos;_typeset&apos;
+</a><a href="#h0-189" id="h0-189" class="d">-&apos;-default-&apos; &apos;_default&apos;
+</a><a href="#h0-190" id="h0-190" class="d">-&apos;delta&apos; &apos;_sccs&apos;
+</a><a href="#h0-191" id="h0-191" class="d">-&apos;devtodo&apos; &apos;_devtodo&apos;
+</a><a href="#h0-192" id="h0-192" class="d">-&apos;df&apos; &apos;_df&apos;
+</a><a href="#h0-193" id="h0-193" class="d">-&apos;dget&apos; &apos;_dget&apos;
+</a><a href="#h0-194" id="h0-194" class="d">-&apos;dhclient&apos; &apos;_dhclient&apos;
+</a><a href="#h0-195" id="h0-195" class="d">-&apos;dhclient3&apos; &apos;_dhclient&apos;
+</a><a href="#h0-196" id="h0-196" class="d">-&apos;dhcpcd&apos; &apos;_dhcpcd&apos;
+</a><a href="#h0-197" id="h0-197" class="d">-&apos;dict&apos; &apos;_dict&apos;
+</a><a href="#h0-198" id="h0-198" class="d">-&apos;diff&apos; &apos;_diff&apos;
+</a><a href="#h0-199" id="h0-199" class="d">-&apos;diffstat&apos; &apos;_diffstat&apos;
+</a><a href="#h0-200" id="h0-200" class="d">-&apos;dillo&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-201" id="h0-201" class="d">-&apos;dircmp&apos; &apos;_directories&apos;
+</a><a href="#h0-202" id="h0-202" class="d">-&apos;dirs&apos; &apos;_dirs&apos;
+</a><a href="#h0-203" id="h0-203" class="d">-&apos;disable&apos; &apos;_disable&apos;
+</a><a href="#h0-204" id="h0-204" class="d">-&apos;disown&apos; &apos;_jobs_fg&apos;
+</a><a href="#h0-205" id="h0-205" class="d">-&apos;display&apos; &apos;_imagemagick&apos;
+</a><a href="#h0-206" id="h0-206" class="d">-&apos;dist&apos; &apos;_mh&apos;
+</a><a href="#h0-207" id="h0-207" class="d">-&apos;ditz&apos; &apos;_ditz&apos;
+</a><a href="#h0-208" id="h0-208" class="d">-&apos;django-admin&apos; &apos;_django&apos;
+</a><a href="#h0-209" id="h0-209" class="d">-&apos;django-admin.py&apos; &apos;_manage.py&apos;
+</a><a href="#h0-210" id="h0-210" class="d">-&apos;dmake&apos; &apos;_make&apos;
+</a><a href="#h0-211" id="h0-211" class="d">-&apos;dmidecode&apos; &apos;_dmidecode&apos;
+</a><a href="#h0-212" id="h0-212" class="d">-&apos;docker&apos; &apos;_docker&apos;
+</a><a href="#h0-213" id="h0-213" class="d">-&apos;docker-compose&apos; &apos;_docker-compose&apos;
+</a><a href="#h0-214" id="h0-214" class="d">-&apos;docker-machine&apos; &apos;_docker-machine&apos;
+</a><a href="#h0-215" id="h0-215" class="d">-&apos;docpad&apos; &apos;_docpad&apos;
+</a><a href="#h0-216" id="h0-216" class="d">-&apos;domainname&apos; &apos;_yp&apos;
+</a><a href="#h0-217" id="h0-217" class="d">-&apos;dropdb&apos; &apos;_pgsql_utils&apos;
+</a><a href="#h0-218" id="h0-218" class="d">-&apos;dropuser&apos; &apos;_pgsql_utils&apos;
+</a><a href="#h0-219" id="h0-219" class="d">-&apos;drush&apos; &apos;_drush&apos;
+</a><a href="#h0-220" id="h0-220" class="d">-&apos;dsh&apos; &apos;_dsh&apos;
+</a><a href="#h0-221" id="h0-221" class="d">-&apos;du&apos; &apos;_du&apos;
+</a><a href="#h0-222" id="h0-222" class="d">-&apos;dut&apos; &apos;_dut&apos;
+</a><a href="#h0-223" id="h0-223" class="d">-&apos;dvibook&apos; &apos;_dvi&apos;
+</a><a href="#h0-224" id="h0-224" class="d">-&apos;dviconcat&apos; &apos;_dvi&apos;
+</a><a href="#h0-225" id="h0-225" class="d">-&apos;dvicopy&apos; &apos;_dvi&apos;
+</a><a href="#h0-226" id="h0-226" class="d">-&apos;dvidvi&apos; &apos;_dvi&apos;
+</a><a href="#h0-227" id="h0-227" class="d">-&apos;dvipdf&apos; &apos;_dvi&apos;
+</a><a href="#h0-228" id="h0-228" class="d">-&apos;dvips&apos; &apos;_dvi&apos;
+</a><a href="#h0-229" id="h0-229" class="d">-&apos;dviselect&apos; &apos;_dvi&apos;
+</a><a href="#h0-230" id="h0-230" class="d">-&apos;dvitodvi&apos; &apos;_dvi&apos;
+</a><a href="#h0-231" id="h0-231" class="d">-&apos;dvitype&apos; &apos;_dvi&apos;
+</a><a href="#h0-232" id="h0-232" class="d">-&apos;dwb&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-233" id="h0-233" class="d">-&apos;dzen2&apos; &apos;_dzen2&apos;
+</a><a href="#h0-234" id="h0-234" class="d">-&apos;ecasound&apos; &apos;_ecasound&apos;
+</a><a href="#h0-235" id="h0-235" class="d">-&apos;echotc&apos; &apos;_echotc&apos;
+</a><a href="#h0-236" id="h0-236" class="d">-&apos;echoti&apos; &apos;_echoti&apos;
+</a><a href="#h0-237" id="h0-237" class="d">-&apos;egrep&apos; &apos;_grep&apos;
+</a><a href="#h0-238" id="h0-238" class="d">-&apos;elfdump&apos; &apos;_elfdump&apos;
+</a><a href="#h0-239" id="h0-239" class="d">-&apos;elinks&apos; &apos;_elinks&apos;
+</a><a href="#h0-240" id="h0-240" class="d">-&apos;elm&apos; &apos;_elm&apos;
+</a><a href="#h0-241" id="h0-241" class="d">-&apos;emulate&apos; &apos;_emulate&apos;
+</a><a href="#h0-242" id="h0-242" class="d">-&apos;emulator&apos; &apos;_emulator&apos;
+</a><a href="#h0-243" id="h0-243" class="d">-&apos;enable&apos; &apos;_enable&apos;
+</a><a href="#h0-244" id="h0-244" class="d">-&apos;enscript&apos; &apos;_enscript&apos;
+</a><a href="#h0-245" id="h0-245" class="d">-&apos;env&apos; &apos;_env&apos;
+</a><a href="#h0-246" id="h0-246" class="d">-&apos;epdfview&apos; &apos;_pdf&apos;
+</a><a href="#h0-247" id="h0-247" class="d">-&apos;epsffit&apos; &apos;_psutils&apos;
+</a><a href="#h0-248" id="h0-248" class="d">-&apos;-equal-&apos; &apos;_equal&apos;
+</a><a href="#h0-249" id="h0-249" class="d">-&apos;erb&apos; &apos;_ruby&apos;
+</a><a href="#h0-250" id="h0-250" class="d">-&apos;espeak&apos; &apos;_espeak&apos;
+</a><a href="#h0-251" id="h0-251" class="d">-&apos;etags&apos; &apos;_etags&apos;
+</a><a href="#h0-252" id="h0-252" class="d">-&apos;ethtool&apos; &apos;_ethtool&apos;
+</a><a href="#h0-253" id="h0-253" class="d">-&apos;eu-nm&apos; &apos;_nm&apos;
+</a><a href="#h0-254" id="h0-254" class="d">-&apos;eu-readelf&apos; &apos;_readelf&apos;
+</a><a href="#h0-255" id="h0-255" class="d">-&apos;eval&apos; &apos;_precommand&apos;
+</a><a href="#h0-256" id="h0-256" class="d">-&apos;eview&apos; &apos;_vim&apos;
+</a><a href="#h0-257" id="h0-257" class="d">-&apos;evim&apos; &apos;_vim&apos;
+</a><a href="#h0-258" id="h0-258" class="d">-&apos;evince&apos; &apos;_pspdf&apos;
+</a><a href="#h0-259" id="h0-259" class="d">-&apos;exec&apos; &apos;_precommand&apos;
+</a><a href="#h0-260" id="h0-260" class="d">-&apos;export&apos; &apos;_typeset&apos;
+</a><a href="#h0-261" id="h0-261" class="d">-&apos;exportfs&apos; &apos;_exportfs&apos;
+</a><a href="#h0-262" id="h0-262" class="d">-&apos;express&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-263" id="h0-263" class="d">-&apos;extcheck&apos; &apos;_java&apos;
+</a><a href="#h0-264" id="h0-264" class="d">-&apos;extractres&apos; &apos;_psutils&apos;
+</a><a href="#h0-265" id="h0-265" class="d">-&apos;fab&apos; &apos;_fab&apos;
+</a><a href="#h0-266" id="h0-266" class="d">-&apos;fakeroot&apos; &apos;_fakeroot&apos;
+</a><a href="#h0-267" id="h0-267" class="d">-&apos;false&apos; &apos;_nothing&apos;
+</a><a href="#h0-268" id="h0-268" class="d">-&apos;fc&apos; &apos;_fc&apos;
+</a><a href="#h0-269" id="h0-269" class="d">-&apos;fc-list&apos; &apos;_xft_fonts&apos;
+</a><a href="#h0-270" id="h0-270" class="d">-&apos;fc-match&apos; &apos;_xft_fonts&apos;
+</a><a href="#h0-271" id="h0-271" class="d">-&apos;feh&apos; &apos;_feh&apos;
+</a><a href="#h0-272" id="h0-272" class="d">-&apos;fetchmail&apos; &apos;_fetchmail&apos;
+</a><a href="#h0-273" id="h0-273" class="d">-&apos;ffmpeg&apos; &apos;_ffmpeg&apos;
+</a><a href="#h0-274" id="h0-274" class="d">-&apos;fg&apos; &apos;_jobs_fg&apos;
+</a><a href="#h0-275" id="h0-275" class="d">-&apos;fgrep&apos; &apos;_grep&apos;
+</a><a href="#h0-276" id="h0-276" class="d">-&apos;figlet&apos; &apos;_figlet&apos;
+</a><a href="#h0-277" id="h0-277" class="d">-&apos;filterdiff&apos; &apos;_patchutils&apos;
+</a><a href="#h0-278" id="h0-278" class="d">-&apos;find&apos; &apos;_find&apos;
+</a><a href="#h0-279" id="h0-279" class="d">-&apos;findaffix&apos; &apos;_ispell&apos;
+</a><a href="#h0-280" id="h0-280" class="d">-&apos;finger&apos; &apos;_finger&apos;
+</a><a href="#h0-281" id="h0-281" class="d">-&apos;firefox&apos; &apos;_mozilla&apos;
+</a><a href="#h0-282" id="h0-282" class="d">-&apos;-first-&apos; &apos;_first&apos;
+</a><a href="#h0-283" id="h0-283" class="d">-&apos;fixdlsrps&apos; &apos;_psutils&apos;
+</a><a href="#h0-284" id="h0-284" class="d">-&apos;fixfmps&apos; &apos;_psutils&apos;
+</a><a href="#h0-285" id="h0-285" class="d">-&apos;fixmacps&apos; &apos;_psutils&apos;
+</a><a href="#h0-286" id="h0-286" class="d">-&apos;fixpsditps&apos; &apos;_psutils&apos;
+</a><a href="#h0-287" id="h0-287" class="d">-&apos;fixpspps&apos; &apos;_psutils&apos;
+</a><a href="#h0-288" id="h0-288" class="d">-&apos;fixscribeps&apos; &apos;_psutils&apos;
+</a><a href="#h0-289" id="h0-289" class="d">-&apos;fixtpps&apos; &apos;_psutils&apos;
+</a><a href="#h0-290" id="h0-290" class="d">-&apos;fixwfwps&apos; &apos;_psutils&apos;
+</a><a href="#h0-291" id="h0-291" class="d">-&apos;fixwpps&apos; &apos;_psutils&apos;
+</a><a href="#h0-292" id="h0-292" class="d">-&apos;fixwwps&apos; &apos;_psutils&apos;
+</a><a href="#h0-293" id="h0-293" class="d">-&apos;flasher&apos; &apos;_flasher&apos;
+</a><a href="#h0-294" id="h0-294" class="d">-&apos;flex&apos; &apos;_flex&apos;
+</a><a href="#h0-295" id="h0-295" class="d">-&apos;flipdiff&apos; &apos;_patchutils&apos;
+</a><a href="#h0-296" id="h0-296" class="d">-&apos;flist&apos; &apos;_mh&apos;
+</a><a href="#h0-297" id="h0-297" class="d">-&apos;flists&apos; &apos;_mh&apos;
+</a><a href="#h0-298" id="h0-298" class="d">-&apos;float&apos; &apos;_typeset&apos;
+</a><a href="#h0-299" id="h0-299" class="d">-&apos;fmttest&apos; &apos;_mh&apos;
+</a><a href="#h0-300" id="h0-300" class="d">-&apos;fned&apos; &apos;_zed&apos;
+</a><a href="#h0-301" id="h0-301" class="d">-&apos;fnext&apos; &apos;_mh&apos;
+</a><a href="#h0-302" id="h0-302" class="d">-&apos;folder&apos; &apos;_mh&apos;
+</a><a href="#h0-303" id="h0-303" class="d">-&apos;folders&apos; &apos;_mh&apos;
+</a><a href="#h0-304" id="h0-304" class="d">-&apos;fortune&apos; &apos;_fortune&apos;
+</a><a href="#h0-305" id="h0-305" class="d">-&apos;forw&apos; &apos;_mh&apos;
+</a><a href="#h0-306" id="h0-306" class="d">-&apos;fprev&apos; &apos;_mh&apos;
+</a><a href="#h0-307" id="h0-307" class="d">-&apos;freebsd-make&apos; &apos;_make&apos;
+</a><a href="#h0-308" id="h0-308" class="d">-&apos;fsh&apos; &apos;_fsh&apos;
+</a><a href="#h0-309" id="h0-309" class="d">-&apos;ftp&apos; &apos;_hosts&apos;
+</a><a href="#h0-310" id="h0-310" class="d">-&apos;functions&apos; &apos;_typeset&apos;
+</a><a href="#h0-311" id="h0-311" class="d">-&apos;fuser&apos; &apos;_fuser&apos;
+</a><a href="#h0-312" id="h0-312" class="d">-&apos;fusermount&apos; &apos;_fusermount&apos;
+</a><a href="#h0-313" id="h0-313" class="d">-&apos;fwhois&apos; &apos;_whois&apos;
+</a><a href="#h0-314" id="h0-314" class="d">-&apos;g++&apos; &apos;_gcc&apos;
+</a><a href="#h0-315" id="h0-315" class="d">-&apos;galeon&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-316" id="h0-316" class="d">-&apos;gas&apos; &apos;_gas&apos;
+</a><a href="#h0-317" id="h0-317" class="d">-&apos;gcc&apos; &apos;_gcc&apos;
+</a><a href="#h0-318" id="h0-318" class="d">-&apos;gccgo&apos; &apos;_go&apos;
+</a><a href="#h0-319" id="h0-319" class="d">-&apos;gchmod&apos; &apos;_chmod&apos;
+</a><a href="#h0-320" id="h0-320" class="d">-&apos;gcmp&apos; &apos;_cmp&apos;
+</a><a href="#h0-321" id="h0-321" class="d">-&apos;gcomm&apos; &apos;_comm&apos;
+</a><a href="#h0-322" id="h0-322" class="d">-&apos;gcore&apos; &apos;_gcore&apos;
+</a><a href="#h0-323" id="h0-323" class="d">-&apos;gcp&apos; &apos;_cp&apos;
+</a><a href="#h0-324" id="h0-324" class="d">-&apos;gdate&apos; &apos;_date&apos;
+</a><a href="#h0-325" id="h0-325" class="d">-&apos;gdb&apos; &apos;_gdb&apos;
+</a><a href="#h0-326" id="h0-326" class="d">-&apos;gdiff&apos; &apos;_diff&apos;
+</a><a href="#h0-327" id="h0-327" class="d">-&apos;gdu&apos; &apos;_du&apos;
+</a><a href="#h0-328" id="h0-328" class="d">-&apos;geany&apos; &apos;_geany&apos;
+</a><a href="#h0-329" id="h0-329" class="d">-&apos;gem&apos; &apos;_gem&apos;
+</a><a href="#h0-330" id="h0-330" class="d">-&apos;gem1.9&apos; &apos;_gem&apos;
+</a><a href="#h0-331" id="h0-331" class="d">-&apos;genisoimage&apos; &apos;_genisoimage&apos;
+</a><a href="#h0-332" id="h0-332" class="d">-&apos;get&apos; &apos;_sccs&apos;
+</a><a href="#h0-333" id="h0-333" class="d">-&apos;getafm&apos; &apos;_psutils&apos;
+</a><a href="#h0-334" id="h0-334" class="d">-&apos;getconf&apos; &apos;_getconf&apos;
+</a><a href="#h0-335" id="h0-335" class="d">-&apos;getent&apos; &apos;_getent&apos;
+</a><a href="#h0-336" id="h0-336" class="d">-&apos;getfacl&apos; &apos;_getfacl&apos;
+</a><a href="#h0-337" id="h0-337" class="d">-&apos;getfacl.exe&apos; &apos;_getfacl&apos;
+</a><a href="#h0-338" id="h0-338" class="d">-&apos;getfattr&apos; &apos;_attr&apos;
+</a><a href="#h0-339" id="h0-339" class="d">-&apos;getmail&apos; &apos;_getmail&apos;
+</a><a href="#h0-340" id="h0-340" class="d">-&apos;getopts&apos; &apos;_vars&apos;
+</a><a href="#h0-341" id="h0-341" class="d">-&apos;gex&apos; &apos;_vim&apos;
+</a><a href="#h0-342" id="h0-342" class="d">-&apos;gfind&apos; &apos;_find&apos;
+</a><a href="#h0-343" id="h0-343" class="d">-&apos;ggv&apos; &apos;_gnome-gv&apos;
+</a><a href="#h0-344" id="h0-344" class="d">-&apos;gh&apos; &apos;_github&apos;
+</a><a href="#h0-345" id="h0-345" class="d">-&apos;ghc&apos; &apos;_ghc&apos;
+</a><a href="#h0-346" id="h0-346" class="d">-&apos;ghci&apos; &apos;_ghc&apos;
+</a><a href="#h0-347" id="h0-347" class="d">-&apos;ghc-pkg&apos; &apos;_ghc&apos;
+</a><a href="#h0-348" id="h0-348" class="d">-&apos;ghostscript&apos; &apos;_gs&apos;
+</a><a href="#h0-349" id="h0-349" class="d">-&apos;ghostview&apos; &apos;_pspdf&apos;
+</a><a href="#h0-350" id="h0-350" class="d">-&apos;gid&apos; &apos;_id&apos;
+</a><a href="#h0-351" id="h0-351" class="d">-&apos;gist&apos; &apos;_gist&apos;
+</a><a href="#h0-352" id="h0-352" class="d">-&apos;git&apos; &apos;_git&apos;
+</a><a href="#h0-353" id="h0-353" class="d">-&apos;git-cvsserver&apos; &apos;_git&apos;
+</a><a href="#h0-354" id="h0-354" class="d">-&apos;git-flow&apos; &apos;_git-flow&apos;
+</a><a href="#h0-355" id="h0-355" class="d">-&apos;github&apos; &apos;_github&apos;
+</a><a href="#h0-356" id="h0-356" class="d">-&apos;gitk&apos; &apos;_git&apos;
+</a><a href="#h0-357" id="h0-357" class="d">-&apos;git-pulls&apos; &apos;_git-pulls&apos;
+</a><a href="#h0-358" id="h0-358" class="d">-&apos;git-receive-pack&apos; &apos;_git&apos;
+</a><a href="#h0-359" id="h0-359" class="d">-&apos;git-shell&apos; &apos;_git&apos;
+</a><a href="#h0-360" id="h0-360" class="d">-&apos;git-upload-archive&apos; &apos;_git&apos;
+</a><a href="#h0-361" id="h0-361" class="d">-&apos;git-upload-pack&apos; &apos;_git&apos;
+</a><a href="#h0-362" id="h0-362" class="d">-&apos;git-wtf&apos; &apos;_git-wtf&apos;
+</a><a href="#h0-363" id="h0-363" class="d">-&apos;gjoin&apos; &apos;_join&apos;
+</a><a href="#h0-364" id="h0-364" class="d">-&apos;glances&apos; &apos;_glances&apos;
+</a><a href="#h0-365" id="h0-365" class="d">-&apos;gln&apos; &apos;_ln&apos;
+</a><a href="#h0-366" id="h0-366" class="d">-&apos;global&apos; &apos;_global&apos;
+</a><a href="#h0-367" id="h0-367" class="d">-&apos;gls&apos; &apos;_ls&apos;
+</a><a href="#h0-368" id="h0-368" class="d">-&apos;gm&apos; &apos;_graphicsmagick&apos;
+</a><a href="#h0-369" id="h0-369" class="d">-&apos;gmake&apos; &apos;_make&apos;
+</a><a href="#h0-370" id="h0-370" class="d">-&apos;gmd5sum&apos; &apos;_md5sum&apos;
+</a><a href="#h0-371" id="h0-371" class="d">-&apos;gmkdir&apos; &apos;_mkdir&apos;
+</a><a href="#h0-372" id="h0-372" class="d">-&apos;gmplayer&apos; &apos;_mplayer&apos;
+</a><a href="#h0-373" id="h0-373" class="d">-&apos;gnome-gv&apos; &apos;_gnome-gv&apos;
+</a><a href="#h0-374" id="h0-374" class="d">-&apos;gnupod_addsong&apos; &apos;_gnupod&apos;
+</a><a href="#h0-375" id="h0-375" class="d">-&apos;gnupod_addsong.pl&apos; &apos;_gnupod&apos;
+</a><a href="#h0-376" id="h0-376" class="d">-&apos;gnupod_check&apos; &apos;_gnupod&apos;
+</a><a href="#h0-377" id="h0-377" class="d">-&apos;gnupod_check.pl&apos; &apos;_gnupod&apos;
+</a><a href="#h0-378" id="h0-378" class="d">-&apos;gnupod_INIT&apos; &apos;_gnupod&apos;
+</a><a href="#h0-379" id="h0-379" class="d">-&apos;gnupod_INIT.pl&apos; &apos;_gnupod&apos;
+</a><a href="#h0-380" id="h0-380" class="d">-&apos;gnupod_search&apos; &apos;_gnupod&apos;
+</a><a href="#h0-381" id="h0-381" class="d">-&apos;gnupod_search.pl&apos; &apos;_gnupod&apos;
+</a><a href="#h0-382" id="h0-382" class="d">-&apos;gnutls-cli&apos; &apos;_gnutls&apos;
+</a><a href="#h0-383" id="h0-383" class="d">-&apos;gnutls-cli-debug&apos; &apos;_gnutls&apos;
+</a><a href="#h0-384" id="h0-384" class="d">-&apos;god&apos; &apos;_od&apos;
+</a><a href="#h0-385" id="h0-385" class="d">-&apos;gofmt&apos; &apos;_go&apos;
+</a><a href="#h0-386" id="h0-386" class="d">-&apos;google&apos; &apos;_google&apos;
+</a><a href="#h0-387" id="h0-387" class="d">-&apos;gpatch&apos; &apos;_patch&apos;
+</a><a href="#h0-388" id="h0-388" class="d">-&apos;gpg&apos; &apos;_gpg&apos;
+</a><a href="#h0-389" id="h0-389" class="d">-&apos;gpg2&apos; &apos;_gpg&apos;
+</a><a href="#h0-390" id="h0-390" class="d">-&apos;gpgv&apos; &apos;_gpg&apos;
+</a><a href="#h0-391" id="h0-391" class="d">-&apos;gpg-zip&apos; &apos;_gpg&apos;
+</a><a href="#h0-392" id="h0-392" class="d">-&apos;gphoto2&apos; &apos;_gphoto2&apos;
+</a><a href="#h0-393" id="h0-393" class="d">-&apos;gprof&apos; &apos;_gprof&apos;
+</a><a href="#h0-394" id="h0-394" class="d">-&apos;gqview&apos; &apos;_gqview&apos;
+</a><a href="#h0-395" id="h0-395" class="d">-&apos;gradle&apos; &apos;_gradle&apos;
+</a><a href="#h0-396" id="h0-396" class="d">-&apos;gradlew&apos; &apos;_gradle&apos;
+</a><a href="#h0-397" id="h0-397" class="d">-&apos;grail&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-398" id="h0-398" class="d">-&apos;grep&apos; &apos;_grep&apos;
+</a><a href="#h0-399" id="h0-399" class="d">-&apos;grepdiff&apos; &apos;_patchutils&apos;
+</a><a href="#h0-400" id="h0-400" class="d">-&apos;grm&apos; &apos;_rm&apos;
+</a><a href="#h0-401" id="h0-401" class="d">-&apos;groff&apos; &apos;_groff&apos;
+</a><a href="#h0-402" id="h0-402" class="d">-&apos;groupadd&apos; &apos;_user_admin&apos;
+</a><a href="#h0-403" id="h0-403" class="d">-&apos;groupdel&apos; &apos;_groups&apos;
+</a><a href="#h0-404" id="h0-404" class="d">-&apos;groupmod&apos; &apos;_user_admin&apos;
+</a><a href="#h0-405" id="h0-405" class="d">-&apos;groups&apos; &apos;_users&apos;
+</a><a href="#h0-406" id="h0-406" class="d">-&apos;growisofs&apos; &apos;_growisofs&apos;
+</a><a href="#h0-407" id="h0-407" class="d">-&apos;gs&apos; &apos;_gs&apos;
+</a><a href="#h0-408" id="h0-408" class="d">-&apos;gsbj&apos; &apos;_pspdf&apos;
+</a><a href="#h0-409" id="h0-409" class="d">-&apos;gsdj&apos; &apos;_pspdf&apos;
+</a><a href="#h0-410" id="h0-410" class="d">-&apos;gsdj500&apos; &apos;_pspdf&apos;
+</a><a href="#h0-411" id="h0-411" class="d">-&apos;gsed&apos; &apos;_sed&apos;
+</a><a href="#h0-412" id="h0-412" class="d">-&apos;gslj&apos; &apos;_pspdf&apos;
+</a><a href="#h0-413" id="h0-413" class="d">-&apos;gslp&apos; &apos;_pspdf&apos;
+</a><a href="#h0-414" id="h0-414" class="d">-&apos;gsnd&apos; &apos;_pspdf&apos;
+</a><a href="#h0-415" id="h0-415" class="d">-&apos;gsort&apos; &apos;_sort&apos;
+</a><a href="#h0-416" id="h0-416" class="d">-&apos;gtar&apos; &apos;_tar&apos;
+</a><a href="#h0-417" id="h0-417" class="d">-&apos;guilt&apos; &apos;_guilt&apos;
+</a><a href="#h0-418" id="h0-418" class="d">-&apos;guilt-add&apos; &apos;_guilt&apos;
+</a><a href="#h0-419" id="h0-419" class="d">-&apos;guilt-applied&apos; &apos;_guilt&apos;
+</a><a href="#h0-420" id="h0-420" class="d">-&apos;guilt-delete&apos; &apos;_guilt&apos;
+</a><a href="#h0-421" id="h0-421" class="d">-&apos;guilt-files&apos; &apos;_guilt&apos;
+</a><a href="#h0-422" id="h0-422" class="d">-&apos;guilt-fold&apos; &apos;_guilt&apos;
+</a><a href="#h0-423" id="h0-423" class="d">-&apos;guilt-fork&apos; &apos;_guilt&apos;
+</a><a href="#h0-424" id="h0-424" class="d">-&apos;guilt-header&apos; &apos;_guilt&apos;
+</a><a href="#h0-425" id="h0-425" class="d">-&apos;guilt-help&apos; &apos;_guilt&apos;
+</a><a href="#h0-426" id="h0-426" class="d">-&apos;guilt-import&apos; &apos;_guilt&apos;
+</a><a href="#h0-427" id="h0-427" class="d">-&apos;guilt-import-commit&apos; &apos;_guilt&apos;
+</a><a href="#h0-428" id="h0-428" class="d">-&apos;guilt-init&apos; &apos;_guilt&apos;
+</a><a href="#h0-429" id="h0-429" class="d">-&apos;guilt-new&apos; &apos;_guilt&apos;
+</a><a href="#h0-430" id="h0-430" class="d">-&apos;guilt-next&apos; &apos;_guilt&apos;
+</a><a href="#h0-431" id="h0-431" class="d">-&apos;guilt-patchbomb&apos; &apos;_guilt&apos;
+</a><a href="#h0-432" id="h0-432" class="d">-&apos;guilt-pop&apos; &apos;_guilt&apos;
+</a><a href="#h0-433" id="h0-433" class="d">-&apos;guilt-prev&apos; &apos;_guilt&apos;
+</a><a href="#h0-434" id="h0-434" class="d">-&apos;guilt-push&apos; &apos;_guilt&apos;
+</a><a href="#h0-435" id="h0-435" class="d">-&apos;guilt-rebase&apos; &apos;_guilt&apos;
+</a><a href="#h0-436" id="h0-436" class="d">-&apos;guilt-refresh&apos; &apos;_guilt&apos;
+</a><a href="#h0-437" id="h0-437" class="d">-&apos;guilt-rm&apos; &apos;_guilt&apos;
+</a><a href="#h0-438" id="h0-438" class="d">-&apos;guilt-series&apos; &apos;_guilt&apos;
+</a><a href="#h0-439" id="h0-439" class="d">-&apos;guilt-status&apos; &apos;_guilt&apos;
+</a><a href="#h0-440" id="h0-440" class="d">-&apos;guilt-top&apos; &apos;_guilt&apos;
+</a><a href="#h0-441" id="h0-441" class="d">-&apos;guilt-unapplied&apos; &apos;_guilt&apos;
+</a><a href="#h0-442" id="h0-442" class="d">-&apos;guniq&apos; &apos;_uniq&apos;
+</a><a href="#h0-443" id="h0-443" class="d">-&apos;gunzip&apos; &apos;_gzip&apos;
+</a><a href="#h0-444" id="h0-444" class="d">-&apos;gv&apos; &apos;_gv&apos;
+</a><a href="#h0-445" id="h0-445" class="d">-&apos;gview&apos; &apos;_vim&apos;
+</a><a href="#h0-446" id="h0-446" class="d">-&apos;gvim&apos; &apos;_vim&apos;
+</a><a href="#h0-447" id="h0-447" class="d">-&apos;gvimdiff&apos; &apos;_vim&apos;
+</a><a href="#h0-448" id="h0-448" class="d">-&apos;gwc&apos; &apos;_wc&apos;
+</a><a href="#h0-449" id="h0-449" class="d">-&apos;gxargs&apos; &apos;_xargs&apos;
+</a><a href="#h0-450" id="h0-450" class="d">-&apos;gzcat&apos; &apos;_gzip&apos;
+</a><a href="#h0-451" id="h0-451" class="d">-&apos;gzilla&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-452" id="h0-452" class="d">-&apos;gzip&apos; &apos;_gzip&apos;
+</a><a href="#h0-453" id="h0-453" class="d">-&apos;hash&apos; &apos;_hash&apos;
+</a><a href="#h0-454" id="h0-454" class="d">-&apos;help&apos; &apos;_sccs&apos;
+</a><a href="#h0-455" id="h0-455" class="d">-&apos;heroku&apos; &apos;_heroku&apos;
+</a><a href="#h0-456" id="h0-456" class="d">-&apos;hg&apos; &apos;_hg&apos;
+</a><a href="#h0-457" id="h0-457" class="d">-&apos;hilite&apos; &apos;_precommand&apos;
+</a><a href="#h0-458" id="h0-458" class="d">-&apos;history&apos; &apos;_fc&apos;
+</a><a href="#h0-459" id="h0-459" class="d">-&apos;hledger&apos; &apos;_hledger&apos;
+</a><a href="#h0-460" id="h0-460" class="d">-&apos;host&apos; &apos;_hosts&apos;
+</a><a href="#h0-461" id="h0-461" class="d">-&apos;hostnamectl&apos; &apos;_hostnamectl&apos;
+</a><a href="#h0-462" id="h0-462" class="d">-&apos;hotjava&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-463" id="h0-463" class="d">-&apos;http&apos; &apos;_httpie&apos;
+</a><a href="#h0-464" id="h0-464" class="d">-&apos;iceweasel&apos; &apos;_mozilla&apos;
+</a><a href="#h0-465" id="h0-465" class="d">-&apos;icombine&apos; &apos;_ispell&apos;
+</a><a href="#h0-466" id="h0-466" class="d">-&apos;iconv&apos; &apos;_iconv&apos;
+</a><a href="#h0-467" id="h0-467" class="d">-&apos;id&apos; &apos;_id&apos;
+</a><a href="#h0-468" id="h0-468" class="d">-&apos;id3&apos; &apos;_id3&apos;
+</a><a href="#h0-469" id="h0-469" class="d">-&apos;id3v2&apos; &apos;_id3v2&apos;
+</a><a href="#h0-470" id="h0-470" class="d">-&apos;identify&apos; &apos;_imagemagick&apos;
+</a><a href="#h0-471" id="h0-471" class="d">-&apos;ifconfig&apos; &apos;_ifconfig&apos;
+</a><a href="#h0-472" id="h0-472" class="d">-&apos;ifdown&apos; &apos;_net_interfaces&apos;
+</a><a href="#h0-473" id="h0-473" class="d">-&apos;iftop&apos; &apos;_iftop&apos;
+</a><a href="#h0-474" id="h0-474" class="d">-&apos;ifup&apos; &apos;_net_interfaces&apos;
+</a><a href="#h0-475" id="h0-475" class="d">-&apos;ijoin&apos; &apos;_ispell&apos;
+</a><a href="#h0-476" id="h0-476" class="d">-&apos;import&apos; &apos;_imagemagick&apos;
+</a><a href="#h0-477" id="h0-477" class="d">-&apos;inc&apos; &apos;_mh&apos;
+</a><a href="#h0-478" id="h0-478" class="d">-&apos;includeres&apos; &apos;_psutils&apos;
+</a><a href="#h0-479" id="h0-479" class="d">-&apos;info&apos; &apos;_texinfo&apos;
+</a><a href="#h0-480" id="h0-480" class="d">-&apos;infocmp&apos; &apos;_terminals&apos;
+</a><a href="#h0-481" id="h0-481" class="d">-&apos;initctl&apos; &apos;_initctl&apos;
+</a><a href="#h0-482" id="h0-482" class="d">-&apos;initdb&apos; &apos;_pgsql_utils&apos;
+</a><a href="#h0-483" id="h0-483" class="d">-&apos;insmod&apos; &apos;_modutils&apos;
+</a><a href="#h0-484" id="h0-484" class="d">-&apos;install-info&apos; &apos;_texinfo&apos;
+</a><a href="#h0-485" id="h0-485" class="d">-&apos;integer&apos; &apos;_typeset&apos;
+</a><a href="#h0-486" id="h0-486" class="d">-&apos;interdiff&apos; &apos;_patchutils&apos;
+</a><a href="#h0-487" id="h0-487" class="d">-&apos;ionice&apos; &apos;_ionice&apos;
+</a><a href="#h0-488" id="h0-488" class="d">-&apos;ip&apos; &apos;_ip&apos;
+</a><a href="#h0-489" id="h0-489" class="d">-&apos;ipset&apos; &apos;_ipset&apos;
+</a><a href="#h0-490" id="h0-490" class="d">-&apos;iptables&apos; &apos;_iptables&apos;
+</a><a href="#h0-491" id="h0-491" class="d">-&apos;iptables-restore&apos; &apos;_iptables&apos;
+</a><a href="#h0-492" id="h0-492" class="d">-&apos;iptables-save&apos; &apos;_iptables&apos;
+</a><a href="#h0-493" id="h0-493" class="d">-&apos;irb&apos; &apos;_ruby&apos;
+</a><a href="#h0-494" id="h0-494" class="d">-&apos;irssi&apos; &apos;_irssi&apos;
+</a><a href="#h0-495" id="h0-495" class="d">-&apos;ispell&apos; &apos;_ispell&apos;
+</a><a href="#h0-496" id="h0-496" class="d">-&apos;iw&apos; &apos;_iw&apos;
+</a><a href="#h0-497" id="h0-497" class="d">-&apos;iwconfig&apos; &apos;_iwconfig&apos;
+</a><a href="#h0-498" id="h0-498" class="d">-&apos;jadetex&apos; &apos;_tex&apos;
+</a><a href="#h0-499" id="h0-499" class="d">-&apos;jar&apos; &apos;_java&apos;
+</a><a href="#h0-500" id="h0-500" class="d">-&apos;jarsigner&apos; &apos;_java&apos;
+</a><a href="#h0-501" id="h0-501" class="d">-&apos;java&apos; &apos;_java&apos;
+</a><a href="#h0-502" id="h0-502" class="d">-&apos;javac&apos; &apos;_java&apos;
+</a><a href="#h0-503" id="h0-503" class="d">-&apos;javadoc&apos; &apos;_java&apos;
+</a><a href="#h0-504" id="h0-504" class="d">-&apos;javah&apos; &apos;_java&apos;
+</a><a href="#h0-505" id="h0-505" class="d">-&apos;javap&apos; &apos;_java&apos;
+</a><a href="#h0-506" id="h0-506" class="d">-&apos;jdb&apos; &apos;_java&apos;
+</a><a href="#h0-507" id="h0-507" class="d">-&apos;jekyll&apos; &apos;_jekyll&apos;
+</a><a href="#h0-508" id="h0-508" class="d">-&apos;jmeter&apos; &apos;_jmeter&apos;
+</a><a href="#h0-509" id="h0-509" class="d">-&apos;jmeter-plugins&apos; &apos;_jmeter-plugins&apos;
+</a><a href="#h0-510" id="h0-510" class="d">-&apos;jobs&apos; &apos;_jobs_builtin&apos;
+</a><a href="#h0-511" id="h0-511" class="d">-&apos;joe&apos; &apos;_joe&apos;
+</a><a href="#h0-512" id="h0-512" class="d">-&apos;join&apos; &apos;_join&apos;
+</a><a href="#h0-513" id="h0-513" class="d">-&apos;jonas&apos; &apos;_jonas&apos;
+</a><a href="#h0-514" id="h0-514" class="d">-&apos;journalctl&apos; &apos;_journalctl&apos;
+</a><a href="#h0-515" id="h0-515" class="d">-&apos;jq&apos; &apos;_jq&apos;
+</a><a href="#h0-516" id="h0-516" class="d">-&apos;kernel-install&apos; &apos;_kernel-install&apos;
+</a><a href="#h0-517" id="h0-517" class="d">-&apos;keytool&apos; &apos;_java&apos;
+</a><a href="#h0-518" id="h0-518" class="d">-&apos;kfmclient&apos; &apos;_kfmclient&apos;
+</a><a href="#h0-519" id="h0-519" class="d">-&apos;kill&apos; &apos;_kill&apos;
+</a><a href="#h0-520" id="h0-520" class="d">-&apos;killall&apos; &apos;_killall&apos;
+</a><a href="#h0-521" id="h0-521" class="d">-&apos;killall5&apos; &apos;_killall&apos;
+</a><a href="#h0-522" id="h0-522" class="d">-&apos;kioclient&apos; &apos;_kfmclient&apos;
+</a><a href="#h0-523" id="h0-523" class="d">-&apos;kitchen&apos; &apos;_kitchen&apos;
+</a><a href="#h0-524" id="h0-524" class="d">-&apos;knife&apos; &apos;_knife&apos;
+</a><a href="#h0-525" id="h0-525" class="d">-&apos;knock&apos; &apos;_knock&apos;
+</a><a href="#h0-526" id="h0-526" class="d">-&apos;konqueror&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-527" id="h0-527" class="d">-&apos;kpdf&apos; &apos;_pdf&apos;
+</a><a href="#h0-528" id="h0-528" class="d">-&apos;ksh&apos; &apos;_sh&apos;
+</a><a href="#h0-529" id="h0-529" class="d">-&apos;kvno&apos; &apos;_kvno&apos;
+</a><a href="#h0-530" id="h0-530" class="d">-&apos;last&apos; &apos;_last&apos;
+</a><a href="#h0-531" id="h0-531" class="d">-&apos;lastb&apos; &apos;_last&apos;
+</a><a href="#h0-532" id="h0-532" class="d">-&apos;latex&apos; &apos;_tex&apos;
+</a><a href="#h0-533" id="h0-533" class="d">-&apos;latexmk&apos; &apos;_tex&apos;
+</a><a href="#h0-534" id="h0-534" class="d">-&apos;ldd&apos; &apos;_ldd&apos;
+</a><a href="#h0-535" id="h0-535" class="d">-&apos;lein&apos; &apos;_lein&apos;
+</a><a href="#h0-536" id="h0-536" class="d">-&apos;less&apos; &apos;_less&apos;
+</a><a href="#h0-537" id="h0-537" class="d">-&apos;let&apos; &apos;_math&apos;
+</a><a href="#h0-538" id="h0-538" class="d">-&apos;lftp&apos; &apos;_ncftp&apos;
+</a><a href="#h0-539" id="h0-539" class="d">-&apos;lha&apos; &apos;_lha&apos;
+</a><a href="#h0-540" id="h0-540" class="d">-&apos;light&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-541" id="h0-541" class="d">-&apos;limit&apos; &apos;_limit&apos;
+</a><a href="#h0-542" id="h0-542" class="d">-&apos;lin&apos; &apos;_lunar&apos;
+</a><a href="#h0-543" id="h0-543" class="d">-&apos;links&apos; &apos;_links&apos;
+</a><a href="#h0-544" id="h0-544" class="d">-&apos;linux&apos; &apos;_uml&apos;
+</a><a href="#h0-545" id="h0-545" class="d">-&apos;llvm-g++&apos; &apos;_gcc&apos;
+</a><a href="#h0-546" id="h0-546" class="d">-&apos;llvm-gcc&apos; &apos;_gcc&apos;
+</a><a href="#h0-547" id="h0-547" class="d">-&apos;ln&apos; &apos;_ln&apos;
+</a><a href="#h0-548" id="h0-548" class="d">-&apos;loadkeys&apos; &apos;_loadkeys&apos;
+</a><a href="#h0-549" id="h0-549" class="d">-&apos;local&apos; &apos;_typeset&apos;
+</a><a href="#h0-550" id="h0-550" class="d">-&apos;localectl&apos; &apos;_localectl&apos;
+</a><a href="#h0-551" id="h0-551" class="d">-&apos;locate&apos; &apos;_locate&apos;
+</a><a href="#h0-552" id="h0-552" class="d">-&apos;log&apos; &apos;_nothing&apos;
+</a><a href="#h0-553" id="h0-553" class="d">-&apos;logger&apos; &apos;_logger&apos;
+</a><a href="#h0-554" id="h0-554" class="d">-&apos;loginctl&apos; &apos;_loginctl&apos;
+</a><a href="#h0-555" id="h0-555" class="d">-&apos;logname&apos; &apos;_nothing&apos;
+</a><a href="#h0-556" id="h0-556" class="d">-&apos;look&apos; &apos;_look&apos;
+</a><a href="#h0-557" id="h0-557" class="d">-&apos;lore&apos; &apos;_twisted&apos;
+</a><a href="#h0-558" id="h0-558" class="d">-&apos;losetup&apos; &apos;_losetup&apos;
+</a><a href="#h0-559" id="h0-559" class="d">-&apos;lp&apos; &apos;_lp&apos;
+</a><a href="#h0-560" id="h0-560" class="d">-&apos;lpadmin&apos; &apos;_lp&apos;
+</a><a href="#h0-561" id="h0-561" class="d">-&apos;lpinfo&apos; &apos;_lp&apos;
+</a><a href="#h0-562" id="h0-562" class="d">-&apos;lpoptions&apos; &apos;_lp&apos;
+</a><a href="#h0-563" id="h0-563" class="d">-&apos;lpq&apos; &apos;_lp&apos;
+</a><a href="#h0-564" id="h0-564" class="d">-&apos;lpr&apos; &apos;_lp&apos;
+</a><a href="#h0-565" id="h0-565" class="d">-&apos;lprm&apos; &apos;_lp&apos;
+</a><a href="#h0-566" id="h0-566" class="d">-&apos;lpstat&apos; &apos;_lp&apos;
+</a><a href="#h0-567" id="h0-567" class="d">-&apos;lrm&apos; &apos;_lunar&apos;
+</a><a href="#h0-568" id="h0-568" class="d">-&apos;ls&apos; &apos;_ls&apos;
+</a><a href="#h0-569" id="h0-569" class="d">-&apos;lsdiff&apos; &apos;_patchutils&apos;
+</a><a href="#h0-570" id="h0-570" class="d">-&apos;lsinitcpio&apos; &apos;_mkinitcpio&apos;
+</a><a href="#h0-571" id="h0-571" class="d">-&apos;lsmod&apos; &apos;_modutils&apos;
+</a><a href="#h0-572" id="h0-572" class="d">-&apos;lsof&apos; &apos;_lsof&apos;
+</a><a href="#h0-573" id="h0-573" class="d">-&apos;lsusb&apos; &apos;_lsusb&apos;
+</a><a href="#h0-574" id="h0-574" class="d">-&apos;lunar&apos; &apos;_lunar&apos;
+</a><a href="#h0-575" id="h0-575" class="d">-&apos;lunchy&apos; &apos;_lunchy&apos;
+</a><a href="#h0-576" id="h0-576" class="d">-&apos;lvu&apos; &apos;_lunar&apos;
+</a><a href="#h0-577" id="h0-577" class="d">-&apos;lynx&apos; &apos;_lynx&apos;
+</a><a href="#h0-578" id="h0-578" class="d">-&apos;lzcat&apos; &apos;_xz&apos;
+</a><a href="#h0-579" id="h0-579" class="d">-&apos;lzma&apos; &apos;_xz&apos;
+</a><a href="#h0-580" id="h0-580" class="d">-&apos;lzop&apos; &apos;_lzop&apos;
+</a><a href="#h0-581" id="h0-581" class="d">-&apos;macgem&apos; &apos;_gem&apos;
+</a><a href="#h0-582" id="h0-582" class="d">-&apos;machinectl&apos; &apos;_machinectl&apos;
+</a><a href="#h0-583" id="h0-583" class="d">-&apos;mail&apos; &apos;_mail&apos;
+</a><a href="#h0-584" id="h0-584" class="d">-&apos;Mail&apos; &apos;_mail&apos;
+</a><a href="#h0-585" id="h0-585" class="d">-&apos;mailx&apos; &apos;_mail&apos;
+</a><a href="#h0-586" id="h0-586" class="d">-&apos;make&apos; &apos;_make&apos;
+</a><a href="#h0-587" id="h0-587" class="d">-&apos;makeinfo&apos; &apos;_texinfo&apos;
+</a><a href="#h0-588" id="h0-588" class="d">-&apos;makepkg&apos; &apos;_pacman&apos;
+</a><a href="#h0-589" id="h0-589" class="d">-&apos;man&apos; &apos;_man&apos;
+</a><a href="#h0-590" id="h0-590" class="d">-&apos;manage.py&apos; &apos;_manage.py&apos;
+</a><a href="#h0-591" id="h0-591" class="d">-&apos;manhole&apos; &apos;_twisted&apos;
+</a><a href="#h0-592" id="h0-592" class="d">-&apos;mark&apos; &apos;_mh&apos;
+</a><a href="#h0-593" id="h0-593" class="d">-&apos;-math-&apos; &apos;_math&apos;
+</a><a href="#h0-594" id="h0-594" class="d">-&apos;matlab&apos; &apos;_matlab&apos;
+</a><a href="#h0-595" id="h0-595" class="d">-&apos;mattrib&apos; &apos;_mtools&apos;
+</a><a href="#h0-596" id="h0-596" class="d">-&apos;mcd&apos; &apos;_mtools&apos;
+</a><a href="#h0-597" id="h0-597" class="d">-&apos;mcopy&apos; &apos;_mtools&apos;
+</a><a href="#h0-598" id="h0-598" class="d">-&apos;md5sum&apos; &apos;_md5sum&apos;
+</a><a href="#h0-599" id="h0-599" class="d">-&apos;mdadm&apos; &apos;_mdadm&apos;
+</a><a href="#h0-600" id="h0-600" class="d">-&apos;mdel&apos; &apos;_mtools&apos;
+</a><a href="#h0-601" id="h0-601" class="d">-&apos;mdeltree&apos; &apos;_mtools&apos;
+</a><a href="#h0-602" id="h0-602" class="d">-&apos;mdir&apos; &apos;_mtools&apos;
+</a><a href="#h0-603" id="h0-603" class="d">-&apos;mdu&apos; &apos;_mtools&apos;
+</a><a href="#h0-604" id="h0-604" class="d">-&apos;mencal&apos; &apos;_mencal&apos;
+</a><a href="#h0-605" id="h0-605" class="d">-&apos;mere&apos; &apos;_mere&apos;
+</a><a href="#h0-606" id="h0-606" class="d">-&apos;merge&apos; &apos;_rcs&apos;
+</a><a href="#h0-607" id="h0-607" class="d">-&apos;metaflac&apos; &apos;_metaflac&apos;
+</a><a href="#h0-608" id="h0-608" class="d">-&apos;mformat&apos; &apos;_mtools&apos;
+</a><a href="#h0-609" id="h0-609" class="d">-&apos;mgv&apos; &apos;_pspdf&apos;
+</a><a href="#h0-610" id="h0-610" class="d">-&apos;mhfixmsg&apos; &apos;_mh&apos;
+</a><a href="#h0-611" id="h0-611" class="d">-&apos;mhlist&apos; &apos;_mh&apos;
+</a><a href="#h0-612" id="h0-612" class="d">-&apos;mhmail&apos; &apos;_mh&apos;
+</a><a href="#h0-613" id="h0-613" class="d">-&apos;mhn&apos; &apos;_mh&apos;
+</a><a href="#h0-614" id="h0-614" class="d">-&apos;mhparam&apos; &apos;_mh&apos;
+</a><a href="#h0-615" id="h0-615" class="d">-&apos;mhpath&apos; &apos;_mh&apos;
+</a><a href="#h0-616" id="h0-616" class="d">-&apos;mhshow&apos; &apos;_mh&apos;
+</a><a href="#h0-617" id="h0-617" class="d">-&apos;mhstore&apos; &apos;_mh&apos;
+</a><a href="#h0-618" id="h0-618" class="d">-&apos;middleman&apos; &apos;_middleman&apos;
+</a><a href="#h0-619" id="h0-619" class="d">-&apos;mii-tool&apos; &apos;_mii-tool&apos;
+</a><a href="#h0-620" id="h0-620" class="d">-&apos;mina&apos; &apos;_mina&apos;
+</a><a href="#h0-621" id="h0-621" class="d">-&apos;mkdcd&apos; &apos;_mkdcd&apos;
+</a><a href="#h0-622" id="h0-622" class="d">-&apos;mkdir&apos; &apos;_mkdir&apos;
+</a><a href="#h0-623" id="h0-623" class="d">-&apos;mkinitcpio&apos; &apos;_mkinitcpio&apos;
+</a><a href="#h0-624" id="h0-624" class="d">-&apos;mkisofs&apos; &apos;_growisofs&apos;
+</a><a href="#h0-625" id="h0-625" class="d">-&apos;mktunes&apos; &apos;_gnupod&apos;
+</a><a href="#h0-626" id="h0-626" class="d">-&apos;mktunes.pl&apos; &apos;_gnupod&apos;
+</a><a href="#h0-627" id="h0-627" class="d">-&apos;mlabel&apos; &apos;_mtools&apos;
+</a><a href="#h0-628" id="h0-628" class="d">-&apos;mlocate&apos; &apos;_locate&apos;
+</a><a href="#h0-629" id="h0-629" class="d">-&apos;mmd&apos; &apos;_mtools&apos;
+</a><a href="#h0-630" id="h0-630" class="d">-&apos;mmm&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-631" id="h0-631" class="d">-&apos;mmount&apos; &apos;_mtools&apos;
+</a><a href="#h0-632" id="h0-632" class="d">-&apos;mmove&apos; &apos;_mtools&apos;
+</a><a href="#h0-633" id="h0-633" class="d">-&apos;modinfo&apos; &apos;_modutils&apos;
+</a><a href="#h0-634" id="h0-634" class="d">-&apos;modprobe&apos; &apos;_modutils&apos;
+</a><a href="#h0-635" id="h0-635" class="d">-&apos;module&apos; &apos;_module&apos;
+</a><a href="#h0-636" id="h0-636" class="d">-&apos;mogrify&apos; &apos;_imagemagick&apos;
+</a><a href="#h0-637" id="h0-637" class="d">-&apos;mondoarchive&apos; &apos;_mondo&apos;
+</a><a href="#h0-638" id="h0-638" class="d">-&apos;montage&apos; &apos;_imagemagick&apos;
+</a><a href="#h0-639" id="h0-639" class="d">-&apos;moosic&apos; &apos;_moosic&apos;
+</a><a href="#h0-640" id="h0-640" class="d">-&apos;Mosaic&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-641" id="h0-641" class="d">-&apos;mosh&apos; &apos;_mosh&apos;
+</a><a href="#h0-642" id="h0-642" class="d">-&apos;mount&apos; &apos;_mount&apos;
+</a><a href="#h0-643" id="h0-643" class="d">-&apos;mozilla&apos; &apos;_mozilla&apos;
+</a><a href="#h0-644" id="h0-644" class="d">-&apos;mozilla-firefox&apos; &apos;_mozilla&apos;
+</a><a href="#h0-645" id="h0-645" class="d">-&apos;mozilla-xremote-client&apos; &apos;_mozilla&apos;
+</a><a href="#h0-646" id="h0-646" class="d">-&apos;mpc&apos; &apos;_mpc&apos;
+</a><a href="#h0-647" id="h0-647" class="d">-&apos;mplayer&apos; &apos;_mplayer&apos;
+</a><a href="#h0-648" id="h0-648" class="d">-&apos;mrd&apos; &apos;_mtools&apos;
+</a><a href="#h0-649" id="h0-649" class="d">-&apos;mread&apos; &apos;_mtools&apos;
+</a><a href="#h0-650" id="h0-650" class="d">-&apos;mren&apos; &apos;_mtools&apos;
+</a><a href="#h0-651" id="h0-651" class="d">-&apos;msgchk&apos; &apos;_mh&apos;
+</a><a href="#h0-652" id="h0-652" class="d">-&apos;mt&apos; &apos;_mt&apos;
+</a><a href="#h0-653" id="h0-653" class="d">-&apos;mtn&apos; &apos;_monotone&apos;
+</a><a href="#h0-654" id="h0-654" class="d">-&apos;mtoolstest&apos; &apos;_mtools&apos;
+</a><a href="#h0-655" id="h0-655" class="d">-&apos;mtr&apos; &apos;_mtr&apos;
+</a><a href="#h0-656" id="h0-656" class="d">-&apos;mtype&apos; &apos;_mtools&apos;
+</a><a href="#h0-657" id="h0-657" class="d">-&apos;munchlist&apos; &apos;_ispell&apos;
+</a><a href="#h0-658" id="h0-658" class="d">-&apos;mupdf&apos; &apos;_pdf&apos;
+</a><a href="#h0-659" id="h0-659" class="d">-&apos;mush&apos; &apos;_mail&apos;
+</a><a href="#h0-660" id="h0-660" class="d">-&apos;mussh&apos; &apos;_mussh&apos;
+</a><a href="#h0-661" id="h0-661" class="d">-&apos;mutt&apos; &apos;_mutt&apos;
+</a><a href="#h0-662" id="h0-662" class="d">-&apos;mux&apos; &apos;_tmuxinator&apos;
+</a><a href="#h0-663" id="h0-663" class="d">-&apos;mvn&apos; &apos;_mvn&apos;
+</a><a href="#h0-664" id="h0-664" class="d">-&apos;mvnDebug&apos; &apos;_mvn&apos;
+</a><a href="#h0-665" id="h0-665" class="d">-&apos;mx&apos; &apos;_hosts&apos;
+</a><a href="#h0-666" id="h0-666" class="d">-&apos;mysql&apos; &apos;_mysql_utils&apos;
+</a><a href="#h0-667" id="h0-667" class="d">-&apos;mysqladmin&apos; &apos;_mysql_utils&apos;
+</a><a href="#h0-668" id="h0-668" class="d">-&apos;mysqldiff&apos; &apos;_mysqldiff&apos;
+</a><a href="#h0-669" id="h0-669" class="d">-&apos;mysqldump&apos; &apos;_mysql_utils&apos;
+</a><a href="#h0-670" id="h0-670" class="d">-&apos;mysqlimport&apos; &apos;_mysql_utils&apos;
+</a><a href="#h0-671" id="h0-671" class="d">-&apos;mysqlshow&apos; &apos;_mysql_utils&apos;
+</a><a href="#h0-672" id="h0-672" class="d">-&apos;nail&apos; &apos;_mail&apos;
+</a><a href="#h0-673" id="h0-673" class="d">-&apos;native2ascii&apos; &apos;_java&apos;
+</a><a href="#h0-674" id="h0-674" class="d">-&apos;nautilus&apos; &apos;_nautilus&apos;
+</a><a href="#h0-675" id="h0-675" class="d">-&apos;nc&apos; &apos;_netcat&apos;
+</a><a href="#h0-676" id="h0-676" class="d">-&apos;ncal&apos; &apos;_cal&apos;
+</a><a href="#h0-677" id="h0-677" class="d">-&apos;ncftp&apos; &apos;_ncftp&apos;
+</a><a href="#h0-678" id="h0-678" class="d">-&apos;ncl&apos; &apos;_nedit&apos;
+</a><a href="#h0-679" id="h0-679" class="d">-&apos;nedit&apos; &apos;_nedit&apos;
+</a><a href="#h0-680" id="h0-680" class="d">-&apos;nedit-nc&apos; &apos;_nedit&apos;
+</a><a href="#h0-681" id="h0-681" class="d">-&apos;netcat&apos; &apos;_netcat&apos;
+</a><a href="#h0-682" id="h0-682" class="d">-&apos;netctl&apos; &apos;_netctl&apos;
+</a><a href="#h0-683" id="h0-683" class="d">-&apos;netctl-auto&apos; &apos;_netctl&apos;
+</a><a href="#h0-684" id="h0-684" class="d">-&apos;netrik&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-685" id="h0-685" class="d">-&apos;netscape&apos; &apos;_netscape&apos;
+</a><a href="#h0-686" id="h0-686" class="d">-&apos;new&apos; &apos;_mh&apos;
+</a><a href="#h0-687" id="h0-687" class="d">-&apos;newgrp&apos; &apos;_groups&apos;
+</a><a href="#h0-688" id="h0-688" class="d">-&apos;next&apos; &apos;_mh&apos;
+</a><a href="#h0-689" id="h0-689" class="d">-&apos;nice&apos; &apos;_nice&apos;
+</a><a href="#h0-690" id="h0-690" class="d">-&apos;nkf&apos; &apos;_nkf&apos;
+</a><a href="#h0-691" id="h0-691" class="d">-&apos;nl&apos; &apos;_nl&apos;
+</a><a href="#h0-692" id="h0-692" class="d">-&apos;nm&apos; &apos;_nm&apos;
+</a><a href="#h0-693" id="h0-693" class="d">-&apos;nmap&apos; &apos;_nmap&apos;
+</a><a href="#h0-694" id="h0-694" class="d">-&apos;nmblookup&apos; &apos;_samba&apos;
+</a><a href="#h0-695" id="h0-695" class="d">-&apos;nmcli&apos; &apos;_nmcli&apos;
+</a><a href="#h0-696" id="h0-696" class="d">-&apos;nocorrect&apos; &apos;_precommand&apos;
+</a><a href="#h0-697" id="h0-697" class="d">-&apos;node&apos; &apos;_node&apos;
+</a><a href="#h0-698" id="h0-698" class="d">-&apos;noglob&apos; &apos;_precommand&apos;
+</a><a href="#h0-699" id="h0-699" class="d">-&apos;nohup&apos; &apos;_precommand&apos;
+</a><a href="#h0-700" id="h0-700" class="d">-&apos;notmuch&apos; &apos;_notmuch&apos;
+</a><a href="#h0-701" id="h0-701" class="d">-&apos;npm&apos; &apos;_npm&apos;
+</a><a href="#h0-702" id="h0-702" class="d">-&apos;ns&apos; &apos;_hosts&apos;
+</a><a href="#h0-703" id="h0-703" class="d">-&apos;nslookup&apos; &apos;_nslookup&apos;
+</a><a href="#h0-704" id="h0-704" class="d">-&apos;ntalk&apos; &apos;_other_accounts&apos;
+</a><a href="#h0-705" id="h0-705" class="d">-&apos;nvim&apos; &apos;_vim&apos;
+</a><a href="#h0-706" id="h0-706" class="d">-&apos;nvm&apos; &apos;_nvm&apos;
+</a><a href="#h0-707" id="h0-707" class="d">-&apos;od&apos; &apos;_od&apos;
+</a><a href="#h0-708" id="h0-708" class="d">-&apos;ogg123&apos; &apos;_vorbis&apos;
+</a><a href="#h0-709" id="h0-709" class="d">-&apos;oggdec&apos; &apos;_vorbis&apos;
+</a><a href="#h0-710" id="h0-710" class="d">-&apos;oggenc&apos; &apos;_vorbis&apos;
+</a><a href="#h0-711" id="h0-711" class="d">-&apos;ogginfo&apos; &apos;_vorbis&apos;
+</a><a href="#h0-712" id="h0-712" class="d">-&apos;okular&apos; &apos;_okular&apos;
+</a><a href="#h0-713" id="h0-713" class="d">-&apos;opera&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-714" id="h0-714" class="d">-&apos;opera-next&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-715" id="h0-715" class="d">-&apos;optirun&apos; &apos;_optirun&apos;
+</a><a href="#h0-716" id="h0-716" class="d">-&apos;p4&apos; &apos;_perforce&apos;
+</a><a href="#h0-717" id="h0-717" class="d">-&apos;p4d&apos; &apos;_perforce&apos;
+</a><a href="#h0-718" id="h0-718" class="d">-&apos;pacat&apos; &apos;_pulseaudio&apos;
+</a><a href="#h0-719" id="h0-719" class="d">-&apos;pack&apos; &apos;_pack&apos;
+</a><a href="#h0-720" id="h0-720" class="d">-&apos;packf&apos; &apos;_mh&apos;
+</a><a href="#h0-721" id="h0-721" class="d">-&apos;pacman&apos; &apos;_pacman&apos;
+</a><a href="#h0-722" id="h0-722" class="d">-&apos;pacman-key&apos; &apos;_pacman&apos;
+</a><a href="#h0-723" id="h0-723" class="d">-&apos;pacman.static&apos; &apos;_pacman&apos;
+</a><a href="#h0-724" id="h0-724" class="d">-&apos;pacmd&apos; &apos;_pulseaudio&apos;
+</a><a href="#h0-725" id="h0-725" class="d">-&apos;pactl&apos; &apos;_pulseaudio&apos;
+</a><a href="#h0-726" id="h0-726" class="d">-&apos;pactree&apos; &apos;_pactree&apos;
+</a><a href="#h0-727" id="h0-727" class="d">-&apos;padsp&apos; &apos;_pulseaudio&apos;
+</a><a href="#h0-728" id="h0-728" class="d">-&apos;paplay&apos; &apos;_pulseaudio&apos;
+</a><a href="#h0-729" id="h0-729" class="d">-&apos;-parameter-&apos; &apos;_parameter&apos;
+</a><a href="#h0-730" id="h0-730" class="d">-&apos;parec&apos; &apos;_pulseaudio&apos;
+</a><a href="#h0-731" id="h0-731" class="d">-&apos;parecord&apos; &apos;_pulseaudio&apos;
+</a><a href="#h0-732" id="h0-732" class="d">-&apos;passwd&apos; &apos;_users&apos;
+</a><a href="#h0-733" id="h0-733" class="d">-&apos;pasuspender&apos; &apos;_pulseaudio&apos;
+</a><a href="#h0-734" id="h0-734" class="d">-&apos;patch&apos; &apos;_patch&apos;
+</a><a href="#h0-735" id="h0-735" class="d">-&apos;pax&apos; &apos;_pax&apos;
+</a><a href="#h0-736" id="h0-736" class="d">-&apos;pcat&apos; &apos;_pack&apos;
+</a><a href="#h0-737" id="h0-737" class="d">-&apos;pcred&apos; &apos;_pids&apos;
+</a><a href="#h0-738" id="h0-738" class="d">-&apos;pdf2dsc&apos; &apos;_pdf&apos;
+</a><a href="#h0-739" id="h0-739" class="d">-&apos;pdf2ps&apos; &apos;_pdf&apos;
+</a><a href="#h0-740" id="h0-740" class="d">-&apos;pdffonts&apos; &apos;_pdf&apos;
+</a><a href="#h0-741" id="h0-741" class="d">-&apos;pdfimages&apos; &apos;_pdf&apos;
+</a><a href="#h0-742" id="h0-742" class="d">-&apos;pdfinfo&apos; &apos;_pdf&apos;
+</a><a href="#h0-743" id="h0-743" class="d">-&apos;pdfjadetex&apos; &apos;_tex&apos;
+</a><a href="#h0-744" id="h0-744" class="d">-&apos;pdflatex&apos; &apos;_tex&apos;
+</a><a href="#h0-745" id="h0-745" class="d">-&apos;pdfopt&apos; &apos;_pdf&apos;
+</a><a href="#h0-746" id="h0-746" class="d">-&apos;pdftex&apos; &apos;_tex&apos;
+</a><a href="#h0-747" id="h0-747" class="d">-&apos;pdftk&apos; &apos;_pdftk&apos;
+</a><a href="#h0-748" id="h0-748" class="d">-&apos;pdftopbm&apos; &apos;_pdf&apos;
+</a><a href="#h0-749" id="h0-749" class="d">-&apos;pdftops&apos; &apos;_pdf&apos;
+</a><a href="#h0-750" id="h0-750" class="d">-&apos;pdftotext&apos; &apos;_pdf&apos;
+</a><a href="#h0-751" id="h0-751" class="d">-&apos;pear&apos; &apos;_pear&apos;
+</a><a href="#h0-752" id="h0-752" class="d">-&apos;perf&apos; &apos;_perf&apos;
+</a><a href="#h0-753" id="h0-753" class="d">-&apos;periscope&apos; &apos;_periscope&apos;
+</a><a href="#h0-754" id="h0-754" class="d">-&apos;perl&apos; &apos;_perl&apos;
+</a><a href="#h0-755" id="h0-755" class="d">-&apos;perldoc&apos; &apos;_perldoc&apos;
+</a><a href="#h0-756" id="h0-756" class="d">-&apos;pfiles&apos; &apos;_pids&apos;
+</a><a href="#h0-757" id="h0-757" class="d">-&apos;pflags&apos; &apos;_pids&apos;
+</a><a href="#h0-758" id="h0-758" class="d">-&apos;pg_dump&apos; &apos;_pgsql_utils&apos;
+</a><a href="#h0-759" id="h0-759" class="d">-&apos;pg_dumpall&apos; &apos;_pgsql_utils&apos;
+</a><a href="#h0-760" id="h0-760" class="d">-&apos;pgrep&apos; &apos;_pgrep&apos;
+</a><a href="#h0-761" id="h0-761" class="d">-&apos;pg_restore&apos; &apos;_pgsql_utils&apos;
+</a><a href="#h0-762" id="h0-762" class="d">-&apos;phing&apos; &apos;_phing&apos;
+</a><a href="#h0-763" id="h0-763" class="d">-&apos;php&apos; &apos;_php&apos;
+</a><a href="#h0-764" id="h0-764" class="d">-&apos;pick&apos; &apos;_mh&apos;
+</a><a href="#h0-765" id="h0-765" class="d">-&apos;pigz&apos; &apos;_gzip&apos;
+</a><a href="#h0-766" id="h0-766" class="d">-&apos;pine&apos; &apos;_pine&apos;
+</a><a href="#h0-767" id="h0-767" class="d">-&apos;pinef&apos; &apos;_pine&apos;
+</a><a href="#h0-768" id="h0-768" class="d">-&apos;ping&apos; &apos;_ping&apos;
+</a><a href="#h0-769" id="h0-769" class="d">-&apos;pkcon&apos; &apos;_pkcon&apos;
+</a><a href="#h0-770" id="h0-770" class="d">-&apos;pkgadd&apos; &apos;_pkgadd&apos;
+</a><a href="#h0-771" id="h0-771" class="d">-&apos;pkg-config&apos; &apos;_pkg-config&apos;
+</a><a href="#h0-772" id="h0-772" class="d">-&apos;pkginfo&apos; &apos;_pkginfo&apos;
+</a><a href="#h0-773" id="h0-773" class="d">-&apos;pkgrm&apos; &apos;_pkgrm&apos;
+</a><a href="#h0-774" id="h0-774" class="d">-&apos;pkill&apos; &apos;_pgrep&apos;
+</a><a href="#h0-775" id="h0-775" class="d">-&apos;play&apos; &apos;_play&apos;
+</a><a href="#h0-776" id="h0-776" class="d">-&apos;pldd&apos; &apos;_pids&apos;
+</a><a href="#h0-777" id="h0-777" class="d">-&apos;pmake&apos; &apos;_make&apos;
+</a><a href="#h0-778" id="h0-778" class="d">-&apos;pman&apos; &apos;_perl_modules&apos;
+</a><a href="#h0-779" id="h0-779" class="d">-&apos;pmap&apos; &apos;_pids&apos;
+</a><a href="#h0-780" id="h0-780" class="d">-&apos;pmcat&apos; &apos;_perl_modules&apos;
+</a><a href="#h0-781" id="h0-781" class="d">-&apos;pmdesc&apos; &apos;_perl_modules&apos;
+</a><a href="#h0-782" id="h0-782" class="d">-&apos;pmeth&apos; &apos;_perl_modules&apos;
+</a><a href="#h0-783" id="h0-783" class="d">-&apos;pmexp&apos; &apos;_perl_modules&apos;
+</a><a href="#h0-784" id="h0-784" class="d">-&apos;pmfunc&apos; &apos;_perl_modules&apos;
+</a><a href="#h0-785" id="h0-785" class="d">-&apos;pmload&apos; &apos;_perl_modules&apos;
+</a><a href="#h0-786" id="h0-786" class="d">-&apos;pmls&apos; &apos;_perl_modules&apos;
+</a><a href="#h0-787" id="h0-787" class="d">-&apos;pmpath&apos; &apos;_perl_modules&apos;
+</a><a href="#h0-788" id="h0-788" class="d">-&apos;pmvers&apos; &apos;_perl_modules&apos;
+</a><a href="#h0-789" id="h0-789" class="d">-&apos;podgrep&apos; &apos;_perl_modules&apos;
+</a><a href="#h0-790" id="h0-790" class="d">-&apos;podpath&apos; &apos;_perl_modules&apos;
+</a><a href="#h0-791" id="h0-791" class="d">-&apos;podtoc&apos; &apos;_perl_modules&apos;
+</a><a href="#h0-792" id="h0-792" class="d">-&apos;poff&apos; &apos;_pon&apos;
+</a><a href="#h0-793" id="h0-793" class="d">-&apos;policytool&apos; &apos;_java&apos;
+</a><a href="#h0-794" id="h0-794" class="d">-&apos;pon&apos; &apos;_pon&apos;
+</a><a href="#h0-795" id="h0-795" class="d">-&apos;popd&apos; &apos;_directory_stack&apos;
+</a><a href="#h0-796" id="h0-796" class="d">-&apos;popdls&apos; &apos;_cdls_popdls_pushdls&apos;
+</a><a href="#h0-797" id="h0-797" class="d">-&apos;port&apos; &apos;_port&apos;
+</a><a href="#h0-798" id="h0-798" class="d">-&apos;postsuper&apos; &apos;_postfix&apos;
+</a><a href="#h0-799" id="h0-799" class="d">-&apos;prcs&apos; &apos;_prcs&apos;
+</a><a href="#h0-800" id="h0-800" class="d">-&apos;prep&apos; &apos;_prep&apos;
+</a><a href="#h0-801" id="h0-801" class="d">-&apos;prev&apos; &apos;_mh&apos;
+</a><a href="#h0-802" id="h0-802" class="d">-&apos;print&apos; &apos;_print&apos;
+</a><a href="#h0-803" id="h0-803" class="d">-&apos;printenv&apos; &apos;_printenv&apos;
+</a><a href="#h0-804" id="h0-804" class="d">-&apos;printf&apos; &apos;_print&apos;
+</a><a href="#h0-805" id="h0-805" class="d">-&apos;prompt&apos; &apos;_prompt&apos;
+</a><a href="#h0-806" id="h0-806" class="d">-&apos;prove&apos; &apos;_prove&apos;
+</a><a href="#h0-807" id="h0-807" class="d">-&apos;prs&apos; &apos;_sccs&apos;
+</a><a href="#h0-808" id="h0-808" class="d">-&apos;prt&apos; &apos;_sccs&apos;
+</a><a href="#h0-809" id="h0-809" class="d">-&apos;prun&apos; &apos;_pids&apos;
+</a><a href="#h0-810" id="h0-810" class="d">-&apos;ps&apos; &apos;_ps&apos;
+</a><a href="#h0-811" id="h0-811" class="d">-&apos;ps2ascii&apos; &apos;_pspdf&apos;
+</a><a href="#h0-812" id="h0-812" class="d">-&apos;ps2epsi&apos; &apos;_postscript&apos;
+</a><a href="#h0-813" id="h0-813" class="d">-&apos;ps2pdf&apos; &apos;_postscript&apos;
+</a><a href="#h0-814" id="h0-814" class="d">-&apos;ps2pdf12&apos; &apos;_postscript&apos;
+</a><a href="#h0-815" id="h0-815" class="d">-&apos;ps2pdf13&apos; &apos;_postscript&apos;
+</a><a href="#h0-816" id="h0-816" class="d">-&apos;ps2pdf14&apos; &apos;_postscript&apos;
+</a><a href="#h0-817" id="h0-817" class="d">-&apos;ps2pdfwr&apos; &apos;_postscript&apos;
+</a><a href="#h0-818" id="h0-818" class="d">-&apos;ps2ps&apos; &apos;_postscript&apos;
+</a><a href="#h0-819" id="h0-819" class="d">-&apos;psbook&apos; &apos;_psutils&apos;
+</a><a href="#h0-820" id="h0-820" class="d">-&apos;psed&apos; &apos;_sed&apos;
+</a><a href="#h0-821" id="h0-821" class="d">-&apos;psig&apos; &apos;_pids&apos;
+</a><a href="#h0-822" id="h0-822" class="d">-&apos;psmerge&apos; &apos;_psutils&apos;
+</a><a href="#h0-823" id="h0-823" class="d">-&apos;psmulti&apos; &apos;_postscript&apos;
+</a><a href="#h0-824" id="h0-824" class="d">-&apos;psnup&apos; &apos;_psutils&apos;
+</a><a href="#h0-825" id="h0-825" class="d">-&apos;psql&apos; &apos;_pgsql_utils&apos;
+</a><a href="#h0-826" id="h0-826" class="d">-&apos;psresize&apos; &apos;_psutils&apos;
+</a><a href="#h0-827" id="h0-827" class="d">-&apos;psselect&apos; &apos;_psutils&apos;
+</a><a href="#h0-828" id="h0-828" class="d">-&apos;pstack&apos; &apos;_pids&apos;
+</a><a href="#h0-829" id="h0-829" class="d">-&apos;pstoedit&apos; &apos;_pspdf&apos;
+</a><a href="#h0-830" id="h0-830" class="d">-&apos;pstop&apos; &apos;_pids&apos;
+</a><a href="#h0-831" id="h0-831" class="d">-&apos;pstops&apos; &apos;_psutils&apos;
+</a><a href="#h0-832" id="h0-832" class="d">-&apos;pstotgif&apos; &apos;_pspdf&apos;
+</a><a href="#h0-833" id="h0-833" class="d">-&apos;psub&apos; &apos;_psub&apos;
+</a><a href="#h0-834" id="h0-834" class="d">-&apos;pswrap&apos; &apos;_postscript&apos;
+</a><a href="#h0-835" id="h0-835" class="d">-&apos;pulseaudio&apos; &apos;_pulseaudio&apos;
+</a><a href="#h0-836" id="h0-836" class="d">-&apos;pump&apos; &apos;_pump&apos;
+</a><a href="#h0-837" id="h0-837" class="d">-&apos;pushd&apos; &apos;_cd&apos;
+</a><a href="#h0-838" id="h0-838" class="d">-&apos;pushdls&apos; &apos;_cdls_popdls_pushdls&apos;
+</a><a href="#h0-839" id="h0-839" class="d">-&apos;pwait&apos; &apos;_pids&apos;
+</a><a href="#h0-840" id="h0-840" class="d">-&apos;pwdx&apos; &apos;_pids&apos;
+</a><a href="#h0-841" id="h0-841" class="d">-&apos;pygmentize&apos; &apos;_pygmentize&apos;
+</a><a href="#h0-842" id="h0-842" class="d">-&apos;pyhtmlizer&apos; &apos;_twisted&apos;
+</a><a href="#h0-843" id="h0-843" class="d">-&apos;qdbus&apos; &apos;_qdbus&apos;
+</a><a href="#h0-844" id="h0-844" class="d">-&apos;qiv&apos; &apos;_qiv&apos;
+</a><a href="#h0-845" id="h0-845" class="d">-&apos;quilt&apos; &apos;_quilt&apos;
+</a><a href="#h0-846" id="h0-846" class="d">-&apos;r&apos; &apos;_fc&apos;
+</a><a href="#h0-847" id="h0-847" class="d">-&apos;raggle&apos; &apos;_raggle&apos;
+</a><a href="#h0-848" id="h0-848" class="d">-&apos;rails&apos; &apos;_rails&apos;
+</a><a href="#h0-849" id="h0-849" class="d">-&apos;rake&apos; &apos;_rake&apos;
+</a><a href="#h0-850" id="h0-850" class="d">-&apos;ralio&apos; &apos;_ralio&apos;
+</a><a href="#h0-851" id="h0-851" class="d">-&apos;ranlib&apos; &apos;_ranlib&apos;
+</a><a href="#h0-852" id="h0-852" class="d">-&apos;rar&apos; &apos;_rar&apos;
+</a><a href="#h0-853" id="h0-853" class="d">-&apos;rc&apos; &apos;_sh&apos;
+</a><a href="#h0-854" id="h0-854" class="d">-&apos;rcp&apos; &apos;_rlogin&apos;
+</a><a href="#h0-855" id="h0-855" class="d">-&apos;rcs&apos; &apos;_rcs&apos;
+</a><a href="#h0-856" id="h0-856" class="d">-&apos;rcsdiff&apos; &apos;_rcs&apos;
+</a><a href="#h0-857" id="h0-857" class="d">-&apos;rdesktop&apos; &apos;_rdesktop&apos;
+</a><a href="#h0-858" id="h0-858" class="d">-&apos;read&apos; &apos;_read&apos;
+</a><a href="#h0-859" id="h0-859" class="d">-&apos;readelf&apos; &apos;_readelf&apos;
+</a><a href="#h0-860" id="h0-860" class="d">-&apos;readonly&apos; &apos;_typeset&apos;
+</a><a href="#h0-861" id="h0-861" class="d">-&apos;rec&apos; &apos;_redis-cli&apos;
+</a><a href="#h0-862" id="h0-862" class="d">-&apos;-redirect-&apos; &apos;_redirect&apos;
+</a><a href="#h0-863" id="h0-863" class="d">-&apos;-redirect-,&lt;,bunzip2&apos; &apos;_bzip2&apos;
+</a><a href="#h0-864" id="h0-864" class="d">-&apos;-redirect-,&lt;,bzip2&apos; &apos;_bzip2&apos;
+</a><a href="#h0-865" id="h0-865" class="d">-&apos;-redirect-,&gt;,bzip2&apos; &apos;_bzip2&apos;
+</a><a href="#h0-866" id="h0-866" class="d">-&apos;-redirect-,&lt;,compress&apos; &apos;_compress&apos;
+</a><a href="#h0-867" id="h0-867" class="d">-&apos;-redirect-,&gt;,compress&apos; &apos;_compress&apos;
+</a><a href="#h0-868" id="h0-868" class="d">-&apos;-redirect-,-default-,-default-&apos; &apos;_files&apos;
+</a><a href="#h0-869" id="h0-869" class="d">-&apos;-redirect-,&lt;,gunzip&apos; &apos;_gzip&apos;
+</a><a href="#h0-870" id="h0-870" class="d">-&apos;-redirect-,&lt;,gzip&apos; &apos;_gzip&apos;
+</a><a href="#h0-871" id="h0-871" class="d">-&apos;-redirect-,&gt;,gzip&apos; &apos;_gzip&apos;
+</a><a href="#h0-872" id="h0-872" class="d">-&apos;-redirect-,&lt;,uncompress&apos; &apos;_compress&apos;
+</a><a href="#h0-873" id="h0-873" class="d">-&apos;-redirect-,&lt;,unxz&apos; &apos;_xz&apos;
+</a><a href="#h0-874" id="h0-874" class="d">-&apos;-redirect-,&lt;,xz&apos; &apos;_xz&apos;
+</a><a href="#h0-875" id="h0-875" class="d">-&apos;-redirect-,&gt;,xz&apos; &apos;_xz&apos;
+</a><a href="#h0-876" id="h0-876" class="d">-&apos;redis-cli&apos; &apos;_redis-cli&apos;
+</a><a href="#h0-877" id="h0-877" class="d">-&apos;refile&apos; &apos;_mh&apos;
+</a><a href="#h0-878" id="h0-878" class="d">-&apos;rehash&apos; &apos;_hash&apos;
+</a><a href="#h0-879" id="h0-879" class="d">-&apos;reload&apos; &apos;_initctl&apos;
+</a><a href="#h0-880" id="h0-880" class="d">-&apos;remsh&apos; &apos;_rlogin&apos;
+</a><a href="#h0-881" id="h0-881" class="d">-&apos;renice&apos; &apos;_renice&apos;
+</a><a href="#h0-882" id="h0-882" class="d">-&apos;repl&apos; &apos;_mh&apos;
+</a><a href="#h0-883" id="h0-883" class="d">-&apos;restart&apos; &apos;_initctl&apos;
+</a><a href="#h0-884" id="h0-884" class="d">-&apos;retawq&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-885" id="h0-885" class="d">-&apos;rfkill&apos; &apos;_rfkill&apos;
+</a><a href="#h0-886" id="h0-886" class="d">-&apos;rgview&apos; &apos;_vim&apos;
+</a><a href="#h0-887" id="h0-887" class="d">-&apos;rgvim&apos; &apos;_vim&apos;
+</a><a href="#h0-888" id="h0-888" class="d">-&apos;ri&apos; &apos;_ri&apos;
+</a><a href="#h0-889" id="h0-889" class="d">-&apos;rlogin&apos; &apos;_rlogin&apos;
+</a><a href="#h0-890" id="h0-890" class="d">-&apos;rm&apos; &apos;_rm&apos;
+</a><a href="#h0-891" id="h0-891" class="d">-&apos;rmdel&apos; &apos;_sccs&apos;
+</a><a href="#h0-892" id="h0-892" class="d">-&apos;rmdir&apos; &apos;_directories&apos;
+</a><a href="#h0-893" id="h0-893" class="d">-&apos;rmf&apos; &apos;_mh&apos;
+</a><a href="#h0-894" id="h0-894" class="d">-&apos;rmic&apos; &apos;_java&apos;
+</a><a href="#h0-895" id="h0-895" class="d">-&apos;rmid&apos; &apos;_java&apos;
+</a><a href="#h0-896" id="h0-896" class="d">-&apos;rmiregistry&apos; &apos;_java&apos;
+</a><a href="#h0-897" id="h0-897" class="d">-&apos;rmm&apos; &apos;_mh&apos;
+</a><a href="#h0-898" id="h0-898" class="d">-&apos;rmmod&apos; &apos;_modutils&apos;
+</a><a href="#h0-899" id="h0-899" class="d">-&apos;rrdtool&apos; &apos;_rrdtool&apos;
+</a><a href="#h0-900" id="h0-900" class="d">-&apos;rsh&apos; &apos;_rlogin&apos;
+</a><a href="#h0-901" id="h0-901" class="d">-&apos;rspec&apos; &apos;_rspec&apos;
+</a><a href="#h0-902" id="h0-902" class="d">-&apos;rsync&apos; &apos;_rsync&apos;
+</a><a href="#h0-903" id="h0-903" class="d">-&apos;rtin&apos; &apos;_tin&apos;
+</a><a href="#h0-904" id="h0-904" class="d">-&apos;rubber&apos; &apos;_rubber&apos;
+</a><a href="#h0-905" id="h0-905" class="d">-&apos;rubber-info&apos; &apos;_rubber&apos;
+</a><a href="#h0-906" id="h0-906" class="d">-&apos;rubber-pipe&apos; &apos;_rubber&apos;
+</a><a href="#h0-907" id="h0-907" class="d">-&apos;rubocop&apos; &apos;_rubocop&apos;
+</a><a href="#h0-908" id="h0-908" class="d">-&apos;ruby&apos; &apos;_ruby&apos;
+</a><a href="#h0-909" id="h0-909" class="d">-&apos;run-help&apos; &apos;_run-help&apos;
+</a><a href="#h0-910" id="h0-910" class="d">-&apos;rup&apos; &apos;_hosts&apos;
+</a><a href="#h0-911" id="h0-911" class="d">-&apos;rusage&apos; &apos;_precommand&apos;
+</a><a href="#h0-912" id="h0-912" class="d">-&apos;rview&apos; &apos;_vim&apos;
+</a><a href="#h0-913" id="h0-913" class="d">-&apos;rvim&apos; &apos;_vim&apos;
+</a><a href="#h0-914" id="h0-914" class="d">-&apos;rvm&apos; &apos;_rvm&apos;
+</a><a href="#h0-915" id="h0-915" class="d">-&apos;rwho&apos; &apos;_hosts&apos;
+</a><a href="#h0-916" id="h0-916" class="d">-&apos;rxvt&apos; &apos;_urxvt&apos;
+</a><a href="#h0-917" id="h0-917" class="d">-&apos;s2p&apos; &apos;_sed&apos;
+</a><a href="#h0-918" id="h0-918" class="d">-&apos;sabcmd&apos; &apos;_sablotron&apos;
+</a><a href="#h0-919" id="h0-919" class="d">-&apos;sact&apos; &apos;_sccs&apos;
+</a><a href="#h0-920" id="h0-920" class="d">-&apos;sbt&apos; &apos;_sbt&apos;
+</a><a href="#h0-921" id="h0-921" class="d">-&apos;scala&apos; &apos;_scala&apos;
+</a><a href="#h0-922" id="h0-922" class="d">-&apos;scalac&apos; &apos;_scala&apos;
+</a><a href="#h0-923" id="h0-923" class="d">-&apos;scan&apos; &apos;_mh&apos;
+</a><a href="#h0-924" id="h0-924" class="d">-&apos;sccs&apos; &apos;_sccs&apos;
+</a><a href="#h0-925" id="h0-925" class="d">-&apos;sccsdiff&apos; &apos;_sccs&apos;
+</a><a href="#h0-926" id="h0-926" class="d">-&apos;sched&apos; &apos;_sched&apos;
+</a><a href="#h0-927" id="h0-927" class="d">-&apos;schedtool&apos; &apos;_schedtool&apos;
+</a><a href="#h0-928" id="h0-928" class="d">-&apos;scp&apos; &apos;_ssh&apos;
+</a><a href="#h0-929" id="h0-929" class="d">-&apos;screen&apos; &apos;_screen&apos;
+</a><a href="#h0-930" id="h0-930" class="d">-&apos;sdd&apos; &apos;_sdd&apos;
+</a><a href="#h0-931" id="h0-931" class="d">-&apos;sed&apos; &apos;_sed&apos;
+</a><a href="#h0-932" id="h0-932" class="d">-&apos;serialver&apos; &apos;_java&apos;
+</a><a href="#h0-933" id="h0-933" class="d">-&apos;service&apos; &apos;_service&apos;
+</a><a href="#h0-934" id="h0-934" class="d">-&apos;set&apos; &apos;_set&apos;
+</a><a href="#h0-935" id="h0-935" class="d">-&apos;setfacl&apos; &apos;_setfacl&apos;
+</a><a href="#h0-936" id="h0-936" class="d">-&apos;setfacl.exe&apos; &apos;_setfacl&apos;
+</a><a href="#h0-937" id="h0-937" class="d">-&apos;setfattr&apos; &apos;_attr&apos;
+</a><a href="#h0-938" id="h0-938" class="d">-&apos;setopt&apos; &apos;_setopt&apos;
+</a><a href="#h0-939" id="h0-939" class="d">-&apos;setup.py&apos; &apos;_setup.py&apos;
+</a><a href="#h0-940" id="h0-940" class="d">-&apos;sftp&apos; &apos;_ssh&apos;
+</a><a href="#h0-941" id="h0-941" class="d">-&apos;sh&apos; &apos;_sh&apos;
+</a><a href="#h0-942" id="h0-942" class="d">-&apos;shift&apos; &apos;_arrays&apos;
+</a><a href="#h0-943" id="h0-943" class="d">-&apos;show&apos; &apos;_mh&apos;
+</a><a href="#h0-944" id="h0-944" class="d">-&apos;showchar&apos; &apos;_psutils&apos;
+</a><a href="#h0-945" id="h0-945" class="d">-&apos;showmount&apos; &apos;_showmount&apos;
+</a><a href="#h0-946" id="h0-946" class="d">-&apos;showoff&apos; &apos;_showoff&apos;
+</a><a href="#h0-947" id="h0-947" class="d">-&apos;shutdown&apos; &apos;_shutdown&apos;
+</a><a href="#h0-948" id="h0-948" class="d">-&apos;sisu&apos; &apos;_sisu&apos;
+</a><a href="#h0-949" id="h0-949" class="d">-&apos;skipstone&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-950" id="h0-950" class="d">-&apos;slitex&apos; &apos;_tex&apos;
+</a><a href="#h0-951" id="h0-951" class="d">-&apos;slocate&apos; &apos;_locate&apos;
+</a><a href="#h0-952" id="h0-952" class="d">-&apos;slogin&apos; &apos;_ssh&apos;
+</a><a href="#h0-953" id="h0-953" class="d">-&apos;slrn&apos; &apos;_slrn&apos;
+</a><a href="#h0-954" id="h0-954" class="d">-&apos;smartctl&apos; &apos;_smartmontools&apos;
+</a><a href="#h0-955" id="h0-955" class="d">-&apos;smartd&apos; &apos;_smartmontools&apos;
+</a><a href="#h0-956" id="h0-956" class="d">-&apos;smbclient&apos; &apos;_samba&apos;
+</a><a href="#h0-957" id="h0-957" class="d">-&apos;smbcontrol&apos; &apos;_samba&apos;
+</a><a href="#h0-958" id="h0-958" class="d">-&apos;smbstatus&apos; &apos;_samba&apos;
+</a><a href="#h0-959" id="h0-959" class="d">-&apos;soa&apos; &apos;_hosts&apos;
+</a><a href="#h0-960" id="h0-960" class="d">-&apos;socat&apos; &apos;_socat&apos;
+</a><a href="#h0-961" id="h0-961" class="d">-&apos;socket&apos; &apos;_socket&apos;
+</a><a href="#h0-962" id="h0-962" class="d">-&apos;sort&apos; &apos;_sort&apos;
+</a><a href="#h0-963" id="h0-963" class="d">-&apos;sortm&apos; &apos;_mh&apos;
+</a><a href="#h0-964" id="h0-964" class="d">-&apos;source&apos; &apos;_source&apos;
+</a><a href="#h0-965" id="h0-965" class="d">-&apos;spamassassin&apos; &apos;_spamassassin&apos;
+</a><a href="#h0-966" id="h0-966" class="d">-&apos;splitdiff&apos; &apos;_patchutils&apos;
+</a><a href="#h0-967" id="h0-967" class="d">-&apos;sqlite&apos; &apos;_sqlite&apos;
+</a><a href="#h0-968" id="h0-968" class="d">-&apos;sqlite3&apos; &apos;_sqlite&apos;
+</a><a href="#h0-969" id="h0-969" class="d">-&apos;sqsh&apos; &apos;_sqsh&apos;
+</a><a href="#h0-970" id="h0-970" class="d">-&apos;sr&apos; &apos;_surfraw&apos;
+</a><a href="#h0-971" id="h0-971" class="d">-&apos;srm&apos; &apos;_srm&apos;
+</a><a href="#h0-972" id="h0-972" class="d">-&apos;srptool&apos; &apos;_gnutls&apos;
+</a><a href="#h0-973" id="h0-973" class="d">-&apos;ss&apos; &apos;_ss&apos;
+</a><a href="#h0-974" id="h0-974" class="d">-&apos;ssh&apos; &apos;_ssh&apos;
+</a><a href="#h0-975" id="h0-975" class="d">-&apos;ssh-add&apos; &apos;_ssh&apos;
+</a><a href="#h0-976" id="h0-976" class="d">-&apos;ssh-agent&apos; &apos;_ssh&apos;
+</a><a href="#h0-977" id="h0-977" class="d">-&apos;ssh-copy-id&apos; &apos;_ssh-copy-id&apos;
+</a><a href="#h0-978" id="h0-978" class="d">-&apos;sshfs&apos; &apos;_sshfs&apos;
+</a><a href="#h0-979" id="h0-979" class="d">-&apos;ssh-keygen&apos; &apos;_ssh&apos;
+</a><a href="#h0-980" id="h0-980" class="d">-&apos;stack&apos; &apos;_stack&apos;
+</a><a href="#h0-981" id="h0-981" class="d">-&apos;star&apos; &apos;_tar&apos;
+</a><a href="#h0-982" id="h0-982" class="d">-&apos;start&apos; &apos;_initctl&apos;
+</a><a href="#h0-983" id="h0-983" class="d">-&apos;stat&apos; &apos;_stat&apos;
+</a><a href="#h0-984" id="h0-984" class="d">-&apos;status&apos; &apos;_initctl&apos;
+</a><a href="#h0-985" id="h0-985" class="d">-&apos;stg&apos; &apos;_stgit&apos;
+</a><a href="#h0-986" id="h0-986" class="d">-&apos;stop&apos; &apos;_initctl&apos;
+</a><a href="#h0-987" id="h0-987" class="d">-&apos;strace&apos; &apos;_strace&apos;
+</a><a href="#h0-988" id="h0-988" class="d">-&apos;strftime&apos; &apos;_strftime&apos;
+</a><a href="#h0-989" id="h0-989" class="d">-&apos;strip&apos; &apos;_strip&apos;
+</a><a href="#h0-990" id="h0-990" class="d">-&apos;stty&apos; &apos;_stty&apos;
+</a><a href="#h0-991" id="h0-991" class="d">-&apos;su&apos; &apos;_su&apos;
+</a><a href="#h0-992" id="h0-992" class="d">-&apos;subliminal&apos; &apos;_subliminal&apos;
+</a><a href="#h0-993" id="h0-993" class="d">-&apos;-subscript-&apos; &apos;_subscript&apos;
+</a><a href="#h0-994" id="h0-994" class="d">-&apos;sudo&apos; &apos;_sudo&apos;
+</a><a href="#h0-995" id="h0-995" class="d">-&apos;sudoedit&apos; &apos;_sudo&apos;
+</a><a href="#h0-996" id="h0-996" class="d">-&apos;surfraw&apos; &apos;_surfraw&apos;
+</a><a href="#h0-997" id="h0-997" class="d">-&apos;sv&apos; &apos;_runit&apos;
+</a><a href="#h0-998" id="h0-998" class="d">-&apos;svm&apos; &apos;_svm&apos;
+</a><a href="#h0-999" id="h0-999" class="d">-&apos;svn&apos; &apos;_subversion&apos;
+</a><a href="#h0-1000" id="h0-1000" class="d">-&apos;svnadmin&apos; &apos;_subversion&apos;
+</a><a href="#h0-1001" id="h0-1001" class="d">-&apos;svnadmin-static&apos; &apos;_subversion&apos;
+</a><a href="#h0-1002" id="h0-1002" class="d">-&apos;symfony&apos; &apos;_symfony&apos;
+</a><a href="#h0-1003" id="h0-1003" class="d">-&apos;sync&apos; &apos;_nothing&apos;
+</a><a href="#h0-1004" id="h0-1004" class="d">-&apos;sysctl&apos; &apos;_sysctl&apos;
+</a><a href="#h0-1005" id="h0-1005" class="d">-&apos;systemctl&apos; &apos;_systemctl&apos;
+</a><a href="#h0-1006" id="h0-1006" class="d">-&apos;systemd-analyze&apos; &apos;_systemd-analyze&apos;
+</a><a href="#h0-1007" id="h0-1007" class="d">-&apos;systemd-ask-password&apos; &apos;_systemd&apos;
+</a><a href="#h0-1008" id="h0-1008" class="d">-&apos;systemd-cat&apos; &apos;_systemd&apos;
+</a><a href="#h0-1009" id="h0-1009" class="d">-&apos;systemd-cgls&apos; &apos;_systemd&apos;
+</a><a href="#h0-1010" id="h0-1010" class="d">-&apos;systemd-cgtop&apos; &apos;_systemd&apos;
+</a><a href="#h0-1011" id="h0-1011" class="d">-&apos;systemd-delta&apos; &apos;_systemd-delta&apos;
+</a><a href="#h0-1012" id="h0-1012" class="d">-&apos;systemd-detect-virt&apos; &apos;_systemd&apos;
+</a><a href="#h0-1013" id="h0-1013" class="d">-&apos;systemd-inhibit&apos; &apos;_systemd-inhibit&apos;
+</a><a href="#h0-1014" id="h0-1014" class="d">-&apos;systemd-machine-id-setup&apos; &apos;_systemd&apos;
+</a><a href="#h0-1015" id="h0-1015" class="d">-&apos;systemd-notify&apos; &apos;_systemd&apos;
+</a><a href="#h0-1016" id="h0-1016" class="d">-&apos;systemd-nspawn&apos; &apos;_systemd-nspawn&apos;
+</a><a href="#h0-1017" id="h0-1017" class="d">-&apos;systemd-run&apos; &apos;_systemd-run&apos;
+</a><a href="#h0-1018" id="h0-1018" class="d">-&apos;systemd-tmpfiles&apos; &apos;_systemd-tmpfiles&apos;
+</a><a href="#h0-1019" id="h0-1019" class="d">-&apos;systemd-tty-ask-password-agent&apos; &apos;_systemd&apos;
+</a><a href="#h0-1020" id="h0-1020" class="d">-&apos;talk&apos; &apos;_other_accounts&apos;
+</a><a href="#h0-1021" id="h0-1021" class="d">-&apos;tap2deb&apos; &apos;_twisted&apos;
+</a><a href="#h0-1022" id="h0-1022" class="d">-&apos;tap2rpm&apos; &apos;_twisted&apos;
+</a><a href="#h0-1023" id="h0-1023" class="d">-&apos;tapconvert&apos; &apos;_twisted&apos;
+</a><a href="#h0-1024" id="h0-1024" class="d">-&apos;tar&apos; &apos;_tar&apos;
+</a><a href="#h0-1025" id="h0-1025" class="d">-&apos;tardy&apos; &apos;_tardy&apos;
+</a><a href="#h0-1026" id="h0-1026" class="d">-&apos;tcpdump&apos; &apos;_tcpdump&apos;
+</a><a href="#h0-1027" id="h0-1027" class="d">-&apos;tcp_open&apos; &apos;_tcpsys&apos;
+</a><a href="#h0-1028" id="h0-1028" class="d">-&apos;tcptraceroute&apos; &apos;_tcptraceroute&apos;
+</a><a href="#h0-1029" id="h0-1029" class="d">-&apos;tcsh&apos; &apos;_sh&apos;
+</a><a href="#h0-1030" id="h0-1030" class="d">-&apos;tda&apos; &apos;_devtodo&apos;
+</a><a href="#h0-1031" id="h0-1031" class="d">-&apos;tdd&apos; &apos;_devtodo&apos;
+</a><a href="#h0-1032" id="h0-1032" class="d">-&apos;tde&apos; &apos;_devtodo&apos;
+</a><a href="#h0-1033" id="h0-1033" class="d">-&apos;tdr&apos; &apos;_devtodo&apos;
+</a><a href="#h0-1034" id="h0-1034" class="d">-&apos;teamocil&apos; &apos;_teamocil&apos;
+</a><a href="#h0-1035" id="h0-1035" class="d">-&apos;telnet&apos; &apos;_telnet&apos;
+</a><a href="#h0-1036" id="h0-1036" class="d">-&apos;tex&apos; &apos;_tex&apos;
+</a><a href="#h0-1037" id="h0-1037" class="d">-&apos;texi2dvi&apos; &apos;_texinfo&apos;
+</a><a href="#h0-1038" id="h0-1038" class="d">-&apos;texindex&apos; &apos;_texinfo&apos;
+</a><a href="#h0-1039" id="h0-1039" class="d">-&apos;tg&apos; &apos;_topgit&apos;
+</a><a href="#h0-1040" id="h0-1040" class="d">-&apos;thor&apos; &apos;_thor&apos;
+</a><a href="#h0-1041" id="h0-1041" class="d">-&apos;tidy&apos; &apos;_tidy&apos;
+</a><a href="#h0-1042" id="h0-1042" class="d">-&apos;tig&apos; &apos;_git&apos;
+</a><a href="#h0-1043" id="h0-1043" class="d">-&apos;-tilde-&apos; &apos;_tilde&apos;
+</a><a href="#h0-1044" id="h0-1044" class="d">-&apos;time&apos; &apos;_precommand&apos;
+</a><a href="#h0-1045" id="h0-1045" class="d">-&apos;timedatectl&apos; &apos;_timedatectl&apos;
+</a><a href="#h0-1046" id="h0-1046" class="d">-&apos;times&apos; &apos;_nothing&apos;
+</a><a href="#h0-1047" id="h0-1047" class="d">-&apos;tin&apos; &apos;_tin&apos;
+</a><a href="#h0-1048" id="h0-1048" class="d">-&apos;tkconch&apos; &apos;_twisted&apos;
+</a><a href="#h0-1049" id="h0-1049" class="d">-&apos;tkinfo&apos; &apos;_texinfo&apos;
+</a><a href="#h0-1050" id="h0-1050" class="d">-&apos;tla&apos; &apos;_tla&apos;
+</a><a href="#h0-1051" id="h0-1051" class="d">-&apos;tmux&apos; &apos;_tmux&apos;
+</a><a href="#h0-1052" id="h0-1052" class="d">-&apos;tmuxinator&apos; &apos;_tmuxinator&apos;
+</a><a href="#h0-1053" id="h0-1053" class="d">-&apos;todo&apos; &apos;_devtodo&apos;
+</a><a href="#h0-1054" id="h0-1054" class="d">-&apos;todo.sh&apos; &apos;_todo.sh&apos;
+</a><a href="#h0-1055" id="h0-1055" class="d">-&apos;toilet&apos; &apos;_toilet&apos;
+</a><a href="#h0-1056" id="h0-1056" class="d">-&apos;totdconfig&apos; &apos;_totd&apos;
+</a><a href="#h0-1057" id="h0-1057" class="d">-&apos;tpb&apos; &apos;_tpb&apos;
+</a><a href="#h0-1058" id="h0-1058" class="d">-&apos;tpconfig&apos; &apos;_tpconfig&apos;
+</a><a href="#h0-1059" id="h0-1059" class="d">-&apos;tracepath&apos; &apos;_tracepath&apos;
+</a><a href="#h0-1060" id="h0-1060" class="d">-&apos;tracepath6&apos; &apos;_tracepath&apos;
+</a><a href="#h0-1061" id="h0-1061" class="d">-&apos;traceroute&apos; &apos;_hosts&apos;
+</a><a href="#h0-1062" id="h0-1062" class="d">-&apos;trap&apos; &apos;_trap&apos;
+</a><a href="#h0-1063" id="h0-1063" class="d">-&apos;tree&apos; &apos;_tree&apos;
+</a><a href="#h0-1064" id="h0-1064" class="d">-&apos;trial&apos; &apos;_twisted&apos;
+</a><a href="#h0-1065" id="h0-1065" class="d">-&apos;true&apos; &apos;_nothing&apos;
+</a><a href="#h0-1066" id="h0-1066" class="d">-&apos;tryaffix&apos; &apos;_ispell&apos;
+</a><a href="#h0-1067" id="h0-1067" class="d">-&apos;ttyctl&apos; &apos;_ttyctl&apos;
+</a><a href="#h0-1068" id="h0-1068" class="d">-&apos;tunctl&apos; &apos;_uml&apos;
+</a><a href="#h0-1069" id="h0-1069" class="d">-&apos;tune2fs&apos; &apos;_tune2fs&apos;
+</a><a href="#h0-1070" id="h0-1070" class="d">-&apos;tunes2pod&apos; &apos;_gnupod&apos;
+</a><a href="#h0-1071" id="h0-1071" class="d">-&apos;tunes2pod.pl&apos; &apos;_gnupod&apos;
+</a><a href="#h0-1072" id="h0-1072" class="d">-&apos;twidge&apos; &apos;_twidge&apos;
+</a><a href="#h0-1073" id="h0-1073" class="d">-&apos;twistd&apos; &apos;_twisted&apos;
+</a><a href="#h0-1074" id="h0-1074" class="d">-&apos;txt&apos; &apos;_hosts&apos;
+</a><a href="#h0-1075" id="h0-1075" class="d">-&apos;type&apos; &apos;_which&apos;
+</a><a href="#h0-1076" id="h0-1076" class="d">-&apos;typeset&apos; &apos;_typeset&apos;
+</a><a href="#h0-1077" id="h0-1077" class="d">-&apos;udevadm&apos; &apos;_udevadm&apos;
+</a><a href="#h0-1078" id="h0-1078" class="d">-&apos;ulimit&apos; &apos;_ulimit&apos;
+</a><a href="#h0-1079" id="h0-1079" class="d">-&apos;uml_mconsole&apos; &apos;_uml&apos;
+</a><a href="#h0-1080" id="h0-1080" class="d">-&apos;uml_moo&apos; &apos;_uml&apos;
+</a><a href="#h0-1081" id="h0-1081" class="d">-&apos;uml_switch&apos; &apos;_uml&apos;
+</a><a href="#h0-1082" id="h0-1082" class="d">-&apos;umount&apos; &apos;_mount&apos;
+</a><a href="#h0-1083" id="h0-1083" class="d">-&apos;unace&apos; &apos;_unace&apos;
+</a><a href="#h0-1084" id="h0-1084" class="d">-&apos;unalias&apos; &apos;_aliases&apos;
+</a><a href="#h0-1085" id="h0-1085" class="d">-&apos;uname&apos; &apos;_uname&apos;
+</a><a href="#h0-1086" id="h0-1086" class="d">-&apos;uncompress&apos; &apos;_compress&apos;
+</a><a href="#h0-1087" id="h0-1087" class="d">-&apos;unexpand&apos; &apos;_unexpand&apos;
+</a><a href="#h0-1088" id="h0-1088" class="d">-&apos;unfunction&apos; &apos;_functions&apos;
+</a><a href="#h0-1089" id="h0-1089" class="d">-&apos;unget&apos; &apos;_sccs&apos;
+</a><a href="#h0-1090" id="h0-1090" class="d">-&apos;unhash&apos; &apos;_unhash&apos;
+</a><a href="#h0-1091" id="h0-1091" class="d">-&apos;uniq&apos; &apos;_uniq&apos;
+</a><a href="#h0-1092" id="h0-1092" class="d">-&apos;unison&apos; &apos;_unison&apos;
+</a><a href="#h0-1093" id="h0-1093" class="d">-&apos;units&apos; &apos;_units&apos;
+</a><a href="#h0-1094" id="h0-1094" class="d">-&apos;unlimit&apos; &apos;_limits&apos;
+</a><a href="#h0-1095" id="h0-1095" class="d">-&apos;unlzma&apos; &apos;_xz&apos;
+</a><a href="#h0-1096" id="h0-1096" class="d">-&apos;unpack&apos; &apos;_pack&apos;
+</a><a href="#h0-1097" id="h0-1097" class="d">-&apos;unpigz&apos; &apos;_gzip&apos;
+</a><a href="#h0-1098" id="h0-1098" class="d">-&apos;unrar&apos; &apos;_rar&apos;
+</a><a href="#h0-1099" id="h0-1099" class="d">-&apos;unset&apos; &apos;_vars&apos;
+</a><a href="#h0-1100" id="h0-1100" class="d">-&apos;unsetopt&apos; &apos;_setopt&apos;
+</a><a href="#h0-1101" id="h0-1101" class="d">-&apos;unwrapdiff&apos; &apos;_patchutils&apos;
+</a><a href="#h0-1102" id="h0-1102" class="d">-&apos;unxz&apos; &apos;_xz&apos;
+</a><a href="#h0-1103" id="h0-1103" class="d">-&apos;unzip&apos; &apos;_zip&apos;
+</a><a href="#h0-1104" id="h0-1104" class="d">-&apos;urxvt&apos; &apos;_urxvt&apos;
+</a><a href="#h0-1105" id="h0-1105" class="d">-&apos;urxvt256c&apos; &apos;_urxvt&apos;
+</a><a href="#h0-1106" id="h0-1106" class="d">-&apos;urxvt256cc&apos; &apos;_urxvt&apos;
+</a><a href="#h0-1107" id="h0-1107" class="d">-&apos;urxvt256c-ml&apos; &apos;_urxvt&apos;
+</a><a href="#h0-1108" id="h0-1108" class="d">-&apos;urxvt256c-mlc&apos; &apos;_urxvt&apos;
+</a><a href="#h0-1109" id="h0-1109" class="d">-&apos;urxvtc&apos; &apos;_urxvt&apos;
+</a><a href="#h0-1110" id="h0-1110" class="d">-&apos;useradd&apos; &apos;_user_admin&apos;
+</a><a href="#h0-1111" id="h0-1111" class="d">-&apos;userdel&apos; &apos;_users&apos;
+</a><a href="#h0-1112" id="h0-1112" class="d">-&apos;usermod&apos; &apos;_user_admin&apos;
+</a><a href="#h0-1113" id="h0-1113" class="d">-&apos;uzbl&apos; &apos;_uzbl&apos;
+</a><a href="#h0-1114" id="h0-1114" class="d">-&apos;uzbl-browser&apos; &apos;_uzbl&apos;
+</a><a href="#h0-1115" id="h0-1115" class="d">-&apos;uzbl-tabbed&apos; &apos;_uzbl&apos;
+</a><a href="#h0-1116" id="h0-1116" class="d">-&apos;vacuumdb&apos; &apos;_pgsql_utils&apos;
+</a><a href="#h0-1117" id="h0-1117" class="d">-&apos;vagrant&apos; &apos;_vagrant&apos;
+</a><a href="#h0-1118" id="h0-1118" class="d">-&apos;val&apos; &apos;_sccs&apos;
+</a><a href="#h0-1119" id="h0-1119" class="d">-&apos;valgrind&apos; &apos;_valgrind&apos;
+</a><a href="#h0-1120" id="h0-1120" class="d">-&apos;-value-&apos; &apos;_value&apos;
+</a><a href="#h0-1121" id="h0-1121" class="d">-&apos;-value-,ANT_ARGS,-default-&apos; &apos;_ant&apos;
+</a><a href="#h0-1122" id="h0-1122" class="d">-&apos;-value-,CFLAGS,-default-&apos; &apos;_gcc&apos;
+</a><a href="#h0-1123" id="h0-1123" class="d">-&apos;-value-,CPPFLAGS,-default-&apos; &apos;_gcc&apos;
+</a><a href="#h0-1124" id="h0-1124" class="d">-&apos;-value-,CXXFLAGS,-default-&apos; &apos;_gcc&apos;
+</a><a href="#h0-1125" id="h0-1125" class="d">-&apos;-value-,-default-,-command-&apos; &apos;_zargs&apos;
+</a><a href="#h0-1126" id="h0-1126" class="d">-&apos;-value-,-default-,-default-&apos; &apos;_value&apos;
+</a><a href="#h0-1127" id="h0-1127" class="d">-&apos;-value-,DISPLAY,-default-&apos; &apos;_x_display&apos;
+</a><a href="#h0-1128" id="h0-1128" class="d">-&apos;-value-,GREP_OPTIONS,-default-&apos; &apos;_grep&apos;
+</a><a href="#h0-1129" id="h0-1129" class="d">-&apos;-value-,GZIP,-default-&apos; &apos;_gzip&apos;
+</a><a href="#h0-1130" id="h0-1130" class="d">-&apos;-value-,LANG,-default-&apos; &apos;_locales&apos;
+</a><a href="#h0-1131" id="h0-1131" class="d">-&apos;-value-,LANGUAGE,-default-&apos; &apos;_locales&apos;
+</a><a href="#h0-1132" id="h0-1132" class="d">-&apos;-value-,LD_DEBUG,-default-&apos; &apos;_ld_debug&apos;
+</a><a href="#h0-1133" id="h0-1133" class="d">-&apos;-value-,LDFLAGS,-default-&apos; &apos;_gcc&apos;
+</a><a href="#h0-1134" id="h0-1134" class="d">-&apos;-value-,LESSCHARSET,-default-&apos; &apos;_less&apos;
+</a><a href="#h0-1135" id="h0-1135" class="d">-&apos;-value-,LESS,-default-&apos; &apos;_less&apos;
+</a><a href="#h0-1136" id="h0-1136" class="d">-&apos;-value-,LPDEST,-default-&apos; &apos;_printers&apos;
+</a><a href="#h0-1137" id="h0-1137" class="d">-&apos;-value-,P4CLIENT,-default-&apos; &apos;_perforce&apos;
+</a><a href="#h0-1138" id="h0-1138" class="d">-&apos;-value-,P4MERGE,-default-&apos; &apos;_perforce&apos;
+</a><a href="#h0-1139" id="h0-1139" class="d">-&apos;-value-,P4PORT,-default-&apos; &apos;_perforce&apos;
+</a><a href="#h0-1140" id="h0-1140" class="d">-&apos;-value-,P4USER,-default-&apos; &apos;_perforce&apos;
+</a><a href="#h0-1141" id="h0-1141" class="d">-&apos;-value-,PERLDOC,-default-&apos; &apos;_perldoc&apos;
+</a><a href="#h0-1142" id="h0-1142" class="d">-&apos;-value-,PRINTER,-default-&apos; &apos;_printers&apos;
+</a><a href="#h0-1143" id="h0-1143" class="d">-&apos;-value-,PROMPT2,-default-&apos; &apos;_ps1234&apos;
+</a><a href="#h0-1144" id="h0-1144" class="d">-&apos;-value-,PROMPT3,-default-&apos; &apos;_ps1234&apos;
+</a><a href="#h0-1145" id="h0-1145" class="d">-&apos;-value-,PROMPT4,-default-&apos; &apos;_ps1234&apos;
+</a><a href="#h0-1146" id="h0-1146" class="d">-&apos;-value-,PROMPT,-default-&apos; &apos;_ps1234&apos;
+</a><a href="#h0-1147" id="h0-1147" class="d">-&apos;-value-,PS1,-default-&apos; &apos;_ps1234&apos;
+</a><a href="#h0-1148" id="h0-1148" class="d">-&apos;-value-,PS2,-default-&apos; &apos;_ps1234&apos;
+</a><a href="#h0-1149" id="h0-1149" class="d">-&apos;-value-,PS3,-default-&apos; &apos;_ps1234&apos;
+</a><a href="#h0-1150" id="h0-1150" class="d">-&apos;-value-,PS4,-default-&apos; &apos;_ps1234&apos;
+</a><a href="#h0-1151" id="h0-1151" class="d">-&apos;-value-,RPROMPT2,-default-&apos; &apos;_ps1234&apos;
+</a><a href="#h0-1152" id="h0-1152" class="d">-&apos;-value-,RPROMPT,-default-&apos; &apos;_ps1234&apos;
+</a><a href="#h0-1153" id="h0-1153" class="d">-&apos;-value-,RPS1,-default-&apos; &apos;_ps1234&apos;
+</a><a href="#h0-1154" id="h0-1154" class="d">-&apos;-value-,RPS2,-default-&apos; &apos;_ps1234&apos;
+</a><a href="#h0-1155" id="h0-1155" class="d">-&apos;-value-,SPROMPT,-default-&apos; &apos;_ps1234&apos;
+</a><a href="#h0-1156" id="h0-1156" class="d">-&apos;-value-,TERM,-default-&apos; &apos;_terminals&apos;
+</a><a href="#h0-1157" id="h0-1157" class="d">-&apos;-value-,TERMINFO_DIRS,-default-&apos; &apos;_dir_list&apos;
+</a><a href="#h0-1158" id="h0-1158" class="d">-&apos;-value-,TZ,-default-&apos; &apos;_time_zone&apos;
+</a><a href="#h0-1159" id="h0-1159" class="d">-&apos;-value-,VALGRIND_OPTS,-default-&apos; &apos;_valgrind&apos;
+</a><a href="#h0-1160" id="h0-1160" class="d">-&apos;-value-,WWW_HOME,-default-&apos; &apos;_urls&apos;
+</a><a href="#h0-1161" id="h0-1161" class="d">-&apos;-value-,XML_CATALOG_FILES,-default-&apos; &apos;_xmlsoft&apos;
+</a><a href="#h0-1162" id="h0-1162" class="d">-&apos;-value-,XZ_DEFAULTS,-default-&apos; &apos;_xz&apos;
+</a><a href="#h0-1163" id="h0-1163" class="d">-&apos;-value-,XZ_OPT,-default-&apos; &apos;_xz&apos;
+</a><a href="#h0-1164" id="h0-1164" class="d">-&apos;vared&apos; &apos;_vared&apos;
+</a><a href="#h0-1165" id="h0-1165" class="d">-&apos;-vared-&apos; &apos;_in_vared&apos;
+</a><a href="#h0-1166" id="h0-1166" class="d">-&apos;VBoxHeadless&apos; &apos;_virtualbox&apos;
+</a><a href="#h0-1167" id="h0-1167" class="d">-&apos;VBoxManage&apos; &apos;_virtualbox&apos;
+</a><a href="#h0-1168" id="h0-1168" class="d">-&apos;vcsh&apos; &apos;_vcsh&apos;
+</a><a href="#h0-1169" id="h0-1169" class="d">-&apos;veewee&apos; &apos;_veewee&apos;
+</a><a href="#h0-1170" id="h0-1170" class="d">-&apos;vim&apos; &apos;_vim&apos;
+</a><a href="#h0-1171" id="h0-1171" class="d">-&apos;vimdiff&apos; &apos;_vim&apos;
+</a><a href="#h0-1172" id="h0-1172" class="d">-&apos;virsh&apos; &apos;_virsh&apos;
+</a><a href="#h0-1173" id="h0-1173" class="d">-&apos;vmstat&apos; &apos;_vmstat&apos;
+</a><a href="#h0-1174" id="h0-1174" class="d">-&apos;vncserver&apos; &apos;_vnc&apos;
+</a><a href="#h0-1175" id="h0-1175" class="d">-&apos;vncviewer&apos; &apos;_vnc&apos;
+</a><a href="#h0-1176" id="h0-1176" class="d">-&apos;vnstat&apos; &apos;_vnstat&apos;
+</a><a href="#h0-1177" id="h0-1177" class="d">-&apos;vorbiscomment&apos; &apos;_vorbiscomment&apos;
+</a><a href="#h0-1178" id="h0-1178" class="d">-&apos;vpnc&apos; &apos;_vpnc&apos;
+</a><a href="#h0-1179" id="h0-1179" class="d">-&apos;vpnc-connect&apos; &apos;_vpnc&apos;
+</a><a href="#h0-1180" id="h0-1180" class="d">-&apos;vpnc-disconnect&apos; &apos;_vpnc&apos;
+</a><a href="#h0-1181" id="h0-1181" class="d">-&apos;vserver&apos; &apos;_vserver&apos;
+</a><a href="#h0-1182" id="h0-1182" class="d">-&apos;vux&apos; &apos;_vux&apos;
+</a><a href="#h0-1183" id="h0-1183" class="d">-&apos;vuxctl&apos; &apos;_vux&apos;
+</a><a href="#h0-1184" id="h0-1184" class="d">-&apos;w3m&apos; &apos;_w3m&apos;
+</a><a href="#h0-1185" id="h0-1185" class="d">-&apos;wait&apos; &apos;_wait&apos;
+</a><a href="#h0-1186" id="h0-1186" class="d">-&apos;watch&apos; &apos;_watch&apos;
+</a><a href="#h0-1187" id="h0-1187" class="d">-&apos;wc&apos; &apos;_wc&apos;
+</a><a href="#h0-1188" id="h0-1188" class="d">-&apos;wemux&apos; &apos;_wemux&apos;
+</a><a href="#h0-1189" id="h0-1189" class="d">-&apos;wget&apos; &apos;_wget&apos;
+</a><a href="#h0-1190" id="h0-1190" class="d">-&apos;what&apos; &apos;_sccs&apos;
+</a><a href="#h0-1191" id="h0-1191" class="d">-&apos;whatis&apos; &apos;_man&apos;
+</a><a href="#h0-1192" id="h0-1192" class="d">-&apos;whence&apos; &apos;_which&apos;
+</a><a href="#h0-1193" id="h0-1193" class="d">-&apos;where&apos; &apos;_which&apos;
+</a><a href="#h0-1194" id="h0-1194" class="d">-&apos;whereis&apos; &apos;_whereis&apos;
+</a><a href="#h0-1195" id="h0-1195" class="d">-&apos;which&apos; &apos;_which&apos;
+</a><a href="#h0-1196" id="h0-1196" class="d">-&apos;whoami&apos; &apos;_nothing&apos;
+</a><a href="#h0-1197" id="h0-1197" class="d">-&apos;whois&apos; &apos;_whois&apos;
+</a><a href="#h0-1198" id="h0-1198" class="d">-&apos;whom&apos; &apos;_mh&apos;
+</a><a href="#h0-1199" id="h0-1199" class="d">-&apos;wifi-menu&apos; &apos;_netctl&apos;
+</a><a href="#h0-1200" id="h0-1200" class="d">-&apos;wiggle&apos; &apos;_wiggle&apos;
+</a><a href="#h0-1201" id="h0-1201" class="d">-&apos;wodim&apos; &apos;_cdrecord&apos;
+</a><a href="#h0-1202" id="h0-1202" class="d">-&apos;wpa_cli&apos; &apos;_wpa_cli&apos;
+</a><a href="#h0-1203" id="h0-1203" class="d">-&apos;write&apos; &apos;_users_on&apos;
+</a><a href="#h0-1204" id="h0-1204" class="d">-&apos;www&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-1205" id="h0-1205" class="d">-&apos;xargs&apos; &apos;_xargs&apos;
+</a><a href="#h0-1206" id="h0-1206" class="d">-&apos;xauth&apos; &apos;_xauth&apos;
+</a><a href="#h0-1207" id="h0-1207" class="d">-&apos;xautolock&apos; &apos;_xautolock&apos;
+</a><a href="#h0-1208" id="h0-1208" class="d">-&apos;xclip&apos; &apos;_xclip&apos;
+</a><a href="#h0-1209" id="h0-1209" class="d">-&apos;xdpyinfo&apos; &apos;_x_utils&apos;
+</a><a href="#h0-1210" id="h0-1210" class="d">-&apos;xdvi&apos; &apos;_xdvi&apos;
+</a><a href="#h0-1211" id="h0-1211" class="d">-&apos;xelatex&apos; &apos;_tex&apos;
+</a><a href="#h0-1212" id="h0-1212" class="d">-&apos;xetex&apos; &apos;_tex&apos;
+</a><a href="#h0-1213" id="h0-1213" class="d">-&apos;xev&apos; &apos;_x_utils&apos;
+</a><a href="#h0-1214" id="h0-1214" class="d">-&apos;xfd&apos; &apos;_x_utils&apos;
+</a><a href="#h0-1215" id="h0-1215" class="d">-&apos;xfig&apos; &apos;_xfig&apos;
+</a><a href="#h0-1216" id="h0-1216" class="d">-&apos;xfontsel&apos; &apos;_x_utils&apos;
+</a><a href="#h0-1217" id="h0-1217" class="d">-&apos;xhost&apos; &apos;_x_utils&apos;
+</a><a href="#h0-1218" id="h0-1218" class="d">-&apos;xinput&apos; &apos;_xinput&apos;
+</a><a href="#h0-1219" id="h0-1219" class="d">-&apos;xkill&apos; &apos;_x_utils&apos;
+</a><a href="#h0-1220" id="h0-1220" class="d">-&apos;xli&apos; &apos;_xloadimage&apos;
+</a><a href="#h0-1221" id="h0-1221" class="d">-&apos;xloadimage&apos; &apos;_xloadimage&apos;
+</a><a href="#h0-1222" id="h0-1222" class="d">-&apos;xlsatoms&apos; &apos;_x_utils&apos;
+</a><a href="#h0-1223" id="h0-1223" class="d">-&apos;xmllint&apos; &apos;_xmlsoft&apos;
+</a><a href="#h0-1224" id="h0-1224" class="d">-&apos;xmms2&apos; &apos;_xmms2&apos;
+</a><a href="#h0-1225" id="h0-1225" class="d">-&apos;xmodmap&apos; &apos;_xmodmap&apos;
+</a><a href="#h0-1226" id="h0-1226" class="d">-&apos;xmosaic&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-1227" id="h0-1227" class="d">-&apos;xon&apos; &apos;_x_utils&apos;
+</a><a href="#h0-1228" id="h0-1228" class="d">-&apos;xournal&apos; &apos;_xournal&apos;
+</a><a href="#h0-1229" id="h0-1229" class="d">-&apos;xpdf&apos; &apos;_xpdf&apos;
+</a><a href="#h0-1230" id="h0-1230" class="d">-&apos;xping&apos; &apos;_hosts&apos;
+</a><a href="#h0-1231" id="h0-1231" class="d">-&apos;xprop&apos; &apos;_x_utils&apos;
+</a><a href="#h0-1232" id="h0-1232" class="d">-&apos;xrandr&apos; &apos;_xrandr&apos;
+</a><a href="#h0-1233" id="h0-1233" class="d">-&apos;xrdb&apos; &apos;_x_utils&apos;
+</a><a href="#h0-1234" id="h0-1234" class="d">-&apos;xscreensaver-command&apos; &apos;_xscreensaver&apos;
+</a><a href="#h0-1235" id="h0-1235" class="d">-&apos;xset&apos; &apos;_xset&apos;
+</a><a href="#h0-1236" id="h0-1236" class="d">-&apos;xsetbg&apos; &apos;_xloadimage&apos;
+</a><a href="#h0-1237" id="h0-1237" class="d">-&apos;xsetroot&apos; &apos;_x_utils&apos;
+</a><a href="#h0-1238" id="h0-1238" class="d">-&apos;xsltproc&apos; &apos;_xmlsoft&apos;
+</a><a href="#h0-1239" id="h0-1239" class="d">-&apos;xterm&apos; &apos;_xterm&apos;
+</a><a href="#h0-1240" id="h0-1240" class="d">-&apos;xtightvncviewer&apos; &apos;_vnc&apos;
+</a><a href="#h0-1241" id="h0-1241" class="d">-&apos;xtp&apos; &apos;_imagemagick&apos;
+</a><a href="#h0-1242" id="h0-1242" class="d">-&apos;xv&apos; &apos;_xv&apos;
+</a><a href="#h0-1243" id="h0-1243" class="d">-&apos;xview&apos; &apos;_xloadimage&apos;
+</a><a href="#h0-1244" id="h0-1244" class="d">-&apos;xvnc4viewer&apos; &apos;_vnc&apos;
+</a><a href="#h0-1245" id="h0-1245" class="d">-&apos;xvncviewer&apos; &apos;_vnc&apos;
+</a><a href="#h0-1246" id="h0-1246" class="d">-&apos;xwd&apos; &apos;_x_utils&apos;
+</a><a href="#h0-1247" id="h0-1247" class="d">-&apos;xwininfo&apos; &apos;_x_utils&apos;
+</a><a href="#h0-1248" id="h0-1248" class="d">-&apos;xwit&apos; &apos;_xwit&apos;
+</a><a href="#h0-1249" id="h0-1249" class="d">-&apos;xwud&apos; &apos;_x_utils&apos;
+</a><a href="#h0-1250" id="h0-1250" class="d">-&apos;xxd&apos; &apos;_xxd&apos;
+</a><a href="#h0-1251" id="h0-1251" class="d">-&apos;xz&apos; &apos;_xz&apos;
+</a><a href="#h0-1252" id="h0-1252" class="d">-&apos;xzcat&apos; &apos;_xz&apos;
+</a><a href="#h0-1253" id="h0-1253" class="d">-&apos;yaourt&apos; &apos;_yaourt&apos;
+</a><a href="#h0-1254" id="h0-1254" class="d">-&apos;yaourt.static&apos; &apos;_yaourt&apos;
+</a><a href="#h0-1255" id="h0-1255" class="d">-&apos;ypbind&apos; &apos;_yp&apos;
+</a><a href="#h0-1256" id="h0-1256" class="d">-&apos;ypcat&apos; &apos;_yp&apos;
+</a><a href="#h0-1257" id="h0-1257" class="d">-&apos;ypmatch&apos; &apos;_yp&apos;
+</a><a href="#h0-1258" id="h0-1258" class="d">-&apos;yppasswd&apos; &apos;_yp&apos;
+</a><a href="#h0-1259" id="h0-1259" class="d">-&apos;yppoll&apos; &apos;_yp&apos;
+</a><a href="#h0-1260" id="h0-1260" class="d">-&apos;yppush&apos; &apos;_yp&apos;
+</a><a href="#h0-1261" id="h0-1261" class="d">-&apos;ypserv&apos; &apos;_yp&apos;
+</a><a href="#h0-1262" id="h0-1262" class="d">-&apos;ypset&apos; &apos;_yp&apos;
+</a><a href="#h0-1263" id="h0-1263" class="d">-&apos;ypwhich&apos; &apos;_yp&apos;
+</a><a href="#h0-1264" id="h0-1264" class="d">-&apos;ypxfr&apos; &apos;_yp&apos;
+</a><a href="#h0-1265" id="h0-1265" class="d">-&apos;ytalk&apos; &apos;_other_accounts&apos;
+</a><a href="#h0-1266" id="h0-1266" class="d">-&apos;zargs&apos; &apos;_zargs&apos;
+</a><a href="#h0-1267" id="h0-1267" class="d">-&apos;zathura&apos; &apos;_pspdf&apos;
+</a><a href="#h0-1268" id="h0-1268" class="d">-&apos;zcalc&apos; &apos;_zcalc&apos;
+</a><a href="#h0-1269" id="h0-1269" class="d">-&apos;-zcalc-line-&apos; &apos;_zcalc_line&apos;
+</a><a href="#h0-1270" id="h0-1270" class="d">-&apos;zcat&apos; &apos;_zcat&apos;
+</a><a href="#h0-1271" id="h0-1271" class="d">-&apos;zcompile&apos; &apos;_zcompile&apos;
+</a><a href="#h0-1272" id="h0-1272" class="d">-&apos;zcp&apos; &apos;_zmv&apos;
+</a><a href="#h0-1273" id="h0-1273" class="d">-&apos;zdelattr&apos; &apos;_zattr&apos;
+</a><a href="#h0-1274" id="h0-1274" class="d">-&apos;zdump&apos; &apos;_zdump&apos;
+</a><a href="#h0-1275" id="h0-1275" class="d">-&apos;zed&apos; &apos;_zed&apos;
+</a><a href="#h0-1276" id="h0-1276" class="d">-&apos;zegrep,&apos; &apos;_grep&apos;
+</a><a href="#h0-1277" id="h0-1277" class="d">-&apos;zen&apos; &apos;_webbrowser&apos;
+</a><a href="#h0-1278" id="h0-1278" class="d">-&apos;zf_chgrp&apos; &apos;_chown&apos;
+</a><a href="#h0-1279" id="h0-1279" class="d">-&apos;zf_chown&apos; &apos;_chown&apos;
+</a><a href="#h0-1280" id="h0-1280" class="d">-&apos;zfgrep&apos; &apos;_grep&apos;
+</a><a href="#h0-1281" id="h0-1281" class="d">-&apos;zf_ln&apos; &apos;_ln&apos;
+</a><a href="#h0-1282" id="h0-1282" class="d">-&apos;zf_mkdir&apos; &apos;_mkdir&apos;
+</a><a href="#h0-1283" id="h0-1283" class="d">-&apos;zf_rm&apos; &apos;_rm&apos;
+</a><a href="#h0-1284" id="h0-1284" class="d">-&apos;zf_rmdir&apos; &apos;_directories&apos;
+</a><a href="#h0-1285" id="h0-1285" class="d">-&apos;zfs&apos; &apos;_zfs&apos;
+</a><a href="#h0-1286" id="h0-1286" class="d">-&apos;zgetattr&apos; &apos;_zattr&apos;
+</a><a href="#h0-1287" id="h0-1287" class="d">-&apos;zgrep,&apos; &apos;_grep&apos;
+</a><a href="#h0-1288" id="h0-1288" class="d">-&apos;zip&apos; &apos;_zip&apos;
+</a><a href="#h0-1289" id="h0-1289" class="d">-&apos;zipinfo&apos; &apos;_zip&apos;
+</a><a href="#h0-1290" id="h0-1290" class="d">-&apos;zle&apos; &apos;_zle&apos;
+</a><a href="#h0-1291" id="h0-1291" class="d">-&apos;zlistattr&apos; &apos;_zattr&apos;
+</a><a href="#h0-1292" id="h0-1292" class="d">-&apos;zln&apos; &apos;_zmv&apos;
+</a><a href="#h0-1293" id="h0-1293" class="d">-&apos;zmail&apos; &apos;_mail&apos;
+</a><a href="#h0-1294" id="h0-1294" class="d">-&apos;zmodload&apos; &apos;_zmodload&apos;
+</a><a href="#h0-1295" id="h0-1295" class="d">-&apos;zmv&apos; &apos;_zmv&apos;
+</a><a href="#h0-1296" id="h0-1296" class="d">-&apos;zone&apos; &apos;_hosts&apos;
+</a><a href="#h0-1297" id="h0-1297" class="d">-&apos;zpool&apos; &apos;_zpool&apos;
+</a><a href="#h0-1298" id="h0-1298" class="d">-&apos;zpty&apos; &apos;_zpty&apos;
+</a><a href="#h0-1299" id="h0-1299" class="d">-&apos;zsetattr&apos; &apos;_zattr&apos;
+</a><a href="#h0-1300" id="h0-1300" class="d">-&apos;zsh&apos; &apos;_sh&apos;
+</a><a href="#h0-1301" id="h0-1301" class="d">-&apos;zsh-mime-handler&apos; &apos;_zsh-mime-handler&apos;
+</a><a href="#h0-1302" id="h0-1302" class="d">-&apos;zstat&apos; &apos;_stat&apos;
+</a><a href="#h0-1303" id="h0-1303" class="d">-&apos;zstyle&apos; &apos;_zstyle&apos;
+</a><a href="#h0-1304" id="h0-1304" class="d">-&apos;ztodo&apos; &apos;_ztodo&apos;
+</a><a href="#h0-1305" id="h0-1305" class="d">-&apos;zxpdf&apos; &apos;_xpdf&apos;
+</a><a href="#h0-1306" id="h0-1306" class="d">-)
+</a><a href="#h0-1307" id="h0-1307" class="d">-
+</a><a href="#h0-1308" id="h0-1308" class="d">-_services=(
+</a><a href="#h0-1309" id="h0-1309" class="d">-&apos;bzcat&apos; &apos;bunzip2&apos;
+</a><a href="#h0-1310" id="h0-1310" class="d">-&apos;gnupod_addsong.pl&apos; &apos;gnupod_addsong&apos;
+</a><a href="#h0-1311" id="h0-1311" class="d">-&apos;gnupod_check.pl&apos; &apos;gnupod_check&apos;
+</a><a href="#h0-1312" id="h0-1312" class="d">-&apos;gnupod_INIT.pl&apos; &apos;gnupod_INIT&apos;
+</a><a href="#h0-1313" id="h0-1313" class="d">-&apos;gnupod_search.pl&apos; &apos;gnupod_search&apos;
+</a><a href="#h0-1314" id="h0-1314" class="d">-&apos;gpg2&apos; &apos;gpg&apos;
+</a><a href="#h0-1315" id="h0-1315" class="d">-&apos;gzcat&apos; &apos;gunzip&apos;
+</a><a href="#h0-1316" id="h0-1316" class="d">-&apos;iceweasel&apos; &apos;firefox&apos;
+</a><a href="#h0-1317" id="h0-1317" class="d">-&apos;lzcat&apos; &apos;unxz&apos;
+</a><a href="#h0-1318" id="h0-1318" class="d">-&apos;lzma&apos; &apos;xz&apos;
+</a><a href="#h0-1319" id="h0-1319" class="d">-&apos;Mail&apos; &apos;mail&apos;
+</a><a href="#h0-1320" id="h0-1320" class="d">-&apos;mailx&apos; &apos;mail&apos;
+</a><a href="#h0-1321" id="h0-1321" class="d">-&apos;mktunes.pl&apos; &apos;mktunes&apos;
+</a><a href="#h0-1322" id="h0-1322" class="d">-&apos;nail&apos; &apos;mail&apos;
+</a><a href="#h0-1323" id="h0-1323" class="d">-&apos;ncl&apos; &apos;nc&apos;
+</a><a href="#h0-1324" id="h0-1324" class="d">-&apos;nedit-nc&apos; &apos;nc&apos;
+</a><a href="#h0-1325" id="h0-1325" class="d">-&apos;pacman.static&apos; &apos;pacman&apos;
+</a><a href="#h0-1326" id="h0-1326" class="d">-&apos;pcat&apos; &apos;unpack&apos;
+</a><a href="#h0-1327" id="h0-1327" class="d">-&apos;-redirect-,&lt;,bunzip2&apos; &apos;bunzip2&apos;
+</a><a href="#h0-1328" id="h0-1328" class="d">-&apos;-redirect-,&lt;,bzip2&apos; &apos;bzip2&apos;
+</a><a href="#h0-1329" id="h0-1329" class="d">-&apos;-redirect-,&gt;,bzip2&apos; &apos;bunzip2&apos;
+</a><a href="#h0-1330" id="h0-1330" class="d">-&apos;-redirect-,&lt;,compress&apos; &apos;compress&apos;
+</a><a href="#h0-1331" id="h0-1331" class="d">-&apos;-redirect-,&gt;,compress&apos; &apos;uncompress&apos;
+</a><a href="#h0-1332" id="h0-1332" class="d">-&apos;-redirect-,&lt;,gunzip&apos; &apos;gunzip&apos;
+</a><a href="#h0-1333" id="h0-1333" class="d">-&apos;-redirect-,&lt;,gzip&apos; &apos;gzip&apos;
+</a><a href="#h0-1334" id="h0-1334" class="d">-&apos;-redirect-,&gt;,gzip&apos; &apos;gunzip&apos;
+</a><a href="#h0-1335" id="h0-1335" class="d">-&apos;-redirect-,&lt;,uncompress&apos; &apos;uncompress&apos;
+</a><a href="#h0-1336" id="h0-1336" class="d">-&apos;-redirect-,&lt;,unxz&apos; &apos;unxz&apos;
+</a><a href="#h0-1337" id="h0-1337" class="d">-&apos;-redirect-,&lt;,xz&apos; &apos;xz&apos;
+</a><a href="#h0-1338" id="h0-1338" class="d">-&apos;-redirect-,&gt;,xz&apos; &apos;unxz&apos;
+</a><a href="#h0-1339" id="h0-1339" class="d">-&apos;remsh&apos; &apos;rsh&apos;
+</a><a href="#h0-1340" id="h0-1340" class="d">-&apos;slogin&apos; &apos;ssh&apos;
+</a><a href="#h0-1341" id="h0-1341" class="d">-&apos;svnadmin-static&apos; &apos;svnadmin&apos;
+</a><a href="#h0-1342" id="h0-1342" class="d">-&apos;tunes2pod.pl&apos; &apos;tunes2pod&apos;
+</a><a href="#h0-1343" id="h0-1343" class="d">-&apos;unlzma&apos; &apos;unxz&apos;
+</a><a href="#h0-1344" id="h0-1344" class="d">-&apos;VBoxHeadless&apos; &apos;vboxheadless&apos;
+</a><a href="#h0-1345" id="h0-1345" class="d">-&apos;VBoxManage&apos; &apos;vboxmanage&apos;
+</a><a href="#h0-1346" id="h0-1346" class="d">-&apos;xelatex&apos; &apos;latex&apos;
+</a><a href="#h0-1347" id="h0-1347" class="d">-&apos;xetex&apos; &apos;tex&apos;
+</a><a href="#h0-1348" id="h0-1348" class="d">-&apos;xzcat&apos; &apos;unxz&apos;
+</a><a href="#h0-1349" id="h0-1349" class="d">-&apos;yaourt.static&apos; &apos;yaourt&apos;
+</a><a href="#h0-1350" id="h0-1350" class="d">-&apos;zf_chgrp&apos; &apos;chgrp&apos;
+</a><a href="#h0-1351" id="h0-1351" class="d">-&apos;zf_chown&apos; &apos;chown&apos;
+</a><a href="#h0-1352" id="h0-1352" class="d">-)
+</a><a href="#h0-1353" id="h0-1353" class="d">-
+</a><a href="#h0-1354" id="h0-1354" class="d">-_patcomps=(
+</a><a href="#h0-1355" id="h0-1355" class="d">-&apos;*/(init|rc[0-9S]#).d/*&apos; &apos;_init_d&apos;
+</a><a href="#h0-1356" id="h0-1356" class="d">-&apos;zf*&apos; &apos;_zftp&apos;
+</a><a href="#h0-1357" id="h0-1357" class="d">-)
+</a><a href="#h0-1358" id="h0-1358" class="d">-
+</a><a href="#h0-1359" id="h0-1359" class="d">-_postpatcomps=(
+</a><a href="#h0-1360" id="h0-1360" class="d">-&apos;(|cifs)iostat&apos; &apos;_sysstat&apos;
+</a><a href="#h0-1361" id="h0-1361" class="d">-&apos;isag&apos; &apos;_sysstat&apos;
+</a><a href="#h0-1362" id="h0-1362" class="d">-&apos;mpstat&apos; &apos;_sysstat&apos;
+</a><a href="#h0-1363" id="h0-1363" class="d">-&apos;(p[bgpn]m*|*top[bgpn]m)&apos; &apos;_pbm&apos;
+</a><a href="#h0-1364" id="h0-1364" class="d">-&apos;pidstat&apos; &apos;_sysstat&apos;
+</a><a href="#h0-1365" id="h0-1365" class="d">-&apos;pydoc[0-9.]#&apos; &apos;_pydoc&apos;
+</a><a href="#h0-1366" id="h0-1366" class="d">-&apos;python[0-9.]#&apos; &apos;_python&apos;
+</a><a href="#h0-1367" id="h0-1367" class="d">-&apos;qemu(|-system-*)&apos; &apos;_qemu&apos;
+</a><a href="#h0-1368" id="h0-1368" class="d">-&apos;(ruby|[ei]rb)[0-9.]#&apos; &apos;_ruby&apos;
+</a><a href="#h0-1369" id="h0-1369" class="d">-&apos;sadf&apos; &apos;_sysstat&apos;
+</a><a href="#h0-1370" id="h0-1370" class="d">-&apos;sar&apos; &apos;_sysstat&apos;
+</a><a href="#h0-1371" id="h0-1371" class="d">-&apos;(texi(2*|ndex))&apos; &apos;_texi&apos;
+</a><a href="#h0-1372" id="h0-1372" class="d">-&apos;(tiff*|*2tiff|pal2rgb)&apos; &apos;_tiff&apos;
+</a><a href="#h0-1373" id="h0-1373" class="d">-&apos;-value-,(ftp|http(|s))_proxy,-default-&apos; &apos;_urls&apos;
+</a><a href="#h0-1374" id="h0-1374" class="d">-&apos;-value-,LC_*,-default-&apos; &apos;_locales&apos;
+</a><a href="#h0-1375" id="h0-1375" class="d">-&apos;-value-,*path,-default-&apos; &apos;_directories&apos;
+</a><a href="#h0-1376" id="h0-1376" class="d">-&apos;-value-,*PATH,-default-&apos; &apos;_dir_list&apos;
+</a><a href="#h0-1377" id="h0-1377" class="d">-&apos;-value-,RUBY(LIB|OPT|PATH),-default-&apos; &apos;_ruby&apos;
+</a><a href="#h0-1378" id="h0-1378" class="d">-&apos;*/X11(|R&lt;4-&gt;)/*&apos; &apos;_x_arguments&apos;
+</a><a href="#h0-1379" id="h0-1379" class="d">-&apos;yodl(|2*)&apos; &apos;_yodl&apos;
+</a><a href="#h0-1380" id="h0-1380" class="d">-)
+</a><a href="#h0-1381" id="h0-1381" class="d">-
+</a><a href="#h0-1382" id="h0-1382" class="d">-_compautos=(
+</a><a href="#h0-1383" id="h0-1383" class="d">-&apos;_call_program&apos; &apos;+X&apos;
+</a><a href="#h0-1384" id="h0-1384" class="d">-)
+</a><a href="#h0-1385" id="h0-1385" class="d">-
+</a><a href="#h0-1386" id="h0-1386" class="d">-zle -C _bash_complete-word .complete-word _bash_completions
+</a><a href="#h0-1387" id="h0-1387" class="d">-zle -C _bash_list-choices .list-choices _bash_completions
+</a><a href="#h0-1388" id="h0-1388" class="d">-zle -C _complete_debug .complete-word _complete_debug
+</a><a href="#h0-1389" id="h0-1389" class="d">-zle -C _complete_help .complete-word _complete_help
+</a><a href="#h0-1390" id="h0-1390" class="d">-zle -C _complete_tag .complete-word _complete_tag
+</a><a href="#h0-1391" id="h0-1391" class="d">-zle -C _correct_filename .complete-word _correct_filename
+</a><a href="#h0-1392" id="h0-1392" class="d">-zle -C _correct_word .complete-word _correct_word
+</a><a href="#h0-1393" id="h0-1393" class="d">-zle -C _expand_alias .complete-word _expand_alias
+</a><a href="#h0-1394" id="h0-1394" class="d">-zle -C _expand_word .complete-word _expand_word
+</a><a href="#h0-1395" id="h0-1395" class="d">-zle -C _history-complete-newer .complete-word _history_complete_word
+</a><a href="#h0-1396" id="h0-1396" class="d">-zle -C _history-complete-older .complete-word _history_complete_word
+</a><a href="#h0-1397" id="h0-1397" class="d">-zle -C _list_expansions .list-choices _expand_word
+</a><a href="#h0-1398" id="h0-1398" class="d">-zle -C _most_recent_file .complete-word _most_recent_file
+</a><a href="#h0-1399" id="h0-1399" class="d">-zle -C _next_tags .list-choices _next_tags
+</a><a href="#h0-1400" id="h0-1400" class="d">-zle -C _read_comp .complete-word _read_comp
+</a><a href="#h0-1401" id="h0-1401" class="d">-bindkey &apos;^X^R&apos; _read_comp
+</a><a href="#h0-1402" id="h0-1402" class="d">-bindkey &apos;^X?&apos; _complete_debug
+</a><a href="#h0-1403" id="h0-1403" class="d">-bindkey &apos;^XC&apos; _correct_filename
+</a><a href="#h0-1404" id="h0-1404" class="d">-bindkey &apos;^Xa&apos; _expand_alias
+</a><a href="#h0-1405" id="h0-1405" class="d">-bindkey &apos;^Xc&apos; _correct_word
+</a><a href="#h0-1406" id="h0-1406" class="d">-bindkey &apos;^Xd&apos; _list_expansions
+</a><a href="#h0-1407" id="h0-1407" class="d">-bindkey &apos;^Xe&apos; _expand_word
+</a><a href="#h0-1408" id="h0-1408" class="d">-bindkey &apos;^Xh&apos; _complete_help
+</a><a href="#h0-1409" id="h0-1409" class="d">-bindkey &apos;^Xm&apos; _most_recent_file
+</a><a href="#h0-1410" id="h0-1410" class="d">-bindkey &apos;^Xn&apos; _next_tags
+</a><a href="#h0-1411" id="h0-1411" class="d">-bindkey &apos;^Xt&apos; _complete_tag
+</a><a href="#h0-1412" id="h0-1412" class="d">-bindkey &apos;^X~&apos; _bash_list-choices
+</a><a href="#h0-1413" id="h0-1413" class="d">-bindkey &apos;^[,&apos; _history-complete-newer
+</a><a href="#h0-1414" id="h0-1414" class="d">-bindkey &apos;^[/&apos; _history-complete-older
+</a><a href="#h0-1415" id="h0-1415" class="d">-bindkey &apos;^[~&apos; _bash_complete-word
+</a><a href="#h0-1416" id="h0-1416" class="d">-
+</a><a href="#h0-1417" id="h0-1417" class="d">-autoload -Uz _a2ps _aap _ack _acpi _acpitool \
+</a><a href="#h0-1418" id="h0-1418" class="d">-            _acroread _adb _add-zsh-hook _ag _alias \
+</a><a href="#h0-1419" id="h0-1419" class="d">-            _aliases _all_labels _all_matches _alternative _analyseplugin \
+</a><a href="#h0-1420" id="h0-1420" class="d">-            _android _ansible _ansible-galaxy _ansible-playbook _ant \
+</a><a href="#h0-1421" id="h0-1421" class="d">-            _antiword _apachectl _apm _approximate _arch_archives \
+</a><a href="#h0-1422" id="h0-1422" class="d">-            _arch_namespace _arg_compile _arguments _arp _arping \
+</a><a href="#h0-1423" id="h0-1423" class="d">-            _arrays _artisan _assign _at _atach \
+</a><a href="#h0-1424" id="h0-1424" class="d">-            _attr _augeas _autocd _awk _bash_completions \
+</a><a href="#h0-1425" id="h0-1425" class="d">-            _baz _beep _bind_addresses _bindkey _bison \
+</a><a href="#h0-1426" id="h0-1426" class="d">-            _bittorrent _bogofilter _boot2docker _bootctl _bower \
+</a><a href="#h0-1427" id="h0-1427" class="d">-            _bpython _brace_parameter _brctl _brew _btrfs \
+</a><a href="#h0-1428" id="h0-1428" class="d">-            _builtin _bundle _busctl _bzip2 _bzr \
+</a><a href="#h0-1429" id="h0-1429" class="d">-            _cabal _cache_invalid _cal _calendar _call_function \
+</a><a href="#h0-1430" id="h0-1430" class="d">-            _canonical_paths _cap _cask _cat _ccal \
+</a><a href="#h0-1431" id="h0-1431" class="d">-            _cd _cdcd _cdls_popdls_pushdls _cdr _cdrdao \
+</a><a href="#h0-1432" id="h0-1432" class="d">-            _cdrecord _celery _chkconfig _chmod _choc \
+</a><a href="#h0-1433" id="h0-1433" class="d">-            _chown _chrt _chsh _clay _cmake \
+</a><a href="#h0-1434" id="h0-1434" class="d">-            _cmdstring _cmp _coffee _combination _comm \
+</a><a href="#h0-1435" id="h0-1435" class="d">-            _command _command_names _compadd _compdef _complete \
+</a><a href="#h0-1436" id="h0-1436" class="d">-            _complete_debug _complete_help _complete_help_generic _complete_tag _comp_locale \
+</a><a href="#h0-1437" id="h0-1437" class="d">-            _composer _compress _condition _configure _console \
+</a><a href="#h0-1438" id="h0-1438" class="d">-            _coredumpctl _correct _correct_filename _correct_word _cowsay \
+</a><a href="#h0-1439" id="h0-1439" class="d">-            _cp _cpanm _cpio _cplay _cryptsetup \
+</a><a href="#h0-1440" id="h0-1440" class="d">-            _cssh _ctags_tags _cut _cvs _darcs \
+</a><a href="#h0-1441" id="h0-1441" class="d">-            _date _date_formats _dates _dbus _dcop \
+</a><a href="#h0-1442" id="h0-1442" class="d">-            _dd _debuild _default _delimiters _describe \
+</a><a href="#h0-1443" id="h0-1443" class="d">-            _description _devtodo _df _dget _dhclient \
+</a><a href="#h0-1444" id="h0-1444" class="d">-            _dhcpcd _dict _dict_words _diff _diff_options \
+</a><a href="#h0-1445" id="h0-1445" class="d">-            _diffstat _directories _directory_stack _dir_list _dirs \
+</a><a href="#h0-1446" id="h0-1446" class="d">-            _disable _dispatch _ditz _django _dmidecode \
+</a><a href="#h0-1447" id="h0-1447" class="d">-            _docker _docker-compose _docker-machine _docpad _domains \
+</a><a href="#h0-1448" id="h0-1448" class="d">-            _drush _dsh _du _dut _dvi \
+</a><a href="#h0-1449" id="h0-1449" class="d">-            _dynamic_directory_name _dzen2 _ecasound _echotc _echoti \
+</a><a href="#h0-1450" id="h0-1450" class="d">-            _elfdump _elinks _elm _email_addresses _emulate \
+</a><a href="#h0-1451" id="h0-1451" class="d">-            _emulator _enable _enscript _env _equal \
+</a><a href="#h0-1452" id="h0-1452" class="d">-            _espeak _etags _ethtool _expand _expand_alias \
+</a><a href="#h0-1453" id="h0-1453" class="d">-            _expand_word _exportfs _extensions _external_pwds _fab \
+</a><a href="#h0-1454" id="h0-1454" class="d">-            _fakeroot _fc _feh _fetchmail _ffmpeg \
+</a><a href="#h0-1455" id="h0-1455" class="d">-            _figlet _file_descriptors _files _file_systems _find \
+</a><a href="#h0-1456" id="h0-1456" class="d">-            _find_net_interfaces _finger _first _flasher _flex \
+</a><a href="#h0-1457" id="h0-1457" class="d">-            _fortune _fsh _functions _fuse_arguments _fuser \
+</a><a href="#h0-1458" id="h0-1458" class="d">-            _fusermount _fuse_values _gas _gcc _gcore \
+</a><a href="#h0-1459" id="h0-1459" class="d">-            _gdb _geany _gem _generic _genisoimage \
+</a><a href="#h0-1460" id="h0-1460" class="d">-            _getconf _getent _getfacl _getmail _ghc \
+</a><a href="#h0-1461" id="h0-1461" class="d">-            _gist _git _git-flow _github _git-pulls \
+</a><a href="#h0-1462" id="h0-1462" class="d">-            _git-wtf _glances _global _global_tags _globflags \
+</a><a href="#h0-1463" id="h0-1463" class="d">-            _globqual_delims _globquals _gnome-gv _gnu_generic _gnupod \
+</a><a href="#h0-1464" id="h0-1464" class="d">-            _gnutls _go _google _gpg _gphoto2 \
+</a><a href="#h0-1465" id="h0-1465" class="d">-            _gprof _gqview _gradle _graphicsmagick _grep \
+</a><a href="#h0-1466" id="h0-1466" class="d">-            _groff _groups _growisofs _gs _guard \
+</a><a href="#h0-1467" id="h0-1467" class="d">-            _guilt _gv _gzip _hash _have_glob_qual \
+</a><a href="#h0-1468" id="h0-1468" class="d">-            _heroku _hg _history _history_complete_word _history_modifiers \
+</a><a href="#h0-1469" id="h0-1469" class="d">-            _hledger _hostnamectl _hosts _httpie _iconv \
+</a><a href="#h0-1470" id="h0-1470" class="d">-            _id _id3 _id3v2 _ifconfig _iftop \
+</a><a href="#h0-1471" id="h0-1471" class="d">-            _ignored _imagemagick _initctl _init_d _in_vared \
+</a><a href="#h0-1472" id="h0-1472" class="d">-            _ionice _ip _ipset _iptables _irssi \
+</a><a href="#h0-1473" id="h0-1473" class="d">-            _ispell _iw _iwconfig _java _java_class \
+</a><a href="#h0-1474" id="h0-1474" class="d">-            _jekyll _jmeter _jmeter-plugins _jobs _jobs_bg \
+</a><a href="#h0-1475" id="h0-1475" class="d">-            _jobs_builtin _jobs_fg _joe _join _jonas \
+</a><a href="#h0-1476" id="h0-1476" class="d">-            _journalctl _jq _kernel-install _kfmclient _kill \
+</a><a href="#h0-1477" id="h0-1477" class="d">-            _killall _kitchen _knife _knock _kvno \
+</a><a href="#h0-1478" id="h0-1478" class="d">-            _language_codes _last _ldd _ld_debug _lein \
+</a><a href="#h0-1479" id="h0-1479" class="d">-            _less _lha _limit _limits _links \
+</a><a href="#h0-1480" id="h0-1480" class="d">-            _list _list_files _ln _loadkeys _localectl \
+</a><a href="#h0-1481" id="h0-1481" class="d">-            _locales _locate _logger _loginctl _look \
+</a><a href="#h0-1482" id="h0-1482" class="d">-            _losetup _lp _ls _lsof _lsusb \
+</a><a href="#h0-1483" id="h0-1483" class="d">-            _lunar _lunchy _lynx _lzop _machinectl \
+</a><a href="#h0-1484" id="h0-1484" class="d">-            _mail _mailboxes _main_complete _make _man \
+</a><a href="#h0-1485" id="h0-1485" class="d">-            _manage.py _match _math _math_params _matlab \
+</a><a href="#h0-1486" id="h0-1486" class="d">-            _md5sum _mdadm _mencal _menu _mere \
+</a><a href="#h0-1487" id="h0-1487" class="d">-            _message _metaflac _mh _middleman _mii-tool \
+</a><a href="#h0-1488" id="h0-1488" class="d">-            _mime_types _mina _mkdcd _mkdir _mkinitcpio \
+</a><a href="#h0-1489" id="h0-1489" class="d">-            _module _module_math_func _modutils _mondo _monotone \
+</a><a href="#h0-1490" id="h0-1490" class="d">-            _moosic _mosh _most_recent_file _mount _mozilla \
+</a><a href="#h0-1491" id="h0-1491" class="d">-            _mpc _mplayer _mt _mtools _mtr \
+</a><a href="#h0-1492" id="h0-1492" class="d">-            _multi_parts _mussh _mutt _mvn _my_accounts \
+</a><a href="#h0-1493" id="h0-1493" class="d">-            _mysqldiff _mysql_utils _nautilus _ncftp _nedit \
+</a><a href="#h0-1494" id="h0-1494" class="d">-            _netcat _netctl _net_interfaces _netscape _newsgroups \
+</a><a href="#h0-1495" id="h0-1495" class="d">-            _next_label _next_tags _nice _nkf _nl \
+</a><a href="#h0-1496" id="h0-1496" class="d">-            _nm _nmap _nmcli _node _normal \
+</a><a href="#h0-1497" id="h0-1497" class="d">-            _nothing _notmuch _npm _nslookup _nvm \
+</a><a href="#h0-1498" id="h0-1498" class="d">-            _od _okular _oldlist _options _options_set \
+</a><a href="#h0-1499" id="h0-1499" class="d">-            _options_unset _optirun _other_accounts _pack _pacman \
+</a><a href="#h0-1500" id="h0-1500" class="d">-            _pactree _parameter _parameters _patch _patchutils \
+</a><a href="#h0-1501" id="h0-1501" class="d">-            _path_commands _path_files _pax _pbm _pdf \
+</a><a href="#h0-1502" id="h0-1502" class="d">-            _pdftk _pear _perf _perforce _periscope \
+</a><a href="#h0-1503" id="h0-1503" class="d">-            _perl _perl_basepods _perldoc _perl_modules _pgrep \
+</a><a href="#h0-1504" id="h0-1504" class="d">-            _pgsql_utils _phing _php _pick_variant _pids \
+</a><a href="#h0-1505" id="h0-1505" class="d">-            _pine _ping _pkcon _pkgadd _pkg-config \
+</a><a href="#h0-1506" id="h0-1506" class="d">-            _pkginfo _pkg_instance _pkgrm _play _pon \
+</a><a href="#h0-1507" id="h0-1507" class="d">-            _port _ports _postfix _postscript _prcs \
+</a><a href="#h0-1508" id="h0-1508" class="d">-            _precommand _prefix _prep _print _printenv \
+</a><a href="#h0-1509" id="h0-1509" class="d">-            _printers _prompt _prove _ps _ps1234 \
+</a><a href="#h0-1510" id="h0-1510" class="d">-            _pspdf _psub _psutils _pulseaudio _pump \
+</a><a href="#h0-1511" id="h0-1511" class="d">-            _pydoc _pygmentize _python _python_modules _qdbus \
+</a><a href="#h0-1512" id="h0-1512" class="d">-            _qemu _qiv _quilt _raggle _rails \
+</a><a href="#h0-1513" id="h0-1513" class="d">-            _rake _ralio _ranlib _rar _rcs \
+</a><a href="#h0-1514" id="h0-1514" class="d">-            _rdesktop _read _read_comp _readelf _redirect \
+</a><a href="#h0-1515" id="h0-1515" class="d">-            _redis-cli _regex_arguments _regex_words _remote_files _renice \
+</a><a href="#h0-1516" id="h0-1516" class="d">-            _requested _retrieve_cache _rfkill _ri _rlogin \
+</a><a href="#h0-1517" id="h0-1517" class="d">-            _rm _rrdtool _rspec _rsync _rubber \
+</a><a href="#h0-1518" id="h0-1518" class="d">-            _rubocop _ruby _run-help _runit _rvm \
+</a><a href="#h0-1519" id="h0-1519" class="d">-            _sablotron _samba _sbt _scala _sccs \
+</a><a href="#h0-1520" id="h0-1520" class="d">-            _sched _schedtool _screen _sdd _sd_hosts_or_user_at_host \
+</a><a href="#h0-1521" id="h0-1521" class="d">-            _sd_machines _sd_outputmodes _sd_unit_files _sed _sep_parts \
+</a><a href="#h0-1522" id="h0-1522" class="d">-            _sequence _service _services _set _set_command \
+</a><a href="#h0-1523" id="h0-1523" class="d">-            _setfacl _setopt _setup _setup.py _sh \
+</a><a href="#h0-1524" id="h0-1524" class="d">-            _showmount _showoff _shutdown _signals _sisu \
+</a><a href="#h0-1525" id="h0-1525" class="d">-            _slrn _smartmontools _socat _socket _sort \
+</a><a href="#h0-1526" id="h0-1526" class="d">-            _source _spamassassin _sqlite _sqsh _srm \
+</a><a href="#h0-1527" id="h0-1527" class="d">-            _ss _ssh _ssh-copy-id _sshfs _stack \
+</a><a href="#h0-1528" id="h0-1528" class="d">-            _stat _stgit _store_cache _strace _strftime \
+</a><a href="#h0-1529" id="h0-1529" class="d">-            _strip _stty _su _sub_commands _subliminal \
+</a><a href="#h0-1530" id="h0-1530" class="d">-            _subscript _subversion _sudo _suffix_alias_files _surfraw \
+</a><a href="#h0-1531" id="h0-1531" class="d">-            _svm _symfony _sysctl _sysstat _systemctl \
+</a><a href="#h0-1532" id="h0-1532" class="d">-            _systemd _systemd-analyze _systemd-delta _systemd-inhibit _systemd-nspawn \
+</a><a href="#h0-1533" id="h0-1533" class="d">-            _systemd-run _systemd-tmpfiles _tags _tar _tar_archive \
+</a><a href="#h0-1534" id="h0-1534" class="d">-            _tardy _tcpdump _tcpsys _tcptraceroute _teamocil \
+</a><a href="#h0-1535" id="h0-1535" class="d">-            _telnet _terminals _terminal-set-titles-with-command _terminal-set-titles-with-path _tex \
+</a><a href="#h0-1536" id="h0-1536" class="d">-            _texi _texinfo _thor _tidy _tiff \
+</a><a href="#h0-1537" id="h0-1537" class="d">-            _tilde _tilde_files _timedatectl _time_zone _tin \
+</a><a href="#h0-1538" id="h0-1538" class="d">-            _tla _tmux _tmuxinator _todo.sh _toilet \
+</a><a href="#h0-1539" id="h0-1539" class="d">-            _topgit _totd _tpb _tpconfig _tracepath \
+</a><a href="#h0-1540" id="h0-1540" class="d">-            _trap _tree _ttyctl _ttys _tune2fs \
+</a><a href="#h0-1541" id="h0-1541" class="d">-            _twidge _twisted _typeset _udevadm _ulimit \
+</a><a href="#h0-1542" id="h0-1542" class="d">-            _uml _unace _uname _unexpand _unhash \
+</a><a href="#h0-1543" id="h0-1543" class="d">-            _uniq _unison _units _urls _urxvt \
+</a><a href="#h0-1544" id="h0-1544" class="d">-            _user_admin _user_at_host _user_expand _user_math_func _users \
+</a><a href="#h0-1545" id="h0-1545" class="d">-            _users_on _uzbl _vagrant _valgrind _value \
+</a><a href="#h0-1546" id="h0-1546" class="d">-            _values _vared _vars _vcsh _veewee \
+</a><a href="#h0-1547" id="h0-1547" class="d">-            _vim _virsh _virtualbox _vmstat _vnc \
+</a><a href="#h0-1548" id="h0-1548" class="d">-            _vnstat _vorbis _vorbiscomment _vpnc _vserver \
+</a><a href="#h0-1549" id="h0-1549" class="d">-            _vux _w3m _wait _wakeup_capable_devices _wanted \
+</a><a href="#h0-1550" id="h0-1550" class="d">-            _watch _wc _webbrowser _wemux _wget \
+</a><a href="#h0-1551" id="h0-1551" class="d">-            _whereis _which _whois _wiggle _wpa_cli \
+</a><a href="#h0-1552" id="h0-1552" class="d">-            _xargs _x_arguments _xauth _xautolock _x_borderwidth \
+</a><a href="#h0-1553" id="h0-1553" class="d">-            _xclip _x_color _x_colormapid _x_cursor _x_display \
+</a><a href="#h0-1554" id="h0-1554" class="d">-            _xdvi _x_extension _xfig _x_font _xft_fonts \
+</a><a href="#h0-1555" id="h0-1555" class="d">-            _x_geometry _xinput _x_keysym _xloadimage _x_locale \
+</a><a href="#h0-1556" id="h0-1556" class="d">-            _xmlsoft _xmms2 _x_modifier _xmodmap _x_name \
+</a><a href="#h0-1557" id="h0-1557" class="d">-            _xournal _xpdf _xrandr _x_resource _xscreensaver \
+</a><a href="#h0-1558" id="h0-1558" class="d">-            _x_selection_timeout _xset _xt_arguments _xterm _x_title \
+</a><a href="#h0-1559" id="h0-1559" class="d">-            _xt_session_id _x_utils _xv _x_visual _x_window \
+</a><a href="#h0-1560" id="h0-1560" class="d">-            _xwit _xxd _xz _yaourt _yodl \
+</a><a href="#h0-1561" id="h0-1561" class="d">-            _yp _zargs _zattr _zcalc _zcalc_line \
+</a><a href="#h0-1562" id="h0-1562" class="d">-            _zcat _zcompile _zdump _zed _zfs \
+</a><a href="#h0-1563" id="h0-1563" class="d">-            _zfs_dataset _zfs_keysource_props _zfs_pool _zftp _zip \
+</a><a href="#h0-1564" id="h0-1564" class="d">-            _zle _zmodload _zmv _zpool _zpty \
+</a><a href="#h0-1565" id="h0-1565" class="d">-            _zsh-mime-handler _zstyle _ztodo
+</a><a href="#h0-1566" id="h0-1566" class="d">-autoload -Uz +X _call_program
+</a><a href="#h0-1567" id="h0-1567" class="d">-
+</a><a href="#h0-1568" id="h0-1568" class="d">-typeset -gUa _comp_assocs
+</a><a href="#h0-1569" id="h0-1569" class="d">-_comp_assocs=( &apos;&apos; )
+</a><b>diff --git a/<a href="../file/home/.zcompdump.zwc.html">home/.zcompdump.zwc</a> b/<a href="../file/home/.zcompdump.zwc.html">home/.zcompdump.zwc</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/home/.zprezto/runcoms/zshrc.html">home/.zprezto/runcoms/zshrc</a> b/<a href="../file/home/.zprezto/runcoms/zshrc.html">home/.zprezto/runcoms/zshrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -13,7 +13,7 @@ fi
+</a> # Customize to your needs...
+ # export TERM=xterm-256color
+ export TERM=xterm-256color
+<a href="#h0-3" id="h0-3" class="d">-export EDITOR=nano
+</a><a href="#h0-4" id="h0-4" class="i">+export EDITOR=vim
+</a> export VISUAL=vim
+ export PATH=&quot;$(ruby -e &apos;print Gem.user_dir&apos;)/bin:$PATH&quot;
+ 
+</pre>
+</div>
+</body>
+</html>

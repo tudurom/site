@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>URxvt clipboard magic - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/0848bba3a92c1b980e9327b9b966b539e93fb4db.html">0848bba3a92c1b980e9327b9b966b539e93fb4db</a>
+<b>parent</b> <a href="../commit/d841158327e435b7b28b07aef32c3221e5a37826.html">d841158327e435b7b28b07aef32c3221e5a37826</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Wed Feb 10 17:05:57 2016
+
+URxvt clipboard magic
+
+<b>Diffstat:</b>
+ home/.crosssh.sh | 3 +++
+ home/.tmux.conf  | 7 +++++++
+ home/.xinitrc    | 2 ++
+ home/.xres/urxvt | 8 +++++++-
+ 4 files changed, 19 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a href="../file/home/.crosssh.sh.html">home/.crosssh.sh</a> b/<a href="../file/home/.crosssh.sh.html">home/.crosssh.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -11,6 +11,9 @@ alias irb=pry
+</a> alias ccat=pygmentize
+ alias problemhelper=&quot;time problemhelper&quot;
+ alias ph=problemhelper
+<a href="#h0-3" id="h0-3" class="i">+alias tls=&quot;tmux ls&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+alias tswitch=&quot;tmux switch -t&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+alias tkill=&quot;tmux kill-session -t&quot;
+</a> export LESS=&apos;-F -g -i -M -R -S -w -X -z-4&apos;
+ 
+ #source ~/.scripts/base16-ocean.dark.sh
+<b>diff --git a/<a href="../file/home/.tmux.conf.html">home/.tmux.conf</a> b/<a href="../file/home/.tmux.conf.html">home/.tmux.conf</a></b>
+<a href="#h0" id="h0" class="h">@@ -74,3 +74,10 @@ bind - split-window -v
+</a> 
+ # }}}
+ 
+<a href="#h0-3" id="h0-3" class="i">+# List of plugins
+</a><a href="#h0-4" id="h0-4" class="i">+set -g @plugin &apos;tmux-plugins/tpm&apos;
+</a><a href="#h0-5" id="h0-5" class="i">+set -g @plugin &apos;tmux-plugins/tmux-sensible&apos;
+</a><a href="#h0-6" id="h0-6" class="i">+set -g @plugin &apos;tmux-plugins/tmux-resurrect&apos;
+</a><a href="#h0-7" id="h0-7" class="i">+
+</a><a href="#h0-8" id="h0-8" class="i">+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+</a><a href="#h0-9" id="h0-9" class="i">+run &apos;~/.tmux/plugins/tpm/tpm&apos;
+</a><b>diff --git a/<a href="../file/home/.xinitrc.html">home/.xinitrc</a> b/<a href="../file/home/.xinitrc.html">home/.xinitrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -40,6 +40,8 @@ xset fp rehash
+</a> 
+ # Map Caps to Ctrl
+ setxkbmap -option ctrl:nocaps
+<a href="#h0-3" id="h0-3" class="i">+# URxvt clipboard magic
+</a><a href="#h0-4" id="h0-4" class="i">+autocutsel -selection clipboard -fork &amp;
+</a> 
+ source ~/.screenlayout/layout.sh
+ compton -b &amp;
+<b>diff --git a/<a href="../file/home/.xres/urxvt.html">home/.xres/urxvt</a> b/<a href="../file/home/.xres/urxvt.html">home/.xres/urxvt</a></b>
+<a href="#h0" id="h0" class="h">@@ -6,7 +6,13 @@ URxvt.letterSpace: 0
+</a> URxvt.cursorBlink: true
+ URxvt.cursorUnderline: false
+ URxvt.internalBorder: 10
+<a href="#h0-3" id="h0-3" class="d">-urxvt*perl-ext-common: default,clipboard
+</a> URxvt.depth: 32
+ 
+<a href="#h0-6" id="h0-6" class="i">+! Clipboard copy/paste with C-Shift-c and C-Shift-p
+</a><a href="#h0-7" id="h0-7" class="i">+URxvt.iso14755: false
+</a><a href="#h0-8" id="h0-8" class="i">+URxvt.iso14755_52: false
+</a><a href="#h0-9" id="h0-9" class="i">+URxvt.perl-ext-common: default,clipboard
+</a><a href="#h0-10" id="h0-10" class="i">+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+</a><a href="#h0-11" id="h0-11" class="i">+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a> ! vim: set ft=xdefaults :
+</pre>
+</div>
+</body>
+</html>

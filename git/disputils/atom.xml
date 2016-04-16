@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>disputils, branch HEAD</title>
+<subtitle>wmutils/xrandr powered multimonitor display utils
+</subtitle>
+<entry>
+<id>acea2a93abde30d2b7beb7aa9dcc600c1cbfb929</id>
+<updated>2016-04-16T20:06:44Z</updated>
+<title type="text">indent</title>
+<link rel="alternate" type="text/html" href="commit/acea2a93abde30d2b7beb7aa9dcc600c1cbfb929.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit acea2a93abde30d2b7beb7aa9dcc600c1cbfb929
+parent 2c4720cc85fda06c8ec5059345b94b9e7811346f
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Apr 16 20:06:44 2016
+
+indent
+
+</content>
+</entry>
+<entry>
+<id>2c4720cc85fda06c8ec5059345b94b9e7811346f</id>
+<updated>2016-04-16T20:03:30Z</updated>
+<title type="text">Add pfd and clean code</title>
+<link rel="alternate" type="text/html" href="commit/2c4720cc85fda06c8ec5059345b94b9e7811346f.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 2c4720cc85fda06c8ec5059345b94b9e7811346f
+parent 58aea1f10d8e38db7fc7f5b3aa260fced5fd4a85
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Apr 16 20:03:30 2016
+
+Add pfd and clean code
+
+</content>
+</entry>
+<entry>
+<id>58aea1f10d8e38db7fc7f5b3aa260fced5fd4a85</id>
+<updated>2016-04-16T15:38:27Z</updated>
+<title type="text">add man pages</title>
+<link rel="alternate" type="text/html" href="commit/58aea1f10d8e38db7fc7f5b3aa260fced5fd4a85.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 58aea1f10d8e38db7fc7f5b3aa260fced5fd4a85
+parent 5815b2648ba7226688fdb7468e2cc0088fcf7efc
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Apr 16 15:38:27 2016
+
+add man pages
+
+</content>
+</entry>
+<entry>
+<id>5815b2648ba7226688fdb7468e2cc0088fcf7efc</id>
+<updated>2016-04-16T15:13:00Z</updated>
+<title type="text">rename lsm to lsd</title>
+<link rel="alternate" type="text/html" href="commit/5815b2648ba7226688fdb7468e2cc0088fcf7efc.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 5815b2648ba7226688fdb7468e2cc0088fcf7efc
+parent ea25039534747f4a57707d40731fcfda94a57b49
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Apr 16 15:13:00 2016
+
+rename lsm to lsd
+
+</content>
+</entry>
+<entry>
+<id>ea25039534747f4a57707d40731fcfda94a57b49</id>
+<updated>2016-04-16T15:07:20Z</updated>
+<title type="text">add: dattr.c</title>
+<link rel="alternate" type="text/html" href="commit/ea25039534747f4a57707d40731fcfda94a57b49.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit ea25039534747f4a57707d40731fcfda94a57b49
+parent 67db9f69e6bb4077e7ef767967e8794d938619f1
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Apr 16 15:07:20 2016
+
+add: dattr.c
+
+</content>
+</entry>
+<entry>
+<id>67db9f69e6bb4077e7ef767967e8794d938619f1</id>
+<updated>2016-04-13T15:59:57Z</updated>
+<title type="text">README</title>
+<link rel="alternate" type="text/html" href="commit/67db9f69e6bb4077e7ef767967e8794d938619f1.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 67db9f69e6bb4077e7ef767967e8794d938619f1
+parent b862fb23a3f898a97d9223687cf82ec0355a374b
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Apr 13 15:59:57 2016
+
+README
+
+</content>
+</entry>
+<entry>
+<id>b862fb23a3f898a97d9223687cf82ec0355a374b</id>
+<updated>2016-04-13T15:50:37Z</updated>
+<title type="text">Added dattr draft</title>
+<link rel="alternate" type="text/html" href="commit/b862fb23a3f898a97d9223687cf82ec0355a374b.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit b862fb23a3f898a97d9223687cf82ec0355a374b
+parent d7a42d05f8821ffea69ce61d462d34da5326544c
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Apr 13 15:50:37 2016
+
+Added dattr draft
+
+</content>
+</entry>
+<entry>
+<id>d7a42d05f8821ffea69ce61d462d34da5326544c</id>
+<updated>2016-04-12T19:06:47Z</updated>
+<title type="text">Compile with -O2</title>
+<link rel="alternate" type="text/html" href="commit/d7a42d05f8821ffea69ce61d462d34da5326544c.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit d7a42d05f8821ffea69ce61d462d34da5326544c
+parent d4d9ee26b657b4987c353f13cb406115bf11aaa8
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Apr 12 19:06:47 2016
+
+Compile with -O2
+
+</content>
+</entry>
+<entry>
+<id>d4d9ee26b657b4987c353f13cb406115bf11aaa8</id>
+<updated>2016-04-12T18:58:14Z</updated>
+<title type="text">Initial commit</title>
+<link rel="alternate" type="text/html" href="commit/d4d9ee26b657b4987c353f13cb406115bf11aaa8.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit d4d9ee26b657b4987c353f13cb406115bf11aaa8
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Apr 12 18:58:14 2016
+
+Initial commit
+
+</content>
+</entry>
+</feed>

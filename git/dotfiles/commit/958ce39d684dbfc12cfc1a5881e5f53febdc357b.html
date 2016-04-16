@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Will move to wmutils someday... - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/958ce39d684dbfc12cfc1a5881e5f53febdc357b.html">958ce39d684dbfc12cfc1a5881e5f53febdc357b</a>
+<b>parent</b> <a href="../commit/9c4ba9464d98b482a9a2786bdd0cb11b5f6f8dfc.html">9c4ba9464d98b482a9a2786bdd0cb11b5f6f8dfc</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Sun Feb 28 13:39:01 2016
+
+Will move to wmutils someday...
+
+<b>Diffstat:</b>
+ .gitignore                              |   4 +-
+ .gitmodules                             |   3 +-
+ fetch/.config/fetch/config              | 381 +---------------------------------
+ neofetch/.config/neofetch/config        | 381 +++++++++++++++++++++++++++++++++-
+ scripts/.scripts/panel                  |   2 +-
+ scripts/.scripts/screenlayout           |  10 +-
+ scripts/.scripts/setwall                |   8 +-
+ tmux/.tmux/bin/statusline               |   2 +-
+ wallpapers/Pictures/Monody.jpg          | Bin 2279594 -&gt; 0 bytes
+ wallpapers/Pictures/april_wall.png      | Bin 1468050 -&gt; 0 bytes
+ wallpapers/Pictures/madeon-pillar.png   | Bin 15546035 -&gt; 0 bytes
+ wallpapers/Pictures/nomanssky.png       | Bin 7814986 -&gt; 0 bytes
+ wallpapers/Pictures/pixel.jpg           | Bin 222502 -&gt; 0 bytes
+ wallpapers/Pictures/pixel2.png          | Bin 220467 -&gt; 0 bytes
+ wallpapers/Pictures/snowden.jpg         | Bin 254949 -&gt; 0 bytes
+ wallpapers/Pictures/surprise_wall.png   | Bin 674151 -&gt; 0 bytes
+ wallpapers/Pictures/wallpaper.png       | Bin 136641 -&gt; 0 bytes
+ wallpapers/wallpapers/Monody.jpg        | Bin 0 -&gt; 2279594 bytes
+ wallpapers/wallpapers/april_wall.png    | Bin 0 -&gt; 1468050 bytes
+ wallpapers/wallpapers/madeon-pillar.png | Bin 0 -&gt; 15546035 bytes
+ wallpapers/wallpapers/nomanssky.png     | Bin 0 -&gt; 7814986 bytes
+ wallpapers/wallpapers/pixel.jpg         | Bin 0 -&gt; 222502 bytes
+ wallpapers/wallpapers/pixel2.png        | Bin 0 -&gt; 220467 bytes
+ wallpapers/wallpapers/snowden.jpg       | Bin 0 -&gt; 254949 bytes
+ wallpapers/wallpapers/surprise_wall.png | Bin 0 -&gt; 674151 bytes
+ wallpapers/wallpapers/wallpaper.png     | Bin 0 -&gt; 136641 bytes
+ wallpapers/wallpapers/wov.png           | Bin 0 -&gt; 707 bytes
+ wmrc/contrib                            |   1 +-
+ 28 files changed, 400 insertions(+), 392 deletions(-)
+<hr/><b>diff --git a/<a href="../file/.gitignore.html">.gitignore</a> b/<a href="../file/.gitignore.html">.gitignore</a></b>
+<a href="#h0" id="h0" class="h">@@ -6,3 +6,7 @@ mpd/.mpd/*
+</a> !mpd/.mpd/mpd.conf
+ 
+ vimperator/.vimperator/info
+<a href="#h0-3" id="h0-3" class="i">+
+</a><a href="#h0-4" id="h0-4" class="i">+wmrc/contrib/killwa/killwa
+</a><a href="#h0-5" id="h0-5" class="i">+wmrc/contrib/killwa/killwa.o
+</a><a href="#h0-6" id="h0-6" class="i">+wmrc/contrib/killwa/util.o
+</a><b>diff --git a/<a href="../file/.gitmodules.html">.gitmodules</a> b/<a href="../file/.gitmodules.html">.gitmodules</a></b>
+<a href="#h0" id="h0" class="h">@@ -13,3 +13,6 @@
+</a> [submodule &quot;startpage/startpage&quot;]
+ 	path = startpage/startpage
+ 	url = https://github.com/tudurom/startpage.git
+<a href="#h0-3" id="h0-3" class="i">+[submodule &quot;contrib&quot;]
+</a><a href="#h0-4" id="h0-4" class="i">+	path = wmrc/contrib
+</a><a href="#h0-5" id="h0-5" class="i">+	url = https://github.com/wmutils/contrib
+</a><b>diff --git a/<a href="../file/fetch/.config/fetch/config.html">fetch/.config/fetch/config</a> b/<a href="../file/fetch/.config/fetch/config.html">fetch/.config/fetch/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,381 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/usr/bin/env bash
+</a><a href="#h0-1" id="h0-1" class="d">-# vim:fdm=marker
+</a><a href="#h0-2" id="h0-2" class="d">-#
+</a><a href="#h0-3" id="h0-3" class="d">-# Fetch config file
+</a><a href="#h0-4" id="h0-4" class="d">-# https://github.com/dylanaraps/fetch
+</a><a href="#h0-5" id="h0-5" class="d">-
+</a><a href="#h0-6" id="h0-6" class="d">-# Speed up script by not using unicode
+</a><a href="#h0-7" id="h0-7" class="d">-export LC_ALL=C
+</a><a href="#h0-8" id="h0-8" class="d">-export LANG=c
+</a><a href="#h0-9" id="h0-9" class="d">-export LANGUAGE=C
+</a><a href="#h0-10" id="h0-10" class="d">-
+</a><a href="#h0-11" id="h0-11" class="d">-# Info Options {{{
+</a><a href="#h0-12" id="h0-12" class="d">-
+</a><a href="#h0-13" id="h0-13" class="d">-
+</a><a href="#h0-14" id="h0-14" class="d">-# Info
+</a><a href="#h0-15" id="h0-15" class="d">-# See this wiki page for more info:
+</a><a href="#h0-16" id="h0-16" class="d">-# https://github.com/dylanaraps/fetch/wiki/Customizing-Info
+</a><a href="#h0-17" id="h0-17" class="d">-printinfo () {
+</a><a href="#h0-18" id="h0-18" class="d">-    c00=$&apos;\e[0;30m&apos;
+</a><a href="#h0-19" id="h0-19" class="d">-    c01=$&apos;\e[0;31m&apos;
+</a><a href="#h0-20" id="h0-20" class="d">-    c02=$&apos;\e[0;32m&apos;
+</a><a href="#h0-21" id="h0-21" class="d">-    c03=$&apos;\e[0;33m&apos;
+</a><a href="#h0-22" id="h0-22" class="d">-    c04=$&apos;\e[0;34m&apos;
+</a><a href="#h0-23" id="h0-23" class="d">-    c05=$&apos;\e[0;35m&apos;
+</a><a href="#h0-24" id="h0-24" class="d">-    c06=$&apos;\e[0;36m&apos;
+</a><a href="#h0-25" id="h0-25" class="d">-    c07=$&apos;\e[0;37m&apos;
+</a><a href="#h0-26" id="h0-26" class="d">-    c08=$&apos;\e[1;30m&apos;
+</a><a href="#h0-27" id="h0-27" class="d">-    c09=$&apos;\e[1;31m&apos;
+</a><a href="#h0-28" id="h0-28" class="d">-    c10=$&apos;\e[1;32m&apos;
+</a><a href="#h0-29" id="h0-29" class="d">-    c11=$&apos;\e[1;33m&apos;
+</a><a href="#h0-30" id="h0-30" class="d">-    c12=$&apos;\e[1;34m&apos;
+</a><a href="#h0-31" id="h0-31" class="d">-    c13=$&apos;\e[1;35m&apos;
+</a><a href="#h0-32" id="h0-32" class="d">-    c14=$&apos;\e[1;36m&apos;
+</a><a href="#h0-33" id="h0-33" class="d">-    c15=$&apos;\e[1;37m&apos;
+</a><a href="#h0-34" id="h0-34" class="d">-
+</a><a href="#h0-35" id="h0-35" class="d">-    f0=$&apos;\e[1;30m&apos;
+</a><a href="#h0-36" id="h0-36" class="d">-    f1=$&apos;\e[1;37m&apos;
+</a><a href="#h0-37" id="h0-37" class="d">-    f2=$&apos;\e[0;37m&apos;
+</a><a href="#h0-38" id="h0-38" class="d">-
+</a><a href="#h0-39" id="h0-39" class="d">-    info linebreak
+</a><a href="#h0-40" id="h0-40" class="d">-
+</a><a href="#h0-41" id="h0-41" class="d">-    info title
+</a><a href="#h0-42" id="h0-42" class="d">-    info underline
+</a><a href="#h0-43" id="h0-43" class="d">-
+</a><a href="#h0-44" id="h0-44" class="d">-    info &quot;${c00}▉▉  | $(tput sgr0)$(tput setaf 1)OS&quot; distro
+</a><a href="#h0-45" id="h0-45" class="d">-    info &quot;${c08}  ▉▉| $(tput sgr0)$(tput setaf 1)Kernel&quot; kernel
+</a><a href="#h0-46" id="h0-46" class="d">-    info &quot;${c01}▉▉  | $(tput sgr0)$(tput setaf 1)Uptime&quot; uptime
+</a><a href="#h0-47" id="h0-47" class="d">-    info &quot;${c09}  ▉▉| $(tput sgr0)$(tput setaf 1)Packages&quot; packages
+</a><a href="#h0-48" id="h0-48" class="d">-    info &quot;${c02}▉▉  | $(tput sgr0)$(tput setaf 1)Shell&quot; shell
+</a><a href="#h0-49" id="h0-49" class="d">-    info &quot;${c10}  ▉▉| $(tput sgr0)$(tput setaf 1)Window Manager&quot; wm
+</a><a href="#h0-50" id="h0-50" class="d">-    info &quot;${c03}▉▉  | $(tput sgr0)$(tput setaf 1)GTK Theme&quot; theme
+</a><a href="#h0-51" id="h0-51" class="d">-    info &quot;${c11}  ▉▉| $(tput sgr0)$(tput setaf 1)Icons&quot; icons
+</a><a href="#h0-52" id="h0-52" class="d">-    info &quot;${c04}▉▉  | $(tput sgr0)$(tput setaf 1)CPU&quot; cpu
+</a><a href="#h0-53" id="h0-53" class="d">-    info &quot;${c12}  ▉▉| $(tput sgr0)$(tput setaf 1)GPU&quot; gpu
+</a><a href="#h0-54" id="h0-54" class="d">-    info &quot;${c05}▉▉  | $(tput sgr0)$(tput setaf 1)Memory&quot; memory
+</a><a href="#h0-55" id="h0-55" class="d">-
+</a><a href="#h0-56" id="h0-56" class="d">-    info &quot;${c13}  ▉▉| $(tput sgr0)$(tput setaf 1)Font&quot; font
+</a><a href="#h0-57" id="h0-57" class="d">-    # info &quot;Disk&quot; disk
+</a><a href="#h0-58" id="h0-58" class="d">-    # info &quot;Resolution&quot; resolution
+</a><a href="#h0-59" id="h0-59" class="d">-    # info &quot;Battery&quot; battery
+</a><a href="#h0-60" id="h0-60" class="d">-    # info &quot;Local IP&quot; localip
+</a><a href="#h0-61" id="h0-61" class="d">-    # info &quot;Public IP&quot; publicip
+</a><a href="#h0-62" id="h0-62" class="d">-    info &quot;${c06}▉▉  | $(tput sgr0)$(tput setaf 1)Birthday&quot; birthday
+</a><a href="#h0-63" id="h0-63" class="d">-    info &quot;${c14}  ▉▉| $(tput sgr0)$(tput setaf 1)Song&quot; song
+</a><a href="#h0-64" id="h0-64" class="d">-    # info &quot;Visual Style&quot; visualstyle
+</a><a href="#h0-65" id="h0-65" class="d">-
+</a><a href="#h0-66" id="h0-66" class="d">-    info linebreak
+</a><a href="#h0-67" id="h0-67" class="d">-    info cols
+</a><a href="#h0-68" id="h0-68" class="d">-    info linebreak
+</a><a href="#h0-69" id="h0-69" class="d">-}
+</a><a href="#h0-70" id="h0-70" class="d">-
+</a><a href="#h0-71" id="h0-71" class="d">-
+</a><a href="#h0-72" id="h0-72" class="d">-# Kernel
+</a><a href="#h0-73" id="h0-73" class="d">-
+</a><a href="#h0-74" id="h0-74" class="d">-# Show more kernel info
+</a><a href="#h0-75" id="h0-75" class="d">-# --kernel_shorthand on/off
+</a><a href="#h0-76" id="h0-76" class="d">-kernel_shorthand=&quot;on&quot;
+</a><a href="#h0-77" id="h0-77" class="d">-
+</a><a href="#h0-78" id="h0-78" class="d">-
+</a><a href="#h0-79" id="h0-79" class="d">-# Distro
+</a><a href="#h0-80" id="h0-80" class="d">-
+</a><a href="#h0-81" id="h0-81" class="d">-# Mac OS X hide/show build version
+</a><a href="#h0-82" id="h0-82" class="d">-# --osx_buildversion on/off
+</a><a href="#h0-83" id="h0-83" class="d">-osx_buildversion=&quot;on&quot;
+</a><a href="#h0-84" id="h0-84" class="d">-
+</a><a href="#h0-85" id="h0-85" class="d">-# Show &apos;x86_64&apos; and &apos;x86&apos; in &apos;Distro:&apos; output.
+</a><a href="#h0-86" id="h0-86" class="d">-# --os_arch on/off
+</a><a href="#h0-87" id="h0-87" class="d">-os_arch=&quot;on&quot;
+</a><a href="#h0-88" id="h0-88" class="d">-
+</a><a href="#h0-89" id="h0-89" class="d">-
+</a><a href="#h0-90" id="h0-90" class="d">-# Uptime
+</a><a href="#h0-91" id="h0-91" class="d">-
+</a><a href="#h0-92" id="h0-92" class="d">-# Shorten the output of the uptime function
+</a><a href="#h0-93" id="h0-93" class="d">-# --uptime_shorthand tiny, on, off
+</a><a href="#h0-94" id="h0-94" class="d">-uptime_shorthand=&quot;off&quot;
+</a><a href="#h0-95" id="h0-95" class="d">-
+</a><a href="#h0-96" id="h0-96" class="d">-
+</a><a href="#h0-97" id="h0-97" class="d">-# Shell
+</a><a href="#h0-98" id="h0-98" class="d">-
+</a><a href="#h0-99" id="h0-99" class="d">-# Show the path to $SHELL
+</a><a href="#h0-100" id="h0-100" class="d">-# --shell_path on/off
+</a><a href="#h0-101" id="h0-101" class="d">-shell_path=&quot;on&quot;
+</a><a href="#h0-102" id="h0-102" class="d">-
+</a><a href="#h0-103" id="h0-103" class="d">-# Show $SHELL&apos;s version
+</a><a href="#h0-104" id="h0-104" class="d">-# --shell_version on/off
+</a><a href="#h0-105" id="h0-105" class="d">-shell_version=&quot;off&quot;
+</a><a href="#h0-106" id="h0-106" class="d">-
+</a><a href="#h0-107" id="h0-107" class="d">-
+</a><a href="#h0-108" id="h0-108" class="d">-# CPU
+</a><a href="#h0-109" id="h0-109" class="d">-
+</a><a href="#h0-110" id="h0-110" class="d">-# CPU speed type
+</a><a href="#h0-111" id="h0-111" class="d">-# Only works on Linux with cpufreq.
+</a><a href="#h0-112" id="h0-112" class="d">-# --speed_type current, min, max, bios,
+</a><a href="#h0-113" id="h0-113" class="d">-# scaling_current, scaling_min, scaling_max
+</a><a href="#h0-114" id="h0-114" class="d">-speed_type=&quot;max&quot;
+</a><a href="#h0-115" id="h0-115" class="d">-
+</a><a href="#h0-116" id="h0-116" class="d">-
+</a><a href="#h0-117" id="h0-117" class="d">-# GPU
+</a><a href="#h0-118" id="h0-118" class="d">-
+</a><a href="#h0-119" id="h0-119" class="d">-# Shorten output of the getgpu funcion
+</a><a href="#h0-120" id="h0-120" class="d">-# --gpu_shorthand on/off
+</a><a href="#h0-121" id="h0-121" class="d">-gpu_shorthand=&quot;off&quot;
+</a><a href="#h0-122" id="h0-122" class="d">-
+</a><a href="#h0-123" id="h0-123" class="d">-
+</a><a href="#h0-124" id="h0-124" class="d">-# Gtk Theme / Icons
+</a><a href="#h0-125" id="h0-125" class="d">-
+</a><a href="#h0-126" id="h0-126" class="d">-# Shorten output (Hide [GTK2] etc)
+</a><a href="#h0-127" id="h0-127" class="d">-# --gtk_shorthand on/off
+</a><a href="#h0-128" id="h0-128" class="d">-gtk_shorthand=&quot;off&quot;
+</a><a href="#h0-129" id="h0-129" class="d">-
+</a><a href="#h0-130" id="h0-130" class="d">-
+</a><a href="#h0-131" id="h0-131" class="d">-# Enable/Disable gtk2 theme/icons output
+</a><a href="#h0-132" id="h0-132" class="d">-# --gtk2 on/off
+</a><a href="#h0-133" id="h0-133" class="d">-gtk2=&quot;on&quot;
+</a><a href="#h0-134" id="h0-134" class="d">-
+</a><a href="#h0-135" id="h0-135" class="d">-# Enable/Disable gtk3 theme/icons output
+</a><a href="#h0-136" id="h0-136" class="d">-# --gtk3 on/off
+</a><a href="#h0-137" id="h0-137" class="d">-gtk3=&quot;on&quot;
+</a><a href="#h0-138" id="h0-138" class="d">-
+</a><a href="#h0-139" id="h0-139" class="d">-
+</a><a href="#h0-140" id="h0-140" class="d">-# Battery
+</a><a href="#h0-141" id="h0-141" class="d">-
+</a><a href="#h0-142" id="h0-142" class="d">-# Which battery to display.
+</a><a href="#h0-143" id="h0-143" class="d">-# By default we display all batteries.
+</a><a href="#h0-144" id="h0-144" class="d">-# NOTE: Only works on Linux.
+</a><a href="#h0-145" id="h0-145" class="d">-# --battery_num all, 0, 1, 2, etc
+</a><a href="#h0-146" id="h0-146" class="d">-battery_num=&quot;all&quot;
+</a><a href="#h0-147" id="h0-147" class="d">-
+</a><a href="#h0-148" id="h0-148" class="d">-# Whether or not to print each battery on the same line.
+</a><a href="#h0-149" id="h0-149" class="d">-# By default each battery gets its own line and title.
+</a><a href="#h0-150" id="h0-150" class="d">-# NOTE: Only works on Linux.
+</a><a href="#h0-151" id="h0-151" class="d">-# --battery_shorthand on/off
+</a><a href="#h0-152" id="h0-152" class="d">-battery_shorthand=&quot;off&quot;
+</a><a href="#h0-153" id="h0-153" class="d">-
+</a><a href="#h0-154" id="h0-154" class="d">-
+</a><a href="#h0-155" id="h0-155" class="d">-# IP Address
+</a><a href="#h0-156" id="h0-156" class="d">-
+</a><a href="#h0-157" id="h0-157" class="d">-# Website to ping for the public IP
+</a><a href="#h0-158" id="h0-158" class="d">-# --ip_host url
+</a><a href="#h0-159" id="h0-159" class="d">-public_ip_host=&quot;http://ident.me&quot;
+</a><a href="#h0-160" id="h0-160" class="d">-
+</a><a href="#h0-161" id="h0-161" class="d">-
+</a><a href="#h0-162" id="h0-162" class="d">-# Birthday
+</a><a href="#h0-163" id="h0-163" class="d">-
+</a><a href="#h0-164" id="h0-164" class="d">-# Whether to show a long pretty output
+</a><a href="#h0-165" id="h0-165" class="d">-# or a shortened one
+</a><a href="#h0-166" id="h0-166" class="d">-# NOTE: Long pretty output doesn&apos;t work on OpenBSD or NetBSD.
+</a><a href="#h0-167" id="h0-167" class="d">-# --birthday_shorthand on/off
+</a><a href="#h0-168" id="h0-168" class="d">-birthday_shorthand=&quot;off&quot;
+</a><a href="#h0-169" id="h0-169" class="d">-
+</a><a href="#h0-170" id="h0-170" class="d">-# Whether to show the time in the output
+</a><a href="#h0-171" id="h0-171" class="d">-# --birthday_time on/off
+</a><a href="#h0-172" id="h0-172" class="d">-birthday_time=&quot;on&quot;
+</a><a href="#h0-173" id="h0-173" class="d">-
+</a><a href="#h0-174" id="h0-174" class="d">-# Color Blocks
+</a><a href="#h0-175" id="h0-175" class="d">-
+</a><a href="#h0-176" id="h0-176" class="d">-# Color block range
+</a><a href="#h0-177" id="h0-177" class="d">-# --block_range start end
+</a><a href="#h0-178" id="h0-178" class="d">-start=0
+</a><a href="#h0-179" id="h0-179" class="d">-end=7
+</a><a href="#h0-180" id="h0-180" class="d">-
+</a><a href="#h0-181" id="h0-181" class="d">-# Toggle color blocks
+</a><a href="#h0-182" id="h0-182" class="d">-# --color_blocks on/off
+</a><a href="#h0-183" id="h0-183" class="d">-color_blocks=&quot;on&quot;
+</a><a href="#h0-184" id="h0-184" class="d">-
+</a><a href="#h0-185" id="h0-185" class="d">-# Color block width
+</a><a href="#h0-186" id="h0-186" class="d">-# --color_block_width num
+</a><a href="#h0-187" id="h0-187" class="d">-block_width=3
+</a><a href="#h0-188" id="h0-188" class="d">-
+</a><a href="#h0-189" id="h0-189" class="d">-
+</a><a href="#h0-190" id="h0-190" class="d">-# }}}
+</a><a href="#h0-191" id="h0-191" class="d">-
+</a><a href="#h0-192" id="h0-192" class="d">-# Text Colors {{{
+</a><a href="#h0-193" id="h0-193" class="d">-
+</a><a href="#h0-194" id="h0-194" class="d">-
+</a><a href="#h0-195" id="h0-195" class="d">-# --title_color num
+</a><a href="#h0-196" id="h0-196" class="d">-#title_color=4
+</a><a href="#h0-197" id="h0-197" class="d">-#
+</a><a href="#h0-198" id="h0-198" class="d">-## Color of &quot;@&quot; symbol in title
+</a><a href="#h0-199" id="h0-199" class="d">-## --at_color num
+</a><a href="#h0-200" id="h0-200" class="d">-#at_color=6
+</a><a href="#h0-201" id="h0-201" class="d">-#
+</a><a href="#h0-202" id="h0-202" class="d">-## --subtitle_color num
+</a><a href="#h0-203" id="h0-203" class="d">-#subtitle_color=1
+</a><a href="#h0-204" id="h0-204" class="d">-#
+</a><a href="#h0-205" id="h0-205" class="d">-## --colon_color num
+</a><a href="#h0-206" id="h0-206" class="d">-#colon_color=8
+</a><a href="#h0-207" id="h0-207" class="d">-#
+</a><a href="#h0-208" id="h0-208" class="d">-## --underline_color num
+</a><a href="#h0-209" id="h0-209" class="d">-#underline_color=8
+</a><a href="#h0-210" id="h0-210" class="d">-#
+</a><a href="#h0-211" id="h0-211" class="d">-## --info_color num
+</a><a href="#h0-212" id="h0-212" class="d">-#info_color=6
+</a><a href="#h0-213" id="h0-213" class="d">-
+</a><a href="#h0-214" id="h0-214" class="d">-#colors=(4 6 8 1 8 6)
+</a><a href="#h0-215" id="h0-215" class="d">-colors=(distro)
+</a><a href="#h0-216" id="h0-216" class="d">-
+</a><a href="#h0-217" id="h0-217" class="d">-# }}}
+</a><a href="#h0-218" id="h0-218" class="d">-
+</a><a href="#h0-219" id="h0-219" class="d">-# Text Options {{{
+</a><a href="#h0-220" id="h0-220" class="d">-
+</a><a href="#h0-221" id="h0-221" class="d">-
+</a><a href="#h0-222" id="h0-222" class="d">-# Toggle line wrapping
+</a><a href="#h0-223" id="h0-223" class="d">-# --line_wrap on/off
+</a><a href="#h0-224" id="h0-224" class="d">-line_wrap=&quot;on&quot;
+</a><a href="#h0-225" id="h0-225" class="d">-
+</a><a href="#h0-226" id="h0-226" class="d">-# Toggle bold text
+</a><a href="#h0-227" id="h0-227" class="d">-# --bold on/off
+</a><a href="#h0-228" id="h0-228" class="d">-bold=&quot;on&quot;
+</a><a href="#h0-229" id="h0-229" class="d">-
+</a><a href="#h0-230" id="h0-230" class="d">-# Enable/Disable Underline
+</a><a href="#h0-231" id="h0-231" class="d">-# --underline on/off
+</a><a href="#h0-232" id="h0-232" class="d">-underline=&quot;on&quot;
+</a><a href="#h0-233" id="h0-233" class="d">-
+</a><a href="#h0-234" id="h0-234" class="d">-# Underline character
+</a><a href="#h0-235" id="h0-235" class="d">-# --underline_char char
+</a><a href="#h0-236" id="h0-236" class="d">-underline_char=&quot;-&quot;
+</a><a href="#h0-237" id="h0-237" class="d">-
+</a><a href="#h0-238" id="h0-238" class="d">-# Prompt height
+</a><a href="#h0-239" id="h0-239" class="d">-# You should only have to change this if your
+</a><a href="#h0-240" id="h0-240" class="d">-# prompt is greater than 2 lines high.
+</a><a href="#h0-241" id="h0-241" class="d">-# --prompt_height num
+</a><a href="#h0-242" id="h0-242" class="d">-prompt_height=1
+</a><a href="#h0-243" id="h0-243" class="d">-
+</a><a href="#h0-244" id="h0-244" class="d">-
+</a><a href="#h0-245" id="h0-245" class="d">-# }}}
+</a><a href="#h0-246" id="h0-246" class="d">-
+</a><a href="#h0-247" id="h0-247" class="d">-# Image Options {{{
+</a><a href="#h0-248" id="h0-248" class="d">-
+</a><a href="#h0-249" id="h0-249" class="d">-
+</a><a href="#h0-250" id="h0-250" class="d">-# Image Source
+</a><a href="#h0-251" id="h0-251" class="d">-# --image wall, shuffle, ascii, /path/to/img, off
+</a><a href="#h0-252" id="h0-252" class="d">-image=&quot;wall&quot;
+</a><a href="#h0-253" id="h0-253" class="d">-
+</a><a href="#h0-254" id="h0-254" class="d">-# Thumbnail directory
+</a><a href="#h0-255" id="h0-255" class="d">-thumbnail_dir=&quot;$HOME/.cache/thumbnails/fetch&quot;
+</a><a href="#h0-256" id="h0-256" class="d">-
+</a><a href="#h0-257" id="h0-257" class="d">-# Image Backend
+</a><a href="#h0-258" id="h0-258" class="d">-# Which program to draw images with
+</a><a href="#h0-259" id="h0-259" class="d">-# --image_backend w3m, iterm2
+</a><a href="#h0-260" id="h0-260" class="d">-image_backend=&quot;w3m&quot;
+</a><a href="#h0-261" id="h0-261" class="d">-
+</a><a href="#h0-262" id="h0-262" class="d">-# W3m-img path
+</a><a href="#h0-263" id="h0-263" class="d">-# Some systems have this in another location
+</a><a href="#h0-264" id="h0-264" class="d">-w3m_img_path=&quot;/usr/lib/w3m/w3mimgdisplay&quot;
+</a><a href="#h0-265" id="h0-265" class="d">-
+</a><a href="#h0-266" id="h0-266" class="d">-# Image position
+</a><a href="#h0-267" id="h0-267" class="d">-# Only works with the w3m backend
+</a><a href="#h0-268" id="h0-268" class="d">-# --image_position left/right
+</a><a href="#h0-269" id="h0-269" class="d">-image_position=&quot;left&quot;
+</a><a href="#h0-270" id="h0-270" class="d">-
+</a><a href="#h0-271" id="h0-271" class="d">-# Shuffle dir
+</a><a href="#h0-272" id="h0-272" class="d">-shuffle_dir=&quot;$HOME/Pictures/wallpapers/wash&quot;
+</a><a href="#h0-273" id="h0-273" class="d">-
+</a><a href="#h0-274" id="h0-274" class="d">-# Crop mode
+</a><a href="#h0-275" id="h0-275" class="d">-# --crop_mode normal/fit/fill
+</a><a href="#h0-276" id="h0-276" class="d">-crop_mode=&quot;normal&quot;
+</a><a href="#h0-277" id="h0-277" class="d">-
+</a><a href="#h0-278" id="h0-278" class="d">-# Crop offset
+</a><a href="#h0-279" id="h0-279" class="d">-# Only affects normal mode.
+</a><a href="#h0-280" id="h0-280" class="d">-# --crop_offset northwest/north/northeast/west/center
+</a><a href="#h0-281" id="h0-281" class="d">-#               east/southwest/south/southeast
+</a><a href="#h0-282" id="h0-282" class="d">-crop_offset=&quot;center&quot;
+</a><a href="#h0-283" id="h0-283" class="d">-
+</a><a href="#h0-284" id="h0-284" class="d">-# Font width
+</a><a href="#h0-285" id="h0-285" class="d">-# --font_width num
+</a><a href="#h0-286" id="h0-286" class="d">-# Used when calculating dynamic image size
+</a><a href="#h0-287" id="h0-287" class="d">-font_width=5
+</a><a href="#h0-288" id="h0-288" class="d">-
+</a><a href="#h0-289" id="h0-289" class="d">-# Image size
+</a><a href="#h0-290" id="h0-290" class="d">-# The image is half the terminal width by default.
+</a><a href="#h0-291" id="h0-291" class="d">-# --size half, px
+</a><a href="#h0-292" id="h0-292" class="d">-image_size=&quot;auto&quot;
+</a><a href="#h0-293" id="h0-293" class="d">-
+</a><a href="#h0-294" id="h0-294" class="d">-# Right gap between image and text
+</a><a href="#h0-295" id="h0-295" class="d">-# --gap num
+</a><a href="#h0-296" id="h0-296" class="d">-gap=4
+</a><a href="#h0-297" id="h0-297" class="d">-
+</a><a href="#h0-298" id="h0-298" class="d">-# Image offsets
+</a><a href="#h0-299" id="h0-299" class="d">-# --xoffset px
+</a><a href="#h0-300" id="h0-300" class="d">-# --yoffset px
+</a><a href="#h0-301" id="h0-301" class="d">-yoffset=0
+</a><a href="#h0-302" id="h0-302" class="d">-xoffset=0
+</a><a href="#h0-303" id="h0-303" class="d">-
+</a><a href="#h0-304" id="h0-304" class="d">-
+</a><a href="#h0-305" id="h0-305" class="d">-# }}}
+</a><a href="#h0-306" id="h0-306" class="d">-
+</a><a href="#h0-307" id="h0-307" class="d">-# Ascii Options {{{
+</a><a href="#h0-308" id="h0-308" class="d">-
+</a><a href="#h0-309" id="h0-309" class="d">-
+</a><a href="#h0-310" id="h0-310" class="d">-# Default ascii image to use
+</a><a href="#h0-311" id="h0-311" class="d">-# When this is set to distro it will use your
+</a><a href="#h0-312" id="h0-312" class="d">-# distro&apos;s logo as the ascii.
+</a><a href="#h0-313" id="h0-313" class="d">-# --ascii &apos;distro&apos;, path/to/ascii
+</a><a href="#h0-314" id="h0-314" class="d">-ascii=&quot;distro&quot;
+</a><a href="#h0-315" id="h0-315" class="d">-
+</a><a href="#h0-316" id="h0-316" class="d">-# Ascii colors
+</a><a href="#h0-317" id="h0-317" class="d">-# When this is set to distro it will use your
+</a><a href="#h0-318" id="h0-318" class="d">-# ditro&apos;s colors to color the ascii.
+</a><a href="#h0-319" id="h0-319" class="d">-# NOTE: You can also set this to a range of colors
+</a><a href="#h0-320" id="h0-320" class="d">-# which will allow you to custom color distro logos
+</a><a href="#h0-321" id="h0-321" class="d">-# --ascii_colors distro
+</a><a href="#h0-322" id="h0-322" class="d">-# --ascii_colors 2 4 5 6
+</a><a href="#h0-323" id="h0-323" class="d">-ascii_colors=(distro)
+</a><a href="#h0-324" id="h0-324" class="d">-
+</a><a href="#h0-325" id="h0-325" class="d">-
+</a><a href="#h0-326" id="h0-326" class="d">-# }}}
+</a><a href="#h0-327" id="h0-327" class="d">-
+</a><a href="#h0-328" id="h0-328" class="d">-# Scrot Options {{{
+</a><a href="#h0-329" id="h0-329" class="d">-
+</a><a href="#h0-330" id="h0-330" class="d">-
+</a><a href="#h0-331" id="h0-331" class="d">-# Whether or not to always take a screenshot
+</a><a href="#h0-332" id="h0-332" class="d">-# You can manually take a screenshot with &quot;--scrot&quot; or &quot;-s&quot;
+</a><a href="#h0-333" id="h0-333" class="d">-scrot=&quot;off&quot;
+</a><a href="#h0-334" id="h0-334" class="d">-
+</a><a href="#h0-335" id="h0-335" class="d">-# Screenshot program to launch
+</a><a href="#h0-336" id="h0-336" class="d">-# --scrot_cmd
+</a><a href="#h0-337" id="h0-337" class="d">-scrot_cmd=&quot;scrot -c -d 3&quot;
+</a><a href="#h0-338" id="h0-338" class="d">-
+</a><a href="#h0-339" id="h0-339" class="d">-# Scrot dir
+</a><a href="#h0-340" id="h0-340" class="d">-# Where to save the screenshots
+</a><a href="#h0-341" id="h0-341" class="d">-# --scrot_dir /path/to/screenshot/folder
+</a><a href="#h0-342" id="h0-342" class="d">-scrot_dir=&quot;$HOME/Pictures&quot;
+</a><a href="#h0-343" id="h0-343" class="d">-
+</a><a href="#h0-344" id="h0-344" class="d">-# Scrot filename
+</a><a href="#h0-345" id="h0-345" class="d">-# What to name the screenshots
+</a><a href="#h0-346" id="h0-346" class="d">-# --scrot_name str
+</a><a href="#h0-347" id="h0-347" class="d">-scrot_name=&quot;fetch-%Y-%m-%d-%H:%M.png&quot;
+</a><a href="#h0-348" id="h0-348" class="d">-
+</a><a href="#h0-349" id="h0-349" class="d">-
+</a><a href="#h0-350" id="h0-350" class="d">-# }}}
+</a><a href="#h0-351" id="h0-351" class="d">-
+</a><a href="#h0-352" id="h0-352" class="d">-# Config Options {{{
+</a><a href="#h0-353" id="h0-353" class="d">-
+</a><a href="#h0-354" id="h0-354" class="d">-
+</a><a href="#h0-355" id="h0-355" class="d">-# Enable/Disable config file
+</a><a href="#h0-356" id="h0-356" class="d">-# --config off, none
+</a><a href="#h0-357" id="h0-357" class="d">-config=&quot;on&quot;
+</a><a href="#h0-358" id="h0-358" class="d">-
+</a><a href="#h0-359" id="h0-359" class="d">-# Path to custom config file location
+</a><a href="#h0-360" id="h0-360" class="d">-# --config path/to/config
+</a><a href="#h0-361" id="h0-361" class="d">-config_file=&quot;$HOME/.config/fetch/config&quot;
+</a><a href="#h0-362" id="h0-362" class="d">-
+</a><a href="#h0-363" id="h0-363" class="d">-
+</a><a href="#h0-364" id="h0-364" class="d">-# }}}
+</a><a href="#h0-365" id="h0-365" class="d">-
+</a><a href="#h0-366" id="h0-366" class="d">-# Other Options {{{
+</a><a href="#h0-367" id="h0-367" class="d">-
+</a><a href="#h0-368" id="h0-368" class="d">-# Separator to use in stdout mode.
+</a><a href="#h0-369" id="h0-369" class="d">-# --stdout_separator string
+</a><a href="#h0-370" id="h0-370" class="d">-stdout_separator=&quot;    &quot;
+</a><a href="#h0-371" id="h0-371" class="d">-
+</a><a href="#h0-372" id="h0-372" class="d">-# Hide/Show the title in stdout mode.
+</a><a href="#h0-373" id="h0-373" class="d">-# --stdout_title on/off
+</a><a href="#h0-374" id="h0-374" class="d">-stdout_title=&quot;off&quot;
+</a><a href="#h0-375" id="h0-375" class="d">-
+</a><a href="#h0-376" id="h0-376" class="d">-# Hide/Show each info&apos;s subtitle in stdout mode.
+</a><a href="#h0-377" id="h0-377" class="d">-# --stdout_subtitles on/off
+</a><a href="#h0-378" id="h0-378" class="d">-stdout_subtitles=&quot;on&quot;
+</a><a href="#h0-379" id="h0-379" class="d">-
+</a><a href="#h0-380" id="h0-380" class="d">-# }}}
+</a><b>diff --git a/<a href="../file/neofetch/.config/neofetch/config.html">neofetch/.config/neofetch/config</a> b/<a href="../file/neofetch/.config/neofetch/config.html">neofetch/.config/neofetch/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,381 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#!/usr/bin/env bash
+</a><a href="#h0-1" id="h0-1" class="i">+# vim:fdm=marker
+</a><a href="#h0-2" id="h0-2" class="i">+#
+</a><a href="#h0-3" id="h0-3" class="i">+# Fetch config file
+</a><a href="#h0-4" id="h0-4" class="i">+# https://github.com/dylanaraps/fetch
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+# Speed up script by not using unicode
+</a><a href="#h0-7" id="h0-7" class="i">+export LC_ALL=C
+</a><a href="#h0-8" id="h0-8" class="i">+export LANG=c
+</a><a href="#h0-9" id="h0-9" class="i">+export LANGUAGE=C
+</a><a href="#h0-10" id="h0-10" class="i">+
+</a><a href="#h0-11" id="h0-11" class="i">+# Info Options {{{
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a><a href="#h0-13" id="h0-13" class="i">+
+</a><a href="#h0-14" id="h0-14" class="i">+# Info
+</a><a href="#h0-15" id="h0-15" class="i">+# See this wiki page for more info:
+</a><a href="#h0-16" id="h0-16" class="i">+# https://github.com/dylanaraps/fetch/wiki/Customizing-Info
+</a><a href="#h0-17" id="h0-17" class="i">+printinfo () {
+</a><a href="#h0-18" id="h0-18" class="i">+    c00=$&apos;\e[0;30m&apos;
+</a><a href="#h0-19" id="h0-19" class="i">+    c01=$&apos;\e[0;31m&apos;
+</a><a href="#h0-20" id="h0-20" class="i">+    c02=$&apos;\e[0;32m&apos;
+</a><a href="#h0-21" id="h0-21" class="i">+    c03=$&apos;\e[0;33m&apos;
+</a><a href="#h0-22" id="h0-22" class="i">+    c04=$&apos;\e[0;34m&apos;
+</a><a href="#h0-23" id="h0-23" class="i">+    c05=$&apos;\e[0;35m&apos;
+</a><a href="#h0-24" id="h0-24" class="i">+    c06=$&apos;\e[0;36m&apos;
+</a><a href="#h0-25" id="h0-25" class="i">+    c07=$&apos;\e[0;37m&apos;
+</a><a href="#h0-26" id="h0-26" class="i">+    c08=$&apos;\e[1;30m&apos;
+</a><a href="#h0-27" id="h0-27" class="i">+    c09=$&apos;\e[1;31m&apos;
+</a><a href="#h0-28" id="h0-28" class="i">+    c10=$&apos;\e[1;32m&apos;
+</a><a href="#h0-29" id="h0-29" class="i">+    c11=$&apos;\e[1;33m&apos;
+</a><a href="#h0-30" id="h0-30" class="i">+    c12=$&apos;\e[1;34m&apos;
+</a><a href="#h0-31" id="h0-31" class="i">+    c13=$&apos;\e[1;35m&apos;
+</a><a href="#h0-32" id="h0-32" class="i">+    c14=$&apos;\e[1;36m&apos;
+</a><a href="#h0-33" id="h0-33" class="i">+    c15=$&apos;\e[1;37m&apos;
+</a><a href="#h0-34" id="h0-34" class="i">+
+</a><a href="#h0-35" id="h0-35" class="i">+    f0=$&apos;\e[1;30m&apos;
+</a><a href="#h0-36" id="h0-36" class="i">+    f1=$&apos;\e[1;37m&apos;
+</a><a href="#h0-37" id="h0-37" class="i">+    f2=$&apos;\e[0;37m&apos;
+</a><a href="#h0-38" id="h0-38" class="i">+
+</a><a href="#h0-39" id="h0-39" class="i">+    info linebreak
+</a><a href="#h0-40" id="h0-40" class="i">+
+</a><a href="#h0-41" id="h0-41" class="i">+    info title
+</a><a href="#h0-42" id="h0-42" class="i">+    info underline
+</a><a href="#h0-43" id="h0-43" class="i">+
+</a><a href="#h0-44" id="h0-44" class="i">+    info &quot;${c00}▉▉  | $(tput sgr0)$(tput setaf 1)OS&quot; distro
+</a><a href="#h0-45" id="h0-45" class="i">+    info &quot;${c08}  ▉▉| $(tput sgr0)$(tput setaf 1)Kernel&quot; kernel
+</a><a href="#h0-46" id="h0-46" class="i">+    info &quot;${c01}▉▉  | $(tput sgr0)$(tput setaf 1)Uptime&quot; uptime
+</a><a href="#h0-47" id="h0-47" class="i">+    info &quot;${c09}  ▉▉| $(tput sgr0)$(tput setaf 1)Packages&quot; packages
+</a><a href="#h0-48" id="h0-48" class="i">+    info &quot;${c02}▉▉  | $(tput sgr0)$(tput setaf 1)Shell&quot; shell
+</a><a href="#h0-49" id="h0-49" class="i">+    info &quot;${c10}  ▉▉| $(tput sgr0)$(tput setaf 1)Window Manager&quot; wm
+</a><a href="#h0-50" id="h0-50" class="i">+    info &quot;${c03}▉▉  | $(tput sgr0)$(tput setaf 1)GTK Theme&quot; theme
+</a><a href="#h0-51" id="h0-51" class="i">+    info &quot;${c11}  ▉▉| $(tput sgr0)$(tput setaf 1)Icons&quot; icons
+</a><a href="#h0-52" id="h0-52" class="i">+    info &quot;${c04}▉▉  | $(tput sgr0)$(tput setaf 1)CPU&quot; cpu
+</a><a href="#h0-53" id="h0-53" class="i">+    info &quot;${c12}  ▉▉| $(tput sgr0)$(tput setaf 1)GPU&quot; gpu
+</a><a href="#h0-54" id="h0-54" class="i">+    info &quot;${c05}▉▉  | $(tput sgr0)$(tput setaf 1)Memory&quot; memory
+</a><a href="#h0-55" id="h0-55" class="i">+
+</a><a href="#h0-56" id="h0-56" class="i">+    info &quot;${c13}  ▉▉| $(tput sgr0)$(tput setaf 1)Font&quot; font
+</a><a href="#h0-57" id="h0-57" class="i">+    # info &quot;Disk&quot; disk
+</a><a href="#h0-58" id="h0-58" class="i">+    # info &quot;Resolution&quot; resolution
+</a><a href="#h0-59" id="h0-59" class="i">+    # info &quot;Battery&quot; battery
+</a><a href="#h0-60" id="h0-60" class="i">+    # info &quot;Local IP&quot; localip
+</a><a href="#h0-61" id="h0-61" class="i">+    # info &quot;Public IP&quot; publicip
+</a><a href="#h0-62" id="h0-62" class="i">+    info &quot;${c06}▉▉  | $(tput sgr0)$(tput setaf 1)Birthday&quot; birthday
+</a><a href="#h0-63" id="h0-63" class="i">+    info &quot;${c14}  ▉▉| $(tput sgr0)$(tput setaf 1)Song&quot; song
+</a><a href="#h0-64" id="h0-64" class="i">+    # info &quot;Visual Style&quot; visualstyle
+</a><a href="#h0-65" id="h0-65" class="i">+
+</a><a href="#h0-66" id="h0-66" class="i">+    info linebreak
+</a><a href="#h0-67" id="h0-67" class="i">+    info cols
+</a><a href="#h0-68" id="h0-68" class="i">+    info linebreak
+</a><a href="#h0-69" id="h0-69" class="i">+}
+</a><a href="#h0-70" id="h0-70" class="i">+
+</a><a href="#h0-71" id="h0-71" class="i">+
+</a><a href="#h0-72" id="h0-72" class="i">+# Kernel
+</a><a href="#h0-73" id="h0-73" class="i">+
+</a><a href="#h0-74" id="h0-74" class="i">+# Show more kernel info
+</a><a href="#h0-75" id="h0-75" class="i">+# --kernel_shorthand on/off
+</a><a href="#h0-76" id="h0-76" class="i">+kernel_shorthand=&quot;on&quot;
+</a><a href="#h0-77" id="h0-77" class="i">+
+</a><a href="#h0-78" id="h0-78" class="i">+
+</a><a href="#h0-79" id="h0-79" class="i">+# Distro
+</a><a href="#h0-80" id="h0-80" class="i">+
+</a><a href="#h0-81" id="h0-81" class="i">+# Mac OS X hide/show build version
+</a><a href="#h0-82" id="h0-82" class="i">+# --osx_buildversion on/off
+</a><a href="#h0-83" id="h0-83" class="i">+osx_buildversion=&quot;on&quot;
+</a><a href="#h0-84" id="h0-84" class="i">+
+</a><a href="#h0-85" id="h0-85" class="i">+# Show &apos;x86_64&apos; and &apos;x86&apos; in &apos;Distro:&apos; output.
+</a><a href="#h0-86" id="h0-86" class="i">+# --os_arch on/off
+</a><a href="#h0-87" id="h0-87" class="i">+os_arch=&quot;on&quot;
+</a><a href="#h0-88" id="h0-88" class="i">+
+</a><a href="#h0-89" id="h0-89" class="i">+
+</a><a href="#h0-90" id="h0-90" class="i">+# Uptime
+</a><a href="#h0-91" id="h0-91" class="i">+
+</a><a href="#h0-92" id="h0-92" class="i">+# Shorten the output of the uptime function
+</a><a href="#h0-93" id="h0-93" class="i">+# --uptime_shorthand tiny, on, off
+</a><a href="#h0-94" id="h0-94" class="i">+uptime_shorthand=&quot;off&quot;
+</a><a href="#h0-95" id="h0-95" class="i">+
+</a><a href="#h0-96" id="h0-96" class="i">+
+</a><a href="#h0-97" id="h0-97" class="i">+# Shell
+</a><a href="#h0-98" id="h0-98" class="i">+
+</a><a href="#h0-99" id="h0-99" class="i">+# Show the path to $SHELL
+</a><a href="#h0-100" id="h0-100" class="i">+# --shell_path on/off
+</a><a href="#h0-101" id="h0-101" class="i">+shell_path=&quot;on&quot;
+</a><a href="#h0-102" id="h0-102" class="i">+
+</a><a href="#h0-103" id="h0-103" class="i">+# Show $SHELL&apos;s version
+</a><a href="#h0-104" id="h0-104" class="i">+# --shell_version on/off
+</a><a href="#h0-105" id="h0-105" class="i">+shell_version=&quot;off&quot;
+</a><a href="#h0-106" id="h0-106" class="i">+
+</a><a href="#h0-107" id="h0-107" class="i">+
+</a><a href="#h0-108" id="h0-108" class="i">+# CPU
+</a><a href="#h0-109" id="h0-109" class="i">+
+</a><a href="#h0-110" id="h0-110" class="i">+# CPU speed type
+</a><a href="#h0-111" id="h0-111" class="i">+# Only works on Linux with cpufreq.
+</a><a href="#h0-112" id="h0-112" class="i">+# --speed_type current, min, max, bios,
+</a><a href="#h0-113" id="h0-113" class="i">+# scaling_current, scaling_min, scaling_max
+</a><a href="#h0-114" id="h0-114" class="i">+speed_type=&quot;max&quot;
+</a><a href="#h0-115" id="h0-115" class="i">+
+</a><a href="#h0-116" id="h0-116" class="i">+
+</a><a href="#h0-117" id="h0-117" class="i">+# GPU
+</a><a href="#h0-118" id="h0-118" class="i">+
+</a><a href="#h0-119" id="h0-119" class="i">+# Shorten output of the getgpu funcion
+</a><a href="#h0-120" id="h0-120" class="i">+# --gpu_shorthand on/off
+</a><a href="#h0-121" id="h0-121" class="i">+gpu_shorthand=&quot;off&quot;
+</a><a href="#h0-122" id="h0-122" class="i">+
+</a><a href="#h0-123" id="h0-123" class="i">+
+</a><a href="#h0-124" id="h0-124" class="i">+# Gtk Theme / Icons
+</a><a href="#h0-125" id="h0-125" class="i">+
+</a><a href="#h0-126" id="h0-126" class="i">+# Shorten output (Hide [GTK2] etc)
+</a><a href="#h0-127" id="h0-127" class="i">+# --gtk_shorthand on/off
+</a><a href="#h0-128" id="h0-128" class="i">+gtk_shorthand=&quot;off&quot;
+</a><a href="#h0-129" id="h0-129" class="i">+
+</a><a href="#h0-130" id="h0-130" class="i">+
+</a><a href="#h0-131" id="h0-131" class="i">+# Enable/Disable gtk2 theme/icons output
+</a><a href="#h0-132" id="h0-132" class="i">+# --gtk2 on/off
+</a><a href="#h0-133" id="h0-133" class="i">+gtk2=&quot;on&quot;
+</a><a href="#h0-134" id="h0-134" class="i">+
+</a><a href="#h0-135" id="h0-135" class="i">+# Enable/Disable gtk3 theme/icons output
+</a><a href="#h0-136" id="h0-136" class="i">+# --gtk3 on/off
+</a><a href="#h0-137" id="h0-137" class="i">+gtk3=&quot;on&quot;
+</a><a href="#h0-138" id="h0-138" class="i">+
+</a><a href="#h0-139" id="h0-139" class="i">+
+</a><a href="#h0-140" id="h0-140" class="i">+# Battery
+</a><a href="#h0-141" id="h0-141" class="i">+
+</a><a href="#h0-142" id="h0-142" class="i">+# Which battery to display.
+</a><a href="#h0-143" id="h0-143" class="i">+# By default we display all batteries.
+</a><a href="#h0-144" id="h0-144" class="i">+# NOTE: Only works on Linux.
+</a><a href="#h0-145" id="h0-145" class="i">+# --battery_num all, 0, 1, 2, etc
+</a><a href="#h0-146" id="h0-146" class="i">+battery_num=&quot;all&quot;
+</a><a href="#h0-147" id="h0-147" class="i">+
+</a><a href="#h0-148" id="h0-148" class="i">+# Whether or not to print each battery on the same line.
+</a><a href="#h0-149" id="h0-149" class="i">+# By default each battery gets its own line and title.
+</a><a href="#h0-150" id="h0-150" class="i">+# NOTE: Only works on Linux.
+</a><a href="#h0-151" id="h0-151" class="i">+# --battery_shorthand on/off
+</a><a href="#h0-152" id="h0-152" class="i">+battery_shorthand=&quot;off&quot;
+</a><a href="#h0-153" id="h0-153" class="i">+
+</a><a href="#h0-154" id="h0-154" class="i">+
+</a><a href="#h0-155" id="h0-155" class="i">+# IP Address
+</a><a href="#h0-156" id="h0-156" class="i">+
+</a><a href="#h0-157" id="h0-157" class="i">+# Website to ping for the public IP
+</a><a href="#h0-158" id="h0-158" class="i">+# --ip_host url
+</a><a href="#h0-159" id="h0-159" class="i">+public_ip_host=&quot;http://ident.me&quot;
+</a><a href="#h0-160" id="h0-160" class="i">+
+</a><a href="#h0-161" id="h0-161" class="i">+
+</a><a href="#h0-162" id="h0-162" class="i">+# Birthday
+</a><a href="#h0-163" id="h0-163" class="i">+
+</a><a href="#h0-164" id="h0-164" class="i">+# Whether to show a long pretty output
+</a><a href="#h0-165" id="h0-165" class="i">+# or a shortened one
+</a><a href="#h0-166" id="h0-166" class="i">+# NOTE: Long pretty output doesn&apos;t work on OpenBSD or NetBSD.
+</a><a href="#h0-167" id="h0-167" class="i">+# --birthday_shorthand on/off
+</a><a href="#h0-168" id="h0-168" class="i">+birthday_shorthand=&quot;off&quot;
+</a><a href="#h0-169" id="h0-169" class="i">+
+</a><a href="#h0-170" id="h0-170" class="i">+# Whether to show the time in the output
+</a><a href="#h0-171" id="h0-171" class="i">+# --birthday_time on/off
+</a><a href="#h0-172" id="h0-172" class="i">+birthday_time=&quot;on&quot;
+</a><a href="#h0-173" id="h0-173" class="i">+
+</a><a href="#h0-174" id="h0-174" class="i">+# Color Blocks
+</a><a href="#h0-175" id="h0-175" class="i">+
+</a><a href="#h0-176" id="h0-176" class="i">+# Color block range
+</a><a href="#h0-177" id="h0-177" class="i">+# --block_range start end
+</a><a href="#h0-178" id="h0-178" class="i">+start=0
+</a><a href="#h0-179" id="h0-179" class="i">+end=7
+</a><a href="#h0-180" id="h0-180" class="i">+
+</a><a href="#h0-181" id="h0-181" class="i">+# Toggle color blocks
+</a><a href="#h0-182" id="h0-182" class="i">+# --color_blocks on/off
+</a><a href="#h0-183" id="h0-183" class="i">+color_blocks=&quot;on&quot;
+</a><a href="#h0-184" id="h0-184" class="i">+
+</a><a href="#h0-185" id="h0-185" class="i">+# Color block width
+</a><a href="#h0-186" id="h0-186" class="i">+# --color_block_width num
+</a><a href="#h0-187" id="h0-187" class="i">+block_width=3
+</a><a href="#h0-188" id="h0-188" class="i">+
+</a><a href="#h0-189" id="h0-189" class="i">+
+</a><a href="#h0-190" id="h0-190" class="i">+# }}}
+</a><a href="#h0-191" id="h0-191" class="i">+
+</a><a href="#h0-192" id="h0-192" class="i">+# Text Colors {{{
+</a><a href="#h0-193" id="h0-193" class="i">+
+</a><a href="#h0-194" id="h0-194" class="i">+
+</a><a href="#h0-195" id="h0-195" class="i">+# --title_color num
+</a><a href="#h0-196" id="h0-196" class="i">+#title_color=4
+</a><a href="#h0-197" id="h0-197" class="i">+#
+</a><a href="#h0-198" id="h0-198" class="i">+## Color of &quot;@&quot; symbol in title
+</a><a href="#h0-199" id="h0-199" class="i">+## --at_color num
+</a><a href="#h0-200" id="h0-200" class="i">+#at_color=6
+</a><a href="#h0-201" id="h0-201" class="i">+#
+</a><a href="#h0-202" id="h0-202" class="i">+## --subtitle_color num
+</a><a href="#h0-203" id="h0-203" class="i">+#subtitle_color=1
+</a><a href="#h0-204" id="h0-204" class="i">+#
+</a><a href="#h0-205" id="h0-205" class="i">+## --colon_color num
+</a><a href="#h0-206" id="h0-206" class="i">+#colon_color=8
+</a><a href="#h0-207" id="h0-207" class="i">+#
+</a><a href="#h0-208" id="h0-208" class="i">+## --underline_color num
+</a><a href="#h0-209" id="h0-209" class="i">+#underline_color=8
+</a><a href="#h0-210" id="h0-210" class="i">+#
+</a><a href="#h0-211" id="h0-211" class="i">+## --info_color num
+</a><a href="#h0-212" id="h0-212" class="i">+#info_color=6
+</a><a href="#h0-213" id="h0-213" class="i">+
+</a><a href="#h0-214" id="h0-214" class="i">+#colors=(4 6 8 1 8 6)
+</a><a href="#h0-215" id="h0-215" class="i">+colors=(distro)
+</a><a href="#h0-216" id="h0-216" class="i">+
+</a><a href="#h0-217" id="h0-217" class="i">+# }}}
+</a><a href="#h0-218" id="h0-218" class="i">+
+</a><a href="#h0-219" id="h0-219" class="i">+# Text Options {{{
+</a><a href="#h0-220" id="h0-220" class="i">+
+</a><a href="#h0-221" id="h0-221" class="i">+
+</a><a href="#h0-222" id="h0-222" class="i">+# Toggle line wrapping
+</a><a href="#h0-223" id="h0-223" class="i">+# --line_wrap on/off
+</a><a href="#h0-224" id="h0-224" class="i">+line_wrap=&quot;on&quot;
+</a><a href="#h0-225" id="h0-225" class="i">+
+</a><a href="#h0-226" id="h0-226" class="i">+# Toggle bold text
+</a><a href="#h0-227" id="h0-227" class="i">+# --bold on/off
+</a><a href="#h0-228" id="h0-228" class="i">+bold=&quot;on&quot;
+</a><a href="#h0-229" id="h0-229" class="i">+
+</a><a href="#h0-230" id="h0-230" class="i">+# Enable/Disable Underline
+</a><a href="#h0-231" id="h0-231" class="i">+# --underline on/off
+</a><a href="#h0-232" id="h0-232" class="i">+underline=&quot;on&quot;
+</a><a href="#h0-233" id="h0-233" class="i">+
+</a><a href="#h0-234" id="h0-234" class="i">+# Underline character
+</a><a href="#h0-235" id="h0-235" class="i">+# --underline_char char
+</a><a href="#h0-236" id="h0-236" class="i">+underline_char=&quot;-&quot;
+</a><a href="#h0-237" id="h0-237" class="i">+
+</a><a href="#h0-238" id="h0-238" class="i">+# Prompt height
+</a><a href="#h0-239" id="h0-239" class="i">+# You should only have to change this if your
+</a><a href="#h0-240" id="h0-240" class="i">+# prompt is greater than 2 lines high.
+</a><a href="#h0-241" id="h0-241" class="i">+# --prompt_height num
+</a><a href="#h0-242" id="h0-242" class="i">+prompt_height=1
+</a><a href="#h0-243" id="h0-243" class="i">+
+</a><a href="#h0-244" id="h0-244" class="i">+
+</a><a href="#h0-245" id="h0-245" class="i">+# }}}
+</a><a href="#h0-246" id="h0-246" class="i">+
+</a><a href="#h0-247" id="h0-247" class="i">+# Image Options {{{
+</a><a href="#h0-248" id="h0-248" class="i">+
+</a><a href="#h0-249" id="h0-249" class="i">+
+</a><a href="#h0-250" id="h0-250" class="i">+# Image Source
+</a><a href="#h0-251" id="h0-251" class="i">+# --image wall, shuffle, ascii, /path/to/img, off
+</a><a href="#h0-252" id="h0-252" class="i">+image=&quot;wall&quot;
+</a><a href="#h0-253" id="h0-253" class="i">+
+</a><a href="#h0-254" id="h0-254" class="i">+# Thumbnail directory
+</a><a href="#h0-255" id="h0-255" class="i">+thumbnail_dir=&quot;$HOME/.cache/thumbnails/fetch&quot;
+</a><a href="#h0-256" id="h0-256" class="i">+
+</a><a href="#h0-257" id="h0-257" class="i">+# Image Backend
+</a><a href="#h0-258" id="h0-258" class="i">+# Which program to draw images with
+</a><a href="#h0-259" id="h0-259" class="i">+# --image_backend w3m, iterm2
+</a><a href="#h0-260" id="h0-260" class="i">+image_backend=&quot;w3m&quot;
+</a><a href="#h0-261" id="h0-261" class="i">+
+</a><a href="#h0-262" id="h0-262" class="i">+# W3m-img path
+</a><a href="#h0-263" id="h0-263" class="i">+# Some systems have this in another location
+</a><a href="#h0-264" id="h0-264" class="i">+w3m_img_path=&quot;/usr/lib/w3m/w3mimgdisplay&quot;
+</a><a href="#h0-265" id="h0-265" class="i">+
+</a><a href="#h0-266" id="h0-266" class="i">+# Image position
+</a><a href="#h0-267" id="h0-267" class="i">+# Only works with the w3m backend
+</a><a href="#h0-268" id="h0-268" class="i">+# --image_position left/right
+</a><a href="#h0-269" id="h0-269" class="i">+image_position=&quot;left&quot;
+</a><a href="#h0-270" id="h0-270" class="i">+
+</a><a href="#h0-271" id="h0-271" class="i">+# Shuffle dir
+</a><a href="#h0-272" id="h0-272" class="i">+shuffle_dir=&quot;$HOME/Pictures/wallpapers/wash&quot;
+</a><a href="#h0-273" id="h0-273" class="i">+
+</a><a href="#h0-274" id="h0-274" class="i">+# Crop mode
+</a><a href="#h0-275" id="h0-275" class="i">+# --crop_mode normal/fit/fill
+</a><a href="#h0-276" id="h0-276" class="i">+crop_mode=&quot;normal&quot;
+</a><a href="#h0-277" id="h0-277" class="i">+
+</a><a href="#h0-278" id="h0-278" class="i">+# Crop offset
+</a><a href="#h0-279" id="h0-279" class="i">+# Only affects normal mode.
+</a><a href="#h0-280" id="h0-280" class="i">+# --crop_offset northwest/north/northeast/west/center
+</a><a href="#h0-281" id="h0-281" class="i">+#               east/southwest/south/southeast
+</a><a href="#h0-282" id="h0-282" class="i">+crop_offset=&quot;center&quot;
+</a><a href="#h0-283" id="h0-283" class="i">+
+</a><a href="#h0-284" id="h0-284" class="i">+# Font width
+</a><a href="#h0-285" id="h0-285" class="i">+# --font_width num
+</a><a href="#h0-286" id="h0-286" class="i">+# Used when calculating dynamic image size
+</a><a href="#h0-287" id="h0-287" class="i">+font_width=5
+</a><a href="#h0-288" id="h0-288" class="i">+
+</a><a href="#h0-289" id="h0-289" class="i">+# Image size
+</a><a href="#h0-290" id="h0-290" class="i">+# The image is half the terminal width by default.
+</a><a href="#h0-291" id="h0-291" class="i">+# --size half, px
+</a><a href="#h0-292" id="h0-292" class="i">+image_size=&quot;auto&quot;
+</a><a href="#h0-293" id="h0-293" class="i">+
+</a><a href="#h0-294" id="h0-294" class="i">+# Right gap between image and text
+</a><a href="#h0-295" id="h0-295" class="i">+# --gap num
+</a><a href="#h0-296" id="h0-296" class="i">+gap=4
+</a><a href="#h0-297" id="h0-297" class="i">+
+</a><a href="#h0-298" id="h0-298" class="i">+# Image offsets
+</a><a href="#h0-299" id="h0-299" class="i">+# --xoffset px
+</a><a href="#h0-300" id="h0-300" class="i">+# --yoffset px
+</a><a href="#h0-301" id="h0-301" class="i">+yoffset=0
+</a><a href="#h0-302" id="h0-302" class="i">+xoffset=0
+</a><a href="#h0-303" id="h0-303" class="i">+
+</a><a href="#h0-304" id="h0-304" class="i">+
+</a><a href="#h0-305" id="h0-305" class="i">+# }}}
+</a><a href="#h0-306" id="h0-306" class="i">+
+</a><a href="#h0-307" id="h0-307" class="i">+# Ascii Options {{{
+</a><a href="#h0-308" id="h0-308" class="i">+
+</a><a href="#h0-309" id="h0-309" class="i">+
+</a><a href="#h0-310" id="h0-310" class="i">+# Default ascii image to use
+</a><a href="#h0-311" id="h0-311" class="i">+# When this is set to distro it will use your
+</a><a href="#h0-312" id="h0-312" class="i">+# distro&apos;s logo as the ascii.
+</a><a href="#h0-313" id="h0-313" class="i">+# --ascii &apos;distro&apos;, path/to/ascii
+</a><a href="#h0-314" id="h0-314" class="i">+ascii=&quot;distro&quot;
+</a><a href="#h0-315" id="h0-315" class="i">+
+</a><a href="#h0-316" id="h0-316" class="i">+# Ascii colors
+</a><a href="#h0-317" id="h0-317" class="i">+# When this is set to distro it will use your
+</a><a href="#h0-318" id="h0-318" class="i">+# ditro&apos;s colors to color the ascii.
+</a><a href="#h0-319" id="h0-319" class="i">+# NOTE: You can also set this to a range of colors
+</a><a href="#h0-320" id="h0-320" class="i">+# which will allow you to custom color distro logos
+</a><a href="#h0-321" id="h0-321" class="i">+# --ascii_colors distro
+</a><a href="#h0-322" id="h0-322" class="i">+# --ascii_colors 2 4 5 6
+</a><a href="#h0-323" id="h0-323" class="i">+ascii_colors=(distro)
+</a><a href="#h0-324" id="h0-324" class="i">+
+</a><a href="#h0-325" id="h0-325" class="i">+
+</a><a href="#h0-326" id="h0-326" class="i">+# }}}
+</a><a href="#h0-327" id="h0-327" class="i">+
+</a><a href="#h0-328" id="h0-328" class="i">+# Scrot Options {{{
+</a><a href="#h0-329" id="h0-329" class="i">+
+</a><a href="#h0-330" id="h0-330" class="i">+
+</a><a href="#h0-331" id="h0-331" class="i">+# Whether or not to always take a screenshot
+</a><a href="#h0-332" id="h0-332" class="i">+# You can manually take a screenshot with &quot;--scrot&quot; or &quot;-s&quot;
+</a><a href="#h0-333" id="h0-333" class="i">+scrot=&quot;off&quot;
+</a><a href="#h0-334" id="h0-334" class="i">+
+</a><a href="#h0-335" id="h0-335" class="i">+# Screenshot program to launch
+</a><a href="#h0-336" id="h0-336" class="i">+# --scrot_cmd
+</a><a href="#h0-337" id="h0-337" class="i">+scrot_cmd=&quot;scrot -c -d 3&quot;
+</a><a href="#h0-338" id="h0-338" class="i">+
+</a><a href="#h0-339" id="h0-339" class="i">+# Scrot dir
+</a><a href="#h0-340" id="h0-340" class="i">+# Where to save the screenshots
+</a><a href="#h0-341" id="h0-341" class="i">+# --scrot_dir /path/to/screenshot/folder
+</a><a href="#h0-342" id="h0-342" class="i">+scrot_dir=&quot;$HOME/Pictures&quot;
+</a><a href="#h0-343" id="h0-343" class="i">+
+</a><a href="#h0-344" id="h0-344" class="i">+# Scrot filename
+</a><a href="#h0-345" id="h0-345" class="i">+# What to name the screenshots
+</a><a href="#h0-346" id="h0-346" class="i">+# --scrot_name str
+</a><a href="#h0-347" id="h0-347" class="i">+scrot_name=&quot;fetch-%Y-%m-%d-%H:%M.png&quot;
+</a><a href="#h0-348" id="h0-348" class="i">+
+</a><a href="#h0-349" id="h0-349" class="i">+
+</a><a href="#h0-350" id="h0-350" class="i">+# }}}
+</a><a href="#h0-351" id="h0-351" class="i">+
+</a><a href="#h0-352" id="h0-352" class="i">+# Config Options {{{
+</a><a href="#h0-353" id="h0-353" class="i">+
+</a><a href="#h0-354" id="h0-354" class="i">+
+</a><a href="#h0-355" id="h0-355" class="i">+# Enable/Disable config file
+</a><a href="#h0-356" id="h0-356" class="i">+# --config off, none
+</a><a href="#h0-357" id="h0-357" class="i">+config=&quot;on&quot;
+</a><a href="#h0-358" id="h0-358" class="i">+
+</a><a href="#h0-359" id="h0-359" class="i">+# Path to custom config file location
+</a><a href="#h0-360" id="h0-360" class="i">+# --config path/to/config
+</a><a href="#h0-361" id="h0-361" class="i">+config_file=&quot;$HOME/.config/fetch/config&quot;
+</a><a href="#h0-362" id="h0-362" class="i">+
+</a><a href="#h0-363" id="h0-363" class="i">+
+</a><a href="#h0-364" id="h0-364" class="i">+# }}}
+</a><a href="#h0-365" id="h0-365" class="i">+
+</a><a href="#h0-366" id="h0-366" class="i">+# Other Options {{{
+</a><a href="#h0-367" id="h0-367" class="i">+
+</a><a href="#h0-368" id="h0-368" class="i">+# Separator to use in stdout mode.
+</a><a href="#h0-369" id="h0-369" class="i">+# --stdout_separator string
+</a><a href="#h0-370" id="h0-370" class="i">+stdout_separator=&quot;    &quot;
+</a><a href="#h0-371" id="h0-371" class="i">+
+</a><a href="#h0-372" id="h0-372" class="i">+# Hide/Show the title in stdout mode.
+</a><a href="#h0-373" id="h0-373" class="i">+# --stdout_title on/off
+</a><a href="#h0-374" id="h0-374" class="i">+stdout_title=&quot;off&quot;
+</a><a href="#h0-375" id="h0-375" class="i">+
+</a><a href="#h0-376" id="h0-376" class="i">+# Hide/Show each info&apos;s subtitle in stdout mode.
+</a><a href="#h0-377" id="h0-377" class="i">+# --stdout_subtitles on/off
+</a><a href="#h0-378" id="h0-378" class="i">+stdout_subtitles=&quot;on&quot;
+</a><a href="#h0-379" id="h0-379" class="i">+
+</a><a href="#h0-380" id="h0-380" class="i">+# }}}
+</a><b>diff --git a/<a href="../file/scripts/.scripts/panel.html">scripts/.scripts/panel</a> b/<a href="../file/scripts/.scripts/panel.html">scripts/.scripts/panel</a></b>
+<a href="#h0" id="h0" class="h">@@ -80,6 +80,6 @@ done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a> 
+ . panel_colors
+ 
+<a href="#h0-3" id="h0-3" class="d">-cat &quot;$PANEL_FIFO&quot; | panel_bar | lemonbar -n &quot;$PANEL_WM_NAME&quot; -g &quot;$BAR_GEOMETRY&quot; -f &quot;$PANEL_FONT_FAMILY&quot; -f &quot;$PANEL_ICON_FONT_FAMILY&quot; -F &quot;$COLOR_FOREGROUND&quot; -B &quot;$COLOR_BACKGROUND&quot; -U &quot;$COLOR_UNDERLINE&quot; -a 30 -u 2| bash &amp;
+</a><a href="#h0-4" id="h0-4" class="i">+cat &quot;$PANEL_FIFO&quot; | panel_bar | lemonbar -d -n &quot;$PANEL_WM_NAME&quot; -g &quot;$BAR_GEOMETRY&quot; -f &quot;$PANEL_FONT_FAMILY&quot; -f &quot;$PANEL_ICON_FONT_FAMILY&quot; -F &quot;$COLOR_FOREGROUND&quot; -B &quot;$COLOR_BACKGROUND&quot; -U &quot;$COLOR_UNDERLINE&quot; -a 30 -u 2| bash &amp;
+</a> 
+ wait
+<b>diff --git a/<a href="../file/scripts/.scripts/screenlayout.html">scripts/.scripts/screenlayout</a> b/<a href="../file/scripts/.scripts/screenlayout.html">scripts/.scripts/screenlayout</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,13 +1,13 @@
+</a> #! /bin/bash
+ 
+ single_ext=&quot;on&quot;
+<a href="#h0-3" id="h0-3" class="d">-ext_monitor=$(xrandr | grep &quot; connected&quot; | grep -v &quot;LVDS-1&quot; | awk &apos;{print $1}&apos;)
+</a><a href="#h0-4" id="h0-4" class="i">+ext_monitor=$(xrandr | grep &quot; connected&quot; | grep -v &quot;LVDS-0&quot; | awk &apos;{print $1}&apos;)
+</a> if [[ $ext_monitor == &quot;&quot; ]]; then
+<a href="#h0-6" id="h0-6" class="d">-  xrandr --output &quot;LVDS-1&quot; --primary
+</a><a href="#h0-7" id="h0-7" class="i">+  xrandr --output &quot;LVDS-0&quot; --primary
+</a> else
+<a href="#h0-9" id="h0-9" class="d">-  xrandr --output &quot;$ext_monitor&quot; --auto --left-of &quot;LVDS-1&quot; --primary
+</a><a href="#h0-10" id="h0-10" class="d">-  bspc config -m &quot;LVDS-1&quot; top_padding 0
+</a><a href="#h0-11" id="h0-11" class="i">+  xrandr --output &quot;$ext_monitor&quot; --auto --left-of &quot;LVDS-0&quot; --primary
+</a><a href="#h0-12" id="h0-12" class="i">+  bspc config -m &quot;LVDS-0&quot; top_padding 0
+</a>   if [[ $single_ext == &quot;on&quot; ]]; then
+<a href="#h0-14" id="h0-14" class="d">-    xrandr --output &quot;LVDS-1&quot; --off
+</a><a href="#h0-15" id="h0-15" class="i">+    xrandr --output &quot;LVDS-0&quot; --off
+</a>   fi
+ fi
+<b>diff --git a/<a href="../file/scripts/.scripts/setwall.html">scripts/.scripts/setwall</a> b/<a href="../file/scripts/.scripts/setwall.html">scripts/.scripts/setwall</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/python
+</a><a href="#h0-1" id="h0-1" class="i">+#! /usr/bin/python
+</a> #rnd=$(($RANDOM % 100))
+ #if [ -z $OVER ]; then OVER=0; fi
+ #echo $rnd
+<a href="#h1" id="h1" class="h">@@ -19,11 +19,11 @@ date = time.strftime(&apos;%d/%m&apos;)
+</a> rnd = random.randrange(1, 101)
+ 
+ if donger or date == &apos;01/04&apos;:
+<a href="#h1-3" id="h1-3" class="d">-    os.system(&apos;feh --bg-fill ~/Pictures/april_wall.png&apos;)
+</a><a href="#h1-4" id="h1-4" class="i">+    os.system(&apos;feh --bg-fill ~/wallpapers/april_wall.png&apos;)
+</a> elif surprise or rnd == 2:
+<a href="#h1-6" id="h1-6" class="d">-    os.system(&apos;feh --bg-fill ~/Pictures/snowden.jpg&apos;)
+</a><a href="#h1-7" id="h1-7" class="i">+    os.system(&apos;feh --bg-fill ~/wallpapers/snowden.jpg&apos;)
+</a> elif custom:
+     os.system(&apos;feh --bg-fill %s&apos; % custom)
+ else:
+<a href="#h1-11" id="h1-11" class="d">-    os.system(&apos;feh --bg-fill ~/Pictures/madeon-pillar.png&apos;)
+</a><a href="#h1-12" id="h1-12" class="i">+    os.system(&apos;feh --bg-fill ~/wallpapers/madeon-pillar.png&apos;)
+</a> 
+<b>diff --git a/<a href="../file/tmux/.tmux/bin/statusline.html">tmux/.tmux/bin/statusline</a> b/<a href="../file/tmux/.tmux/bin/statusline.html">tmux/.tmux/bin/statusline</a></b>
+<a href="#h0" id="h0" class="h">@@ -16,7 +16,7 @@ clock() {
+</a> }
+ 
+ mem() {
+<a href="#h0-3" id="h0-3" class="d">-  echo &quot;#[fg=colour0,bg=colour4] $(fetch --stdout memory | awk &apos;{print $1}&apos;)$reset#[fg=colour4]▓▒░&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+  echo &quot;#[fg=colour0,bg=colour4] $(neofetch --stdout memory | awk &apos;{print $1}&apos;)$reset#[fg=colour4]▓▒░&quot;
+</a> }
+ 
+ echo &quot;$(mem) $reset $(clock)&quot;
+<b>diff --git a/<a href="../file/wallpapers/Pictures/Monody.jpg.html">wallpapers/Pictures/Monody.jpg</a> b/<a href="../file/wallpapers/Pictures/Monody.jpg.html">wallpapers/Pictures/Monody.jpg</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/Pictures/april_wall.png.html">wallpapers/Pictures/april_wall.png</a> b/<a href="../file/wallpapers/Pictures/april_wall.png.html">wallpapers/Pictures/april_wall.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/Pictures/madeon-pillar.png.html">wallpapers/Pictures/madeon-pillar.png</a> b/<a href="../file/wallpapers/Pictures/madeon-pillar.png.html">wallpapers/Pictures/madeon-pillar.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/Pictures/nomanssky.png.html">wallpapers/Pictures/nomanssky.png</a> b/<a href="../file/wallpapers/Pictures/nomanssky.png.html">wallpapers/Pictures/nomanssky.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/Pictures/pixel.jpg.html">wallpapers/Pictures/pixel.jpg</a> b/<a href="../file/wallpapers/Pictures/pixel.jpg.html">wallpapers/Pictures/pixel.jpg</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/Pictures/pixel2.png.html">wallpapers/Pictures/pixel2.png</a> b/<a href="../file/wallpapers/Pictures/pixel2.png.html">wallpapers/Pictures/pixel2.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/Pictures/snowden.jpg.html">wallpapers/Pictures/snowden.jpg</a> b/<a href="../file/wallpapers/Pictures/snowden.jpg.html">wallpapers/Pictures/snowden.jpg</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/Pictures/surprise_wall.png.html">wallpapers/Pictures/surprise_wall.png</a> b/<a href="../file/wallpapers/Pictures/surprise_wall.png.html">wallpapers/Pictures/surprise_wall.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/Pictures/wallpaper.png.html">wallpapers/Pictures/wallpaper.png</a> b/<a href="../file/wallpapers/Pictures/wallpaper.png.html">wallpapers/Pictures/wallpaper.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/Monody.jpg.html">wallpapers/wallpapers/Monody.jpg</a> b/<a href="../file/wallpapers/wallpapers/Monody.jpg.html">wallpapers/wallpapers/Monody.jpg</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/april_wall.png.html">wallpapers/wallpapers/april_wall.png</a> b/<a href="../file/wallpapers/wallpapers/april_wall.png.html">wallpapers/wallpapers/april_wall.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/madeon-pillar.png.html">wallpapers/wallpapers/madeon-pillar.png</a> b/<a href="../file/wallpapers/wallpapers/madeon-pillar.png.html">wallpapers/wallpapers/madeon-pillar.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/nomanssky.png.html">wallpapers/wallpapers/nomanssky.png</a> b/<a href="../file/wallpapers/wallpapers/nomanssky.png.html">wallpapers/wallpapers/nomanssky.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/pixel.jpg.html">wallpapers/wallpapers/pixel.jpg</a> b/<a href="../file/wallpapers/wallpapers/pixel.jpg.html">wallpapers/wallpapers/pixel.jpg</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/pixel2.png.html">wallpapers/wallpapers/pixel2.png</a> b/<a href="../file/wallpapers/wallpapers/pixel2.png.html">wallpapers/wallpapers/pixel2.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/snowden.jpg.html">wallpapers/wallpapers/snowden.jpg</a> b/<a href="../file/wallpapers/wallpapers/snowden.jpg.html">wallpapers/wallpapers/snowden.jpg</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/surprise_wall.png.html">wallpapers/wallpapers/surprise_wall.png</a> b/<a href="../file/wallpapers/wallpapers/surprise_wall.png.html">wallpapers/wallpapers/surprise_wall.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/wallpaper.png.html">wallpapers/wallpapers/wallpaper.png</a> b/<a href="../file/wallpapers/wallpapers/wallpaper.png.html">wallpapers/wallpapers/wallpaper.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/wov.png.html">wallpapers/wallpapers/wov.png</a> b/<a href="../file/wallpapers/wallpapers/wov.png.html">wallpapers/wallpapers/wov.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wmrc/contrib.html">wmrc/contrib</a> b/<a href="../file/wmrc/contrib.html">wmrc/contrib</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+Subproject commit cb67b2450175c676c597856c9f96953fc5b5e93c
+</a></pre>
+</div>
+</body>
+</html>

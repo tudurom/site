@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>new package: nethack - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/ae7a84f567324836747993a8c8cd5d56982e96ca.html">ae7a84f567324836747993a8c8cd5d56982e96ca</a>
+<b>parent</b> <a href="../commit/2fbc577d4f59020c6a69e323f85e35f5a00b307d.html">2fbc577d4f59020c6a69e323f85e35f5a00b307d</a>
+<b>Author:</b> arcetera &lt;<a href="mailto:arcticsn0wdev@gmail.com">arcticsn0wdev@gmail.com</a>&gt;
+<b>Date:</b>   Tue Dec  1 21:03:32 2015
+
+new package: nethack
+
+<b>Diffstat:</b>
+ nethack/.footprint        | 15 ++++++++++++++-
+ nethack/.md5sum           |  3 +++-
+ nethack/Pkgfile           | 50 ++++++++++++++++++++++++++++++++++++++++++++++++-
+ nethack/nethack-gzip.diff | 19 ++++++++++++++++++-
+ 4 files changed, 87 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/nethack/.footprint.html">nethack/.footprint</a> b/<a href="../file/nethack/.footprint.html">nethack/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,15 @@
+</a><a href="#h0-0" id="h0-0" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h0-1" id="h0-1" class="i">+drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h0-2" id="h0-2" class="i">+-rwxr-xr-x	root/root	usr/bin/nethack
+</a><a href="#h0-3" id="h0-3" class="i">+drwxr-xr-x	root/root	usr/lib/
+</a><a href="#h0-4" id="h0-4" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-5" id="h0-5" class="i">+drwxr-xr-x	root/root	usr/share/nethack/
+</a><a href="#h0-6" id="h0-6" class="i">+drwxr-xr-x	root/root	usr/share/nethack/bones/
+</a><a href="#h0-7" id="h0-7" class="i">+-rw-r--r--	root/root	usr/share/nethack/license
+</a><a href="#h0-8" id="h0-8" class="i">+-rw-r--r--	root/root	usr/share/nethack/logfile (EMPTY)
+</a><a href="#h0-9" id="h0-9" class="i">+-rwsr-xr-x	root/root	usr/share/nethack/nethack
+</a><a href="#h0-10" id="h0-10" class="i">+-rw-r--r--	root/root	usr/share/nethack/nhdat
+</a><a href="#h0-11" id="h0-11" class="i">+-rw-r--r--	root/root	usr/share/nethack/perm (EMPTY)
+</a><a href="#h0-12" id="h0-12" class="i">+-rw-r--r--	root/root	usr/share/nethack/record (EMPTY)
+</a><a href="#h0-13" id="h0-13" class="i">+-rwxr-xr-x	root/root	usr/share/nethack/recover
+</a><a href="#h0-14" id="h0-14" class="i">+drwxr-xr-x	root/root	usr/share/nethack/save/
+</a><b>diff --git a/<a href="../file/nethack/.md5sum.html">nethack/.md5sum</a> b/<a href="../file/nethack/.md5sum.html">nethack/.md5sum</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h0-0" id="h0-0" class="i">+21479c95990eefe7650df582426457f9  nethack-343-src.tgz
+</a><a href="#h0-1" id="h0-1" class="i">+c5fff250ef5ef1f8acf07a12e37d5da7  nethack-gzip.diff
+</a><a href="#h0-2" id="h0-2" class="i">+1732073b4d10941a74a3adaa74e1ce41  nh343jl.diff
+</a><b>diff --git a/<a href="../file/nethack/Pkgfile.html">nethack/Pkgfile</a> b/<a href="../file/nethack/Pkgfile.html">nethack/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,50 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Description: NetHack! (originally in tilman repo, modified)
+</a><a href="#h0-1" id="h0-1" class="i">+# URL: http://www.nethack.org
+</a><a href="#h0-2" id="h0-2" class="i">+# Packager: arcetera, echo iue@trnspljc.890 | tr ietursnpl890jc acprlsurecomed
+</a><a href="#h0-3" id="h0-3" class="i">+# Depends on:
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+name=nethack
+</a><a href="#h0-6" id="h0-6" class="i">+version=3.4.3
+</a><a href="#h0-7" id="h0-7" class="i">+release=6
+</a><a href="#h0-8" id="h0-8" class="i">+source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-343-src.tgz \
+</a><a href="#h0-9" id="h0-9" class="i">+        http://www.saunalahti.fi/~juklahta/nh/nh343jl.diff \
+</a><a href="#h0-10" id="h0-10" class="i">+        $name-gzip.diff)
+</a><a href="#h0-11" id="h0-11" class="i">+
+</a><a href="#h0-12" id="h0-12" class="i">+build () {
+</a><a href="#h0-13" id="h0-13" class="i">+	cd $name-$version
+</a><a href="#h0-14" id="h0-14" class="i">+
+</a><a href="#h0-15" id="h0-15" class="i">+	patch -Np1 -i ../$name-gzip.diff
+</a><a href="#h0-16" id="h0-16" class="i">+	patch -Np1 -i ../nh343jl.diff
+</a><a href="#h0-17" id="h0-17" class="i">+
+</a><a href="#h0-18" id="h0-18" class="i">+	cd sys/unix
+</a><a href="#h0-19" id="h0-19" class="i">+	sh setup.sh
+</a><a href="#h0-20" id="h0-20" class="i">+
+</a><a href="#h0-21" id="h0-21" class="i">+	cd $SRC/$name-$version/include
+</a><a href="#h0-22" id="h0-22" class="i">+
+</a><a href="#h0-23" id="h0-23" class="i">+	sed -i -e &apos;s|/usr/games/lib/nethackdir|/usr/share/nethack/|g&apos; config.h
+</a><a href="#h0-24" id="h0-24" class="i">+
+</a><a href="#h0-25" id="h0-25" class="i">+	echo &quot;\
+</a><a href="#h0-26" id="h0-26" class="i">+#define MENU_COLOR_REGEX
+</a><a href="#h0-27" id="h0-27" class="i">+#define DLB
+</a><a href="#h0-28" id="h0-28" class="i">+&quot; &gt;&gt; config.h
+</a><a href="#h0-29" id="h0-29" class="i">+
+</a><a href="#h0-30" id="h0-30" class="i">+	sed -i -e &apos;s|^/\* #define LINUX|#define LINUX|&apos; unixconf.h
+</a><a href="#h0-31" id="h0-31" class="i">+
+</a><a href="#h0-32" id="h0-32" class="i">+	cd $SRC/$name-$version/src
+</a><a href="#h0-33" id="h0-33" class="i">+	sed -i -e &apos;s|WINTTYLIB = -ltermlib|# WINTTYLIB = -ltermlib|g&apos; Makefile
+</a><a href="#h0-34" id="h0-34" class="i">+	sed -i -e &apos;s|# WINTTYLIB = -lncurses|WINTTYLIB = -lncurses|g&apos; Makefile
+</a><a href="#h0-35" id="h0-35" class="i">+	cd ..
+</a><a href="#h0-36" id="h0-36" class="i">+	sed -i -e &apos;s|PREFIX[\t]* = /usr|PREFIX   = $(PKG)/usr|g&apos; Makefile
+</a><a href="#h0-37" id="h0-37" class="i">+	sed -i -e &apos;s|GAMEDIR  = $(PREFIX)/games/lib/$(GAME)dir|GAMEDIR  = $(PREFIX)/lib/$(GAME)dir|g&apos; Makefile
+</a><a href="#h0-38" id="h0-38" class="i">+	sed -i -e &apos;s|GAMEGRP  = bin|GAMEGRP  = root|&apos; Makefile
+</a><a href="#h0-39" id="h0-39" class="i">+	sed -i -e &apos;s|SHELLDIR = $(PREFIX)/games|SHELLDIR = $(PREFIX)/bin|g&apos; Makefile
+</a><a href="#h0-40" id="h0-40" class="i">+
+</a><a href="#h0-41" id="h0-41" class="i">+	mkdir -p $PKG/usr/share
+</a><a href="#h0-42" id="h0-42" class="i">+
+</a><a href="#h0-43" id="h0-43" class="i">+	make
+</a><a href="#h0-44" id="h0-44" class="i">+	make install
+</a><a href="#h0-45" id="h0-45" class="i">+
+</a><a href="#h0-46" id="h0-46" class="i">+	cd $PKG/usr/bin
+</a><a href="#h0-47" id="h0-47" class="i">+	mv $PKG/usr/lib/nethackdir $PKG/usr/share/nethack
+</a><a href="#h0-48" id="h0-48" class="i">+	sed -i -e &quot;s|HACKDIR=$PKG/usr/lib/nethackdir|HACKDIR=/usr/share/nethack|g&quot; nethack
+</a><a href="#h0-49" id="h0-49" class="i">+}
+</a><b>diff --git a/<a href="../file/nethack/nethack-gzip.diff.html">nethack/nethack-gzip.diff</a> b/<a href="../file/nethack/nethack-gzip.diff.html">nethack/nethack-gzip.diff</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,19 @@
+</a><a href="#h0-0" id="h0-0" class="i">+diff -aur nethack-3.4.3.orig/include/config.h nethack-3.4.3/include/config.h
+</a><a href="#h0-1" id="h0-1" class="i">+--- nethack-3.4.3.orig/include/config.h	2003-12-08 00:39:13.000000000 +0100
+</a><a href="#h0-2" id="h0-2" class="i">++++ nethack-3.4.3/include/config.h	2005-03-11 18:41:21.000000000 +0100
+</a><a href="#h0-3" id="h0-3" class="i">+@@ -169,11 +169,11 @@
+</a><a href="#h0-4" id="h0-4" class="i">+ 
+</a><a href="#h0-5" id="h0-5" class="i">+ #ifdef UNIX
+</a><a href="#h0-6" id="h0-6" class="i">+ /* path and file name extension for compression program */
+</a><a href="#h0-7" id="h0-7" class="i">+-#define COMPRESS &quot;/usr/bin/compress&quot;	/* Lempel-Ziv compression */
+</a><a href="#h0-8" id="h0-8" class="i">+-#define COMPRESS_EXTENSION &quot;.Z&quot;		/* compress&apos;s extension */
+</a><a href="#h0-9" id="h0-9" class="i">++/* #define COMPRESS &quot;/usr/bin/compress&quot; */	/* Lempel-Ziv compression */
+</a><a href="#h0-10" id="h0-10" class="i">++/* #define COMPRESS_EXTENSION &quot;.Z&quot; */		/* compress&apos;s extension */
+</a><a href="#h0-11" id="h0-11" class="i">+ /* An example of one alternative you might want to use: */
+</a><a href="#h0-12" id="h0-12" class="i">+-/* #define COMPRESS &quot;/usr/local/bin/gzip&quot; */	/* FSF gzip compression */
+</a><a href="#h0-13" id="h0-13" class="i">+-/* #define COMPRESS_EXTENSION &quot;.gz&quot; */		/* normal gzip extension */
+</a><a href="#h0-14" id="h0-14" class="i">++#define COMPRESS &quot;/bin/gzip&quot;	/* FSF gzip compression */
+</a><a href="#h0-15" id="h0-15" class="i">++#define COMPRESS_EXTENSION &quot;.gz&quot;		/* normal gzip extension */
+</a><a href="#h0-16" id="h0-16" class="i">+ #endif
+</a><a href="#h0-17" id="h0-17" class="i">+ 
+</a><a href="#h0-18" id="h0-18" class="i">+ #ifndef COMPRESS
+</a></pre>
+</div>
+</body>
+</html>

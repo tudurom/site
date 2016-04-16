@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Removed exitbspwm - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/27d35f316a0ac9e0f9aa9084a4f8be756d507089.html">27d35f316a0ac9e0f9aa9084a4f8be756d507089</a>
+<b>parent</b> <a href="../commit/31852c49bd6abf1222bbdc9cee935f5e3d7d08e5.html">31852c49bd6abf1222bbdc9cee935f5e3d7d08e5</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Mon Feb 29 14:33:23 2016
+
+Removed exitbspwm
+
+<b>Diffstat:</b>
+ scripts/.scripts/README.md |  1 -
+ scripts/.scripts/exitbspwm | 19 -------------------
+ x/.xres/urxvt              |  4 ++--
+ 3 files changed, 2 insertions(+), 22 deletions(-)
+<hr/><b>diff --git a/<a href="../file/scripts/.scripts/README.md.html">scripts/.scripts/README.md</a> b/<a href="../file/scripts/.scripts/README.md.html">scripts/.scripts/README.md</a></b>
+<a href="#h0" id="h0" class="h">@@ -15,7 +15,6 @@
+</a> │       ├── panel - launch panel
+ │       ├── panel.rb - main panel script
+ │       └── volume - get volume
+<a href="#h0-3" id="h0-3" class="d">-├── exitbspwm - still alpha.
+</a> ├── gifbackground - sets an animated gif as a wallpaper. Just for the looks (I bet you can&apos;t do this on Windows pretty easily)
+ ├── i3blocks - i3blocks scripts
+ │   ├── battery
+<b>diff --git a/<a href="../file/scripts/.scripts/exitbspwm.html">scripts/.scripts/exitbspwm</a> b/<a href="../file/scripts/.scripts/exitbspwm.html">scripts/.scripts/exitbspwm</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,19 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/ruby
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-choices = {
+</a><a href="#h0-3" id="h0-3" class="d">-  &quot;1) Exit BSPWM&quot; =&gt; &quot;pkill panel &amp;&amp; bspc quit&quot;,
+</a><a href="#h0-4" id="h0-4" class="d">-  &quot;2) Poweroff&quot;   =&gt; &quot;poweroff&quot;,
+</a><a href="#h0-5" id="h0-5" class="d">-  &quot;3) Reboot&quot;     =&gt; &quot;reboot&quot;
+</a><a href="#h0-6" id="h0-6" class="d">-}
+</a><a href="#h0-7" id="h0-7" class="d">-
+</a><a href="#h0-8" id="h0-8" class="d">-out = &quot;&quot;
+</a><a href="#h0-9" id="h0-9" class="d">-
+</a><a href="#h0-10" id="h0-10" class="d">-choices.each do |key, value|
+</a><a href="#h0-11" id="h0-11" class="d">-  out += key + &quot;\n&quot;
+</a><a href="#h0-12" id="h0-12" class="d">-end
+</a><a href="#h0-13" id="h0-13" class="d">-
+</a><a href="#h0-14" id="h0-14" class="d">-choice = `echo &quot;#{out}&quot; | rofi -dmenu -p &quot;leave&quot; -no-custom`
+</a><a href="#h0-15" id="h0-15" class="d">-puts choices
+</a><a href="#h0-16" id="h0-16" class="d">-puts choices[choice]
+</a><a href="#h0-17" id="h0-17" class="d">-
+</a><a href="#h0-18" id="h0-18" class="d">-`#{choices[choice]}`
+</a><b>diff --git a/<a href="../file/x/.xres/urxvt.html">x/.xres/urxvt</a> b/<a href="../file/x/.xres/urxvt.html">x/.xres/urxvt</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,5 +1,5 @@
+</a><a href="#h0-0" id="h0-0" class="d">-!URxvt.font: -*-erusfont-medium-*-*-*-11-*-*-*-*-*-*-*
+</a><a href="#h0-1" id="h0-1" class="d">-URxvt.font: xft:Fantasque Sans Mono:pixelsize:12
+</a><a href="#h0-2" id="h0-2" class="i">+URxvt.font: -*-erusfont-medium-*-*-*-11-*-*-*-*-*-*-*
+</a><a href="#h0-3" id="h0-3" class="i">+!URxvt.font: xft:Fantasque Sans Mono:pixelsize:12
+</a> ! No bold font
+ URxvt.boldFont:
+ URxvt.scrollBar: false
+</pre>
+</div>
+</body>
+</html>

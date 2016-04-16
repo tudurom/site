@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Darker - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/d470eaa56af6f5e3e2e8d7e2a59150a448961858.html">d470eaa56af6f5e3e2e8d7e2a59150a448961858</a>
+<b>parent</b> <a href="../commit/15b5613148e7ddabeb929d724687e77c6792fb3c.html">15b5613148e7ddabeb929d724687e77c6792fb3c</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Tue Mar 15 19:41:32 2016
+
+Darker
+
+<b>Diffstat:</b>
+ README.md                      |  2 +-
+ scripts/.scripts/nioup         | 12 ++++++++++++
+ tmux/.tmux.conf                |  1 +
+ wallpapers/wallpapers/neos.jpg | Bin 2820887 -&gt; 0 bytes
+ x/.xres/colors/cloudy          |  4 ++--
+ 5 files changed, 16 insertions(+), 3 deletions(-)
+<hr/><b>diff --git a/<a href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h0" id="h0" class="h">@@ -13,7 +13,7 @@ I manage my dotfiles using GNU Stow. [Here&apos;s a neat article about managing your 
+</a> List of programs
+ -----------------
+ 
+<a href="#h0-3" id="h0-3" class="d">-* **Operating System**: [Arch Linux](http://archlinux.org) (tell everyone that some (handsome) guy who calls himself tudurom uses Arch. YEAH! I&apos;M USING ARCH!)
+</a><a href="#h0-4" id="h0-4" class="i">+* **Operating System**: [Arch Linux](http://archlinux.org)
+</a> * **Text editor**: [neovim](http://neovim.io)
+   * See `nvim/.config/nvim/init.vim` for plugins
+ * **Color scheme**: [cloudy](https://github.com/tudurom/dotfiles/blob/master/x/.xres/colors/cloudy)
+<b>diff --git a/<a href="../file/scripts/.scripts/nioup.html">scripts/.scripts/nioup</a> b/<a href="../file/scripts/.scripts/nioup.html">scripts/.scripts/nioup</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,12 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#! /bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#
+</a><a href="#h0-2" id="h0-2" class="i">+# nioup - Simple scripts to upload files to the iotek pastebin
+</a><a href="#h0-3" id="h0-3" class="i">+# (c) tudurom - 2016 (wtfpl)
+</a><a href="#h0-4" id="h0-4" class="i">+#
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+test $# -ne 1 &amp;&amp; {
+</a><a href="#h0-7" id="h0-7" class="i">+  echo &quot;Usage: $(basename &quot;$0&quot;) &lt;file to paste&gt;&quot;
+</a><a href="#h0-8" id="h0-8" class="i">+  exit 1
+</a><a href="#h0-9" id="h0-9" class="i">+}
+</a><a href="#h0-10" id="h0-10" class="i">+
+</a><a href="#h0-11" id="h0-11" class="i">+curl -sLT- p.iotek.org &lt; &quot;$1&quot;
+</a><b>diff --git a/<a href="../file/tmux/.tmux.conf.html">tmux/.tmux.conf</a> b/<a href="../file/tmux/.tmux.conf.html">tmux/.tmux.conf</a></b>
+<a href="#h0" id="h0" class="h">@@ -92,6 +92,7 @@ bind - split-window -v
+</a> 
+ # Toggle statusbar
+ bind o set -g status
+<a href="#h0-3" id="h0-3" class="i">+bind O set status
+</a> 
+ # }}}
+ 
+<b>diff --git a/<a href="../file/wallpapers/wallpapers/neos.jpg.html">wallpapers/wallpapers/neos.jpg</a> b/<a href="../file/wallpapers/wallpapers/neos.jpg.html">wallpapers/wallpapers/neos.jpg</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/x/.xres/colors/cloudy.html">x/.xres/colors/cloudy</a> b/<a href="../file/x/.xres/colors/cloudy.html">x/.xres/colors/cloudy</a></b>
+<a href="#h0" id="h0" class="h">@@ -5,12 +5,12 @@
+</a> 
+ ! special
+ *.foreground:   #c0c5ce
+<a href="#h0-3" id="h0-3" class="d">-*.background:   #273941
+</a><a href="#h0-4" id="h0-4" class="i">+*.background:   #1d2a30
+</a> *.cursorColor:  #c0c5ce
+ URxvt.cursorColor: #eff1f5
+ 
+ ! black
+<a href="#h0-9" id="h0-9" class="d">-*.color0:       #273941
+</a><a href="#h0-10" id="h0-10" class="i">+*.color0:       #1d2a30
+</a> *.color8:       #456472
+ 
+ ! red
+</pre>
+</div>
+</body>
+</html>

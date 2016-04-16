@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>ports - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/7f36b05afeec08e0a37ef12453b58eb91a980ca6.html">7f36b05afeec08e0a37ef12453b58eb91a980ca6</a>
+<b>parent</b> <a href="../commit/89b94e5e1b7391bf8da04948192f4015200c6d32.html">89b94e5e1b7391bf8da04948192f4015200c6d32</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Apr  3 12:47:38 2016
+
+ports
+
+<b>Diffstat:</b>
+ ports/etc/ports/6c37-git.git             |   5 +-
+ ports/etc/ports/6c37.git                 |   5 +-
+ ports/etc/ports/compat-32.rsync.inactive |   3 +-
+ ports/etc/ports/contrib.rsync            |   3 +-
+ ports/etc/ports/core.rsync               |   3 +-
+ ports/etc/ports/drivers/git              |  42 +++++++++-
+ ports/etc/ports/drivers/httpup           |  27 ++++++-
+ ports/etc/ports/drivers/rsync            | 143 ++++++++++++++++++++++++++++++++-
+ ports/etc/ports/opt.rsync                |   3 +-
+ ports/etc/ports/tudurom.git              |   3 +-
+ ports/etc/ports/xorg.rsync               |   3 +-
+ shell/.crosssh.sh                        |   2 +-
+ shell/.mkshrc                            |   1 +-
+ wmrc/.config/sxhkd/sxhkdrc_wmutils       |   8 ++-
+ 14 files changed, 251 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/ports/etc/ports/6c37-git.git.html">ports/etc/ports/6c37-git.git</a> b/<a href="../file/ports/etc/ports/6c37-git.git.html">ports/etc/ports/6c37-git.git</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,5 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Collection 6c37, https://github.com/6c37
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+NAME=6c37-git
+</a><a href="#h0-3" id="h0-3" class="i">+URL=git://github.com/6c37/crux-ports-git
+</a><a href="#h0-4" id="h0-4" class="i">+BRANCH=3.2
+</a><b>diff --git a/<a href="../file/ports/etc/ports/6c37.git.html">ports/etc/ports/6c37.git</a> b/<a href="../file/ports/etc/ports/6c37.git.html">ports/etc/ports/6c37.git</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,5 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Collection 6c37, https://github.com/6c37
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+NAME=6c37
+</a><a href="#h0-3" id="h0-3" class="i">+URL=git://github.com/6c37/crux-ports
+</a><a href="#h0-4" id="h0-4" class="i">+BRANCH=3.2
+</a><b>diff --git a/<a href="../file/ports/etc/ports/compat-32.rsync.inactive.html">ports/etc/ports/compat-32.rsync.inactive</a> b/<a href="../file/ports/etc/ports/compat-32.rsync.inactive.html">ports/etc/ports/compat-32.rsync.inactive</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h0-0" id="h0-0" class="i">+host=crux.nu
+</a><a href="#h0-1" id="h0-1" class="i">+collection=ports/crux-3.2/compat-32/
+</a><a href="#h0-2" id="h0-2" class="i">+destination=/usr/ports/compat-32
+</a><b>diff --git a/<a href="../file/ports/etc/ports/contrib.rsync.html">ports/etc/ports/contrib.rsync</a> b/<a href="../file/ports/etc/ports/contrib.rsync.html">ports/etc/ports/contrib.rsync</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h0-0" id="h0-0" class="i">+host=crux.nu
+</a><a href="#h0-1" id="h0-1" class="i">+collection=ports/crux-3.2/contrib/
+</a><a href="#h0-2" id="h0-2" class="i">+destination=/usr/ports/contrib
+</a><b>diff --git a/<a href="../file/ports/etc/ports/core.rsync.html">ports/etc/ports/core.rsync</a> b/<a href="../file/ports/etc/ports/core.rsync.html">ports/etc/ports/core.rsync</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h0-0" id="h0-0" class="i">+host=crux.nu
+</a><a href="#h0-1" id="h0-1" class="i">+collection=ports/crux-3.2/core/
+</a><a href="#h0-2" id="h0-2" class="i">+destination=/usr/ports/core
+</a><b>diff --git a/<a href="../file/ports/etc/ports/drivers/git.html">ports/etc/ports/drivers/git</a> b/<a href="../file/ports/etc/ports/drivers/git.html">ports/etc/ports/drivers/git</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,42 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#
+</a><a href="#h0-2" id="h0-2" class="i">+# /etc/ports/drivers/git: git driver script for ports(8)
+</a><a href="#h0-3" id="h0-3" class="i">+#
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+if [ $# -ne 1 ]; then
+</a><a href="#h0-6" id="h0-6" class="i">+	echo &quot;usage: $0 &lt;file&gt;&quot; &gt;&amp;2
+</a><a href="#h0-7" id="h0-7" class="i">+	exit 1
+</a><a href="#h0-8" id="h0-8" class="i">+fi
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+. $1
+</a><a href="#h0-11" id="h0-11" class="i">+
+</a><a href="#h0-12" id="h0-12" class="i">+if [ -z &quot;$URL&quot; ]; then
+</a><a href="#h0-13" id="h0-13" class="i">+	echo &quot;URL not set in &apos;$1&apos;&quot; &gt;&amp;2
+</a><a href="#h0-14" id="h0-14" class="i">+	exit 2
+</a><a href="#h0-15" id="h0-15" class="i">+fi
+</a><a href="#h0-16" id="h0-16" class="i">+if [ -z &quot;$NAME&quot; ]; then
+</a><a href="#h0-17" id="h0-17" class="i">+	echo &quot;NAME not set in &apos;$1&apos;&quot; &gt;&amp;2
+</a><a href="#h0-18" id="h0-18" class="i">+	exit 2
+</a><a href="#h0-19" id="h0-19" class="i">+fi
+</a><a href="#h0-20" id="h0-20" class="i">+if [ -z &quot;$BRANCH&quot; ]; then
+</a><a href="#h0-21" id="h0-21" class="i">+	echo &quot;BRANCH not set in &apos;$1&apos;&quot; &gt;&amp;2
+</a><a href="#h0-22" id="h0-22" class="i">+	exit 2
+</a><a href="#h0-23" id="h0-23" class="i">+fi
+</a><a href="#h0-24" id="h0-24" class="i">+
+</a><a href="#h0-25" id="h0-25" class="i">+echo &quot;Fetching updates from $URL&quot;
+</a><a href="#h0-26" id="h0-26" class="i">+echo &quot;Updating collection $NAME&quot;
+</a><a href="#h0-27" id="h0-27" class="i">+
+</a><a href="#h0-28" id="h0-28" class="i">+cd &quot;$PORTS_DIR/$NAME&quot; 2&gt; &quot;/dev/null&quot;
+</a><a href="#h0-29" id="h0-29" class="i">+
+</a><a href="#h0-30" id="h0-30" class="i">+if [ $? -lt 1 ]; then
+</a><a href="#h0-31" id="h0-31" class="i">+	git checkout -q &quot;$BRANCH&quot;
+</a><a href="#h0-32" id="h0-32" class="i">+	git fetch -q
+</a><a href="#h0-33" id="h0-33" class="i">+	git diff --pretty=format: --name-status &quot;$BRANCH&quot; origin/&quot;$BRANCH&quot; | sed &quot;s/M\t/ Edit /g; s/A\t/ Checkout /g; s/D\t/ Delete /g&quot; | sort
+</a><a href="#h0-34" id="h0-34" class="i">+	git clean -q -f
+</a><a href="#h0-35" id="h0-35" class="i">+	git reset -q --hard origin/&quot;$BRANCH&quot;
+</a><a href="#h0-36" id="h0-36" class="i">+else
+</a><a href="#h0-37" id="h0-37" class="i">+	git clone -q -b &quot;$BRANCH&quot; &quot;$URL&quot; &quot;$PORTS_DIR/$NAME&quot;
+</a><a href="#h0-38" id="h0-38" class="i">+	ls /usr/ports/$NAME | sed &quot;s/^/ Checkout /g&quot;
+</a><a href="#h0-39" id="h0-39" class="i">+fi
+</a><a href="#h0-40" id="h0-40" class="i">+
+</a><a href="#h0-41" id="h0-41" class="i">+echo &quot;Finished successfully&quot;
+</a><b>diff --git a/<a href="../file/ports/etc/ports/drivers/httpup.html">ports/etc/ports/drivers/httpup</a> b/<a href="../file/ports/etc/ports/drivers/httpup.html">ports/etc/ports/drivers/httpup</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,27 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#
+</a><a href="#h0-2" id="h0-2" class="i">+# /etc/ports/drivers/httpup: httpup driver script for ports(8)
+</a><a href="#h0-3" id="h0-3" class="i">+# 
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+if [ $# -ne 1 ]; then
+</a><a href="#h0-6" id="h0-6" class="i">+        echo &quot;usage: $0 &lt;file&gt;&quot; &gt;&amp;2
+</a><a href="#h0-7" id="h0-7" class="i">+        exit 1
+</a><a href="#h0-8" id="h0-8" class="i">+fi
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+. $1
+</a><a href="#h0-11" id="h0-11" class="i">+
+</a><a href="#h0-12" id="h0-12" class="i">+if [ -z &quot;$ROOT_DIR&quot; ]; then
+</a><a href="#h0-13" id="h0-13" class="i">+	echo &quot;ROOT_DIR not set in &apos;$1&apos;&quot; &gt;&amp;2
+</a><a href="#h0-14" id="h0-14" class="i">+	exit 2
+</a><a href="#h0-15" id="h0-15" class="i">+fi
+</a><a href="#h0-16" id="h0-16" class="i">+if [ -z &quot;$URL&quot; ]; then
+</a><a href="#h0-17" id="h0-17" class="i">+	echo &quot;URL not set in &apos;$1&apos;&quot; &gt;&amp;2
+</a><a href="#h0-18" id="h0-18" class="i">+	exit 2
+</a><a href="#h0-19" id="h0-19" class="i">+fi
+</a><a href="#h0-20" id="h0-20" class="i">+
+</a><a href="#h0-21" id="h0-21" class="i">+for REPO in $URL; do
+</a><a href="#h0-22" id="h0-22" class="i">+    PORT=`echo $REPO | sed -n &apos;/#.*$/s|^.*#||p&apos;`
+</a><a href="#h0-23" id="h0-23" class="i">+    httpup sync $REPO $ROOT_DIR/$PORT
+</a><a href="#h0-24" id="h0-24" class="i">+done
+</a><a href="#h0-25" id="h0-25" class="i">+
+</a><a href="#h0-26" id="h0-26" class="i">+# End of file.
+</a><b>diff --git a/<a href="../file/ports/etc/ports/drivers/rsync.html">ports/etc/ports/drivers/rsync</a> b/<a href="../file/ports/etc/ports/drivers/rsync.html">ports/etc/ports/drivers/rsync</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,143 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#!/usr/bin/perl
+</a><a href="#h0-1" id="h0-1" class="i">+#
+</a><a href="#h0-2" id="h0-2" class="i">+# /etc/ports/drivers/rsync: rsync(1) driver script for ports(8)
+</a><a href="#h0-3" id="h0-3" class="i">+#
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+use warnings;
+</a><a href="#h0-6" id="h0-6" class="i">+use strict;
+</a><a href="#h0-7" id="h0-7" class="i">+use File::Basename;
+</a><a href="#h0-8" id="h0-8" class="i">+
+</a><a href="#h0-9" id="h0-9" class="i">+my $host = &apos;&apos;;
+</a><a href="#h0-10" id="h0-10" class="i">+my $collection = &apos;&apos;;
+</a><a href="#h0-11" id="h0-11" class="i">+my $destination = &apos;&apos;;
+</a><a href="#h0-12" id="h0-12" class="i">+my %new_checkouts;
+</a><a href="#h0-13" id="h0-13" class="i">+my %old_checkouts;
+</a><a href="#h0-14" id="h0-14" class="i">+
+</a><a href="#h0-15" id="h0-15" class="i">+sub error
+</a><a href="#h0-16" id="h0-16" class="i">+{
+</a><a href="#h0-17" id="h0-17" class="i">+	my $message = shift;
+</a><a href="#h0-18" id="h0-18" class="i">+	print &quot;Error: $message ($!)\nUpdating failed\n&quot;;
+</a><a href="#h0-19" id="h0-19" class="i">+	exit 1;
+</a><a href="#h0-20" id="h0-20" class="i">+}
+</a><a href="#h0-21" id="h0-21" class="i">+
+</a><a href="#h0-22" id="h0-22" class="i">+sub warning
+</a><a href="#h0-23" id="h0-23" class="i">+{
+</a><a href="#h0-24" id="h0-24" class="i">+	my $message = shift;
+</a><a href="#h0-25" id="h0-25" class="i">+	print &quot;Warning: $message ($!)\n&quot;;
+</a><a href="#h0-26" id="h0-26" class="i">+}
+</a><a href="#h0-27" id="h0-27" class="i">+
+</a><a href="#h0-28" id="h0-28" class="i">+if ($#ARGV &lt; 0)
+</a><a href="#h0-29" id="h0-29" class="i">+{
+</a><a href="#h0-30" id="h0-30" class="i">+	print &quot;Usage: $0 &lt;file&gt;\n&quot;;
+</a><a href="#h0-31" id="h0-31" class="i">+	exit 1;
+</a><a href="#h0-32" id="h0-32" class="i">+}
+</a><a href="#h0-33" id="h0-33" class="i">+
+</a><a href="#h0-34" id="h0-34" class="i">+open(FILE, $ARGV[0]) or error(&quot;Couldn&apos;t open $ARGV[0]&quot;);
+</a><a href="#h0-35" id="h0-35" class="i">+while (&lt;FILE&gt;)
+</a><a href="#h0-36" id="h0-36" class="i">+{
+</a><a href="#h0-37" id="h0-37" class="i">+	chomp;
+</a><a href="#h0-38" id="h0-38" class="i">+	if    (/^host=(.*)/)        { $host = $1; }
+</a><a href="#h0-39" id="h0-39" class="i">+	elsif (/^collection=(.*)/)  { $collection = $1; }
+</a><a href="#h0-40" id="h0-40" class="i">+	elsif (/^destination=(.*)/) { $destination = $1; }
+</a><a href="#h0-41" id="h0-41" class="i">+}
+</a><a href="#h0-42" id="h0-42" class="i">+close(FILE);
+</a><a href="#h0-43" id="h0-43" class="i">+
+</a><a href="#h0-44" id="h0-44" class="i">+if ($host eq &apos;&apos;)        { error(&quot;Host field not set in $ARGV[0]&quot;);        }
+</a><a href="#h0-45" id="h0-45" class="i">+if ($collection eq &apos;&apos;)  { error(&quot;Collection field not set in $ARGV[0]&quot;);  }
+</a><a href="#h0-46" id="h0-46" class="i">+if ($destination eq &apos;&apos;) { error(&quot;Destination field not set in $ARGV[0]&quot;); }
+</a><a href="#h0-47" id="h0-47" class="i">+
+</a><a href="#h0-48" id="h0-48" class="i">+if (-e &quot;$destination/.checkouts&quot;)
+</a><a href="#h0-49" id="h0-49" class="i">+{
+</a><a href="#h0-50" id="h0-50" class="i">+	# read the old .checkouts file into memory
+</a><a href="#h0-51" id="h0-51" class="i">+	open(FILE, &quot;$destination/.checkouts&quot;) or error(&quot;Couldn&apos;t read checkouts from $destination/.checkouts&quot;);
+</a><a href="#h0-52" id="h0-52" class="i">+	while (&lt;FILE&gt;)
+</a><a href="#h0-53" id="h0-53" class="i">+	{
+</a><a href="#h0-54" id="h0-54" class="i">+		chomp;
+</a><a href="#h0-55" id="h0-55" class="i">+		$old_checkouts{$_} = 1;
+</a><a href="#h0-56" id="h0-56" class="i">+	}
+</a><a href="#h0-57" id="h0-57" class="i">+	close(FILE);
+</a><a href="#h0-58" id="h0-58" class="i">+}
+</a><a href="#h0-59" id="h0-59" class="i">+
+</a><a href="#h0-60" id="h0-60" class="i">+print &quot;Updating file list from &quot; . $host . &quot;::$collection\n&quot;;
+</a><a href="#h0-61" id="h0-61" class="i">+
+</a><a href="#h0-62" id="h0-62" class="i">+# get the remote file list (new .checkouts)
+</a><a href="#h0-63" id="h0-63" class="i">+open(PIPE, &apos;rsync -crz --no-human-readable &apos; . $host . &apos;::&apos; . $collection . &apos;|&apos;) or error(&quot;Couldn&apos;t open pipe to rsync&quot;);
+</a><a href="#h0-64" id="h0-64" class="i">+while (&lt;PIPE&gt;)
+</a><a href="#h0-65" id="h0-65" class="i">+{
+</a><a href="#h0-66" id="h0-66" class="i">+	chomp;
+</a><a href="#h0-67" id="h0-67" class="i">+
+</a><a href="#h0-68" id="h0-68" class="i">+	next if /^MOTD:/;	# ignore MOTD lines
+</a><a href="#h0-69" id="h0-69" class="i">+	s/^(.{43})//;		# ignore the first 43 characters (mode, date etc...)
+</a><a href="#h0-70" id="h0-70" class="i">+	next if /^.$/;		# ignore the . directory
+</a><a href="#h0-71" id="h0-71" class="i">+
+</a><a href="#h0-72" id="h0-72" class="i">+	$new_checkouts{$_} = 1;
+</a><a href="#h0-73" id="h0-73" class="i">+}
+</a><a href="#h0-74" id="h0-74" class="i">+close(PIPE);
+</a><a href="#h0-75" id="h0-75" class="i">+error(&quot;Running rsync failed&quot;) unless $? == 0;
+</a><a href="#h0-76" id="h0-76" class="i">+
+</a><a href="#h0-77" id="h0-77" class="i">+print &quot;Updating collection &quot; . basename($destination) . &quot;\n&quot;;
+</a><a href="#h0-78" id="h0-78" class="i">+
+</a><a href="#h0-79" id="h0-79" class="i">+# now really run rsync
+</a><a href="#h0-80" id="h0-80" class="i">+open(PIPE, &apos;rsync -crz --no-human-readable --log-format &quot;%o %n&quot; &apos; . $host . &quot;::$collection $destination|&quot;) or error(&quot;Couldn&apos;t open pipe to rsync&quot;);
+</a><a href="#h0-81" id="h0-81" class="i">+while (&lt;PIPE&gt;)
+</a><a href="#h0-82" id="h0-82" class="i">+{
+</a><a href="#h0-83" id="h0-83" class="i">+	chomp;
+</a><a href="#h0-84" id="h0-84" class="i">+
+</a><a href="#h0-85" id="h0-85" class="i">+	if (/^recv (.*)/)
+</a><a href="#h0-86" id="h0-86" class="i">+	{
+</a><a href="#h0-87" id="h0-87" class="i">+		if ($old_checkouts{$1})
+</a><a href="#h0-88" id="h0-88" class="i">+		{
+</a><a href="#h0-89" id="h0-89" class="i">+			s/^recv/ Edit/;
+</a><a href="#h0-90" id="h0-90" class="i">+		}
+</a><a href="#h0-91" id="h0-91" class="i">+		else
+</a><a href="#h0-92" id="h0-92" class="i">+		{
+</a><a href="#h0-93" id="h0-93" class="i">+			s/^recv/ Checkout/;
+</a><a href="#h0-94" id="h0-94" class="i">+		}
+</a><a href="#h0-95" id="h0-95" class="i">+	}
+</a><a href="#h0-96" id="h0-96" class="i">+
+</a><a href="#h0-97" id="h0-97" class="i">+	print $_ . &quot;\n&quot;;
+</a><a href="#h0-98" id="h0-98" class="i">+}
+</a><a href="#h0-99" id="h0-99" class="i">+close(PIPE);
+</a><a href="#h0-100" id="h0-100" class="i">+error(&quot;Running rsync failed&quot;) unless $? == 0;
+</a><a href="#h0-101" id="h0-101" class="i">+
+</a><a href="#h0-102" id="h0-102" class="i">+# save new checkouts into .checkouts
+</a><a href="#h0-103" id="h0-103" class="i">+open(FILE, &quot;&gt;$destination/.checkouts&quot;) or error(&quot;Couldn&apos;t save checkouts to $destination/.checkouts&quot;);
+</a><a href="#h0-104" id="h0-104" class="i">+foreach my $checkout (sort keys %new_checkouts)
+</a><a href="#h0-105" id="h0-105" class="i">+{
+</a><a href="#h0-106" id="h0-106" class="i">+	print FILE &quot;$checkout\n&quot;;
+</a><a href="#h0-107" id="h0-107" class="i">+}
+</a><a href="#h0-108" id="h0-108" class="i">+close(FILE);
+</a><a href="#h0-109" id="h0-109" class="i">+
+</a><a href="#h0-110" id="h0-110" class="i">+# use chroot as an additional safety measure when removing files
+</a><a href="#h0-111" id="h0-111" class="i">+chroot($destination) or error(&quot;Couldn&apos;t chroot into $destination&quot;);
+</a><a href="#h0-112" id="h0-112" class="i">+chdir(&apos;/&apos;);
+</a><a href="#h0-113" id="h0-113" class="i">+
+</a><a href="#h0-114" id="h0-114" class="i">+# iterate through old checkouts, remove obsolete files
+</a><a href="#h0-115" id="h0-115" class="i">+foreach my $checkout (sort keys %old_checkouts)
+</a><a href="#h0-116" id="h0-116" class="i">+{
+</a><a href="#h0-117" id="h0-117" class="i">+	if (!$new_checkouts{$checkout})
+</a><a href="#h0-118" id="h0-118" class="i">+	{
+</a><a href="#h0-119" id="h0-119" class="i">+		if (-f $checkout)
+</a><a href="#h0-120" id="h0-120" class="i">+		{
+</a><a href="#h0-121" id="h0-121" class="i">+			print &quot; Delete $checkout\n&quot;;
+</a><a href="#h0-122" id="h0-122" class="i">+			unlink($checkout) or warning(&quot;Couldn&apos;t delete $checkout&quot;);
+</a><a href="#h0-123" id="h0-123" class="i">+		}
+</a><a href="#h0-124" id="h0-124" class="i">+	}
+</a><a href="#h0-125" id="h0-125" class="i">+}
+</a><a href="#h0-126" id="h0-126" class="i">+
+</a><a href="#h0-127" id="h0-127" class="i">+# iterate through old checkouts, remove obsolete directories
+</a><a href="#h0-128" id="h0-128" class="i">+foreach my $checkout (sort keys %old_checkouts)
+</a><a href="#h0-129" id="h0-129" class="i">+{
+</a><a href="#h0-130" id="h0-130" class="i">+	if (!$new_checkouts{$checkout})
+</a><a href="#h0-131" id="h0-131" class="i">+	{
+</a><a href="#h0-132" id="h0-132" class="i">+		if (-d $checkout)
+</a><a href="#h0-133" id="h0-133" class="i">+		{
+</a><a href="#h0-134" id="h0-134" class="i">+			print &quot; Delete $checkout\n&quot;;
+</a><a href="#h0-135" id="h0-135" class="i">+			rmdir($checkout) or warning(&quot;Couldn&apos;t delete $checkout&quot;);
+</a><a href="#h0-136" id="h0-136" class="i">+		}
+</a><a href="#h0-137" id="h0-137" class="i">+	}
+</a><a href="#h0-138" id="h0-138" class="i">+}
+</a><a href="#h0-139" id="h0-139" class="i">+
+</a><a href="#h0-140" id="h0-140" class="i">+print &quot;Finished successfully\n&quot;;
+</a><a href="#h0-141" id="h0-141" class="i">+
+</a><a href="#h0-142" id="h0-142" class="i">+# End of file
+</a><b>diff --git a/<a href="../file/ports/etc/ports/opt.rsync.html">ports/etc/ports/opt.rsync</a> b/<a href="../file/ports/etc/ports/opt.rsync.html">ports/etc/ports/opt.rsync</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h0-0" id="h0-0" class="i">+host=crux.nu
+</a><a href="#h0-1" id="h0-1" class="i">+collection=ports/crux-3.2/opt/
+</a><a href="#h0-2" id="h0-2" class="i">+destination=/usr/ports/opt
+</a><b>diff --git a/<a href="../file/ports/etc/ports/tudurom.git.html">ports/etc/ports/tudurom.git</a> b/<a href="../file/ports/etc/ports/tudurom.git.html">ports/etc/ports/tudurom.git</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h0-0" id="h0-0" class="i">+NAME=tudurom
+</a><a href="#h0-1" id="h0-1" class="i">+URL=git://github.com/tudurom/crux-ports
+</a><a href="#h0-2" id="h0-2" class="i">+BRANCH=master
+</a><b>diff --git a/<a href="../file/ports/etc/ports/xorg.rsync.html">ports/etc/ports/xorg.rsync</a> b/<a href="../file/ports/etc/ports/xorg.rsync.html">ports/etc/ports/xorg.rsync</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h0-0" id="h0-0" class="i">+host=crux.nu
+</a><a href="#h0-1" id="h0-1" class="i">+collection=ports/crux-3.2/xorg/
+</a><a href="#h0-2" id="h0-2" class="i">+destination=/usr/ports/xorg
+</a><b>diff --git a/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a> b/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -31,6 +31,8 @@ alias tkill=&quot;tmux kill-session -t&quot;
+</a> alias rm=&quot;rm -I&quot;
+ alias fkh=&quot;fortune khaled&quot;
+ alias ls=&quot;ls -N&quot;
+<a href="#h0-3" id="h0-3" class="i">+alias poweroff=&quot;sudo poweroff&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+alias reboot=&quot;sudo reboot&quot;
+</a> export LESS=&apos;-F -g -i -M -R -S -w -X -z-4&apos;
+ 
+ # Remove unnecessary packages
+<b>diff --git a/<a href="../file/shell/.mkshrc.html">shell/.mkshrc</a> b/<a href="../file/shell/.mkshrc.html">shell/.mkshrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -23,6 +23,7 @@ prompt () {
+</a> }
+ 
+ PS1=&apos;$(prompt)&apos;
+<a href="#h0-3" id="h0-3" class="i">+PS2=&apos;&gt; &apos;
+</a> 
+ # Colored man pages
+ man() {
+<b>diff --git a/<a href="../file/wmrc/.config/sxhkd/sxhkdrc_wmutils.html">wmrc/.config/sxhkd/sxhkdrc_wmutils</a> b/<a href="../file/wmrc/.config/sxhkd/sxhkdrc_wmutils.html">wmrc/.config/sxhkd/sxhkdrc_wmutils</a></b>
+<a href="#h0" id="h0" class="h">@@ -52,6 +52,14 @@ XF86AudioNext
+</a> XF86AudioPrev
+   mpc prev
+ 
+<a href="#h0-3" id="h0-3" class="i">+# Brightness
+</a><a href="#h0-4" id="h0-4" class="i">+XF86MonBrightnessUp
+</a><a href="#h0-5" id="h0-5" class="i">+  xbacklight -inc 10%
+</a><a href="#h0-6" id="h0-6" class="i">+
+</a><a href="#h0-7" id="h0-7" class="i">+XF86MonBrightnessDown
+</a><a href="#h0-8" id="h0-8" class="i">+  xbacklight -dec 10%
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+
+</a> #  _________________
+ # &lt; Here be dragons &gt;
+ #  -----------------
+</pre>
+</div>
+</body>
+</html>

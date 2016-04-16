@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>make.js - albumify - Simple webpage to create imgur-like albums out of images from the whole web.
+</title>
+<link rel="icon" type="image/png" href="../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="albumify.git Atom Feed" href="../../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>albumify</h1><span class="desc">Simple webpage to create imgur-like albums out of images from the whole web.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/albumify.git">git://thetudor.ddns.net/albumify.git</a></td></tr><tr><td></td><td>
+<a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> make.js (2633B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<a href="#l1" id="l1">1</a>
+<a href="#l2" id="l2">2</a>
+<a href="#l3" id="l3">3</a>
+<a href="#l4" id="l4">4</a>
+<a href="#l5" id="l5">5</a>
+<a href="#l6" id="l6">6</a>
+<a href="#l7" id="l7">7</a>
+<a href="#l8" id="l8">8</a>
+<a href="#l9" id="l9">9</a>
+<a href="#l10" id="l10">10</a>
+<a href="#l11" id="l11">11</a>
+<a href="#l12" id="l12">12</a>
+<a href="#l13" id="l13">13</a>
+<a href="#l14" id="l14">14</a>
+<a href="#l15" id="l15">15</a>
+<a href="#l16" id="l16">16</a>
+<a href="#l17" id="l17">17</a>
+<a href="#l18" id="l18">18</a>
+<a href="#l19" id="l19">19</a>
+<a href="#l20" id="l20">20</a>
+<a href="#l21" id="l21">21</a>
+<a href="#l22" id="l22">22</a>
+<a href="#l23" id="l23">23</a>
+<a href="#l24" id="l24">24</a>
+<a href="#l25" id="l25">25</a>
+<a href="#l26" id="l26">26</a>
+<a href="#l27" id="l27">27</a>
+<a href="#l28" id="l28">28</a>
+<a href="#l29" id="l29">29</a>
+<a href="#l30" id="l30">30</a>
+<a href="#l31" id="l31">31</a>
+<a href="#l32" id="l32">32</a>
+<a href="#l33" id="l33">33</a>
+<a href="#l34" id="l34">34</a>
+<a href="#l35" id="l35">35</a>
+<a href="#l36" id="l36">36</a>
+<a href="#l37" id="l37">37</a>
+<a href="#l38" id="l38">38</a>
+<a href="#l39" id="l39">39</a>
+<a href="#l40" id="l40">40</a>
+<a href="#l41" id="l41">41</a>
+<a href="#l42" id="l42">42</a>
+<a href="#l43" id="l43">43</a>
+<a href="#l44" id="l44">44</a>
+<a href="#l45" id="l45">45</a>
+<a href="#l46" id="l46">46</a>
+<a href="#l47" id="l47">47</a>
+<a href="#l48" id="l48">48</a>
+<a href="#l49" id="l49">49</a>
+<a href="#l50" id="l50">50</a>
+<a href="#l51" id="l51">51</a>
+<a href="#l52" id="l52">52</a>
+<a href="#l53" id="l53">53</a>
+<a href="#l54" id="l54">54</a>
+<a href="#l55" id="l55">55</a>
+<a href="#l56" id="l56">56</a>
+<a href="#l57" id="l57">57</a>
+<a href="#l58" id="l58">58</a>
+<a href="#l59" id="l59">59</a>
+<a href="#l60" id="l60">60</a>
+<a href="#l61" id="l61">61</a>
+<a href="#l62" id="l62">62</a>
+<a href="#l63" id="l63">63</a>
+<a href="#l64" id="l64">64</a>
+<a href="#l65" id="l65">65</a>
+<a href="#l66" id="l66">66</a>
+<a href="#l67" id="l67">67</a>
+<a href="#l68" id="l68">68</a>
+<a href="#l69" id="l69">69</a>
+<a href="#l70" id="l70">70</a>
+<a href="#l71" id="l71">71</a>
+<a href="#l72" id="l72">72</a>
+<a href="#l73" id="l73">73</a>
+<a href="#l74" id="l74">74</a>
+<a href="#l75" id="l75">75</a>
+<a href="#l76" id="l76">76</a>
+<a href="#l77" id="l77">77</a>
+<a href="#l78" id="l78">78</a>
+<a href="#l79" id="l79">79</a>
+<a href="#l80" id="l80">80</a>
+<a href="#l81" id="l81">81</a>
+<a href="#l82" id="l82">82</a>
+<a href="#l83" id="l83">83</a>
+<a href="#l84" id="l84">84</a>
+</pre></td><td><pre>
+frames = 0;
+
+function addFrame(n, defaultLink, defaultTitle) {
+  defaultLink = defaultLink || &quot;&quot;;
+  defaultTitle = defaultTitle || &quot;&quot;;
+  frames++;
+  r = &apos;&lt;div class=&quot;frame&quot; id=&quot;frame&apos; + n + &apos;&quot;&gt;&apos;;
+  r +=  &apos;&lt;h3 class=&quot;number&quot;&gt;Image &apos; + (n + 1) + &apos;&lt;/h3&gt;&apos;;
+  r +=  &apos;&lt;p class=&quot;label&quot;&gt;Image Title&lt;/p&gt;&apos;;
+  r +=  &apos;&lt;input type=&quot;text&quot; id=&quot;titleInput&quot; placeholder=&quot;A day at the beach&quot; value=&quot;&apos; + defaultTitle + &apos;&quot;/&gt;&apos;;
+  r +=  &apos;&lt;p class=&quot;label&quot;&gt;Image Link&lt;/p&gt;&apos;;
+  r +=  &apos;&lt;input type=&quot;text&quot; id=&quot;linkInput&quot; placeholder=&quot;https://...&quot; value=&quot;&apos; + defaultLink + &apos;&quot; /&gt;&apos;;
+  r +=  &apos;&lt;button id=&quot;deleteFrame&quot;&gt;Delete image&lt;/button&gt;&apos;;
+  r += &apos;&lt;/div&gt;&apos;;
+  $(&apos;.container&apos;).append(r);
+  updateNumbers();
+  $(&apos;#frame&apos; + n + &apos;#deleteFrame&apos;).on(&apos;click&apos;, function () {
+    $(this.parentNode).remove();
+    updateNumbers();
+  });
+}
+
+function updateNumbers() {
+  $(&apos;.number&apos;).each(function (i, el) {
+    if (i &gt; 0) { // Skip over the &quot;Album&quot; text
+      el.innerHTML = &apos;Image &apos; + i;
+    }
+  });
+}
+
+function regen() {
+  r = {&quot;title&quot;: $(&apos;#atitleInput&apos;)[0].value, &quot;description&quot;: $(&apos;#adescInput&apos;)[0].value,&quot;album&quot;: []};
+  $(&apos;.frame&apos;).each(function (i, el) {
+    var linkField, titleField;
+    var deleteBtn;
+    var counter = 0;
+    // This should be made as a function
+    while (counter &lt; el.childNodes.length &amp;&amp; el.childNodes[counter].id != &quot;linkInput&quot;)
+      counter++; // It&apos;s guaranteed we find one
+    linkField = el.childNodes[counter];
+    counter = 0;
+    while (counter &lt; el.childNodes.length &amp;&amp; el.childNodes[counter].id != &quot;titleInput&quot;)
+      counter++; // It&apos;s guaranteed we find one
+    titleField = el.childNodes[counter];
+
+    if (linkInput.value) {
+      r.album.push({
+        &quot;picSrc&quot;: linkField.value,
+        &quot;title&quot;: titleField.value
+      });
+    }
+  });
+  console.debug(r);
+  return JSON.stringify(r);
+}
+
+function updateFromHash() {
+  $(&apos;.frame&apos;).remove();
+  var parsed = JSON.parse(atob(location.hash.slice(1)));
+  var title = parsed.title;
+  var desc = parsed.description;
+  var album = parsed.album;
+  $(&apos;#atitleInput&apos;)[0].value = title;
+  $(&apos;#adescInput&apos;)[0].value = desc || &quot;&quot;;
+  album.forEach(function (frame) {
+    addFrame(frames, frame.picSrc, frame.title);
+  });
+}
+
+$(document).ready(function () {
+  addFrame(frames);
+  $(&apos;#addFrame&apos;).on(&apos;click&apos;, function () {
+    addFrame(frames);
+  });
+  $(&apos;form&apos;).on(&apos;submit&apos;, function (e) {
+    e.preventDefault();
+    console.debug(btoa(regen()));
+    $(&apos;.link&apos;).html(&apos;&lt;a href=&quot;view.html#&apos; + btoa(regen()) + &apos;&quot;&gt;&apos; + window.location.href + &apos;view.html#&apos; + btoa(regen()) + &apos;&lt;/a&gt;&apos;);
+  });
+  $(window).on(&apos;hashchange&apos;, updateFromHash);
+  if (location.hash.slice(1) !== &quot;&quot;) {
+    updateFromHash();
+  }
+});
+</pre></td></tr></table>
+</div>
+</body>
+</html>

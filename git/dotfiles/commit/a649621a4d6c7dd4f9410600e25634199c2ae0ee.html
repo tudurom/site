@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Things - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/a649621a4d6c7dd4f9410600e25634199c2ae0ee.html">a649621a4d6c7dd4f9410600e25634199c2ae0ee</a>
+<b>parent</b> <a href="../commit/c9177f8db7f0ab89a890335eba3d40a14c7e2c43.html">c9177f8db7f0ab89a890335eba3d40a14c7e2c43</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Thu Feb  4 17:24:55 2016
+
+Things
+
+<b>Diffstat:</b>
+ .gitmodules                         |  3 +++
+ home/.config/bspwm/bspwmrc          |  2 +-
+ home/.config/nvim/colors/shblah.vim | 10 +++++-----
+ home/.config/sxhkd/sxhkdrc          |  8 ++++----
+ home/.scripts/clint                 |  1 +
+ home/.scripts/panel                 |  4 ++--
+ home/.scripts/panel_bar             |  2 +-
+ home/.scripts/panel_config          |  4 ++--
+ home/.vis/config                    |  2 +-
+ 9 files changed, 20 insertions(+), 16 deletions(-)
+<hr/><b>diff --git a/<a href="../file/.gitmodules.html">.gitmodules</a> b/<a href="../file/.gitmodules.html">.gitmodules</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h0-0" id="h0-0" class="i">+[submodule &quot;home/.scripts/clint&quot;]
+</a><a href="#h0-1" id="h0-1" class="i">+	path = home/.scripts/clint
+</a><a href="#h0-2" id="h0-2" class="i">+	url = https://github.com/tudurom/clint.git
+</a><b>diff --git a/<a href="../file/home/.config/bspwm/bspwmrc.html">home/.config/bspwm/bspwmrc</a> b/<a href="../file/home/.config/bspwm/bspwmrc.html">home/.config/bspwm/bspwmrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -27,5 +27,5 @@ fi
+</a> 
+ 
+ panel &amp;
+<a href="#h0-3" id="h0-3" class="d">-setwall
+</a><a href="#h0-4" id="h0-4" class="i">+setwall &amp;
+</a> xsetroot -cursor_name left_ptr &amp;
+<b>diff --git a/<a href="../file/home/.config/nvim/colors/shblah.vim.html">home/.config/nvim/colors/shblah.vim</a> b/<a href="../file/home/.config/nvim/colors/shblah.vim.html">home/.config/nvim/colors/shblah.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -17,7 +17,7 @@ let g:colors_name=&quot;shblah&quot;
+</a>     &quot;
+     &quot; Actual colours and styles.
+     &quot;
+<a href="#h0-3" id="h0-3" class="d">-    highlight Comment      term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h0-4" id="h0-4" class="i">+    highlight Comment      term=NONE cterm=bold ctermfg=8    ctermbg=NONE
+</a>     highlight Constant     term=NONE cterm=bold ctermfg=4    ctermbg=NONE
+     highlight Cursor       term=NONE cterm=bold ctermfg=3    ctermbg=NONE
+     highlight CursorLine   term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+<a href="#h1" id="h1" class="h">@@ -26,21 +26,21 @@ let g:colors_name=&quot;shblah&quot;
+</a>     highlight DiffDelete   term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+     highlight Folded       term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+     highlight Function     term=NONE cterm=bold ctermfg=4    ctermbg=NONE
+<a href="#h1-3" id="h1-3" class="d">-    highlight Identifier   term=NONE cterm=bold ctermfg=1    ctermbg=NONE
+</a><a href="#h1-4" id="h1-4" class="i">+    highlight Identifier   term=NONE cterm=bold ctermfg=5    ctermbg=NONE
+</a>     highlight IncSearch    term=NONE cterm=NONE ctermfg=0    ctermbg=NONE
+     highlight NonText      term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+     highlight Normal       term=NONE cterm=NONE ctermfg=7    ctermbg=NONE
+     highlight Pmenu        term=NONE cterm=NONE ctermfg=8    ctermbg=NONE
+<a href="#h1-9" id="h1-9" class="d">-    highlight PreProc      term=NONE cterm=bold ctermfg=5    ctermbg=NONE
+</a><a href="#h1-10" id="h1-10" class="i">+    highlight PreProc      term=NONE cterm=bold ctermfg=6    ctermbg=NONE
+</a>     highlight Search       term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+     highlight Special      term=NONE cterm=bold ctermfg=2    ctermbg=NONE
+     highlight SpecialKey   term=NONE cterm=NONE ctermfg=2    ctermbg=NONE
+     highlight Statement    term=NONE cterm=bold ctermfg=2    ctermbg=NONE
+<a href="#h1-15" id="h1-15" class="d">-    highlight StatusLine   term=NONE cterm=NONE ctermfg=7    ctermbg=NONE
+</a><a href="#h1-16" id="h1-16" class="i">+    highlight StatusLine   term=NONE cterm=NONE ctermfg=8    ctermbg=NONE
+</a>     highlight StatusLineNC term=NONE cterm=NONE ctermfg=6    ctermbg=NONE
+     highlight String       term=NONE cterm=NONE ctermfg=1    ctermbg=NONE
+     highlight Todo         term=NONE cterm=NONE ctermfg=0    ctermbg=NONE
+<a href="#h1-20" id="h1-20" class="d">-    highlight Type         term=NONE cterm=NONE ctermfg=2    ctermbg=NONE
+</a><a href="#h1-21" id="h1-21" class="i">+    highlight Type         term=NONE cterm=NONE ctermfg=4    ctermbg=NONE
+</a>     highlight VertSplit    term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+     highlight Visual       term=NONE cterm=bold ctermfg=3    ctermbg=8
+ 
+<b>diff --git a/<a href="../file/home/.config/sxhkd/sxhkdrc.html">home/.config/sxhkd/sxhkdrc</a> b/<a href="../file/home/.config/sxhkd/sxhkdrc.html">home/.config/sxhkd/sxhkdrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -22,16 +22,16 @@ XF86MonBrightnessDown
+</a>   xbacklight -dec 10%
+ 
+ XF86AudioPlay
+<a href="#h0-3" id="h0-3" class="d">-  playerctl play-pause
+</a><a href="#h0-4" id="h0-4" class="i">+  mpc toggle
+</a> 
+ XF86AudioStop
+<a href="#h0-7" id="h0-7" class="d">-  playerctl stop
+</a><a href="#h0-8" id="h0-8" class="i">+  mpc stop
+</a> 
+ XF86AudioNext
+<a href="#h0-11" id="h0-11" class="d">-  playerctl next
+</a><a href="#h0-12" id="h0-12" class="i">+  mpc next
+</a> 
+ XF86AudioPrev
+<a href="#h0-15" id="h0-15" class="d">-  playerctl previous
+</a><a href="#h0-16" id="h0-16" class="i">+  mpc prev
+</a> 
+ #
+ ## bspwm hotkeys
+<b>diff --git a/<a href="../file/home/.scripts/clint.html">home/.scripts/clint</a> b/<a href="../file/home/.scripts/clint.html">home/.scripts/clint</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+Subproject commit 408e6d5e0ca805a404b15ed99a108aa806cae26d
+</a><b>diff --git a/<a href="../file/home/.scripts/panel.html">home/.scripts/panel</a> b/<a href="../file/home/.scripts/panel.html">home/.scripts/panel</a></b>
+<a href="#h0" id="h0" class="h">@@ -57,7 +57,7 @@ last_title=&quot;-&quot;
+</a> while true; do
+   if [[ $(mpc status | wc -l) -eq 3 ]]; then
+     last_title=$(mpc status | head -n 1) # In case the music is stopped
+<a href="#h0-3" id="h0-3" class="d">-  elif [[ $(mpc status | wx -l) -eq 0 ]]; then
+</a><a href="#h0-4" id="h0-4" class="i">+  elif [[ $(mpc status | wc -l) -eq 0 ]]; then
+</a>     last_title=&quot;-&quot;
+   fi
+ 
+<a href="#h1" id="h1" class="h">@@ -82,6 +82,6 @@ done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a> 
+ . panel_colors
+ 
+<a href="#h1-3" id="h1-3" class="d">-cat &quot;$PANEL_FIFO&quot; | panel_bar | lemonbar -o -1 -n &quot;$PANEL_WM_NAME&quot; -g &quot;$BAR_GEOMETRY&quot; -f &quot;$PANEL_FONT_FAMILY&quot; -f &quot;$PANEL_ICON_FONT_FAMILY&quot; -f &quot;FontAwesome&quot; -F &quot;$COLOR_FOREGROUND&quot; -B &quot;$COLOR_BACKGROUND&quot; -a 30 -u 2| zsh &amp;
+</a><a href="#h1-4" id="h1-4" class="i">+cat &quot;$PANEL_FIFO&quot; | panel_bar | lemonbar -o -2 -n &quot;$PANEL_WM_NAME&quot; -g &quot;$BAR_GEOMETRY&quot; -f &quot;$PANEL_FONT_FAMILY&quot; -f &quot;$PANEL_ICON_FONT_FAMILY&quot; -f &quot;FontAwesome&quot; -F &quot;$COLOR_FOREGROUND&quot; -B &quot;$COLOR_BACKGROUND&quot; -U &quot;$COLOR_UNDERLINE&quot; -a 30 -u 2| zsh &amp;
+</a> 
+ wait
+<b>diff --git a/<a href="../file/home/.scripts/panel_bar.html">home/.scripts/panel_bar</a> b/<a href="../file/home/.scripts/panel_bar.html">home/.scripts/panel_bar</a></b>
+<a href="#h0" id="h0" class="h">@@ -85,5 +85,5 @@ while read -r line ; do
+</a>       done
+       ;;
+   esac
+<a href="#h0-3" id="h0-3" class="d">-  echo -e &quot;%{U$COLOR_UNDERLINE}%{l}${wm_infos} $separator ${title}%{r}${battery} $separator ${volume} $separator $(icon $ICON_CLOCK)${time} $separator ${playing} &quot;
+</a><a href="#h0-4" id="h0-4" class="i">+  echo -e &quot;%{l}${wm_infos} $separator ${title}%{r}${battery} $separator ${volume} $separator $(icon $ICON_CLOCK)${time} $separator ${playing} &quot;
+</a> done
+<b>diff --git a/<a href="../file/home/.scripts/panel_config.html">home/.scripts/panel_config</a> b/<a href="../file/home/.scripts/panel_config.html">home/.scripts/panel_config</a></b>
+<a href="#h0" id="h0" class="h">@@ -19,5 +19,5 @@ top_pad=$(bspc config window_gap)
+</a> side_pad=$(bspc config window_gap)
+ max_res=$(xrandr  | grep \* | cut -d&apos; &apos; -f4 | head -n $num_mon | tail -n 1)
+ IFS=x; read -a sizes &lt;&lt;&lt;&quot;$max_res&quot;
+<a href="#h0-3" id="h0-3" class="d">-width=$(expr ${sizes[0]} - 2 \* $side_pad)
+</a><a href="#h0-4" id="h0-4" class="d">-BAR_GEOMETRY=&quot;${width}x${PANEL_HEIGHT}+${side_pad}+${top_pad}&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+rwidth=$(expr ${sizes[0]} - 2 \* $side_pad)
+</a><a href="#h0-6" id="h0-6" class="i">+BAR_GEOMETRY=&quot;${rwidth}x${PANEL_HEIGHT}+${side_pad}+${top_pad}&quot;
+</a><b>diff --git a/<a href="../file/home/.vis/config.html">home/.vis/config</a> b/<a href="../file/home/.vis/config.html">home/.vis/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -2,7 +2,7 @@
+</a> visualizer.fps=60
+ 
+ ##Defaults to &quot;/tmp/mpd.fifo&quot;
+<a href="#h0-3" id="h0-3" class="d">-#mpd.fifo.path=/tmp/mpd.fifo
+</a><a href="#h0-4" id="h0-4" class="i">+mpd.fifo.path=/tmp/mpd.fifo
+</a> 
+ ##If set to false the visualizers will use mono mode instead of stereo. Some visualizers will
+ ##behave differently when mono is enabled. For example, spectrum show two sets of bars.
+</pre>
+</div>
+</body>
+</html>

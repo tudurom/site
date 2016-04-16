@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>.footprint - crux-ports - Ports for crux. Bassed off arcetera&apos;s ports.
+</title>
+<link rel="icon" type="image/png" href="../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> .footprint (6671B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<a href="#l1" id="l1">1</a>
+<a href="#l2" id="l2">2</a>
+<a href="#l3" id="l3">3</a>
+<a href="#l4" id="l4">4</a>
+<a href="#l5" id="l5">5</a>
+<a href="#l6" id="l6">6</a>
+<a href="#l7" id="l7">7</a>
+<a href="#l8" id="l8">8</a>
+<a href="#l9" id="l9">9</a>
+<a href="#l10" id="l10">10</a>
+<a href="#l11" id="l11">11</a>
+<a href="#l12" id="l12">12</a>
+<a href="#l13" id="l13">13</a>
+<a href="#l14" id="l14">14</a>
+<a href="#l15" id="l15">15</a>
+<a href="#l16" id="l16">16</a>
+<a href="#l17" id="l17">17</a>
+<a href="#l18" id="l18">18</a>
+<a href="#l19" id="l19">19</a>
+<a href="#l20" id="l20">20</a>
+<a href="#l21" id="l21">21</a>
+<a href="#l22" id="l22">22</a>
+<a href="#l23" id="l23">23</a>
+<a href="#l24" id="l24">24</a>
+<a href="#l25" id="l25">25</a>
+<a href="#l26" id="l26">26</a>
+<a href="#l27" id="l27">27</a>
+<a href="#l28" id="l28">28</a>
+<a href="#l29" id="l29">29</a>
+<a href="#l30" id="l30">30</a>
+<a href="#l31" id="l31">31</a>
+<a href="#l32" id="l32">32</a>
+<a href="#l33" id="l33">33</a>
+<a href="#l34" id="l34">34</a>
+<a href="#l35" id="l35">35</a>
+<a href="#l36" id="l36">36</a>
+<a href="#l37" id="l37">37</a>
+<a href="#l38" id="l38">38</a>
+<a href="#l39" id="l39">39</a>
+<a href="#l40" id="l40">40</a>
+<a href="#l41" id="l41">41</a>
+<a href="#l42" id="l42">42</a>
+<a href="#l43" id="l43">43</a>
+<a href="#l44" id="l44">44</a>
+<a href="#l45" id="l45">45</a>
+<a href="#l46" id="l46">46</a>
+<a href="#l47" id="l47">47</a>
+<a href="#l48" id="l48">48</a>
+<a href="#l49" id="l49">49</a>
+<a href="#l50" id="l50">50</a>
+<a href="#l51" id="l51">51</a>
+<a href="#l52" id="l52">52</a>
+<a href="#l53" id="l53">53</a>
+<a href="#l54" id="l54">54</a>
+<a href="#l55" id="l55">55</a>
+<a href="#l56" id="l56">56</a>
+<a href="#l57" id="l57">57</a>
+<a href="#l58" id="l58">58</a>
+<a href="#l59" id="l59">59</a>
+<a href="#l60" id="l60">60</a>
+<a href="#l61" id="l61">61</a>
+<a href="#l62" id="l62">62</a>
+<a href="#l63" id="l63">63</a>
+<a href="#l64" id="l64">64</a>
+<a href="#l65" id="l65">65</a>
+<a href="#l66" id="l66">66</a>
+<a href="#l67" id="l67">67</a>
+<a href="#l68" id="l68">68</a>
+<a href="#l69" id="l69">69</a>
+<a href="#l70" id="l70">70</a>
+<a href="#l71" id="l71">71</a>
+<a href="#l72" id="l72">72</a>
+<a href="#l73" id="l73">73</a>
+<a href="#l74" id="l74">74</a>
+<a href="#l75" id="l75">75</a>
+<a href="#l76" id="l76">76</a>
+<a href="#l77" id="l77">77</a>
+<a href="#l78" id="l78">78</a>
+<a href="#l79" id="l79">79</a>
+<a href="#l80" id="l80">80</a>
+<a href="#l81" id="l81">81</a>
+<a href="#l82" id="l82">82</a>
+<a href="#l83" id="l83">83</a>
+<a href="#l84" id="l84">84</a>
+<a href="#l85" id="l85">85</a>
+<a href="#l86" id="l86">86</a>
+<a href="#l87" id="l87">87</a>
+<a href="#l88" id="l88">88</a>
+<a href="#l89" id="l89">89</a>
+<a href="#l90" id="l90">90</a>
+<a href="#l91" id="l91">91</a>
+<a href="#l92" id="l92">92</a>
+<a href="#l93" id="l93">93</a>
+<a href="#l94" id="l94">94</a>
+<a href="#l95" id="l95">95</a>
+<a href="#l96" id="l96">96</a>
+<a href="#l97" id="l97">97</a>
+<a href="#l98" id="l98">98</a>
+<a href="#l99" id="l99">99</a>
+<a href="#l100" id="l100">100</a>
+<a href="#l101" id="l101">101</a>
+<a href="#l102" id="l102">102</a>
+<a href="#l103" id="l103">103</a>
+<a href="#l104" id="l104">104</a>
+<a href="#l105" id="l105">105</a>
+<a href="#l106" id="l106">106</a>
+<a href="#l107" id="l107">107</a>
+<a href="#l108" id="l108">108</a>
+<a href="#l109" id="l109">109</a>
+<a href="#l110" id="l110">110</a>
+<a href="#l111" id="l111">111</a>
+<a href="#l112" id="l112">112</a>
+</pre></td><td><pre>
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/chicken
+-rwxr-xr-x	root/root	usr/bin/chicken-bug
+-rwxr-xr-x	root/root	usr/bin/chicken-install
+-rwxr-xr-x	root/root	usr/bin/chicken-profile
+-rwxr-xr-x	root/root	usr/bin/chicken-status
+-rwxr-xr-x	root/root	usr/bin/chicken-uninstall
+-rwxr-xr-x	root/root	usr/bin/csc
+-rwxr-xr-x	root/root	usr/bin/csi
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/chicken/
+-rw-r--r--	root/root	usr/include/chicken/chicken-config.h
+-rw-r--r--	root/root	usr/include/chicken/chicken.h
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/chicken/
+drwxr-xr-x	root/root	usr/lib/chicken/7/
+-rwxr-xr-x	root/root	usr/lib/chicken/7/chicken.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/csi.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/data-structures.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/extras.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/files.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/foreign.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/irregex.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/lolevel.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/ports.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/posix.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/setup-api.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/setup-api.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/setup-download.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/setup-download.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/srfi-1.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/srfi-13.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/srfi-14.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/srfi-18.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/srfi-4.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/srfi-69.import.so
+-rwxr-xr-x	root/root	usr/lib/chicken/7/tcp.import.so
+-rw-r--r--	root/root	usr/lib/chicken/7/types.db
+-rwxr-xr-x	root/root	usr/lib/chicken/7/utils.import.so
+-rw-r--r--	root/root	usr/lib/libchicken.a
+lrwxrwxrwx	root/root	usr/lib/libchicken.so -&gt; libchicken.so.7
+-rwxr-xr-x	root/root	usr/lib/libchicken.so.7
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/chicken/
+drwxr-xr-x	root/root	usr/share/chicken/doc/
+drwxr-xr-x	root/root	usr/share/chicken/doc/manual/
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Accessing external objects.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Acknowledgements.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Basic mode of operation.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Bibliography.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Bugs and limitations.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/C interface.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Callbacks.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Cross development.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Data representation.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Declarations.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Deployment.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Deviations from the standard.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Embedding.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Exceptions.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Extensions to the standard.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Extensions.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Foreign type specifiers.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Getting started.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Interface to external functions and variables.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Locations.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Macros.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Modules.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Non-standard macros and special forms.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Non-standard read syntax.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Other support procedures.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Parameters.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Supported language.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/The R5RS standard.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/The User&apos;s Manual.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Types.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit data-structures.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit eval.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit expand.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit extras.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit files.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit irregex.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit library.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit lolevel.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit ports.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit posix.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit srfi-1.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit srfi-13.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit srfi-14.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit srfi-18.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit srfi-4.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit srfi-69.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit tcp.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Unit utils.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Using the compiler.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/Using the interpreter.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/chicken.png
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/faq.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/index.html
+-rw-r--r--	root/root	usr/share/chicken/doc/manual/manual.css
+-rw-r--r--	root/root	usr/share/chicken/setup.defaults
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man1/
+-rw-r--r--	root/root	usr/share/man/man1/chicken-bug.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/chicken-install.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/chicken-profile.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/chicken-status.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/chicken-uninstall.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/chicken.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/csc.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/csi.1.gz
+</pre></td></tr></table>
+</div>
+</body>
+</html>

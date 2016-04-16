@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Remove binary files - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/3365b8e869174370a6bc10bd3eb77d060126b6ed.html">3365b8e869174370a6bc10bd3eb77d060126b6ed</a>
+<b>parent</b> <a href="../commit/5d2d9d657bc385c916a61e1c54ac3030a1dd45f6.html">5d2d9d657bc385c916a61e1c54ac3030a1dd45f6</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Tue Mar 22 17:31:02 2016
+
+Remove binary files
+
+<b>Diffstat:</b>
+ .gitignore                  |  3 ++-
+ st/st                       | Bin 161344 -&gt; 0 bytes
+ st/st-0.6-externalpipe.diff | 75 +----------------------------------------------
+ st/st.o                     | Bin 315448 -&gt; 0 bytes
+ 4 files changed, 3 insertions(+), 75 deletions(-)
+<hr/><b>diff --git a/<a href="../file/.gitignore.html">.gitignore</a> b/<a href="../file/.gitignore.html">.gitignore</a></b>
+<a href="#h0" id="h0" class="h">@@ -6,6 +6,9 @@ nvim/.config/nvim/tmp
+</a> mpd/.mpd/*
+ !mpd/.mpd/mpd.conf
+ 
+<a href="#h0-3" id="h0-3" class="i">+st/st
+</a><a href="#h0-4" id="h0-4" class="i">+st/st.o
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a> vimperator/.vimperator/info
+ 
+ wmrc/contrib/killwa/killwa
+<b>diff --git a/<a href="../file/st/st.html">st/st</a> b/<a href="../file/st/st.html">st/st</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/st/st-0.6-externalpipe.diff.html">st/st-0.6-externalpipe.diff</a> b/<a href="../file/st/st-0.6-externalpipe.diff.html">st/st-0.6-externalpipe.diff</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,75 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-diff --git a/st.c b/st.c
+</a><a href="#h0-1" id="h0-1" class="d">-index b89d094..124ed16 100644
+</a><a href="#h0-2" id="h0-2" class="d">---- a/st.c
+</a><a href="#h0-3" id="h0-3" class="d">-+++ b/st.c
+</a><a href="#h0-4" id="h0-4" class="d">-@@ -326,6 +326,7 @@ static void clipcopy(const Arg *);
+</a><a href="#h0-5" id="h0-5" class="d">- static void clippaste(const Arg *);
+</a><a href="#h0-6" id="h0-6" class="d">- static void numlock(const Arg *);
+</a><a href="#h0-7" id="h0-7" class="d">- static void selpaste(const Arg *);
+</a><a href="#h0-8" id="h0-8" class="d">-+static void externalpipe(const Arg *);
+</a><a href="#h0-9" id="h0-9" class="d">- static void xzoom(const Arg *);
+</a><a href="#h0-10" id="h0-10" class="d">- static void xzoomabs(const Arg *);
+</a><a href="#h0-11" id="h0-11" class="d">- static void xzoomreset(const Arg *);
+</a><a href="#h0-12" id="h0-12" class="d">-@@ -2684,6 +2685,62 @@ eschandle(uchar ascii) {
+</a><a href="#h0-13" id="h0-13" class="d">- }
+</a><a href="#h0-14" id="h0-14" class="d">- 
+</a><a href="#h0-15" id="h0-15" class="d">- void
+</a><a href="#h0-16" id="h0-16" class="d">-+externalpipe(const Arg *arg)
+</a><a href="#h0-17" id="h0-17" class="d">-+{
+</a><a href="#h0-18" id="h0-18" class="d">-+	int to[2]; /* 0 = read, 1 = write */
+</a><a href="#h0-19" id="h0-19" class="d">-+	pid_t child;
+</a><a href="#h0-20" id="h0-20" class="d">-+	int n;
+</a><a href="#h0-21" id="h0-21" class="d">-+	void (*oldsigpipe)(int);
+</a><a href="#h0-22" id="h0-22" class="d">-+	char buf[UTF_SIZ];
+</a><a href="#h0-23" id="h0-23" class="d">-+	Glyph *bp, *end;
+</a><a href="#h0-24" id="h0-24" class="d">-+
+</a><a href="#h0-25" id="h0-25" class="d">-+	if(pipe(to) == -1)
+</a><a href="#h0-26" id="h0-26" class="d">-+		return;
+</a><a href="#h0-27" id="h0-27" class="d">-+
+</a><a href="#h0-28" id="h0-28" class="d">-+	/* sigchld() handles this */
+</a><a href="#h0-29" id="h0-29" class="d">-+	switch(child = fork()){
+</a><a href="#h0-30" id="h0-30" class="d">-+		case -1:
+</a><a href="#h0-31" id="h0-31" class="d">-+			close(to[0]), close(to[1]);
+</a><a href="#h0-32" id="h0-32" class="d">-+			return;
+</a><a href="#h0-33" id="h0-33" class="d">-+		case 0:
+</a><a href="#h0-34" id="h0-34" class="d">-+			/* child */
+</a><a href="#h0-35" id="h0-35" class="d">-+			close(to[1]);
+</a><a href="#h0-36" id="h0-36" class="d">-+			dup2(to[0], STDIN_FILENO); /* 0&lt;&amp;to */
+</a><a href="#h0-37" id="h0-37" class="d">-+			close(to[0]);
+</a><a href="#h0-38" id="h0-38" class="d">-+			execvp(
+</a><a href="#h0-39" id="h0-39" class="d">-+					&quot;sh&quot;,
+</a><a href="#h0-40" id="h0-40" class="d">-+					(char *const []){
+</a><a href="#h0-41" id="h0-41" class="d">-+						&quot;/bin/sh&quot;,
+</a><a href="#h0-42" id="h0-42" class="d">-+						&quot;-c&quot;,
+</a><a href="#h0-43" id="h0-43" class="d">-+						(char *)arg-&gt;v,
+</a><a href="#h0-44" id="h0-44" class="d">-+						0
+</a><a href="#h0-45" id="h0-45" class="d">-+					});
+</a><a href="#h0-46" id="h0-46" class="d">-+			exit(127);
+</a><a href="#h0-47" id="h0-47" class="d">-+	}
+</a><a href="#h0-48" id="h0-48" class="d">-+
+</a><a href="#h0-49" id="h0-49" class="d">-+	/* parent */
+</a><a href="#h0-50" id="h0-50" class="d">-+	close(to[0]);
+</a><a href="#h0-51" id="h0-51" class="d">-+	/* ignore sigpipe for now, in case child exits early */
+</a><a href="#h0-52" id="h0-52" class="d">-+	oldsigpipe = signal(SIGPIPE, SIG_IGN);
+</a><a href="#h0-53" id="h0-53" class="d">-+
+</a><a href="#h0-54" id="h0-54" class="d">-+	for(n = 0; n &lt; term.row; n++){
+</a><a href="#h0-55" id="h0-55" class="d">-+		bp = &amp;term.line[n][0];
+</a><a href="#h0-56" id="h0-56" class="d">-+		end = &amp;bp[MIN(tlinelen(n), term.col) - 1];
+</a><a href="#h0-57" id="h0-57" class="d">-+		if(bp != end || bp-&gt;u != &apos; &apos;)
+</a><a href="#h0-58" id="h0-58" class="d">-+			for(; bp &lt;= end; ++bp)
+</a><a href="#h0-59" id="h0-59" class="d">-+				if(xwrite(to[1], buf, utf8encode(bp-&gt;u, buf)) &lt; 0)
+</a><a href="#h0-60" id="h0-60" class="d">-+					break;
+</a><a href="#h0-61" id="h0-61" class="d">-+		if(xwrite(to[1], &quot;\n&quot;, 1) &lt; 0)
+</a><a href="#h0-62" id="h0-62" class="d">-+			break;
+</a><a href="#h0-63" id="h0-63" class="d">-+	}
+</a><a href="#h0-64" id="h0-64" class="d">-+
+</a><a href="#h0-65" id="h0-65" class="d">-+	close(to[1]);
+</a><a href="#h0-66" id="h0-66" class="d">-+
+</a><a href="#h0-67" id="h0-67" class="d">-+	/* restore */
+</a><a href="#h0-68" id="h0-68" class="d">-+	signal(SIGPIPE, oldsigpipe);
+</a><a href="#h0-69" id="h0-69" class="d">-+}
+</a><a href="#h0-70" id="h0-70" class="d">-+
+</a><a href="#h0-71" id="h0-71" class="d">-+void
+</a><a href="#h0-72" id="h0-72" class="d">- tputc(Rune u) {
+</a><a href="#h0-73" id="h0-73" class="d">- 	char c[UTF_SIZ];
+</a><a href="#h0-74" id="h0-74" class="d">- 	bool control;
+</a><b>diff --git a/<a href="../file/st/st.o.html">st/st.o</a> b/<a href="../file/st/st.o.html">st/st.o</a></b>
+Binary files differ
+</pre>
+</div>
+</body>
+</html>

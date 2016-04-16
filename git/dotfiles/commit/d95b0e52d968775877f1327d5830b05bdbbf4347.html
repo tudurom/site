@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>#nixerschallenge - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/d95b0e52d968775877f1327d5830b05bdbbf4347.html">d95b0e52d968775877f1327d5830b05bdbbf4347</a>
+<b>parent</b> <a href="../commit/5c6610690f46375d36f3a8a3d51f237dabd22c7d.html">5c6610690f46375d36f3a8a3d51f237dabd22c7d</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Mar 25 22:21:29 2016
+
+#nixerschallenge
+
+<b>Diffstat:</b>
+ nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/woody.vim |  21 +++++++++++++-
+ nvim/.config/nvim/colors/shblah_light.vim                                       | 125 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ nvim/.config/nvim/init.vim                                                      |   7 +---
+ scripts/.scripts/wall-e                                                         |   2 +-
+ shell/.crosssh.sh                                                               |  16 +++++-----
+ shell/.profile                                                                  |   2 +-
+ st                                                                              |   2 +-
+ wmrc/.scripts/statusbar                                                         |   4 +--
+ x/.Xresources                                                                   |   2 +-
+ x/.xres/colors/cloudy                                                           |   1 +-
+ x/.xres/colors/woody                                                            |  38 ++++++++++++++++++++++++-
+ 11 files changed, 200 insertions(+), 20 deletions(-)
+<hr/><b>diff --git a/<a href="../file/nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/woody.vim.html">nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/woody.vim</a> b/<a href="../file/nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/woody.vim.html">nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/woody.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,21 @@
+</a><a href="#h0-0" id="h0-0" class="i">+let s:black = [ &apos;#8e7b71&apos;, 8 ]
+</a><a href="#h0-1" id="h0-1" class="i">+let s:white = [ &apos;#3f3a3c&apos;, 7 ]
+</a><a href="#h0-2" id="h0-2" class="i">+
+</a><a href="#h0-3" id="h0-3" class="i">+let s:p = {&apos;normal&apos;: {}, &apos;inactive&apos;: {}, &apos;insert&apos;: {}, &apos;replace&apos;: {}, &apos;visual&apos;: {}, &apos;tabline&apos;: {}}
+</a><a href="#h0-4" id="h0-4" class="i">+let s:p.normal.left = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h0-5" id="h0-5" class="i">+let s:p.normal.right = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h0-6" id="h0-6" class="i">+let s:p.inactive.right = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h0-7" id="h0-7" class="i">+let s:p.inactive.left = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h0-8" id="h0-8" class="i">+let s:p.insert.left = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h0-9" id="h0-9" class="i">+let s:p.replace.left = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h0-10" id="h0-10" class="i">+let s:p.visual.left = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h0-11" id="h0-11" class="i">+let s:p.normal.middle = [ [s:black, s:white] ]
+</a><a href="#h0-12" id="h0-12" class="i">+let s:p.inactive.middle = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h0-13" id="h0-13" class="i">+let s:p.tabline.left = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h0-14" id="h0-14" class="i">+let s:p.tabline.tabsel = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h0-15" id="h0-15" class="i">+let s:p.tabline.middle = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h0-16" id="h0-16" class="i">+let s:p.tabline.right = copy(s:p.normal.right)
+</a><a href="#h0-17" id="h0-17" class="i">+let s:p.normal.error = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h0-18" id="h0-18" class="i">+let s:p.normal.warning = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h0-19" id="h0-19" class="i">+
+</a><a href="#h0-20" id="h0-20" class="i">+let g:lightline#colorscheme#woody#palette = lightline#colorscheme#flatten(s:p)
+</a><b>diff --git a/<a href="../file/nvim/.config/nvim/colors/shblah_light.vim.html">nvim/.config/nvim/colors/shblah_light.vim</a> b/<a href="../file/nvim/.config/nvim/colors/shblah_light.vim.html">nvim/.config/nvim/colors/shblah_light.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,125 @@
+</a><a href="#h0-0" id="h0-0" class="i">+&quot; ┏━┓╻ ╻┏┓ ╻  ┏━┓╻ ╻   ╻ ╻╻┏┳┓
+</a><a href="#h0-1" id="h0-1" class="i">+&quot; ┗━┓┣━┫┣┻┓┃  ┣━┫┣━┫   ┃┏┛┃┃┃┃
+</a><a href="#h0-2" id="h0-2" class="i">+&quot; ┗━┛╹ ╹┗━┛┗━╸╹ ╹╹ ╹ ╹ ┗┛ ╹╹ ╹
+</a><a href="#h0-3" id="h0-3" class="i">+&quot;                           -- by z3bra
+</a><a href="#h0-4" id="h0-4" class="i">+&quot; =====================================
+</a><a href="#h0-5" id="h0-5" class="i">+&quot;
+</a><a href="#h0-6" id="h0-6" class="i">+&quot; A 16 colors scheme that use your terminal colors
+</a><a href="#h0-7" id="h0-7" class="i">+
+</a><a href="#h0-8" id="h0-8" class="i">+set background=light
+</a><a href="#h0-9" id="h0-9" class="i">+if version &gt; 580
+</a><a href="#h0-10" id="h0-10" class="i">+    highlight clear
+</a><a href="#h0-11" id="h0-11" class="i">+    if exists(&quot;g:syntax_on&quot;)
+</a><a href="#h0-12" id="h0-12" class="i">+        syntax reset
+</a><a href="#h0-13" id="h0-13" class="i">+    endif
+</a><a href="#h0-14" id="h0-14" class="i">+endif
+</a><a href="#h0-15" id="h0-15" class="i">+let g:colors_name=&quot;shblah_orig&quot;
+</a><a href="#h0-16" id="h0-16" class="i">+
+</a><a href="#h0-17" id="h0-17" class="i">+&quot; Actual colours and styles.
+</a><a href="#h0-18" id="h0-18" class="i">+highlight ColorColumn  term=NONE cterm=NONE ctermfg=NONE ctermbg=3
+</a><a href="#h0-19" id="h0-19" class="i">+highlight Comment      term=NONE cterm=NONE ctermfg=8    ctermbg=NONE
+</a><a href="#h0-20" id="h0-20" class="i">+highlight Constant     term=NONE cterm=NONE ctermfg=6    ctermbg=NONE
+</a><a href="#h0-21" id="h0-21" class="i">+highlight Cursor       term=NONE cterm=bold ctermfg=3    ctermbg=NONE
+</a><a href="#h0-22" id="h0-22" class="i">+highlight CursorLine   term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+</a><a href="#h0-23" id="h0-23" class="i">+highlight DiffAdd      term=NONE cterm=bold ctermfg=2    ctermbg=NONE
+</a><a href="#h0-24" id="h0-24" class="i">+highlight DiffChange   term=NONE cterm=bold ctermfg=NONE ctermbg=NONE
+</a><a href="#h0-25" id="h0-25" class="i">+highlight DiffDelete   term=NONE cterm=bold ctermfg=0    ctermbg=1
+</a><a href="#h0-26" id="h0-26" class="i">+highlight DiffText     term=NONE cterm=bold ctermfg=0    ctermbg=4
+</a><a href="#h0-27" id="h0-27" class="i">+highlight Directory    term=NONE cterm=bold ctermfg=4    ctermbg=7
+</a><a href="#h0-28" id="h0-28" class="i">+highlight Error        term=NONE cterm=NONE ctermfg=0    ctermbg=1
+</a><a href="#h0-29" id="h0-29" class="i">+highlight ErrorMsg     term=NONE cterm=bold ctermfg=1    ctermbg=7
+</a><a href="#h0-30" id="h0-30" class="i">+highlight FoldColumn   term=NONE cterm=bold ctermfg=7    ctermbg=NONE
+</a><a href="#h0-31" id="h0-31" class="i">+highlight Folded       term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h0-32" id="h0-32" class="i">+highlight Function     term=NONE cterm=bold ctermfg=5    ctermbg=NONE
+</a><a href="#h0-33" id="h0-33" class="i">+highlight Identifier   term=NONE cterm=NONE ctermfg=1    ctermbg=NONE
+</a><a href="#h0-34" id="h0-34" class="i">+highlight IncSearch    term=NONE cterm=bold ctermfg=5    ctermbg=5
+</a><a href="#h0-35" id="h0-35" class="i">+highlight NonText      term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h0-36" id="h0-36" class="i">+highlight Normal       term=NONE cterm=NONE ctermfg=0    ctermbg=NONE
+</a><a href="#h0-37" id="h0-37" class="i">+highlight Pmenu        term=NONE cterm=NONE ctermfg=7    ctermbg=0.
+</a><a href="#h0-38" id="h0-38" class="i">+highlight PreProc      term=NONE cterm=bold ctermfg=6    ctermbg=NONE
+</a><a href="#h0-39" id="h0-39" class="i">+highlight Search       term=NONE cterm=bold ctermfg=0    ctermbg=5
+</a><a href="#h0-40" id="h0-40" class="i">+highlight Special      term=NONE cterm=NONE ctermfg=2    ctermbg=NONE
+</a><a href="#h0-41" id="h0-41" class="i">+highlight SpecialKey   term=NONE cterm=NONE ctermfg=7    ctermbg=NONE
+</a><a href="#h0-42" id="h0-42" class="i">+highlight Statement    term=NONE cterm=NONE ctermfg=4    ctermbg=NONE
+</a><a href="#h0-43" id="h0-43" class="i">+highlight StatusLine   term=NONE cterm=bold ctermfg=7    ctermbg=NONE
+</a><a href="#h0-44" id="h0-44" class="i">+&quot; highlight StatusLineNC term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h0-45" id="h0-45" class="i">+highlight String       term=NONE cterm=NONE ctermfg=2    ctermbg=NONE
+</a><a href="#h0-46" id="h0-46" class="i">+highlight TabLineSel   term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h0-47" id="h0-47" class="i">+highlight Todo         term=NONE cterm=bold ctermfg=0    ctermbg=1
+</a><a href="#h0-48" id="h0-48" class="i">+highlight Type         term=NONE cterm=bold ctermfg=4    ctermbg=NONE
+</a><a href="#h0-49" id="h0-49" class="i">+highlight Underlined   term=underline cterm=underline ctermfg=NONE   ctermbg=NONE
+</a><a href="#h0-50" id="h0-50" class="i">+highlight VertSplit    term=NONE cterm=bold ctermfg=7    ctermbg=NONE
+</a><a href="#h0-51" id="h0-51" class="i">+highlight Visual       term=NONE cterm=NONE ctermfg=7    ctermbg=8
+</a><a href="#h0-52" id="h0-52" class="i">+highlight WarningMsg   term=NONE cterm=bold ctermfg=3    ctermbg=NONE
+</a><a href="#h0-53" id="h0-53" class="i">+
+</a><a href="#h0-54" id="h0-54" class="i">+&quot; General highlighting group links.
+</a><a href="#h0-55" id="h0-55" class="i">+highlight! link diffAdded       DiffAdd
+</a><a href="#h0-56" id="h0-56" class="i">+highlight! link diffRemoved     DiffDelete
+</a><a href="#h0-57" id="h0-57" class="i">+highlight! link diffChanged     DiffChange
+</a><a href="#h0-58" id="h0-58" class="i">+highlight! link StatusLineNC    StatusLine
+</a><a href="#h0-59" id="h0-59" class="i">+highlight! link Title           Normal
+</a><a href="#h0-60" id="h0-60" class="i">+highlight! link LineNr          NonText
+</a><a href="#h0-61" id="h0-61" class="i">+highlight! link MoreMsg         Normal
+</a><a href="#h0-62" id="h0-62" class="i">+highlight! link Question        DiffChange
+</a><a href="#h0-63" id="h0-63" class="i">+highlight! link TabLine         StatusLineNC
+</a><a href="#h0-64" id="h0-64" class="i">+highlight! link TabLineFill     StatusLineNC
+</a><a href="#h0-65" id="h0-65" class="i">+highlight! link VimHiGroup      VimGroup
+</a><a href="#h0-66" id="h0-66" class="i">+
+</a><a href="#h0-67" id="h0-67" class="i">+&quot; Test the actual colorscheme
+</a><a href="#h0-68" id="h0-68" class="i">+syn match Comment      &quot;\&quot;__Comment.*&quot;
+</a><a href="#h0-69" id="h0-69" class="i">+syn match Constant     &quot;\&quot;__Constant.*&quot;
+</a><a href="#h0-70" id="h0-70" class="i">+syn match Cursor       &quot;\&quot;__Cursor.*&quot;
+</a><a href="#h0-71" id="h0-71" class="i">+syn match CursorLine   &quot;\&quot;__CursorLine.*&quot;
+</a><a href="#h0-72" id="h0-72" class="i">+syn match DiffAdd      &quot;\&quot;__DiffAdd.*&quot;
+</a><a href="#h0-73" id="h0-73" class="i">+syn match DiffChange   &quot;\&quot;__DiffChange.*&quot;
+</a><a href="#h0-74" id="h0-74" class="i">+syn match DiffText     &quot;\&quot;__DiffText.*&quot;
+</a><a href="#h0-75" id="h0-75" class="i">+syn match DiffDelete   &quot;\&quot;__DiffDelete.*&quot;
+</a><a href="#h0-76" id="h0-76" class="i">+syn match Folded       &quot;\&quot;__Folded.*&quot;
+</a><a href="#h0-77" id="h0-77" class="i">+syn match Function     &quot;\&quot;__Function.*&quot;
+</a><a href="#h0-78" id="h0-78" class="i">+syn match Identifier   &quot;\&quot;__Identifier.*&quot;
+</a><a href="#h0-79" id="h0-79" class="i">+syn match IncSearch    &quot;\&quot;__IncSearch.*&quot;
+</a><a href="#h0-80" id="h0-80" class="i">+syn match NonText      &quot;\&quot;__NonText.*&quot;
+</a><a href="#h0-81" id="h0-81" class="i">+syn match Normal       &quot;\&quot;__Normal.*&quot;
+</a><a href="#h0-82" id="h0-82" class="i">+syn match Pmenu        &quot;\&quot;__Pmenu.*&quot;
+</a><a href="#h0-83" id="h0-83" class="i">+syn match PreProc      &quot;\&quot;__PreProc.*&quot;
+</a><a href="#h0-84" id="h0-84" class="i">+syn match Search       &quot;\&quot;__Search.*&quot;
+</a><a href="#h0-85" id="h0-85" class="i">+syn match Special      &quot;\&quot;__Special.*&quot;
+</a><a href="#h0-86" id="h0-86" class="i">+syn match SpecialKey   &quot;\&quot;__SpecialKey.*&quot;
+</a><a href="#h0-87" id="h0-87" class="i">+syn match Statement    &quot;\&quot;__Statement.*&quot;
+</a><a href="#h0-88" id="h0-88" class="i">+syn match StatusLine   &quot;\&quot;__StatusLine.*&quot;
+</a><a href="#h0-89" id="h0-89" class="i">+syn match StatusLineNC &quot;\&quot;__StatusLineNC.*&quot;
+</a><a href="#h0-90" id="h0-90" class="i">+syn match String       &quot;\&quot;__String.*&quot;
+</a><a href="#h0-91" id="h0-91" class="i">+syn match Todo         &quot;\&quot;__Todo.*&quot;
+</a><a href="#h0-92" id="h0-92" class="i">+syn match Type         &quot;\&quot;__Type.*&quot;
+</a><a href="#h0-93" id="h0-93" class="i">+syn match Underlined   &quot;\&quot;__Underlined.*&quot;
+</a><a href="#h0-94" id="h0-94" class="i">+syn match VertSplit    &quot;\&quot;__VertSplit.*&quot;
+</a><a href="#h0-95" id="h0-95" class="i">+syn match Visual       &quot;\&quot;__Visual.*&quot;
+</a><a href="#h0-96" id="h0-96" class="i">+
+</a><a href="#h0-97" id="h0-97" class="i">+&quot;__Comment              /* this is a comment */
+</a><a href="#h0-98" id="h0-98" class="i">+&quot;__Constant             var = SHBLAH
+</a><a href="#h0-99" id="h0-99" class="i">+&quot;__Cursor               char under the cursor?
+</a><a href="#h0-100" id="h0-100" class="i">+&quot;__CursorLine           Line where the cursor is
+</a><a href="#h0-101" id="h0-101" class="i">+&quot;__DiffAdd              +line added from file.orig
+</a><a href="#h0-102" id="h0-102" class="i">+&quot;__DiffChange           line changed from file.orig
+</a><a href="#h0-103" id="h0-103" class="i">+&quot;__DiffText             actual changes on this line
+</a><a href="#h0-104" id="h0-104" class="i">+&quot;__DiffDelete           -line removed from file.orig
+</a><a href="#h0-105" id="h0-105" class="i">+&quot;__Folded               +--- 1 line : Folded line ---
+</a><a href="#h0-106" id="h0-106" class="i">+&quot;__Function             function sblah()
+</a><a href="#h0-107" id="h0-107" class="i">+&quot;__Identifier           Never ran into that actually...
+</a><a href="#h0-108" id="h0-108" class="i">+&quot;__IncSearch            Next search term
+</a><a href="#h0-109" id="h0-109" class="i">+&quot;__NonText              This is not a text, move on
+</a><a href="#h0-110" id="h0-110" class="i">+&quot;__Normal               Typical text goes like this
+</a><a href="#h0-111" id="h0-111" class="i">+&quot;__Pmenu                Currently selected menu item
+</a><a href="#h0-112" id="h0-112" class="i">+&quot;__PreProc              #define SHBLAH true
+</a><a href="#h0-113" id="h0-113" class="i">+&quot;__Search               This is what you&apos;re searching for
+</a><a href="#h0-114" id="h0-114" class="i">+&quot;__Special              true false NULL SIGTERM
+</a><a href="#h0-115" id="h0-115" class="i">+&quot;__SpecialKey           Never ran into that either
+</a><a href="#h0-116" id="h0-116" class="i">+&quot;__Statement            if else return for switch
+</a><a href="#h0-117" id="h0-117" class="i">+&quot;__StatusLine           Statusline of current windows
+</a><a href="#h0-118" id="h0-118" class="i">+&quot;__StatusLineNC         Statusline of other windows
+</a><a href="#h0-119" id="h0-119" class="i">+&quot;__String               &quot;Hello, World!&quot;
+</a><a href="#h0-120" id="h0-120" class="i">+&quot;__Todo                 TODO: remove todos from source
+</a><a href="#h0-121" id="h0-121" class="i">+&quot;__Type                 int float char void unsigned uint32_t
+</a><a href="#h0-122" id="h0-122" class="i">+&quot;__Underlined           Anything underlined
+</a><a href="#h0-123" id="h0-123" class="i">+&quot;__VertSplit            :vsplit will only show &apos; | &apos;
+</a><a href="#h0-124" id="h0-124" class="i">+&quot;__Visual               Selected text looks like this
+</a><b>diff --git a/<a href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a> b/<a href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -93,9 +93,8 @@ filetype off                  &quot; required
+</a> 
+ &quot; Colors {{{
+ 
+<a href="#h0-3" id="h0-3" class="d">-  set background=dark
+</a><a href="#h0-4" id="h0-4" class="d">-  colo shblah
+</a><a href="#h0-5" id="h0-5" class="d">-
+</a><a href="#h0-6" id="h0-6" class="i">+  set background=light
+</a><a href="#h0-7" id="h0-7" class="i">+  colo shblah_light
+</a> &quot; }}}
+ 
+ &quot; NERD things {{{
+<a href="#h1" id="h1" class="h">@@ -109,7 +108,7 @@ filetype off                  &quot; required
+</a> 
+   set laststatus=2 &quot; Make the bar permanent
+   let g:lightline = {
+<a href="#h1-3" id="h1-3" class="d">-    \ &apos;colorscheme&apos;: &apos;cloudy&apos;,
+</a><a href="#h1-4" id="h1-4" class="i">+    \ &apos;colorscheme&apos;: &apos;woody&apos;,
+</a>     \ &apos;active&apos;: {
+     \   &apos;left&apos;: [ [ &apos;filename&apos; ],
+     \             [ &apos;readonly&apos; ] ],
+<b>diff --git a/<a href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a> b/<a href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a></b>
+<a href="#h0" id="h0" class="h">@@ -4,7 +4,7 @@
+</a> # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h0-3" id="h0-3" class="d">-DEFAULT_WALL=&quot;$HOME/wallpapers/lost_dcat.jpg&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+DEFAULT_WALL=&quot;$HOME/wallpapers/bridge.jpg&quot;
+</a> APRIL_WALL=&quot;$HOME/wallpapers/april_wall.png&quot;
+ 
+ if [ &quot;$(date +&quot;%d/%m&quot;)&quot; = &quot;01/04&quot; ]; then
+<b>diff --git a/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a> b/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -4,14 +4,14 @@
+</a> # by tudurom
+ # bits shared between different shells (bash, mksh, zsh)
+ 
+<a href="#h0-3" id="h0-3" class="d">-if [[ $- == *i* ]] &amp;&amp; [[ -z &quot;$TMUX&quot; ]]; then
+</a><a href="#h0-4" id="h0-4" class="d">-  if [[ $(tmux ls | grep -v &quot;attached&quot; | wc -l) -gt 0 ]]; then
+</a><a href="#h0-5" id="h0-5" class="d">-    # Auto-attach to the first detached one
+</a><a href="#h0-6" id="h0-6" class="d">-    exec tmux a -t $(tmux ls | grep -v &quot;attached&quot; | head -n 1 | cut -d: -f1)
+</a><a href="#h0-7" id="h0-7" class="d">-  else
+</a><a href="#h0-8" id="h0-8" class="d">-    exec tmux
+</a><a href="#h0-9" id="h0-9" class="d">-  fi
+</a><a href="#h0-10" id="h0-10" class="d">-fi
+</a><a href="#h0-11" id="h0-11" class="i">+# if [[ $- == *i* ]] &amp;&amp; [[ -z &quot;$TMUX&quot; ]]; then
+</a><a href="#h0-12" id="h0-12" class="i">+#   if [[ $(tmux ls | grep -v &quot;attached&quot; | wc -l) -gt 0 ]]; then
+</a><a href="#h0-13" id="h0-13" class="i">+#     # Auto-attach to the first detached one
+</a><a href="#h0-14" id="h0-14" class="i">+#     exec tmux a -t $(tmux ls | grep -v &quot;attached&quot; | head -n 1 | cut -d: -f1)
+</a><a href="#h0-15" id="h0-15" class="i">+#   else
+</a><a href="#h0-16" id="h0-16" class="i">+#     exec tmux
+</a><a href="#h0-17" id="h0-17" class="i">+#   fi
+</a><a href="#h0-18" id="h0-18" class="i">+# fi
+</a> 
+ export EDITOR=nvim
+ export VISUAL=nvim
+<b>diff --git a/<a href="../file/shell/.profile.html">shell/.profile</a> b/<a href="../file/shell/.profile.html">shell/.profile</a></b>
+<a href="#h0" id="h0" class="h">@@ -2,5 +2,3 @@ export PATH=&quot;$PATH:$HOME/.scripts&quot;
+</a> export BSPWM_STATE=&quot;/tmp/bspwm-state.json&quot;
+ export PANEL_FIFO=&quot;/tmp/panel-fifo&quot;
+ export IOUP_TOKEN=&quot;$(cat ~/.iotoken)&quot;
+<a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-[[ -z $DISPLAY &amp;&amp; $XDG_VTNR -eq 1 ]] &amp;&amp; exec startx
+</a><b>diff --git a/<a href="../file/st.html">st</a> b/<a href="../file/st.html">st</a></b>
+<a href="#h0" id="h0" class="h">@@ -1 +1 @@
+</a><a href="#h0-0" id="h0-0" class="d">-Subproject commit a2d8b8a866a550704199cb0a002c1f3af4c7d4d0
+</a><a href="#h0-1" id="h0-1" class="i">+Subproject commit 92a144736f53bf822c2fdedaa58e83c45aeba7c0
+</a><b>diff --git a/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a> b/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a></b>
+<a href="#h0" id="h0" class="h">@@ -40,8 +40,8 @@ is_int() {
+</a>   C15=&quot;$(xrq &apos;*color15&apos;)&quot;
+   #CF=&quot;$(xrq &apos;*foreground&apos;)&quot;
+   CF=&quot;$C6&quot;
+<a href="#h0-3" id="h0-3" class="d">-  #CB=&quot;$(xrq &apos;*background&apos;)&quot;
+</a><a href="#h0-4" id="h0-4" class="d">-  CB=&quot;#1d2a30&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+  CB=&quot;$(xrq &apos;*background&apos;)&quot;
+</a><a href="#h0-6" id="h0-6" class="i">+  #CB=&quot;#1d2a30&quot;
+</a> 
+   ROOT_WINDOW=&quot;$(lsw -r)&quot;
+   ROOT_WINDOW_WIDTH=&quot;$(wattr w $ROOT_WINDOW)&quot;
+<b>diff --git a/<a href="../file/x/.Xresources.html">x/.Xresources</a> b/<a href="../file/x/.Xresources.html">x/.Xresources</a></b>
+<a href="#h0" id="h0" class="h">@@ -6,5 +6,5 @@
+</a> 
+ #include &quot;.xres/xft&quot;
+ #include &quot;.xres/rofi&quot;
+<a href="#h0-3" id="h0-3" class="d">-#include &quot;.xres/colors/cloudy&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+#include &quot;.xres/colors/woody&quot;
+</a> #include &quot;.xres/urxvt&quot;
+<b>diff --git a/<a href="../file/x/.xres/colors/cloudy.html">x/.xres/colors/cloudy</a> b/<a href="../file/x/.xres/colors/cloudy.html">x/.xres/colors/cloudy</a></b>
+<a href="#h0" id="h0" class="h">@@ -7,7 +7,6 @@
+</a> *.foreground:   #c0c5ce
+ *.background:   #273941
+ *.cursorColor:  #c0c5ce
+<a href="#h0-3" id="h0-3" class="d">-URxvt.cursorColor: #eff1f5
+</a> 
+ ! black
+ *.color0:       #273941
+<b>diff --git a/<a href="../file/x/.xres/colors/woody.html">x/.xres/colors/woody</a> b/<a href="../file/x/.xres/colors/woody.html">x/.xres/colors/woody</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,38 @@
+</a><a href="#h0-0" id="h0-0" class="i">+! special
+</a><a href="#h0-1" id="h0-1" class="i">+*.foreground:   #3f3a3c
+</a><a href="#h0-2" id="h0-2" class="i">+*.background:   #d2bbad
+</a><a href="#h0-3" id="h0-3" class="i">+*.cursorColor:  #3f3a3c
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+! black
+</a><a href="#h0-6" id="h0-6" class="i">+*.color0:       #3f3a3c
+</a><a href="#h0-7" id="h0-7" class="i">+*.color8:       #8e7b71
+</a><a href="#h0-8" id="h0-8" class="i">+
+</a><a href="#h0-9" id="h0-9" class="i">+! red
+</a><a href="#h0-10" id="h0-10" class="i">+*.color1:       #784848
+</a><a href="#h0-11" id="h0-11" class="i">+*.color9:       #883e3e
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a><a href="#h0-13" id="h0-13" class="i">+! green
+</a><a href="#h0-14" id="h0-14" class="i">+*.color2:       #657848
+</a><a href="#h0-15" id="h0-15" class="i">+*.color10:      #5e873e
+</a><a href="#h0-16" id="h0-16" class="i">+
+</a><a href="#h0-17" id="h0-17" class="i">+! yellow
+</a><a href="#h0-18" id="h0-18" class="i">+*.color3:       #787848
+</a><a href="#h0-19" id="h0-19" class="i">+*.color11:      #87873e
+</a><a href="#h0-20" id="h0-20" class="i">+
+</a><a href="#h0-21" id="h0-21" class="i">+! blue
+</a><a href="#h0-22" id="h0-22" class="i">+*.color4:       #486078
+</a><a href="#h0-23" id="h0-23" class="i">+*.color12:      #3e5e87
+</a><a href="#h0-24" id="h0-24" class="i">+
+</a><a href="#h0-25" id="h0-25" class="i">+! orange
+</a><a href="#h0-26" id="h0-26" class="i">+*.color5:       #784878
+</a><a href="#h0-27" id="h0-27" class="i">+*.color13:      #873e87
+</a><a href="#h0-28" id="h0-28" class="i">+
+</a><a href="#h0-29" id="h0-29" class="i">+! cyan
+</a><a href="#h0-30" id="h0-30" class="i">+*.color6:       #487979
+</a><a href="#h0-31" id="h0-31" class="i">+*.color14:      #3e8787
+</a><a href="#h0-32" id="h0-32" class="i">+
+</a><a href="#h0-33" id="h0-33" class="i">+! white
+</a><a href="#h0-34" id="h0-34" class="i">+*.color7:       #d2bbad
+</a><a href="#h0-35" id="h0-35" class="i">+*.color15:      #d2bbad
+</a><a href="#h0-36" id="h0-36" class="i">+
+</a><a href="#h0-37" id="h0-37" class="i">+! vim: set ft=xdefaults :
+</a></pre>
+</div>
+</body>
+</html>

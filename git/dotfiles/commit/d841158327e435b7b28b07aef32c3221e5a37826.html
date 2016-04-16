@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Changed colors - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/d841158327e435b7b28b07aef32c3221e5a37826.html">d841158327e435b7b28b07aef32c3221e5a37826</a>
+<b>parent</b> <a href="../commit/59eb97296a8af7a02cb311f389ad3bb08cab5c3e.html">59eb97296a8af7a02cb311f389ad3bb08cab5c3e</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Wed Feb 10 16:11:46 2016
+
+Changed colors
+
+<b>Diffstat:</b>
+ home/.config/nvim/colors/shblah.vim | 184 ++++++++++++++++++++++---------------
+ home/.crosssh.sh                    |   4 +-
+ home/.xres/colors/cloudy            |  10 +-
+ 3 files changed, 118 insertions(+), 80 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.config/nvim/colors/shblah.vim.html">home/.config/nvim/colors/shblah.vim</a> b/<a href="../file/home/.config/nvim/colors/shblah.vim.html">home/.config/nvim/colors/shblah.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,6 +1,11 @@
+</a><a href="#h0-0" id="h0-0" class="i">+&quot; ┏━┓╻ ╻┏┓ ╻  ┏━┓╻ ╻   ╻ ╻╻┏┳┓
+</a><a href="#h0-1" id="h0-1" class="i">+&quot; ┗━┓┣━┫┣┻┓┃  ┣━┫┣━┫   ┃┏┛┃┃┃┃
+</a><a href="#h0-2" id="h0-2" class="i">+&quot; ┗━┛╹ ╹┗━┛┗━╸╹ ╹╹ ╹ ╹ ┗┛ ╹╹ ╹
+</a><a href="#h0-3" id="h0-3" class="i">+&quot;                           -- by z3bra
+</a><a href="#h0-4" id="h0-4" class="i">+&quot; =====================================
+</a> &quot;
+<a href="#h0-6" id="h0-6" class="d">-&quot; Terminal setup.
+</a><a href="#h0-7" id="h0-7" class="d">-&quot;
+</a><a href="#h0-8" id="h0-8" class="i">+&quot; A 16 colors scheme that use your terminal colors
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a> set background=dark
+ if version &gt; 580
+     highlight clear
+<a href="#h1" id="h1" class="h">@@ -8,76 +13,113 @@ if version &gt; 580
+</a>         syntax reset
+     endif
+ endif
+<a href="#h1-3" id="h1-3" class="d">-let g:colors_name=&quot;shblah&quot;
+</a><a href="#h1-4" id="h1-4" class="d">-
+</a><a href="#h1-5" id="h1-5" class="d">-&quot;
+</a><a href="#h1-6" id="h1-6" class="d">-&quot; Highlighting definitions.
+</a><a href="#h1-7" id="h1-7" class="d">-&quot;
+</a><a href="#h1-8" id="h1-8" class="i">+let g:colors_name=&quot;shblah_orig&quot;
+</a> 
+<a href="#h1-10" id="h1-10" class="d">-    &quot;
+</a><a href="#h1-11" id="h1-11" class="d">-    &quot; Actual colours and styles.
+</a><a href="#h1-12" id="h1-12" class="d">-    &quot;
+</a><a href="#h1-13" id="h1-13" class="d">-    highlight Comment      term=NONE cterm=bold ctermfg=8    ctermbg=NONE
+</a><a href="#h1-14" id="h1-14" class="d">-    highlight Constant     term=NONE cterm=bold ctermfg=4    ctermbg=NONE
+</a><a href="#h1-15" id="h1-15" class="d">-    highlight Cursor       term=NONE cterm=bold ctermfg=3    ctermbg=NONE
+</a><a href="#h1-16" id="h1-16" class="d">-    highlight CursorLine   term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+</a><a href="#h1-17" id="h1-17" class="d">-    highlight DiffAdd      term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+</a><a href="#h1-18" id="h1-18" class="d">-    highlight DiffChange   term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+</a><a href="#h1-19" id="h1-19" class="d">-    highlight DiffDelete   term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+</a><a href="#h1-20" id="h1-20" class="d">-    highlight Folded       term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h1-21" id="h1-21" class="d">-    highlight Function     term=NONE cterm=bold ctermfg=4    ctermbg=NONE
+</a><a href="#h1-22" id="h1-22" class="d">-    highlight Identifier   term=NONE cterm=bold ctermfg=5    ctermbg=NONE
+</a><a href="#h1-23" id="h1-23" class="d">-    highlight IncSearch    term=NONE cterm=NONE ctermfg=0    ctermbg=NONE
+</a><a href="#h1-24" id="h1-24" class="d">-    highlight NonText      term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h1-25" id="h1-25" class="d">-    highlight Normal       term=NONE cterm=NONE ctermfg=7    ctermbg=NONE
+</a><a href="#h1-26" id="h1-26" class="d">-    highlight Pmenu        term=NONE cterm=NONE ctermfg=8    ctermbg=NONE
+</a><a href="#h1-27" id="h1-27" class="d">-    highlight PreProc      term=NONE cterm=bold ctermfg=6    ctermbg=NONE
+</a><a href="#h1-28" id="h1-28" class="d">-    highlight Search       term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h1-29" id="h1-29" class="d">-    highlight Special      term=NONE cterm=bold ctermfg=2    ctermbg=NONE
+</a><a href="#h1-30" id="h1-30" class="d">-    highlight SpecialKey   term=NONE cterm=NONE ctermfg=2    ctermbg=NONE
+</a><a href="#h1-31" id="h1-31" class="d">-    highlight Statement    term=NONE cterm=bold ctermfg=2    ctermbg=NONE
+</a><a href="#h1-32" id="h1-32" class="d">-    highlight StatusLine   term=NONE cterm=NONE ctermfg=8    ctermbg=NONE
+</a><a href="#h1-33" id="h1-33" class="d">-    highlight StatusLineNC term=NONE cterm=NONE ctermfg=6    ctermbg=NONE
+</a><a href="#h1-34" id="h1-34" class="d">-    highlight String       term=NONE cterm=NONE ctermfg=1    ctermbg=NONE
+</a><a href="#h1-35" id="h1-35" class="d">-    highlight Todo         term=NONE cterm=NONE ctermfg=0    ctermbg=NONE
+</a><a href="#h1-36" id="h1-36" class="d">-    highlight Type         term=NONE cterm=NONE ctermfg=4    ctermbg=NONE
+</a><a href="#h1-37" id="h1-37" class="d">-    highlight VertSplit    term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h1-38" id="h1-38" class="d">-    highlight Visual       term=NONE cterm=bold ctermfg=3    ctermbg=8
+</a><a href="#h1-39" id="h1-39" class="i">+&quot; Actual colours and styles.
+</a><a href="#h1-40" id="h1-40" class="i">+highlight ColorColumn  term=NONE cterm=NONE ctermfg=NONE ctermbg=3
+</a><a href="#h1-41" id="h1-41" class="i">+highlight Comment      term=NONE cterm=NONE ctermfg=8    ctermbg=NONE
+</a><a href="#h1-42" id="h1-42" class="i">+highlight Constant     term=NONE cterm=NONE ctermfg=6    ctermbg=NONE
+</a><a href="#h1-43" id="h1-43" class="i">+highlight Cursor       term=NONE cterm=bold ctermfg=3    ctermbg=NONE
+</a><a href="#h1-44" id="h1-44" class="i">+highlight CursorLine   term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+</a><a href="#h1-45" id="h1-45" class="i">+highlight DiffAdd      term=NONE cterm=bold ctermfg=2    ctermbg=NONE
+</a><a href="#h1-46" id="h1-46" class="i">+highlight DiffChange   term=NONE cterm=bold ctermfg=NONE ctermbg=NONE
+</a><a href="#h1-47" id="h1-47" class="i">+highlight DiffDelete   term=NONE cterm=bold ctermfg=7    ctermbg=1
+</a><a href="#h1-48" id="h1-48" class="i">+highlight DiffText     term=NONE cterm=bold ctermfg=7    ctermbg=4
+</a><a href="#h1-49" id="h1-49" class="i">+highlight Directory    term=NONE cterm=bold ctermfg=4    ctermbg=0
+</a><a href="#h1-50" id="h1-50" class="i">+highlight Error        term=NONE cterm=NONE ctermfg=0    ctermbg=1
+</a><a href="#h1-51" id="h1-51" class="i">+highlight ErrorMsg     term=NONE cterm=bold ctermfg=1    ctermbg=0
+</a><a href="#h1-52" id="h1-52" class="i">+highlight FoldColumn   term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h1-53" id="h1-53" class="i">+highlight Folded       term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h1-54" id="h1-54" class="i">+highlight Function     term=NONE cterm=NONE ctermfg=6    ctermbg=NONE
+</a><a href="#h1-55" id="h1-55" class="i">+highlight Identifier   term=NONE cterm=NONE ctermfg=2    ctermbg=NONE
+</a><a href="#h1-56" id="h1-56" class="i">+highlight IncSearch    term=NONE cterm=bold ctermfg=5    ctermbg=5
+</a><a href="#h1-57" id="h1-57" class="i">+highlight NonText      term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h1-58" id="h1-58" class="i">+highlight Normal       term=NONE cterm=NONE ctermfg=7    ctermbg=NONE
+</a><a href="#h1-59" id="h1-59" class="i">+highlight Pmenu        term=NONE cterm=NONE ctermfg=0    ctermbg=7
+</a><a href="#h1-60" id="h1-60" class="i">+highlight PreProc      term=NONE cterm=bold ctermfg=6    ctermbg=NONE
+</a><a href="#h1-61" id="h1-61" class="i">+highlight Search       term=NONE cterm=bold ctermfg=7    ctermbg=5
+</a><a href="#h1-62" id="h1-62" class="i">+highlight Special      term=NONE cterm=bold ctermfg=1    ctermbg=NONE
+</a><a href="#h1-63" id="h1-63" class="i">+highlight SpecialKey   term=NONE cterm=NONE ctermfg=0    ctermbg=NONE
+</a><a href="#h1-64" id="h1-64" class="i">+highlight Statement    term=NONE cterm=NONE ctermfg=4    ctermbg=NONE
+</a><a href="#h1-65" id="h1-65" class="i">+highlight StatusLine   term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h1-66" id="h1-66" class="i">+&quot; highlight StatusLineNC term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h1-67" id="h1-67" class="i">+highlight String       term=NONE cterm=NONE ctermfg=1    ctermbg=NONE
+</a><a href="#h1-68" id="h1-68" class="i">+highlight TabLineSel   term=NONE cterm=bold ctermfg=7    ctermbg=NONE
+</a><a href="#h1-69" id="h1-69" class="i">+highlight Todo         term=NONE cterm=bold ctermfg=7    ctermbg=1
+</a><a href="#h1-70" id="h1-70" class="i">+highlight Type         term=NONE cterm=bold ctermfg=4    ctermbg=NONE
+</a><a href="#h1-71" id="h1-71" class="i">+highlight Underlined   term=underline cterm=underline ctermfg=NONE   ctermbg=NONE
+</a><a href="#h1-72" id="h1-72" class="i">+highlight VertSplit    term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a><a href="#h1-73" id="h1-73" class="i">+highlight Visual       term=NONE cterm=NONE ctermfg=0    ctermbg=8
+</a><a href="#h1-74" id="h1-74" class="i">+highlight WarningMsg   term=NONE cterm=bold ctermfg=3    ctermbg=NONE
+</a> 
+<a href="#h1-76" id="h1-76" class="d">-    &quot;
+</a><a href="#h1-77" id="h1-77" class="d">-    &quot; General highlighting group links.
+</a><a href="#h1-78" id="h1-78" class="d">-    &quot;
+</a><a href="#h1-79" id="h1-79" class="d">-    highlight! link Title           Normal
+</a><a href="#h1-80" id="h1-80" class="d">-    highlight! link LineNr          NonText
+</a><a href="#h1-81" id="h1-81" class="d">-    highlight! link TabLine         StatusLineNC
+</a><a href="#h1-82" id="h1-82" class="d">-    highlight! link TabLineFill     StatusLineNC
+</a><a href="#h1-83" id="h1-83" class="d">-    highlight! link TabLineSel      StatusLine
+</a><a href="#h1-84" id="h1-84" class="d">-    highlight! link VimHiGroup      VimGroup
+</a><a href="#h1-85" id="h1-85" class="i">+&quot; General highlighting group links.
+</a><a href="#h1-86" id="h1-86" class="i">+highlight! link diffAdded       DiffAdd
+</a><a href="#h1-87" id="h1-87" class="i">+highlight! link diffRemoved     DiffDelete
+</a><a href="#h1-88" id="h1-88" class="i">+highlight! link diffChanged     DiffChange
+</a><a href="#h1-89" id="h1-89" class="i">+highlight! link StatusLineNC    StatusLine
+</a><a href="#h1-90" id="h1-90" class="i">+highlight! link Title           Normal
+</a><a href="#h1-91" id="h1-91" class="i">+highlight! link LineNr          NonText
+</a><a href="#h1-92" id="h1-92" class="i">+highlight! link MoreMsg         Normal
+</a><a href="#h1-93" id="h1-93" class="i">+highlight! link Question        DiffChange
+</a><a href="#h1-94" id="h1-94" class="i">+highlight! link TabLine         StatusLineNC
+</a><a href="#h1-95" id="h1-95" class="i">+highlight! link TabLineFill     StatusLineNC
+</a><a href="#h1-96" id="h1-96" class="i">+highlight! link VimHiGroup      VimGroup
+</a> 
+ &quot; Test the actual colorscheme
+<a href="#h1-99" id="h1-99" class="d">-syn match Comment      &quot;__Comment.*&quot;
+</a><a href="#h1-100" id="h1-100" class="d">-syn match Constant     &quot;__Constant.*&quot;
+</a><a href="#h1-101" id="h1-101" class="d">-syn match Cursor       &quot;__Cursor.*&quot;
+</a><a href="#h1-102" id="h1-102" class="d">-syn match CursorLine   &quot;__CursorLine.*&quot;
+</a><a href="#h1-103" id="h1-103" class="d">-syn match DiffAdd      &quot;__DiffAdd.*&quot;
+</a><a href="#h1-104" id="h1-104" class="d">-syn match DiffChange   &quot;__DiffChange.*&quot;
+</a><a href="#h1-105" id="h1-105" class="d">-syn match DiffDelete   &quot;__DiffDelete.*&quot;
+</a><a href="#h1-106" id="h1-106" class="d">-syn match Folded       &quot;__Folded.*&quot;
+</a><a href="#h1-107" id="h1-107" class="d">-syn match Function     &quot;__Function.*&quot;
+</a><a href="#h1-108" id="h1-108" class="d">-syn match Identifier   &quot;__Identifier.*&quot;
+</a><a href="#h1-109" id="h1-109" class="d">-syn match IncSearch    &quot;__IncSearch.*&quot;
+</a><a href="#h1-110" id="h1-110" class="d">-syn match NonText      &quot;__NonText.*&quot;
+</a><a href="#h1-111" id="h1-111" class="d">-syn match Normal       &quot;__Normal.*&quot;
+</a><a href="#h1-112" id="h1-112" class="d">-syn match Pmenu        &quot;__Pmenu.*&quot;
+</a><a href="#h1-113" id="h1-113" class="d">-syn match PreProc      &quot;__PreProc.*&quot;
+</a><a href="#h1-114" id="h1-114" class="d">-syn match Search       &quot;__Search.*&quot;
+</a><a href="#h1-115" id="h1-115" class="d">-syn match Special      &quot;__Special.*&quot;
+</a><a href="#h1-116" id="h1-116" class="d">-syn match SpecialKey   &quot;__SpecialKey.*&quot;
+</a><a href="#h1-117" id="h1-117" class="d">-syn match Statement    &quot;__Statement.*&quot;
+</a><a href="#h1-118" id="h1-118" class="d">-syn match StatusLine   &quot;__StatusLine.*&quot;
+</a><a href="#h1-119" id="h1-119" class="d">-syn match StatusLineNC &quot;__StatusLineNC.*&quot;
+</a><a href="#h1-120" id="h1-120" class="d">-syn match String       &quot;__String.*&quot;
+</a><a href="#h1-121" id="h1-121" class="d">-syn match Todo         &quot;__Todo.*&quot;
+</a><a href="#h1-122" id="h1-122" class="d">-syn match Type         &quot;__Type.*&quot;
+</a><a href="#h1-123" id="h1-123" class="d">-syn match VertSplit    &quot;__VertSplit.*&quot;
+</a><a href="#h1-124" id="h1-124" class="d">-syn match Visual       &quot;__Visual.*&quot;
+</a><a href="#h1-125" id="h1-125" class="i">+syn match Comment      &quot;\&quot;__Comment.*&quot;
+</a><a href="#h1-126" id="h1-126" class="i">+syn match Constant     &quot;\&quot;__Constant.*&quot;
+</a><a href="#h1-127" id="h1-127" class="i">+syn match Cursor       &quot;\&quot;__Cursor.*&quot;
+</a><a href="#h1-128" id="h1-128" class="i">+syn match CursorLine   &quot;\&quot;__CursorLine.*&quot;
+</a><a href="#h1-129" id="h1-129" class="i">+syn match DiffAdd      &quot;\&quot;__DiffAdd.*&quot;
+</a><a href="#h1-130" id="h1-130" class="i">+syn match DiffChange   &quot;\&quot;__DiffChange.*&quot;
+</a><a href="#h1-131" id="h1-131" class="i">+syn match DiffText     &quot;\&quot;__DiffText.*&quot;
+</a><a href="#h1-132" id="h1-132" class="i">+syn match DiffDelete   &quot;\&quot;__DiffDelete.*&quot;
+</a><a href="#h1-133" id="h1-133" class="i">+syn match Folded       &quot;\&quot;__Folded.*&quot;
+</a><a href="#h1-134" id="h1-134" class="i">+syn match Function     &quot;\&quot;__Function.*&quot;
+</a><a href="#h1-135" id="h1-135" class="i">+syn match Identifier   &quot;\&quot;__Identifier.*&quot;
+</a><a href="#h1-136" id="h1-136" class="i">+syn match IncSearch    &quot;\&quot;__IncSearch.*&quot;
+</a><a href="#h1-137" id="h1-137" class="i">+syn match NonText      &quot;\&quot;__NonText.*&quot;
+</a><a href="#h1-138" id="h1-138" class="i">+syn match Normal       &quot;\&quot;__Normal.*&quot;
+</a><a href="#h1-139" id="h1-139" class="i">+syn match Pmenu        &quot;\&quot;__Pmenu.*&quot;
+</a><a href="#h1-140" id="h1-140" class="i">+syn match PreProc      &quot;\&quot;__PreProc.*&quot;
+</a><a href="#h1-141" id="h1-141" class="i">+syn match Search       &quot;\&quot;__Search.*&quot;
+</a><a href="#h1-142" id="h1-142" class="i">+syn match Special      &quot;\&quot;__Special.*&quot;
+</a><a href="#h1-143" id="h1-143" class="i">+syn match SpecialKey   &quot;\&quot;__SpecialKey.*&quot;
+</a><a href="#h1-144" id="h1-144" class="i">+syn match Statement    &quot;\&quot;__Statement.*&quot;
+</a><a href="#h1-145" id="h1-145" class="i">+syn match StatusLine   &quot;\&quot;__StatusLine.*&quot;
+</a><a href="#h1-146" id="h1-146" class="i">+syn match StatusLineNC &quot;\&quot;__StatusLineNC.*&quot;
+</a><a href="#h1-147" id="h1-147" class="i">+syn match String       &quot;\&quot;__String.*&quot;
+</a><a href="#h1-148" id="h1-148" class="i">+syn match Todo         &quot;\&quot;__Todo.*&quot;
+</a><a href="#h1-149" id="h1-149" class="i">+syn match Type         &quot;\&quot;__Type.*&quot;
+</a><a href="#h1-150" id="h1-150" class="i">+syn match Underlined   &quot;\&quot;__Underlined.*&quot;
+</a><a href="#h1-151" id="h1-151" class="i">+syn match VertSplit    &quot;\&quot;__VertSplit.*&quot;
+</a><a href="#h1-152" id="h1-152" class="i">+syn match Visual       &quot;\&quot;__Visual.*&quot;
+</a><a href="#h1-153" id="h1-153" class="i">+
+</a><a href="#h1-154" id="h1-154" class="i">+&quot;__Comment              /* this is a comment */
+</a><a href="#h1-155" id="h1-155" class="i">+&quot;__Constant             var = SHBLAH
+</a><a href="#h1-156" id="h1-156" class="i">+&quot;__Cursor               char under the cursor?
+</a><a href="#h1-157" id="h1-157" class="i">+&quot;__CursorLine           Line where the cursor is
+</a><a href="#h1-158" id="h1-158" class="i">+&quot;__DiffAdd              +line added from file.orig
+</a><a href="#h1-159" id="h1-159" class="i">+&quot;__DiffChange           line changed from file.orig
+</a><a href="#h1-160" id="h1-160" class="i">+&quot;__DiffText             actual changes on this line
+</a><a href="#h1-161" id="h1-161" class="i">+&quot;__DiffDelete           -line removed from file.orig
+</a><a href="#h1-162" id="h1-162" class="i">+&quot;__Folded               +--- 1 line : Folded line ---
+</a><a href="#h1-163" id="h1-163" class="i">+&quot;__Function             function sblah()
+</a><a href="#h1-164" id="h1-164" class="i">+&quot;__Identifier           Never ran into that actually...
+</a><a href="#h1-165" id="h1-165" class="i">+&quot;__IncSearch            Next search term
+</a><a href="#h1-166" id="h1-166" class="i">+&quot;__NonText              This is not a text, move on
+</a><a href="#h1-167" id="h1-167" class="i">+&quot;__Normal               Typical text goes like this
+</a><a href="#h1-168" id="h1-168" class="i">+&quot;__Pmenu                Currently selected menu item
+</a><a href="#h1-169" id="h1-169" class="i">+&quot;__PreProc              #define SHBLAH true
+</a><a href="#h1-170" id="h1-170" class="i">+&quot;__Search               This is what you&apos;re searching for
+</a><a href="#h1-171" id="h1-171" class="i">+&quot;__Special              true false NULL SIGTERM
+</a><a href="#h1-172" id="h1-172" class="i">+&quot;__SpecialKey           Never ran into that either
+</a><a href="#h1-173" id="h1-173" class="i">+&quot;__Statement            if else return for switch
+</a><a href="#h1-174" id="h1-174" class="i">+&quot;__StatusLine           Statusline of current windows
+</a><a href="#h1-175" id="h1-175" class="i">+&quot;__StatusLineNC         Statusline of other windows
+</a><a href="#h1-176" id="h1-176" class="i">+&quot;__String               &quot;Hello, World!&quot;
+</a><a href="#h1-177" id="h1-177" class="i">+&quot;__Todo                 TODO: remove todos from source
+</a><a href="#h1-178" id="h1-178" class="i">+&quot;__Type                 int float char void unsigned uint32_t
+</a><a href="#h1-179" id="h1-179" class="i">+&quot;__Underlined           Anything underlined
+</a><a href="#h1-180" id="h1-180" class="i">+&quot;__VertSplit            :vsplit will only show &apos; | &apos;
+</a><a href="#h1-181" id="h1-181" class="i">+&quot;__Visual               Selected text looks like this
+</a><b>diff --git a/<a href="../file/home/.crosssh.sh.html">home/.crosssh.sh</a> b/<a href="../file/home/.crosssh.sh.html">home/.crosssh.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -40,7 +40,3 @@ ghclone() {
+</a>   git clone https://github.com/${1}.git
+ }
+ 
+<a href="#h0-3" id="h0-3" class="d">-nvim() {
+</a><a href="#h0-4" id="h0-4" class="d">-  /usr/bin/nvim $@; clear
+</a><a href="#h0-5" id="h0-5" class="d">-}
+</a><a href="#h0-6" id="h0-6" class="d">-
+</a><b>diff --git a/<a href="../file/home/.xres/colors/cloudy.html">home/.xres/colors/cloudy</a> b/<a href="../file/home/.xres/colors/cloudy.html">home/.xres/colors/cloudy</a></b>
+<a href="#h0" id="h0" class="h">@@ -18,8 +18,8 @@ URxvt.cursorColor: #eff1f5
+</a> *.color9:       #c27171
+ 
+ ! green
+<a href="#h0-3" id="h0-3" class="d">-*.color2:       #63a67a
+</a><a href="#h0-4" id="h0-4" class="d">-*.color10:      #71c287
+</a><a href="#h0-5" id="h0-5" class="i">+*.color2:       #63a66e
+</a><a href="#h0-6" id="h0-6" class="i">+*.color10:      #70c27e
+</a> 
+ ! yellow
+ *.color3:       #a6a663
+<a href="#h1" id="h1" class="h">@@ -29,9 +29,9 @@ URxvt.cursorColor: #eff1f5
+</a> *.color4:       #6385a6
+ *.color12:      #719bc2
+ 
+<a href="#h1-3" id="h1-3" class="d">-! magenta
+</a><a href="#h1-4" id="h1-4" class="d">-*.color5:       #a66390
+</a><a href="#h1-5" id="h1-5" class="d">-*.color13:      #c271a1
+</a><a href="#h1-6" id="h1-6" class="i">+! orange
+</a><a href="#h1-7" id="h1-7" class="i">+*.color5:       #BF9C86
+</a><a href="#h1-8" id="h1-8" class="i">+*.color13:      #BF9C86
+</a> 
+ ! cyan
+ *.color6:       #63a69b
+</pre>
+</div>
+</body>
+</html>

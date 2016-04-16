@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Vim related things - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/c1a602e53474a426d3f0955dd1c76417c488e88a.html">c1a602e53474a426d3f0955dd1c76417c488e88a</a>
+<b>parent</b> <a href="../commit/ad0c6d4352144724840a0b0225b04eefd43e7670.html">ad0c6d4352144724840a0b0225b04eefd43e7670</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Sun Jan 31 15:15:51 2016
+
+Vim related things
+
+<b>Diffstat:</b>
+ home/.config/nvim/.netrwhist        |  3 +-
+ home/.config/nvim/colors/shblah.vim |  2 +-
+ home/.config/nvim/init.vim          | 95 ++++++++++++++++++++------------------
+ home/.scripts/panel                 |  6 ++-
+ 4 files changed, 59 insertions(+), 47 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.config/nvim/.netrwhist.html">home/.config/nvim/.netrwhist</a> b/<a href="../file/home/.config/nvim/.netrwhist.html">home/.config/nvim/.netrwhist</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,5 +1,6 @@
+</a> let g:netrw_dirhistmax  =10
+<a href="#h0-1" id="h0-1" class="d">-let g:netrw_dirhist_cnt =3
+</a><a href="#h0-2" id="h0-2" class="i">+let g:netrw_dirhist_cnt =4
+</a> let g:netrw_dirhist_1=&apos;/home/tudurom/.config/i3&apos;
+ let g:netrw_dirhist_2=&apos;/etc/modprobe.d&apos;
+ let g:netrw_dirhist_3=&apos;/home/tudurom/.config&apos;
+<a href="#h0-6" id="h0-6" class="i">+let g:netrw_dirhist_4=&apos;/home/tudurom/.vim&apos;
+</a><b>diff --git a/<a href="../file/home/.config/nvim/colors/shblah.vim.html">home/.config/nvim/colors/shblah.vim</a> b/<a href="../file/home/.config/nvim/colors/shblah.vim.html">home/.config/nvim/colors/shblah.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -30,7 +30,7 @@ let g:colors_name=&quot;shblah&quot;
+</a>     highlight IncSearch    term=NONE cterm=NONE ctermfg=0    ctermbg=NONE
+     highlight NonText      term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+     highlight Normal       term=NONE cterm=NONE ctermfg=7    ctermbg=NONE
+<a href="#h0-3" id="h0-3" class="d">-    highlight Pmenu        term=NONE cterm=NONE ctermfg=0    ctermbg=NONE
+</a><a href="#h0-4" id="h0-4" class="i">+    highlight Pmenu        term=NONE cterm=NONE ctermfg=8    ctermbg=NONE
+</a>     highlight PreProc      term=NONE cterm=bold ctermfg=5    ctermbg=NONE
+     highlight Search       term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+     highlight Special      term=NONE cterm=bold ctermfg=2    ctermbg=NONE
+<b>diff --git a/<a href="../file/home/.config/nvim/init.vim.html">home/.config/nvim/init.vim</a> b/<a href="../file/home/.config/nvim/init.vim.html">home/.config/nvim/init.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -5,51 +5,33 @@
+</a> set nocompatible              &quot; be iMproved, required
+ filetype off                  &quot; required
+ 
+<a href="#h0-3" id="h0-3" class="d">-&quot; set the runtime path to include Vundle and initialize
+</a><a href="#h0-4" id="h0-4" class="d">-set rtp+=~/.vim/bundle/Vundle.vim
+</a><a href="#h0-5" id="h0-5" class="d">-call vundle#begin()
+</a><a href="#h0-6" id="h0-6" class="d">-  &quot; alternatively, pass a path where Vundle should install plugins
+</a><a href="#h0-7" id="h0-7" class="d">-  &quot;call vundle#begin(&apos;~/some/path/here&apos;)
+</a><a href="#h0-8" id="h0-8" class="d">-
+</a><a href="#h0-9" id="h0-9" class="d">-  &quot; let Vundle manage Vundle, required
+</a><a href="#h0-10" id="h0-10" class="d">-  Plugin &apos;VundleVim/Vundle.vim&apos;
+</a><a href="#h0-11" id="h0-11" class="d">-
+</a><a href="#h0-12" id="h0-12" class="d">-  &quot; The following are examples of different formats supported.
+</a><a href="#h0-13" id="h0-13" class="d">-  &quot; Keep Plugin commands between vundle#begin/end.
+</a><a href="#h0-14" id="h0-14" class="d">-  &quot; plugin on GitHub repo
+</a><a href="#h0-15" id="h0-15" class="d">-  Plugin &apos;tpope/vim-fugitive&apos;
+</a><a href="#h0-16" id="h0-16" class="i">+&quot; Plugins {{{
+</a><a href="#h0-17" id="h0-17" class="i">+call plug#begin(&apos;~/.config/nvim/plugged&apos;)
+</a> 
+   &quot; Colorschemes
+<a href="#h0-20" id="h0-20" class="d">-  Plugin &apos;chriskempson/base16-vim&apos;
+</a><a href="#h0-21" id="h0-21" class="d">-  Plugin &apos;noahfrederick/vim-noctu&apos;
+</a><a href="#h0-22" id="h0-22" class="i">+  Plug &apos;chriskempson/base16-vim&apos;
+</a><a href="#h0-23" id="h0-23" class="i">+  Plug &apos;noahfrederick/vim-noctu&apos;
+</a> 
+   &quot; Others
+<a href="#h0-26" id="h0-26" class="d">-  Plugin &apos;scrooloose/nerdtree&apos;
+</a><a href="#h0-27" id="h0-27" class="i">+  Plug &apos;scrooloose/nerdtree&apos;
+</a><a href="#h0-28" id="h0-28" class="i">+
+</a><a href="#h0-29" id="h0-29" class="i">+  Plug &apos;ntpeters/vim-better-whitespace&apos;
+</a><a href="#h0-30" id="h0-30" class="i">+
+</a><a href="#h0-31" id="h0-31" class="i">+  Plug &apos;gabrielelana/vim-markdown&apos;
+</a> 
+<a href="#h0-33" id="h0-33" class="d">-  Plugin &apos;ntpeters/vim-better-whitespace&apos;
+</a><a href="#h0-34" id="h0-34" class="i">+  Plug &apos;bling/vim-airline&apos;
+</a> 
+<a href="#h0-36" id="h0-36" class="d">-  Plugin &apos;gabrielelana/vim-markdown&apos;
+</a><a href="#h0-37" id="h0-37" class="i">+  Plug &apos;ervandew/supertab&apos;
+</a> 
+<a href="#h0-39" id="h0-39" class="d">-  Plugin &apos;bling/vim-airline&apos;
+</a><a href="#h0-40" id="h0-40" class="d">-  Plugin &apos;Valloric/YouCompleteMe&apos;
+</a><a href="#h0-41" id="h0-41" class="d">-  Plugin &apos;mustache/vim-mustache-handlebars&apos;
+</a><a href="#h0-42" id="h0-42" class="i">+  &quot; Focus...
+</a><a href="#h0-43" id="h0-43" class="i">+  Plug &apos;junegunn/goyo.vim&apos;
+</a><a href="#h0-44" id="h0-44" class="i">+  Plug &apos;junegunn/limelight.vim&apos;
+</a> 
+<a href="#h0-46" id="h0-46" class="d">-  &quot; All of your Plugins must be added before the following line
+</a><a href="#h0-47" id="h0-47" class="d">-  call vundle#end()            &quot; required
+</a><a href="#h0-48" id="h0-48" class="i">+  call plug#end()            &quot; required
+</a>   filetype plugin indent on    &quot; required
+<a href="#h0-50" id="h0-50" class="d">-  &quot; To ignore plugin indent changes, instead use:
+</a><a href="#h0-51" id="h0-51" class="d">-  &quot;filetype plugin on
+</a><a href="#h0-52" id="h0-52" class="d">-  &quot;
+</a><a href="#h0-53" id="h0-53" class="d">-  &quot; Brief help
+</a><a href="#h0-54" id="h0-54" class="d">-  &quot; :PluginList       - lists configured plugins
+</a><a href="#h0-55" id="h0-55" class="d">-  &quot; :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+</a><a href="#h0-56" id="h0-56" class="d">-  &quot; :PluginSearch foo - searches for foo; append `!` to refresh local cache
+</a><a href="#h0-57" id="h0-57" class="d">-  &quot; :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+</a><a href="#h0-58" id="h0-58" class="d">-  &quot;
+</a><a href="#h0-59" id="h0-59" class="d">-  &quot; see :h vundle for more details or wiki for FAQ
+</a><a href="#h0-60" id="h0-60" class="d">-  &quot; Put your non-Plugin stuff after this line
+</a><a href="#h0-61" id="h0-61" class="d">-
+</a><a href="#h0-62" id="h0-62" class="d">-&quot; Essential things
+</a><a href="#h0-63" id="h0-63" class="i">+&quot; }}}
+</a><a href="#h0-64" id="h0-64" class="i">+
+</a><a href="#h0-65" id="h0-65" class="i">+&quot; Essential things {{{
+</a>   syntax enable
+   set number
+   set tabstop=2
+<a href="#h1" id="h1" class="h">@@ -57,36 +39,59 @@ call vundle#begin()
+</a>   set shiftwidth=2
+   set smartindent
+   set cindent
+<a href="#h1-3" id="h1-3" class="i">+&quot; }}}
+</a> 
+<a href="#h1-5" id="h1-5" class="d">-&quot; Colors
+</a><a href="#h1-6" id="h1-6" class="i">+&quot; Colors {{{
+</a>   set t_Co=256
+   let base16colorspace=256
+   set background=dark
+   &quot;colorscheme base16-ocean
+   &quot;colo noctu
+   colo shblah
+<a href="#h1-13" id="h1-13" class="i">+&quot; }}}
+</a> 
+<a href="#h1-15" id="h1-15" class="d">-&quot; Airline things
+</a><a href="#h1-16" id="h1-16" class="i">+&quot; Airline {{{
+</a>   &quot; let g:airline_powerline_fonts = 1
+   let g:airline_left_sep=&apos;▓▒░&apos;
+   let g:airline_right_sep=&apos;░▒▓&apos;
+   &quot;let g:airline_theme=&apos;term&apos;
+   set laststatus=2
+<a href="#h1-22" id="h1-22" class="i">+&quot; }}}
+</a> 
+<a href="#h1-24" id="h1-24" class="d">-&quot; NERD things
+</a><a href="#h1-25" id="h1-25" class="i">+&quot; NERD things {{{
+</a>   &quot; Toggle NERDTree
+   map &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;
+<a href="#h1-28" id="h1-28" class="i">+&quot; }}}
+</a><a href="#h1-29" id="h1-29" class="i">+
+</a><a href="#h1-30" id="h1-30" class="i">+&quot; Goyo settings {{{
+</a><a href="#h1-31" id="h1-31" class="i">+  let g:goyo_width=&apos;80%&apos;
+</a><a href="#h1-32" id="h1-32" class="i">+  let g:goyo_height=&apos;90%&apos;
+</a><a href="#h1-33" id="h1-33" class="i">+&quot; }}}
+</a> 
+<a href="#h1-35" id="h1-35" class="d">-&quot; Clipboard setting
+</a><a href="#h1-36" id="h1-36" class="i">+&quot; Clipboard setting {{{
+</a>   set clipboard=unnamed
+<a href="#h1-38" id="h1-38" class="i">+&quot; }}}
+</a> 
+<a href="#h1-40" id="h1-40" class="d">-&quot; Word wrapping
+</a><a href="#h1-41" id="h1-41" class="i">+&quot; Word wrapping {{{
+</a>   set wrap
+   set linebreak
+   set nolist
+   set textwidth=0
+   set wrapmargin=0
+<a href="#h1-47" id="h1-47" class="d">-
+</a><a href="#h1-48" id="h1-48" class="d">-&quot; Invisible chars
+</a><a href="#h1-49" id="h1-49" class="d">-  set listchars=eol:¬,space:·
+</a><a href="#h1-50" id="h1-50" class="d">-  set list
+</a><a href="#h1-51" id="h1-51" class="i">+&quot; }}}
+</a><a href="#h1-52" id="h1-52" class="i">+
+</a><a href="#h1-53" id="h1-53" class="i">+&quot; Code folding {{{
+</a><a href="#h1-54" id="h1-54" class="i">+  set fdm=marker
+</a><a href="#h1-55" id="h1-55" class="i">+  map &lt;C-d&gt; za
+</a><a href="#h1-56" id="h1-56" class="i">+&quot; }}}
+</a><a href="#h1-57" id="h1-57" class="i">+
+</a><a href="#h1-58" id="h1-58" class="i">+&quot; Completion {{{
+</a><a href="#h1-59" id="h1-59" class="i">+  filetype plugin on
+</a><a href="#h1-60" id="h1-60" class="i">+  set omnifunc=syntaxcomplete#Complete
+</a><a href="#h1-61" id="h1-61" class="i">+&quot; }}}
+</a><a href="#h1-62" id="h1-62" class="i">+
+</a><a href="#h1-63" id="h1-63" class="i">+&quot; Focus... {{{
+</a><a href="#h1-64" id="h1-64" class="i">+  let g:limelight_conceal_ctermfg = &apos;gray&apos;
+</a><a href="#h1-65" id="h1-65" class="i">+  autocmd! User GoyoEnter Limelight
+</a><a href="#h1-66" id="h1-66" class="i">+  autocmd! User GoyoLeave Limelight!
+</a><a href="#h1-67" id="h1-67" class="i">+&quot; }}}
+</a><b>diff --git a/<a href="../file/home/.scripts/panel.html">home/.scripts/panel</a> b/<a href="../file/home/.scripts/panel.html">home/.scripts/panel</a></b>
+<a href="#h0" id="h0" class="h">@@ -26,6 +26,12 @@ else
+</a> fi
+ clock -sf &quot;S$clock_format&quot; -i 10 &gt; &quot;$PANEL_FIFO&quot; &amp;
+ 
+<a href="#h0-3" id="h0-3" class="i">+# Clock
+</a><a href="#h0-4" id="h0-4" class="i">+while true; do
+</a><a href="#h0-5" id="h0-5" class="i">+  echo &quot;S$(date +&quot;$clock_format&quot;)&quot;
+</a><a href="#h0-6" id="h0-6" class="i">+  sleep 10
+</a><a href="#h0-7" id="h0-7" class="i">+done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h0-8" id="h0-8" class="i">+
+</a> # Volume
+ while true; do
+   # Not quering pulse because it uses a hell lot of CPU
+</pre>
+</div>
+</body>
+</html>

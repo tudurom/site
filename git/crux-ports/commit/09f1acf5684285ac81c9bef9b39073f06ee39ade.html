@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>profanity: Update footprint. - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/09f1acf5684285ac81c9bef9b39073f06ee39ade.html">09f1acf5684285ac81c9bef9b39073f06ee39ade</a>
+<b>parent</b> <a href="../commit/77aa5c1a2a1e4bdc5707e5dc264498fa9fa3c2ed.html">77aa5c1a2a1e4bdc5707e5dc264498fa9fa3c2ed</a>
+<b>Author:</b> ix &lt;<a href="mailto:arcetera@openmailbox.org">arcetera@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Mar  4 21:06:28 2016
+
+profanity: Update footprint.
+
+<b>Diffstat:</b>
+ profanity/.footprint                   | 50 +++++++++++++++++------------------
+ profanity/.md5sum                      |  1 +-
+ profanity/profanity#0.4.7-1.pkg.tar.gz | Bin 0 -&gt; 170335 bytes
+ profanity/profanity-0.4.7.tar.gz       | Bin 0 -&gt; 463291 bytes
+ 4 files changed, 26 insertions(+), 25 deletions(-)
+<hr/><b>diff --git a/<a href="../file/profanity/.footprint.html">profanity/.footprint</a> b/<a href="../file/profanity/.footprint.html">profanity/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,25 +1,25 @@
+</a><a href="#h0-0" id="h0-0" class="d">-drwxr-xr-x	root/root	usr/
+</a><a href="#h0-1" id="h0-1" class="d">-drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h0-2" id="h0-2" class="d">--rwxr-xr-x	root/root	usr/bin/profanity
+</a><a href="#h0-3" id="h0-3" class="d">-drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-4" id="h0-4" class="d">-drwxr-xr-x	root/root	usr/share/man/
+</a><a href="#h0-5" id="h0-5" class="d">-drwxr-xr-x	root/root	usr/share/man/man1/
+</a><a href="#h0-6" id="h0-6" class="d">--rw-r--r--	root/root	usr/share/man/man1/profanity.1.gz
+</a><a href="#h0-7" id="h0-7" class="d">-drwxr-xr-x	root/root	usr/share/profanity/
+</a><a href="#h0-8" id="h0-8" class="d">-drwxr-xr-x	root/root	usr/share/profanity/themes/
+</a><a href="#h0-9" id="h0-9" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/aqua
+</a><a href="#h0-10" id="h0-10" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/batman
+</a><a href="#h0-11" id="h0-11" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/boothj5
+</a><a href="#h0-12" id="h0-12" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/complex
+</a><a href="#h0-13" id="h0-13" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/forest
+</a><a href="#h0-14" id="h0-14" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/hacker
+</a><a href="#h0-15" id="h0-15" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/headache
+</a><a href="#h0-16" id="h0-16" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/joker
+</a><a href="#h0-17" id="h0-17" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/mono
+</a><a href="#h0-18" id="h0-18" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/orange
+</a><a href="#h0-19" id="h0-19" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/original
+</a><a href="#h0-20" id="h0-20" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/original_bright
+</a><a href="#h0-21" id="h0-21" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/shade
+</a><a href="#h0-22" id="h0-22" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/simple
+</a><a href="#h0-23" id="h0-23" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/spawn
+</a><a href="#h0-24" id="h0-24" class="d">--rw-r--r--	root/root	usr/share/profanity/themes/whiteness
+</a><a href="#h0-25" id="h0-25" class="i">+drwxr-xr-x	arc/users	usr/
+</a><a href="#h0-26" id="h0-26" class="i">+drwxr-xr-x	arc/users	usr/bin/
+</a><a href="#h0-27" id="h0-27" class="i">+-rwxr-xr-x	arc/users	usr/bin/profanity
+</a><a href="#h0-28" id="h0-28" class="i">+drwxr-xr-x	arc/users	usr/share/
+</a><a href="#h0-29" id="h0-29" class="i">+drwxr-xr-x	arc/users	usr/share/man/
+</a><a href="#h0-30" id="h0-30" class="i">+drwxr-xr-x	arc/users	usr/share/man/man1/
+</a><a href="#h0-31" id="h0-31" class="i">+-rw-r--r--	arc/users	usr/share/man/man1/profanity.1.gz
+</a><a href="#h0-32" id="h0-32" class="i">+drwxr-xr-x	arc/users	usr/share/profanity/
+</a><a href="#h0-33" id="h0-33" class="i">+drwxr-xr-x	arc/users	usr/share/profanity/themes/
+</a><a href="#h0-34" id="h0-34" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/aqua
+</a><a href="#h0-35" id="h0-35" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/batman
+</a><a href="#h0-36" id="h0-36" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/boothj5
+</a><a href="#h0-37" id="h0-37" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/complex
+</a><a href="#h0-38" id="h0-38" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/forest
+</a><a href="#h0-39" id="h0-39" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/hacker
+</a><a href="#h0-40" id="h0-40" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/headache
+</a><a href="#h0-41" id="h0-41" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/joker
+</a><a href="#h0-42" id="h0-42" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/mono
+</a><a href="#h0-43" id="h0-43" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/orange
+</a><a href="#h0-44" id="h0-44" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/original
+</a><a href="#h0-45" id="h0-45" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/original_bright
+</a><a href="#h0-46" id="h0-46" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/shade
+</a><a href="#h0-47" id="h0-47" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/simple
+</a><a href="#h0-48" id="h0-48" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/spawn
+</a><a href="#h0-49" id="h0-49" class="i">+-rw-r--r--	arc/users	usr/share/profanity/themes/whiteness
+</a><b>diff --git a/<a href="../file/profanity/.md5sum.html">profanity/.md5sum</a> b/<a href="../file/profanity/.md5sum.html">profanity/.md5sum</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+f044c54c7fee23ab8c4be7228a6bea9b  profanity-0.4.7.tar.gz
+</a><b>diff --git a/<a href="../file/profanity/profanity#0.4.7-1.pkg.tar.gz.html">profanity/profanity#0.4.7-1.pkg.tar.gz</a> b/<a href="../file/profanity/profanity#0.4.7-1.pkg.tar.gz.html">profanity/profanity#0.4.7-1.pkg.tar.gz</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/profanity/profanity-0.4.7.tar.gz.html">profanity/profanity-0.4.7.tar.gz</a> b/<a href="../file/profanity/profanity-0.4.7.tar.gz.html">profanity/profanity-0.4.7.tar.gz</a></b>
+Binary files differ
+</pre>
+</div>
+</body>
+</html>

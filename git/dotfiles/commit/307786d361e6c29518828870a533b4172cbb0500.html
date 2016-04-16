@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Color scheme changes - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/307786d361e6c29518828870a533b4172cbb0500.html">307786d361e6c29518828870a533b4172cbb0500</a>
+<b>parent</b> <a href="../commit/a8be0cbd3f60344b6b46751a80a7857c78312905.html">a8be0cbd3f60344b6b46751a80a7857c78312905</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Sat Feb  6 19:12:34 2016
+
+Color scheme changes
+
+Colors changed a bit
+new ncmpcpp config
+
+<b>Diffstat:</b>
+ home/.compton.conf         |  3 +-
+ home/.config/bspwm/bspwmrc |  8 +++---
+ home/.config/fetch/config  |  2 +-
+ home/.ncmpcpp/config       | 64 +++++++++++++++++++++++++++++++++++++++++++++++-
+ home/.scripts/panel        |  2 +-
+ home/.scripts/panel_bar    |  2 +-
+ home/.scripts/panel_config |  4 +--
+ home/.xres/colors/cloudy   | 16 ++++++------
+ 8 files changed, 83 insertions(+), 18 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.compton.conf.html">home/.compton.conf</a> b/<a href="../file/home/.compton.conf.html">home/.compton.conf</a></b>
+<a href="#h0" id="h0" class="h">@@ -2,7 +2,7 @@ backend = &quot;glx&quot;;
+</a> paint-on-overlay = true;
+ glx-no-stencil = true;
+ glx-no-rebind-pixmap = true;
+<a href="#h0-3" id="h0-3" class="d">-vsync = &quot;opengl&quot;;
+</a><a href="#h0-4" id="h0-4" class="i">+vsync = &quot;opengl-swc&quot;;
+</a> 
+ # These are important. The first one enables the opengl backend. The last one is the vsync method. Depending on the driver you might need to use a different method.
+ # Theother options are smaller performance tweaks that work well in most cases.
+<a href="#h1" id="h1" class="h">@@ -10,6 +10,7 @@ vsync = &quot;opengl&quot;;
+</a> 
+ 
+ # Shadow
+<a href="#h1-3" id="h1-3" class="i">+inactive-opacity = 0.97
+</a> shadow = false;      # Enabled client-side shadows on windows.
+ no-dock-shadow = false;    # Avoid drawing shadows on dock/panel windows.
+ no-dnd-shadow = true;   # Don&apos;t draw shadows on DND windows.
+<b>diff --git a/<a href="../file/home/.config/bspwm/bspwmrc.html">home/.config/bspwm/bspwmrc</a> b/<a href="../file/home/.config/bspwm/bspwmrc.html">home/.config/bspwm/bspwmrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -16,11 +16,13 @@ bspc config gapless_monocle     false
+</a> bspc config focus_by_distance   true
+ 
+ bspc config normal_border_color &quot;#273941&quot;
+<a href="#h0-3" id="h0-3" class="d">-bspc config focused_border_color &quot;#71c2af&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+#bspc config focused_border_color &quot;#71c2af&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+bspc config focused_border_color &quot;#273941&quot;
+</a><a href="#h0-6" id="h0-6" class="i">+
+</a> 
+ if [ $(bspc query -M | wc -l) -eq 2 ]; then
+<a href="#h0-9" id="h0-9" class="d">-  bspc monitor LVDS-0 -d 4 5 6
+</a><a href="#h0-10" id="h0-10" class="d">-  bspc monitor DP-3 -d 1 2 3
+</a><a href="#h0-11" id="h0-11" class="i">+  bspc monitor LVDS-1 -d 4 5 6
+</a><a href="#h0-12" id="h0-12" class="i">+  bspc monitor DP-1 -d 1 2 3
+</a> else
+   bspc monitor -d 1 2 3 4 5 6
+ fi
+<b>diff --git a/<a href="../file/home/.config/fetch/config.html">home/.config/fetch/config</a> b/<a href="../file/home/.config/fetch/config.html">home/.config/fetch/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -34,7 +34,7 @@ printinfo () {
+</a>     info &quot;Memory&quot; memory
+ 
+     info &quot;Birthday&quot; birthday
+<a href="#h0-3" id="h0-3" class="d">-    # info &quot;Battery&quot; battery
+</a><a href="#h0-4" id="h0-4" class="i">+    info &quot;Battery&quot; battery
+</a>     # info &quot;Font&quot; gtkfont
+     # info &quot;Disk&quot; disk
+     # info &quot;Resolution&quot; resolution
+<b>diff --git a/<a href="../file/home/.ncmpcpp/config.html">home/.ncmpcpp/config</a> b/<a href="../file/home/.ncmpcpp/config.html">home/.ncmpcpp/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,64 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Visualizer {{{
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+visualizer_look = &quot;▒░&quot;
+</a><a href="#h0-3" id="h0-3" class="i">+visualizer_color = &quot;cyan&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+visualizer_in_stereo = &quot;yes&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+visualizer_fifo_path = &quot;/tmp/mpd.fifo&quot;
+</a><a href="#h0-6" id="h0-6" class="i">+visualizer_sync_interval = &quot;10&quot;
+</a><a href="#h0-7" id="h0-7" class="i">+visualizer_output_name = &quot;mpd spectrum&quot;
+</a><a href="#h0-8" id="h0-8" class="i">+
+</a><a href="#h0-9" id="h0-9" class="i">+# }}}
+</a><a href="#h0-10" id="h0-10" class="i">+
+</a><a href="#h0-11" id="h0-11" class="i">+# Display Settings {{{
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a><a href="#h0-13" id="h0-13" class="i">+song_list_format = &quot;{$7%a $6&gt; $5}{%t$6$R$b} [{%l}]&quot;
+</a><a href="#h0-14" id="h0-14" class="i">+song_status_format = &quot;$7%a $6$b&gt; $5%t $6$b&gt; $2%b$6&quot;
+</a><a href="#h0-15" id="h0-15" class="i">+statusbar_color = &quot;black&quot;
+</a><a href="#h0-16" id="h0-16" class="i">+main_window_color = &quot;cyan&quot;
+</a><a href="#h0-17" id="h0-17" class="i">+main_window_highlight_color = &quot;magenta&quot;
+</a><a href="#h0-18" id="h0-18" class="i">+active_column_color = &quot;black&quot;
+</a><a href="#h0-19" id="h0-19" class="i">+header_visibility = &quot;no&quot;
+</a><a href="#h0-20" id="h0-20" class="i">+statusbar_visibility = &quot;yes&quot;
+</a><a href="#h0-21" id="h0-21" class="i">+colors_enabled = &quot;yes&quot;
+</a><a href="#h0-22" id="h0-22" class="i">+now_playing_prefix = &quot;&gt; &quot;
+</a><a href="#h0-23" id="h0-23" class="i">+#now_playing_suffix = &quot;&quot;
+</a><a href="#h0-24" id="h0-24" class="i">+autocenter_mode = &quot;yes&quot;
+</a><a href="#h0-25" id="h0-25" class="i">+centered_cursor = &quot;yes&quot;
+</a><a href="#h0-26" id="h0-26" class="i">+progressbar_color = &quot;black&quot;
+</a><a href="#h0-27" id="h0-27" class="i">+progressbar_elapsed_color = &quot;yellow&quot;
+</a><a href="#h0-28" id="h0-28" class="i">+progressbar_look = &quot;---&quot;
+</a><a href="#h0-29" id="h0-29" class="i">+titles_visibility = &quot;no&quot;
+</a><a href="#h0-30" id="h0-30" class="i">+mouse_support = &quot;no&quot;
+</a><a href="#h0-31" id="h0-31" class="i">+discard_colors_if_item_is_selected = &quot;yes&quot;
+</a><a href="#h0-32" id="h0-32" class="i">+user_interface = &quot;classic&quot;
+</a><a href="#h0-33" id="h0-33" class="i">+playlist_display_mode = &quot;classic&quot;
+</a><a href="#h0-34" id="h0-34" class="i">+
+</a><a href="#h0-35" id="h0-35" class="i">+# }}}
+</a><a href="#h0-36" id="h0-36" class="i">+
+</a><a href="#h0-37" id="h0-37" class="i">+# cheat sheet
+</a><a href="#h0-38" id="h0-38" class="i">+# %l - length
+</a><a href="#h0-39" id="h0-39" class="i">+# %f - filename
+</a><a href="#h0-40" id="h0-40" class="i">+# %D - directory
+</a><a href="#h0-41" id="h0-41" class="i">+# %a - artist
+</a><a href="#h0-42" id="h0-42" class="i">+# %t - title
+</a><a href="#h0-43" id="h0-43" class="i">+# %b - album
+</a><a href="#h0-44" id="h0-44" class="i">+# %y - year
+</a><a href="#h0-45" id="h0-45" class="i">+# %n - track number (01/12 -&gt; 01)
+</a><a href="#h0-46" id="h0-46" class="i">+# %N - full track info (01/12 -&gt; 01/12)
+</a><a href="#h0-47" id="h0-47" class="i">+# %g - genre
+</a><a href="#h0-48" id="h0-48" class="i">+# %c - composer
+</a><a href="#h0-49" id="h0-49" class="i">+# %p - performer
+</a><a href="#h0-50" id="h0-50" class="i">+# %d - disc
+</a><a href="#h0-51" id="h0-51" class="i">+# %C - comment
+</a><a href="#h0-52" id="h0-52" class="i">+# $R - begin right alignment
+</a><a href="#h0-53" id="h0-53" class="i">+  # colors
+</a><a href="#h0-54" id="h0-54" class="i">+  # $0 - default window color
+</a><a href="#h0-55" id="h0-55" class="i">+  # $1 - black
+</a><a href="#h0-56" id="h0-56" class="i">+  # $2 - red
+</a><a href="#h0-57" id="h0-57" class="i">+  # $3 - green
+</a><a href="#h0-58" id="h0-58" class="i">+  # $4 - yellow
+</a><a href="#h0-59" id="h0-59" class="i">+  # $5 - blue
+</a><a href="#h0-60" id="h0-60" class="i">+  # $6 - magenta
+</a><a href="#h0-61" id="h0-61" class="i">+  # $7 - cyan
+</a><a href="#h0-62" id="h0-62" class="i">+  # $8 - white
+</a><a href="#h0-63" id="h0-63" class="i">+  # $9 - end of current color
+</a><b>diff --git a/<a href="../file/home/.scripts/panel.html">home/.scripts/panel</a> b/<a href="../file/home/.scripts/panel.html">home/.scripts/panel</a></b>
+<a href="#h0" id="h0" class="h">@@ -81,6 +81,6 @@ done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a> 
+ . panel_colors
+ 
+<a href="#h0-3" id="h0-3" class="d">-cat &quot;$PANEL_FIFO&quot; | panel_bar | lemonbar -o -2 -n &quot;$PANEL_WM_NAME&quot; -g &quot;$BAR_GEOMETRY&quot; -f &quot;$PANEL_FONT_FAMILY&quot; -f &quot;$PANEL_ICON_FONT_FAMILY&quot; -f &quot;FontAwesome&quot; -F &quot;$COLOR_FOREGROUND&quot; -B &quot;$COLOR_BACKGROUND&quot; -U &quot;$COLOR_UNDERLINE&quot; -a 30 -u 2| zsh &amp;
+</a><a href="#h0-4" id="h0-4" class="i">+cat &quot;$PANEL_FIFO&quot; | panel_bar | lemonbar -o -2 -n &quot;$PANEL_WM_NAME&quot; -g &quot;$BAR_GEOMETRY&quot; -f &quot;$PANEL_FONT_FAMILY&quot; -f &quot;$PANEL_ICON_FONT_FAMILY&quot; -f &quot;FontAwesome&quot; -F &quot;$COLOR_FOREGROUND&quot; -B &quot;$COLOR_BACKGROUND&quot; -U &quot;$COLOR_UNDERLINE&quot; -a 30 -u 2| bash &amp;
+</a> 
+ wait
+<b>diff --git a/<a href="../file/home/.scripts/panel_bar.html">home/.scripts/panel_bar</a> b/<a href="../file/home/.scripts/panel_bar.html">home/.scripts/panel_bar</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,6 +1,4 @@
+</a> #! /bin/sh
+<a href="#h0-1" id="h0-1" class="d">-#
+</a><a href="#h0-2" id="h0-2" class="d">-# Example panel for LemonBoy&apos;s bar
+</a> 
+ . panel_icons
+ 
+<b>diff --git a/<a href="../file/home/.scripts/panel_config.html">home/.scripts/panel_config</a> b/<a href="../file/home/.scripts/panel_config.html">home/.scripts/panel_config</a></b>
+<a href="#h0" id="h0" class="h">@@ -9,12 +9,12 @@ REFRESH_VOLUME=0.5
+</a> REFRESH_MUSIC=1
+ REFRESH_BATTERY=10
+ 
+<a href="#h0-3" id="h0-3" class="d">-num_mon=$(bspc query -M | wc -l)
+</a><a href="#h0-4" id="h0-4" class="i">+#num_mon=$(bspc query -M | wc -l)
+</a><a href="#h0-5" id="h0-5" class="i">+num_mon=$(bspc query -M | grep &quot; connected&quot; | wc -l)
+</a> max_res=$(xrandr  | grep \* | cut -d&apos; &apos; -f4 | head -n $num_mon | tail -n 1)
+ IFS=x; read -a sizes &lt;&lt;&lt;&quot;$max_res&quot;
+ top_pad=$(bspc config window_gap)
+ side_pad=$(bspc config window_gap)
+<a href="#h0-10" id="h0-10" class="d">-max_res=$(xrandr  | grep \* | cut -d&apos; &apos; -f4 | head -n $num_mon | tail -n 1)
+</a> IFS=x; read -a sizes &lt;&lt;&lt;&quot;$max_res&quot;
+ rwidth=$(expr ${sizes[0]} - 2 \* $side_pad)
+ BAR_GEOMETRY=&quot;${rwidth}x${PANEL_HEIGHT}+${side_pad}+${top_pad}&quot;
+<b>diff --git a/<a href="../file/home/.xres/colors/cloudy.html">home/.xres/colors/cloudy</a> b/<a href="../file/home/.xres/colors/cloudy.html">home/.xres/colors/cloudy</a></b>
+<a href="#h0" id="h0" class="h">@@ -5,31 +5,31 @@
+</a> URxvt.cursorColor: #eff1f5
+ 
+ ! black
+<a href="#h0-3" id="h0-3" class="d">-*.color0:       #273941
+</a><a href="#h0-4" id="h0-4" class="d">-*.color8:       #65737e
+</a><a href="#h0-5" id="h0-5" class="i">+*.color0:       #1d2a30
+</a><a href="#h0-6" id="h0-6" class="i">+*.color8:       #456472
+</a> 
+ ! red
+<a href="#h0-9" id="h0-9" class="d">-*.color1:       #c27171
+</a><a href="#h0-10" id="h0-10" class="i">+*.color1:       #a66363
+</a> *.color9:       #c27171
+ 
+ ! green
+<a href="#h0-14" id="h0-14" class="d">-*.color2:       #71c287
+</a><a href="#h0-15" id="h0-15" class="i">+*.color2:       #63a67a
+</a> *.color10:      #71c287
+ 
+ ! yellow
+<a href="#h0-19" id="h0-19" class="d">-*.color3:       #bfc271
+</a><a href="#h0-20" id="h0-20" class="i">+*.color3:       #a6a663
+</a> *.color11:      #bfc271
+ 
+ ! blue
+<a href="#h0-24" id="h0-24" class="d">-*.color4:       #719bc2
+</a><a href="#h0-25" id="h0-25" class="i">+*.color4:       #6385a6
+</a> *.color12:      #719bc2
+ 
+ ! magenta
+<a href="#h0-29" id="h0-29" class="d">-*.color5:       #c271a1
+</a><a href="#h0-30" id="h0-30" class="i">+*.color5:       #a66390
+</a> *.color13:      #c271a1
+ 
+ ! cyan
+<a href="#h0-34" id="h0-34" class="d">-*.color6:       #71c2af
+</a><a href="#h0-35" id="h0-35" class="i">+*.color6:       #63a69b
+</a> *.color14:      #71c2af
+ 
+ ! white
+</pre>
+</div>
+</body>
+</html>

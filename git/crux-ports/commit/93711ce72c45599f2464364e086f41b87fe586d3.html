@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Add: zathura-pdf-poppler - crux-ports - Ports for crux. Bassed off arcetera&apos;s ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/93711ce72c45599f2464364e086f41b87fe586d3.html">93711ce72c45599f2464364e086f41b87fe586d3</a>
+<b>parent</b> <a href="../commit/9864ff69951f593b50d3af6a5ce2fb45f5fc6f18.html">9864ff69951f593b50d3af6a5ce2fb45f5fc6f18</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Apr 15 18:26:39 2016
+
+Add: zathura-pdf-poppler
+
+<b>Diffstat:</b>
+ zathura-pdf-poppler/.footprint |  9 +++++++++
+ zathura-pdf-poppler/.md5sum    |  1 +
+ zathura-pdf-poppler/Pkgfile    | 16 ++++++++++++++++
+ 3 files changed, 26 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/zathura-pdf-poppler/.footprint.html">zathura-pdf-poppler/.footprint</a> b/<a href="../file/zathura-pdf-poppler/.footprint.html">zathura-pdf-poppler/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,9 @@
+</a><a href="#h0-0" id="h0-0" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h0-1" id="h0-1" class="i">+drwxr-xr-x	root/root	usr/lib/
+</a><a href="#h0-2" id="h0-2" class="i">+drwxr-xr-x	root/root	usr/lib/zathura/
+</a><a href="#h0-3" id="h0-3" class="i">+-rwxr-xr-x	root/root	usr/lib/zathura/pdf.so
+</a><a href="#h0-4" id="h0-4" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-5" id="h0-5" class="i">+drwxr-xr-x	root/root	usr/share/appdata/
+</a><a href="#h0-6" id="h0-6" class="i">+-rw-r--r--	root/root	usr/share/appdata/zathura-pdf-poppler.metainfo.xml
+</a><a href="#h0-7" id="h0-7" class="i">+drwxr-xr-x	root/root	usr/share/applications/
+</a><a href="#h0-8" id="h0-8" class="i">+-rw-r--r--	root/root	usr/share/applications/zathura-pdf-poppler.desktop
+</a><b>diff --git a/<a href="../file/zathura-pdf-poppler/.md5sum.html">zathura-pdf-poppler/.md5sum</a> b/<a href="../file/zathura-pdf-poppler/.md5sum.html">zathura-pdf-poppler/.md5sum</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+fc242236dda05f4a75cb41b52356ccae  zathura-pdf-poppler-0.2.6.tar.gz
+</a><b>diff --git a/<a href="../file/zathura-pdf-poppler/Pkgfile.html">zathura-pdf-poppler/Pkgfile</a> b/<a href="../file/zathura-pdf-poppler/Pkgfile.html">zathura-pdf-poppler/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,16 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Description: Zathura plugin for PDF support through poppler
+</a><a href="#h0-1" id="h0-1" class="i">+# URL:         https://pwmt.org/projects/zathura-pdf-poppler/
+</a><a href="#h0-2" id="h0-2" class="i">+# Packager:    tudurom, xenogenesis@openmailbox.org
+</a><a href="#h0-3" id="h0-3" class="i">+# Depends on:  zathura poppler-glib
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+name=zathura-pdf-poppler
+</a><a href="#h0-6" id="h0-6" class="i">+version=0.2.6
+</a><a href="#h0-7" id="h0-7" class="i">+release=1
+</a><a href="#h0-8" id="h0-8" class="i">+source=(https://pwmt.org/projects/zathura-pdf-poppler/download/zathura-pdf-poppler-${version}.tar.gz)
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+build() {
+</a><a href="#h0-11" id="h0-11" class="i">+	cd $name-$version
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a><a href="#h0-13" id="h0-13" class="i">+  make
+</a><a href="#h0-14" id="h0-14" class="i">+  make install DESTDIR=&quot;$PKG&quot;
+</a><a href="#h0-15" id="h0-15" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>

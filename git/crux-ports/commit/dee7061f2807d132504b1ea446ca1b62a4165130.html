@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>add missing dep - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/dee7061f2807d132504b1ea446ca1b62a4165130.html">dee7061f2807d132504b1ea446ca1b62a4165130</a>
+<b>parent</b> <a href="../commit/405d2aea43aabd28b5e2d7a1bbc2e2b2fd2fef1f.html">405d2aea43aabd28b5e2d7a1bbc2e2b2fd2fef1f</a>
+<b>Author:</b> ix &lt;<a href="mailto:arcetera@openmailbox.org">arcetera@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Mar  6 09:58:30 2016
+
+add missing dep
+
+<b>Diffstat:</b>
+ sinit/.footprint   |  7 +++++++
+ sinit/.md5sum      |  2 ++
+ sinit/Pkgfile      | 24 ++++++++++++++++++++++++
+ sinit/config.h     |  5 +++++
+ sinit/post-install |  7 +++++++
+ 5 files changed, 45 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/sinit/.footprint.html">sinit/.footprint</a> b/<a href="../file/sinit/.footprint.html">sinit/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,7 @@
+</a><a href="#h0-0" id="h0-0" class="i">+drwxr-xr-x	root/root	sbin/
+</a><a href="#h0-1" id="h0-1" class="i">+-rwxr-xr-x	root/root	sbin/sinit
+</a><a href="#h0-2" id="h0-2" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h0-3" id="h0-3" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-4" id="h0-4" class="i">+drwxr-xr-x	root/root	usr/share/man/
+</a><a href="#h0-5" id="h0-5" class="i">+drwxr-xr-x	root/root	usr/share/man/man8/
+</a><a href="#h0-6" id="h0-6" class="i">+-rw-r--r--	root/root	usr/share/man/man8/sinit.8.gz
+</a><b>diff --git a/<a href="../file/sinit/.md5sum.html">sinit/.md5sum</a> b/<a href="../file/sinit/.md5sum.html">sinit/.md5sum</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,2 @@
+</a><a href="#h0-0" id="h0-0" class="i">+bde6f2970c2543bfb01cc33fcc1633de  config.h
+</a><a href="#h0-1" id="h0-1" class="i">+9a15ec492278e2a2b29f8b25eda10286  sinit-1.0.tar.gz
+</a><b>diff --git a/<a href="../file/sinit/Pkgfile.html">sinit/Pkgfile</a> b/<a href="../file/sinit/Pkgfile.html">sinit/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,24 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Description: A simple init.
+</a><a href="#h0-1" id="h0-1" class="i">+# URL:         http://git.suckless.org/sinit/
+</a><a href="#h0-2" id="h0-2" class="i">+# Packager:    onodera, onodera at openmailbox dot org
+</a><a href="#h0-3" id="h0-3" class="i">+# Maintainer:  ix, arcetera@openmailbox.org
+</a><a href="#h0-4" id="h0-4" class="i">+# Depends on:
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+name=sinit
+</a><a href="#h0-7" id="h0-7" class="i">+version=1.0
+</a><a href="#h0-8" id="h0-8" class="i">+release=2
+</a><a href="#h0-9" id="h0-9" class="i">+source=(
+</a><a href="#h0-10" id="h0-10" class="i">+	http://dl.suckless.org/sinit/sinit-${version}.tar.gz
+</a><a href="#h0-11" id="h0-11" class="i">+	config.h
+</a><a href="#h0-12" id="h0-12" class="i">+)
+</a><a href="#h0-13" id="h0-13" class="i">+
+</a><a href="#h0-14" id="h0-14" class="i">+build() {
+</a><a href="#h0-15" id="h0-15" class="i">+	cd $name-$version
+</a><a href="#h0-16" id="h0-16" class="i">+
+</a><a href="#h0-17" id="h0-17" class="i">+	mv $SRC/config.h .
+</a><a href="#h0-18" id="h0-18" class="i">+
+</a><a href="#h0-19" id="h0-19" class="i">+	make
+</a><a href="#h0-20" id="h0-20" class="i">+
+</a><a href="#h0-21" id="h0-21" class="i">+	install -Dm644 sinit.8 ${PKG}/usr/share/man/man8/sinit.8
+</a><a href="#h0-22" id="h0-22" class="i">+	install -Dm755 sinit   ${PKG}/sbin/sinit
+</a><a href="#h0-23" id="h0-23" class="i">+}
+</a><b>diff --git a/<a href="../file/sinit/config.h.html">sinit/config.h</a> b/<a href="../file/sinit/config.h.html">sinit/config.h</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,5 @@
+</a><a href="#h0-0" id="h0-0" class="i">+/* See LICENSE file for copyright and license details. */
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+static char *const rcinitcmd[]     = { &quot;/sbin/init&quot;, &quot;--init&quot;, NULL };
+</a><a href="#h0-3" id="h0-3" class="i">+static char *const rcrebootcmd[]   = { &quot;/sbin/init&quot;, &quot;--reboot&quot;, NULL };
+</a><a href="#h0-4" id="h0-4" class="i">+static char *const rcpoweroffcmd[] = { &quot;/sbin/init&quot;, &quot;--shutdown&quot;, NULL };
+</a><b>diff --git a/<a href="../file/sinit/post-install.html">sinit/post-install</a> b/<a href="../file/sinit/post-install.html">sinit/post-install</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,7 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+#
+</a><a href="#h0-2" id="h0-2" class="i">+# sinit postinst script
+</a><a href="#h0-3" id="h0-3" class="i">+#
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+# symlink sinit to init to avoid broken setups
+</a><a href="#h0-6" id="h0-6" class="i">+ln -s /sbin/sinit /sbin/init
+</a></pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>libxosd: update install location - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/f378877e11a582ea822d214feb090a1e30ece3e3.html">f378877e11a582ea822d214feb090a1e30ece3e3</a>
+<b>parent</b> <a href="../commit/c5e430681b595c53b66976544b30deffc2ba8b19.html">c5e430681b595c53b66976544b30deffc2ba8b19</a>
+<b>Author:</b> ix &lt;<a href="mailto:arcetera@cock.li">arcetera@cock.li</a>&gt;
+<b>Date:</b>   Sat Jan  2 18:17:07 2016
+
+libxosd: update install location
+
+<b>Diffstat:</b>
+ libxosd/.md5sum | 2 +-
+ libxosd/Pkgfile | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+<hr/><b>diff --git a/<a href="../file/libxosd/.md5sum.html">libxosd/.md5sum</a> b/<a href="../file/libxosd/.md5sum.html">libxosd/.md5sum</a></b>
+<a href="#h0" id="h0" class="h">@@ -1 +1 @@
+</a><a href="#h0-0" id="h0-0" class="d">-4b349fe930e4eee2f504d6c02673e24d  xosd-2.2.14.tar.gz
+</a><a href="#h0-1" id="h0-1" class="i">+4b349fe930e4eee2f504d6c02673e24d  xosd_2.2.14.orig.tar.gz
+</a><b>diff --git a/<a href="../file/libxosd/Pkgfile.html">libxosd/Pkgfile</a> b/<a href="../file/libxosd/Pkgfile.html">libxosd/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -5,13 +5,13 @@
+</a> 
+ name=libxosd
+ version=2.2.14
+<a href="#h0-3" id="h0-3" class="d">-release=1
+</a><a href="#h0-4" id="h0-4" class="d">-source=(http://downloads.sourceforge.net/project/libxosd/libxosd/xosd-2.2.14/xosd-2.2.14.tar.gz)
+</a><a href="#h0-5" id="h0-5" class="i">+release=2
+</a><a href="#h0-6" id="h0-6" class="i">+source=(http://archive.ubuntu.com/ubuntu/pool/universe/x/xosd/xosd_2.2.14.orig.tar.gz)
+</a> 
+ build() {
+ 	cd xosd-$version
+ 
+     ./configure
+ 	make
+<a href="#h0-13" id="h0-13" class="d">-	make DESTDIR=$PKG install
+</a><a href="#h0-14" id="h0-14" class="i">+	make DESTDIR=$PKG prefix=/usr install
+</a> }
+</pre>
+</div>
+</body>
+</html>

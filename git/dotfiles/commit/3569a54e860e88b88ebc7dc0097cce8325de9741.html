@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Added READMEs - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/3569a54e860e88b88ebc7dc0097cce8325de9741.html">3569a54e860e88b88ebc7dc0097cce8325de9741</a>
+<b>parent</b> <a href="../commit/05c251c300b5c1690612c6d97e6a51334305f152.html">05c251c300b5c1690612c6d97e6a51334305f152</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Mon Feb 15 16:54:12 2016
+
+Added READMEs
+
+<b>Diffstat:</b>
+ README.md               |  2 +-
+ home/.config/README.md  | 31 +++++++++++++++++++++++++++++++
+ home/.scripts/README.md |  1 +
+ home/.xres/README.md    |  9 +++++++++
+ home/README.md          | 32 ++++++++++++++++++++++++++++++++
+ 5 files changed, 74 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h0" id="h0" class="h">@@ -3,7 +3,7 @@ tudurom&apos;s dotfiles
+</a> 
+ &gt; you are your dotfiles
+ 
+<a href="#h0-3" id="h0-3" class="d">-A mix of style and usability, these are my dotfiles. 
+</a><a href="#h0-4" id="h0-4" class="i">+A mix of style and usability, these are my dotfiles. This repo is structured in a way first-time Linux users and ricers can understand what&apos;s going on.
+</a> 
+ Managing
+ --------
+<b>diff --git a/<a href="../file/home/.config/README.md.html">home/.config/README.md</a> b/<a href="../file/home/.config/README.md.html">home/.config/README.md</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,31 @@
+</a><a href="#h0-0" id="h0-0" class="i">+```
+</a><a href="#h0-1" id="h0-1" class="i">+.
+</a><a href="#h0-2" id="h0-2" class="i">+├── bspwm
+</a><a href="#h0-3" id="h0-3" class="i">+│   └── bspwmrc - BSPWM config. BSPWM is a window manager. No Desktop Environment here.
+</a><a href="#h0-4" id="h0-4" class="i">+├── cava
+</a><a href="#h0-5" id="h0-5" class="i">+│   └── config - Cava config. Cava is a Music Visualizer
+</a><a href="#h0-6" id="h0-6" class="i">+├── fetch
+</a><a href="#h0-7" id="h0-7" class="i">+│   └── config - Config for dylanaraps&apos; fetch script. Screenfetch on steroids.
+</a><a href="#h0-8" id="h0-8" class="i">+├── gtk-3.0
+</a><a href="#h0-9" id="h0-9" class="i">+│   └── gtk.css - like ~/.gtkrc-2.0
+</a><a href="#h0-10" id="h0-10" class="i">+├── herbstluftwm - hlwm is a window manager
+</a><a href="#h0-11" id="h0-11" class="i">+│   ├── autostart - hlwm config. It&apos;s just a bash script, like ~/.xinitrc
+</a><a href="#h0-12" id="h0-12" class="i">+│   ├── colors - color variables
+</a><a href="#h0-13" id="h0-13" class="i">+│   └── panel.sh - panel starter
+</a><a href="#h0-14" id="h0-14" class="i">+├── i3
+</a><a href="#h0-15" id="h0-15" class="i">+│   └── config - i3 config. i3 is a window manager
+</a><a href="#h0-16" id="h0-16" class="i">+├── nvim - NeoVim is a text editor. VIM MASTERRACE
+</a><a href="#h0-17" id="h0-17" class="i">+│   ├── colors
+</a><a href="#h0-18" id="h0-18" class="i">+│   │   └── shblah.vim - shblah by z3bra. Uses terminal colors. Modified.
+</a><a href="#h0-19" id="h0-19" class="i">+│   ├── init.vim - .vimrc for NeoVim
+</a><a href="#h0-20" id="h0-20" class="i">+│   └── plugged - I use vim-plug for nvim plugin management
+</a><a href="#h0-21" id="h0-21" class="i">+│       └── lightline.vim - lightline.vim is a statusbar like powerline
+</a><a href="#h0-22" id="h0-22" class="i">+│           └── autoload
+</a><a href="#h0-23" id="h0-23" class="i">+│               └── lightline
+</a><a href="#h0-24" id="h0-24" class="i">+│                   └── colorscheme
+</a><a href="#h0-25" id="h0-25" class="i">+│                       └── cloudy.vim - Here goes my lightline.vim colorscheme
+</a><a href="#h0-26" id="h0-26" class="i">+├── README.md - I hope you&apos;re reading this.
+</a><a href="#h0-27" id="h0-27" class="i">+└── sxhkd - sxhkd is a keyboard shortcut mapper. Used with bspwm
+</a><a href="#h0-28" id="h0-28" class="i">+    └── sxhkdrc - config
+</a><a href="#h0-29" id="h0-29" class="i">+```
+</a><a href="#h0-30" id="h0-30" class="i">+
+</a><b>diff --git a/<a href="../file/home/.scripts/README.md.html">home/.scripts/README.md</a> b/<a href="../file/home/.scripts/README.md.html">home/.scripts/README.md</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+###### Coming soon....
+</a><b>diff --git a/<a href="../file/home/.xres/README.md.html">home/.xres/README.md</a> b/<a href="../file/home/.xres/README.md.html">home/.xres/README.md</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,9 @@
+</a><a href="#h0-0" id="h0-0" class="i">+```
+</a><a href="#h0-1" id="h0-1" class="i">+.
+</a><a href="#h0-2" id="h0-2" class="i">+├── colors
+</a><a href="#h0-3" id="h0-3" class="i">+│   ├── base16-ocean - Old color scheme
+</a><a href="#h0-4" id="h0-4" class="i">+│   └── cloudy - New color scheme. Made by me, loosely based on ryuuko, by dylanaraps
+</a><a href="#h0-5" id="h0-5" class="i">+├── rofi - rofi config. I don&apos;t use rofi now.
+</a><a href="#h0-6" id="h0-6" class="i">+├── urxvt - urxvt configs
+</a><a href="#h0-7" id="h0-7" class="i">+└── xft - font rendering configs
+</a><a href="#h0-8" id="h0-8" class="i">+```
+</a><b>diff --git a/<a href="../file/home/README.md.html">home/README.md</a> b/<a href="../file/home/README.md.html">home/README.md</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,32 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# ~
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+## Home
+</a><a href="#h0-3" id="h0-3" class="i">+
+</a><a href="#h0-4" id="h0-4" class="i">+### Explanation
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+* `.asoundrc` - ALSA configuration. Trying to use PulseAudio as less as possible.
+</a><a href="#h0-7" id="h0-7" class="i">+* `.compton.conf` - Compton config. Compton is a &quot;window compozitor&quot; - is the program that draws the windows on the screen and applies effects like shadows and opacity.
+</a><a href="#h0-8" id="h0-8" class="i">+* `.crosssh.sh` - configuration for `ksh`-based shells, like `mksh`, `bash` and `zsh`. Mainly aliases.
+</a><a href="#h0-9" id="h0-9" class="i">+* `.gtkrc-2.0` - GTK config. This is where I specify global fonts and theme.
+</a><a href="#h0-10" id="h0-10" class="i">+* `.i3blocks.conf` - from the day I was using i3. Bar config.
+</a><a href="#h0-11" id="h0-11" class="i">+* `.mkshrc` - actual shell config. I&apos;m now using `bash` or `zsh` but `mksh`, because it&apos;s simple and fast.
+</a><a href="#h0-12" id="h0-12" class="i">+* `.tmux.conf` - tmux config. TerMinal MultipleXer. A window manager for the shell with the ability to detach sessions (to run them in background and then resume them)
+</a><a href="#h0-13" id="h0-13" class="i">+* `.xinitrc` - bash script executed by `startx` when starting the X session (duh).
+</a><a href="#h0-14" id="h0-14" class="i">+
+</a><a href="#h0-15" id="h0-15" class="i">+### Directory structure
+</a><a href="#h0-16" id="h0-16" class="i">+
+</a><a href="#h0-17" id="h0-17" class="i">+If a directory is not included here then check the README in the corresponding directory.
+</a><a href="#h0-18" id="h0-18" class="i">+
+</a><a href="#h0-19" id="h0-19" class="i">+```
+</a><a href="#h0-20" id="h0-20" class="i">+.
+</a><a href="#h0-21" id="h0-21" class="i">+├── .ncmpcpp - ncmpcpp is a client for MPD, a music server
+</a><a href="#h0-22" id="h0-22" class="i">+│   └── config
+</a><a href="#h0-23" id="h0-23" class="i">+├── Pictures - Wallpapers. See for yourself.
+</a><a href="#h0-24" id="h0-24" class="i">+├── .tmux
+</a><a href="#h0-25" id="h0-25" class="i">+    └── bin
+</a><a href="#h0-26" id="h0-26" class="i">+        └── statusline - tmux statusline, yeah. That&apos;s a bash script
+</a><a href="#h0-27" id="h0-27" class="i">+├── .vimperator
+</a><a href="#h0-28" id="h0-28" class="i">+    └── colors
+</a><a href="#h0-29" id="h0-29" class="i">+        └── ocean.vimp - vimperator theme
+</a><a href="#h0-30" id="h0-30" class="i">+└── .Xresources
+</a><a href="#h0-31" id="h0-31" class="i">+```
+</a></pre>
+</div>
+</body>
+</html>

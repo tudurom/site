@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Vim keybindings for ncmpcpp and new wallpaper (this will fuck up the git clone speed) - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/fff6542230993c0456a92d37d290444462a4a7e7.html">fff6542230993c0456a92d37d290444462a4a7e7</a>
+<b>parent</b> <a href="../commit/1131749a8abda69c58dfb249afcfa9b5ccea1403.html">1131749a8abda69c58dfb249afcfa9b5ccea1403</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Thu Feb 18 19:48:31 2016
+
+Vim keybindings for ncmpcpp and new wallpaper (this will fuck up the git clone speed)
+
+<b>Diffstat:</b>
+ home/.config/sxhkd/sxhkdrc      |   3 +-
+ home/.crosssh.sh                |  16 +-
+ home/.ncmpcpp/bindings          | 539 +++++++++++++++++++++++++++++++++++++++++-
+ home/.ncmpcpp/config            |   3 +-
+ home/.scripts/panel_colors      |   3 +-
+ home/.scripts/setwall           |   2 +-
+ home/Pictures/madeon-pillar.png | Bin 0 -&gt; 15546035 bytes
+ 7 files changed, 555 insertions(+), 11 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.config/sxhkd/sxhkdrc.html">home/.config/sxhkd/sxhkdrc</a> b/<a href="../file/home/.config/sxhkd/sxhkdrc.html">home/.config/sxhkd/sxhkdrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -134,6 +134,9 @@ super + Return
+</a> super + space
+   ~/.scripts/run_dmenu
+ 
+<a href="#h0-3" id="h0-3" class="i">+Print
+</a><a href="#h0-4" id="h0-4" class="i">+  ~/.scripts/screenie
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a> # make sxhkd reload its configuration files:
+ super + Escape
+ 	pkill -USR1 -x sxhkd
+<b>diff --git a/<a href="../file/home/.crosssh.sh.html">home/.crosssh.sh</a> b/<a href="../file/home/.crosssh.sh.html">home/.crosssh.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -4,14 +4,14 @@
+</a> # by tudurom
+ # bits shared between different shells (bash, mksh, zsh)
+ 
+<a href="#h0-3" id="h0-3" class="d">-if [[ $- == *i* ]] &amp;&amp; [[ -z &quot;$TMUX&quot; ]]; then
+</a><a href="#h0-4" id="h0-4" class="d">-  if [[ $(tmux ls | grep -v &quot;attached&quot; | wc -l) -gt 0 ]]; then
+</a><a href="#h0-5" id="h0-5" class="d">-    # Auto-attach to the first detached one
+</a><a href="#h0-6" id="h0-6" class="d">-    exec tmux a -t $(tmux ls | grep -v &quot;attached&quot; | head -n 1 | awk -F: &apos;{print $1}&apos;)
+</a><a href="#h0-7" id="h0-7" class="d">-  else
+</a><a href="#h0-8" id="h0-8" class="d">-    exec tmux
+</a><a href="#h0-9" id="h0-9" class="d">-  fi
+</a><a href="#h0-10" id="h0-10" class="d">-fi
+</a><a href="#h0-11" id="h0-11" class="i">+#if [[ $- == *i* ]] &amp;&amp; [[ -z &quot;$TMUX&quot; ]]; then
+</a><a href="#h0-12" id="h0-12" class="i">+#  if [[ $(tmux ls | grep -v &quot;attached&quot; | wc -l) -gt 0 ]]; then
+</a><a href="#h0-13" id="h0-13" class="i">+#    # Auto-attach to the first detached one
+</a><a href="#h0-14" id="h0-14" class="i">+#    exec tmux a -t $(tmux ls | grep -v &quot;attached&quot; | head -n 1 | awk -F: &apos;{print $1}&apos;)
+</a><a href="#h0-15" id="h0-15" class="i">+#  else
+</a><a href="#h0-16" id="h0-16" class="i">+#    exec tmux
+</a><a href="#h0-17" id="h0-17" class="i">+#  fi
+</a><a href="#h0-18" id="h0-18" class="i">+#fi
+</a> 
+ export EDITOR=nvim
+ export VISUAL=nvim
+<b>diff --git a/<a href="../file/home/.ncmpcpp/bindings.html">home/.ncmpcpp/bindings</a> b/<a href="../file/home/.ncmpcpp/bindings.html">home/.ncmpcpp/bindings</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,539 @@
+</a><a href="#h0-0" id="h0-0" class="i">+##########################################################
+</a><a href="#h0-1" id="h0-1" class="i">+## this is example bindings configuration file, copy it ##
+</a><a href="#h0-2" id="h0-2" class="i">+## to ~/.ncmpcpp/bindings and set up your preferences   ##
+</a><a href="#h0-3" id="h0-3" class="i">+##########################################################
+</a><a href="#h0-4" id="h0-4" class="i">+##
+</a><a href="#h0-5" id="h0-5" class="i">+##### General rules #####
+</a><a href="#h0-6" id="h0-6" class="i">+##
+</a><a href="#h0-7" id="h0-7" class="i">+## 1) Because each action has runtime checks whether it&apos;s
+</a><a href="#h0-8" id="h0-8" class="i">+##    ok to run it, a few actions can be bound to one key.
+</a><a href="#h0-9" id="h0-9" class="i">+##    Actions will be bound in order given in configuration
+</a><a href="#h0-10" id="h0-10" class="i">+##    file. When a key is pressed, first action in order
+</a><a href="#h0-11" id="h0-11" class="i">+##    will test itself whether it&apos;s possible to run it. If
+</a><a href="#h0-12" id="h0-12" class="i">+##    test succeeds, action is executed and other actions
+</a><a href="#h0-13" id="h0-13" class="i">+##    bound to this key are ignored. If it doesn&apos;t, next
+</a><a href="#h0-14" id="h0-14" class="i">+##    action in order tests itself etc.
+</a><a href="#h0-15" id="h0-15" class="i">+##
+</a><a href="#h0-16" id="h0-16" class="i">+## 2) It&apos;s possible to bind more that one action at once
+</a><a href="#h0-17" id="h0-17" class="i">+##    to a key. It can be done using the following syntax:
+</a><a href="#h0-18" id="h0-18" class="i">+##
+</a><a href="#h0-19" id="h0-19" class="i">+##    def_key &quot;key&quot;
+</a><a href="#h0-20" id="h0-20" class="i">+##      action1
+</a><a href="#h0-21" id="h0-21" class="i">+##      action2
+</a><a href="#h0-22" id="h0-22" class="i">+##      ...
+</a><a href="#h0-23" id="h0-23" class="i">+##
+</a><a href="#h0-24" id="h0-24" class="i">+##    This creates a chain of actions. When such chain is
+</a><a href="#h0-25" id="h0-25" class="i">+##    executed, each action in chain is run until the end of
+</a><a href="#h0-26" id="h0-26" class="i">+##    chain is reached or one of its actions fails to execute
+</a><a href="#h0-27" id="h0-27" class="i">+##    due to its requirements not being met. If multiple actions
+</a><a href="#h0-28" id="h0-28" class="i">+##    and/or chains are bound to the same key, they will be
+</a><a href="#h0-29" id="h0-29" class="i">+##    consecutively run until one of them gets fully executed.
+</a><a href="#h0-30" id="h0-30" class="i">+##
+</a><a href="#h0-31" id="h0-31" class="i">+## 3) When ncmpcpp starts, bindings configuration file is
+</a><a href="#h0-32" id="h0-32" class="i">+##    parsed and then ncmpcpp provides &quot;missing pieces&quot;
+</a><a href="#h0-33" id="h0-33" class="i">+##    of default keybindings. If you want to disable some
+</a><a href="#h0-34" id="h0-34" class="i">+##    bindings, there is a special action called &apos;dummy&apos;
+</a><a href="#h0-35" id="h0-35" class="i">+##    for that purpose. Eg. if you want to disable ability
+</a><a href="#h0-36" id="h0-36" class="i">+##    to crop playlists, you need to put the following
+</a><a href="#h0-37" id="h0-37" class="i">+##    into configuration file:
+</a><a href="#h0-38" id="h0-38" class="i">+##
+</a><a href="#h0-39" id="h0-39" class="i">+##    def_key &quot;C&quot;
+</a><a href="#h0-40" id="h0-40" class="i">+##      dummy
+</a><a href="#h0-41" id="h0-41" class="i">+##
+</a><a href="#h0-42" id="h0-42" class="i">+##    After that ncmpcpp will not bind any default action
+</a><a href="#h0-43" id="h0-43" class="i">+##    to this key.
+</a><a href="#h0-44" id="h0-44" class="i">+##
+</a><a href="#h0-45" id="h0-45" class="i">+## 4) To let you write simple macros, the following special
+</a><a href="#h0-46" id="h0-46" class="i">+##    actions are provided:
+</a><a href="#h0-47" id="h0-47" class="i">+##
+</a><a href="#h0-48" id="h0-48" class="i">+##    - push_character &quot;character&quot; - pushes given special
+</a><a href="#h0-49" id="h0-49" class="i">+##      character into input queue, so it will be immediately
+</a><a href="#h0-50" id="h0-50" class="i">+##      picked by ncmpcpp upon next call to readKey function.
+</a><a href="#h0-51" id="h0-51" class="i">+##      Accepted values: mouse, up, down, page_up, page_down,
+</a><a href="#h0-52" id="h0-52" class="i">+##      home, end, space, enter, insert, delete, left, right,
+</a><a href="#h0-53" id="h0-53" class="i">+##      tab, ctrl-a, ctrl-b, ..., ctrl-z, ctrl-[, ctrl-\\,
+</a><a href="#h0-54" id="h0-54" class="i">+##      ctrl-], ctrl-^, ctrl-_, f1, f2, ..., f12, backspace.
+</a><a href="#h0-55" id="h0-55" class="i">+##      In addition, most of these names can be prefixed with
+</a><a href="#h0-56" id="h0-56" class="i">+##      alt-/ctrl-/shift- to be recognized with the appropriate
+</a><a href="#h0-57" id="h0-57" class="i">+##      modifier key(s).
+</a><a href="#h0-58" id="h0-58" class="i">+##
+</a><a href="#h0-59" id="h0-59" class="i">+##    - push_characters &quot;string&quot; - pushes given string into
+</a><a href="#h0-60" id="h0-60" class="i">+##      input queue.
+</a><a href="#h0-61" id="h0-61" class="i">+##
+</a><a href="#h0-62" id="h0-62" class="i">+##    - require_runnable &quot;action&quot; - checks whether given action
+</a><a href="#h0-63" id="h0-63" class="i">+##      is runnable and fails if it isn&apos;t. This is especially
+</a><a href="#h0-64" id="h0-64" class="i">+##      useful when mixed with previous two functions. Consider
+</a><a href="#h0-65" id="h0-65" class="i">+##      the following macro definition:
+</a><a href="#h0-66" id="h0-66" class="i">+##
+</a><a href="#h0-67" id="h0-67" class="i">+##      def_key &quot;key&quot;
+</a><a href="#h0-68" id="h0-68" class="i">+##        push_characters &quot;custom_filter&quot;
+</a><a href="#h0-69" id="h0-69" class="i">+##        apply_filter
+</a><a href="#h0-70" id="h0-70" class="i">+##
+</a><a href="#h0-71" id="h0-71" class="i">+##      If apply_filter can&apos;t be currently run, we end up with
+</a><a href="#h0-72" id="h0-72" class="i">+##      sequence of characters in input queue which will be
+</a><a href="#h0-73" id="h0-73" class="i">+##      treated just as we typed them. This may lead to unexpected
+</a><a href="#h0-74" id="h0-74" class="i">+##      results (in this case &apos;c&apos; will most likely clear current
+</a><a href="#h0-75" id="h0-75" class="i">+##      playlist, &apos;u&apos; will trigger database update, &apos;s&apos; will stop
+</a><a href="#h0-76" id="h0-76" class="i">+##      playback etc.). To prevent such thing from happening, we
+</a><a href="#h0-77" id="h0-77" class="i">+##      need to change above definition to this one:
+</a><a href="#h0-78" id="h0-78" class="i">+##
+</a><a href="#h0-79" id="h0-79" class="i">+##      def_key &quot;key&quot;
+</a><a href="#h0-80" id="h0-80" class="i">+##        require_runnable &quot;apply_filter&quot;
+</a><a href="#h0-81" id="h0-81" class="i">+##        push_characters &quot;custom_filter&quot;
+</a><a href="#h0-82" id="h0-82" class="i">+##        apply_filter
+</a><a href="#h0-83" id="h0-83" class="i">+##
+</a><a href="#h0-84" id="h0-84" class="i">+##      Here, first we test whether apply_filter can be actually run
+</a><a href="#h0-85" id="h0-85" class="i">+##      before we stuff characters into input queue, so if condition
+</a><a href="#h0-86" id="h0-86" class="i">+##      is not met, whole chain is aborted and we&apos;re fine.
+</a><a href="#h0-87" id="h0-87" class="i">+##
+</a><a href="#h0-88" id="h0-88" class="i">+##    - require_screen &quot;screen&quot; - checks whether given screen is
+</a><a href="#h0-89" id="h0-89" class="i">+##      currently active. accepted values: browser, clock, help,
+</a><a href="#h0-90" id="h0-90" class="i">+##      media_library, outputs, playlist, playlist_editor,
+</a><a href="#h0-91" id="h0-91" class="i">+##      search_engine, tag_editor, visualizer, last_fm, lyrics,
+</a><a href="#h0-92" id="h0-92" class="i">+##      selected_items_adder, server_info, song_info,
+</a><a href="#h0-93" id="h0-93" class="i">+##      sort_playlist_dialog, tiny_tag_editor.
+</a><a href="#h0-94" id="h0-94" class="i">+##
+</a><a href="#h0-95" id="h0-95" class="i">+##    - run_external_command &quot;command&quot; - runs given command using
+</a><a href="#h0-96" id="h0-96" class="i">+##      system() function.
+</a><a href="#h0-97" id="h0-97" class="i">+##
+</a><a href="#h0-98" id="h0-98" class="i">+## 5) In addition to binding to a key, you can also bind actions
+</a><a href="#h0-99" id="h0-99" class="i">+##    or chains of actions to a command. If it comes to commands,
+</a><a href="#h0-100" id="h0-100" class="i">+##    syntax is very similar to defining keys. Here goes example
+</a><a href="#h0-101" id="h0-101" class="i">+##    definition of a command:
+</a><a href="#h0-102" id="h0-102" class="i">+##
+</a><a href="#h0-103" id="h0-103" class="i">+##      def_command &quot;quit&quot; [deferred]
+</a><a href="#h0-104" id="h0-104" class="i">+##        stop
+</a><a href="#h0-105" id="h0-105" class="i">+##        quit
+</a><a href="#h0-106" id="h0-106" class="i">+##
+</a><a href="#h0-107" id="h0-107" class="i">+##    If you execute the above command (which can be done by
+</a><a href="#h0-108" id="h0-108" class="i">+##    invoking action execute_command, typing &apos;quit&apos; and pressing
+</a><a href="#h0-109" id="h0-109" class="i">+##    enter), ncmpcpp will stop the player and then quit. Note the
+</a><a href="#h0-110" id="h0-110" class="i">+##    presence of word &apos;deferred&apos; enclosed in square brackets. It
+</a><a href="#h0-111" id="h0-111" class="i">+##    tells ncmpcpp to wait for confirmation (ie. pressing enter)
+</a><a href="#h0-112" id="h0-112" class="i">+##    after you typed quit. Instead of &apos;deferred&apos;, &apos;immediate&apos;
+</a><a href="#h0-113" id="h0-113" class="i">+##    could be used. Then ncmpcpp will not wait for confirmation
+</a><a href="#h0-114" id="h0-114" class="i">+##    (enter) and will execute the command the moment it sees it.
+</a><a href="#h0-115" id="h0-115" class="i">+##
+</a><a href="#h0-116" id="h0-116" class="i">+##    Note: while command chains are executed, internal environment
+</a><a href="#h0-117" id="h0-117" class="i">+##    update (which includes current window refresh and mpd status
+</a><a href="#h0-118" id="h0-118" class="i">+##    update) is not performed for performance reasons. However, it
+</a><a href="#h0-119" id="h0-119" class="i">+##    may be desirable to do so in some situration. Therefore it&apos;s
+</a><a href="#h0-120" id="h0-120" class="i">+##    possible to invoke by hand by performing &apos;update enviroment&apos;
+</a><a href="#h0-121" id="h0-121" class="i">+##    action.
+</a><a href="#h0-122" id="h0-122" class="i">+##
+</a><a href="#h0-123" id="h0-123" class="i">+## Note: There is a difference between:
+</a><a href="#h0-124" id="h0-124" class="i">+##
+</a><a href="#h0-125" id="h0-125" class="i">+##         def_key &quot;key&quot;
+</a><a href="#h0-126" id="h0-126" class="i">+##           action1
+</a><a href="#h0-127" id="h0-127" class="i">+##
+</a><a href="#h0-128" id="h0-128" class="i">+##         def_key &quot;key&quot;
+</a><a href="#h0-129" id="h0-129" class="i">+##           action2
+</a><a href="#h0-130" id="h0-130" class="i">+##
+</a><a href="#h0-131" id="h0-131" class="i">+##       and
+</a><a href="#h0-132" id="h0-132" class="i">+##
+</a><a href="#h0-133" id="h0-133" class="i">+##         def_key &quot;key&quot;
+</a><a href="#h0-134" id="h0-134" class="i">+##           action1
+</a><a href="#h0-135" id="h0-135" class="i">+##           action2
+</a><a href="#h0-136" id="h0-136" class="i">+##
+</a><a href="#h0-137" id="h0-137" class="i">+##      First one binds two single actions to the same key whilst
+</a><a href="#h0-138" id="h0-138" class="i">+##      second one defines a chain of actions. The behavior of
+</a><a href="#h0-139" id="h0-139" class="i">+##      these two is different and is described in (1) and (2).
+</a><a href="#h0-140" id="h0-140" class="i">+##
+</a><a href="#h0-141" id="h0-141" class="i">+## Note: Function def_key accepts non-ascii characters.
+</a><a href="#h0-142" id="h0-142" class="i">+##
+</a><a href="#h0-143" id="h0-143" class="i">+##### List of unbound actions #####
+</a><a href="#h0-144" id="h0-144" class="i">+##
+</a><a href="#h0-145" id="h0-145" class="i">+## The following actions are not bound to any key/command:
+</a><a href="#h0-146" id="h0-146" class="i">+##
+</a><a href="#h0-147" id="h0-147" class="i">+##  - set_volume
+</a><a href="#h0-148" id="h0-148" class="i">+##
+</a><a href="#h0-149" id="h0-149" class="i">+#
+</a><a href="#h0-150" id="h0-150" class="i">+#def_key &quot;mouse&quot;
+</a><a href="#h0-151" id="h0-151" class="i">+#  mouse_event
+</a><a href="#h0-152" id="h0-152" class="i">+#
+</a><a href="#h0-153" id="h0-153" class="i">+def_key &quot;k&quot;
+</a><a href="#h0-154" id="h0-154" class="i">+  scroll_up
+</a><a href="#h0-155" id="h0-155" class="i">+#
+</a><a href="#h0-156" id="h0-156" class="i">+#def_key &quot;shift-up&quot;
+</a><a href="#h0-157" id="h0-157" class="i">+#  select_item
+</a><a href="#h0-158" id="h0-158" class="i">+#  scroll_up
+</a><a href="#h0-159" id="h0-159" class="i">+#
+</a><a href="#h0-160" id="h0-160" class="i">+def_key &quot;j&quot;
+</a><a href="#h0-161" id="h0-161" class="i">+  scroll_down
+</a><a href="#h0-162" id="h0-162" class="i">+#
+</a><a href="#h0-163" id="h0-163" class="i">+#def_key &quot;shift-down&quot;
+</a><a href="#h0-164" id="h0-164" class="i">+#  select_item
+</a><a href="#h0-165" id="h0-165" class="i">+#  scroll_down
+</a><a href="#h0-166" id="h0-166" class="i">+#
+</a><a href="#h0-167" id="h0-167" class="i">+#def_key &quot;[&quot;
+</a><a href="#h0-168" id="h0-168" class="i">+#  scroll_up_album
+</a><a href="#h0-169" id="h0-169" class="i">+#
+</a><a href="#h0-170" id="h0-170" class="i">+#def_key &quot;]&quot;
+</a><a href="#h0-171" id="h0-171" class="i">+#  scroll_down_album
+</a><a href="#h0-172" id="h0-172" class="i">+#
+</a><a href="#h0-173" id="h0-173" class="i">+#def_key &quot;{&quot;
+</a><a href="#h0-174" id="h0-174" class="i">+#  scroll_up_artist
+</a><a href="#h0-175" id="h0-175" class="i">+#
+</a><a href="#h0-176" id="h0-176" class="i">+#def_key &quot;}&quot;
+</a><a href="#h0-177" id="h0-177" class="i">+#  scroll_down_artist
+</a><a href="#h0-178" id="h0-178" class="i">+#
+</a><a href="#h0-179" id="h0-179" class="i">+#def_key &quot;page_up&quot;
+</a><a href="#h0-180" id="h0-180" class="i">+#  page_up
+</a><a href="#h0-181" id="h0-181" class="i">+#
+</a><a href="#h0-182" id="h0-182" class="i">+#def_key &quot;page_down&quot;
+</a><a href="#h0-183" id="h0-183" class="i">+#  page_down
+</a><a href="#h0-184" id="h0-184" class="i">+#
+</a><a href="#h0-185" id="h0-185" class="i">+#def_key &quot;home&quot;
+</a><a href="#h0-186" id="h0-186" class="i">+#  move_home
+</a><a href="#h0-187" id="h0-187" class="i">+#
+</a><a href="#h0-188" id="h0-188" class="i">+#def_key &quot;end&quot;
+</a><a href="#h0-189" id="h0-189" class="i">+#  move_end
+</a><a href="#h0-190" id="h0-190" class="i">+#
+</a><a href="#h0-191" id="h0-191" class="i">+#def_key &quot;insert&quot;
+</a><a href="#h0-192" id="h0-192" class="i">+#  select_item
+</a><a href="#h0-193" id="h0-193" class="i">+#
+</a><a href="#h0-194" id="h0-194" class="i">+#def_key &quot;enter&quot;
+</a><a href="#h0-195" id="h0-195" class="i">+#  enter_directory
+</a><a href="#h0-196" id="h0-196" class="i">+#
+</a><a href="#h0-197" id="h0-197" class="i">+#def_key &quot;enter&quot;
+</a><a href="#h0-198" id="h0-198" class="i">+#  toggle_output
+</a><a href="#h0-199" id="h0-199" class="i">+#
+</a><a href="#h0-200" id="h0-200" class="i">+#def_key &quot;enter&quot;
+</a><a href="#h0-201" id="h0-201" class="i">+#  run_action
+</a><a href="#h0-202" id="h0-202" class="i">+#
+</a><a href="#h0-203" id="h0-203" class="i">+#def_key &quot;enter&quot;
+</a><a href="#h0-204" id="h0-204" class="i">+#  play_item
+</a><a href="#h0-205" id="h0-205" class="i">+#
+</a><a href="#h0-206" id="h0-206" class="i">+#def_key &quot;space&quot;
+</a><a href="#h0-207" id="h0-207" class="i">+#  add_item_to_playlist
+</a><a href="#h0-208" id="h0-208" class="i">+#
+</a><a href="#h0-209" id="h0-209" class="i">+#def_key &quot;space&quot;
+</a><a href="#h0-210" id="h0-210" class="i">+#  toggle_lyrics_update_on_song_change
+</a><a href="#h0-211" id="h0-211" class="i">+#
+</a><a href="#h0-212" id="h0-212" class="i">+#def_key &quot;space&quot;
+</a><a href="#h0-213" id="h0-213" class="i">+#  toggle_visualization_type
+</a><a href="#h0-214" id="h0-214" class="i">+#
+</a><a href="#h0-215" id="h0-215" class="i">+#def_key &quot;delete&quot;
+</a><a href="#h0-216" id="h0-216" class="i">+#  delete_playlist_items
+</a><a href="#h0-217" id="h0-217" class="i">+#
+</a><a href="#h0-218" id="h0-218" class="i">+#def_key &quot;delete&quot;
+</a><a href="#h0-219" id="h0-219" class="i">+#  delete_browser_items
+</a><a href="#h0-220" id="h0-220" class="i">+#
+</a><a href="#h0-221" id="h0-221" class="i">+#def_key &quot;delete&quot;
+</a><a href="#h0-222" id="h0-222" class="i">+#  delete_stored_playlist
+</a><a href="#h0-223" id="h0-223" class="i">+#
+</a><a href="#h0-224" id="h0-224" class="i">+#def_key &quot;right&quot;
+</a><a href="#h0-225" id="h0-225" class="i">+#  next_column
+</a><a href="#h0-226" id="h0-226" class="i">+#
+</a><a href="#h0-227" id="h0-227" class="i">+#def_key &quot;right&quot;
+</a><a href="#h0-228" id="h0-228" class="i">+#  slave_screen
+</a><a href="#h0-229" id="h0-229" class="i">+#
+</a><a href="#h0-230" id="h0-230" class="i">+#def_key &quot;right&quot;
+</a><a href="#h0-231" id="h0-231" class="i">+#  volume_up
+</a><a href="#h0-232" id="h0-232" class="i">+#
+</a><a href="#h0-233" id="h0-233" class="i">+#def_key &quot;+&quot;
+</a><a href="#h0-234" id="h0-234" class="i">+#  volume_up
+</a><a href="#h0-235" id="h0-235" class="i">+#
+</a><a href="#h0-236" id="h0-236" class="i">+#def_key &quot;left&quot;
+</a><a href="#h0-237" id="h0-237" class="i">+#  previous_column
+</a><a href="#h0-238" id="h0-238" class="i">+#
+</a><a href="#h0-239" id="h0-239" class="i">+#def_key &quot;left&quot;
+</a><a href="#h0-240" id="h0-240" class="i">+#  master_screen
+</a><a href="#h0-241" id="h0-241" class="i">+#
+</a><a href="#h0-242" id="h0-242" class="i">+#def_key &quot;left&quot;
+</a><a href="#h0-243" id="h0-243" class="i">+#  volume_down
+</a><a href="#h0-244" id="h0-244" class="i">+#
+</a><a href="#h0-245" id="h0-245" class="i">+#def_key &quot;-&quot;
+</a><a href="#h0-246" id="h0-246" class="i">+#  volume_down
+</a><a href="#h0-247" id="h0-247" class="i">+#
+</a><a href="#h0-248" id="h0-248" class="i">+#def_key &quot;:&quot;
+</a><a href="#h0-249" id="h0-249" class="i">+#  execute_command
+</a><a href="#h0-250" id="h0-250" class="i">+#
+</a><a href="#h0-251" id="h0-251" class="i">+#def_key &quot;tab&quot;
+</a><a href="#h0-252" id="h0-252" class="i">+#  next_screen
+</a><a href="#h0-253" id="h0-253" class="i">+#
+</a><a href="#h0-254" id="h0-254" class="i">+#def_key &quot;shift-tab&quot;
+</a><a href="#h0-255" id="h0-255" class="i">+#  previous_screen
+</a><a href="#h0-256" id="h0-256" class="i">+#
+</a><a href="#h0-257" id="h0-257" class="i">+#def_key &quot;f1&quot;
+</a><a href="#h0-258" id="h0-258" class="i">+#  show_help
+</a><a href="#h0-259" id="h0-259" class="i">+#
+</a><a href="#h0-260" id="h0-260" class="i">+#def_key &quot;1&quot;
+</a><a href="#h0-261" id="h0-261" class="i">+#  show_playlist
+</a><a href="#h0-262" id="h0-262" class="i">+#
+</a><a href="#h0-263" id="h0-263" class="i">+#def_key &quot;2&quot;
+</a><a href="#h0-264" id="h0-264" class="i">+#  show_browser
+</a><a href="#h0-265" id="h0-265" class="i">+#
+</a><a href="#h0-266" id="h0-266" class="i">+#def_key &quot;2&quot;
+</a><a href="#h0-267" id="h0-267" class="i">+#  change_browse_mode
+</a><a href="#h0-268" id="h0-268" class="i">+#
+</a><a href="#h0-269" id="h0-269" class="i">+#def_key &quot;3&quot;
+</a><a href="#h0-270" id="h0-270" class="i">+#  show_search_engine
+</a><a href="#h0-271" id="h0-271" class="i">+#
+</a><a href="#h0-272" id="h0-272" class="i">+#def_key &quot;3&quot;
+</a><a href="#h0-273" id="h0-273" class="i">+#  reset_search_engine
+</a><a href="#h0-274" id="h0-274" class="i">+#
+</a><a href="#h0-275" id="h0-275" class="i">+#def_key &quot;4&quot;
+</a><a href="#h0-276" id="h0-276" class="i">+#  show_media_library
+</a><a href="#h0-277" id="h0-277" class="i">+#
+</a><a href="#h0-278" id="h0-278" class="i">+#def_key &quot;4&quot;
+</a><a href="#h0-279" id="h0-279" class="i">+#  toggle_media_library_columns_mode
+</a><a href="#h0-280" id="h0-280" class="i">+#
+</a><a href="#h0-281" id="h0-281" class="i">+#def_key &quot;5&quot;
+</a><a href="#h0-282" id="h0-282" class="i">+#  show_playlist_editor
+</a><a href="#h0-283" id="h0-283" class="i">+#
+</a><a href="#h0-284" id="h0-284" class="i">+#def_key &quot;6&quot;
+</a><a href="#h0-285" id="h0-285" class="i">+#  show_tag_editor
+</a><a href="#h0-286" id="h0-286" class="i">+#
+</a><a href="#h0-287" id="h0-287" class="i">+#def_key &quot;7&quot;
+</a><a href="#h0-288" id="h0-288" class="i">+#  show_outputs
+</a><a href="#h0-289" id="h0-289" class="i">+#
+</a><a href="#h0-290" id="h0-290" class="i">+#def_key &quot;8&quot;
+</a><a href="#h0-291" id="h0-291" class="i">+#  show_visualizer
+</a><a href="#h0-292" id="h0-292" class="i">+#
+</a><a href="#h0-293" id="h0-293" class="i">+#def_key &quot;=&quot;
+</a><a href="#h0-294" id="h0-294" class="i">+#  show_clock
+</a><a href="#h0-295" id="h0-295" class="i">+#
+</a><a href="#h0-296" id="h0-296" class="i">+#def_key &quot;@&quot;
+</a><a href="#h0-297" id="h0-297" class="i">+#  show_server_info
+</a><a href="#h0-298" id="h0-298" class="i">+#
+</a><a href="#h0-299" id="h0-299" class="i">+#def_key &quot;s&quot;
+</a><a href="#h0-300" id="h0-300" class="i">+#  stop
+</a><a href="#h0-301" id="h0-301" class="i">+#
+</a><a href="#h0-302" id="h0-302" class="i">+#def_key &quot;p&quot;
+</a><a href="#h0-303" id="h0-303" class="i">+#  pause
+</a><a href="#h0-304" id="h0-304" class="i">+#
+</a><a href="#h0-305" id="h0-305" class="i">+#def_key &quot;&gt;&quot;
+</a><a href="#h0-306" id="h0-306" class="i">+#  next
+</a><a href="#h0-307" id="h0-307" class="i">+#
+</a><a href="#h0-308" id="h0-308" class="i">+#def_key &quot;&lt;&quot;
+</a><a href="#h0-309" id="h0-309" class="i">+#  previous
+</a><a href="#h0-310" id="h0-310" class="i">+#
+</a><a href="#h0-311" id="h0-311" class="i">+#def_key &quot;ctrl-h&quot;
+</a><a href="#h0-312" id="h0-312" class="i">+#  jump_to_parent_directory
+</a><a href="#h0-313" id="h0-313" class="i">+#
+</a><a href="#h0-314" id="h0-314" class="i">+#def_key &quot;ctrl-h&quot;
+</a><a href="#h0-315" id="h0-315" class="i">+#  replay_song
+</a><a href="#h0-316" id="h0-316" class="i">+#
+</a><a href="#h0-317" id="h0-317" class="i">+#def_key &quot;backspace&quot;
+</a><a href="#h0-318" id="h0-318" class="i">+#  jump_to_parent_directory
+</a><a href="#h0-319" id="h0-319" class="i">+#
+</a><a href="#h0-320" id="h0-320" class="i">+#def_key &quot;backspace&quot;
+</a><a href="#h0-321" id="h0-321" class="i">+#  replay_song
+</a><a href="#h0-322" id="h0-322" class="i">+#
+</a><a href="#h0-323" id="h0-323" class="i">+#def_key &quot;f&quot;
+</a><a href="#h0-324" id="h0-324" class="i">+#  seek_forward
+</a><a href="#h0-325" id="h0-325" class="i">+#
+</a><a href="#h0-326" id="h0-326" class="i">+#def_key &quot;b&quot;
+</a><a href="#h0-327" id="h0-327" class="i">+#  seek_backward
+</a><a href="#h0-328" id="h0-328" class="i">+#
+</a><a href="#h0-329" id="h0-329" class="i">+#def_key &quot;r&quot;
+</a><a href="#h0-330" id="h0-330" class="i">+#  toggle_repeat
+</a><a href="#h0-331" id="h0-331" class="i">+#
+</a><a href="#h0-332" id="h0-332" class="i">+#def_key &quot;z&quot;
+</a><a href="#h0-333" id="h0-333" class="i">+#  toggle_random
+</a><a href="#h0-334" id="h0-334" class="i">+#
+</a><a href="#h0-335" id="h0-335" class="i">+#def_key &quot;y&quot;
+</a><a href="#h0-336" id="h0-336" class="i">+#  save_tag_changes
+</a><a href="#h0-337" id="h0-337" class="i">+#
+</a><a href="#h0-338" id="h0-338" class="i">+#def_key &quot;y&quot;
+</a><a href="#h0-339" id="h0-339" class="i">+#  start_searching
+</a><a href="#h0-340" id="h0-340" class="i">+#
+</a><a href="#h0-341" id="h0-341" class="i">+#def_key &quot;y&quot;
+</a><a href="#h0-342" id="h0-342" class="i">+#  toggle_single
+</a><a href="#h0-343" id="h0-343" class="i">+#
+</a><a href="#h0-344" id="h0-344" class="i">+#def_key &quot;R&quot;
+</a><a href="#h0-345" id="h0-345" class="i">+#  toggle_consume
+</a><a href="#h0-346" id="h0-346" class="i">+#
+</a><a href="#h0-347" id="h0-347" class="i">+#def_key &quot;Y&quot;
+</a><a href="#h0-348" id="h0-348" class="i">+#  toggle_replay_gain_mode
+</a><a href="#h0-349" id="h0-349" class="i">+#
+</a><a href="#h0-350" id="h0-350" class="i">+#def_key &quot;T&quot;
+</a><a href="#h0-351" id="h0-351" class="i">+#  toggle_add_mode
+</a><a href="#h0-352" id="h0-352" class="i">+#
+</a><a href="#h0-353" id="h0-353" class="i">+#def_key &quot;|&quot;
+</a><a href="#h0-354" id="h0-354" class="i">+#  toggle_mouse
+</a><a href="#h0-355" id="h0-355" class="i">+#
+</a><a href="#h0-356" id="h0-356" class="i">+#def_key &quot;#&quot;
+</a><a href="#h0-357" id="h0-357" class="i">+#  toggle_bitrate_visibility
+</a><a href="#h0-358" id="h0-358" class="i">+#
+</a><a href="#h0-359" id="h0-359" class="i">+#def_key &quot;Z&quot;
+</a><a href="#h0-360" id="h0-360" class="i">+#  shuffle
+</a><a href="#h0-361" id="h0-361" class="i">+#
+</a><a href="#h0-362" id="h0-362" class="i">+#def_key &quot;x&quot;
+</a><a href="#h0-363" id="h0-363" class="i">+#  toggle_crossfade
+</a><a href="#h0-364" id="h0-364" class="i">+#
+</a><a href="#h0-365" id="h0-365" class="i">+#def_key &quot;X&quot;
+</a><a href="#h0-366" id="h0-366" class="i">+#  set_crossfade
+</a><a href="#h0-367" id="h0-367" class="i">+#
+</a><a href="#h0-368" id="h0-368" class="i">+#def_key &quot;u&quot;
+</a><a href="#h0-369" id="h0-369" class="i">+#  update_database
+</a><a href="#h0-370" id="h0-370" class="i">+#
+</a><a href="#h0-371" id="h0-371" class="i">+#def_key &quot;ctrl-s&quot;
+</a><a href="#h0-372" id="h0-372" class="i">+#  sort_playlist
+</a><a href="#h0-373" id="h0-373" class="i">+#
+</a><a href="#h0-374" id="h0-374" class="i">+#def_key &quot;ctrl-s&quot;
+</a><a href="#h0-375" id="h0-375" class="i">+#  toggle_browser_sort_mode
+</a><a href="#h0-376" id="h0-376" class="i">+#
+</a><a href="#h0-377" id="h0-377" class="i">+#def_key &quot;ctrl-s&quot;
+</a><a href="#h0-378" id="h0-378" class="i">+#  toggle_media_library_sort_mode
+</a><a href="#h0-379" id="h0-379" class="i">+#
+</a><a href="#h0-380" id="h0-380" class="i">+#def_key &quot;ctrl-r&quot;
+</a><a href="#h0-381" id="h0-381" class="i">+#  reverse_playlist
+</a><a href="#h0-382" id="h0-382" class="i">+#
+</a><a href="#h0-383" id="h0-383" class="i">+#def_key &quot;ctrl-_&quot;
+</a><a href="#h0-384" id="h0-384" class="i">+#  select_found_items
+</a><a href="#h0-385" id="h0-385" class="i">+#
+</a><a href="#h0-386" id="h0-386" class="i">+#def_key &quot;/&quot;
+</a><a href="#h0-387" id="h0-387" class="i">+#  find
+</a><a href="#h0-388" id="h0-388" class="i">+#
+</a><a href="#h0-389" id="h0-389" class="i">+#def_key &quot;/&quot;
+</a><a href="#h0-390" id="h0-390" class="i">+#  find_item_forward
+</a><a href="#h0-391" id="h0-391" class="i">+#
+</a><a href="#h0-392" id="h0-392" class="i">+#def_key &quot;?&quot;
+</a><a href="#h0-393" id="h0-393" class="i">+#  find
+</a><a href="#h0-394" id="h0-394" class="i">+#
+</a><a href="#h0-395" id="h0-395" class="i">+#def_key &quot;?&quot;
+</a><a href="#h0-396" id="h0-396" class="i">+#  find_item_backward
+</a><a href="#h0-397" id="h0-397" class="i">+#
+</a><a href="#h0-398" id="h0-398" class="i">+#def_key &quot;.&quot;
+</a><a href="#h0-399" id="h0-399" class="i">+#  next_found_item
+</a><a href="#h0-400" id="h0-400" class="i">+#
+</a><a href="#h0-401" id="h0-401" class="i">+#def_key &quot;,&quot;
+</a><a href="#h0-402" id="h0-402" class="i">+#  previous_found_item
+</a><a href="#h0-403" id="h0-403" class="i">+#
+</a><a href="#h0-404" id="h0-404" class="i">+#def_key &quot;w&quot;
+</a><a href="#h0-405" id="h0-405" class="i">+#  toggle_find_mode
+</a><a href="#h0-406" id="h0-406" class="i">+#
+</a><a href="#h0-407" id="h0-407" class="i">+#def_key &quot;e&quot;
+</a><a href="#h0-408" id="h0-408" class="i">+#  edit_song
+</a><a href="#h0-409" id="h0-409" class="i">+#
+</a><a href="#h0-410" id="h0-410" class="i">+#def_key &quot;e&quot;
+</a><a href="#h0-411" id="h0-411" class="i">+#  edit_library_tag
+</a><a href="#h0-412" id="h0-412" class="i">+#
+</a><a href="#h0-413" id="h0-413" class="i">+#def_key &quot;e&quot;
+</a><a href="#h0-414" id="h0-414" class="i">+#  edit_library_album
+</a><a href="#h0-415" id="h0-415" class="i">+#
+</a><a href="#h0-416" id="h0-416" class="i">+#def_key &quot;e&quot;
+</a><a href="#h0-417" id="h0-417" class="i">+#  edit_directory_name
+</a><a href="#h0-418" id="h0-418" class="i">+#
+</a><a href="#h0-419" id="h0-419" class="i">+#def_key &quot;e&quot;
+</a><a href="#h0-420" id="h0-420" class="i">+#  edit_playlist_name
+</a><a href="#h0-421" id="h0-421" class="i">+#
+</a><a href="#h0-422" id="h0-422" class="i">+#def_key &quot;e&quot;
+</a><a href="#h0-423" id="h0-423" class="i">+#  edit_lyrics
+</a><a href="#h0-424" id="h0-424" class="i">+#
+</a><a href="#h0-425" id="h0-425" class="i">+#def_key &quot;i&quot;
+</a><a href="#h0-426" id="h0-426" class="i">+#  show_song_info
+</a><a href="#h0-427" id="h0-427" class="i">+#
+</a><a href="#h0-428" id="h0-428" class="i">+#def_key &quot;I&quot;
+</a><a href="#h0-429" id="h0-429" class="i">+#  show_artist_info
+</a><a href="#h0-430" id="h0-430" class="i">+#
+</a><a href="#h0-431" id="h0-431" class="i">+#def_key &quot;g&quot;
+</a><a href="#h0-432" id="h0-432" class="i">+#  jump_to_position_in_song
+</a><a href="#h0-433" id="h0-433" class="i">+#
+</a><a href="#h0-434" id="h0-434" class="i">+#def_key &quot;l&quot;
+</a><a href="#h0-435" id="h0-435" class="i">+#  show_lyrics
+</a><a href="#h0-436" id="h0-436" class="i">+#
+</a><a href="#h0-437" id="h0-437" class="i">+#def_key &quot;ctrl-v&quot;
+</a><a href="#h0-438" id="h0-438" class="i">+#  select_range
+</a><a href="#h0-439" id="h0-439" class="i">+#
+</a><a href="#h0-440" id="h0-440" class="i">+#def_key &quot;v&quot;
+</a><a href="#h0-441" id="h0-441" class="i">+#  reverse_selection
+</a><a href="#h0-442" id="h0-442" class="i">+#
+</a><a href="#h0-443" id="h0-443" class="i">+#def_key &quot;V&quot;
+</a><a href="#h0-444" id="h0-444" class="i">+#  remove_selection
+</a><a href="#h0-445" id="h0-445" class="i">+#
+</a><a href="#h0-446" id="h0-446" class="i">+#def_key &quot;B&quot;
+</a><a href="#h0-447" id="h0-447" class="i">+#  select_album
+</a><a href="#h0-448" id="h0-448" class="i">+#
+</a><a href="#h0-449" id="h0-449" class="i">+#def_key &quot;a&quot;
+</a><a href="#h0-450" id="h0-450" class="i">+#  add_selected_items
+</a><a href="#h0-451" id="h0-451" class="i">+#
+</a><a href="#h0-452" id="h0-452" class="i">+#def_key &quot;c&quot;
+</a><a href="#h0-453" id="h0-453" class="i">+#  clear_playlist
+</a><a href="#h0-454" id="h0-454" class="i">+#
+</a><a href="#h0-455" id="h0-455" class="i">+#def_key &quot;c&quot;
+</a><a href="#h0-456" id="h0-456" class="i">+#  clear_main_playlist
+</a><a href="#h0-457" id="h0-457" class="i">+#
+</a><a href="#h0-458" id="h0-458" class="i">+#def_key &quot;C&quot;
+</a><a href="#h0-459" id="h0-459" class="i">+#  crop_playlist
+</a><a href="#h0-460" id="h0-460" class="i">+#
+</a><a href="#h0-461" id="h0-461" class="i">+#def_key &quot;C&quot;
+</a><a href="#h0-462" id="h0-462" class="i">+#  crop_main_playlist
+</a><a href="#h0-463" id="h0-463" class="i">+#
+</a><a href="#h0-464" id="h0-464" class="i">+#def_key &quot;m&quot;
+</a><a href="#h0-465" id="h0-465" class="i">+#  move_sort_order_up
+</a><a href="#h0-466" id="h0-466" class="i">+#
+</a><a href="#h0-467" id="h0-467" class="i">+#def_key &quot;m&quot;
+</a><a href="#h0-468" id="h0-468" class="i">+#  move_selected_items_up
+</a><a href="#h0-469" id="h0-469" class="i">+#
+</a><a href="#h0-470" id="h0-470" class="i">+#def_key &quot;m&quot;
+</a><a href="#h0-471" id="h0-471" class="i">+#  set_visualizer_sample_multiplier
+</a><a href="#h0-472" id="h0-472" class="i">+#
+</a><a href="#h0-473" id="h0-473" class="i">+#def_key &quot;n&quot;
+</a><a href="#h0-474" id="h0-474" class="i">+#  move_sort_order_down
+</a><a href="#h0-475" id="h0-475" class="i">+#
+</a><a href="#h0-476" id="h0-476" class="i">+#def_key &quot;n&quot;
+</a><a href="#h0-477" id="h0-477" class="i">+#  move_selected_items_down
+</a><a href="#h0-478" id="h0-478" class="i">+#
+</a><a href="#h0-479" id="h0-479" class="i">+#def_key &quot;M&quot;
+</a><a href="#h0-480" id="h0-480" class="i">+#  move_selected_items_to
+</a><a href="#h0-481" id="h0-481" class="i">+#
+</a><a href="#h0-482" id="h0-482" class="i">+#def_key &quot;A&quot;
+</a><a href="#h0-483" id="h0-483" class="i">+#  add
+</a><a href="#h0-484" id="h0-484" class="i">+#
+</a><a href="#h0-485" id="h0-485" class="i">+#def_key &quot;S&quot;
+</a><a href="#h0-486" id="h0-486" class="i">+#  save_playlist
+</a><a href="#h0-487" id="h0-487" class="i">+#
+</a><a href="#h0-488" id="h0-488" class="i">+#def_key &quot;o&quot;
+</a><a href="#h0-489" id="h0-489" class="i">+#  jump_to_playing_song
+</a><a href="#h0-490" id="h0-490" class="i">+#
+</a><a href="#h0-491" id="h0-491" class="i">+#def_key &quot;G&quot;
+</a><a href="#h0-492" id="h0-492" class="i">+#  jump_to_browser
+</a><a href="#h0-493" id="h0-493" class="i">+#
+</a><a href="#h0-494" id="h0-494" class="i">+#def_key &quot;G&quot;
+</a><a href="#h0-495" id="h0-495" class="i">+#  jump_to_playlist_editor
+</a><a href="#h0-496" id="h0-496" class="i">+#
+</a><a href="#h0-497" id="h0-497" class="i">+#def_key &quot;~&quot;
+</a><a href="#h0-498" id="h0-498" class="i">+#  jump_to_media_library
+</a><a href="#h0-499" id="h0-499" class="i">+#
+</a><a href="#h0-500" id="h0-500" class="i">+#def_key &quot;E&quot;
+</a><a href="#h0-501" id="h0-501" class="i">+#  jump_to_tag_editor
+</a><a href="#h0-502" id="h0-502" class="i">+#
+</a><a href="#h0-503" id="h0-503" class="i">+#def_key &quot;U&quot;
+</a><a href="#h0-504" id="h0-504" class="i">+#  toggle_playing_song_centering
+</a><a href="#h0-505" id="h0-505" class="i">+#
+</a><a href="#h0-506" id="h0-506" class="i">+#def_key &quot;P&quot;
+</a><a href="#h0-507" id="h0-507" class="i">+#  toggle_display_mode
+</a><a href="#h0-508" id="h0-508" class="i">+#
+</a><a href="#h0-509" id="h0-509" class="i">+#def_key &quot;\\&quot;
+</a><a href="#h0-510" id="h0-510" class="i">+#  toggle_interface
+</a><a href="#h0-511" id="h0-511" class="i">+#
+</a><a href="#h0-512" id="h0-512" class="i">+#def_key &quot;!&quot;
+</a><a href="#h0-513" id="h0-513" class="i">+#  toggle_separators_between_albums
+</a><a href="#h0-514" id="h0-514" class="i">+#
+</a><a href="#h0-515" id="h0-515" class="i">+#def_key &quot;L&quot;
+</a><a href="#h0-516" id="h0-516" class="i">+#  toggle_lyrics_fetcher
+</a><a href="#h0-517" id="h0-517" class="i">+#
+</a><a href="#h0-518" id="h0-518" class="i">+#def_key &quot;F&quot;
+</a><a href="#h0-519" id="h0-519" class="i">+#  toggle_fetching_lyrics_in_background
+</a><a href="#h0-520" id="h0-520" class="i">+#
+</a><a href="#h0-521" id="h0-521" class="i">+#def_key &quot;ctrl-l&quot;
+</a><a href="#h0-522" id="h0-522" class="i">+#  toggle_screen_lock
+</a><a href="#h0-523" id="h0-523" class="i">+#
+</a><a href="#h0-524" id="h0-524" class="i">+#def_key &quot;`&quot;
+</a><a href="#h0-525" id="h0-525" class="i">+#  toggle_library_tag_type
+</a><a href="#h0-526" id="h0-526" class="i">+#
+</a><a href="#h0-527" id="h0-527" class="i">+#def_key &quot;`&quot;
+</a><a href="#h0-528" id="h0-528" class="i">+#  refetch_lyrics
+</a><a href="#h0-529" id="h0-529" class="i">+#
+</a><a href="#h0-530" id="h0-530" class="i">+#def_key &quot;`&quot;
+</a><a href="#h0-531" id="h0-531" class="i">+#  add_random_items
+</a><a href="#h0-532" id="h0-532" class="i">+#
+</a><a href="#h0-533" id="h0-533" class="i">+#def_key &quot;ctrl-p&quot;
+</a><a href="#h0-534" id="h0-534" class="i">+#  set_selected_items_priority
+</a><a href="#h0-535" id="h0-535" class="i">+#
+</a><a href="#h0-536" id="h0-536" class="i">+#def_key &quot;q&quot;
+</a><a href="#h0-537" id="h0-537" class="i">+#  quit
+</a><a href="#h0-538" id="h0-538" class="i">+#
+</a><b>diff --git a/<a href="../file/home/.ncmpcpp/config.html">home/.ncmpcpp/config</a> b/<a href="../file/home/.ncmpcpp/config.html">home/.ncmpcpp/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,5 +1,8 @@
+</a> # Host and music location
+ mpd_host = &quot;::&quot;
+<a href="#h0-2" id="h0-2" class="i">+mpd_port = &quot;6600&quot;
+</a><a href="#h0-3" id="h0-3" class="i">+# /gamez is my big files folder
+</a><a href="#h0-4" id="h0-4" class="i">+mpd_music_dir = &quot;/gamez/Music&quot;
+</a> 
+ # Playlist look
+ playlist_display_mode = &quot;classic&quot;
+<b>diff --git a/<a href="../file/home/.scripts/panel_colors.html">home/.scripts/panel_colors</a> b/<a href="../file/home/.scripts/panel_colors.html">home/.scripts/panel_colors</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,8 +1,7 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#COLOR_BACKGROUND=#273941
+</a> COLOR_BACKGROUND=#1d2a30
+ COLOR_FOREGROUND=#71c2af
+ COLOR_UNDERLINE=#c27171
+ COLOR_SEPARATOR=#65737e
+ COLOR_TITLE=#c0c5ce
+ COLOR_URGENT=#c27171
+<a href="#h0-7" id="h0-7" class="d">-COLOR_ICON=#c27171
+</a><a href="#h0-8" id="h0-8" class="i">+COLOR_ICON=$COLOR_UNDERLINE
+</a><b>diff --git a/<a href="../file/home/.scripts/setwall.html">home/.scripts/setwall</a> b/<a href="../file/home/.scripts/setwall.html">home/.scripts/setwall</a></b>
+<a href="#h0" id="h0" class="h">@@ -25,5 +25,5 @@ elif surprise or rnd == 2:
+</a> elif custom:
+     os.system(&apos;feh --bg-fill %s&apos; % custom)
+ else:
+<a href="#h0-3" id="h0-3" class="d">-    os.system(&apos;feh --bg-fill ~/Pictures/nomanssky.png&apos;)
+</a><a href="#h0-4" id="h0-4" class="i">+    os.system(&apos;feh --bg-fill ~/Pictures/madeon-pillar.png&apos;)
+</a> 
+<b>diff --git a/<a href="../file/home/Pictures/madeon-pillar.png.html">home/Pictures/madeon-pillar.png</a> b/<a href="../file/home/Pictures/madeon-pillar.png.html">home/Pictures/madeon-pillar.png</a></b>
+Binary files differ
+</pre>
+</div>
+</body>
+</html>

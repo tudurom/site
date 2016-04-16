@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Cooler bar - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/1820e2656aa0ce3cc65761f3bb2096c1d5f33d3f.html">1820e2656aa0ce3cc65761f3bb2096c1d5f33d3f</a>
+<b>parent</b> <a href="../commit/397b34b0d356fec2f22a8dfa77561bb58428dd92.html">397b34b0d356fec2f22a8dfa77561bb58428dd92</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Tue Dec 29 18:04:30 2015
+
+Cooler bar
+
+<b>Diffstat:</b>
+ home/.Xresources           |  1 -
+ home/.config/sxhkd/sxhkdrc |  9 +++++----
+ home/.scripts/panel        |  6 +++---
+ home/.scripts/panel_config | 10 ++++++++++
+ home/.vimrc                |  6 +++---
+ home/.xinitrc              |  1 +
+ 6 files changed, 22 insertions(+), 11 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.Xresources.html">home/.Xresources</a> b/<a href="../file/home/.Xresources.html">home/.Xresources</a></b>
+<a href="#h0" id="h0" class="h">@@ -68,4 +68,3 @@ URxvt.background: [97]#2b303b
+</a> *.color19:      base02
+ *.color20:      base04
+ *.color21:      base06
+<a href="#h0-3" id="h0-3" class="d">-
+</a><b>diff --git a/<a href="../file/home/.config/sxhkd/sxhkdrc.html">home/.config/sxhkd/sxhkdrc</a> b/<a href="../file/home/.config/sxhkd/sxhkdrc.html">home/.config/sxhkd/sxhkdrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -39,7 +39,8 @@ XF86AudioPrev
+</a> 
+ # Quit bspwm and kill the panel
+ super + alt + Escape
+<a href="#h0-3" id="h0-3" class="d">-  ~/.scripts/exitbspwm
+</a><a href="#h0-4" id="h0-4" class="i">+#~/.scripts/exitbspwm
+</a><a href="#h0-5" id="h0-5" class="i">+  pkill panel &amp;&amp; bspc quit
+</a> # Close the focused window
+ super + w
+ 	bspc node -c
+<a href="#h1" id="h1" class="h">@@ -75,7 +76,7 @@ super + m
+</a> 
+ 
+ super + {_,shift + }{h,j,k,l}
+<a href="#h1-3" id="h1-3" class="d">-	bspc node -{f,s} {left,down,up,right}
+</a><a href="#h1-4" id="h1-4" class="i">+	bspc node -{f,s} {west,south,north,east}
+</a> 
+ super + {_,shift + }c
+ 	bspc node -f {next,prev}
+<a href="#h2" id="h2" class="h">@@ -87,13 +88,13 @@ super + bracket{left,right}
+</a> 	bspc desktop -f {prev,next}
+ 
+ super + ctrl + {h,j,k,l}
+<a href="#h2-3" id="h2-3" class="d">-	bspc node -p {left,down,up,right}
+</a><a href="#h2-4" id="h2-4" class="i">+	bspc node -p {west,south,north,east}
+</a> 
+ super + ctrl + {_,shift + }space
+ 	bspc {node -p cancel,desktop -c}
+ 
+ super + alt + {h,j,k,l}
+<a href="#h2-10" id="h2-10" class="d">-	bspc node -e {left -10,down +10,up -10,right +10}
+</a><a href="#h2-11" id="h2-11" class="i">+	bspc node -e {west -10,south +10,north -10,east +10}
+</a> 
+ super + alt + shift + {h,j,k,l}
+ 	bspc node -e {right -10,up +10,down -10,left +10}
+<b>diff --git a/<a href="../file/home/.scripts/panel.html">home/.scripts/panel</a> b/<a href="../file/home/.scripts/panel.html">home/.scripts/panel</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/zsh
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/bash
+</a> 
+ . panel_config
+ . panel_icons
+<a href="#h1" id="h1" class="h">@@ -15,7 +15,7 @@ trap &apos;trap - TERM; kill 0&apos; INT TERM QUIT EXIT
+</a> [ -e &quot;$PANEL_FIFO&quot; ] &amp;&amp; rm &quot;$PANEL_FIFO&quot;
+ mkfifo &quot;$PANEL_FIFO&quot;
+ 
+<a href="#h1-3" id="h1-3" class="d">-bspc config top_padding $PANEL_HEIGHT
+</a><a href="#h1-4" id="h1-4" class="i">+bspc config -m &quot;$(bspc query -M | head -n 1)&quot; top_padding $(expr $PANEL_HEIGHT + $top_pad)
+</a> #bspc control --subscribe &gt; &quot;$PANEL_FIFO&quot; &amp;
+ bspc subscribe &gt; &quot;$PANEL_FIFO&quot; &amp;
+ xtitle -sf &apos;T%s&apos; &gt; &quot;$PANEL_FIFO&quot; &amp;
+<a href="#h2" id="h2" class="h">@@ -74,6 +74,6 @@ done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a> 
+ . panel_colors
+ 
+<a href="#h2-3" id="h2-3" class="d">-cat &quot;$PANEL_FIFO&quot; | panel_bar | lemonbar -n &quot;$PANEL_WM_NAME&quot; -g &quot;x$PANEL_HEIGHT&quot; -f &quot;$PANEL_FONT_FAMILY&quot; -f &quot;$PANEL_ICON_FONT_FAMILY&quot; -f &quot;FontAwesome&quot; -F &quot;$COLOR_FOREGROUND&quot; -B &quot;$COLOR_BACKGROUND&quot; -a 30 | zsh &amp;
+</a><a href="#h2-4" id="h2-4" class="i">+cat &quot;$PANEL_FIFO&quot; | panel_bar | lemonbar -o -1 -n &quot;$PANEL_WM_NAME&quot; -g &quot;$BAR_GEOMETRY&quot; -f &quot;$PANEL_FONT_FAMILY&quot; -f &quot;$PANEL_ICON_FONT_FAMILY&quot; -f &quot;FontAwesome&quot; -F &quot;$COLOR_FOREGROUND&quot; -B &quot;$COLOR_BACKGROUND&quot; -a 30 | zsh &amp;
+</a> 
+ wait
+<b>diff --git a/<a href="../file/home/.scripts/panel_config.html">home/.scripts/panel_config</a> b/<a href="../file/home/.scripts/panel_config.html">home/.scripts/panel_config</a></b>
+<a href="#h0" id="h0" class="h">@@ -9,3 +9,13 @@ PANEL_ICON_FONT_FAMILY=-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-
+</a> REFRESH_VOLUME=0.5
+ REFRESH_MUSIC=1
+ REFRESH_BATTERY=10
+<a href="#h0-3" id="h0-3" class="i">+
+</a><a href="#h0-4" id="h0-4" class="i">+num_mon=$(bspc query -M | wc -l)
+</a><a href="#h0-5" id="h0-5" class="i">+max_res=$(xrandr  | grep \* | cut -d&apos; &apos; -f4 | head -n $num_mon | tail -n 1)
+</a><a href="#h0-6" id="h0-6" class="i">+IFS=x; read -a sizes &lt;&lt;&lt;&quot;$max_res&quot;
+</a><a href="#h0-7" id="h0-7" class="i">+top_pad=10
+</a><a href="#h0-8" id="h0-8" class="i">+side_pad=10
+</a><a href="#h0-9" id="h0-9" class="i">+max_res=$(xrandr  | grep \* | cut -d&apos; &apos; -f4 | head -n $num_mon | tail -n 1)
+</a><a href="#h0-10" id="h0-10" class="i">+IFS=x; read -a sizes &lt;&lt;&lt;&quot;$max_res&quot;
+</a><a href="#h0-11" id="h0-11" class="i">+width=$(expr ${sizes[0]} - 2 \* $side_pad)
+</a><a href="#h0-12" id="h0-12" class="i">+BAR_GEOMETRY=&quot;${width}x${PANEL_HEIGHT}+${side_pad}+${top_pad}&quot;
+</a><b>diff --git a/<a href="../file/home/.vimrc.html">home/.vimrc</a> b/<a href="../file/home/.vimrc.html">home/.vimrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -47,9 +47,9 @@ set expandtab
+</a> set shiftwidth=2
+ set smartindent
+ set cindent
+<a href="#h0-3" id="h0-3" class="d">-set t_Co=256
+</a><a href="#h0-4" id="h0-4" class="d">-let base16colorspace=256
+</a><a href="#h0-5" id="h0-5" class="d">-colorscheme base16-ocean
+</a><a href="#h0-6" id="h0-6" class="i">+&quot;set t_Co=16
+</a><a href="#h0-7" id="h0-7" class="i">+&quot;let base16colorspace=16
+</a><a href="#h0-8" id="h0-8" class="i">+&quot;colorscheme base16-ocean
+</a> set background=dark
+ let g:airline_powerline_fonts = 1
+ set laststatus=2
+<b>diff --git a/<a href="../file/home/.xinitrc.html">home/.xinitrc</a> b/<a href="../file/home/.xinitrc.html">home/.xinitrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -53,6 +53,7 @@ xset fp rehash
+</a> 
+ #xrandr --output VIRTUAL1 --off --output LVDS1 --mode 1600x900 --pos 1920x180 --rotate normal --output VGA1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+ #xrandr --output VIRTUAL1 --off --output LVDS1 --mode 1600x900 --pos 2128x180 --rotate normal --output VGA1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+<a href="#h0-3" id="h0-3" class="i">+sh ~/.screenlayout/layout.sh
+</a> compton -b &amp;
+ mpd &amp;
+ mpDris2 &amp;
+</pre>
+</div>
+</body>
+</html>

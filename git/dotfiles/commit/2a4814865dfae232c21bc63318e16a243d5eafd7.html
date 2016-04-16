@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>multimonitor, take 1 - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/2a4814865dfae232c21bc63318e16a243d5eafd7.html">2a4814865dfae232c21bc63318e16a243d5eafd7</a>
+<b>parent</b> <a href="../commit/0ab9a0ddeb099bc2dd04568d7721b3af30a6fa81.html">0ab9a0ddeb099bc2dd04568d7721b3af30a6fa81</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Wed Apr  6 21:06:11 2016
+
+multimonitor, take 1
+
+<b>Diffstat:</b>
+ cwm/.cwmrc                    |  4 ----
+ scripts/.scripts/notifyd      | 14 +++++++-------
+ scripts/.scripts/screenlayout |  2 +-
+ scripts/.scripts/wall-e       |  6 +++---
+ wmrc/.scripts/dispcache       |  3 +++
+ wmrc/.scripts/infobar         | 11 ++++++-----
+ wmrc/.scripts/startwmutils    |  1 -
+ wmrc/.scripts/statusbar       | 17 +++++------------
+ x/.xinitrc                    |  4 +++-
+ 9 files changed, 28 insertions(+), 34 deletions(-)
+<hr/><b>diff --git a/<a href="../file/cwm/.cwmrc.html">cwm/.cwmrc</a> b/<a href="../file/cwm/.cwmrc.html">cwm/.cwmrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -27,10 +27,6 @@ autogroup 3 mpv
+</a> 
+ # menu
+ command term    /usr/local/bin/st
+<a href="#h0-3" id="h0-3" class="d">-command lock    /usr/local/bin/slock
+</a><a href="#h0-4" id="h0-4" class="d">-
+</a><a href="#h0-5" id="h0-5" class="d">-command st      /usr/local/bin/st
+</a><a href="#h0-6" id="h0-6" class="d">-command firefox /usr/local/bin/firefox
+</a> 
+ # binds
+ bind 4-v      vmaximize
+<b>diff --git a/<a href="../file/scripts/.scripts/notifyd.html">scripts/.scripts/notifyd</a> b/<a href="../file/scripts/.scripts/notifyd.html">scripts/.scripts/notifyd</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,11 +1,11 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/bash
+</a><a href="#h0-1" id="h0-1" class="i">+#! /bin/sh
+</a> 
+ # Get coords of the monitor
+<a href="#h0-4" id="h0-4" class="d">-monitor_x=$(xrandr | grep &quot;primary&quot; | awk &apos;{print $4}&apos; | awk -F+ &apos;{print $2}&apos;)
+</a><a href="#h0-5" id="h0-5" class="d">-monitor_y=$(xrandr | grep &quot;primary&quot; | awk &apos;{print $4}&apos; | awk -F+ &apos;{print $3}&apos;)
+</a><a href="#h0-6" id="h0-6" class="i">+monitor_x=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f1)&quot;
+</a><a href="#h0-7" id="h0-7" class="i">+monitor_y=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f2)&quot;
+</a> # Get the size of the monitor
+<a href="#h0-9" id="h0-9" class="d">-monitor_width=$(xrandr | grep &quot;primary&quot; | awk -F&apos;[ x+]&apos; &apos;{print $4}&apos;)
+</a><a href="#h0-10" id="h0-10" class="d">-monitor_height=$(xrandr | grep &quot;primary&quot; | awk -F&apos;[ x+]&apos; &apos;{print $5}&apos;)
+</a><a href="#h0-11" id="h0-11" class="i">+monitor_width=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f3)&quot;
+</a><a href="#h0-12" id="h0-12" class="i">+monitor_height=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f4)&quot;
+</a> # Panel size
+ pad_x=&quot;50&quot;
+ pad_y=&quot;30&quot;
+<a href="#h1" id="h1" class="h">@@ -13,7 +13,7 @@ height=&quot;50&quot;
+</a> # Padding of the text in the panel
+ in_pad=&quot;30&quot;
+ # Yes.
+<a href="#h1-3" id="h1-3" class="d">-font=&quot;-*-erusfont-medium-*-*-*-11-*-*-*-*-*-*-*&quot;
+</a><a href="#h1-4" id="h1-4" class="i">+font=&quot;-*-metis-normal-*-*-*-11-*-*-*-*-*-*-*&quot;
+</a> 
+ color_summary=&quot;#71c2af&quot;
+ color_bg=&quot;#1d2a30&quot;
+<a href="#h2" id="h2" class="h">@@ -22,7 +22,7 @@ color_fg=&quot;#c27171&quot;
+</a> dismiss=3
+ 
+ TEMP_FILE=$(mktemp)
+<a href="#h2-3" id="h2-3" class="d">-trap &quot;rm $TEMP_FILE&quot; SIGINT
+</a><a href="#h2-4" id="h2-4" class="i">+trap &quot;rm $TEMP_FILE&quot; INT
+</a> # No notifications on screen
+ echo &quot;0&quot; &gt; $TEMP_FILE
+ 
+<b>diff --git a/<a href="../file/scripts/.scripts/screenlayout.html">scripts/.scripts/screenlayout</a> b/<a href="../file/scripts/.scripts/screenlayout.html">scripts/.scripts/screenlayout</a></b>
+<a href="#h0" id="h0" class="h">@@ -2,7 +2,7 @@
+</a> 
+ LAPTOP_SCREEN=&quot;$(xrandr | grep &quot;LVDS-[0-9]&quot; | cut -d&apos; &apos; -f1)&quot;
+ 
+<a href="#h0-3" id="h0-3" class="d">-single_ext=&quot;on&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+single_ext=&quot;off&quot;
+</a> ext_monitor=$(xrandr | grep &quot; connected&quot; | grep -v &quot;$LAPTOP_SCREEN&quot; | awk &apos;{print $1}&apos;)
+ if [[ $ext_monitor == &quot;&quot; ]]; then
+   xrandr --output &quot;$LAPTOP_SCREEN&quot; --primary
+<b>diff --git a/<a href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a> b/<a href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a></b>
+<a href="#h0" id="h0" class="h">@@ -8,13 +8,13 @@ DEFAULT_WALL=&quot;$HOME/wallpapers/bridge.jpg&quot;
+</a> APRIL_WALL=&quot;$HOME/wallpapers/april_wall.png&quot;
+ 
+ if [ &quot;$(date +&quot;%d/%m&quot;)&quot; = &quot;01/04&quot; ]; then
+<a href="#h0-3" id="h0-3" class="d">-  hsetroot -fill &quot;$APRIL_WALL&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+  feh -fill &quot;$APRIL_WALL&quot;
+</a> elif [ $# -ge 1 ]; then
+   option=&quot;fill&quot;
+   test -n $2 &amp;&amp; option=&quot;$2&quot;
+<a href="#h0-8" id="h0-8" class="d">-  hsetroot -${option} $1
+</a><a href="#h0-9" id="h0-9" class="i">+  feh --bg-${option} $1
+</a> else
+<a href="#h0-11" id="h0-11" class="d">-  hsetroot -fill $DEFAULT_WALL
+</a><a href="#h0-12" id="h0-12" class="i">+  feh --bg-fill $DEFAULT_WALL
+</a> fi
+ 
+ # vim: set ft=sh :
+<b>diff --git a/<a href="../file/wmrc/.scripts/dispcache.html">wmrc/.scripts/dispcache</a> b/<a href="../file/wmrc/.scripts/dispcache.html">wmrc/.scripts/dispcache</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+dattr $(ppd) &gt; &quot;.cache/ppd_sizes&quot;
+</a><b>diff --git a/<a href="../file/wmrc/.scripts/infobar.html">wmrc/.scripts/infobar</a> b/<a href="../file/wmrc/.scripts/infobar.html">wmrc/.scripts/infobar</a></b>
+<a href="#h0" id="h0" class="h">@@ -14,14 +14,15 @@ clock() {
+</a> 
+ width=110
+ height=5
+<a href="#h0-3" id="h0-3" class="d">-root_window=$(lsw -r)
+</a><a href="#h0-4" id="h0-4" class="d">-root_width=$(wattr w $root_window)
+</a><a href="#h0-5" id="h0-5" class="d">-root_height=$(wattr h $root_window)
+</a><a href="#h0-6" id="h0-6" class="i">+pd_x=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f1)&quot;
+</a><a href="#h0-7" id="h0-7" class="i">+pd_y=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f2)&quot;
+</a><a href="#h0-8" id="h0-8" class="i">+pd_width=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f3)&quot;
+</a><a href="#h0-9" id="h0-9" class="i">+pd_height=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f4)&quot;
+</a> 
+ panel_width=$(( width + 2 * GENERAL_GAP ))
+ panel_height=$(( height + 2 * GENERAL_GAP ))
+<a href="#h0-13" id="h0-13" class="d">-panel_x=$(( root_width - panel_width - GENERAL_GAP ))
+</a><a href="#h0-14" id="h0-14" class="d">-panel_y=$(( root_height - panel_height - GENERAL_GAP ))
+</a><a href="#h0-15" id="h0-15" class="i">+panel_x=$(( (pd_x + pd_width) - panel_width - GENERAL_GAP ))
+</a><a href="#h0-16" id="h0-16" class="i">+panel_y=$(( (pd_y + pd_height) - panel_height - GENERAL_GAP ))
+</a> panel_opts=&quot;$PANEL_OPTS -g ${panel_width}x${panel_height}+${panel_x}+${panel_y}&quot;
+ 
+ while true; do
+<b>diff --git a/<a href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a> b/<a href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a></b>
+<a href="#h0" id="h0" class="h">@@ -7,7 +7,6 @@ compton -b
+</a> sxhkd -c ~/.config/sxhkd/sxhkdrc_wmutils &amp;
+ wew | wewhandle &amp;
+ wall-e &amp;
+<a href="#h0-3" id="h0-3" class="d">-#statusbar &amp;
+</a> infobar &amp;
+ xwait
+ 
+<b>diff --git a/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a> b/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a></b>
+<a href="#h0" id="h0" class="h">@@ -4,12 +4,6 @@
+</a> # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h0-3" id="h0-3" class="d">-# Cache primary monitor info {{{
+</a><a href="#h0-4" id="h0-4" class="d">-
+</a><a href="#h0-5" id="h0-5" class="d">-  dattr $(ppd) &gt; &quot;.cache/ppd_sizes&quot;
+</a><a href="#h0-6" id="h0-6" class="d">-
+</a><a href="#h0-7" id="h0-7" class="d">-# }}}
+</a><a href="#h0-8" id="h0-8" class="d">-
+</a> . wmrc
+ . panelsrc
+ 
+<a href="#h1" id="h1" class="h">@@ -49,14 +43,13 @@ is_int() {
+</a>   #CB=&quot;$(xrq &apos;*background&apos;)&quot;
+   CB=&quot;#1d2a30&quot;
+ 
+<a href="#h1-3" id="h1-3" class="d">-  ROOT_WINDOW=&quot;$(lsw -r)&quot;
+</a><a href="#h1-4" id="h1-4" class="d">-  ROOT_WINDOW_WIDTH=&quot;$(wattr w $ROOT_WINDOW)&quot;
+</a><a href="#h1-5" id="h1-5" class="d">-  ROOT_WINDOW_HEIGHT=&quot;$(wattr h $ROOT_WINDOW)&quot;
+</a><a href="#h1-6" id="h1-6" class="i">+  PD_X=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f1)&quot;
+</a><a href="#h1-7" id="h1-7" class="i">+  PD_Y=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f2)&quot;
+</a><a href="#h1-8" id="h1-8" class="i">+  PD_WIDTH=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f3)&quot;
+</a><a href="#h1-9" id="h1-9" class="i">+  PD_HEIGHT=&quot;$(cat $HOME/.cache/ppd_sizes | cut -d&apos; &apos; -f4)&quot;
+</a> 
+<a href="#h1-11" id="h1-11" class="d">-  #BAR_WIDTH=&quot;$(echo &quot;$ROOT_WINDOW_WIDTH * 0.7&quot; | bc | cut -d. -f1)&quot;
+</a><a href="#h1-12" id="h1-12" class="d">-  BAR_WIDTH=&quot;$(( ROOT_WINDOW_WIDTH - 2 * GENERAL_GAP ))&quot;
+</a><a href="#h1-13" id="h1-13" class="i">+  BAR_WIDTH=&quot;$(( PD_WIDTH - 2 * GENERAL_GAP ))&quot;
+</a>   BAR_HEIGHT=&quot;$PANEL_STATUS_HEIGHT&quot;
+<a href="#h1-15" id="h1-15" class="d">-  #BAR_X=&quot;$(echo &quot;$ROOT_WINDOW_WIDTH * 0.15&quot; | bc | cut -d. -f1)&quot;
+</a>   BAR_X=&quot;$GENERAL_GAP&quot;
+   BAR_Y=&quot;$GENERAL_GAP&quot;
+ 
+<b>diff --git a/<a href="../file/x/.xinitrc.html">x/.xinitrc</a> b/<a href="../file/x/.xinitrc.html">x/.xinitrc</a></b>
+<a href="#h0" id="h0" class="h">@@ -78,4 +78,6 @@ fi
+</a> notifyd &amp;
+ xsetroot -cursor_name left_ptr &amp;
+ 
+<a href="#h0-3" id="h0-3" class="d">-start_wmutils
+</a><a href="#h0-4" id="h0-4" class="i">+dispcache
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+start_cwm
+</a></pre>
+</div>
+</body>
+</html>

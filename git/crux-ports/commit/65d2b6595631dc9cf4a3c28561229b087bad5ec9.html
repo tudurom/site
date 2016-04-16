@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>port for cwm - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/65d2b6595631dc9cf4a3c28561229b087bad5ec9.html">65d2b6595631dc9cf4a3c28561229b087bad5ec9</a>
+<b>parent</b> <a href="../commit/8c44a735e413aa69e01dafc061ce811a6dfcba0b.html">8c44a735e413aa69e01dafc061ce811a6dfcba0b</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Apr  3 20:51:59 2016
+
+port for cwm
+
+<b>Diffstat:</b>
+ cwm/.footprint |  9 +++++++++
+ cwm/.md5sum    |  1 +
+ cwm/Pkgfile    | 17 +++++++++++++++++
+ 3 files changed, 27 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/cwm/.footprint.html">cwm/.footprint</a> b/<a href="../file/cwm/.footprint.html">cwm/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,9 @@
+</a><a href="#h0-0" id="h0-0" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h0-1" id="h0-1" class="i">+drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h0-2" id="h0-2" class="i">+-rwxr-xr-x	root/root	usr/bin/cwm
+</a><a href="#h0-3" id="h0-3" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-4" id="h0-4" class="i">+drwxr-xr-x	root/root	usr/share/man/
+</a><a href="#h0-5" id="h0-5" class="i">+drwxr-xr-x	root/root	usr/share/man/man1/
+</a><a href="#h0-6" id="h0-6" class="i">+-rw-r--r--	root/root	usr/share/man/man1/cwm.1.gz
+</a><a href="#h0-7" id="h0-7" class="i">+drwxr-xr-x	root/root	usr/share/man/man5/
+</a><a href="#h0-8" id="h0-8" class="i">+-rw-r--r--	root/root	usr/share/man/man5/cwmrc.5.gz
+</a><b>diff --git a/<a href="../file/cwm/.md5sum.html">cwm/.md5sum</a> b/<a href="../file/cwm/.md5sum.html">cwm/.md5sum</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+c447de61393637abcc5287e0f0fa9a5f  v5.6.tar.gz
+</a><b>diff --git a/<a href="../file/cwm/Pkgfile.html">cwm/Pkgfile</a> b/<a href="../file/cwm/Pkgfile.html">cwm/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,17 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Description: Portable version of OpenBSD&apos;s cwm(1) window manager
+</a><a href="#h0-1" id="h0-1" class="i">+# URL:         https://github.com/chneukirchen/cwm
+</a><a href="#h0-2" id="h0-2" class="i">+# Packager:    tudurom, xenogenesis@openmailbox.org
+</a><a href="#h0-3" id="h0-3" class="i">+# Depends on:  xorg-libxft xorg-libxrandr xorg-libxinerama
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+name=cwm
+</a><a href="#h0-6" id="h0-6" class="i">+version=5.6
+</a><a href="#h0-7" id="h0-7" class="i">+release=1
+</a><a href="#h0-8" id="h0-8" class="i">+source=(https://github.com/chneukirchen/cwm/archive/v5.6.tar.gz)
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+build() {
+</a><a href="#h0-11" id="h0-11" class="i">+	cd $name-$version
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a><a href="#h0-13" id="h0-13" class="i">+  make
+</a><a href="#h0-14" id="h0-14" class="i">+
+</a><a href="#h0-15" id="h0-15" class="i">+  make DESTDIR=&quot;$PKG&quot; PREFIX=/usr install
+</a><a href="#h0-16" id="h0-16" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>

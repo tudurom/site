@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>rsync - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../../../../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../../../../../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../../../../../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../../../../../"><img src="../../../../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../../../../../log.html">Log</a> | <a href="../../../../../files.html">Files</a> | <a href="../../../../../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> rsync (3112B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<a href="#l1" id="l1">1</a>
+<a href="#l2" id="l2">2</a>
+<a href="#l3" id="l3">3</a>
+<a href="#l4" id="l4">4</a>
+<a href="#l5" id="l5">5</a>
+<a href="#l6" id="l6">6</a>
+<a href="#l7" id="l7">7</a>
+<a href="#l8" id="l8">8</a>
+<a href="#l9" id="l9">9</a>
+<a href="#l10" id="l10">10</a>
+<a href="#l11" id="l11">11</a>
+<a href="#l12" id="l12">12</a>
+<a href="#l13" id="l13">13</a>
+<a href="#l14" id="l14">14</a>
+<a href="#l15" id="l15">15</a>
+<a href="#l16" id="l16">16</a>
+<a href="#l17" id="l17">17</a>
+<a href="#l18" id="l18">18</a>
+<a href="#l19" id="l19">19</a>
+<a href="#l20" id="l20">20</a>
+<a href="#l21" id="l21">21</a>
+<a href="#l22" id="l22">22</a>
+<a href="#l23" id="l23">23</a>
+<a href="#l24" id="l24">24</a>
+<a href="#l25" id="l25">25</a>
+<a href="#l26" id="l26">26</a>
+<a href="#l27" id="l27">27</a>
+<a href="#l28" id="l28">28</a>
+<a href="#l29" id="l29">29</a>
+<a href="#l30" id="l30">30</a>
+<a href="#l31" id="l31">31</a>
+<a href="#l32" id="l32">32</a>
+<a href="#l33" id="l33">33</a>
+<a href="#l34" id="l34">34</a>
+<a href="#l35" id="l35">35</a>
+<a href="#l36" id="l36">36</a>
+<a href="#l37" id="l37">37</a>
+<a href="#l38" id="l38">38</a>
+<a href="#l39" id="l39">39</a>
+<a href="#l40" id="l40">40</a>
+<a href="#l41" id="l41">41</a>
+<a href="#l42" id="l42">42</a>
+<a href="#l43" id="l43">43</a>
+<a href="#l44" id="l44">44</a>
+<a href="#l45" id="l45">45</a>
+<a href="#l46" id="l46">46</a>
+<a href="#l47" id="l47">47</a>
+<a href="#l48" id="l48">48</a>
+<a href="#l49" id="l49">49</a>
+<a href="#l50" id="l50">50</a>
+<a href="#l51" id="l51">51</a>
+<a href="#l52" id="l52">52</a>
+<a href="#l53" id="l53">53</a>
+<a href="#l54" id="l54">54</a>
+<a href="#l55" id="l55">55</a>
+<a href="#l56" id="l56">56</a>
+<a href="#l57" id="l57">57</a>
+<a href="#l58" id="l58">58</a>
+<a href="#l59" id="l59">59</a>
+<a href="#l60" id="l60">60</a>
+<a href="#l61" id="l61">61</a>
+<a href="#l62" id="l62">62</a>
+<a href="#l63" id="l63">63</a>
+<a href="#l64" id="l64">64</a>
+<a href="#l65" id="l65">65</a>
+<a href="#l66" id="l66">66</a>
+<a href="#l67" id="l67">67</a>
+<a href="#l68" id="l68">68</a>
+<a href="#l69" id="l69">69</a>
+<a href="#l70" id="l70">70</a>
+<a href="#l71" id="l71">71</a>
+<a href="#l72" id="l72">72</a>
+<a href="#l73" id="l73">73</a>
+<a href="#l74" id="l74">74</a>
+<a href="#l75" id="l75">75</a>
+<a href="#l76" id="l76">76</a>
+<a href="#l77" id="l77">77</a>
+<a href="#l78" id="l78">78</a>
+<a href="#l79" id="l79">79</a>
+<a href="#l80" id="l80">80</a>
+<a href="#l81" id="l81">81</a>
+<a href="#l82" id="l82">82</a>
+<a href="#l83" id="l83">83</a>
+<a href="#l84" id="l84">84</a>
+<a href="#l85" id="l85">85</a>
+<a href="#l86" id="l86">86</a>
+<a href="#l87" id="l87">87</a>
+<a href="#l88" id="l88">88</a>
+<a href="#l89" id="l89">89</a>
+<a href="#l90" id="l90">90</a>
+<a href="#l91" id="l91">91</a>
+<a href="#l92" id="l92">92</a>
+<a href="#l93" id="l93">93</a>
+<a href="#l94" id="l94">94</a>
+<a href="#l95" id="l95">95</a>
+<a href="#l96" id="l96">96</a>
+<a href="#l97" id="l97">97</a>
+<a href="#l98" id="l98">98</a>
+<a href="#l99" id="l99">99</a>
+<a href="#l100" id="l100">100</a>
+<a href="#l101" id="l101">101</a>
+<a href="#l102" id="l102">102</a>
+<a href="#l103" id="l103">103</a>
+<a href="#l104" id="l104">104</a>
+<a href="#l105" id="l105">105</a>
+<a href="#l106" id="l106">106</a>
+<a href="#l107" id="l107">107</a>
+<a href="#l108" id="l108">108</a>
+<a href="#l109" id="l109">109</a>
+<a href="#l110" id="l110">110</a>
+<a href="#l111" id="l111">111</a>
+<a href="#l112" id="l112">112</a>
+<a href="#l113" id="l113">113</a>
+<a href="#l114" id="l114">114</a>
+<a href="#l115" id="l115">115</a>
+<a href="#l116" id="l116">116</a>
+<a href="#l117" id="l117">117</a>
+<a href="#l118" id="l118">118</a>
+<a href="#l119" id="l119">119</a>
+<a href="#l120" id="l120">120</a>
+<a href="#l121" id="l121">121</a>
+<a href="#l122" id="l122">122</a>
+<a href="#l123" id="l123">123</a>
+<a href="#l124" id="l124">124</a>
+<a href="#l125" id="l125">125</a>
+<a href="#l126" id="l126">126</a>
+<a href="#l127" id="l127">127</a>
+<a href="#l128" id="l128">128</a>
+<a href="#l129" id="l129">129</a>
+<a href="#l130" id="l130">130</a>
+<a href="#l131" id="l131">131</a>
+<a href="#l132" id="l132">132</a>
+<a href="#l133" id="l133">133</a>
+<a href="#l134" id="l134">134</a>
+<a href="#l135" id="l135">135</a>
+<a href="#l136" id="l136">136</a>
+<a href="#l137" id="l137">137</a>
+<a href="#l138" id="l138">138</a>
+<a href="#l139" id="l139">139</a>
+<a href="#l140" id="l140">140</a>
+<a href="#l141" id="l141">141</a>
+<a href="#l142" id="l142">142</a>
+<a href="#l143" id="l143">143</a>
+</pre></td><td><pre>
+#!/usr/bin/perl
+#
+# /etc/ports/drivers/rsync: rsync(1) driver script for ports(8)
+#
+
+use warnings;
+use strict;
+use File::Basename;
+
+my $host = &apos;&apos;;
+my $collection = &apos;&apos;;
+my $destination = &apos;&apos;;
+my %new_checkouts;
+my %old_checkouts;
+
+sub error
+{
+	my $message = shift;
+	print &quot;Error: $message ($!)\nUpdating failed\n&quot;;
+	exit 1;
+}
+
+sub warning
+{
+	my $message = shift;
+	print &quot;Warning: $message ($!)\n&quot;;
+}
+
+if ($#ARGV &lt; 0)
+{
+	print &quot;Usage: $0 &lt;file&gt;\n&quot;;
+	exit 1;
+}
+
+open(FILE, $ARGV[0]) or error(&quot;Couldn&apos;t open $ARGV[0]&quot;);
+while (&lt;FILE&gt;)
+{
+	chomp;
+	if    (/^host=(.*)/)        { $host = $1; }
+	elsif (/^collection=(.*)/)  { $collection = $1; }
+	elsif (/^destination=(.*)/) { $destination = $1; }
+}
+close(FILE);
+
+if ($host eq &apos;&apos;)        { error(&quot;Host field not set in $ARGV[0]&quot;);        }
+if ($collection eq &apos;&apos;)  { error(&quot;Collection field not set in $ARGV[0]&quot;);  }
+if ($destination eq &apos;&apos;) { error(&quot;Destination field not set in $ARGV[0]&quot;); }
+
+if (-e &quot;$destination/.checkouts&quot;)
+{
+	# read the old .checkouts file into memory
+	open(FILE, &quot;$destination/.checkouts&quot;) or error(&quot;Couldn&apos;t read checkouts from $destination/.checkouts&quot;);
+	while (&lt;FILE&gt;)
+	{
+		chomp;
+		$old_checkouts{$_} = 1;
+	}
+	close(FILE);
+}
+
+print &quot;Updating file list from &quot; . $host . &quot;::$collection\n&quot;;
+
+# get the remote file list (new .checkouts)
+open(PIPE, &apos;rsync -crz --no-human-readable &apos; . $host . &apos;::&apos; . $collection . &apos;|&apos;) or error(&quot;Couldn&apos;t open pipe to rsync&quot;);
+while (&lt;PIPE&gt;)
+{
+	chomp;
+
+	next if /^MOTD:/;	# ignore MOTD lines
+	s/^(.{43})//;		# ignore the first 43 characters (mode, date etc...)
+	next if /^.$/;		# ignore the . directory
+
+	$new_checkouts{$_} = 1;
+}
+close(PIPE);
+error(&quot;Running rsync failed&quot;) unless $? == 0;
+
+print &quot;Updating collection &quot; . basename($destination) . &quot;\n&quot;;
+
+# now really run rsync
+open(PIPE, &apos;rsync -crz --no-human-readable --log-format &quot;%o %n&quot; &apos; . $host . &quot;::$collection $destination|&quot;) or error(&quot;Couldn&apos;t open pipe to rsync&quot;);
+while (&lt;PIPE&gt;)
+{
+	chomp;
+
+	if (/^recv (.*)/)
+	{
+		if ($old_checkouts{$1})
+		{
+			s/^recv/ Edit/;
+		}
+		else
+		{
+			s/^recv/ Checkout/;
+		}
+	}
+
+	print $_ . &quot;\n&quot;;
+}
+close(PIPE);
+error(&quot;Running rsync failed&quot;) unless $? == 0;
+
+# save new checkouts into .checkouts
+open(FILE, &quot;&gt;$destination/.checkouts&quot;) or error(&quot;Couldn&apos;t save checkouts to $destination/.checkouts&quot;);
+foreach my $checkout (sort keys %new_checkouts)
+{
+	print FILE &quot;$checkout\n&quot;;
+}
+close(FILE);
+
+# use chroot as an additional safety measure when removing files
+chroot($destination) or error(&quot;Couldn&apos;t chroot into $destination&quot;);
+chdir(&apos;/&apos;);
+
+# iterate through old checkouts, remove obsolete files
+foreach my $checkout (sort keys %old_checkouts)
+{
+	if (!$new_checkouts{$checkout})
+	{
+		if (-f $checkout)
+		{
+			print &quot; Delete $checkout\n&quot;;
+			unlink($checkout) or warning(&quot;Couldn&apos;t delete $checkout&quot;);
+		}
+	}
+}
+
+# iterate through old checkouts, remove obsolete directories
+foreach my $checkout (sort keys %old_checkouts)
+{
+	if (!$new_checkouts{$checkout})
+	{
+		if (-d $checkout)
+		{
+			print &quot; Delete $checkout\n&quot;;
+			rmdir($checkout) or warning(&quot;Couldn&apos;t delete $checkout&quot;);
+		}
+	}
+}
+
+print &quot;Finished successfully\n&quot;;
+
+# End of file
+</pre></td></tr></table>
+</div>
+</body>
+</html>

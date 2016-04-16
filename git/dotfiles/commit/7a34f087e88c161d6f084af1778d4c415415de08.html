@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Idk - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/7a34f087e88c161d6f084af1778d4c415415de08.html">7a34f087e88c161d6f084af1778d4c415415de08</a>
+<b>parent</b> <a href="../commit/289623b2ee8cddd1845826a8c3814504f9318fb7.html">289623b2ee8cddd1845826a8c3814504f9318fb7</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Sat Dec  5 19:05:04 2015
+
+Idk
+
+<b>Diffstat:</b>
+ home/.config/i3/config             | 10 ++++++----
+ home/.scripts/i3blocks/.volume.swp | Bin 12288 -&gt; 0 bytes
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+<hr/><b>diff --git a/<a href="../file/home/.config/i3/config.html">home/.config/i3/config</a> b/<a href="../file/home/.config/i3/config.html">home/.config/i3/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -138,7 +138,9 @@ bindsym $mod+Shift+c reload
+</a> # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+ bindsym $mod+Shift+r restart
+ # exit i3 (logs you out of your X session)
+<a href="#h0-3" id="h0-3" class="d">-bindsym $mod+Shift+e exec &quot;i3-nagbar -t warning -m &apos;You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.&apos; -b &apos;Yes, exit i3&apos; &apos;i3-msg exit&apos;&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+#bindsym $mod+Shift+e exec &quot;i3-nagbar -t warning -m &apos;You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.&apos; -b &apos;Yes, exit i3&apos; &apos;i3-msg exit&apos;&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+bindsym $mod+Shift+e exec &quot;i3-nagbar -t warning -m &apos;You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.&apos; -b &apos;Aye, exit i3&apos; &apos;i3-msg exit&apos;&quot;
+</a><a href="#h0-6" id="h0-6" class="i">+
+</a> 
+ # resize window (you can also use the mouse for that)
+ mode &quot;resize&quot; {
+<a href="#h1" id="h1" class="h">@@ -186,11 +188,11 @@ set $bar-bg-color        #18242C
+</a> # Start i3bar to display a workspace bar (plus the system information i3status
+ # finds out, if available)
+ bar {
+<a href="#h1-3" id="h1-3" class="d">-  status_command i3blocks 
+</a><a href="#h1-4" id="h1-4" class="i">+  status_command i3blocks
+</a>   tray_output primary
+   separator_symbol &quot;●&quot;
+<a href="#h1-7" id="h1-7" class="d">-  font pango:FontAwesome 12
+</a><a href="#h1-8" id="h1-8" class="d">-  font pango:System San Francisco Display 12
+</a><a href="#h1-9" id="h1-9" class="i">+  font pango:FontAwesome12, System San Francisco Display 12
+</a><a href="#h1-10" id="h1-10" class="i">+
+</a> 
+   colors {
+     background $bar-bg-color
+<b>diff --git a/<a href="../file/home/.scripts/i3blocks/.volume.swp.html">home/.scripts/i3blocks/.volume.swp</a> b/<a href="../file/home/.scripts/i3blocks/.volume.swp.html">home/.scripts/i3blocks/.volume.swp</a></b>
+Binary files differ
+</pre>
+</div>
+</body>
+</html>

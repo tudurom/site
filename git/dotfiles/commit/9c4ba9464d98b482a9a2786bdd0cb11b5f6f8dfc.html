@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Readme - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/9c4ba9464d98b482a9a2786bdd0cb11b5f6f8dfc.html">9c4ba9464d98b482a9a2786bdd0cb11b5f6f8dfc</a>
+<b>parent</b> <a href="../commit/bb46788827f3f21d7c04e96bd5c51a4f681b768d.html">bb46788827f3f21d7c04e96bd5c51a4f681b768d</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Sat Feb 27 16:18:00 2016
+
+Readme
+
+<b>Diffstat:</b>
+ .gitignore               |   7 +-
+ README.md                |   5 +-
+ mpd/.mpd/mpd.db          | Bin 6303 -&gt; 0 bytes
+ mpd/.mpd/mpd.fifo        |   0
+ mpd/.mpd/mpd.pid         |   1 +-
+ mpd/.mpd/mpdstate        | 178 +------------------------------------------------
+ mpd/.mpd/playlists/..m3u | 146 +---------------------------------------
+ 7 files changed, 7 insertions(+), 330 deletions(-)
+<hr/><b>diff --git a/<a href="../file/.gitignore.html">.gitignore</a> b/<a href="../file/.gitignore.html">.gitignore</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,5 +1,8 @@
+</a><a href="#h0-0" id="h0-0" class="d">-nvim/.config/nvim/bundle
+</a><a href="#h0-1" id="h0-1" class="i">+nvim/.config/nvim/bundle/*
+</a> !nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/cloudy.vim
+ nvim/.config/nvim/tmp
+<a href="#h0-4" id="h0-4" class="d">-mpd/.mpd/mpd.log
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+mpd/.mpd/*
+</a><a href="#h0-7" id="h0-7" class="i">+!mpd/.mpd/mpd.conf
+</a><a href="#h0-8" id="h0-8" class="i">+
+</a> vimperator/.vimperator/info
+<b>diff --git a/<a href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h0" id="h0" class="h">@@ -16,16 +16,15 @@ List of programs
+</a> * **Operating System**: [Arch Linux](http://archlinux.org) (tell everyone that some (handsome) guy who calls himself tudurom uses Arch. YEAH! I&apos;M USING ARCH!)
+ * **Text editor**: [neovim](http://neovim.io)
+   * See `nvim/.config/nvim/init.vim` for plugins
+<a href="#h0-3" id="h0-3" class="d">-* **Color scheme**: [cloudy](https://github.com/tudurom/dotfiles/blob/master/home/.xres/colors/cloudy)
+</a><a href="#h0-4" id="h0-4" class="i">+* **Color scheme**: [cloudy](https://github.com/tudurom/dotfiles/blob/master/x/.xres/colors/cloudy)
+</a> * **Shell**: [mksh](https://www.mirbsd.org/mksh.htm)
+   * Also using [tmux](https://wiki.archlinux.org/index.php/tmux).
+ * **Terminal emulator**: [urxvt](https://wiki.archlinux.org/index.php/rxvt-unicode) (for noobs: [see this tutorial](https://www.youtube.com/watch?v=_kjbj-Ez1vU&amp;feature=youtu.be))
+<a href="#h0-8" id="h0-8" class="d">-* **Notification daemon**: [Simple Notification Daemon](https://github.com/htylo/simplenotifydaemon) in combination with [my script](https://github.com/tudurom/dotfiles/blob/master/home/.scripts/notifyd)
+</a><a href="#h0-9" id="h0-9" class="i">+* **Notification daemon**: [Simple Notification Daemon](https://github.com/htylo/simplenotifydaemon) in combination with [my script](https://github.com/tudurom/dotfiles/blob/master/scripts/.scripts/notifyd)
+</a> * **Window manager**: [bspwm](https://wiki.archlinux.org/index.php/Bspwm)
+   * **Panel**: [lemonbar](https://wiki.archlinux.org/index.php/Lemonbar) (see `~/.scripts/panel*`)
+ * **Browser**: Firefox
+   * **Theme**: Twily&apos;s modified
+<a href="#h0-14" id="h0-14" class="d">-  * ~~I will make a start page soon!~~ Done!
+</a> * **Music player**: [mpd](https://wiki.archlinux.org/index.php/Music_Player_Daemon) + [ncmpcpp](https://wiki.archlinux.org/index.php/Ncmpcpp)
+ 
+ Inspiration / People where I steal from
+<b>diff --git a/<a href="../file/mpd/.mpd/mpd.db.html">mpd/.mpd/mpd.db</a> b/<a href="../file/mpd/.mpd/mpd.db.html">mpd/.mpd/mpd.db</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/mpd/.mpd/mpd.fifo.html">mpd/.mpd/mpd.fifo</a> b/<a href="../file/mpd/.mpd/mpd.fifo.html">mpd/.mpd/mpd.fifo</a></b>
+<b>diff --git a/<a href="../file/mpd/.mpd/mpd.pid.html">mpd/.mpd/mpd.pid</a> b/<a href="../file/mpd/.mpd/mpd.pid.html">mpd/.mpd/mpd.pid</a></b>
+<a href="#h0" id="h0" class="h">@@ -1 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-26716
+</a><b>diff --git a/<a href="../file/mpd/.mpd/mpdstate.html">mpd/.mpd/mpdstate</a> b/<a href="../file/mpd/.mpd/mpdstate.html">mpd/.mpd/mpdstate</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,178 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-sw_volume: 98
+</a><a href="#h0-1" id="h0-1" class="d">-audio_device_state:1:MPD Alsa
+</a><a href="#h0-2" id="h0-2" class="d">-audio_device_state:1:vis_feed
+</a><a href="#h0-3" id="h0-3" class="d">-state: pause
+</a><a href="#h0-4" id="h0-4" class="d">-current: 162
+</a><a href="#h0-5" id="h0-5" class="d">-time: 173.569000
+</a><a href="#h0-6" id="h0-6" class="d">-random: 1
+</a><a href="#h0-7" id="h0-7" class="d">-repeat: 0
+</a><a href="#h0-8" id="h0-8" class="d">-single: 0
+</a><a href="#h0-9" id="h0-9" class="d">-consume: 0
+</a><a href="#h0-10" id="h0-10" class="d">-crossfade: 0
+</a><a href="#h0-11" id="h0-11" class="d">-mixrampdb: 0.000000
+</a><a href="#h0-12" id="h0-12" class="d">-mixrampdelay: -1.000000
+</a><a href="#h0-13" id="h0-13" class="d">-playlist_begin
+</a><a href="#h0-14" id="h0-14" class="d">-0:AZELmusic - Antoine Lavenant - Street Fighter (Dubstep Remix).mp3
+</a><a href="#h0-15" id="h0-15" class="d">-1:AZELmusic - AZEL - My Journey.mp3
+</a><a href="#h0-16" id="h0-16" class="d">-2:Break_It_Up_Original_Mix_.mp3
+</a><a href="#h0-17" id="h0-17" class="d">-3:Daft Punk - Harder, Better, Faster, Stronger.mp3
+</a><a href="#h0-18" id="h0-18" class="d">-4:Ephixa - Catfish.flac
+</a><a href="#h0-19" id="h0-19" class="d">-5:Ephixa - Future Baes.flac
+</a><a href="#h0-20" id="h0-20" class="d">-6:EXCISION - X Rated ft Messinian [OFFICIAL].mp3
+</a><a href="#h0-21" id="h0-21" class="d">-7:Hotline Bling (Seraphim Cover).mp3
+</a><a href="#h0-22" id="h0-22" class="d">-8:Metallica - The Unforgiven.m4a
+</a><a href="#h0-23" id="h0-23" class="d">-9:Mykool - Taken For Granted.mp3
+</a><a href="#h0-24" id="h0-24" class="d">-10:Never Gonna Wake Up (Get Knocked Down) (Nils Mashup).mp3
+</a><a href="#h0-25" id="h0-25" class="d">-11:Razihel - Skybreaker.mp3
+</a><a href="#h0-26" id="h0-26" class="d">-12:ROA - D-AIA.mp3
+</a><a href="#h0-27" id="h0-27" class="d">-13:Rogue - From The Dust.mp3
+</a><a href="#h0-28" id="h0-28" class="d">-14:Stephen Walking - Birthday Cake (Eminence Remix) [320kbps].mp3
+</a><a href="#h0-29" id="h0-29" class="d">-15:Stephen Walking - Donkey Kong Jungle Jjapes.mp3
+</a><a href="#h0-30" id="h0-30" class="d">-16:Stephen Walking - Supercool! ft. CoMa.wav
+</a><a href="#h0-31" id="h0-31" class="d">-17:Stephen Walking - Top of the world.mp3
+</a><a href="#h0-32" id="h0-32" class="d">-18:Stephen Walking - Treebeard (Drumstep VIP).mp3
+</a><a href="#h0-33" id="h0-33" class="d">-19:Stonebank - Eagle Eyes (feat. EMEL) [Monstercat Release].mp3
+</a><a href="#h0-34" id="h0-34" class="d">-20:TheFatRat - Monody (feat. Laura Brehm).flac
+</a><a href="#h0-35" id="h0-35" class="d">-21:TheFatRat - Unity.flac
+</a><a href="#h0-36" id="h0-36" class="d">-22:TheFatRat - Xenogenesis.flac
+</a><a href="#h0-37" id="h0-37" class="d">-23:Voltaj - MSD2.mp3
+</a><a href="#h0-38" id="h0-38" class="d">-24:RickandMorty.GoodbyeMoonmen.FullSong.mp3
+</a><a href="#h0-39" id="h0-39" class="d">-25:Spag Heddy - Permanent MP3 (40k Freebie).mp3
+</a><a href="#h0-40" id="h0-40" class="d">-26:Carried_Away_Spock_Remix_.mp3
+</a><a href="#h0-41" id="h0-41" class="d">-27:Pasarea Colibri - Vinovatii fara vina.mp3
+</a><a href="#h0-42" id="h0-42" class="d">-28:Hyper Potions - Porta Vista.opus
+</a><a href="#h0-43" id="h0-43" class="d">-29:Disfigure - Blank.mp3
+</a><a href="#h0-44" id="h0-44" class="d">-30:Major Lazer &amp; DJ Snake - Lean On (feat. MØ) (NoXuu Remix).mp3
+</a><a href="#h0-45" id="h0-45" class="d">-31:Chimeric - Metronome.mp3
+</a><a href="#h0-46" id="h0-46" class="d">-32:Elliot Berger - Diamond Sky feat. Laura Brehm.mp3
+</a><a href="#h0-47" id="h0-47" class="d">-33:Favright - This Time.mp3
+</a><a href="#h0-48" id="h0-48" class="d">-34:I.Y.F.F.E - Love Hangover.mp3
+</a><a href="#h0-49" id="h0-49" class="d">-35:Koda &amp; Dabin - The Take Down.mp3
+</a><a href="#h0-50" id="h0-50" class="d">-36:Nasxy - Samurai.mp3
+</a><a href="#h0-51" id="h0-51" class="d">-37:Pegboard Nerds feat. Splitbreed - We Are One (Droptek Remix).mp3
+</a><a href="#h0-52" id="h0-52" class="d">-38:Sporty-O - Guestlist (Smookie Illson Remix).mp3
+</a><a href="#h0-53" id="h0-53" class="d">-39:Stephen Walking &amp; Soulero - Ampersand.mp3
+</a><a href="#h0-54" id="h0-54" class="d">-40:Tristam &amp; Braken - Flight.mp3
+</a><a href="#h0-55" id="h0-55" class="d">-41:Vicetone feat. Collin McLoughlin - Heartbeat (PIXL Remix).mp3
+</a><a href="#h0-56" id="h0-56" class="d">-42:XAVI3R3 - Back It Up.mp3
+</a><a href="#h0-57" id="h0-57" class="d">-43:Days of Confusion/2014-Bloodstream-01-Bloodstream.mp3
+</a><a href="#h0-58" id="h0-58" class="d">-44:Days of Confusion/2014-Bloodstream-02-Bloodstream-Radio-Edit.mp3
+</a><a href="#h0-59" id="h0-59" class="d">-45:Days of Confusion/2015_Dharkata.mp3
+</a><a href="#h0-60" id="h0-60" class="d">-46:Days of Confusion/2012-Seeds-01-Grace.mp3
+</a><a href="#h0-61" id="h0-61" class="d">-47:Days of Confusion/2012-Seeds-02-Meta.mp3
+</a><a href="#h0-62" id="h0-62" class="d">-48:Days of Confusion/2012-Seeds-03-Seeds.mp3
+</a><a href="#h0-63" id="h0-63" class="d">-49:Days of Confusion/2012-Seeds-04-Journey.mp3
+</a><a href="#h0-64" id="h0-64" class="d">-50:Days of Confusion/2012-Seeds-05-Faceless.mp3
+</a><a href="#h0-65" id="h0-65" class="d">-51:Days of Confusion/2012-Seeds-06-Walking-In-The-Dark.mp3
+</a><a href="#h0-66" id="h0-66" class="d">-52:Goodbye to Gravity - Mantras of War/01 Goodbye To Gravity - The Day We Die.wav
+</a><a href="#h0-67" id="h0-67" class="d">-53:Goodbye to Gravity - Mantras of War/02 Goodbye To Gravity - Shadow Puppets.wav
+</a><a href="#h0-68" id="h0-68" class="d">-54:Goodbye to Gravity - Mantras of War/03 Goodbye To Gravity - Atonement.wav
+</a><a href="#h0-69" id="h0-69" class="d">-55:Goodbye to Gravity - Mantras of War/04 Goodbye To Gravity - Four Minutes of Rage.wav
+</a><a href="#h0-70" id="h0-70" class="d">-56:Goodbye to Gravity - Mantras of War/05 Goodbye To Gravity - Rise From the Fallen.wav
+</a><a href="#h0-71" id="h0-71" class="d">-57:Goodbye to Gravity - Mantras of War/06 Goodbye To Gravity - Heed the Call.wav
+</a><a href="#h0-72" id="h0-72" class="d">-58:Goodbye to Gravity - Mantras of War/07 Goodbye To Gravity - What If.wav
+</a><a href="#h0-73" id="h0-73" class="d">-59:Goodbye to Gravity - Mantras of War/08 Goodbye To Gravity - This Life Is Running Out.wav
+</a><a href="#h0-74" id="h0-74" class="d">-60:Goodbye to Gravity - Mantras of War/09 Goodbye To Gravity - Ode to a Sacrifice.wav
+</a><a href="#h0-75" id="h0-75" class="d">-61:Goodbye to Gravity - Mantras of War/01 Goodbye To Gravity - The Day We Die.flac
+</a><a href="#h0-76" id="h0-76" class="d">-62:Goodbye to Gravity - Mantras of War/02 Goodbye To Gravity - Shadow Puppets.flac
+</a><a href="#h0-77" id="h0-77" class="d">-63:Goodbye to Gravity - Mantras of War/03 Goodbye To Gravity - Atonement.flac
+</a><a href="#h0-78" id="h0-78" class="d">-64:Goodbye to Gravity - Mantras of War/04 Goodbye To Gravity - Four Minutes of Rage.flac
+</a><a href="#h0-79" id="h0-79" class="d">-65:Goodbye to Gravity - Mantras of War/05 Goodbye To Gravity - Rise From the Fallen.flac
+</a><a href="#h0-80" id="h0-80" class="d">-66:Goodbye to Gravity - Mantras of War/06 Goodbye To Gravity - Heed the Call.flac
+</a><a href="#h0-81" id="h0-81" class="d">-67:Goodbye to Gravity - Mantras of War/07 Goodbye To Gravity - What If.flac
+</a><a href="#h0-82" id="h0-82" class="d">-68:Goodbye to Gravity - Mantras of War/08 Goodbye To Gravity - This Life Is Running Out.flac
+</a><a href="#h0-83" id="h0-83" class="d">-69:Goodbye to Gravity - Mantras of War/09 Goodbye To Gravity - Ode to a Sacrifice.flac
+</a><a href="#h0-84" id="h0-84" class="d">-70:KoRn - The Path Of Totality Special/14 - Korn ft. Skrillex - Get Up! (Original Mix) (Bonus).flac
+</a><a href="#h0-85" id="h0-85" class="d">-71:KoRn - The Path Of Totality Special/15 - Korn ft. Skrillex &amp; Kill The Noise - Narcissistic Cannibal (Original Mix) (Bonus).flac
+</a><a href="#h0-86" id="h0-86" class="d">-72:KoRn - The Path Of Totality Special/01 - Korn ft. Skrillex - Chaos Lives in Everything.flac
+</a><a href="#h0-87" id="h0-87" class="d">-73:KoRn - The Path Of Totality Special/02 - Korn ft. Noisia - Kill Mercy Within.flac
+</a><a href="#h0-88" id="h0-88" class="d">-74:KoRn - The Path Of Totality Special/03 - Korn ft. Excision - My Wall.flac
+</a><a href="#h0-89" id="h0-89" class="d">-75:KoRn - The Path Of Totality Special/04 - Korn ft. Skrillex &amp; Kill The Noise - Narcissistic Cannibal.flac
+</a><a href="#h0-90" id="h0-90" class="d">-76:KoRn - The Path Of Totality Special/05 - Korn ft. Excision &amp; Downlink - Illuminati.flac
+</a><a href="#h0-91" id="h0-91" class="d">-77:KoRn - The Path Of Totality Special/06 - Korn ft. Noisia - Burn the Obedient.flac
+</a><a href="#h0-92" id="h0-92" class="d">-78:KoRn - The Path Of Totality Special/07 - Korn ft. Downlink - Sanctuary.flac
+</a><a href="#h0-93" id="h0-93" class="d">-79:KoRn - The Path Of Totality Special/08 - Korn ft.  Noisia - Let&apos;s Go.flac
+</a><a href="#h0-94" id="h0-94" class="d">-80:KoRn - The Path Of Totality Special/09 - Korn ft. Skrillex - Get Up!.flac
+</a><a href="#h0-95" id="h0-95" class="d">-81:KoRn - The Path Of Totality Special/10 - Korn ft. 12th Planet - Way Too Far.flac
+</a><a href="#h0-96" id="h0-96" class="d">-82:KoRn - The Path Of Totality Special/11 - Korn ft.  Feed Me - Bleeding Out.flac
+</a><a href="#h0-97" id="h0-97" class="d">-83:KoRn - The Path Of Totality Special/12 - Korn ft. Kill The Noise - Fuels the Comedy.flac
+</a><a href="#h0-98" id="h0-98" class="d">-84:KoRn - The Path Of Totality Special/13 - Korn ft. Excision, Datsik &amp; Downlink - Tension.flac
+</a><a href="#h0-99" id="h0-99" class="d">-85:Madeon - Adventure/01 - Isometric (Intro).flac
+</a><a href="#h0-100" id="h0-100" class="d">-86:Madeon - Adventure/02 - You&apos;re On (feat. Kyan).flac
+</a><a href="#h0-101" id="h0-101" class="d">-87:Madeon - Adventure/03 - OK.flac
+</a><a href="#h0-102" id="h0-102" class="d">-88:Madeon - Adventure/04 - La Lune (feat. Dan Smith).flac
+</a><a href="#h0-103" id="h0-103" class="d">-89:Madeon - Adventure/05 - Pay No Mind (feat. Passion Pit).flac
+</a><a href="#h0-104" id="h0-104" class="d">-90:Madeon - Adventure/06 - Beings.flac
+</a><a href="#h0-105" id="h0-105" class="d">-91:Madeon - Adventure/07 - Imperium.flac
+</a><a href="#h0-106" id="h0-106" class="d">-92:Madeon - Adventure/08 - Zephyr.flac
+</a><a href="#h0-107" id="h0-107" class="d">-93:Madeon - Adventure/09 - Nonsense (feat. Mark Foster).flac
+</a><a href="#h0-108" id="h0-108" class="d">-94:Madeon - Adventure/10 - Innocence (feat. Aquilo).flac
+</a><a href="#h0-109" id="h0-109" class="d">-95:Madeon - Adventure/11 - Pixel Empire.flac
+</a><a href="#h0-110" id="h0-110" class="d">-96:Madeon - Adventure/12 - Home.flac
+</a><a href="#h0-111" id="h0-111" class="d">-97:Madeon - Adventure/13 - Icarus.flac
+</a><a href="#h0-112" id="h0-112" class="d">-98:Madeon - Adventure/14 - Finale (feat. Nicholas Petricca).flac
+</a><a href="#h0-113" id="h0-113" class="d">-99:Madeon - Adventure/15 - The City.flac
+</a><a href="#h0-114" id="h0-114" class="d">-100:Madeon - Adventure/16 - Cut the Kid.flac
+</a><a href="#h0-115" id="h0-115" class="d">-101:Madeon - Adventure/17 - Technicolor.flac
+</a><a href="#h0-116" id="h0-116" class="d">-102:Madeon - Adventure/18 - Only Way Out (feat. Vancouver Sleep Clinic).flac
+</a><a href="#h0-117" id="h0-117" class="d">-103:Nightwish - Endless Forms Most Beautiful /01 - Nightwish - Shudder Before The Beautiful.flac
+</a><a href="#h0-118" id="h0-118" class="d">-104:Nightwish - Endless Forms Most Beautiful /02 - Nightwish - Weak Fantasy.flac
+</a><a href="#h0-119" id="h0-119" class="d">-105:Nightwish - Endless Forms Most Beautiful /03 - Nightwish - Élan.flac
+</a><a href="#h0-120" id="h0-120" class="d">-106:Nightwish - Endless Forms Most Beautiful /04 - Nightwish - Yours Is An Empty Hope.flac
+</a><a href="#h0-121" id="h0-121" class="d">-107:Nightwish - Endless Forms Most Beautiful /05 - Nightwish - Our Decades In The Sun.flac
+</a><a href="#h0-122" id="h0-122" class="d">-108:Nightwish - Endless Forms Most Beautiful /06 - Nightwish - My Walden.flac
+</a><a href="#h0-123" id="h0-123" class="d">-109:Nightwish - Endless Forms Most Beautiful /07 - Nightwish - Endless Forms Most Beautiful.flac
+</a><a href="#h0-124" id="h0-124" class="d">-110:Nightwish - Endless Forms Most Beautiful /08 - Nightwish - Edema Ruh.flac
+</a><a href="#h0-125" id="h0-125" class="d">-111:Nightwish - Endless Forms Most Beautiful /09 - Nightwish - Alpenglow.flac
+</a><a href="#h0-126" id="h0-126" class="d">-112:Nightwish - Endless Forms Most Beautiful /10 - Nightwish - The Eyes Of Sharbat Gula.flac
+</a><a href="#h0-127" id="h0-127" class="d">-113:Nightwish - Endless Forms Most Beautiful /11 - Nightwish - The Greatest Show On Earth.flac
+</a><a href="#h0-128" id="h0-128" class="d">-114:Perturbator - Dangerous Days/PERTURBATOR - Dangerous Days - 01 Welcome Back.flac
+</a><a href="#h0-129" id="h0-129" class="d">-115:Perturbator - Dangerous Days/PERTURBATOR - Dangerous Days - 02 Perturbator&apos;s Theme.flac
+</a><a href="#h0-130" id="h0-130" class="d">-116:Perturbator - Dangerous Days/PERTURBATOR - Dangerous Days - 03 Raw Power.flac
+</a><a href="#h0-131" id="h0-131" class="d">-117:Perturbator - Dangerous Days/PERTURBATOR - Dangerous Days - 04 Future Club.flac
+</a><a href="#h0-132" id="h0-132" class="d">-118:Perturbator - Dangerous Days/PERTURBATOR - Dangerous Days - 05 War Against Machines.flac
+</a><a href="#h0-133" id="h0-133" class="d">-119:Perturbator - Dangerous Days/PERTURBATOR - Dangerous Days - 06 Hard Wired (Feat. Memory Ghost&apos;s Isabella Goloversic).flac
+</a><a href="#h0-134" id="h0-134" class="d">-120:Perturbator - Dangerous Days/PERTURBATOR - Dangerous Days - 07 She is Young, She is Beautiful, She is Next.flac
+</a><a href="#h0-135" id="h0-135" class="d">-121:Perturbator - Dangerous Days/PERTURBATOR - Dangerous Days - 08 Humans Are Such Easy Prey.flac
+</a><a href="#h0-136" id="h0-136" class="d">-122:Perturbator - Dangerous Days/PERTURBATOR - Dangerous Days - 09 Minuit (Feat. Dead Astronauts).flac
+</a><a href="#h0-137" id="h0-137" class="d">-123:Perturbator - Dangerous Days/PERTURBATOR - Dangerous Days - 10 Satanic Rites.flac
+</a><a href="#h0-138" id="h0-138" class="d">-124:Perturbator - Dangerous Days/PERTURBATOR - Dangerous Days - 11 Complete Domination (Feat. Carpenter Brut).flac
+</a><a href="#h0-139" id="h0-139" class="d">-125:Perturbator - Dangerous Days/PERTURBATOR - Dangerous Days - 12 Last Kiss.flac
+</a><a href="#h0-140" id="h0-140" class="d">-126:Perturbator - Dangerous Days/PERTURBATOR - Dangerous Days - 13 Dangerous Days.flac
+</a><a href="#h0-141" id="h0-141" class="d">-127:Perturbator - I Am The Night/Perturbator - I Am The Night - 01 The New Black.flac
+</a><a href="#h0-142" id="h0-142" class="d">-128:Perturbator - I Am The Night/Perturbator - I Am The Night - 02 Retrogenesis.flac
+</a><a href="#h0-143" id="h0-143" class="d">-129:Perturbator - I Am The Night/Perturbator - I Am The Night - 03 Eclipse.flac
+</a><a href="#h0-144" id="h0-144" class="d">-130:Perturbator - I Am The Night/Perturbator - I Am The Night - 04 I Am The Night.flac
+</a><a href="#h0-145" id="h0-145" class="d">-131:Perturbator - I Am The Night/Perturbator - I Am The Night - 05 Naked Tongues (Feat. Memory Ghost&apos;s Isabella Goloversic).flac
+</a><a href="#h0-146" id="h0-146" class="d">-132:Perturbator - I Am The Night/Perturbator - I Am The Night - 06 Nexus Six - Interlude.flac
+</a><a href="#h0-147" id="h0-147" class="d">-133:Perturbator - I Am The Night/Perturbator - I Am The Night - 07 Technoir (Feat. Noir Deco).flac
+</a><a href="#h0-148" id="h0-148" class="d">-134:Perturbator - I Am The Night/Perturbator - I Am The Night - 08 Desire (Feat. Greta Link).flac
+</a><a href="#h0-149" id="h0-149" class="d">-135:Perturbator - I Am The Night/Perturbator - I Am The Night - 09 Deviance (Feat. Arcade High).flac
+</a><a href="#h0-150" id="h0-150" class="d">-136:Perturbator - I Am The Night/Perturbator - I Am The Night - 10 Raining Steel.flac
+</a><a href="#h0-151" id="h0-151" class="d">-137:Perturbator - I Am The Night/Perturbator - I Am The Night - 11 Ghost Dancers Slay Together.flac
+</a><a href="#h0-152" id="h0-152" class="d">-138:Perturbator - I Am The Night/Perturbator - I Am The Night - 12 The Price Of Failure.flac
+</a><a href="#h0-153" id="h0-153" class="d">-139:Perturbator - I Am The Night/Dynatron &amp; Perturbator - I Am The Night - 13 Volcanic Machinery -Bonus Track-.flac
+</a><a href="#h0-154" id="h0-154" class="d">-140:Perturbator - I Am The Night/Perturbator - I Am The Night - 14 Lilith -Bonus Track-.flac
+</a><a href="#h0-155" id="h0-155" class="d">-141:Perturbator - I Am The Night/Perturbator - I Am The Night - 15 Girl In A Black Dress -Bonus Track-.flac
+</a><a href="#h0-156" id="h0-156" class="d">-142:Porter Robbinson - Worlds/01 - Divinity.flac
+</a><a href="#h0-157" id="h0-157" class="d">-143:Porter Robbinson - Worlds/02 - Sad Machine.flac
+</a><a href="#h0-158" id="h0-158" class="d">-144:Porter Robbinson - Worlds/03 - Years Of War.flac
+</a><a href="#h0-159" id="h0-159" class="d">-145:Porter Robbinson - Worlds/04 - Flicker.flac
+</a><a href="#h0-160" id="h0-160" class="d">-146:Porter Robbinson - Worlds/05 - Fresh Static Snow.flac
+</a><a href="#h0-161" id="h0-161" class="d">-147:Porter Robbinson - Worlds/06 - Polygon Dust.flac
+</a><a href="#h0-162" id="h0-162" class="d">-148:Porter Robbinson - Worlds/07 - Hear The Bells.flac
+</a><a href="#h0-163" id="h0-163" class="d">-149:Porter Robbinson - Worlds/08 - Natural Light.flac
+</a><a href="#h0-164" id="h0-164" class="d">-150:Porter Robbinson - Worlds/09 - Lionhearted.flac
+</a><a href="#h0-165" id="h0-165" class="d">-151:Porter Robbinson - Worlds/10 - Sea Of Voices.flac
+</a><a href="#h0-166" id="h0-166" class="d">-152:Porter Robbinson - Worlds/11 - Fellow Feeling.flac
+</a><a href="#h0-167" id="h0-167" class="d">-153:Porter Robbinson - Worlds/12 - Goodbye To A World.flac
+</a><a href="#h0-168" id="h0-168" class="d">-154:The Aristocrats - Culture Clash (2013)/01 Dance Of The Aristocrats.flac
+</a><a href="#h0-169" id="h0-169" class="d">-155:The Aristocrats - Culture Clash (2013)/02 Culture Clash.flac
+</a><a href="#h0-170" id="h0-170" class="d">-156:The Aristocrats - Culture Clash (2013)/03 Louisville Stomp.flac
+</a><a href="#h0-171" id="h0-171" class="d">-157:The Aristocrats - Culture Clash (2013)/04 Ohhhh Noooo.flac
+</a><a href="#h0-172" id="h0-172" class="d">-158:The Aristocrats - Culture Clash (2013)/05 Gaping Head Wound.flac
+</a><a href="#h0-173" id="h0-173" class="d">-159:The Aristocrats - Culture Clash (2013)/06 Desert Tornado.flac
+</a><a href="#h0-174" id="h0-174" class="d">-160:The Aristocrats - Culture Clash (2013)/07 Cocktail Umbrellas.flac
+</a><a href="#h0-175" id="h0-175" class="d">-161:The Aristocrats - Culture Clash (2013)/08 Living The Dream.flac
+</a><a href="#h0-176" id="h0-176" class="d">-162:The Aristocrats - Culture Clash (2013)/09 And Finally.flac
+</a><a href="#h0-177" id="h0-177" class="d">-playlist_end
+</a><b>diff --git a/<a href="../file/mpd/.mpd/playlists/..m3u.html">mpd/.mpd/playlists/..m3u</a> b/<a href="../file/mpd/.mpd/playlists/..m3u.html">mpd/.mpd/playlists/..m3u</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,146 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-[Drumstep] - Tristam &amp; Stephen Walking - Too Simple [Monstercat Release].mp3
+</a><a href="#h0-1" id="h0-1" class="d">-[Dubstep] - Stonebank - Eagle Eyes (feat. EMEL) [Monstercat Release].mp3
+</a><a href="#h0-2" id="h0-2" class="d">-[Glitch Hop or 110BPM] - Astronaut - Rain (Stephen Walking Remix) [Monstercat EP Release](1).mp3
+</a><a href="#h0-3" id="h0-3" class="d">-Au5 - Blossom.mp3
+</a><a href="#h0-4" id="h0-4" class="d">-AZELmusic - Antoine Lavenant - Street Fighter (Dubstep Remix).mp3
+</a><a href="#h0-5" id="h0-5" class="d">-AZELmusic - Antoine Lavenant - Un Aller Simple (Work in Progress).mp3
+</a><a href="#h0-6" id="h0-6" class="d">-AZELmusic - AZEL - My Journey.mp3
+</a><a href="#h0-7" id="h0-7" class="d">-Break_It_Up_Original_Mix_.mp3
+</a><a href="#h0-8" id="h0-8" class="d">-Daft Punk - Harder, Better, Faster, Stronger.mp3
+</a><a href="#h0-9" id="h0-9" class="d">-Ephixa - Catfish.flac
+</a><a href="#h0-10" id="h0-10" class="d">-Ephixa - Future Baes.flac
+</a><a href="#h0-11" id="h0-11" class="d">-EXCISION - X Rated ft Messinian [OFFICIAL].mp3
+</a><a href="#h0-12" id="h0-12" class="d">-Hotline Bling (Seraphim Cover).mp3
+</a><a href="#h0-13" id="h0-13" class="d">-Metallica - The Unforgiven.m4a
+</a><a href="#h0-14" id="h0-14" class="d">-Mykool - Taken For Granted.mp3
+</a><a href="#h0-15" id="h0-15" class="d">-Never Gonna Wake Up (Get Knocked Down) (Nils Mashup).mp3
+</a><a href="#h0-16" id="h0-16" class="d">-Razihel - Skybreaker.mp3
+</a><a href="#h0-17" id="h0-17" class="d">-ROA - D-AIA.mp3
+</a><a href="#h0-18" id="h0-18" class="d">-Rogue - From The Dust.mp3
+</a><a href="#h0-19" id="h0-19" class="d">-Stephen Walking - Birthday Cake (Eminence Remix) [320kbps].mp3
+</a><a href="#h0-20" id="h0-20" class="d">-Stephen Walking - Donkey Kong Jungle Jjapes.mp3
+</a><a href="#h0-21" id="h0-21" class="d">-Stephen Walking - Supercool! ft. CoMa.wav
+</a><a href="#h0-22" id="h0-22" class="d">-Stephen Walking - Top of the world.mp3
+</a><a href="#h0-23" id="h0-23" class="d">-Stephen Walking - Treebeard (Drumstep VIP).mp3
+</a><a href="#h0-24" id="h0-24" class="d">-TheFatRat - Monody (feat. Laura Brehm).flac
+</a><a href="#h0-25" id="h0-25" class="d">-TheFatRat - Unity.flac
+</a><a href="#h0-26" id="h0-26" class="d">-TheFatRat - Xenogenesis.flac
+</a><a href="#h0-27" id="h0-27" class="d">-Voltaj - MSD2.mp3
+</a><a href="#h0-28" id="h0-28" class="d">-RickandMorty.GoodbyeMoonmen.FullSong.mp3
+</a><a href="#h0-29" id="h0-29" class="d">-Spag Heddy - Permanent MP3 (40k Freebie).mp3
+</a><a href="#h0-30" id="h0-30" class="d">-Darude - Sandstorm.mp3
+</a><a href="#h0-31" id="h0-31" class="d">-Carried_Away_Spock_Remix_.mp3
+</a><a href="#h0-32" id="h0-32" class="d">-Pasarea Colibri - Vinovatii fara vina.mp3
+</a><a href="#h0-33" id="h0-33" class="d">-Hyper Potions - Porta Vista.opus
+</a><a href="#h0-34" id="h0-34" class="d">-Disfigure - Blank.mp3
+</a><a href="#h0-35" id="h0-35" class="d">-Darude - Sandstorm (NoXuu &amp; Akruxia Trap Remix).mp3
+</a><a href="#h0-36" id="h0-36" class="d">-DJ Snake &amp; Lil Jon - Turn Down For What (NoXuu Remix).mp3
+</a><a href="#h0-37" id="h0-37" class="d">-Major Lazer &amp; DJ Snake - Lean On (feat. MØ) (NoXuu Remix).mp3
+</a><a href="#h0-38" id="h0-38" class="d">-[edmSpotlight] Alex S - Play.mp3
+</a><a href="#h0-39" id="h0-39" class="d">-[edmSpotlight] Aviators - Second Universe.mp3
+</a><a href="#h0-40" id="h0-40" class="d">-[edmSpotlight] Elliot Berger - Diamond Sky feat. Laura Brehm.mp3
+</a><a href="#h0-41" id="h0-41" class="d">-[Monstercat] I.Y.F.F.E - Love Hangover.mp3
+</a><a href="#h0-42" id="h0-42" class="d">-[Monstercat] Pegboard Nerds feat. Splitbreed - We Are One (Droptek Remix).mp3
+</a><a href="#h0-43" id="h0-43" class="d">-[Monstercat] Stephen Walking &amp; Soulero - Ampersand.mp3
+</a><a href="#h0-44" id="h0-44" class="d">-[Monstercat] Tristam &amp; Braken - Flight.mp3
+</a><a href="#h0-45" id="h0-45" class="d">-[Monstercat] Vicetone feat. Collin McLoughlin - Heartbeat (PIXL Remix).mp3
+</a><a href="#h0-46" id="h0-46" class="d">-[Tasty Network] Chimeric - Metronome.mp3
+</a><a href="#h0-47" id="h0-47" class="d">-[Tasty Network] Favright - This Time.mp3
+</a><a href="#h0-48" id="h0-48" class="d">-[Tasty Network] Koda &amp; Dabin - The Take Down.mp3
+</a><a href="#h0-49" id="h0-49" class="d">-[Trap and Bass] Nasxy - Samurai.mp3
+</a><a href="#h0-50" id="h0-50" class="d">-[Trap and Bass] Sporty-O - Guestlist (Smookie Illson Remix).mp3
+</a><a href="#h0-51" id="h0-51" class="d">-[Trap and Bass] XAVI3R3 - Back It Up.mp3
+</a><a href="#h0-52" id="h0-52" class="d">-Goodbye to Gravity - Goodbye to Gravity/01. Waking Up.mp3
+</a><a href="#h0-53" id="h0-53" class="d">-Goodbye to Gravity - Goodbye to Gravity/02. The Cage.mp3
+</a><a href="#h0-54" id="h0-54" class="d">-Goodbye to Gravity - Goodbye to Gravity/03. Unusual Suspects.mp3
+</a><a href="#h0-55" id="h0-55" class="d">-Goodbye to Gravity - Goodbye to Gravity/04. Vanishing Point.mp3
+</a><a href="#h0-56" id="h0-56" class="d">-Goodbye to Gravity - Goodbye to Gravity/05. Horizons.mp3
+</a><a href="#h0-57" id="h0-57" class="d">-Goodbye to Gravity - Goodbye to Gravity/06. I Won&apos;t Wait.mp3
+</a><a href="#h0-58" id="h0-58" class="d">-Goodbye to Gravity - Goodbye to Gravity/07. Back To Life.mp3
+</a><a href="#h0-59" id="h0-59" class="d">-Goodbye to Gravity - Goodbye to Gravity/08. Through It All.mp3
+</a><a href="#h0-60" id="h0-60" class="d">-Goodbye to Gravity - Goodbye to Gravity/09. These Chains.mp3
+</a><a href="#h0-61" id="h0-61" class="d">-Goodbye to Gravity - Goodbye to Gravity/10. Between The Tides.mp3
+</a><a href="#h0-62" id="h0-62" class="d">-Goodbye to Gravity - Goodbye to Gravity/11. The Evil That Men Do.mp3
+</a><a href="#h0-63" id="h0-63" class="d">-Goodbye to Gravity - Mantras of War/01 Goodbye To Gravity - The Day We Die.wav
+</a><a href="#h0-64" id="h0-64" class="d">-Goodbye to Gravity - Mantras of War/02 Goodbye To Gravity - Shadow Puppets.wav
+</a><a href="#h0-65" id="h0-65" class="d">-Goodbye to Gravity - Mantras of War/03 Goodbye To Gravity - Atonement.wav
+</a><a href="#h0-66" id="h0-66" class="d">-Goodbye to Gravity - Mantras of War/04 Goodbye To Gravity - Four Minutes of Rage.wav
+</a><a href="#h0-67" id="h0-67" class="d">-Goodbye to Gravity - Mantras of War/05 Goodbye To Gravity - Rise From the Fallen.wav
+</a><a href="#h0-68" id="h0-68" class="d">-Goodbye to Gravity - Mantras of War/06 Goodbye To Gravity - Heed the Call.wav
+</a><a href="#h0-69" id="h0-69" class="d">-Goodbye to Gravity - Mantras of War/07 Goodbye To Gravity - What If.wav
+</a><a href="#h0-70" id="h0-70" class="d">-Goodbye to Gravity - Mantras of War/08 Goodbye To Gravity - This Life Is Running Out.wav
+</a><a href="#h0-71" id="h0-71" class="d">-Goodbye to Gravity - Mantras of War/09 Goodbye To Gravity - Ode to a Sacrifice.wav
+</a><a href="#h0-72" id="h0-72" class="d">-Goodbye to Gravity - Mantras of War/01 Goodbye To Gravity - The Day We Die.flac
+</a><a href="#h0-73" id="h0-73" class="d">-Goodbye to Gravity - Mantras of War/02 Goodbye To Gravity - Shadow Puppets.flac
+</a><a href="#h0-74" id="h0-74" class="d">-Goodbye to Gravity - Mantras of War/03 Goodbye To Gravity - Atonement.flac
+</a><a href="#h0-75" id="h0-75" class="d">-Goodbye to Gravity - Mantras of War/04 Goodbye To Gravity - Four Minutes of Rage.flac
+</a><a href="#h0-76" id="h0-76" class="d">-Goodbye to Gravity - Mantras of War/05 Goodbye To Gravity - Rise From the Fallen.flac
+</a><a href="#h0-77" id="h0-77" class="d">-Goodbye to Gravity - Mantras of War/06 Goodbye To Gravity - Heed the Call.flac
+</a><a href="#h0-78" id="h0-78" class="d">-Goodbye to Gravity - Mantras of War/07 Goodbye To Gravity - What If.flac
+</a><a href="#h0-79" id="h0-79" class="d">-Goodbye to Gravity - Mantras of War/08 Goodbye To Gravity - This Life Is Running Out.flac
+</a><a href="#h0-80" id="h0-80" class="d">-Goodbye to Gravity - Mantras of War/09 Goodbye To Gravity - Ode to a Sacrifice.flac
+</a><a href="#h0-81" id="h0-81" class="d">-KoRn - The Path Of Totality Special/14 - Korn ft. Skrillex - Get Up! (Original Mix) (Bonus).flac
+</a><a href="#h0-82" id="h0-82" class="d">-KoRn - The Path Of Totality Special/15 - Korn ft. Skrillex &amp; Kill The Noise - Narcissistic Cannibal (Original Mix) (Bonus).flac
+</a><a href="#h0-83" id="h0-83" class="d">-KoRn - The Path Of Totality Special/01 - Korn ft. Skrillex - Chaos Lives in Everything.flac
+</a><a href="#h0-84" id="h0-84" class="d">-KoRn - The Path Of Totality Special/02 - Korn ft. Noisia - Kill Mercy Within.flac
+</a><a href="#h0-85" id="h0-85" class="d">-KoRn - The Path Of Totality Special/03 - Korn ft. Excision - My Wall.flac
+</a><a href="#h0-86" id="h0-86" class="d">-KoRn - The Path Of Totality Special/04 - Korn ft. Skrillex &amp; Kill The Noise - Narcissistic Cannibal.flac
+</a><a href="#h0-87" id="h0-87" class="d">-KoRn - The Path Of Totality Special/05 - Korn ft. Excision &amp; Downlink - Illuminati.flac
+</a><a href="#h0-88" id="h0-88" class="d">-KoRn - The Path Of Totality Special/06 - Korn ft. Noisia - Burn the Obedient.flac
+</a><a href="#h0-89" id="h0-89" class="d">-KoRn - The Path Of Totality Special/07 - Korn ft. Downlink - Sanctuary.flac
+</a><a href="#h0-90" id="h0-90" class="d">-KoRn - The Path Of Totality Special/08 - Korn ft.  Noisia - Let&apos;s Go.flac
+</a><a href="#h0-91" id="h0-91" class="d">-KoRn - The Path Of Totality Special/09 - Korn ft. Skrillex - Get Up!.flac
+</a><a href="#h0-92" id="h0-92" class="d">-KoRn - The Path Of Totality Special/10 - Korn ft. 12th Planet - Way Too Far.flac
+</a><a href="#h0-93" id="h0-93" class="d">-KoRn - The Path Of Totality Special/11 - Korn ft.  Feed Me - Bleeding Out.flac
+</a><a href="#h0-94" id="h0-94" class="d">-KoRn - The Path Of Totality Special/12 - Korn ft. Kill The Noise - Fuels the Comedy.flac
+</a><a href="#h0-95" id="h0-95" class="d">-KoRn - The Path Of Totality Special/13 - Korn ft. Excision, Datsik &amp; Downlink - Tension.flac
+</a><a href="#h0-96" id="h0-96" class="d">-Madeon - Adventure/01 - Isometric (Intro).flac
+</a><a href="#h0-97" id="h0-97" class="d">-Madeon - Adventure/02 - You&apos;re On (feat. Kyan).flac
+</a><a href="#h0-98" id="h0-98" class="d">-Madeon - Adventure/03 - OK.flac
+</a><a href="#h0-99" id="h0-99" class="d">-Madeon - Adventure/04 - La Lune (feat. Dan Smith).flac
+</a><a href="#h0-100" id="h0-100" class="d">-Madeon - Adventure/05 - Pay No Mind (feat. Passion Pit).flac
+</a><a href="#h0-101" id="h0-101" class="d">-Madeon - Adventure/06 - Beings.flac
+</a><a href="#h0-102" id="h0-102" class="d">-Madeon - Adventure/07 - Imperium.flac
+</a><a href="#h0-103" id="h0-103" class="d">-Madeon - Adventure/08 - Zephyr.flac
+</a><a href="#h0-104" id="h0-104" class="d">-Madeon - Adventure/09 - Nonsense (feat. Mark Foster).flac
+</a><a href="#h0-105" id="h0-105" class="d">-Madeon - Adventure/10 - Innocence (feat. Aquilo).flac
+</a><a href="#h0-106" id="h0-106" class="d">-Madeon - Adventure/11 - Pixel Empire.flac
+</a><a href="#h0-107" id="h0-107" class="d">-Madeon - Adventure/12 - Home.flac
+</a><a href="#h0-108" id="h0-108" class="d">-Madeon - Adventure/13 - Icarus.flac
+</a><a href="#h0-109" id="h0-109" class="d">-Madeon - Adventure/14 - Finale (feat. Nicholas Petricca).flac
+</a><a href="#h0-110" id="h0-110" class="d">-Madeon - Adventure/15 - The City.flac
+</a><a href="#h0-111" id="h0-111" class="d">-Madeon - Adventure/16 - Cut the Kid.flac
+</a><a href="#h0-112" id="h0-112" class="d">-Madeon - Adventure/17 - Technicolor.flac
+</a><a href="#h0-113" id="h0-113" class="d">-Madeon - Adventure/18 - Only Way Out (feat. Vancouver Sleep Clinic).flac
+</a><a href="#h0-114" id="h0-114" class="d">-Nightwish - Endless Forms Most Beautiful /01 - Nightwish - Shudder Before The Beautiful.flac
+</a><a href="#h0-115" id="h0-115" class="d">-Nightwish - Endless Forms Most Beautiful /02 - Nightwish - Weak Fantasy.flac
+</a><a href="#h0-116" id="h0-116" class="d">-Nightwish - Endless Forms Most Beautiful /03 - Nightwish - Élan.flac
+</a><a href="#h0-117" id="h0-117" class="d">-Nightwish - Endless Forms Most Beautiful /04 - Nightwish - Yours Is An Empty Hope.flac
+</a><a href="#h0-118" id="h0-118" class="d">-Nightwish - Endless Forms Most Beautiful /05 - Nightwish - Our Decades In The Sun.flac
+</a><a href="#h0-119" id="h0-119" class="d">-Nightwish - Endless Forms Most Beautiful /06 - Nightwish - My Walden.flac
+</a><a href="#h0-120" id="h0-120" class="d">-Nightwish - Endless Forms Most Beautiful /07 - Nightwish - Endless Forms Most Beautiful.flac
+</a><a href="#h0-121" id="h0-121" class="d">-Nightwish - Endless Forms Most Beautiful /08 - Nightwish - Edema Ruh.flac
+</a><a href="#h0-122" id="h0-122" class="d">-Nightwish - Endless Forms Most Beautiful /09 - Nightwish - Alpenglow.flac
+</a><a href="#h0-123" id="h0-123" class="d">-Nightwish - Endless Forms Most Beautiful /10 - Nightwish - The Eyes Of Sharbat Gula.flac
+</a><a href="#h0-124" id="h0-124" class="d">-Nightwish - Endless Forms Most Beautiful /11 - Nightwish - The Greatest Show On Earth.flac
+</a><a href="#h0-125" id="h0-125" class="d">-Porter Robbinson - Worlds/01 - Divinity.flac
+</a><a href="#h0-126" id="h0-126" class="d">-Porter Robbinson - Worlds/02 - Sad Machine.flac
+</a><a href="#h0-127" id="h0-127" class="d">-Porter Robbinson - Worlds/03 - Years Of War.flac
+</a><a href="#h0-128" id="h0-128" class="d">-Porter Robbinson - Worlds/04 - Flicker.flac
+</a><a href="#h0-129" id="h0-129" class="d">-Porter Robbinson - Worlds/05 - Fresh Static Snow.flac
+</a><a href="#h0-130" id="h0-130" class="d">-Porter Robbinson - Worlds/06 - Polygon Dust.flac
+</a><a href="#h0-131" id="h0-131" class="d">-Porter Robbinson - Worlds/07 - Hear The Bells.flac
+</a><a href="#h0-132" id="h0-132" class="d">-Porter Robbinson - Worlds/08 - Natural Light.flac
+</a><a href="#h0-133" id="h0-133" class="d">-Porter Robbinson - Worlds/09 - Lionhearted.flac
+</a><a href="#h0-134" id="h0-134" class="d">-Porter Robbinson - Worlds/10 - Sea Of Voices.flac
+</a><a href="#h0-135" id="h0-135" class="d">-Porter Robbinson - Worlds/11 - Fellow Feeling.flac
+</a><a href="#h0-136" id="h0-136" class="d">-Porter Robbinson - Worlds/12 - Goodbye To A World.flac
+</a><a href="#h0-137" id="h0-137" class="d">-The Aristocrats - Culture Clash (2013)/01 Dance Of The Aristocrats.flac
+</a><a href="#h0-138" id="h0-138" class="d">-The Aristocrats - Culture Clash (2013)/02 Culture Clash.flac
+</a><a href="#h0-139" id="h0-139" class="d">-The Aristocrats - Culture Clash (2013)/03 Louisville Stomp.flac
+</a><a href="#h0-140" id="h0-140" class="d">-The Aristocrats - Culture Clash (2013)/04 Ohhhh Noooo.flac
+</a><a href="#h0-141" id="h0-141" class="d">-The Aristocrats - Culture Clash (2013)/05 Gaping Head Wound.flac
+</a><a href="#h0-142" id="h0-142" class="d">-The Aristocrats - Culture Clash (2013)/06 Desert Tornado.flac
+</a><a href="#h0-143" id="h0-143" class="d">-The Aristocrats - Culture Clash (2013)/07 Cocktail Umbrellas.flac
+</a><a href="#h0-144" id="h0-144" class="d">-The Aristocrats - Culture Clash (2013)/08 Living The Dream.flac
+</a><a href="#h0-145" id="h0-145" class="d">-The Aristocrats - Culture Clash (2013)/09 And Finally.flac
+</a></pre>
+</div>
+</body>
+</html>

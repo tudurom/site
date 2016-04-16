@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>new package: interrobang - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/2fbc577d4f59020c6a69e323f85e35f5a00b307d.html">2fbc577d4f59020c6a69e323f85e35f5a00b307d</a>
+<b>Author:</b> arcetera &lt;<a href="mailto:arcticsn0wdev@gmail.com">arcticsn0wdev@gmail.com</a>&gt;
+<b>Date:</b>   Mon Nov 30 20:12:20 2015
+
+new package: interrobang
+
+<b>Diffstat:</b>
+ interrobang/.footprint | 10 ++++++++++
+ interrobang/.md5sum    |  0
+ interrobang/Pkgfile    | 23 +++++++++++++++++++++++
+ 3 files changed, 33 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/interrobang/.footprint.html">interrobang/.footprint</a> b/<a href="../file/interrobang/.footprint.html">interrobang/.footprint</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,10 @@
+</a><a href="#h0-0" id="h0-0" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h0-1" id="h0-1" class="i">+drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h0-2" id="h0-2" class="i">+-rwxr-xr-x	root/root	usr/bin/interrobang
+</a><a href="#h0-3" id="h0-3" class="i">+-rwxr-xr-x	root/root	usr/bin/percontation
+</a><a href="#h0-4" id="h0-4" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-5" id="h0-5" class="i">+drwxr-xr-x	root/root	usr/share/interrobang/
+</a><a href="#h0-6" id="h0-6" class="i">+-rw-r--r--	root/root	usr/share/interrobang/config
+</a><a href="#h0-7" id="h0-7" class="i">+drwxr-xr-x	root/root	usr/share/man/
+</a><a href="#h0-8" id="h0-8" class="i">+drwxr-xr-x	root/root	usr/share/man/man1/
+</a><a href="#h0-9" id="h0-9" class="i">+-rw-r--r--	root/root	usr/share/man/man1/interrobang.1.gz
+</a><b>diff --git a/<a href="../file/interrobang/.md5sum.html">interrobang/.md5sum</a> b/<a href="../file/interrobang/.md5sum.html">interrobang/.md5sum</a></b>
+<b>diff --git a/<a href="../file/interrobang/Pkgfile.html">interrobang/Pkgfile</a> b/<a href="../file/interrobang/Pkgfile.html">interrobang/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,23 @@
+</a><a href="#h0-0" id="h0-0" class="i">+# Description: A tiny launcher menu packing a big bang
+</a><a href="#h0-1" id="h0-1" class="i">+# URL: https://github.com/TrilbyWhite/interrobang
+</a><a href="#h0-2" id="h0-2" class="i">+# Packager: arcetera, echo iue@trnspljc.890 | tr ietursnpl890jc acprlsurecomed
+</a><a href="#h0-3" id="h0-3" class="i">+# Depends: xorg-libx11 git
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+name=interrobang
+</a><a href="#h0-6" id="h0-6" class="i">+version=git
+</a><a href="#h0-7" id="h0-7" class="i">+release=1
+</a><a href="#h0-8" id="h0-8" class="i">+source=()
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+build() {
+</a><a href="#h0-11" id="h0-11" class="i">+  cd $PKGMK_SOURCE_DIR
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a><a href="#h0-13" id="h0-13" class="i">+  if cd $name; then
+</a><a href="#h0-14" id="h0-14" class="i">+    git fetch -q; git reset --hard origin/master
+</a><a href="#h0-15" id="h0-15" class="i">+  else
+</a><a href="#h0-16" id="h0-16" class="i">+    git clone git://github.com/TrilbyWhite/interrobang.git
+</a><a href="#h0-17" id="h0-17" class="i">+    cd $name
+</a><a href="#h0-18" id="h0-18" class="i">+  fi
+</a><a href="#h0-19" id="h0-19" class="i">+
+</a><a href="#h0-20" id="h0-20" class="i">+  make
+</a><a href="#h0-21" id="h0-21" class="i">+  make PREFIX=/usr DESTDIR=$PKG install
+</a><a href="#h0-22" id="h0-22" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>

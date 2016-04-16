@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>style and alias fixes - crux-ports - Ports for crux. Bassed off arcetera&apos;s original ports.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s original ports.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/7a41d5b0651c8d83431ca2e81e73563d4adfe80b.html">7a41d5b0651c8d83431ca2e81e73563d4adfe80b</a>
+<b>parent</b> <a href="../commit/ef172dd994e433b0195192b3c99ba1cc86085ad1.html">ef172dd994e433b0195192b3c99ba1cc86085ad1</a>
+<b>Author:</b> ix &lt;<a href="mailto:arcetera@openmailbox.org">arcetera@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Mar  4 20:38:52 2016
+
+style and alias fixes
+
+<b>Diffstat:</b>
+ dpkg/Pkgfile       | 17 +++++++++--------
+ fetch/Pkgfile      |  6 +++---
+ imgur/Pkgfile      |  4 ++--
+ keepassx2/Pkgfile  | 20 ++++++++++----------
+ libotr/Pkgfile     |  8 ++++----
+ libstrophe/Pkgfile | 10 +++++-----
+ libwebp/Pkgfile    | 12 ++++++------
+ libxosd/Pkgfile    |  6 +++---
+ nethack/Pkgfile    |  6 +++---
+ osd_clock/Pkgfile  | 12 ++++++------
+ profanity/Pkgfile  |  8 ++++----
+ tbclock/Pkgfile    |  3 +--
+ thermald/Pkgfile   |  6 +++---
+ urc/Pkgfile        |  4 ++--
+ 14 files changed, 61 insertions(+), 61 deletions(-)
+<hr/><b>diff --git a/<a href="../file/dpkg/Pkgfile.html">dpkg/Pkgfile</a> b/<a href="../file/dpkg/Pkgfile.html">dpkg/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,7 +1,7 @@
+</a> # Description: The Debian package manager
+ # URL:         https://wiki.debian.org/Teams/Dpkg
+<a href="#h0-2" id="h0-2" class="d">-# Packager:    arcetera, arcetera@openmailbox.org
+</a><a href="#h0-3" id="h0-3" class="d">-# Depends on:  
+</a><a href="#h0-4" id="h0-4" class="i">+# Packager:    ix, arcetera@openmailbox.org
+</a><a href="#h0-5" id="h0-5" class="i">+# Depends on:
+</a> 
+ name=dpkg
+ version=1.18.4
+<a href="#h1" id="h1" class="h">@@ -12,14 +12,15 @@ build () {
+</a> 	cd $name-$version
+ 
+ 	./configure \
+<a href="#h1-3" id="h1-3" class="d">-	  --prefix=/usr \ 
+</a><a href="#h1-4" id="h1-4" class="d">-	  --sysconfdir=/etc \
+</a><a href="#h1-5" id="h1-5" class="d">-	  --disable-start-stop-daemon \
+</a><a href="#h1-6" id="h1-6" class="d">-	  --disable-update-alternatives \
+</a><a href="#h1-7" id="h1-7" class="d">-	  --disable-dselect
+</a><a href="#h1-8" id="h1-8" class="i">+		--prefix=/usr \
+</a><a href="#h1-9" id="h1-9" class="i">+		--sysconfdir=/etc \
+</a><a href="#h1-10" id="h1-10" class="i">+		--disable-start-stop-daemon \
+</a><a href="#h1-11" id="h1-11" class="i">+		--disable-update-alternatives \
+</a><a href="#h1-12" id="h1-12" class="i">+		--disable-dselect
+</a> 
+ 	make
+ 	make DESTDIR=$PKG install
+ 
+<a href="#h1-17" id="h1-17" class="d">-	mv $PKG/usr/Dpkg.pm $PKG/usr/lib/perl5/5.22/Dpkg.pm # TODO: Please don&apos;t do this
+</a><a href="#h1-18" id="h1-18" class="i">+	mv $PKG/usr/Dpkg.pm $PKG/usr/lib/perl5/5.22/Dpkg.pm
+</a><a href="#h1-19" id="h1-19" class="i">+	mv $PKG/usr/Dpkg $PKG/usr/lib/perl5/5.22/Dpkg
+</a> }
+<b>diff --git a/<a href="../file/fetch/Pkgfile.html">fetch/Pkgfile</a> b/<a href="../file/fetch/Pkgfile.html">fetch/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -9,9 +9,9 @@ release=2
+</a> source=()
+ 
+ build() {
+<a href="#h0-3" id="h0-3" class="d">-  mkdir -p $PKG/usr/share/fetch
+</a><a href="#h0-4" id="h0-4" class="i">+	mkdir -p $PKG/usr/share/fetch
+</a> 
+<a href="#h0-6" id="h0-6" class="d">-  :&gt; $PKG/usr/share/fetch/deleteme
+</a><a href="#h0-7" id="h0-7" class="i">+	:&gt; $PKG/usr/share/fetch/deleteme
+</a> 
+<a href="#h0-9" id="h0-9" class="d">-  echo &quot;You can remove this package.&quot;
+</a><a href="#h0-10" id="h0-10" class="i">+	echo &quot;You can remove this package.&quot;
+</a> }
+<b>diff --git a/<a href="../file/imgur/Pkgfile.html">imgur/Pkgfile</a> b/<a href="../file/imgur/Pkgfile.html">imgur/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,6 +1,6 @@
+</a> # Description: CLI client for imgur.com.
+ # URL:         https://code.google.com/archive/p/imgur-cli/
+<a href="#h0-2" id="h0-2" class="d">-# Packager:    arcetera, arcetera@openmailbox.org
+</a><a href="#h0-3" id="h0-3" class="i">+# Packager:    ix, arcetera@openmailbox.org
+</a> # Depends on:  unzip python
+ 
+ name=imgur
+<a href="#h1" id="h1" class="h">@@ -13,5 +13,5 @@ build() {
+</a> 
+ 	chmod +x imgur.py
+ 
+<a href="#h1-3" id="h1-3" class="d">-  install -Dm755 imgur.py $PKG/usr/bin/imgur
+</a><a href="#h1-4" id="h1-4" class="i">+	install -Dm755 imgur.py $PKG/usr/bin/imgur
+</a> }
+<b>diff --git a/<a href="../file/keepassx2/Pkgfile.html">keepassx2/Pkgfile</a> b/<a href="../file/keepassx2/Pkgfile.html">keepassx2/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,6 +1,6 @@
+</a> # Description: An Open-Source KeePass compatible password manager
+ # URL:         https://keepassx.org
+<a href="#h0-2" id="h0-2" class="d">-# Packager:    arcetera, echo iue@trnspljc.890 | tr ietursnpl890jc acprlsurecomed
+</a><a href="#h0-3" id="h0-3" class="i">+# Packager:    ix, arcetera@openmailbox.org
+</a> # Depends on:  qt4 xorg-libxtst
+ 
+ name=keepassx2
+<a href="#h1" id="h1" class="h">@@ -9,15 +9,15 @@ release=1
+</a> source=(https://www.keepassx.org/releases/2.0-beta2/keepassx-2.0-beta2.tar.gz)
+ 
+ build() {
+<a href="#h1-3" id="h1-3" class="d">-  cd keepassx-2.0-beta2
+</a><a href="#h1-4" id="h1-4" class="i">+	cd keepassx-2.0-beta2
+</a> 
+<a href="#h1-6" id="h1-6" class="d">-  mkdir build
+</a><a href="#h1-7" id="h1-7" class="d">-  cd build
+</a><a href="#h1-8" id="h1-8" class="i">+	mkdir build
+</a><a href="#h1-9" id="h1-9" class="i">+	cd build
+</a> 
+<a href="#h1-11" id="h1-11" class="d">-  cmake \
+</a><a href="#h1-12" id="h1-12" class="d">-         -DCMAKE_BUILD_TYPE=&quot;Release&quot; \
+</a><a href="#h1-13" id="h1-13" class="d">-         -DCMAKE_INSTALL_PREFIX=&quot;/usr&quot; ..
+</a><a href="#h1-14" id="h1-14" class="d">- 
+</a><a href="#h1-15" id="h1-15" class="d">-  make
+</a><a href="#h1-16" id="h1-16" class="d">-  make install DESTDIR=$PKG
+</a><a href="#h1-17" id="h1-17" class="i">+	cmake \
+</a><a href="#h1-18" id="h1-18" class="i">+		-DCMAKE_BUILD_TYPE=&quot;Release&quot; \
+</a><a href="#h1-19" id="h1-19" class="i">+		-DCMAKE_INSTALL_PREFIX=&quot;/usr&quot; ..
+</a><a href="#h1-20" id="h1-20" class="i">+
+</a><a href="#h1-21" id="h1-21" class="i">+	make
+</a><a href="#h1-22" id="h1-22" class="i">+	make install DESTDIR=$PKG
+</a> }
+<b>diff --git a/<a href="../file/libotr/Pkgfile.html">libotr/Pkgfile</a> b/<a href="../file/libotr/Pkgfile.html">libotr/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -9,10 +9,10 @@ release=2
+</a> source=(&quot;http://otr.cypherpunks.ca/$name-$version.tar.gz&quot;)
+ 
+ build() {
+<a href="#h0-3" id="h0-3" class="d">-  cd $name-$version
+</a><a href="#h0-4" id="h0-4" class="i">+	cd $name-$version
+</a> 
+<a href="#h0-6" id="h0-6" class="d">-  ./configure --prefix=/usr
+</a><a href="#h0-7" id="h0-7" class="i">+	./configure --prefix=/usr
+</a> 
+<a href="#h0-9" id="h0-9" class="d">-  make
+</a><a href="#h0-10" id="h0-10" class="d">-  make DESTDIR=$PKG install
+</a><a href="#h0-11" id="h0-11" class="i">+	make
+</a><a href="#h0-12" id="h0-12" class="i">+	make DESTDIR=$PKG install
+</a> }
+<b>diff --git a/<a href="../file/libstrophe/Pkgfile.html">libstrophe/Pkgfile</a> b/<a href="../file/libstrophe/Pkgfile.html">libstrophe/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -9,13 +9,13 @@ release=1
+</a> source=(https://github.com/strophe/libstrophe/archive/$version.tar.gz)
+ 
+ build() {
+<a href="#h0-3" id="h0-3" class="d">-  cd $name-$version
+</a><a href="#h0-4" id="h0-4" class="i">+	cd $name-$version
+</a> 
+<a href="#h0-6" id="h0-6" class="d">-  ./bootstrap.sh
+</a><a href="#h0-7" id="h0-7" class="i">+	./bootstrap.sh
+</a> 
+<a href="#h0-9" id="h0-9" class="d">-  CONFIG_SHELL=/bin/bash \
+</a><a href="#h0-10" id="h0-10" class="d">-  ./configure --prefix=/usr
+</a><a href="#h0-11" id="h0-11" class="i">+	CONFIG_SHELL=/bin/bash \
+</a><a href="#h0-12" id="h0-12" class="i">+		./configure --prefix=/usr
+</a> 
+<a href="#h0-14" id="h0-14" class="d">-  make
+</a><a href="#h0-15" id="h0-15" class="i">+	make
+</a> 	make DESTDIR=$PKG install
+ }
+<b>diff --git a/<a href="../file/libwebp/Pkgfile.html">libwebp/Pkgfile</a> b/<a href="../file/libwebp/Pkgfile.html">libwebp/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -9,13 +9,13 @@ release=1
+</a> source=(https://github.com/webmproject/libwebp/archive/v0.5.0.tar.gz)
+ 
+ build() {
+<a href="#h0-3" id="h0-3" class="d">-  cd $name-$version
+</a><a href="#h0-4" id="h0-4" class="i">+	cd $name-$version
+</a> 
+<a href="#h0-6" id="h0-6" class="d">-  ./autogen.sh --prefix=/usr
+</a><a href="#h0-7" id="h0-7" class="i">+	./autogen.sh --prefix=/usr
+</a> 
+<a href="#h0-9" id="h0-9" class="d">-  ./configure \
+</a><a href="#h0-10" id="h0-10" class="d">-    --prefix=/usr
+</a><a href="#h0-11" id="h0-11" class="i">+	./configure \
+</a><a href="#h0-12" id="h0-12" class="i">+		--prefix=/usr
+</a> 
+<a href="#h0-14" id="h0-14" class="d">-  make
+</a><a href="#h0-15" id="h0-15" class="d">-  make DESTDIR=$PKG install
+</a><a href="#h0-16" id="h0-16" class="i">+	make
+</a><a href="#h0-17" id="h0-17" class="i">+	make DESTDIR=$PKG install
+</a> }
+<b>diff --git a/<a href="../file/libxosd/Pkgfile.html">libxosd/Pkgfile</a> b/<a href="../file/libxosd/Pkgfile.html">libxosd/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,7 +1,7 @@
+</a> # Description: An OSD library for X11.
+ # URL:         http://sourceforge.net/projects/libxosd/
+<a href="#h0-2" id="h0-2" class="d">-# Packager:    arcetera, arcetera@cock.li 
+</a><a href="#h0-3" id="h0-3" class="d">-# Depends on:  
+</a><a href="#h0-4" id="h0-4" class="i">+# Packager:    ix, arcetera@openmailbox.org
+</a><a href="#h0-5" id="h0-5" class="i">+# Depends on:
+</a> 
+ name=libxosd
+ version=2.2.14
+<a href="#h1" id="h1" class="h">@@ -11,7 +11,7 @@ source=(http://archive.ubuntu.com/ubuntu/pool/universe/x/xosd/xosd_2.2.14.orig.t
+</a> build() {
+ 	cd xosd-$version
+ 
+<a href="#h1-3" id="h1-3" class="d">-    ./configure
+</a><a href="#h1-4" id="h1-4" class="i">+	./configure
+</a> 	make
+ 	make DESTDIR=$PKG prefix=/usr install
+ }
+<b>diff --git a/<a href="../file/nethack/Pkgfile.html">nethack/Pkgfile</a> b/<a href="../file/nethack/Pkgfile.html">nethack/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,6 +1,6 @@
+</a><a href="#h0-0" id="h0-0" class="d">-# Description: NetHack! (originally in tilman repo, modified)
+</a><a href="#h0-1" id="h0-1" class="d">-# URL: http://www.nethack.org
+</a><a href="#h0-2" id="h0-2" class="d">-# Packager: arcetera, echo iue@trnspljc.890 | tr ietursnpl890jc acprlsurecomed
+</a><a href="#h0-3" id="h0-3" class="i">+# Description: NetHack!
+</a><a href="#h0-4" id="h0-4" class="i">+# URL:         http://www.nethack.org
+</a><a href="#h0-5" id="h0-5" class="i">+# Packager:    ix, arcetera@openmailbox.org
+</a> # Depends on:
+ 
+ name=nethack
+<b>diff --git a/<a href="../file/osd_clock/Pkgfile.html">osd_clock/Pkgfile</a> b/<a href="../file/osd_clock/Pkgfile.html">osd_clock/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,6 +1,6 @@
+</a> # Description: A clock which uses the X On-Screen Display library.
+<a href="#h0-1" id="h0-1" class="d">-# Packager:    arcetera, arcetera@cock.li
+</a><a href="#h0-2" id="h0-2" class="d">-# Depends on:  libxosd 
+</a><a href="#h0-3" id="h0-3" class="i">+# Packager:    ix, arcetera@openmailbox.org
+</a><a href="#h0-4" id="h0-4" class="i">+# Depends on:  libxosd
+</a> 
+ name=osd_clock
+ version=0.5
+<a href="#h1" id="h1" class="h">@@ -13,10 +13,10 @@ source=(
+</a> build() {
+ 	cd $name-$version.orig
+ 
+<a href="#h1-3" id="h1-3" class="d">-    patch -p1 -i ../01-conglomeration.dpatch
+</a><a href="#h1-4" id="h1-4" class="d">-    
+</a><a href="#h1-5" id="h1-5" class="d">-    mkdir -p $PKG/usr/bin
+</a><a href="#h1-6" id="h1-6" class="i">+	patch -p1 -i ../01-conglomeration.dpatch
+</a> 
+<a href="#h1-8" id="h1-8" class="d">-    make
+</a><a href="#h1-9" id="h1-9" class="i">+	mkdir -p $PKG/usr/bin
+</a><a href="#h1-10" id="h1-10" class="i">+
+</a><a href="#h1-11" id="h1-11" class="i">+	make
+</a> 	make PREFIX=$PKG/usr install
+ }
+<b>diff --git a/<a href="../file/profanity/Pkgfile.html">profanity/Pkgfile</a> b/<a href="../file/profanity/Pkgfile.html">profanity/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -9,10 +9,10 @@ release=1
+</a> source=(http://www.profanity.im/profanity-$version.tar.gz)
+ 
+ build() {
+<a href="#h0-3" id="h0-3" class="d">-  cd $name-$version
+</a><a href="#h0-4" id="h0-4" class="i">+	cd $name-$version
+</a> 
+<a href="#h0-6" id="h0-6" class="d">-  ./configure --prefix=/usr
+</a><a href="#h0-7" id="h0-7" class="i">+	./configure --prefix=/usr
+</a> 
+<a href="#h0-9" id="h0-9" class="d">-  make
+</a><a href="#h0-10" id="h0-10" class="d">-  make DESTDIR=$PKG install
+</a><a href="#h0-11" id="h0-11" class="i">+	make
+</a><a href="#h0-12" id="h0-12" class="i">+	make DESTDIR=$PKG install
+</a> }
+<b>diff --git a/<a href="../file/tbclock/Pkgfile.html">tbclock/Pkgfile</a> b/<a href="../file/tbclock/Pkgfile.html">tbclock/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,7 +1,6 @@
+</a> # Description: A ncurses binary clock.
+ # URL:         https://tamentis.com/projects/tbclock/
+<a href="#h0-2" id="h0-2" class="d">-# Packager:    Name and email go here.
+</a><a href="#h0-3" id="h0-3" class="d">-# Maintainer:  6c37 Team, https://github.com/6c37/crux-ports/issues
+</a><a href="#h0-4" id="h0-4" class="i">+# Packager:    ix, arcetera@openmailbox.org
+</a> # Depends on:
+ 
+ name=tbclock
+<b>diff --git a/<a href="../file/thermald/Pkgfile.html">thermald/Pkgfile</a> b/<a href="../file/thermald/Pkgfile.html">thermald/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -12,7 +12,7 @@ build() {
+</a> 	cd thermal_daemon-$version
+ 
+ 	./autogen.sh
+<a href="#h0-3" id="h0-3" class="d">-  ./configure --prefix=/usr
+</a><a href="#h0-4" id="h0-4" class="d">-  make
+</a><a href="#h0-5" id="h0-5" class="d">-  make DESTDIR=$PKG install
+</a><a href="#h0-6" id="h0-6" class="i">+	./configure --prefix=/usr
+</a><a href="#h0-7" id="h0-7" class="i">+	make
+</a><a href="#h0-8" id="h0-8" class="i">+	make DESTDIR=$PKG install
+</a> }
+<b>diff --git a/<a href="../file/urc/Pkgfile.html">urc/Pkgfile</a> b/<a href="../file/urc/Pkgfile.html">urc/Pkgfile</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,6 +1,6 @@
+</a> # Description: Minimal rc script.
+<a href="#h0-1" id="h0-1" class="d">-# URL:				 https://github.com/ix/urc
+</a><a href="#h0-2" id="h0-2" class="d">-# Packager:		 ix, arcetera@openmailbox.org
+</a><a href="#h0-3" id="h0-3" class="i">+# URL:         https://github.com/ix/urc
+</a><a href="#h0-4" id="h0-4" class="i">+# Packager:    ix, arcetera@openmailbox.org
+</a> # Depends on:  git busybox sinit
+ 
+ name=urc
+</pre>
+</div>
+</body>
+</html>

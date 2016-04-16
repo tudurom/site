@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>CCCLLLLEEEEAAAANNNUUPP! - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/9e9a54b8be809289e44f4379bfc93a774a3eaed0.html">9e9a54b8be809289e44f4379bfc93a774a3eaed0</a>
+<b>parent</b> <a href="../commit/c2e996e143192ca8de4f2cd239c9b825ef471609.html">c2e996e143192ca8de4f2cd239c9b825ef471609</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Mon Mar 28 19:00:28 2016
+
+CCCLLLLEEEEAAAANNNUUPP!
+
+<b>Diffstat:</b>
+ herbstluftwm/.config/herbstluftwm/autostart | 189 +-------------------
+ herbstluftwm/.config/herbstluftwm/colors    |  17 +--
+ herbstluftwm/.config/herbstluftwm/panel.sh  | 184 +------------------
+ i3/.config/i3/config                        | 249 +------------------------
+ i3/.i3blocks.conf                           |  34 +---
+ scripts/.scripts/256colors2.pl              |  64 +------
+ scripts/.scripts/base16-ocean.dark.sh       | 122 +------------
+ scripts/.scripts/byzanz-record-region       |  29 +---
+ scripts/.scripts/colors                     |  17 +--
+ scripts/.scripts/colortest                  |  62 +------
+ scripts/.scripts/colortest2                 |  33 +---
+ scripts/.scripts/desktop/launch             |   5 +-
+ scripts/.scripts/desktop/panel/panel        |  15 +-
+ scripts/.scripts/desktop/panel/panel.rb     | 296 +-----------------------------
+ scripts/.scripts/desktop/panel/volume       |  74 +-------
+ scripts/.scripts/gifbackground              |  27 +---
+ scripts/.scripts/gitio                      |  87 +---------
+ scripts/.scripts/i3blocks/battery           |  75 +-------
+ scripts/.scripts/i3blocks/music             |  24 +--
+ scripts/.scripts/i3blocks/volume            |  74 +-------
+ scripts/.scripts/primerun                   |   4 +-
+ scripts/.scripts/setwall                    |  21 +--
+ scripts/.scripts/volume                     |  74 +-------
+ 23 files changed, 0 insertions(+), 1776 deletions(-)
+<hr/><b>diff --git a/<a href="../file/herbstluftwm/.config/herbstluftwm/autostart.html">herbstluftwm/.config/herbstluftwm/autostart</a> b/<a href="../file/herbstluftwm/.config/herbstluftwm/autostart.html">herbstluftwm/.config/herbstluftwm/autostart</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,189 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/bash
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-# this is a simple config for herbstluftwm
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-hc() {
+</a><a href="#h0-5" id="h0-5" class="d">-    herbstclient &quot;$@&quot;
+</a><a href="#h0-6" id="h0-6" class="d">-}
+</a><a href="#h0-7" id="h0-7" class="d">-
+</a><a href="#h0-8" id="h0-8" class="d">-hc emit_hook reload
+</a><a href="#h0-9" id="h0-9" class="d">-
+</a><a href="#h0-10" id="h0-10" class="d">-# Sets the wallpaper (.scripts/setwall)
+</a><a href="#h0-11" id="h0-11" class="d">-CUSTOM=Pictures/timessquare.jpg setwall
+</a><a href="#h0-12" id="h0-12" class="d">-
+</a><a href="#h0-13" id="h0-13" class="d">-# remove all existing keybindings
+</a><a href="#h0-14" id="h0-14" class="d">-hc keyunbind --all
+</a><a href="#h0-15" id="h0-15" class="d">-
+</a><a href="#h0-16" id="h0-16" class="d">-# keybindings
+</a><a href="#h0-17" id="h0-17" class="d">-# if you have a super key you will be much happier with Mod set to Mod4
+</a><a href="#h0-18" id="h0-18" class="d">-#Mod=Mod1    # Use alt as the main modifier
+</a><a href="#h0-19" id="h0-19" class="d">-Mod=Mod4   # Use the super key as the main modifier
+</a><a href="#h0-20" id="h0-20" class="d">-
+</a><a href="#h0-21" id="h0-21" class="d">-hc set default_frame_layout 3
+</a><a href="#h0-22" id="h0-22" class="d">-
+</a><a href="#h0-23" id="h0-23" class="d">-hc keybind $Mod-Shift-e quit
+</a><a href="#h0-24" id="h0-24" class="d">-hc keybind $Mod-Shift-r reload
+</a><a href="#h0-25" id="h0-25" class="d">-hc keybind $Mod-Shift-q close_and_remove
+</a><a href="#h0-26" id="h0-26" class="d">-hc keybind $Mod-Return spawn urxvt
+</a><a href="#h0-27" id="h0-27" class="d">-hc keybind $Mod-d spawn $HOME/.scripts/desktop/launch
+</a><a href="#h0-28" id="h0-28" class="d">-hc keybind $Mod-Shift-x spawn $HOME/.scripts/lock.sh
+</a><a href="#h0-29" id="h0-29" class="d">-
+</a><a href="#h0-30" id="h0-30" class="d">-# basic movement
+</a><a href="#h0-31" id="h0-31" class="d">-# focusing clients
+</a><a href="#h0-32" id="h0-32" class="d">-hc keybind $Mod-Left  focus left
+</a><a href="#h0-33" id="h0-33" class="d">-hc keybind $Mod-Down  focus down
+</a><a href="#h0-34" id="h0-34" class="d">-hc keybind $Mod-Up    focus up
+</a><a href="#h0-35" id="h0-35" class="d">-hc keybind $Mod-Right focus right
+</a><a href="#h0-36" id="h0-36" class="d">-hc keybind $Mod-h     focus left
+</a><a href="#h0-37" id="h0-37" class="d">-hc keybind $Mod-j     focus down
+</a><a href="#h0-38" id="h0-38" class="d">-hc keybind $Mod-k     focus up
+</a><a href="#h0-39" id="h0-39" class="d">-hc keybind $Mod-l     focus right
+</a><a href="#h0-40" id="h0-40" class="d">-
+</a><a href="#h0-41" id="h0-41" class="d">-# moving clients
+</a><a href="#h0-42" id="h0-42" class="d">-hc keybind $Mod-Shift-Left  shift left
+</a><a href="#h0-43" id="h0-43" class="d">-hc keybind $Mod-Shift-Down  shift down
+</a><a href="#h0-44" id="h0-44" class="d">-hc keybind $Mod-Shift-Up    shift up
+</a><a href="#h0-45" id="h0-45" class="d">-hc keybind $Mod-Shift-Right shift right
+</a><a href="#h0-46" id="h0-46" class="d">-hc keybind $Mod-Shift-h     shift left
+</a><a href="#h0-47" id="h0-47" class="d">-hc keybind $Mod-Shift-j     shift down
+</a><a href="#h0-48" id="h0-48" class="d">-hc keybind $Mod-Shift-k     shift up
+</a><a href="#h0-49" id="h0-49" class="d">-hc keybind $Mod-Shift-l     shift right
+</a><a href="#h0-50" id="h0-50" class="d">-
+</a><a href="#h0-51" id="h0-51" class="d">-# media keys
+</a><a href="#h0-52" id="h0-52" class="d">-MIXER=&quot;pulse&quot;
+</a><a href="#h0-53" id="h0-53" class="d">-SCONTROL=&quot;$(amixer -D $MIXER scontrols | sed -n &quot;s/Simple mixer control &apos;\([A-Za-z ]*\)&apos;,0/\1/p&quot; | head -n1 )&quot;
+</a><a href="#h0-54" id="h0-54" class="d">-STEP=&quot;${1:-5%}&quot;
+</a><a href="#h0-55" id="h0-55" class="d">-
+</a><a href="#h0-56" id="h0-56" class="d">-hc keybind XF86AudioPlay spawn playerctl play-pause
+</a><a href="#h0-57" id="h0-57" class="d">-hc keybind XF86AudioNext spawn playerctl next
+</a><a href="#h0-58" id="h0-58" class="d">-hc keybind XF86AudioPrev spawn playerctl previous
+</a><a href="#h0-59" id="h0-59" class="d">-hc keybind XF86AudioStop spawn playerctl stop
+</a><a href="#h0-60" id="h0-60" class="d">-hc keybind XF86AudioRaiseVolume spawn amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}+ unmute
+</a><a href="#h0-61" id="h0-61" class="d">-hc keybind XF86AudioLowerVolume spawn amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}- unmute
+</a><a href="#h0-62" id="h0-62" class="d">-hc keybind XF86AudioMute spawn amixer -q -D $MIXER sset $SCONTROL $(capability) toggle
+</a><a href="#h0-63" id="h0-63" class="d">-
+</a><a href="#h0-64" id="h0-64" class="d">-# splitting frames
+</a><a href="#h0-65" id="h0-65" class="d">-# create an empty frame at the specified direction
+</a><a href="#h0-66" id="h0-66" class="d">-hc keybind $Mod-u       split   bottom  0.5
+</a><a href="#h0-67" id="h0-67" class="d">-hc keybind $Mod-o       split   right   0.5
+</a><a href="#h0-68" id="h0-68" class="d">-# let the current frame explode into subframes
+</a><a href="#h0-69" id="h0-69" class="d">-hc keybind $Mod-Control-space split explode
+</a><a href="#h0-70" id="h0-70" class="d">-
+</a><a href="#h0-71" id="h0-71" class="d">-# resizing frames
+</a><a href="#h0-72" id="h0-72" class="d">-resizestep=0.05
+</a><a href="#h0-73" id="h0-73" class="d">-hc keybind $Mod-Control-h       resize left +$resizestep
+</a><a href="#h0-74" id="h0-74" class="d">-hc keybind $Mod-Control-j       resize down +$resizestep
+</a><a href="#h0-75" id="h0-75" class="d">-hc keybind $Mod-Control-k       resize up +$resizestep
+</a><a href="#h0-76" id="h0-76" class="d">-hc keybind $Mod-Control-l       resize right +$resizestep
+</a><a href="#h0-77" id="h0-77" class="d">-hc keybind $Mod-Control-Left    resize left +$resizestep
+</a><a href="#h0-78" id="h0-78" class="d">-hc keybind $Mod-Control-Down    resize down +$resizestep
+</a><a href="#h0-79" id="h0-79" class="d">-hc keybind $Mod-Control-Up      resize up +$resizestep
+</a><a href="#h0-80" id="h0-80" class="d">-hc keybind $Mod-Control-Right   resize right +$resizestep
+</a><a href="#h0-81" id="h0-81" class="d">-
+</a><a href="#h0-82" id="h0-82" class="d">-# tags
+</a><a href="#h0-83" id="h0-83" class="d">-tag_names=( {1..10} )
+</a><a href="#h0-84" id="h0-84" class="d">-tag_keys=( {1..9} 0 )
+</a><a href="#h0-85" id="h0-85" class="d">-
+</a><a href="#h0-86" id="h0-86" class="d">-hc rename default &quot;${tag_names[0]}&quot; || true
+</a><a href="#h0-87" id="h0-87" class="d">-for i in ${!tag_names[@]} ; do
+</a><a href="#h0-88" id="h0-88" class="d">-    hc add &quot;${tag_names[$i]}&quot;
+</a><a href="#h0-89" id="h0-89" class="d">-    key=&quot;${tag_keys[$i]}&quot;
+</a><a href="#h0-90" id="h0-90" class="d">-    if ! [ -z &quot;$key&quot; ] ; then
+</a><a href="#h0-91" id="h0-91" class="d">-        hc keybind &quot;$Mod-$key&quot; use_index &quot;$i&quot;
+</a><a href="#h0-92" id="h0-92" class="d">-        hc keybind &quot;$Mod-Shift-$key&quot; move_index &quot;$i&quot;
+</a><a href="#h0-93" id="h0-93" class="d">-    fi
+</a><a href="#h0-94" id="h0-94" class="d">-done
+</a><a href="#h0-95" id="h0-95" class="d">-
+</a><a href="#h0-96" id="h0-96" class="d">-# cycle through tags
+</a><a href="#h0-97" id="h0-97" class="d">-hc keybind $Mod-period use_index +1 --skip-visible
+</a><a href="#h0-98" id="h0-98" class="d">-hc keybind $Mod-comma  use_index -1 --skip-visible
+</a><a href="#h0-99" id="h0-99" class="d">-
+</a><a href="#h0-100" id="h0-100" class="d">-# layouting
+</a><a href="#h0-101" id="h0-101" class="d">-hc keybind $Mod-r remove
+</a><a href="#h0-102" id="h0-102" class="d">-hc keybind $Mod-space cycle_layout 1
+</a><a href="#h0-103" id="h0-103" class="d">-hc keybind $Mod-s floating toggle
+</a><a href="#h0-104" id="h0-104" class="d">-hc keybind $Mod-f fullscreen toggle
+</a><a href="#h0-105" id="h0-105" class="d">-hc keybind $Mod-p pseudotile toggle
+</a><a href="#h0-106" id="h0-106" class="d">-
+</a><a href="#h0-107" id="h0-107" class="d">-# mouse
+</a><a href="#h0-108" id="h0-108" class="d">-hc mouseunbind --all
+</a><a href="#h0-109" id="h0-109" class="d">-hc mousebind $Mod-Button1 move
+</a><a href="#h0-110" id="h0-110" class="d">-hc mousebind $Mod-Button2 zoom
+</a><a href="#h0-111" id="h0-111" class="d">-hc mousebind $Mod-Button3 resize
+</a><a href="#h0-112" id="h0-112" class="d">-
+</a><a href="#h0-113" id="h0-113" class="d">-# focus
+</a><a href="#h0-114" id="h0-114" class="d">-hc keybind $Mod-BackSpace   cycle_monitor
+</a><a href="#h0-115" id="h0-115" class="d">-hc keybind $Mod-Tab         cycle_all +1
+</a><a href="#h0-116" id="h0-116" class="d">-hc keybind $Mod-Shift-Tab   cycle_all -1
+</a><a href="#h0-117" id="h0-117" class="d">-hc keybind $Mod-c cycle
+</a><a href="#h0-118" id="h0-118" class="d">-hc keybind $Mod-i jumpto urgent
+</a><a href="#h0-119" id="h0-119" class="d">-
+</a><a href="#h0-120" id="h0-120" class="d">-# theme
+</a><a href="#h0-121" id="h0-121" class="d">-source $HOME/.config/herbstluftwm/colors
+</a><a href="#h0-122" id="h0-122" class="d">-
+</a><a href="#h0-123" id="h0-123" class="d">-hc attr theme.tiling.reset 1
+</a><a href="#h0-124" id="h0-124" class="d">-hc attr theme.floating.reset 1
+</a><a href="#h0-125" id="h0-125" class="d">-hc set frame_border_active_color &quot;$BG_COLOR&quot;
+</a><a href="#h0-126" id="h0-126" class="d">-hc set frame_border_normal_color &quot;$INACTIVE_BG_COLOR&quot;
+</a><a href="#h0-127" id="h0-127" class="d">-hc set frame_bg_normal_color &quot;$INACTIVE_BG_COLOR&quot;
+</a><a href="#h0-128" id="h0-128" class="d">-hc set frame_bg_active_color &quot;$BG_COLOR&quot;
+</a><a href="#h0-129" id="h0-129" class="d">-hc set frame_border_width 0
+</a><a href="#h0-130" id="h0-130" class="d">-hc set always_show_frame 1
+</a><a href="#h0-131" id="h0-131" class="d">-hc set frame_bg_transparent 1
+</a><a href="#h0-132" id="h0-132" class="d">-hc set frame_transparent_width 0
+</a><a href="#h0-133" id="h0-133" class="d">-hc set window_gap 10
+</a><a href="#h0-134" id="h0-134" class="d">-
+</a><a href="#h0-135" id="h0-135" class="d">-hc attr theme.active.color &quot;$(hc get frame_bg_active_color)&quot;
+</a><a href="#h0-136" id="h0-136" class="d">-hc attr theme.normal.color &quot;$(hc get frame_bg_normal_color)&quot;
+</a><a href="#h0-137" id="h0-137" class="d">-hc attr theme.urgent.color &quot;$URGENT_BG_COLOR&quot;
+</a><a href="#h0-138" id="h0-138" class="d">-hc attr theme.inner_width 0
+</a><a href="#h0-139" id="h0-139" class="d">-hc attr theme.inner_color black
+</a><a href="#h0-140" id="h0-140" class="d">-hc attr theme.border_width 3
+</a><a href="#h0-141" id="h0-141" class="d">-hc attr theme.floating.border_width 4
+</a><a href="#h0-142" id="h0-142" class="d">-hc attr theme.floating.outer_width 1
+</a><a href="#h0-143" id="h0-143" class="d">-hc attr theme.floating.outer_color black
+</a><a href="#h0-144" id="h0-144" class="d">-hc attr theme.active.inner_color &apos;#3E4A00&apos;
+</a><a href="#h0-145" id="h0-145" class="d">-hc attr theme.active.outer_color &apos;#3E4A00&apos;
+</a><a href="#h0-146" id="h0-146" class="d">-hc attr theme.background_color &apos;#18242C&apos;
+</a><a href="#h0-147" id="h0-147" class="d">-
+</a><a href="#h0-148" id="h0-148" class="d">-hc set frame_padding 0
+</a><a href="#h0-149" id="h0-149" class="d">-hc set smart_window_surroundings 0
+</a><a href="#h0-150" id="h0-150" class="d">-hc set smart_frame_surroundings 1
+</a><a href="#h0-151" id="h0-151" class="d">-hc set mouse_recenter_gap 0
+</a><a href="#h0-152" id="h0-152" class="d">-
+</a><a href="#h0-153" id="h0-153" class="d">-# rules
+</a><a href="#h0-154" id="h0-154" class="d">-hc unrule -F
+</a><a href="#h0-155" id="h0-155" class="d">-#hc rule class=XTerm tag=3 # move all xterms to tag 3
+</a><a href="#h0-156" id="h0-156" class="d">-#hc rule focus=on # normally focus new clients
+</a><a href="#h0-157" id="h0-157" class="d">-hc rule focus=on # normally do not focus new clients
+</a><a href="#h0-158" id="h0-158" class="d">-# give focus to most common terminals
+</a><a href="#h0-159" id="h0-159" class="d">-#hc rule class~&apos;(.*[Rr]xvt.*|.*[Tt]erm|Konsole)&apos; focus=on
+</a><a href="#h0-160" id="h0-160" class="d">-hc rule windowtype~&apos;_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)&apos; pseudotile=on
+</a><a href="#h0-161" id="h0-161" class="d">-hc rule windowtype=&apos;_NET_WM_WINDOW_TYPE_DIALOG&apos; focus=on
+</a><a href="#h0-162" id="h0-162" class="d">-hc rule windowtype~&apos;_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)&apos; manage=off
+</a><a href="#h0-163" id="h0-163" class="d">-
+</a><a href="#h0-164" id="h0-164" class="d">-# unlock, just to be sure
+</a><a href="#h0-165" id="h0-165" class="d">-hc unlock
+</a><a href="#h0-166" id="h0-166" class="d">-
+</a><a href="#h0-167" id="h0-167" class="d">-herbstclient set tree_style &apos;╾│ ├└╼─┐&apos;
+</a><a href="#h0-168" id="h0-168" class="d">-
+</a><a href="#h0-169" id="h0-169" class="d">-# do multi monitor setup here, e.g.:
+</a><a href="#h0-170" id="h0-170" class="d">-# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
+</a><a href="#h0-171" id="h0-171" class="d">-# or simply:
+</a><a href="#h0-172" id="h0-172" class="d">-hc detect_monitors
+</a><a href="#h0-173" id="h0-173" class="d">-
+</a><a href="#h0-174" id="h0-174" class="d">-
+</a><a href="#h0-175" id="h0-175" class="d">-
+</a><a href="#h0-176" id="h0-176" class="d">-#find the panel
+</a><a href="#h0-177" id="h0-177" class="d">-#panel=~/.config/herbstluftwm/panel.sh
+</a><a href="#h0-178" id="h0-178" class="d">-if pgrep panel
+</a><a href="#h0-179" id="h0-179" class="d">-then
+</a><a href="#h0-180" id="h0-180" class="d">-  kill $(pgrep panel)
+</a><a href="#h0-181" id="h0-181" class="d">-fi
+</a><a href="#h0-182" id="h0-182" class="d">-panel=~/.scripts/desktop/panel/panel
+</a><a href="#h0-183" id="h0-183" class="d">-[ -x &quot;$panel&quot; ] || panel=/etc/xdg/herbstluftwm/panel.sh
+</a><a href="#h0-184" id="h0-184" class="d">-&quot;$panel&quot; &amp;
+</a><a href="#h0-185" id="h0-185" class="d">-#for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
+</a><a href="#h0-186" id="h0-186" class="d">-#      start it on each monitor
+</a><a href="#h0-187" id="h0-187" class="d">-#     &quot;$panel&quot; $monitor &amp;
+</a><a href="#h0-188" id="h0-188" class="d">-#done
+</a><b>diff --git a/<a href="../file/herbstluftwm/.config/herbstluftwm/colors.html">herbstluftwm/.config/herbstluftwm/colors</a> b/<a href="../file/herbstluftwm/.config/herbstluftwm/colors.html">herbstluftwm/.config/herbstluftwm/colors</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,17 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-sc() {
+</a><a href="#h0-1" id="h0-1" class="d">-  $HOME/.scripts/setcolor &quot;$@&quot;
+</a><a href="#h0-2" id="h0-2" class="d">-}
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-#BG_COLOR=#1e4156
+</a><a href="#h0-5" id="h0-5" class="d">-#INACTIVE_BG_COLOR=#142a38
+</a><a href="#h0-6" id="h0-6" class="d">-#TEXT_COLOR=#f3f4f5
+</a><a href="#h0-7" id="h0-7" class="d">-#INACTIVE_TEXT_COLOR=#676E7D
+</a><a href="#h0-8" id="h0-8" class="d">-#URGENT_BG_COLOR=#E53935
+</a><a href="#h0-9" id="h0-9" class="d">-#BAR_BG_COLOR=#18242C
+</a><a href="#h0-10" id="h0-10" class="d">-
+</a><a href="#h0-11" id="h0-11" class="d">-BG_COLOR=$(sc BG_COLOR)
+</a><a href="#h0-12" id="h0-12" class="d">-INACTIVE_BG_COLOR=$(sc INACTIVE_BG_COLOR)
+</a><a href="#h0-13" id="h0-13" class="d">-TEXT_COLOR=$(sc TEXT_COLOR)
+</a><a href="#h0-14" id="h0-14" class="d">-INACTIVE_TEXT_COLOR=$(sc INACTIVE_TEXT_COLOR)
+</a><a href="#h0-15" id="h0-15" class="d">-URGENT_BG_COLOR=$(sc URGENT_BG_COLOR)
+</a><a href="#h0-16" id="h0-16" class="d">-BAR_BG_COLOR=$(sc BAR_BG_COLOR)
+</a><b>diff --git a/<a href="../file/herbstluftwm/.config/herbstluftwm/panel.sh.html">herbstluftwm/.config/herbstluftwm/panel.sh</a> b/<a href="../file/herbstluftwm/.config/herbstluftwm/panel.sh.html">herbstluftwm/.config/herbstluftwm/panel.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,184 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/usr/bin/env bash
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-hc() { &quot;${herbstclient_command[@]:-herbstclient}&quot; &quot;$@&quot; ;}
+</a><a href="#h0-3" id="h0-3" class="d">-monitor=${1:-0}
+</a><a href="#h0-4" id="h0-4" class="d">-geometry=( $(herbstclient monitor_rect &quot;$monitor&quot;) )
+</a><a href="#h0-5" id="h0-5" class="d">-if [ -z &quot;$geometry&quot; ] ;then
+</a><a href="#h0-6" id="h0-6" class="d">-    echo &quot;Invalid monitor $monitor&quot;
+</a><a href="#h0-7" id="h0-7" class="d">-    exit 1
+</a><a href="#h0-8" id="h0-8" class="d">-fi
+</a><a href="#h0-9" id="h0-9" class="d">-# geometry has the format W H X Y
+</a><a href="#h0-10" id="h0-10" class="d">-x=${geometry[0]}
+</a><a href="#h0-11" id="h0-11" class="d">-y=${geometry[1]}
+</a><a href="#h0-12" id="h0-12" class="d">-panel_width=${geometry[2]}
+</a><a href="#h0-13" id="h0-13" class="d">-panel_height=16
+</a><a href="#h0-14" id="h0-14" class="d">-font=&quot;-*-fixed-medium-*-*-*-12-*-*-*-*-*-*-*&quot;
+</a><a href="#h0-15" id="h0-15" class="d">-bgcolor=$(hc get frame_border_normal_color)
+</a><a href="#h0-16" id="h0-16" class="d">-selbg=$(hc get window_border_active_color)
+</a><a href="#h0-17" id="h0-17" class="d">-selfg=&apos;#101010&apos;
+</a><a href="#h0-18" id="h0-18" class="d">-
+</a><a href="#h0-19" id="h0-19" class="d">-####
+</a><a href="#h0-20" id="h0-20" class="d">-# Try to find textwidth binary.
+</a><a href="#h0-21" id="h0-21" class="d">-# In e.g. Ubuntu, this is named dzen2-textwidth.
+</a><a href="#h0-22" id="h0-22" class="d">-if which textwidth &amp;&gt; /dev/null ; then
+</a><a href="#h0-23" id="h0-23" class="d">-    textwidth=&quot;textwidth&quot;;
+</a><a href="#h0-24" id="h0-24" class="d">-elif which dzen2-textwidth &amp;&gt; /dev/null ; then
+</a><a href="#h0-25" id="h0-25" class="d">-    textwidth=&quot;dzen2-textwidth&quot;;
+</a><a href="#h0-26" id="h0-26" class="d">-else
+</a><a href="#h0-27" id="h0-27" class="d">-    echo &quot;This script requires the textwidth tool of the dzen2 project.&quot;
+</a><a href="#h0-28" id="h0-28" class="d">-    exit 1
+</a><a href="#h0-29" id="h0-29" class="d">-fi
+</a><a href="#h0-30" id="h0-30" class="d">-####
+</a><a href="#h0-31" id="h0-31" class="d">-# true if we are using the svn version of dzen2
+</a><a href="#h0-32" id="h0-32" class="d">-# depending on version/distribution, this seems to have version strings like
+</a><a href="#h0-33" id="h0-33" class="d">-# &quot;dzen-&quot; or &quot;dzen-x.x.x-svn&quot;
+</a><a href="#h0-34" id="h0-34" class="d">-if dzen2 -v 2&gt;&amp;1 | head -n 1 | grep -q &apos;^dzen-\([^,]*-svn\|\),&apos;; then
+</a><a href="#h0-35" id="h0-35" class="d">-    dzen2_svn=&quot;true&quot;
+</a><a href="#h0-36" id="h0-36" class="d">-else
+</a><a href="#h0-37" id="h0-37" class="d">-    dzen2_svn=&quot;&quot;
+</a><a href="#h0-38" id="h0-38" class="d">-fi
+</a><a href="#h0-39" id="h0-39" class="d">-
+</a><a href="#h0-40" id="h0-40" class="d">-if awk -Wv 2&gt;/dev/null | head -1 | grep -q &apos;^mawk&apos;; then
+</a><a href="#h0-41" id="h0-41" class="d">-    # mawk needs &quot;-W interactive&quot; to line-buffer stdout correctly
+</a><a href="#h0-42" id="h0-42" class="d">-    # http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=593504
+</a><a href="#h0-43" id="h0-43" class="d">-    uniq_linebuffered() {
+</a><a href="#h0-44" id="h0-44" class="d">-      awk -W interactive &apos;$0 != l { print ; l=$0 ; fflush(); }&apos; &quot;$@&quot;
+</a><a href="#h0-45" id="h0-45" class="d">-    }
+</a><a href="#h0-46" id="h0-46" class="d">-else
+</a><a href="#h0-47" id="h0-47" class="d">-    # other awk versions (e.g. gawk) issue a warning with &quot;-W interactive&quot;, so
+</a><a href="#h0-48" id="h0-48" class="d">-    # we don&apos;t want to use it there.
+</a><a href="#h0-49" id="h0-49" class="d">-    uniq_linebuffered() {
+</a><a href="#h0-50" id="h0-50" class="d">-      awk &apos;$0 != l { print ; l=$0 ; fflush(); }&apos; &quot;$@&quot;
+</a><a href="#h0-51" id="h0-51" class="d">-    }
+</a><a href="#h0-52" id="h0-52" class="d">-fi
+</a><a href="#h0-53" id="h0-53" class="d">-
+</a><a href="#h0-54" id="h0-54" class="d">-hc pad $monitor $panel_height
+</a><a href="#h0-55" id="h0-55" class="d">-
+</a><a href="#h0-56" id="h0-56" class="d">-{
+</a><a href="#h0-57" id="h0-57" class="d">-    ### Event generator ###
+</a><a href="#h0-58" id="h0-58" class="d">-    # based on different input data (mpc, date, hlwm hooks, ...) this generates events, formed like this:
+</a><a href="#h0-59" id="h0-59" class="d">-    #   &lt;eventname&gt;\t&lt;data&gt; [...]
+</a><a href="#h0-60" id="h0-60" class="d">-    # e.g.
+</a><a href="#h0-61" id="h0-61" class="d">-    #   date    ^fg(#efefef)18:33^fg(#909090), 2013-10-^fg(#efefef)29
+</a><a href="#h0-62" id="h0-62" class="d">-
+</a><a href="#h0-63" id="h0-63" class="d">-    #mpc idleloop player &amp;
+</a><a href="#h0-64" id="h0-64" class="d">-    while true ; do
+</a><a href="#h0-65" id="h0-65" class="d">-        # &quot;date&quot; output is checked once a second, but an event is only
+</a><a href="#h0-66" id="h0-66" class="d">-        # generated if the output changed compared to the previous run.
+</a><a href="#h0-67" id="h0-67" class="d">-        date +$&apos;date\t^fg(#efefef)%H:%M^fg(#909090), %Y-%m-^fg(#efefef)%d&apos;
+</a><a href="#h0-68" id="h0-68" class="d">-        sleep 1 || break
+</a><a href="#h0-69" id="h0-69" class="d">-    done &gt; &gt;(uniq_linebuffered) &amp;
+</a><a href="#h0-70" id="h0-70" class="d">-    childpid=$!
+</a><a href="#h0-71" id="h0-71" class="d">-    hc --idle
+</a><a href="#h0-72" id="h0-72" class="d">-    kill $childpid
+</a><a href="#h0-73" id="h0-73" class="d">-} 2&gt; /dev/null | {
+</a><a href="#h0-74" id="h0-74" class="d">-    IFS=$&apos;\t&apos; read -ra tags &lt;&lt;&lt; &quot;$(hc tag_status $monitor)&quot;
+</a><a href="#h0-75" id="h0-75" class="d">-    visible=true
+</a><a href="#h0-76" id="h0-76" class="d">-    date=&quot;&quot;
+</a><a href="#h0-77" id="h0-77" class="d">-    windowtitle=&quot;&quot;
+</a><a href="#h0-78" id="h0-78" class="d">-    while true ; do
+</a><a href="#h0-79" id="h0-79" class="d">-
+</a><a href="#h0-80" id="h0-80" class="d">-        ### Output ###
+</a><a href="#h0-81" id="h0-81" class="d">-        # This part prints dzen data based on the _previous_ data handling run,
+</a><a href="#h0-82" id="h0-82" class="d">-        # and then waits for the next event to happen.
+</a><a href="#h0-83" id="h0-83" class="d">-
+</a><a href="#h0-84" id="h0-84" class="d">-        bordercolor=&quot;#26221C&quot;
+</a><a href="#h0-85" id="h0-85" class="d">-        separator=&quot;^bg()^fg($selbg)|&quot;
+</a><a href="#h0-86" id="h0-86" class="d">-        # draw tags
+</a><a href="#h0-87" id="h0-87" class="d">-        for i in &quot;${tags[@]}&quot; ; do
+</a><a href="#h0-88" id="h0-88" class="d">-            case ${i:0:1} in
+</a><a href="#h0-89" id="h0-89" class="d">-                &apos;#&apos;)
+</a><a href="#h0-90" id="h0-90" class="d">-                    echo -n &quot;^bg($selbg)^fg($selfg)&quot;
+</a><a href="#h0-91" id="h0-91" class="d">-                    ;;
+</a><a href="#h0-92" id="h0-92" class="d">-                &apos;+&apos;)
+</a><a href="#h0-93" id="h0-93" class="d">-                    echo -n &quot;^bg(#9CA668)^fg(#141414)&quot;
+</a><a href="#h0-94" id="h0-94" class="d">-                    ;;
+</a><a href="#h0-95" id="h0-95" class="d">-                &apos;:&apos;)
+</a><a href="#h0-96" id="h0-96" class="d">-                    echo -n &quot;^bg()^fg(#ffffff)&quot;
+</a><a href="#h0-97" id="h0-97" class="d">-                    ;;
+</a><a href="#h0-98" id="h0-98" class="d">-                &apos;!&apos;)
+</a><a href="#h0-99" id="h0-99" class="d">-                    echo -n &quot;^bg(#FF0675)^fg(#141414)&quot;
+</a><a href="#h0-100" id="h0-100" class="d">-                    ;;
+</a><a href="#h0-101" id="h0-101" class="d">-                *)
+</a><a href="#h0-102" id="h0-102" class="d">-                    echo -n &quot;^bg()^fg(#ababab)&quot;
+</a><a href="#h0-103" id="h0-103" class="d">-                    ;;
+</a><a href="#h0-104" id="h0-104" class="d">-            esac
+</a><a href="#h0-105" id="h0-105" class="d">-            if [ ! -z &quot;$dzen2_svn&quot; ] ; then
+</a><a href="#h0-106" id="h0-106" class="d">-                # clickable tags if using SVN dzen
+</a><a href="#h0-107" id="h0-107" class="d">-                echo -n &quot;^ca(1,\&quot;${herbstclient_command[@]:-herbstclient}\&quot; &quot;
+</a><a href="#h0-108" id="h0-108" class="d">-                echo -n &quot;focus_monitor \&quot;$monitor\&quot; &amp;&amp; &quot;
+</a><a href="#h0-109" id="h0-109" class="d">-                echo -n &quot;\&quot;${herbstclient_command[@]:-herbstclient}\&quot; &quot;
+</a><a href="#h0-110" id="h0-110" class="d">-                echo -n &quot;use \&quot;${i:1}\&quot;) ${i:1} ^ca()&quot;
+</a><a href="#h0-111" id="h0-111" class="d">-            else
+</a><a href="#h0-112" id="h0-112" class="d">-                # non-clickable tags if using older dzen
+</a><a href="#h0-113" id="h0-113" class="d">-                echo -n &quot; ${i:1} &quot;
+</a><a href="#h0-114" id="h0-114" class="d">-            fi
+</a><a href="#h0-115" id="h0-115" class="d">-        done
+</a><a href="#h0-116" id="h0-116" class="d">-        echo -n &quot;$separator&quot;
+</a><a href="#h0-117" id="h0-117" class="d">-        echo -n &quot;^bg()^fg() ${windowtitle//^/^^}&quot;
+</a><a href="#h0-118" id="h0-118" class="d">-        # small adjustments
+</a><a href="#h0-119" id="h0-119" class="d">-        right=&quot;$separator^bg() $date $separator&quot;
+</a><a href="#h0-120" id="h0-120" class="d">-        right_text_only=$(echo -n &quot;$right&quot; | sed &apos;s.\^[^(]*([^)]*)..g&apos;)
+</a><a href="#h0-121" id="h0-121" class="d">-        # get width of right aligned text.. and add some space..
+</a><a href="#h0-122" id="h0-122" class="d">-        width=$($textwidth &quot;$font&quot; &quot;$right_text_only    &quot;)
+</a><a href="#h0-123" id="h0-123" class="d">-        echo -n &quot;^pa($(($panel_width - $width)))$right&quot;
+</a><a href="#h0-124" id="h0-124" class="d">-        echo
+</a><a href="#h0-125" id="h0-125" class="d">-
+</a><a href="#h0-126" id="h0-126" class="d">-        ### Data handling ###
+</a><a href="#h0-127" id="h0-127" class="d">-        # This part handles the events generated in the event loop, and sets
+</a><a href="#h0-128" id="h0-128" class="d">-        # internal variables based on them. The event and its arguments are
+</a><a href="#h0-129" id="h0-129" class="d">-        # read into the array cmd, then action is taken depending on the event
+</a><a href="#h0-130" id="h0-130" class="d">-        # name.
+</a><a href="#h0-131" id="h0-131" class="d">-        # &quot;Special&quot; events (quit_panel/togglehidepanel/reload) are also handled
+</a><a href="#h0-132" id="h0-132" class="d">-        # here.
+</a><a href="#h0-133" id="h0-133" class="d">-
+</a><a href="#h0-134" id="h0-134" class="d">-        # wait for next event
+</a><a href="#h0-135" id="h0-135" class="d">-        IFS=$&apos;\t&apos; read -ra cmd || break
+</a><a href="#h0-136" id="h0-136" class="d">-        # find out event origin
+</a><a href="#h0-137" id="h0-137" class="d">-        case &quot;${cmd[0]}&quot; in
+</a><a href="#h0-138" id="h0-138" class="d">-            tag*)
+</a><a href="#h0-139" id="h0-139" class="d">-                #echo &quot;resetting tags&quot; &gt;&amp;2
+</a><a href="#h0-140" id="h0-140" class="d">-                IFS=$&apos;\t&apos; read -ra tags &lt;&lt;&lt; &quot;$(hc tag_status $monitor)&quot;
+</a><a href="#h0-141" id="h0-141" class="d">-                ;;
+</a><a href="#h0-142" id="h0-142" class="d">-            date)
+</a><a href="#h0-143" id="h0-143" class="d">-                #echo &quot;resetting date&quot; &gt;&amp;2
+</a><a href="#h0-144" id="h0-144" class="d">-                date=&quot;${cmd[@]:1}&quot;
+</a><a href="#h0-145" id="h0-145" class="d">-                ;;
+</a><a href="#h0-146" id="h0-146" class="d">-            quit_panel)
+</a><a href="#h0-147" id="h0-147" class="d">-                exit
+</a><a href="#h0-148" id="h0-148" class="d">-                ;;
+</a><a href="#h0-149" id="h0-149" class="d">-            togglehidepanel)
+</a><a href="#h0-150" id="h0-150" class="d">-                currentmonidx=$(hc list_monitors | sed -n &apos;/\[FOCUS\]$/s/:.*//p&apos;)
+</a><a href="#h0-151" id="h0-151" class="d">-                if [ &quot;${cmd[1]}&quot; -ne &quot;$monitor&quot; ] ; then
+</a><a href="#h0-152" id="h0-152" class="d">-                    continue
+</a><a href="#h0-153" id="h0-153" class="d">-                fi
+</a><a href="#h0-154" id="h0-154" class="d">-                if [ &quot;${cmd[1]}&quot; = &quot;current&quot; ] &amp;&amp; [ &quot;$currentmonidx&quot; -ne &quot;$monitor&quot; ] ; then
+</a><a href="#h0-155" id="h0-155" class="d">-                    continue
+</a><a href="#h0-156" id="h0-156" class="d">-                fi
+</a><a href="#h0-157" id="h0-157" class="d">-                echo &quot;^togglehide()&quot;
+</a><a href="#h0-158" id="h0-158" class="d">-                if $visible ; then
+</a><a href="#h0-159" id="h0-159" class="d">-                    visible=false
+</a><a href="#h0-160" id="h0-160" class="d">-                    hc pad $monitor 0
+</a><a href="#h0-161" id="h0-161" class="d">-                else
+</a><a href="#h0-162" id="h0-162" class="d">-                    visible=true
+</a><a href="#h0-163" id="h0-163" class="d">-                    hc pad $monitor $panel_height
+</a><a href="#h0-164" id="h0-164" class="d">-                fi
+</a><a href="#h0-165" id="h0-165" class="d">-                ;;
+</a><a href="#h0-166" id="h0-166" class="d">-            reload)
+</a><a href="#h0-167" id="h0-167" class="d">-                exit
+</a><a href="#h0-168" id="h0-168" class="d">-                ;;
+</a><a href="#h0-169" id="h0-169" class="d">-            focus_changed|window_title_changed)
+</a><a href="#h0-170" id="h0-170" class="d">-                windowtitle=&quot;${cmd[@]:2}&quot;
+</a><a href="#h0-171" id="h0-171" class="d">-                ;;
+</a><a href="#h0-172" id="h0-172" class="d">-            #player)
+</a><a href="#h0-173" id="h0-173" class="d">-            #    ;;
+</a><a href="#h0-174" id="h0-174" class="d">-        esac
+</a><a href="#h0-175" id="h0-175" class="d">-    done
+</a><a href="#h0-176" id="h0-176" class="d">-
+</a><a href="#h0-177" id="h0-177" class="d">-    ### dzen2 ###
+</a><a href="#h0-178" id="h0-178" class="d">-    # After the data is gathered and processed, the output of the previous block
+</a><a href="#h0-179" id="h0-179" class="d">-    # gets piped to dzen2.
+</a><a href="#h0-180" id="h0-180" class="d">-
+</a><a href="#h0-181" id="h0-181" class="d">-} 2&gt; /dev/null | dzen2 -w $panel_width -x $x -y $y -fn &quot;$font&quot; -h $panel_height \
+</a><a href="#h0-182" id="h0-182" class="d">-    -e &apos;button3=;button4=exec:herbstclient use_index -1;button5=exec:herbstclient use_index +1&apos; \
+</a><a href="#h0-183" id="h0-183" class="d">-    -ta l -bg &quot;$bgcolor&quot; -fg &apos;#efefef&apos;
+</a><b>diff --git a/<a href="../file/i3/.config/i3/config.html">i3/.config/i3/config</a> b/<a href="../file/i3/.config/i3/config.html">i3/.config/i3/config</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,249 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-# This file has been auto-generated by i3-config-wizard(1).
+</a><a href="#h0-1" id="h0-1" class="d">-# It will not be overwritten, so edit it as you like.
+</a><a href="#h0-2" id="h0-2" class="d">-#
+</a><a href="#h0-3" id="h0-3" class="d">-# Should you change your keyboard layout some time, delete
+</a><a href="#h0-4" id="h0-4" class="d">-# this file and re-run i3-config-wizard(1).
+</a><a href="#h0-5" id="h0-5" class="d">-#
+</a><a href="#h0-6" id="h0-6" class="d">-
+</a><a href="#h0-7" id="h0-7" class="d">-# i3 config file (v4)
+</a><a href="#h0-8" id="h0-8" class="d">-#
+</a><a href="#h0-9" id="h0-9" class="d">-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+</a><a href="#h0-10" id="h0-10" class="d">-
+</a><a href="#h0-11" id="h0-11" class="d">-# Super key
+</a><a href="#h0-12" id="h0-12" class="d">-set $mod Mod4
+</a><a href="#h0-13" id="h0-13" class="d">-
+</a><a href="#h0-14" id="h0-14" class="d">-hide_edge_borders both
+</a><a href="#h0-15" id="h0-15" class="d">-
+</a><a href="#h0-16" id="h0-16" class="d">-# Font for window titles. Will also be used by the bar unless a different font
+</a><a href="#h0-17" id="h0-17" class="d">-# is used in the bar {} block below.
+</a><a href="#h0-18" id="h0-18" class="d">-font pango:System San Francisco Display 11
+</a><a href="#h0-19" id="h0-19" class="d">-
+</a><a href="#h0-20" id="h0-20" class="d">-# This font is widely installed, provides lots of unicode glyphs, right-to-left
+</a><a href="#h0-21" id="h0-21" class="d">-# text rendering and scalability on retina/hidpi displays (thanks to pango).
+</a><a href="#h0-22" id="h0-22" class="d">-#font pango:DejaVu Sans Mono 8
+</a><a href="#h0-23" id="h0-23" class="d">-
+</a><a href="#h0-24" id="h0-24" class="d">-# Before i3 v4.8, we used to recommend this one as the default:
+</a><a href="#h0-25" id="h0-25" class="d">-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+</a><a href="#h0-26" id="h0-26" class="d">-# The font above is very space-efficient, that is, it looks good, sharp and
+</a><a href="#h0-27" id="h0-27" class="d">-# clear in small sizes. However, its unicode glyph coverage is limited, the old
+</a><a href="#h0-28" id="h0-28" class="d">-# X core fonts rendering does not support right-to-left and this being a bitmap
+</a><a href="#h0-29" id="h0-29" class="d">-# font, it doesn’t scale on retina/hidpi displays.
+</a><a href="#h0-30" id="h0-30" class="d">-
+</a><a href="#h0-31" id="h0-31" class="d">-# Use Mouse+$mod to drag floating windows to their wanted position
+</a><a href="#h0-32" id="h0-32" class="d">-floating_modifier $mod
+</a><a href="#h0-33" id="h0-33" class="d">-
+</a><a href="#h0-34" id="h0-34" class="d">-# start a terminal
+</a><a href="#h0-35" id="h0-35" class="d">-bindsym $mod+Return exec urxvt
+</a><a href="#h0-36" id="h0-36" class="d">-
+</a><a href="#h0-37" id="h0-37" class="d">-# kill focused window
+</a><a href="#h0-38" id="h0-38" class="d">-bindsym $mod+Shift+q kill
+</a><a href="#h0-39" id="h0-39" class="d">-
+</a><a href="#h0-40" id="h0-40" class="d">-# change focus
+</a><a href="#h0-41" id="h0-41" class="d">-bindsym $mod+j focus left
+</a><a href="#h0-42" id="h0-42" class="d">-bindsym $mod+k focus down
+</a><a href="#h0-43" id="h0-43" class="d">-bindsym $mod+l focus up
+</a><a href="#h0-44" id="h0-44" class="d">-bindsym $mod+semicolon focus right
+</a><a href="#h0-45" id="h0-45" class="d">-
+</a><a href="#h0-46" id="h0-46" class="d">-# alternatively, you can use the cursor keys:
+</a><a href="#h0-47" id="h0-47" class="d">-bindsym $mod+Left focus left
+</a><a href="#h0-48" id="h0-48" class="d">-bindsym $mod+Down focus down
+</a><a href="#h0-49" id="h0-49" class="d">-bindsym $mod+Up focus up
+</a><a href="#h0-50" id="h0-50" class="d">-bindsym $mod+Right focus right
+</a><a href="#h0-51" id="h0-51" class="d">-
+</a><a href="#h0-52" id="h0-52" class="d">-# move focused window
+</a><a href="#h0-53" id="h0-53" class="d">-bindsym $mod+Shift+j move left
+</a><a href="#h0-54" id="h0-54" class="d">-bindsym $mod+Shift+k move down
+</a><a href="#h0-55" id="h0-55" class="d">-bindsym $mod+Shift+l move up
+</a><a href="#h0-56" id="h0-56" class="d">-bindsym $mod+Shift+semicolon move right
+</a><a href="#h0-57" id="h0-57" class="d">-
+</a><a href="#h0-58" id="h0-58" class="d">-# alternatively, you can use the cursor keys:
+</a><a href="#h0-59" id="h0-59" class="d">-bindsym $mod+Shift+Left move left
+</a><a href="#h0-60" id="h0-60" class="d">-bindsym $mod+Shift+Down move down
+</a><a href="#h0-61" id="h0-61" class="d">-bindsym $mod+Shift+Up move up
+</a><a href="#h0-62" id="h0-62" class="d">-bindsym $mod+Shift+Right move right
+</a><a href="#h0-63" id="h0-63" class="d">-
+</a><a href="#h0-64" id="h0-64" class="d">-# split in horizontal orientation
+</a><a href="#h0-65" id="h0-65" class="d">-bindsym $mod+h split h
+</a><a href="#h0-66" id="h0-66" class="d">-
+</a><a href="#h0-67" id="h0-67" class="d">-# split in vertical orientation
+</a><a href="#h0-68" id="h0-68" class="d">-bindsym $mod+v split v
+</a><a href="#h0-69" id="h0-69" class="d">-
+</a><a href="#h0-70" id="h0-70" class="d">-# enter fullscreen mode for the focused container
+</a><a href="#h0-71" id="h0-71" class="d">-bindsym $mod+f fullscreen toggle
+</a><a href="#h0-72" id="h0-72" class="d">-
+</a><a href="#h0-73" id="h0-73" class="d">-# change container layout (stacked, tabbed, toggle split)
+</a><a href="#h0-74" id="h0-74" class="d">-bindsym $mod+s layout stacking
+</a><a href="#h0-75" id="h0-75" class="d">-bindsym $mod+w layout tabbed
+</a><a href="#h0-76" id="h0-76" class="d">-bindsym $mod+e layout toggle split
+</a><a href="#h0-77" id="h0-77" class="d">-
+</a><a href="#h0-78" id="h0-78" class="d">-# toggle tiling / floating
+</a><a href="#h0-79" id="h0-79" class="d">-bindsym $mod+Shift+space floating toggle
+</a><a href="#h0-80" id="h0-80" class="d">-
+</a><a href="#h0-81" id="h0-81" class="d">-# change focus between tiling / floating windows
+</a><a href="#h0-82" id="h0-82" class="d">-bindsym $mod+space focus mode_toggle
+</a><a href="#h0-83" id="h0-83" class="d">-
+</a><a href="#h0-84" id="h0-84" class="d">-# focus the parent container
+</a><a href="#h0-85" id="h0-85" class="d">-bindsym $mod+a focus parent
+</a><a href="#h0-86" id="h0-86" class="d">-
+</a><a href="#h0-87" id="h0-87" class="d">-# focus the child container
+</a><a href="#h0-88" id="h0-88" class="d">-#bindsym $mod+d focus child
+</a><a href="#h0-89" id="h0-89" class="d">-
+</a><a href="#h0-90" id="h0-90" class="d">-set $workspace1 &quot;1 &quot;
+</a><a href="#h0-91" id="h0-91" class="d">-set $workspace2 &quot;2 &quot;
+</a><a href="#h0-92" id="h0-92" class="d">-set $workspace3 &quot;3 &quot;
+</a><a href="#h0-93" id="h0-93" class="d">-set $workspace4 &quot;4 &quot;
+</a><a href="#h0-94" id="h0-94" class="d">-set $workspace5 &quot;5 &quot;
+</a><a href="#h0-95" id="h0-95" class="d">-set $workspace6 &quot;6 &quot;
+</a><a href="#h0-96" id="h0-96" class="d">-
+</a><a href="#h0-97" id="h0-97" class="d">-# switch to workspace
+</a><a href="#h0-98" id="h0-98" class="d">-bindsym $mod+1 workspace $workspace1
+</a><a href="#h0-99" id="h0-99" class="d">-bindsym $mod+2 workspace $workspace2
+</a><a href="#h0-100" id="h0-100" class="d">-bindsym $mod+3 workspace $workspace3
+</a><a href="#h0-101" id="h0-101" class="d">-bindsym $mod+4 workspace $workspace4
+</a><a href="#h0-102" id="h0-102" class="d">-bindsym $mod+5 workspace $workspace5
+</a><a href="#h0-103" id="h0-103" class="d">-bindsym $mod+6 workspace $workspace6
+</a><a href="#h0-104" id="h0-104" class="d">-bindsym $mod+7 workspace 7
+</a><a href="#h0-105" id="h0-105" class="d">-bindsym $mod+8 workspace 8
+</a><a href="#h0-106" id="h0-106" class="d">-bindsym $mod+9 workspace 9
+</a><a href="#h0-107" id="h0-107" class="d">-bindsym $mod+0 workspace 10
+</a><a href="#h0-108" id="h0-108" class="d">-
+</a><a href="#h0-109" id="h0-109" class="d">-# move focused container to workspace
+</a><a href="#h0-110" id="h0-110" class="d">-bindsym $mod+Shift+1 move container to workspace $workspace1
+</a><a href="#h0-111" id="h0-111" class="d">-bindsym $mod+Shift+2 move container to workspace $workspace2
+</a><a href="#h0-112" id="h0-112" class="d">-bindsym $mod+Shift+3 move container to workspace $workspace3
+</a><a href="#h0-113" id="h0-113" class="d">-bindsym $mod+Shift+4 move container to workspace $workspace4
+</a><a href="#h0-114" id="h0-114" class="d">-bindsym $mod+Shift+5 move container to workspace $workspace5
+</a><a href="#h0-115" id="h0-115" class="d">-bindsym $mod+Shift+6 move container to workspace $workspace6
+</a><a href="#h0-116" id="h0-116" class="d">-bindsym $mod+Shift+7 move container to workspace 7
+</a><a href="#h0-117" id="h0-117" class="d">-bindsym $mod+Shift+8 move container to workspace 8
+</a><a href="#h0-118" id="h0-118" class="d">-bindsym $mod+Shift+9 move container to workspace 9
+</a><a href="#h0-119" id="h0-119" class="d">-bindsym $mod+Shift+0 move container to workspace 10
+</a><a href="#h0-120" id="h0-120" class="d">-
+</a><a href="#h0-121" id="h0-121" class="d">-bindsym $mod+F1 move workspace to output left
+</a><a href="#h0-122" id="h0-122" class="d">-bindsym $mod+F2 move workspace to output right
+</a><a href="#h0-123" id="h0-123" class="d">-
+</a><a href="#h0-124" id="h0-124" class="d">-set $mixer pulse
+</a><a href="#h0-125" id="h0-125" class="d">-
+</a><a href="#h0-126" id="h0-126" class="d">-# Multimedia keys
+</a><a href="#h0-127" id="h0-127" class="d">-bindsym XF86AudioRaiseVolume exec amixer -q -D $mixer sset Master 5%+ unmute # raise
+</a><a href="#h0-128" id="h0-128" class="d">-bindsym XF86AudioLowerVolume exec amixer -q -D $mixer sset Master 5%- unmute # decrease
+</a><a href="#h0-129" id="h0-129" class="d">-
+</a><a href="#h0-130" id="h0-130" class="d">-bindsym XF86AudioMute exec amixer -q -D $mixer sset Master toggle # mute
+</a><a href="#h0-131" id="h0-131" class="d">-
+</a><a href="#h0-132" id="h0-132" class="d">-bindsym XF86AudioPlay exec playerctl play-pause
+</a><a href="#h0-133" id="h0-133" class="d">-bindsym XF86AudioNext exec playerctl next
+</a><a href="#h0-134" id="h0-134" class="d">-bindsym XF86AudioPrev exec playerctl previous
+</a><a href="#h0-135" id="h0-135" class="d">-
+</a><a href="#h0-136" id="h0-136" class="d">-# reload the configuration file
+</a><a href="#h0-137" id="h0-137" class="d">-bindsym $mod+Shift+c reload
+</a><a href="#h0-138" id="h0-138" class="d">-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+</a><a href="#h0-139" id="h0-139" class="d">-bindsym $mod+Shift+r restart
+</a><a href="#h0-140" id="h0-140" class="d">-# exit i3 (logs you out of your X session)
+</a><a href="#h0-141" id="h0-141" class="d">-#bindsym $mod+Shift+e exec &quot;i3-nagbar -t warning -m &apos;You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.&apos; -b &apos;Yes, exit i3&apos; &apos;i3-msg exit&apos;&quot;
+</a><a href="#h0-142" id="h0-142" class="d">-bindsym $mod+Shift+e exec &quot;i3-nagbar -t warning -m &apos;You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.&apos; -b &apos;Aye, exit i3&apos; &apos;i3-msg exit&apos; -b &apos;Shutdown&apos; &apos;poweroff&apos; -b &apos;Reboot&apos; &apos;reboot&apos;&quot;
+</a><a href="#h0-143" id="h0-143" class="d">-
+</a><a href="#h0-144" id="h0-144" class="d">-
+</a><a href="#h0-145" id="h0-145" class="d">-# resize window (you can also use the mouse for that)
+</a><a href="#h0-146" id="h0-146" class="d">-mode &quot;resize&quot; {
+</a><a href="#h0-147" id="h0-147" class="d">-        # These bindings trigger as soon as you enter the resize mode
+</a><a href="#h0-148" id="h0-148" class="d">-
+</a><a href="#h0-149" id="h0-149" class="d">-        # Pressing left will shrink the window’s width.
+</a><a href="#h0-150" id="h0-150" class="d">-        # Pressing right will grow the window’s width.
+</a><a href="#h0-151" id="h0-151" class="d">-        # Pressing up will shrink the window’s height.
+</a><a href="#h0-152" id="h0-152" class="d">-        # Pressing down will grow the window’s height.
+</a><a href="#h0-153" id="h0-153" class="d">-        bindsym j resize shrink width 10 px or 10 ppt
+</a><a href="#h0-154" id="h0-154" class="d">-        bindsym k resize grow height 10 px or 10 ppt
+</a><a href="#h0-155" id="h0-155" class="d">-        bindsym l resize shrink height 10 px or 10 ppt
+</a><a href="#h0-156" id="h0-156" class="d">-        bindsym semicolon resize grow width 10 px or 10 ppt
+</a><a href="#h0-157" id="h0-157" class="d">-
+</a><a href="#h0-158" id="h0-158" class="d">-        # same bindings, but for the arrow keys
+</a><a href="#h0-159" id="h0-159" class="d">-        bindsym Left resize shrink width 10 px or 10 ppt
+</a><a href="#h0-160" id="h0-160" class="d">-        bindsym Down resize grow height 10 px or 10 ppt
+</a><a href="#h0-161" id="h0-161" class="d">-        bindsym Up resize shrink height 10 px or 10 ppt
+</a><a href="#h0-162" id="h0-162" class="d">-        bindsym Right resize grow width 10 px or 10 ppt
+</a><a href="#h0-163" id="h0-163" class="d">-
+</a><a href="#h0-164" id="h0-164" class="d">-        # back to normal: Enter or Escape
+</a><a href="#h0-165" id="h0-165" class="d">-        bindsym Return mode &quot;default&quot;
+</a><a href="#h0-166" id="h0-166" class="d">-        bindsym Escape mode &quot;default&quot;
+</a><a href="#h0-167" id="h0-167" class="d">-}
+</a><a href="#h0-168" id="h0-168" class="d">-
+</a><a href="#h0-169" id="h0-169" class="d">-bindsym $mod+r mode &quot;resize&quot;
+</a><a href="#h0-170" id="h0-170" class="d">-
+</a><a href="#h0-171" id="h0-171" class="d">-mode &quot;launch&quot; {
+</a><a href="#h0-172" id="h0-172" class="d">-  bindsym f exec firefox
+</a><a href="#h0-173" id="h0-173" class="d">-  bindsym t exec tomahawk
+</a><a href="#h0-174" id="h0-174" class="d">-  bindsym c exec codeblocks
+</a><a href="#h0-175" id="h0-175" class="d">-  bindsym n exec nautilus
+</a><a href="#h0-176" id="h0-176" class="d">-
+</a><a href="#h0-177" id="h0-177" class="d">-  bindsym Return mode &quot;default&quot;
+</a><a href="#h0-178" id="h0-178" class="d">-  bindsym Escape mode &quot;default&quot;
+</a><a href="#h0-179" id="h0-179" class="d">-
+</a><a href="#h0-180" id="h0-180" class="d">-
+</a><a href="#h0-181" id="h0-181" class="d">-}
+</a><a href="#h0-182" id="h0-182" class="d">-
+</a><a href="#h0-183" id="h0-183" class="d">-bindsym $mod+Shift+v mode &quot;launch&quot;
+</a><a href="#h0-184" id="h0-184" class="d">-
+</a><a href="#h0-185" id="h0-185" class="d">-# default workspaces
+</a><a href="#h0-186" id="h0-186" class="d">-assign [class=&quot;Firefox&quot;]            $workspace1
+</a><a href="#h0-187" id="h0-187" class="d">-assign [class=&quot;Codeblocks&quot;]         $workspace2
+</a><a href="#h0-188" id="h0-188" class="d">-assign [class=&quot;Gvim&quot;]               $workspace2
+</a><a href="#h0-189" id="h0-189" class="d">-assign [class=&quot;URxvt&quot;]              $workspace4
+</a><a href="#h0-190" id="h0-190" class="d">-assign [class=&quot;libreoffice-writer&quot;] $workspace5
+</a><a href="#h0-191" id="h0-191" class="d">-assign [class=&quot;Rhythmbox&quot;]          $workspace6
+</a><a href="#h0-192" id="h0-192" class="d">-assign [class=&quot;Lollypop&quot;]           $workspace6
+</a><a href="#h0-193" id="h0-193" class="d">-assign [class=&quot;Tomahawk&quot;]           $workspace6
+</a><a href="#h0-194" id="h0-194" class="d">-
+</a><a href="#h0-195" id="h0-195" class="d">-#set $bg-color 	         #2f343f
+</a><a href="#h0-196" id="h0-196" class="d">-#set $bg-color 	         #0c1922
+</a><a href="#h0-197" id="h0-197" class="d">-set $bg-color 	         #1e4156
+</a><a href="#h0-198" id="h0-198" class="d">-set $inactive-bg-color   #142a38
+</a><a href="#h0-199" id="h0-199" class="d">-set $text-color          #f3f4f5
+</a><a href="#h0-200" id="h0-200" class="d">-set $inactive-text-color #676E7D
+</a><a href="#h0-201" id="h0-201" class="d">-set $urgent-bg-color     #E53935
+</a><a href="#h0-202" id="h0-202" class="d">-
+</a><a href="#h0-203" id="h0-203" class="d">-set $bar-bg-color        #18242C
+</a><a href="#h0-204" id="h0-204" class="d">-
+</a><a href="#h0-205" id="h0-205" class="d">-# Start i3bar to display a workspace bar (plus the system information i3status
+</a><a href="#h0-206" id="h0-206" class="d">-# finds out, if available)
+</a><a href="#h0-207" id="h0-207" class="d">-bar {
+</a><a href="#h0-208" id="h0-208" class="d">-  status_command i3blocks
+</a><a href="#h0-209" id="h0-209" class="d">-  tray_output primary
+</a><a href="#h0-210" id="h0-210" class="d">-  separator_symbol &quot;●&quot;
+</a><a href="#h0-211" id="h0-211" class="d">-  font pango:FontAwesome 10, System San Francisco Display 10
+</a><a href="#h0-212" id="h0-212" class="d">-
+</a><a href="#h0-213" id="h0-213" class="d">-
+</a><a href="#h0-214" id="h0-214" class="d">-  colors {
+</a><a href="#h0-215" id="h0-215" class="d">-    background $bar-bg-color
+</a><a href="#h0-216" id="h0-216" class="d">-    separator #757575
+</a><a href="#h0-217" id="h0-217" class="d">-    statusline #51b3eb
+</a><a href="#h0-218" id="h0-218" class="d">-    #                  border             background         text
+</a><a href="#h0-219" id="h0-219" class="d">-    focused_workspace  $bg-color          $bg-color          $text-color
+</a><a href="#h0-220" id="h0-220" class="d">-    inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+</a><a href="#h0-221" id="h0-221" class="d">-    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+</a><a href="#h0-222" id="h0-222" class="d">-  }
+</a><a href="#h0-223" id="h0-223" class="d">-}
+</a><a href="#h0-224" id="h0-224" class="d">-
+</a><a href="#h0-225" id="h0-225" class="d">-
+</a><a href="#h0-226" id="h0-226" class="d">-# window colors
+</a><a href="#h0-227" id="h0-227" class="d">-#                       border              background         text                 indicator
+</a><a href="#h0-228" id="h0-228" class="d">-client.focused          $bg-color           $bg-color          $text-color          $bg-color
+</a><a href="#h0-229" id="h0-229" class="d">-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
+</a><a href="#h0-230" id="h0-230" class="d">-client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
+</a><a href="#h0-231" id="h0-231" class="d">-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
+</a><a href="#h0-232" id="h0-232" class="d">-
+</a><a href="#h0-233" id="h0-233" class="d">-bindsym $mod+Shift+d exec i3-dmenu-desktop
+</a><a href="#h0-234" id="h0-234" class="d">-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 400 -opacity &quot;85&quot; -bw 0 -bc &quot;$bg-color&quot; -bg &quot;$bg-color&quot; -fg &quot;$text-color&quot; -hlbg &quot;$bg-color&quot; -hlfg &quot;#8fa1b3&quot; -font &quot;System San Francisco Display 18&quot;
+</a><a href="#h0-235" id="h0-235" class="d">-
+</a><a href="#h0-236" id="h0-236" class="d">-bindsym $mod+Shift+x exec ~/.scripts/lock.sh ~/.scripts/lock.png
+</a><a href="#h0-237" id="h0-237" class="d">-
+</a><a href="#h0-238" id="h0-238" class="d">-for_window [class=&quot;^.*&quot;] border pixel 3
+</a><a href="#h0-239" id="h0-239" class="d">-gaps inner 5
+</a><a href="#h0-240" id="h0-240" class="d">-gaps outer 5
+</a><a href="#h0-241" id="h0-241" class="d">-
+</a><a href="#h0-242" id="h0-242" class="d">-for_window [class=&quot;XTerm&quot;] floating enable
+</a><a href="#h0-243" id="h0-243" class="d">-for_window [class=&quot;Plank&quot;] floating enable,move absolute center
+</a><a href="#h0-244" id="h0-244" class="d">-
+</a><a href="#h0-245" id="h0-245" class="d">-#exec_always --no-startup-id feh --bg-scale --no-startup-id ~/Pictures/wallpaper.png
+</a><a href="#h0-246" id="h0-246" class="d">-exec_always --no-startup-id setwall
+</a><a href="#h0-247" id="h0-247" class="d">-exec_always --no-startup-id xsetroot -cursor_name left_ptr
+</a><a href="#h0-248" id="h0-248" class="d">-exec_always --no-startup-id redshift-gtk &amp;
+</a><b>diff --git a/<a href="../file/i3/.i3blocks.conf.html">i3/.i3blocks.conf</a> b/<a href="../file/i3/.i3blocks.conf.html">i3/.i3blocks.conf</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,34 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-# General settings:
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-command=~/.scripts/i3blocks/$BLOCK_NAME
+</a><a href="#h0-3" id="h0-3" class="d">-markup=pango
+</a><a href="#h0-4" id="h0-4" class="d">-separator_block_width=14
+</a><a href="#h0-5" id="h0-5" class="d">-#separator=false
+</a><a href="#h0-6" id="h0-6" class="d">-align=center
+</a><a href="#h0-7" id="h0-7" class="d">-
+</a><a href="#h0-8" id="h0-8" class="d">-[music]
+</a><a href="#h0-9" id="h0-9" class="d">-#command=playerctl metadata title
+</a><a href="#h0-10" id="h0-10" class="d">-interval=1
+</a><a href="#h0-11" id="h0-11" class="d">-signal=5
+</a><a href="#h0-12" id="h0-12" class="d">-#label=
+</a><a href="#h0-13" id="h0-13" class="d">-
+</a><a href="#h0-14" id="h0-14" class="d">-[battery]
+</a><a href="#h0-15" id="h0-15" class="d">-label=
+</a><a href="#h0-16" id="h0-16" class="d">-interval=5
+</a><a href="#h0-17" id="h0-17" class="d">-
+</a><a href="#h0-18" id="h0-18" class="d">-[volume]
+</a><a href="#h0-19" id="h0-19" class="d">-label=
+</a><a href="#h0-20" id="h0-20" class="d">-instance=Master
+</a><a href="#h0-21" id="h0-21" class="d">-interval=1
+</a><a href="#h0-22" id="h0-22" class="d">-signal=5
+</a><a href="#h0-23" id="h0-23" class="d">-
+</a><a href="#h0-24" id="h0-24" class="d">-[date]
+</a><a href="#h0-25" id="h0-25" class="d">-label=
+</a><a href="#h0-26" id="h0-26" class="d">-command=date &apos;+%a %d %b&apos;
+</a><a href="#h0-27" id="h0-27" class="d">-interval=3600
+</a><a href="#h0-28" id="h0-28" class="d">-
+</a><a href="#h0-29" id="h0-29" class="d">-[time]
+</a><a href="#h0-30" id="h0-30" class="d">-label=
+</a><a href="#h0-31" id="h0-31" class="d">-command=date &apos;+%I:%M %p &apos;
+</a><a href="#h0-32" id="h0-32" class="d">-interval=30
+</a><a href="#h0-33" id="h0-33" class="d">-
+</a><b>diff --git a/<a href="../file/scripts/.scripts/256colors2.pl.html">scripts/.scripts/256colors2.pl</a> b/<a href="../file/scripts/.scripts/256colors2.pl.html">scripts/.scripts/256colors2.pl</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,64 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/usr/bin/perl
+</a><a href="#h0-1" id="h0-1" class="d">-# Author: Todd Larason &lt;jtl@molehill.org&gt;
+</a><a href="#h0-2" id="h0-2" class="d">-# $XFree86: xc/programs/xterm/vttests/256colors2.pl,v 1.1 1999/07/11 08:49:54 dawes Exp $
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-# use the resources for colors 0-15 - usually more-or-less a
+</a><a href="#h0-5" id="h0-5" class="d">-# reproduction of the standard ANSI colors, but possibly more
+</a><a href="#h0-6" id="h0-6" class="d">-# pleasing shades
+</a><a href="#h0-7" id="h0-7" class="d">-
+</a><a href="#h0-8" id="h0-8" class="d">-# colors 16-231 are a 6x6x6 color cube
+</a><a href="#h0-9" id="h0-9" class="d">-for ($red = 0; $red &lt; 6; $red++) {
+</a><a href="#h0-10" id="h0-10" class="d">-    for ($green = 0; $green &lt; 6; $green++) {
+</a><a href="#h0-11" id="h0-11" class="d">-        for ($blue = 0; $blue &lt; 6; $blue++) {
+</a><a href="#h0-12" id="h0-12" class="d">-            printf(&quot;\x1b]4;%d;rgb:%2.2x/%2.2x/%2.2x\x1b\\&quot;,
+</a><a href="#h0-13" id="h0-13" class="d">-                   16 + ($red * 36) + ($green * 6) + $blue,
+</a><a href="#h0-14" id="h0-14" class="d">-                   int ($red * 42.5),
+</a><a href="#h0-15" id="h0-15" class="d">-                   int ($green * 42.5),
+</a><a href="#h0-16" id="h0-16" class="d">-                   int ($blue * 42.5));
+</a><a href="#h0-17" id="h0-17" class="d">-        }
+</a><a href="#h0-18" id="h0-18" class="d">-    }
+</a><a href="#h0-19" id="h0-19" class="d">-}
+</a><a href="#h0-20" id="h0-20" class="d">-
+</a><a href="#h0-21" id="h0-21" class="d">-# colors 232-255 are a grayscale ramp, intentionally leaving out
+</a><a href="#h0-22" id="h0-22" class="d">-# black and white
+</a><a href="#h0-23" id="h0-23" class="d">-for ($gray = 0; $gray &lt; 24; $gray++) {
+</a><a href="#h0-24" id="h0-24" class="d">-    $level = ($gray * 10) + 8;
+</a><a href="#h0-25" id="h0-25" class="d">-    printf(&quot;\x1b]4;%d;rgb:%2.2x/%2.2x/%2.2x\x1b\\&quot;,
+</a><a href="#h0-26" id="h0-26" class="d">-           232 + $gray, $level, $level, $level);
+</a><a href="#h0-27" id="h0-27" class="d">-}
+</a><a href="#h0-28" id="h0-28" class="d">-
+</a><a href="#h0-29" id="h0-29" class="d">-
+</a><a href="#h0-30" id="h0-30" class="d">-# display the colors
+</a><a href="#h0-31" id="h0-31" class="d">-
+</a><a href="#h0-32" id="h0-32" class="d">-# first the system ones:
+</a><a href="#h0-33" id="h0-33" class="d">-print &quot;System colors:\n&quot;;
+</a><a href="#h0-34" id="h0-34" class="d">-for ($color = 0; $color &lt; 8; $color++) {
+</a><a href="#h0-35" id="h0-35" class="d">-    print &quot;\x1b[48;5;${color}m  &quot;;
+</a><a href="#h0-36" id="h0-36" class="d">-}
+</a><a href="#h0-37" id="h0-37" class="d">-print &quot;\x1b[0m\n&quot;;
+</a><a href="#h0-38" id="h0-38" class="d">-for ($color = 8; $color &lt; 16; $color++) {
+</a><a href="#h0-39" id="h0-39" class="d">-    print &quot;\x1b[48;5;${color}m  &quot;;
+</a><a href="#h0-40" id="h0-40" class="d">-}
+</a><a href="#h0-41" id="h0-41" class="d">-print &quot;\x1b[0m\n\n&quot;;
+</a><a href="#h0-42" id="h0-42" class="d">-
+</a><a href="#h0-43" id="h0-43" class="d">-# now the color cube
+</a><a href="#h0-44" id="h0-44" class="d">-print &quot;Color cube, 6x6x6:\n&quot;;
+</a><a href="#h0-45" id="h0-45" class="d">-for ($green = 0; $green &lt; 6; $green++) {
+</a><a href="#h0-46" id="h0-46" class="d">-    for ($red = 0; $red &lt; 6; $red++) {
+</a><a href="#h0-47" id="h0-47" class="d">-        for ($blue = 0; $blue &lt; 6; $blue++) {
+</a><a href="#h0-48" id="h0-48" class="d">-            $color = 16 + ($red * 36) + ($green * 6) + $blue;
+</a><a href="#h0-49" id="h0-49" class="d">-            print &quot;\x1b[48;5;${color}m  &quot;;
+</a><a href="#h0-50" id="h0-50" class="d">-        }
+</a><a href="#h0-51" id="h0-51" class="d">-        print &quot;\x1b[0m &quot;;
+</a><a href="#h0-52" id="h0-52" class="d">-    }
+</a><a href="#h0-53" id="h0-53" class="d">-    print &quot;\n&quot;;
+</a><a href="#h0-54" id="h0-54" class="d">-}
+</a><a href="#h0-55" id="h0-55" class="d">-
+</a><a href="#h0-56" id="h0-56" class="d">-
+</a><a href="#h0-57" id="h0-57" class="d">-# now the grayscale ramp
+</a><a href="#h0-58" id="h0-58" class="d">-print &quot;Grayscale ramp:\n&quot;;
+</a><a href="#h0-59" id="h0-59" class="d">-for ($color = 232; $color &lt; 256; $color++) {
+</a><a href="#h0-60" id="h0-60" class="d">-    print &quot;\x1b[48;5;${color}m  &quot;;
+</a><a href="#h0-61" id="h0-61" class="d">-}
+</a><a href="#h0-62" id="h0-62" class="d">-print &quot;\x1b[0m\n&quot;;
+</a><a href="#h0-63" id="h0-63" class="d">-
+</a><b>diff --git a/<a href="../file/scripts/.scripts/base16-ocean.dark.sh.html">scripts/.scripts/base16-ocean.dark.sh</a> b/<a href="../file/scripts/.scripts/base16-ocean.dark.sh.html">scripts/.scripts/base16-ocean.dark.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,122 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="d">-# Base16 Ocean - Shell color setup script
+</a><a href="#h0-2" id="h0-2" class="d">-# Chris Kempson (http://chriskempson.com)
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-if [ &quot;${TERM%%-*}&quot; = &apos;linux&apos; ]; then
+</a><a href="#h0-5" id="h0-5" class="d">-    # This script doesn&apos;t support linux console (use &apos;vconsole&apos; template instead)
+</a><a href="#h0-6" id="h0-6" class="d">-    return 2&gt;/dev/null || exit 0
+</a><a href="#h0-7" id="h0-7" class="d">-fi
+</a><a href="#h0-8" id="h0-8" class="d">-
+</a><a href="#h0-9" id="h0-9" class="d">-color00=&quot;2b/30/3b&quot; # Base 00 - Black
+</a><a href="#h0-10" id="h0-10" class="d">-color01=&quot;bf/61/6a&quot; # Base 08 - Red
+</a><a href="#h0-11" id="h0-11" class="d">-color02=&quot;a3/be/8c&quot; # Base 0B - Green
+</a><a href="#h0-12" id="h0-12" class="d">-color03=&quot;eb/cb/8b&quot; # Base 0A - Yellow
+</a><a href="#h0-13" id="h0-13" class="d">-color04=&quot;8f/a1/b3&quot; # Base 0D - Blue
+</a><a href="#h0-14" id="h0-14" class="d">-color05=&quot;b4/8e/ad&quot; # Base 0E - Magenta
+</a><a href="#h0-15" id="h0-15" class="d">-color06=&quot;96/b5/b4&quot; # Base 0C - Cyan
+</a><a href="#h0-16" id="h0-16" class="d">-color07=&quot;c0/c5/ce&quot; # Base 05 - White
+</a><a href="#h0-17" id="h0-17" class="d">-color08=&quot;65/73/7e&quot; # Base 03 - Bright Black
+</a><a href="#h0-18" id="h0-18" class="d">-color09=$color01 # Base 08 - Bright Red
+</a><a href="#h0-19" id="h0-19" class="d">-color10=$color02 # Base 0B - Bright Green
+</a><a href="#h0-20" id="h0-20" class="d">-color11=$color03 # Base 0A - Bright Yellow
+</a><a href="#h0-21" id="h0-21" class="d">-color12=$color04 # Base 0D - Bright Blue
+</a><a href="#h0-22" id="h0-22" class="d">-color13=$color05 # Base 0E - Bright Magenta
+</a><a href="#h0-23" id="h0-23" class="d">-color14=$color06 # Base 0C - Bright Cyan
+</a><a href="#h0-24" id="h0-24" class="d">-color15=&quot;ef/f1/f5&quot; # Base 07 - Bright White
+</a><a href="#h0-25" id="h0-25" class="d">-color16=&quot;d0/87/70&quot; # Base 09
+</a><a href="#h0-26" id="h0-26" class="d">-color17=&quot;ab/79/67&quot; # Base 0F
+</a><a href="#h0-27" id="h0-27" class="d">-color18=&quot;34/3d/46&quot; # Base 01
+</a><a href="#h0-28" id="h0-28" class="d">-color19=&quot;4f/5b/66&quot; # Base 02
+</a><a href="#h0-29" id="h0-29" class="d">-color20=&quot;a7/ad/ba&quot; # Base 04
+</a><a href="#h0-30" id="h0-30" class="d">-color21=&quot;df/e1/e8&quot; # Base 06
+</a><a href="#h0-31" id="h0-31" class="d">-color_foreground=&quot;c0/c5/ce&quot; # Base 05
+</a><a href="#h0-32" id="h0-32" class="d">-color_background=&quot;2b/30/3b&quot; # Base 00
+</a><a href="#h0-33" id="h0-33" class="d">-color_cursor=&quot;c0/c5/ce&quot; # Base 05
+</a><a href="#h0-34" id="h0-34" class="d">-
+</a><a href="#h0-35" id="h0-35" class="d">-if [ -n &quot;$TMUX&quot; ]; then
+</a><a href="#h0-36" id="h0-36" class="d">-  # tell tmux to pass the escape sequences through
+</a><a href="#h0-37" id="h0-37" class="d">-  # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
+</a><a href="#h0-38" id="h0-38" class="d">-  printf_template=&quot;\033Ptmux;\033\033]4;%d;rgb:%s\007\033\\&quot;
+</a><a href="#h0-39" id="h0-39" class="d">-  printf_template_var=&quot;\033Ptmux;\033\033]%d;rgb:%s\007\033\\&quot;
+</a><a href="#h0-40" id="h0-40" class="d">-  printf_template_custom=&quot;\033Ptmux;\033\033]%s%s\007\033\\&quot;
+</a><a href="#h0-41" id="h0-41" class="d">-elif [ &quot;${TERM%%-*}&quot; = &quot;screen&quot; ]; then
+</a><a href="#h0-42" id="h0-42" class="d">-  # GNU screen (screen, screen-256color, screen-256color-bce)
+</a><a href="#h0-43" id="h0-43" class="d">-  printf_template=&quot;\033P\033]4;%d;rgb:%s\007\033\\&quot;
+</a><a href="#h0-44" id="h0-44" class="d">-  printf_template_var=&quot;\033P\033]%d;rgb:%s\007\033\\&quot;
+</a><a href="#h0-45" id="h0-45" class="d">-  printf_template_custom=&quot;\033P\033]%s%s\007\033\\&quot;
+</a><a href="#h0-46" id="h0-46" class="d">-else
+</a><a href="#h0-47" id="h0-47" class="d">-  printf_template=&quot;\033]4;%d;rgb:%s\033\\&quot;
+</a><a href="#h0-48" id="h0-48" class="d">-  printf_template_var=&quot;\033]%d;rgb:%s\033\\&quot;
+</a><a href="#h0-49" id="h0-49" class="d">-  printf_template_custom=&quot;\033]%s%s\033\\&quot;
+</a><a href="#h0-50" id="h0-50" class="d">-fi
+</a><a href="#h0-51" id="h0-51" class="d">-
+</a><a href="#h0-52" id="h0-52" class="d">-# 16 color space
+</a><a href="#h0-53" id="h0-53" class="d">-printf $printf_template 0  $color00
+</a><a href="#h0-54" id="h0-54" class="d">-printf $printf_template 1  $color01
+</a><a href="#h0-55" id="h0-55" class="d">-printf $printf_template 2  $color02
+</a><a href="#h0-56" id="h0-56" class="d">-printf $printf_template 3  $color03
+</a><a href="#h0-57" id="h0-57" class="d">-printf $printf_template 4  $color04
+</a><a href="#h0-58" id="h0-58" class="d">-printf $printf_template 5  $color05
+</a><a href="#h0-59" id="h0-59" class="d">-printf $printf_template 6  $color06
+</a><a href="#h0-60" id="h0-60" class="d">-printf $printf_template 7  $color07
+</a><a href="#h0-61" id="h0-61" class="d">-printf $printf_template 8  $color08
+</a><a href="#h0-62" id="h0-62" class="d">-printf $printf_template 9  $color09
+</a><a href="#h0-63" id="h0-63" class="d">-printf $printf_template 10 $color10
+</a><a href="#h0-64" id="h0-64" class="d">-printf $printf_template 11 $color11
+</a><a href="#h0-65" id="h0-65" class="d">-printf $printf_template 12 $color12
+</a><a href="#h0-66" id="h0-66" class="d">-printf $printf_template 13 $color13
+</a><a href="#h0-67" id="h0-67" class="d">-printf $printf_template 14 $color14
+</a><a href="#h0-68" id="h0-68" class="d">-printf $printf_template 15 $color15
+</a><a href="#h0-69" id="h0-69" class="d">-
+</a><a href="#h0-70" id="h0-70" class="d">-# 256 color space
+</a><a href="#h0-71" id="h0-71" class="d">-printf $printf_template 16 $color16
+</a><a href="#h0-72" id="h0-72" class="d">-printf $printf_template 17 $color17
+</a><a href="#h0-73" id="h0-73" class="d">-printf $printf_template 18 $color18
+</a><a href="#h0-74" id="h0-74" class="d">-printf $printf_template 19 $color19
+</a><a href="#h0-75" id="h0-75" class="d">-printf $printf_template 20 $color20
+</a><a href="#h0-76" id="h0-76" class="d">-printf $printf_template 21 $color21
+</a><a href="#h0-77" id="h0-77" class="d">-
+</a><a href="#h0-78" id="h0-78" class="d">-# foreground / background / cursor color
+</a><a href="#h0-79" id="h0-79" class="d">-if [ -n &quot;$ITERM_SESSION_ID&quot; ]; then
+</a><a href="#h0-80" id="h0-80" class="d">-  # iTerm2 proprietary escape codes
+</a><a href="#h0-81" id="h0-81" class="d">-  printf $printf_template_custom Pg c0c5ce # forground
+</a><a href="#h0-82" id="h0-82" class="d">-  printf $printf_template_custom Ph 2b303b # background
+</a><a href="#h0-83" id="h0-83" class="d">-  printf $printf_template_custom Pi c0c5ce # bold color
+</a><a href="#h0-84" id="h0-84" class="d">-  printf $printf_template_custom Pj 4f5b66 # selection color
+</a><a href="#h0-85" id="h0-85" class="d">-  printf $printf_template_custom Pk c0c5ce # selected text color
+</a><a href="#h0-86" id="h0-86" class="d">-  printf $printf_template_custom Pl c0c5ce # cursor
+</a><a href="#h0-87" id="h0-87" class="d">-  printf $printf_template_custom Pm 2b303b # cursor text
+</a><a href="#h0-88" id="h0-88" class="d">-else
+</a><a href="#h0-89" id="h0-89" class="d">-  printf $printf_template_var 10 $color_foreground
+</a><a href="#h0-90" id="h0-90" class="d">-  #printf $printf_template_var 11 $color_background
+</a><a href="#h0-91" id="h0-91" class="d">-  printf $printf_template_var 12 $color_cursor
+</a><a href="#h0-92" id="h0-92" class="d">-fi
+</a><a href="#h0-93" id="h0-93" class="d">-
+</a><a href="#h0-94" id="h0-94" class="d">-# clean up
+</a><a href="#h0-95" id="h0-95" class="d">-unset printf_template
+</a><a href="#h0-96" id="h0-96" class="d">-unset printf_template_var
+</a><a href="#h0-97" id="h0-97" class="d">-unset color00
+</a><a href="#h0-98" id="h0-98" class="d">-unset color01
+</a><a href="#h0-99" id="h0-99" class="d">-unset color02
+</a><a href="#h0-100" id="h0-100" class="d">-unset color03
+</a><a href="#h0-101" id="h0-101" class="d">-unset color04
+</a><a href="#h0-102" id="h0-102" class="d">-unset color05
+</a><a href="#h0-103" id="h0-103" class="d">-unset color06
+</a><a href="#h0-104" id="h0-104" class="d">-unset color07
+</a><a href="#h0-105" id="h0-105" class="d">-unset color08
+</a><a href="#h0-106" id="h0-106" class="d">-unset color09
+</a><a href="#h0-107" id="h0-107" class="d">-unset color10
+</a><a href="#h0-108" id="h0-108" class="d">-unset color11
+</a><a href="#h0-109" id="h0-109" class="d">-unset color12
+</a><a href="#h0-110" id="h0-110" class="d">-unset color13
+</a><a href="#h0-111" id="h0-111" class="d">-unset color14
+</a><a href="#h0-112" id="h0-112" class="d">-unset color15
+</a><a href="#h0-113" id="h0-113" class="d">-unset color16
+</a><a href="#h0-114" id="h0-114" class="d">-unset color17
+</a><a href="#h0-115" id="h0-115" class="d">-unset color18
+</a><a href="#h0-116" id="h0-116" class="d">-unset color19
+</a><a href="#h0-117" id="h0-117" class="d">-unset color20
+</a><a href="#h0-118" id="h0-118" class="d">-unset color21
+</a><a href="#h0-119" id="h0-119" class="d">-unset color_foreground
+</a><a href="#h0-120" id="h0-120" class="d">-unset color_background
+</a><a href="#h0-121" id="h0-121" class="d">-unset color_cursor
+</a><b>diff --git a/<a href="../file/scripts/.scripts/byzanz-record-region.html">scripts/.scripts/byzanz-record-region</a> b/<a href="../file/scripts/.scripts/byzanz-record-region.html">scripts/.scripts/byzanz-record-region</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,29 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/bash
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-# Delay before starting
+</a><a href="#h0-3" id="h0-3" class="d">-DELAY=10
+</a><a href="#h0-4" id="h0-4" class="d">-
+</a><a href="#h0-5" id="h0-5" class="d">-# Sound notification to let one know when recording is about to start (and ends)
+</a><a href="#h0-6" id="h0-6" class="d">-beep() {
+</a><a href="#h0-7" id="h0-7" class="d">-    paplay /usr/share/sounds/KDE-Im-Irc-Event.ogg &amp;
+</a><a href="#h0-8" id="h0-8" class="d">-}
+</a><a href="#h0-9" id="h0-9" class="d">-
+</a><a href="#h0-10" id="h0-10" class="d">-# Duration and output file
+</a><a href="#h0-11" id="h0-11" class="d">-if [ $# -gt 0 ]; then
+</a><a href="#h0-12" id="h0-12" class="d">-    D=&quot;--duration=$@&quot;
+</a><a href="#h0-13" id="h0-13" class="d">-else
+</a><a href="#h0-14" id="h0-14" class="d">-    echo Default recording duration 10s to /tmp/recorded.gif
+</a><a href="#h0-15" id="h0-15" class="d">-    D=&quot;--duration=10 /tmp/recorded.gif&quot;
+</a><a href="#h0-16" id="h0-16" class="d">-fi
+</a><a href="#h0-17" id="h0-17" class="d">-
+</a><a href="#h0-18" id="h0-18" class="d">-# xrectsel from https://github.com/lolilolicon/xrectsel
+</a><a href="#h0-19" id="h0-19" class="d">-ARGUMENTS=$(xrectsel &quot;--x=%x --y=%y --width=%w --height=%h&quot;) || exit -1
+</a><a href="#h0-20" id="h0-20" class="d">-
+</a><a href="#h0-21" id="h0-21" class="d">-echo Delaying $DELAY seconds. After that, byzanz will start
+</a><a href="#h0-22" id="h0-22" class="d">-for (( i=$DELAY; i&gt;0; --i )) ; do
+</a><a href="#h0-23" id="h0-23" class="d">-    echo $i
+</a><a href="#h0-24" id="h0-24" class="d">-    sleep 1
+</a><a href="#h0-25" id="h0-25" class="d">-done
+</a><a href="#h0-26" id="h0-26" class="d">-beep
+</a><a href="#h0-27" id="h0-27" class="d">-byzanz-record --verbose --delay=0 ${ARGUMENTS} $D
+</a><a href="#h0-28" id="h0-28" class="d">-beep
+</a><b>diff --git a/<a href="../file/scripts/.scripts/colors.html">scripts/.scripts/colors</a> b/<a href="../file/scripts/.scripts/colors.html">scripts/.scripts/colors</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,17 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-sc() {
+</a><a href="#h0-1" id="h0-1" class="d">-  $HOME/.scripts/setcolor &quot;$@&quot;
+</a><a href="#h0-2" id="h0-2" class="d">-}
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-#BG_COLOR=#1e4156
+</a><a href="#h0-5" id="h0-5" class="d">-#INACTIVE_BG_COLOR=#142a38
+</a><a href="#h0-6" id="h0-6" class="d">-#TEXT_COLOR=#f3f4f5
+</a><a href="#h0-7" id="h0-7" class="d">-#INACTIVE_TEXT_COLOR=#676E7D
+</a><a href="#h0-8" id="h0-8" class="d">-#URGENT_BG_COLOR=#E53935
+</a><a href="#h0-9" id="h0-9" class="d">-#BAR_BG_COLOR=#18242C
+</a><a href="#h0-10" id="h0-10" class="d">-
+</a><a href="#h0-11" id="h0-11" class="d">-BG_COLOR=$(sc BG_COLOR)
+</a><a href="#h0-12" id="h0-12" class="d">-INACTIVE_BG_COLOR=$(sc INACTIVE_BG_COLOR)
+</a><a href="#h0-13" id="h0-13" class="d">-TEXT_COLOR=$(sc TEXT_COLOR)
+</a><a href="#h0-14" id="h0-14" class="d">-INACTIVE_TEXT_COLOR=$(sc INACTIVE_TEXT_COLOR)
+</a><a href="#h0-15" id="h0-15" class="d">-URGENT_BG_COLOR=$(sc URGENT_BG_COLOR)
+</a><a href="#h0-16" id="h0-16" class="d">-BAR_BG_COLOR=$(sc BAR_BG_COLOR)
+</a><b>diff --git a/<a href="../file/scripts/.scripts/colortest.html">scripts/.scripts/colortest</a> b/<a href="../file/scripts/.scripts/colortest.html">scripts/.scripts/colortest</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,62 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/bash
+</a><a href="#h0-1" id="h0-1" class="d">-theme=${1:-base16-default.dark.sh}
+</a><a href="#h0-2" id="h0-2" class="d">-if [ -f $theme ]; then
+</a><a href="#h0-3" id="h0-3" class="d">-  # get the color declarations in said theme, assumes there is a block of text that starts with color00= and ends with new line
+</a><a href="#h0-4" id="h0-4" class="d">-  eval $(awk &apos;/^color00=/,/^$/ {print}&apos; $theme | sed &apos;s/#.*//&apos;)
+</a><a href="#h0-5" id="h0-5" class="d">-else
+</a><a href="#h0-6" id="h0-6" class="d">-  printf &quot;No theme file %s found\n&quot; $theme
+</a><a href="#h0-7" id="h0-7" class="d">-fi;
+</a><a href="#h0-8" id="h0-8" class="d">-ansi_mappings=(
+</a><a href="#h0-9" id="h0-9" class="d">-  Black
+</a><a href="#h0-10" id="h0-10" class="d">-  Red
+</a><a href="#h0-11" id="h0-11" class="d">-  Green
+</a><a href="#h0-12" id="h0-12" class="d">-  Yellow
+</a><a href="#h0-13" id="h0-13" class="d">-  Blue
+</a><a href="#h0-14" id="h0-14" class="d">-  Magenta
+</a><a href="#h0-15" id="h0-15" class="d">-  Cyan
+</a><a href="#h0-16" id="h0-16" class="d">-  White
+</a><a href="#h0-17" id="h0-17" class="d">-  Bright_Black
+</a><a href="#h0-18" id="h0-18" class="d">-  Bright_Red
+</a><a href="#h0-19" id="h0-19" class="d">-  Bright_Green
+</a><a href="#h0-20" id="h0-20" class="d">-  Bright_Yellow
+</a><a href="#h0-21" id="h0-21" class="d">-  Bright_Blue
+</a><a href="#h0-22" id="h0-22" class="d">-  Bright_Magenta
+</a><a href="#h0-23" id="h0-23" class="d">-  Bright_Cyan
+</a><a href="#h0-24" id="h0-24" class="d">-  Bright_White
+</a><a href="#h0-25" id="h0-25" class="d">-)
+</a><a href="#h0-26" id="h0-26" class="d">-colors=(
+</a><a href="#h0-27" id="h0-27" class="d">-  base00
+</a><a href="#h0-28" id="h0-28" class="d">-  base08
+</a><a href="#h0-29" id="h0-29" class="d">-  base0B
+</a><a href="#h0-30" id="h0-30" class="d">-  base0A
+</a><a href="#h0-31" id="h0-31" class="d">-  base0D
+</a><a href="#h0-32" id="h0-32" class="d">-  base0E
+</a><a href="#h0-33" id="h0-33" class="d">-  base0C
+</a><a href="#h0-34" id="h0-34" class="d">-  base05
+</a><a href="#h0-35" id="h0-35" class="d">-  base03
+</a><a href="#h0-36" id="h0-36" class="d">-  base08
+</a><a href="#h0-37" id="h0-37" class="d">-  base0B
+</a><a href="#h0-38" id="h0-38" class="d">-  base0A
+</a><a href="#h0-39" id="h0-39" class="d">-  base0D
+</a><a href="#h0-40" id="h0-40" class="d">-  base0E
+</a><a href="#h0-41" id="h0-41" class="d">-  base0C
+</a><a href="#h0-42" id="h0-42" class="d">-  base07
+</a><a href="#h0-43" id="h0-43" class="d">-  base09
+</a><a href="#h0-44" id="h0-44" class="d">-  base0F
+</a><a href="#h0-45" id="h0-45" class="d">-  base01
+</a><a href="#h0-46" id="h0-46" class="d">-  base02
+</a><a href="#h0-47" id="h0-47" class="d">-  base04
+</a><a href="#h0-48" id="h0-48" class="d">-  base06
+</a><a href="#h0-49" id="h0-49" class="d">-)
+</a><a href="#h0-50" id="h0-50" class="d">-for padded_value in `seq -w 0 21`; do
+</a><a href="#h0-51" id="h0-51" class="d">-  color_variable=&quot;color${padded_value}&quot;
+</a><a href="#h0-52" id="h0-52" class="d">-  eval current_color=\$${color_variable}
+</a><a href="#h0-53" id="h0-53" class="d">-  current_color=$(echo ${current_color//\//} | tr &apos;[:lower:]&apos; &apos;[:upper:]&apos;) # get rid of slashes, and uppercase
+</a><a href="#h0-54" id="h0-54" class="d">-  non_padded_value=$((10#$padded_value))
+</a><a href="#h0-55" id="h0-55" class="d">-  base16_color_name=${colors[$non_padded_value]}
+</a><a href="#h0-56" id="h0-56" class="d">-  current_color_label=${current_color:-unknown}
+</a><a href="#h0-57" id="h0-57" class="d">-  ansi_label=${ansi_mappings[$non_padded_value]} 
+</a><a href="#h0-58" id="h0-58" class="d">-  block=$(printf &quot;\x1b[48;5;${non_padded_value}m___________________________&quot;)
+</a><a href="#h0-59" id="h0-59" class="d">-  foreground=$(printf &quot;\x1b[38;5;${non_padded_value}m$color_variable&quot;)
+</a><a href="#h0-60" id="h0-60" class="d">-  printf &quot;%s %s %s %-30s %s\x1b[0m\n&quot; $foreground $base16_color_name $current_color_label ${ansi_label:-&quot;&quot;} $block
+</a><a href="#h0-61" id="h0-61" class="d">-done;
+</a><b>diff --git a/<a href="../file/scripts/.scripts/colortest2.html">scripts/.scripts/colortest2</a> b/<a href="../file/scripts/.scripts/colortest2.html">scripts/.scripts/colortest2</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,33 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/bash
+</a><a href="#h0-1" id="h0-1" class="d">-#
+</a><a href="#h0-2" id="h0-2" class="d">-# ANSI color scheme script by pfh
+</a><a href="#h0-3" id="h0-3" class="d">-#
+</a><a href="#h0-4" id="h0-4" class="d">-# Initializing mod by lolilolicon from Archlinux
+</a><a href="#h0-5" id="h0-5" class="d">-#
+</a><a href="#h0-6" id="h0-6" class="d">-
+</a><a href="#h0-7" id="h0-7" class="d">-f=3 b=4
+</a><a href="#h0-8" id="h0-8" class="d">-for j in f b; do
+</a><a href="#h0-9" id="h0-9" class="d">-  for i in {0..7}; do
+</a><a href="#h0-10" id="h0-10" class="d">-    printf -v $j$i %b &quot;\e[${!j}${i}m&quot;
+</a><a href="#h0-11" id="h0-11" class="d">-  done
+</a><a href="#h0-12" id="h0-12" class="d">-done
+</a><a href="#h0-13" id="h0-13" class="d">-bld=$&apos;\e[1m&apos;
+</a><a href="#h0-14" id="h0-14" class="d">-rst=$&apos;\e[0m&apos;
+</a><a href="#h0-15" id="h0-15" class="d">-inv=$&apos;\e[7m&apos;
+</a><a href="#h0-16" id="h0-16" class="d">-cat &lt;&lt; EOF
+</a><a href="#h0-17" id="h0-17" class="d">-
+</a><a href="#h0-18" id="h0-18" class="d">-
+</a><a href="#h0-19" id="h0-19" class="d">-
+</a><a href="#h0-20" id="h0-20" class="d">-
+</a><a href="#h0-21" id="h0-21" class="d">-
+</a><a href="#h0-22" id="h0-22" class="d">-    ${f1}▀ █ ${bld}${f1}█ ▀${rst}    ${f2}▀ █ ${bld}${f2}█ ▀${rst}    ${f3}▀ █ ${bld}${f3}█ ▀${rst}    ${f4}▀ █ ${bld}${f4}█ ▀${rst}    ${f5}▀ █ ${bld}${f5}█ ▀${rst}    ${f6}▀ █ ${bld}${f6}█ ▀${rst}
+</a><a href="#h0-23" id="h0-23" class="d">-    ${f1}██  ${bld}${f1} ██${rst}    ${f2}██  ${bld}${f2} ██${rst}    ${f3}██  ${bld}${f3} ██${rst}    ${f4}██  ${bld}${f4} ██${rst}    ${f5}██  ${bld}${f5} ██${rst}    ${f6}██  ${bld}${f6} ██${rst}
+</a><a href="#h0-24" id="h0-24" class="d">-    ${f1}▄ █ ${bld}${f1}█ ▄${rst}    ${f2}▄ █ ${bld}${f2}█ ▄${rst}    ${f3}▄ █ ${bld}${f3}█ ▄${rst}    ${f4}▄ █ ${bld}${f4}█ ▄${rst}    ${f5}▄ █ ${bld}${f5}█ ▄${rst}    ${f6}▄ █ ${bld}${f6}█ ▄${rst}
+</a><a href="#h0-25" id="h0-25" class="d">-
+</a><a href="#h0-26" id="h0-26" class="d">-
+</a><a href="#h0-27" id="h0-27" class="d">-
+</a><a href="#h0-28" id="h0-28" class="d">-
+</a><a href="#h0-29" id="h0-29" class="d">-
+</a><a href="#h0-30" id="h0-30" class="d">-EOF
+</a><a href="#h0-31" id="h0-31" class="d">-echo
+</a><a href="#h0-32" id="h0-32" class="d">-
+</a><b>diff --git a/<a href="../file/scripts/.scripts/desktop/launch.html">scripts/.scripts/desktop/launch</a> b/<a href="../file/scripts/.scripts/desktop/launch.html">scripts/.scripts/desktop/launch</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,5 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/usr/bin/bash
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-source $HOME/.config/herbstluftwm/colors
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-rofi -show run
+</a><b>diff --git a/<a href="../file/scripts/.scripts/desktop/panel/panel.html">scripts/.scripts/desktop/panel/panel</a> b/<a href="../file/scripts/.scripts/desktop/panel/panel.html">scripts/.scripts/desktop/panel/panel</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,15 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/usr/bin/bash
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-. $HOME/.scripts/colors
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-barheight=30
+</a><a href="#h0-5" id="h0-5" class="d">-monitor=0
+</a><a href="#h0-6" id="h0-6" class="d">-mgeom=( $(herbstclient monitor_rect &quot;$monitor&quot;) )
+</a><a href="#h0-7" id="h0-7" class="d">-geom=&quot;${mgeom[2]}x$barheight+0+0&quot;
+</a><a href="#h0-8" id="h0-8" class="d">-basefont=&quot;-*-tamzen-medium-*-*-*-17-*-*-*-*-*-*-*&quot;
+</a><a href="#h0-9" id="h0-9" class="d">-boldfont=&quot;-*-tamzen-bold-*-*-*-17-*-*-*-*-*-*-*&quot;
+</a><a href="#h0-10" id="h0-10" class="d">-iconfont=&quot;-misc-tamsynmod-medium-r-normal--17-123-100-100-c-80-iso8859-1&quot;
+</a><a href="#h0-11" id="h0-11" class="d">-
+</a><a href="#h0-12" id="h0-12" class="d">-herbstclient pad $monitor $(expr $barheight)
+</a><a href="#h0-13" id="h0-13" class="d">-
+</a><a href="#h0-14" id="h0-14" class="d">-~/.scripts/desktop/panel/panel.rb | lemonbar -B &quot;$BAR_BG_COLOR&quot; -F &quot;$TEXT_COLOR&quot; -f &quot;$basefont&quot; -f &quot;$boldfont&quot; -f &quot;$iconfont&quot; -g $geom -a 20| sh
+</a><b>diff --git a/<a href="../file/scripts/.scripts/desktop/panel/panel.rb.html">scripts/.scripts/desktop/panel/panel.rb</a> b/<a href="../file/scripts/.scripts/desktop/panel/panel.rb.html">scripts/.scripts/desktop/panel/panel.rb</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,296 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/usr/bin/ruby
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-load `printf %s $HOME` + &quot;/.scripts/setcolor&quot;
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-BOLD_FONT_INDEX=2
+</a><a href="#h0-5" id="h0-5" class="d">-ICON_FONT_INDEX=3
+</a><a href="#h0-6" id="h0-6" class="d">-
+</a><a href="#h0-7" id="h0-7" class="d">-CLOCK_ICON   = &quot;\u00c9&quot;
+</a><a href="#h0-8" id="h0-8" class="d">-SPEAKER_ICON = &quot;\u00c6&quot;
+</a><a href="#h0-9" id="h0-9" class="d">-PLAYING_ICON = &quot;\u00e6&quot;
+</a><a href="#h0-10" id="h0-10" class="d">-PAUSED_ICON  = &quot;\u00e7&quot;
+</a><a href="#h0-11" id="h0-11" class="d">-STOPPED_ICON = &quot;\u00e5&quot;
+</a><a href="#h0-12" id="h0-12" class="d">-BATTERY_CHARGING_ICON = &quot;\u00c2&quot;
+</a><a href="#h0-13" id="h0-13" class="d">-BATTERY_FULL_ICON = &quot;\u00f0&quot;
+</a><a href="#h0-14" id="h0-14" class="d">-BATTERY_HALF_ICON = &quot;\u00ef&quot;
+</a><a href="#h0-15" id="h0-15" class="d">-BATTERY_EMPTY_ICON = &quot;\u00ee&quot;
+</a><a href="#h0-16" id="h0-16" class="d">-
+</a><a href="#h0-17" id="h0-17" class="d">-#puts $colors[&quot;BG_COLOR&quot;]
+</a><a href="#h0-18" id="h0-18" class="d">-
+</a><a href="#h0-19" id="h0-19" class="d">-def bold(text)
+</a><a href="#h0-20" id="h0-20" class="d">-  return &quot;%{T#{BOLD_FONT_INDEX}}#{text}%{T-}&quot;
+</a><a href="#h0-21" id="h0-21" class="d">-end
+</a><a href="#h0-22" id="h0-22" class="d">-
+</a><a href="#h0-23" id="h0-23" class="d">-def fg(color, text)
+</a><a href="#h0-24" id="h0-24" class="d">-  return &quot;%{F#{color}}#{text}%{F-}&quot;
+</a><a href="#h0-25" id="h0-25" class="d">-end
+</a><a href="#h0-26" id="h0-26" class="d">-
+</a><a href="#h0-27" id="h0-27" class="d">-def bg(color, text)
+</a><a href="#h0-28" id="h0-28" class="d">-  return &quot;%{B#{color}}#{text}%{B-}&quot;
+</a><a href="#h0-29" id="h0-29" class="d">-end
+</a><a href="#h0-30" id="h0-30" class="d">-
+</a><a href="#h0-31" id="h0-31" class="d">-def icon(icon)
+</a><a href="#h0-32" id="h0-32" class="d">-  return &quot;%{T#{ICON_FONT_INDEX}}#{icon}%{T-}&quot;
+</a><a href="#h0-33" id="h0-33" class="d">-end
+</a><a href="#h0-34" id="h0-34" class="d">-
+</a><a href="#h0-35" id="h0-35" class="d">-def separator
+</a><a href="#h0-36" id="h0-36" class="d">-  return fg($colors[&quot;BG_COLOR&quot;], &quot; | &quot;)
+</a><a href="#h0-37" id="h0-37" class="d">-end
+</a><a href="#h0-38" id="h0-38" class="d">-
+</a><a href="#h0-39" id="h0-39" class="d">-class Button
+</a><a href="#h0-40" id="h0-40" class="d">-  def initialize(i, command)
+</a><a href="#h0-41" id="h0-41" class="d">-    @i = i
+</a><a href="#h0-42" id="h0-42" class="d">-    @command = command
+</a><a href="#h0-43" id="h0-43" class="d">-  end
+</a><a href="#h0-44" id="h0-44" class="d">-
+</a><a href="#h0-45" id="h0-45" class="d">-  def i
+</a><a href="#h0-46" id="h0-46" class="d">-    return @i
+</a><a href="#h0-47" id="h0-47" class="d">-  end
+</a><a href="#h0-48" id="h0-48" class="d">-
+</a><a href="#h0-49" id="h0-49" class="d">-  def command
+</a><a href="#h0-50" id="h0-50" class="d">-    return @command
+</a><a href="#h0-51" id="h0-51" class="d">-  end
+</a><a href="#h0-52" id="h0-52" class="d">-end
+</a><a href="#h0-53" id="h0-53" class="d">-
+</a><a href="#h0-54" id="h0-54" class="d">-def click(text, buttons)
+</a><a href="#h0-55" id="h0-55" class="d">-  out = &quot;&quot;
+</a><a href="#h0-56" id="h0-56" class="d">-  buttons.each do |b|
+</a><a href="#h0-57" id="h0-57" class="d">-    out += &quot;%{A#{b.i}:#{b.command}:}&quot;
+</a><a href="#h0-58" id="h0-58" class="d">-  end
+</a><a href="#h0-59" id="h0-59" class="d">-  out += text
+</a><a href="#h0-60" id="h0-60" class="d">-  buttons.each do |b|
+</a><a href="#h0-61" id="h0-61" class="d">-    out += &quot;%{A}&quot;
+</a><a href="#h0-62" id="h0-62" class="d">-  end
+</a><a href="#h0-63" id="h0-63" class="d">-  return out
+</a><a href="#h0-64" id="h0-64" class="d">-end
+</a><a href="#h0-65" id="h0-65" class="d">-
+</a><a href="#h0-66" id="h0-66" class="d">-class Widget
+</a><a href="#h0-67" id="h0-67" class="d">-
+</a><a href="#h0-68" id="h0-68" class="d">-  def initialize()
+</a><a href="#h0-69" id="h0-69" class="d">-    @align = :l
+</a><a href="#h0-70" id="h0-70" class="d">-  end
+</a><a href="#h0-71" id="h0-71" class="d">-
+</a><a href="#h0-72" id="h0-72" class="d">-  def update()
+</a><a href="#h0-73" id="h0-73" class="d">-  end
+</a><a href="#h0-74" id="h0-74" class="d">-
+</a><a href="#h0-75" id="h0-75" class="d">-  def render()
+</a><a href="#h0-76" id="h0-76" class="d">-  end
+</a><a href="#h0-77" id="h0-77" class="d">-
+</a><a href="#h0-78" id="h0-78" class="d">-  def out()
+</a><a href="#h0-79" id="h0-79" class="d">-  end
+</a><a href="#h0-80" id="h0-80" class="d">-
+</a><a href="#h0-81" id="h0-81" class="d">-  def align()
+</a><a href="#h0-82" id="h0-82" class="d">-    return @align
+</a><a href="#h0-83" id="h0-83" class="d">-  end
+</a><a href="#h0-84" id="h0-84" class="d">-
+</a><a href="#h0-85" id="h0-85" class="d">-end
+</a><a href="#h0-86" id="h0-86" class="d">-
+</a><a href="#h0-87" id="h0-87" class="d">-class WidgetManager &lt; Widget
+</a><a href="#h0-88" id="h0-88" class="d">-
+</a><a href="#h0-89" id="h0-89" class="d">-  def initialize()
+</a><a href="#h0-90" id="h0-90" class="d">-    @widgets = { :l =&gt; [], :c =&gt; [], :r =&gt; [] }
+</a><a href="#h0-91" id="h0-91" class="d">-  end
+</a><a href="#h0-92" id="h0-92" class="d">-
+</a><a href="#h0-93" id="h0-93" class="d">-  def add(widget)
+</a><a href="#h0-94" id="h0-94" class="d">-    @widgets[widget.align].push widget
+</a><a href="#h0-95" id="h0-95" class="d">-  end
+</a><a href="#h0-96" id="h0-96" class="d">-
+</a><a href="#h0-97" id="h0-97" class="d">-  def update()
+</a><a href="#h0-98" id="h0-98" class="d">-    @out = &quot;&quot;
+</a><a href="#h0-99" id="h0-99" class="d">-    @widgets.each do |align, widgets_with_align|
+</a><a href="#h0-100" id="h0-100" class="d">-      @out += &quot;%{#{align.to_s}}&quot;
+</a><a href="#h0-101" id="h0-101" class="d">-      widgets_with_align.each_with_index do |widget, index|
+</a><a href="#h0-102" id="h0-102" class="d">-        widget.update
+</a><a href="#h0-103" id="h0-103" class="d">-        @out += widget.out
+</a><a href="#h0-104" id="h0-104" class="d">-        if index &lt; widgets_with_align.length - 1
+</a><a href="#h0-105" id="h0-105" class="d">-          widgets_with_align[index + 1].update
+</a><a href="#h0-106" id="h0-106" class="d">-          if widgets_with_align[index + 1].out.strip != &quot;&quot;
+</a><a href="#h0-107" id="h0-107" class="d">-            @out += separator
+</a><a href="#h0-108" id="h0-108" class="d">-          end
+</a><a href="#h0-109" id="h0-109" class="d">-        end
+</a><a href="#h0-110" id="h0-110" class="d">-      end
+</a><a href="#h0-111" id="h0-111" class="d">-    end
+</a><a href="#h0-112" id="h0-112" class="d">-
+</a><a href="#h0-113" id="h0-113" class="d">-  end
+</a><a href="#h0-114" id="h0-114" class="d">-
+</a><a href="#h0-115" id="h0-115" class="d">-  def render()
+</a><a href="#h0-116" id="h0-116" class="d">-    puts @out
+</a><a href="#h0-117" id="h0-117" class="d">-  end
+</a><a href="#h0-118" id="h0-118" class="d">-
+</a><a href="#h0-119" id="h0-119" class="d">-  def out()
+</a><a href="#h0-120" id="h0-120" class="d">-    return @out
+</a><a href="#h0-121" id="h0-121" class="d">-  end
+</a><a href="#h0-122" id="h0-122" class="d">-end
+</a><a href="#h0-123" id="h0-123" class="d">-
+</a><a href="#h0-124" id="h0-124" class="d">-
+</a><a href="#h0-125" id="h0-125" class="d">-
+</a><a href="#h0-126" id="h0-126" class="d">-class HLWMTags &lt; Widget
+</a><a href="#h0-127" id="h0-127" class="d">-
+</a><a href="#h0-128" id="h0-128" class="d">-
+</a><a href="#h0-129" id="h0-129" class="d">-  def out()
+</a><a href="#h0-130" id="h0-130" class="d">-    return @out
+</a><a href="#h0-131" id="h0-131" class="d">-  end
+</a><a href="#h0-132" id="h0-132" class="d">-
+</a><a href="#h0-133" id="h0-133" class="d">-  def update()
+</a><a href="#h0-134" id="h0-134" class="d">-    tags = `herbstclient tag_status`.split()
+</a><a href="#h0-135" id="h0-135" class="d">-    @out = &quot;%{T-}&quot;
+</a><a href="#h0-136" id="h0-136" class="d">-
+</a><a href="#h0-137" id="h0-137" class="d">-    tags.each_with_index do |tag, index|
+</a><a href="#h0-138" id="h0-138" class="d">-      button = Button.new(1, &quot;herbstclient use_index #{index}&quot;)
+</a><a href="#h0-139" id="h0-139" class="d">-      text = click(&quot; &quot; + tag[1..tag.length - 1] + &quot; &quot;, [button])
+</a><a href="#h0-140" id="h0-140" class="d">-      #puts text
+</a><a href="#h0-141" id="h0-141" class="d">-      if tag[0] == &apos;#&apos;
+</a><a href="#h0-142" id="h0-142" class="d">-        @out += bg($colors[&quot;BG_COLOR&quot;], fg(&quot;#101010&quot;, text))
+</a><a href="#h0-143" id="h0-143" class="d">-      elsif tag[0] == &apos;+&apos;
+</a><a href="#h0-144" id="h0-144" class="d">-        @out += bg($colors[&quot;INACTIVE_BG_COLOR&quot;], fg(&quot;#141414&quot;, text))
+</a><a href="#h0-145" id="h0-145" class="d">-      elsif tag[0] == &apos;:&apos;
+</a><a href="#h0-146" id="h0-146" class="d">-        @out += bg(&quot;-&quot;, fg(&quot;#ffffff&quot;, text))
+</a><a href="#h0-147" id="h0-147" class="d">-      elsif tag[0] == &apos;!&apos;
+</a><a href="#h0-148" id="h0-148" class="d">-        @out += bg($colors[&quot;URGENT_BG_COLOR&quot;], fg(&quot;#141414&quot;, text))
+</a><a href="#h0-149" id="h0-149" class="d">-      else
+</a><a href="#h0-150" id="h0-150" class="d">-        @out += bg(&quot;-&quot;, fg(&quot;#ababab&quot;, text))
+</a><a href="#h0-151" id="h0-151" class="d">-      end
+</a><a href="#h0-152" id="h0-152" class="d">-    end
+</a><a href="#h0-153" id="h0-153" class="d">-    @out += separator + fg(&quot;#ababab&quot;, `xtitle`.strip())
+</a><a href="#h0-154" id="h0-154" class="d">-
+</a><a href="#h0-155" id="h0-155" class="d">-  end
+</a><a href="#h0-156" id="h0-156" class="d">-
+</a><a href="#h0-157" id="h0-157" class="d">-  def render()
+</a><a href="#h0-158" id="h0-158" class="d">-    puts @out
+</a><a href="#h0-159" id="h0-159" class="d">-    STDOUT.flush
+</a><a href="#h0-160" id="h0-160" class="d">-  end
+</a><a href="#h0-161" id="h0-161" class="d">-end
+</a><a href="#h0-162" id="h0-162" class="d">-
+</a><a href="#h0-163" id="h0-163" class="d">-class TimeW &lt; Widget
+</a><a href="#h0-164" id="h0-164" class="d">-
+</a><a href="#h0-165" id="h0-165" class="d">-  def initialize
+</a><a href="#h0-166" id="h0-166" class="d">-    @align = :r
+</a><a href="#h0-167" id="h0-167" class="d">-  end
+</a><a href="#h0-168" id="h0-168" class="d">-
+</a><a href="#h0-169" id="h0-169" class="d">-  def update()
+</a><a href="#h0-170" id="h0-170" class="d">-    @out = icon(CLOCK_ICON) + &quot; &quot; + Time.now.strftime(&quot;%A, %m %B %I:%M %p&quot;)
+</a><a href="#h0-171" id="h0-171" class="d">-  end
+</a><a href="#h0-172" id="h0-172" class="d">-
+</a><a href="#h0-173" id="h0-173" class="d">-  def render()
+</a><a href="#h0-174" id="h0-174" class="d">-    print @out
+</a><a href="#h0-175" id="h0-175" class="d">-  end
+</a><a href="#h0-176" id="h0-176" class="d">-
+</a><a href="#h0-177" id="h0-177" class="d">-  def out()
+</a><a href="#h0-178" id="h0-178" class="d">-    return @out
+</a><a href="#h0-179" id="h0-179" class="d">-  end
+</a><a href="#h0-180" id="h0-180" class="d">-end
+</a><a href="#h0-181" id="h0-181" class="d">-
+</a><a href="#h0-182" id="h0-182" class="d">-class PlayerctlW &lt; Widget
+</a><a href="#h0-183" id="h0-183" class="d">-
+</a><a href="#h0-184" id="h0-184" class="d">-  def initialize
+</a><a href="#h0-185" id="h0-185" class="d">-    @align = :r
+</a><a href="#h0-186" id="h0-186" class="d">-  end
+</a><a href="#h0-187" id="h0-187" class="d">-
+</a><a href="#h0-188" id="h0-188" class="d">-  def update()
+</a><a href="#h0-189" id="h0-189" class="d">-    status = `playerctl status`.strip()
+</a><a href="#h0-190" id="h0-190" class="d">-    if status != &quot;&quot;
+</a><a href="#h0-191" id="h0-191" class="d">-      statuses = {
+</a><a href="#h0-192" id="h0-192" class="d">-        &quot;Playing&quot; =&gt; PLAYING_ICON,
+</a><a href="#h0-193" id="h0-193" class="d">-        &quot;Paused&quot;  =&gt; PAUSED_ICON,
+</a><a href="#h0-194" id="h0-194" class="d">-        &quot;Stopped&quot; =&gt; STOPPED_ICON
+</a><a href="#h0-195" id="h0-195" class="d">-      }
+</a><a href="#h0-196" id="h0-196" class="d">-      buttons = []
+</a><a href="#h0-197" id="h0-197" class="d">-      buttons[0] = Button.new(1, &quot;playerctl play-pause&quot;)
+</a><a href="#h0-198" id="h0-198" class="d">-      buttons[1] = Button.new(3, &quot;playerctl stop&quot;)
+</a><a href="#h0-199" id="h0-199" class="d">-      artist = `playerctl metadata artist`
+</a><a href="#h0-200" id="h0-200" class="d">-      title = `playerctl metadata title`
+</a><a href="#h0-201" id="h0-201" class="d">-      @out = &quot;#{icon(statuses[status])} #{click(bold(artist + &apos; - &apos; + title), buttons)} &quot;
+</a><a href="#h0-202" id="h0-202" class="d">-    else
+</a><a href="#h0-203" id="h0-203" class="d">-      @out = &quot; &quot;
+</a><a href="#h0-204" id="h0-204" class="d">-    end
+</a><a href="#h0-205" id="h0-205" class="d">-  end
+</a><a href="#h0-206" id="h0-206" class="d">-
+</a><a href="#h0-207" id="h0-207" class="d">-  def render()
+</a><a href="#h0-208" id="h0-208" class="d">-    print @out
+</a><a href="#h0-209" id="h0-209" class="d">-  end
+</a><a href="#h0-210" id="h0-210" class="d">-
+</a><a href="#h0-211" id="h0-211" class="d">-  def out()
+</a><a href="#h0-212" id="h0-212" class="d">-    return @out
+</a><a href="#h0-213" id="h0-213" class="d">-  end
+</a><a href="#h0-214" id="h0-214" class="d">-end
+</a><a href="#h0-215" id="h0-215" class="d">-
+</a><a href="#h0-216" id="h0-216" class="d">-class VolumeW &lt; Widget
+</a><a href="#h0-217" id="h0-217" class="d">-
+</a><a href="#h0-218" id="h0-218" class="d">-  def initialize
+</a><a href="#h0-219" id="h0-219" class="d">-    @align = :r
+</a><a href="#h0-220" id="h0-220" class="d">-  end
+</a><a href="#h0-221" id="h0-221" class="d">-  def update()
+</a><a href="#h0-222" id="h0-222" class="d">-    buttons = [Button.new(3, &quot;amixer -D pulse sset Master toggle&quot;),
+</a><a href="#h0-223" id="h0-223" class="d">-               Button.new(4, &quot;amixer -D pulse sset Master 5%+&quot;),
+</a><a href="#h0-224" id="h0-224" class="d">-               Button.new(5, &quot;amixer -D pulse sset Master 5%-&quot;)]
+</a><a href="#h0-225" id="h0-225" class="d">-
+</a><a href="#h0-226" id="h0-226" class="d">-
+</a><a href="#h0-227" id="h0-227" class="d">-    @out = &quot;#{icon(SPEAKER_ICON)} &quot; + click(`~/.scripts/desktop/panel/volume`.strip.chomp(&apos;%&apos;), buttons)
+</a><a href="#h0-228" id="h0-228" class="d">-  end
+</a><a href="#h0-229" id="h0-229" class="d">-
+</a><a href="#h0-230" id="h0-230" class="d">-  def out()
+</a><a href="#h0-231" id="h0-231" class="d">-    return @out
+</a><a href="#h0-232" id="h0-232" class="d">-  end
+</a><a href="#h0-233" id="h0-233" class="d">-
+</a><a href="#h0-234" id="h0-234" class="d">-  def render()
+</a><a href="#h0-235" id="h0-235" class="d">-    print @out
+</a><a href="#h0-236" id="h0-236" class="d">-  end
+</a><a href="#h0-237" id="h0-237" class="d">-end
+</a><a href="#h0-238" id="h0-238" class="d">-
+</a><a href="#h0-239" id="h0-239" class="d">-class BatteryW &lt; Widget
+</a><a href="#h0-240" id="h0-240" class="d">-
+</a><a href="#h0-241" id="h0-241" class="d">-  def initialize
+</a><a href="#h0-242" id="h0-242" class="d">-    @align = :r
+</a><a href="#h0-243" id="h0-243" class="d">-  end
+</a><a href="#h0-244" id="h0-244" class="d">-
+</a><a href="#h0-245" id="h0-245" class="d">-  def update
+</a><a href="#h0-246" id="h0-246" class="d">-    regex = /(\w+), (\d+)%(, (\d+):(\d+):(\d+))?/
+</a><a href="#h0-247" id="h0-247" class="d">-    out = `acpi -b`
+</a><a href="#h0-248" id="h0-248" class="d">-    regex.match(out)
+</a><a href="#h0-249" id="h0-249" class="d">-    status = $~[1]
+</a><a href="#h0-250" id="h0-250" class="d">-    percentage = $~[2].to_i
+</a><a href="#h0-251" id="h0-251" class="d">-    hours = $~[4]
+</a><a href="#h0-252" id="h0-252" class="d">-    minutes = $~[5]
+</a><a href="#h0-253" id="h0-253" class="d">-    icon = &quot;&quot;
+</a><a href="#h0-254" id="h0-254" class="d">-    if status == &quot;Charging&quot;
+</a><a href="#h0-255" id="h0-255" class="d">-      icon = BATTERY_CHARGING_ICON
+</a><a href="#h0-256" id="h0-256" class="d">-    elsif percentage &gt;= 50
+</a><a href="#h0-257" id="h0-257" class="d">-      icon = BATTERY_FULL_ICON
+</a><a href="#h0-258" id="h0-258" class="d">-    elsif percentage &lt; 50 and percentage &gt;= 20
+</a><a href="#h0-259" id="h0-259" class="d">-      icon = BATTERY_HALF_ICON
+</a><a href="#h0-260" id="h0-260" class="d">-    else
+</a><a href="#h0-261" id="h0-261" class="d">-      icon = BATTERY_EMPTY_ICON
+</a><a href="#h0-262" id="h0-262" class="d">-    end
+</a><a href="#h0-263" id="h0-263" class="d">-
+</a><a href="#h0-264" id="h0-264" class="d">-    @out = icon(icon) + &quot; &quot; + percentage.to_s
+</a><a href="#h0-265" id="h0-265" class="d">-    if hours != nil
+</a><a href="#h0-266" id="h0-266" class="d">-      @out += &quot; (#{hours}:#{minutes})&quot;
+</a><a href="#h0-267" id="h0-267" class="d">-    end
+</a><a href="#h0-268" id="h0-268" class="d">-  end
+</a><a href="#h0-269" id="h0-269" class="d">-
+</a><a href="#h0-270" id="h0-270" class="d">-  def out
+</a><a href="#h0-271" id="h0-271" class="d">-    return @out
+</a><a href="#h0-272" id="h0-272" class="d">-  end
+</a><a href="#h0-273" id="h0-273" class="d">-
+</a><a href="#h0-274" id="h0-274" class="d">-  def render
+</a><a href="#h0-275" id="h0-275" class="d">-    print @out
+</a><a href="#h0-276" id="h0-276" class="d">-  end
+</a><a href="#h0-277" id="h0-277" class="d">-end
+</a><a href="#h0-278" id="h0-278" class="d">-
+</a><a href="#h0-279" id="h0-279" class="d">-tags = HLWMTags.new
+</a><a href="#h0-280" id="h0-280" class="d">-time = TimeW.new
+</a><a href="#h0-281" id="h0-281" class="d">-volume = VolumeW.new
+</a><a href="#h0-282" id="h0-282" class="d">-batt = BatteryW.new
+</a><a href="#h0-283" id="h0-283" class="d">-pctl = PlayerctlW.new
+</a><a href="#h0-284" id="h0-284" class="d">-manager = WidgetManager.new
+</a><a href="#h0-285" id="h0-285" class="d">-manager.add tags
+</a><a href="#h0-286" id="h0-286" class="d">-manager.add time
+</a><a href="#h0-287" id="h0-287" class="d">-manager.add volume
+</a><a href="#h0-288" id="h0-288" class="d">-manager.add batt
+</a><a href="#h0-289" id="h0-289" class="d">-manager.add pctl
+</a><a href="#h0-290" id="h0-290" class="d">-
+</a><a href="#h0-291" id="h0-291" class="d">-while true
+</a><a href="#h0-292" id="h0-292" class="d">-  manager.update()
+</a><a href="#h0-293" id="h0-293" class="d">-  manager.render()
+</a><a href="#h0-294" id="h0-294" class="d">-  sleep(0.1)
+</a><a href="#h0-295" id="h0-295" class="d">-end
+</a><b>diff --git a/<a href="../file/scripts/.scripts/desktop/panel/volume.html">scripts/.scripts/desktop/panel/volume</a> b/<a href="../file/scripts/.scripts/desktop/panel/volume.html">scripts/.scripts/desktop/panel/volume</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,74 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/bash
+</a><a href="#h0-1" id="h0-1" class="d">-# Copyright (C) 2014 Julien Bonjean &lt;julien@bonjean.info&gt;
+</a><a href="#h0-2" id="h0-2" class="d">-# Copyright (C) 2014 Alexander Keller &lt;github@nycroth.com&gt;
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-# This program is free software: you can redistribute it and/or modify
+</a><a href="#h0-5" id="h0-5" class="d">-# it under the terms of the GNU General Public License as published by
+</a><a href="#h0-6" id="h0-6" class="d">-# the Free Software Foundation, either version 3 of the License, or
+</a><a href="#h0-7" id="h0-7" class="d">-# (at your option) any later version.
+</a><a href="#h0-8" id="h0-8" class="d">-
+</a><a href="#h0-9" id="h0-9" class="d">-# This program is distributed in the hope that it will be useful,
+</a><a href="#h0-10" id="h0-10" class="d">-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+</a><a href="#h0-11" id="h0-11" class="d">-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+</a><a href="#h0-12" id="h0-12" class="d">-# GNU General Public License for more details.
+</a><a href="#h0-13" id="h0-13" class="d">-
+</a><a href="#h0-14" id="h0-14" class="d">-# You should have received a copy of the GNU General Public License
+</a><a href="#h0-15" id="h0-15" class="d">-# along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+</a><a href="#h0-16" id="h0-16" class="d">-
+</a><a href="#h0-17" id="h0-17" class="d">-#------------------------------------------------------------------------
+</a><a href="#h0-18" id="h0-18" class="d">-
+</a><a href="#h0-19" id="h0-19" class="d">-# The second parameter overrides the mixer selection
+</a><a href="#h0-20" id="h0-20" class="d">-# For PulseAudio users, use &quot;pulse&quot;
+</a><a href="#h0-21" id="h0-21" class="d">-# For Jack/Jack2 users, use &quot;jackplug&quot;
+</a><a href="#h0-22" id="h0-22" class="d">-# For ALSA users, you may use &quot;default&quot; for your primary card
+</a><a href="#h0-23" id="h0-23" class="d">-# or you may use hw:# where # is the number of the card desired
+</a><a href="#h0-24" id="h0-24" class="d">-#MIXER=&quot;default&quot;
+</a><a href="#h0-25" id="h0-25" class="d">-#[ -n &quot;$(lsmod | grep pulse)&quot; ] &amp;&amp; MIXER=&quot;pulse&quot;
+</a><a href="#h0-26" id="h0-26" class="d">-#[ -n &quot;$(lsmod | grep jack)&quot; ] &amp;&amp; MIXER=&quot;jackplug&quot;
+</a><a href="#h0-27" id="h0-27" class="d">-#MIXER=&quot;${2:-$MIXER}&quot;
+</a><a href="#h0-28" id="h0-28" class="d">-MIXER=&quot;pulse&quot;
+</a><a href="#h0-29" id="h0-29" class="d">-
+</a><a href="#h0-30" id="h0-30" class="d">-# The instance option sets the control to report and configure
+</a><a href="#h0-31" id="h0-31" class="d">-# This defaults to the first control of your selected mixer
+</a><a href="#h0-32" id="h0-32" class="d">-# For a list of the available, use `amixer -D $Your_Mixer scontrols`
+</a><a href="#h0-33" id="h0-33" class="d">-SCONTROL=&quot;${BLOCK_INSTANCE:-$(amixer -D $MIXER scontrols |
+</a><a href="#h0-34" id="h0-34" class="d">-                  sed -n &quot;s/Simple mixer control &apos;\([A-Za-z ]*\)&apos;,0/\1/p&quot; |
+</a><a href="#h0-35" id="h0-35" class="d">-                  head -n1
+</a><a href="#h0-36" id="h0-36" class="d">-                )}&quot;
+</a><a href="#h0-37" id="h0-37" class="d">-
+</a><a href="#h0-38" id="h0-38" class="d">-# The first parameter sets the step to change the volume by (and units to display)
+</a><a href="#h0-39" id="h0-39" class="d">-# This may be in in % or dB (eg. 5% or 3dB)
+</a><a href="#h0-40" id="h0-40" class="d">-STEP=&quot;${1:-5%}&quot;
+</a><a href="#h0-41" id="h0-41" class="d">-
+</a><a href="#h0-42" id="h0-42" class="d">-#------------------------------------------------------------------------
+</a><a href="#h0-43" id="h0-43" class="d">-
+</a><a href="#h0-44" id="h0-44" class="d">-capability() { # Return &quot;Capture&quot; if the device is a capture device
+</a><a href="#h0-45" id="h0-45" class="d">-  amixer -D $MIXER get $SCONTROL |
+</a><a href="#h0-46" id="h0-46" class="d">-    sed -n &quot;s/  Capabilities:.*cvolume.*/Capture/p&quot;
+</a><a href="#h0-47" id="h0-47" class="d">-}
+</a><a href="#h0-48" id="h0-48" class="d">-
+</a><a href="#h0-49" id="h0-49" class="d">-volume() {
+</a><a href="#h0-50" id="h0-50" class="d">-  amixer -D $MIXER get $SCONTROL $(capability)
+</a><a href="#h0-51" id="h0-51" class="d">-}
+</a><a href="#h0-52" id="h0-52" class="d">-
+</a><a href="#h0-53" id="h0-53" class="d">-format() {
+</a><a href="#h0-54" id="h0-54" class="d">-  perl_filter=&apos;if (/.*\[(\d+%)\] (\[(-?\d+.\d+dB)\] )?\[(on|off)\]/)&apos;
+</a><a href="#h0-55" id="h0-55" class="d">-  perl_filter+=&apos;{CORE::say $4 eq &quot;off&quot; ? &quot;MUTE&quot; : &quot;&apos;
+</a><a href="#h0-56" id="h0-56" class="d">-  # If dB was selected, print that instead
+</a><a href="#h0-57" id="h0-57" class="d">-  perl_filter+=$([[ $STEP = *dB ]] &amp;&amp; echo &apos;$3&apos; || echo &apos;$1&apos;)
+</a><a href="#h0-58" id="h0-58" class="d">-  perl_filter+=&apos;&quot;; exit}&apos;
+</a><a href="#h0-59" id="h0-59" class="d">-  perl -ne &quot;$perl_filter&quot;
+</a><a href="#h0-60" id="h0-60" class="d">-}
+</a><a href="#h0-61" id="h0-61" class="d">-
+</a><a href="#h0-62" id="h0-62" class="d">-#------------------------------------------------------------------------
+</a><a href="#h0-63" id="h0-63" class="d">-
+</a><a href="#h0-64" id="h0-64" class="d">-case $BLOCK_BUTTON in
+</a><a href="#h0-65" id="h0-65" class="d">-  # launch pavucontrol when clicked
+</a><a href="#h0-66" id="h0-66" class="d">-  1) pavucontrol &amp; ;;
+</a><a href="#h0-67" id="h0-67" class="d">-  3) amixer -q -D $MIXER sset $SCONTROL $(capability) toggle ;;  # right click, mute/unmute
+</a><a href="#h0-68" id="h0-68" class="d">-  4) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}+ unmute ;; # scroll up, increase
+</a><a href="#h0-69" id="h0-69" class="d">-  5) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}- unmute ;; # scroll down, decrease
+</a><a href="#h0-70" id="h0-70" class="d">-esac
+</a><a href="#h0-71" id="h0-71" class="d">-
+</a><a href="#h0-72" id="h0-72" class="d">-volume | format
+</a><a href="#h0-73" id="h0-73" class="d">-
+</a><b>diff --git a/<a href="../file/scripts/.scripts/gifbackground.html">scripts/.scripts/gifbackground</a> b/<a href="../file/scripts/.scripts/gifbackground.html">scripts/.scripts/gifbackground</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,27 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="d">-# Uses xwinwrap to display given animated .gif in the center of the screen
+</a><a href="#h0-2" id="h0-2" class="d">-
+</a><a href="#h0-3" id="h0-3" class="d">-if [ $# -ne 1 ]; then
+</a><a href="#h0-4" id="h0-4" class="d">-    echo 1&gt;&amp;2 Usage: $0 image.gif
+</a><a href="#h0-5" id="h0-5" class="d">-    exit 1
+</a><a href="#h0-6" id="h0-6" class="d">-fi
+</a><a href="#h0-7" id="h0-7" class="d">-
+</a><a href="#h0-8" id="h0-8" class="d">-#get screen resolution
+</a><a href="#h0-9" id="h0-9" class="d">-#SCRH=`xrandr | awk &apos;/current/ { print $8 }&apos;`
+</a><a href="#h0-10" id="h0-10" class="d">-#SCRW=`xrandr | awk &apos;/current/ { print $10 }&apos;`
+</a><a href="#h0-11" id="h0-11" class="d">-#SCRW=${SCRW%\,}
+</a><a href="#h0-12" id="h0-12" class="d">-SCRH=$(xrandr  | grep \* | cut -d&apos; &apos; -f4 | head -n 2 | tail -n 1 | awk -F &quot;x&quot; &apos;{ print $2 }&apos;)
+</a><a href="#h0-13" id="h0-13" class="d">-SCRW=$(xrandr  | grep \* | cut -d&apos; &apos; -f4 | head -n 2 | tail -n 1 | awk -F &quot;x&quot; &apos;{ print $1 }&apos;)
+</a><a href="#h0-14" id="h0-14" class="d">-
+</a><a href="#h0-15" id="h0-15" class="d">-#get gif resolution
+</a><a href="#h0-16" id="h0-16" class="d">-IMGHW=`gifsicle --info $1 | awk &apos;/logical/ { print $3 }&apos;`
+</a><a href="#h0-17" id="h0-17" class="d">-IMGH=${IMGHW%x*}
+</a><a href="#h0-18" id="h0-18" class="d">-IMGW=${IMGHW#*x}
+</a><a href="#h0-19" id="h0-19" class="d">-
+</a><a href="#h0-20" id="h0-20" class="d">-#calculate position
+</a><a href="#h0-21" id="h0-21" class="d">-#POSH=$((($SCRH/2)-($IMGH/2)))
+</a><a href="#h0-22" id="h0-22" class="d">-#POSW=$((($SCRW/2)-($IMGW/2)))
+</a><a href="#h0-23" id="h0-23" class="d">-POSH=0
+</a><a href="#h0-24" id="h0-24" class="d">-POSW=0
+</a><a href="#h0-25" id="h0-25" class="d">-
+</a><a href="#h0-26" id="h0-26" class="d">-xwinwrap -g ${IMGHW}+${POSH}+${POSW} -ov -ni -s -nf -- gifview -w WID $1 -a
+</a><b>diff --git a/<a href="../file/scripts/.scripts/gitio.html">scripts/.scripts/gitio</a> b/<a href="../file/scripts/.scripts/gitio.html">scripts/.scripts/gitio</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,87 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="d">-#
+</a><a href="#h0-2" id="h0-2" class="d">-#          ██   ██      ██
+</a><a href="#h0-3" id="h0-3" class="d">-#   █████ ░░   ░██     ░░
+</a><a href="#h0-4" id="h0-4" class="d">-#  ██░░░██ ██ ██████    ██  ██████
+</a><a href="#h0-5" id="h0-5" class="d">-# ░██  ░██░██░░░██░    ░██ ██░░░░██
+</a><a href="#h0-6" id="h0-6" class="d">-# ░░██████░██  ░██     ░██░██   ░██
+</a><a href="#h0-7" id="h0-7" class="d">-#  ░░░░░██░██  ░██     ░██░██   ░██
+</a><a href="#h0-8" id="h0-8" class="d">-#   █████ ░██  ░░██  ██░██░░██████
+</a><a href="#h0-9" id="h0-9" class="d">-#  ░░░░░  ░░    ░░  ░░ ░░  ░░░░░░
+</a><a href="#h0-10" id="h0-10" class="d">-#
+</a><a href="#h0-11" id="h0-11" class="d">-# create short / vanity github urls
+</a><a href="#h0-12" id="h0-12" class="d">-#         ▟▙
+</a><a href="#h0-13" id="h0-13" class="d">-# ▟▒░░░░░░░▜▙▜████████████████████████████████▛
+</a><a href="#h0-14" id="h0-14" class="d">-# ▜▒░░░░░░░▟▛▟▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▛
+</a><a href="#h0-15" id="h0-15" class="d">-#         ▜▛
+</a><a href="#h0-16" id="h0-16" class="d">-# xero / syntax-samurai &lt;http://git.io/gitio.sh&gt;
+</a><a href="#h0-17" id="h0-17" class="d">-
+</a><a href="#h0-18" id="h0-18" class="d">-usage () {
+</a><a href="#h0-19" id="h0-19" class="d">-    cat &lt;&lt;EOF
+</a><a href="#h0-20" id="h0-20" class="d">-
+</a><a href="#h0-21" id="h0-21" class="d">-         ▟▙
+</a><a href="#h0-22" id="h0-22" class="d">- ▟▒░░░░░░░▜▙▜████████████████████████████████▛
+</a><a href="#h0-23" id="h0-23" class="d">- ▜▒░░░░░░░▟▛▟▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▛
+</a><a href="#h0-24" id="h0-24" class="d">-         ▜▛
+</a><a href="#h0-25" id="h0-25" class="d">-
+</a><a href="#h0-26" id="h0-26" class="d">- create short / vanity github urls
+</a><a href="#h0-27" id="h0-27" class="d">- usage: $(basename $0) http://github.com/something [-v mini]
+</a><a href="#h0-28" id="h0-28" class="d">- 
+</a><a href="#h0-29" id="h0-29" class="d">- options:
+</a><a href="#h0-30" id="h0-30" class="d">-  -v   shortlink
+</a><a href="#h0-31" id="h0-31" class="d">-  -h   display this screen
+</a><a href="#h0-32" id="h0-32" class="d">-EOF
+</a><a href="#h0-33" id="h0-33" class="d">-  exit 0
+</a><a href="#h0-34" id="h0-34" class="d">-}
+</a><a href="#h0-35" id="h0-35" class="d">-
+</a><a href="#h0-36" id="h0-36" class="d">-err() {
+</a><a href="#h0-37" id="h0-37" class="d">-  echo $1
+</a><a href="#h0-38" id="h0-38" class="d">-  usage	
+</a><a href="#h0-39" id="h0-39" class="d">-}
+</a><a href="#h0-40" id="h0-40" class="d">-
+</a><a href="#h0-41" id="h0-41" class="d">-optstest() {
+</a><a href="#h0-42" id="h0-42" class="d">-  found=0
+</a><a href="#h0-43" id="h0-43" class="d">-  for arg in &quot;$@&quot;
+</a><a href="#h0-44" id="h0-44" class="d">-  do
+</a><a href="#h0-45" id="h0-45" class="d">-    if echo $arg | cut -d/ -f3 | grep -q &quot;github.com\|raw.githubusercontent.com&quot;
+</a><a href="#h0-46" id="h0-46" class="d">-    then
+</a><a href="#h0-47" id="h0-47" class="d">-      GHURL=$arg
+</a><a href="#h0-48" id="h0-48" class="d">-      found=1
+</a><a href="#h0-49" id="h0-49" class="d">-    elif [ $arg = &quot;-h&quot; ]
+</a><a href="#h0-50" id="h0-50" class="d">-    then
+</a><a href="#h0-51" id="h0-51" class="d">-      usage
+</a><a href="#h0-52" id="h0-52" class="d">-    elif [ $arg = &quot;-v&quot; ]
+</a><a href="#h0-53" id="h0-53" class="d">-    then
+</a><a href="#h0-54" id="h0-54" class="d">-      :
+</a><a href="#h0-55" id="h0-55" class="d">-    else
+</a><a href="#h0-56" id="h0-56" class="d">-      VANITY=$arg
+</a><a href="#h0-57" id="h0-57" class="d">-    fi
+</a><a href="#h0-58" id="h0-58" class="d">-  done
+</a><a href="#h0-59" id="h0-59" class="d">-  if [ $found = 0 ]
+</a><a href="#h0-60" id="h0-60" class="d">-  then
+</a><a href="#h0-61" id="h0-61" class="d">-    err &quot; must be a valid github.com url!&quot;
+</a><a href="#h0-62" id="h0-62" class="d">-  fi
+</a><a href="#h0-63" id="h0-63" class="d">-}
+</a><a href="#h0-64" id="h0-64" class="d">-
+</a><a href="#h0-65" id="h0-65" class="d">-case $# in
+</a><a href="#h0-66" id="h0-66" class="d">-  1)
+</a><a href="#h0-67" id="h0-67" class="d">-    optstest $1 ;;
+</a><a href="#h0-68" id="h0-68" class="d">-  3)
+</a><a href="#h0-69" id="h0-69" class="d">-    optstest $1 $2 $3 ;;
+</a><a href="#h0-70" id="h0-70" class="d">-  *)
+</a><a href="#h0-71" id="h0-71" class="d">-    err &quot; invalid number of arguments!&quot; ;;
+</a><a href="#h0-72" id="h0-72" class="d">-esac
+</a><a href="#h0-73" id="h0-73" class="d">-
+</a><a href="#h0-74" id="h0-74" class="d">-if [ -z &quot;$VANITY&quot; ]
+</a><a href="#h0-75" id="h0-75" class="d">-then
+</a><a href="#h0-76" id="h0-76" class="d">-  url=`curl -is http://git.io -F &quot;url=$GHURL&quot; | grep -i &quot;location&quot; | cut -d&apos; &apos; -f2`
+</a><a href="#h0-77" id="h0-77" class="d">-else
+</a><a href="#h0-78" id="h0-78" class="d">-  url=`curl -is http://git.io -F &quot;url=$GHURL&quot; -F &quot;code=$VANITY&quot; | grep -i &quot;location&quot; | cut -d&apos; &apos; -f2`
+</a><a href="#h0-79" id="h0-79" class="d">-fi
+</a><a href="#h0-80" id="h0-80" class="d">-
+</a><a href="#h0-81" id="h0-81" class="d">-if [ -z $url ]
+</a><a href="#h0-82" id="h0-82" class="d">-then
+</a><a href="#h0-83" id="h0-83" class="d">-  err &quot; must be a valid github.com url!&quot;
+</a><a href="#h0-84" id="h0-84" class="d">-else
+</a><a href="#h0-85" id="h0-85" class="d">-  echo $url
+</a><a href="#h0-86" id="h0-86" class="d">-fi
+</a><b>diff --git a/<a href="../file/scripts/.scripts/i3blocks/battery.html">scripts/.scripts/i3blocks/battery</a> b/<a href="../file/scripts/.scripts/i3blocks/battery.html">scripts/.scripts/i3blocks/battery</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,75 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/usr/bin/perl
+</a><a href="#h0-1" id="h0-1" class="d">-#
+</a><a href="#h0-2" id="h0-2" class="d">-# Copyright 2014 Pierre Mavro &lt;deimos@deimos.fr&gt;
+</a><a href="#h0-3" id="h0-3" class="d">-# Copyright 2014 Vivien Didelot &lt;vivien@didelot.org&gt;
+</a><a href="#h0-4" id="h0-4" class="d">-#
+</a><a href="#h0-5" id="h0-5" class="d">-# Licensed under the terms of the GNU GPL v3, or any later version.
+</a><a href="#h0-6" id="h0-6" class="d">-#
+</a><a href="#h0-7" id="h0-7" class="d">-# This script is meant to use with i3blocks. It parses the output of the &quot;acpi&quot;
+</a><a href="#h0-8" id="h0-8" class="d">-# command (often provided by a package of the same name) to read the status of
+</a><a href="#h0-9" id="h0-9" class="d">-# the battery, and eventually its remaining time (to full charge or discharge).
+</a><a href="#h0-10" id="h0-10" class="d">-#
+</a><a href="#h0-11" id="h0-11" class="d">-# The color will gradually change for a percentage below 85%, and the urgency
+</a><a href="#h0-12" id="h0-12" class="d">-# (exit code 33) is set if there is less that 5% remaining.
+</a><a href="#h0-13" id="h0-13" class="d">-
+</a><a href="#h0-14" id="h0-14" class="d">-use strict;
+</a><a href="#h0-15" id="h0-15" class="d">-use warnings;
+</a><a href="#h0-16" id="h0-16" class="d">-use utf8;
+</a><a href="#h0-17" id="h0-17" class="d">-
+</a><a href="#h0-18" id="h0-18" class="d">-my $acpi;
+</a><a href="#h0-19" id="h0-19" class="d">-my $status;
+</a><a href="#h0-20" id="h0-20" class="d">-my $percent;
+</a><a href="#h0-21" id="h0-21" class="d">-my $full_text;
+</a><a href="#h0-22" id="h0-22" class="d">-my $short_text;
+</a><a href="#h0-23" id="h0-23" class="d">-my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
+</a><a href="#h0-24" id="h0-24" class="d">-
+</a><a href="#h0-25" id="h0-25" class="d">-# Read acpi line.
+</a><a href="#h0-26" id="h0-26" class="d">-open (ACPI, &quot;acpi -b | grep &apos;Battery $bat_number&apos; |&quot;) or die;
+</a><a href="#h0-27" id="h0-27" class="d">-$acpi = &lt;ACPI&gt;;
+</a><a href="#h0-28" id="h0-28" class="d">-close(ACPI);
+</a><a href="#h0-29" id="h0-29" class="d">-
+</a><a href="#h0-30" id="h0-30" class="d">-# fail on unexpected output
+</a><a href="#h0-31" id="h0-31" class="d">-if ($acpi !~ /: (\w+), (\d+)%/) {
+</a><a href="#h0-32" id="h0-32" class="d">-	die &quot;$acpi\n&quot;;
+</a><a href="#h0-33" id="h0-33" class="d">-}
+</a><a href="#h0-34" id="h0-34" class="d">-
+</a><a href="#h0-35" id="h0-35" class="d">-$status = $1;
+</a><a href="#h0-36" id="h0-36" class="d">-$percent = $2;
+</a><a href="#h0-37" id="h0-37" class="d">-$full_text = &quot;$percent%&quot;;
+</a><a href="#h0-38" id="h0-38" class="d">-
+</a><a href="#h0-39" id="h0-39" class="d">-if ($status eq &apos;Discharging&apos;) {
+</a><a href="#h0-40" id="h0-40" class="d">-	$full_text .= &apos; ↓&apos;;
+</a><a href="#h0-41" id="h0-41" class="d">-} elsif ($status eq &apos;Charging&apos;) {
+</a><a href="#h0-42" id="h0-42" class="d">-	$full_text .= &apos; ↑&apos;;
+</a><a href="#h0-43" id="h0-43" class="d">-}
+</a><a href="#h0-44" id="h0-44" class="d">-
+</a><a href="#h0-45" id="h0-45" class="d">-$short_text = $full_text;
+</a><a href="#h0-46" id="h0-46" class="d">-
+</a><a href="#h0-47" id="h0-47" class="d">-if ($acpi =~ /(\d\d:\d\d):/) {
+</a><a href="#h0-48" id="h0-48" class="d">-	$full_text .= &quot; ($1)&quot;;
+</a><a href="#h0-49" id="h0-49" class="d">-}
+</a><a href="#h0-50" id="h0-50" class="d">-
+</a><a href="#h0-51" id="h0-51" class="d">-# print text
+</a><a href="#h0-52" id="h0-52" class="d">-print &quot;$full_text\n&quot;;
+</a><a href="#h0-53" id="h0-53" class="d">-print &quot;$short_text\n&quot;;
+</a><a href="#h0-54" id="h0-54" class="d">-
+</a><a href="#h0-55" id="h0-55" class="d">-# When discharging, change colour at certain levels.
+</a><a href="#h0-56" id="h0-56" class="d">-if ($status eq &apos;Discharging&apos;) {
+</a><a href="#h0-57" id="h0-57" class="d">-
+</a><a href="#h0-58" id="h0-58" class="d">-	if ($percent &lt; 20) {
+</a><a href="#h0-59" id="h0-59" class="d">-		print &quot;#d15752\n&quot;;
+</a><a href="#h0-60" id="h0-60" class="d">-	} elsif ($percent &lt; 40) {
+</a><a href="#h0-61" id="h0-61" class="d">-		print &quot;#fafafa\n&quot;;
+</a><a href="#h0-62" id="h0-62" class="d">-	} elsif ($percent &lt; 60) {
+</a><a href="#h0-63" id="h0-63" class="d">-		print &quot;#fafafa\n&quot;;
+</a><a href="#h0-64" id="h0-64" class="d">-	} elsif ($percent &lt; 85) {
+</a><a href="#h0-65" id="h0-65" class="d">-		print &quot;#fafafa\n&quot;;
+</a><a href="#h0-66" id="h0-66" class="d">-	}
+</a><a href="#h0-67" id="h0-67" class="d">-
+</a><a href="#h0-68" id="h0-68" class="d">-	if ($percent &lt; 5) {
+</a><a href="#h0-69" id="h0-69" class="d">-		exit(33);
+</a><a href="#h0-70" id="h0-70" class="d">-	}
+</a><a href="#h0-71" id="h0-71" class="d">-}
+</a><a href="#h0-72" id="h0-72" class="d">-
+</a><a href="#h0-73" id="h0-73" class="d">-exit(0);
+</a><a href="#h0-74" id="h0-74" class="d">-
+</a><b>diff --git a/<a href="../file/scripts/.scripts/i3blocks/music.html">scripts/.scripts/i3blocks/music</a> b/<a href="../file/scripts/.scripts/i3blocks/music.html">scripts/.scripts/i3blocks/music</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,24 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/usr/bin/bash
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-STATUS=&quot;$(playerctl status)&quot;
+</a><a href="#h0-3" id="h0-3" class="d">-MUSIC=&quot;$(playerctl metadata artist) - $(playerctl metadata title)&quot;
+</a><a href="#h0-4" id="h0-4" class="d">-
+</a><a href="#h0-5" id="h0-5" class="d">-declare -A val
+</a><a href="#h0-6" id="h0-6" class="d">-val[&quot;Playing&quot;]=&quot;&quot;
+</a><a href="#h0-7" id="h0-7" class="d">-val[&quot;Paused&quot;]=&quot;&quot;
+</a><a href="#h0-8" id="h0-8" class="d">-
+</a><a href="#h0-9" id="h0-9" class="d">-if [ $? -ne 0 ] || [[ $STATUS = &quot;Stopped&quot; ]]
+</a><a href="#h0-10" id="h0-10" class="d">-then
+</a><a href="#h0-11" id="h0-11" class="d">-  #echo &quot;No music playing&quot;
+</a><a href="#h0-12" id="h0-12" class="d">-  exit 0
+</a><a href="#h0-13" id="h0-13" class="d">-else
+</a><a href="#h0-14" id="h0-14" class="d">-  echo &quot;${val[&quot;$STATUS&quot;]} $MUSIC&quot;
+</a><a href="#h0-15" id="h0-15" class="d">-fi
+</a><a href="#h0-16" id="h0-16" class="d">-
+</a><a href="#h0-17" id="h0-17" class="d">-case $BLOCK_BUTTON in
+</a><a href="#h0-18" id="h0-18" class="d">-  1) playerctl play-pause &amp; ;;
+</a><a href="#h0-19" id="h0-19" class="d">-  3) playerctl stop &amp; ;;
+</a><a href="#h0-20" id="h0-20" class="d">-  4) playerctl next &amp; ;;
+</a><a href="#h0-21" id="h0-21" class="d">-  5) playerctl previous &amp; ;;
+</a><a href="#h0-22" id="h0-22" class="d">-esac &amp;
+</a><a href="#h0-23" id="h0-23" class="d">-
+</a><b>diff --git a/<a href="../file/scripts/.scripts/i3blocks/volume.html">scripts/.scripts/i3blocks/volume</a> b/<a href="../file/scripts/.scripts/i3blocks/volume.html">scripts/.scripts/i3blocks/volume</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,74 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/bash
+</a><a href="#h0-1" id="h0-1" class="d">-# Copyright (C) 2014 Julien Bonjean &lt;julien@bonjean.info&gt;
+</a><a href="#h0-2" id="h0-2" class="d">-# Copyright (C) 2014 Alexander Keller &lt;github@nycroth.com&gt;
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-# This program is free software: you can redistribute it and/or modify
+</a><a href="#h0-5" id="h0-5" class="d">-# it under the terms of the GNU General Public License as published by
+</a><a href="#h0-6" id="h0-6" class="d">-# the Free Software Foundation, either version 3 of the License, or
+</a><a href="#h0-7" id="h0-7" class="d">-# (at your option) any later version.
+</a><a href="#h0-8" id="h0-8" class="d">-
+</a><a href="#h0-9" id="h0-9" class="d">-# This program is distributed in the hope that it will be useful,
+</a><a href="#h0-10" id="h0-10" class="d">-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+</a><a href="#h0-11" id="h0-11" class="d">-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+</a><a href="#h0-12" id="h0-12" class="d">-# GNU General Public License for more details.
+</a><a href="#h0-13" id="h0-13" class="d">-
+</a><a href="#h0-14" id="h0-14" class="d">-# You should have received a copy of the GNU General Public License
+</a><a href="#h0-15" id="h0-15" class="d">-# along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+</a><a href="#h0-16" id="h0-16" class="d">-
+</a><a href="#h0-17" id="h0-17" class="d">-#------------------------------------------------------------------------
+</a><a href="#h0-18" id="h0-18" class="d">-
+</a><a href="#h0-19" id="h0-19" class="d">-# The second parameter overrides the mixer selection
+</a><a href="#h0-20" id="h0-20" class="d">-# For PulseAudio users, use &quot;pulse&quot;
+</a><a href="#h0-21" id="h0-21" class="d">-# For Jack/Jack2 users, use &quot;jackplug&quot;
+</a><a href="#h0-22" id="h0-22" class="d">-# For ALSA users, you may use &quot;default&quot; for your primary card
+</a><a href="#h0-23" id="h0-23" class="d">-# or you may use hw:# where # is the number of the card desired
+</a><a href="#h0-24" id="h0-24" class="d">-#MIXER=&quot;default&quot;
+</a><a href="#h0-25" id="h0-25" class="d">-#[ -n &quot;$(lsmod | grep pulse)&quot; ] &amp;&amp; MIXER=&quot;pulse&quot;
+</a><a href="#h0-26" id="h0-26" class="d">-#[ -n &quot;$(lsmod | grep jack)&quot; ] &amp;&amp; MIXER=&quot;jackplug&quot;
+</a><a href="#h0-27" id="h0-27" class="d">-#MIXER=&quot;${2:-$MIXER}&quot;
+</a><a href="#h0-28" id="h0-28" class="d">-MIXER=&quot;pulse&quot;
+</a><a href="#h0-29" id="h0-29" class="d">-
+</a><a href="#h0-30" id="h0-30" class="d">-# The instance option sets the control to report and configure
+</a><a href="#h0-31" id="h0-31" class="d">-# This defaults to the first control of your selected mixer
+</a><a href="#h0-32" id="h0-32" class="d">-# For a list of the available, use `amixer -D $Your_Mixer scontrols`
+</a><a href="#h0-33" id="h0-33" class="d">-SCONTROL=&quot;${BLOCK_INSTANCE:-$(amixer -D $MIXER scontrols |
+</a><a href="#h0-34" id="h0-34" class="d">-                  sed -n &quot;s/Simple mixer control &apos;\([A-Za-z ]*\)&apos;,0/\1/p&quot; |
+</a><a href="#h0-35" id="h0-35" class="d">-                  head -n1
+</a><a href="#h0-36" id="h0-36" class="d">-                )}&quot;
+</a><a href="#h0-37" id="h0-37" class="d">-
+</a><a href="#h0-38" id="h0-38" class="d">-# The first parameter sets the step to change the volume by (and units to display)
+</a><a href="#h0-39" id="h0-39" class="d">-# This may be in in % or dB (eg. 5% or 3dB)
+</a><a href="#h0-40" id="h0-40" class="d">-STEP=&quot;${1:-5%}&quot;
+</a><a href="#h0-41" id="h0-41" class="d">-
+</a><a href="#h0-42" id="h0-42" class="d">-#------------------------------------------------------------------------
+</a><a href="#h0-43" id="h0-43" class="d">-
+</a><a href="#h0-44" id="h0-44" class="d">-capability() { # Return &quot;Capture&quot; if the device is a capture device
+</a><a href="#h0-45" id="h0-45" class="d">-  amixer -D $MIXER get $SCONTROL |
+</a><a href="#h0-46" id="h0-46" class="d">-    sed -n &quot;s/  Capabilities:.*cvolume.*/Capture/p&quot;
+</a><a href="#h0-47" id="h0-47" class="d">-}
+</a><a href="#h0-48" id="h0-48" class="d">-
+</a><a href="#h0-49" id="h0-49" class="d">-volume() {
+</a><a href="#h0-50" id="h0-50" class="d">-  amixer -D $MIXER get $SCONTROL $(capability)
+</a><a href="#h0-51" id="h0-51" class="d">-}
+</a><a href="#h0-52" id="h0-52" class="d">-
+</a><a href="#h0-53" id="h0-53" class="d">-format() {
+</a><a href="#h0-54" id="h0-54" class="d">-  perl_filter=&apos;if (/.*\[(\d+%)\] (\[(-?\d+.\d+dB)\] )?\[(on|off)\]/)&apos;
+</a><a href="#h0-55" id="h0-55" class="d">-  perl_filter+=&apos;{CORE::say $4 eq &quot;off&quot; ? &quot;MUTE&quot; : &quot;&apos;
+</a><a href="#h0-56" id="h0-56" class="d">-  # If dB was selected, print that instead
+</a><a href="#h0-57" id="h0-57" class="d">-  perl_filter+=$([[ $STEP = *dB ]] &amp;&amp; echo &apos;$3&apos; || echo &apos;$1&apos;)
+</a><a href="#h0-58" id="h0-58" class="d">-  perl_filter+=&apos;&quot;; exit}&apos;
+</a><a href="#h0-59" id="h0-59" class="d">-  perl -ne &quot;$perl_filter&quot;
+</a><a href="#h0-60" id="h0-60" class="d">-}
+</a><a href="#h0-61" id="h0-61" class="d">-
+</a><a href="#h0-62" id="h0-62" class="d">-#------------------------------------------------------------------------
+</a><a href="#h0-63" id="h0-63" class="d">-
+</a><a href="#h0-64" id="h0-64" class="d">-case $BLOCK_BUTTON in
+</a><a href="#h0-65" id="h0-65" class="d">-  # launch pavucontrol when clicked
+</a><a href="#h0-66" id="h0-66" class="d">-  1) pavucontrol &amp; ;;
+</a><a href="#h0-67" id="h0-67" class="d">-  3) amixer -q -D $MIXER sset $SCONTROL $(capability) toggle ;;  # right click, mute/unmute
+</a><a href="#h0-68" id="h0-68" class="d">-  4) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}+ unmute ;; # scroll up, increase
+</a><a href="#h0-69" id="h0-69" class="d">-  5) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}- unmute ;; # scroll down, decrease
+</a><a href="#h0-70" id="h0-70" class="d">-esac
+</a><a href="#h0-71" id="h0-71" class="d">-
+</a><a href="#h0-72" id="h0-72" class="d">-volume | format
+</a><a href="#h0-73" id="h0-73" class="d">-
+</a><b>diff --git a/<a href="../file/scripts/.scripts/primerun.html">scripts/.scripts/primerun</a> b/<a href="../file/scripts/.scripts/primerun.html">scripts/.scripts/primerun</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/bash
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-xrandr --setprovideroffloadsink nouveau Intel
+</a><a href="#h0-3" id="h0-3" class="d">-DRI_PRIME=1 &quot;$@&quot;
+</a><b>diff --git a/<a href="../file/scripts/.scripts/setwall.html">scripts/.scripts/setwall</a> b/<a href="../file/scripts/.scripts/setwall.html">scripts/.scripts/setwall</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,21 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /usr/bin/python
+</a><a href="#h0-1" id="h0-1" class="d">-import os
+</a><a href="#h0-2" id="h0-2" class="d">-import time
+</a><a href="#h0-3" id="h0-3" class="d">-import random
+</a><a href="#h0-4" id="h0-4" class="d">-
+</a><a href="#h0-5" id="h0-5" class="d">-donger = os.environ.get(&apos;DONGER&apos;, 0)
+</a><a href="#h0-6" id="h0-6" class="d">-surprise = os.environ.get(&apos;SNOWDEN&apos;, 0)
+</a><a href="#h0-7" id="h0-7" class="d">-custom = os.environ.get(&apos;CUSTOM&apos;, 0)
+</a><a href="#h0-8" id="h0-8" class="d">-
+</a><a href="#h0-9" id="h0-9" class="d">-date = time.strftime(&apos;%d/%m&apos;)
+</a><a href="#h0-10" id="h0-10" class="d">-rnd = random.randrange(1, 101)
+</a><a href="#h0-11" id="h0-11" class="d">-
+</a><a href="#h0-12" id="h0-12" class="d">-if donger or date == &apos;01/04&apos;:
+</a><a href="#h0-13" id="h0-13" class="d">-    os.system(&apos;hsetroot -fill ~/wallpapers/april_wall.png&apos;)
+</a><a href="#h0-14" id="h0-14" class="d">-elif surprise or rnd == 2:
+</a><a href="#h0-15" id="h0-15" class="d">-    os.system(&apos;hsetroot -fill ~/wallpapers/snowden.jpg&apos;)
+</a><a href="#h0-16" id="h0-16" class="d">-elif custom:
+</a><a href="#h0-17" id="h0-17" class="d">-    os.system(&apos;hsetroot -fill %s&apos; % custom)
+</a><a href="#h0-18" id="h0-18" class="d">-else:
+</a><a href="#h0-19" id="h0-19" class="d">-    os.system(&apos;hsetroot -fill ~/wallpapers/xero_said_this_one_is_rad.png&apos;)
+</a><a href="#h0-20" id="h0-20" class="d">-
+</a><b>diff --git a/<a href="../file/scripts/.scripts/volume.html">scripts/.scripts/volume</a> b/<a href="../file/scripts/.scripts/volume.html">scripts/.scripts/volume</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,74 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#!/bin/bash
+</a><a href="#h0-1" id="h0-1" class="d">-# Copyright (C) 2014 Julien Bonjean &lt;julien@bonjean.info&gt;
+</a><a href="#h0-2" id="h0-2" class="d">-# Copyright (C) 2014 Alexander Keller &lt;github@nycroth.com&gt;
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-# This program is free software: you can redistribute it and/or modify
+</a><a href="#h0-5" id="h0-5" class="d">-# it under the terms of the GNU General Public License as published by
+</a><a href="#h0-6" id="h0-6" class="d">-# the Free Software Foundation, either version 3 of the License, or
+</a><a href="#h0-7" id="h0-7" class="d">-# (at your option) any later version.
+</a><a href="#h0-8" id="h0-8" class="d">-
+</a><a href="#h0-9" id="h0-9" class="d">-# This program is distributed in the hope that it will be useful,
+</a><a href="#h0-10" id="h0-10" class="d">-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+</a><a href="#h0-11" id="h0-11" class="d">-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+</a><a href="#h0-12" id="h0-12" class="d">-# GNU General Public License for more details.
+</a><a href="#h0-13" id="h0-13" class="d">-
+</a><a href="#h0-14" id="h0-14" class="d">-# You should have received a copy of the GNU General Public License
+</a><a href="#h0-15" id="h0-15" class="d">-# along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+</a><a href="#h0-16" id="h0-16" class="d">-
+</a><a href="#h0-17" id="h0-17" class="d">-#------------------------------------------------------------------------
+</a><a href="#h0-18" id="h0-18" class="d">-
+</a><a href="#h0-19" id="h0-19" class="d">-# The second parameter overrides the mixer selection
+</a><a href="#h0-20" id="h0-20" class="d">-# For PulseAudio users, use &quot;pulse&quot;
+</a><a href="#h0-21" id="h0-21" class="d">-# For Jack/Jack2 users, use &quot;jackplug&quot;
+</a><a href="#h0-22" id="h0-22" class="d">-# For ALSA users, you may use &quot;default&quot; for your primary card
+</a><a href="#h0-23" id="h0-23" class="d">-# or you may use hw:# where # is the number of the card desired
+</a><a href="#h0-24" id="h0-24" class="d">-#MIXER=&quot;default&quot;
+</a><a href="#h0-25" id="h0-25" class="d">-#[ -n &quot;$(lsmod | grep pulse)&quot; ] &amp;&amp; MIXER=&quot;pulse&quot;
+</a><a href="#h0-26" id="h0-26" class="d">-#[ -n &quot;$(lsmod | grep jack)&quot; ] &amp;&amp; MIXER=&quot;jackplug&quot;
+</a><a href="#h0-27" id="h0-27" class="d">-#MIXER=&quot;${2:-$MIXER}&quot;
+</a><a href="#h0-28" id="h0-28" class="d">-MIXER=&quot;pulse&quot;
+</a><a href="#h0-29" id="h0-29" class="d">-
+</a><a href="#h0-30" id="h0-30" class="d">-# The instance option sets the control to report and configure
+</a><a href="#h0-31" id="h0-31" class="d">-# This defaults to the first control of your selected mixer
+</a><a href="#h0-32" id="h0-32" class="d">-# For a list of the available, use `amixer -D $Your_Mixer scontrols`
+</a><a href="#h0-33" id="h0-33" class="d">-SCONTROL=&quot;${BLOCK_INSTANCE:-$(amixer -D $MIXER scontrols |
+</a><a href="#h0-34" id="h0-34" class="d">-                  sed -n &quot;s/Simple mixer control &apos;\([A-Za-z ]*\)&apos;,0/\1/p&quot; |
+</a><a href="#h0-35" id="h0-35" class="d">-                  head -n1
+</a><a href="#h0-36" id="h0-36" class="d">-                )}&quot;
+</a><a href="#h0-37" id="h0-37" class="d">-
+</a><a href="#h0-38" id="h0-38" class="d">-# The first parameter sets the step to change the volume by (and units to display)
+</a><a href="#h0-39" id="h0-39" class="d">-# This may be in in % or dB (eg. 5% or 3dB)
+</a><a href="#h0-40" id="h0-40" class="d">-STEP=&quot;${1:-5%}&quot;
+</a><a href="#h0-41" id="h0-41" class="d">-
+</a><a href="#h0-42" id="h0-42" class="d">-#------------------------------------------------------------------------
+</a><a href="#h0-43" id="h0-43" class="d">-
+</a><a href="#h0-44" id="h0-44" class="d">-capability() { # Return &quot;Capture&quot; if the device is a capture device
+</a><a href="#h0-45" id="h0-45" class="d">-  amixer -D $MIXER get $SCONTROL |
+</a><a href="#h0-46" id="h0-46" class="d">-    sed -n &quot;s/  Capabilities:.*cvolume.*/Capture/p&quot;
+</a><a href="#h0-47" id="h0-47" class="d">-}
+</a><a href="#h0-48" id="h0-48" class="d">-
+</a><a href="#h0-49" id="h0-49" class="d">-volume() {
+</a><a href="#h0-50" id="h0-50" class="d">-  amixer -D $MIXER get $SCONTROL $(capability)
+</a><a href="#h0-51" id="h0-51" class="d">-}
+</a><a href="#h0-52" id="h0-52" class="d">-
+</a><a href="#h0-53" id="h0-53" class="d">-format() {
+</a><a href="#h0-54" id="h0-54" class="d">-  perl_filter=&apos;if (/.*\[(\d+%)\] (\[(-?\d+.\d+dB)\] )?\[(on|off)\]/)&apos;
+</a><a href="#h0-55" id="h0-55" class="d">-  perl_filter+=&apos;{CORE::say $4 eq &quot;off&quot; ? &quot;MUTE&quot; : &quot;&apos;
+</a><a href="#h0-56" id="h0-56" class="d">-  # If dB was selected, print that instead
+</a><a href="#h0-57" id="h0-57" class="d">-  perl_filter+=$([[ $STEP = *dB ]] &amp;&amp; echo &apos;$3&apos; || echo &apos;$1&apos;)
+</a><a href="#h0-58" id="h0-58" class="d">-  perl_filter+=&apos;&quot;; exit}&apos;
+</a><a href="#h0-59" id="h0-59" class="d">-  perl -ne &quot;$perl_filter&quot;
+</a><a href="#h0-60" id="h0-60" class="d">-}
+</a><a href="#h0-61" id="h0-61" class="d">-
+</a><a href="#h0-62" id="h0-62" class="d">-#------------------------------------------------------------------------
+</a><a href="#h0-63" id="h0-63" class="d">-
+</a><a href="#h0-64" id="h0-64" class="d">-case $BLOCK_BUTTON in
+</a><a href="#h0-65" id="h0-65" class="d">-  # launch pavucontrol when clicked
+</a><a href="#h0-66" id="h0-66" class="d">-  1) pavucontrol &amp; ;;
+</a><a href="#h0-67" id="h0-67" class="d">-  3) amixer -q -D $MIXER sset $SCONTROL $(capability) toggle ;;  # right click, mute/unmute
+</a><a href="#h0-68" id="h0-68" class="d">-  4) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}+ unmute ;; # scroll up, increase
+</a><a href="#h0-69" id="h0-69" class="d">-  5) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}- unmute ;; # scroll down, decrease
+</a><a href="#h0-70" id="h0-70" class="d">-esac
+</a><a href="#h0-71" id="h0-71" class="d">-
+</a><a href="#h0-72" id="h0-72" class="d">-volume | format
+</a><a href="#h0-73" id="h0-73" class="d">-
+</a></pre>
+</div>
+</body>
+</html>

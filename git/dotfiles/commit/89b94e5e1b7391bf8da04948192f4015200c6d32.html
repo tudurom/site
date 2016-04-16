@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>st fuxery - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/89b94e5e1b7391bf8da04948192f4015200c6d32.html">89b94e5e1b7391bf8da04948192f4015200c6d32</a>
+<b>parent</b> <a href="../commit/71b8734d8732bf1da87f5dc1d9f604702d540955.html">71b8734d8732bf1da87f5dc1d9f604702d540955</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat Apr  2 22:38:13 2016
+
+st fuxery
+
+<b>Diffstat:</b>
+ scripts/.scripts/url-open | 2 +-
+ scripts/.scripts/xurls    | 7 +++++++
+ st                        | 2 +-
+ 3 files changed, 9 insertions(+), 2 deletions(-)
+<hr/><b>diff --git a/<a href="../file/scripts/.scripts/url-open.html">scripts/.scripts/url-open</a> b/<a href="../file/scripts/.scripts/url-open.html">scripts/.scripts/url-open</a></b>
+<a href="#h0" id="h0" class="h">@@ -4,7 +4,7 @@
+</a> #
+ 
+ monitor_width=&quot;$(dattr -w $(ppd))&quot;
+<a href="#h0-3" id="h0-3" class="d">-font=&quot;-benis-lemon-medium-r-normal--10-110-75-75-m-50-ISO8859-1&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+font=&quot;-benis-lemon-medium-r-normal--10-110-75-75-m-50-*&quot;
+</a> 
+ while read -r line; do
+   echo $line
+<b>diff --git a/<a href="../file/scripts/.scripts/xurls.html">scripts/.scripts/xurls</a> b/<a href="../file/scripts/.scripts/xurls.html">scripts/.scripts/xurls</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,7 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+protocols=&apos;[a-zA-Z]+://&apos;
+</a><a href="#h0-3" id="h0-3" class="i">+hostchars=&apos;[-a-zA-Z0-9._+]+&apos;
+</a><a href="#h0-4" id="h0-4" class="i">+pathchars=&apos;[-a-zA-Z0-9._+#=?&amp;:;%/!~()]+&apos;
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+grep -aPo &quot;${protocols}${hostchars}${pathchars}&quot; | tac
+</a><b>diff --git a/<a href="../file/st.html">st</a> b/<a href="../file/st.html">st</a></b>
+<a href="#h0" id="h0" class="h">@@ -1 +1 @@
+</a><a href="#h0-0" id="h0-0" class="d">-Subproject commit bfd7d24f457c69a585bdb2b131f12ea78f69d59d
+</a><a href="#h0-1" id="h0-1" class="i">+Subproject commit 3b8ae6b107d027944d61c87fa74692ee7889e479
+</a></pre>
+</div>
+</body>
+</html>

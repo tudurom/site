@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Bits - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/29a3e8c252ac1d77c84353a509c3aa59cd6d6be5.html">29a3e8c252ac1d77c84353a509c3aa59cd6d6be5</a>
+<b>parent</b> <a href="../commit/2fe2e5f3ffa0befdb2cdce7a77c62f4bb368acb4.html">2fe2e5f3ffa0befdb2cdce7a77c62f4bb368acb4</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Tue Mar  8 20:36:33 2016
+
+Bits
+
+<b>Diffstat:</b>
+ scripts/.scripts/recordwebm        | 1 +
+ wmrc/.config/sxhkd/sxhkdrc_wmutils | 6 ++++++
+ wmrc/.scripts/wewhandle            | 4 ++--
+ wmrc/.scripts/windowat             | 4 +++-
+ x/.xres/st                         | 4 +++-
+ 5 files changed, 15 insertions(+), 4 deletions(-)
+<hr/><b>diff --git a/<a href="../file/scripts/.scripts/recordwebm.html">scripts/.scripts/recordwebm</a> b/<a href="../file/scripts/.scripts/recordwebm.html">scripts/.scripts/recordwebm</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+ffmpeg -f x11grab -s $RESOLUTION -an -r 16 -loglevel quiet -i :0.0 -b:v 5M -y workflow-compil-${USER}.webm
+</a><b>diff --git a/<a href="../file/wmrc/.config/sxhkd/sxhkdrc_wmutils.html">wmrc/.config/sxhkd/sxhkdrc_wmutils</a> b/<a href="../file/wmrc/.config/sxhkd/sxhkdrc_wmutils.html">wmrc/.config/sxhkd/sxhkdrc_wmutils</a></b>
+<a href="#h0" id="h0" class="h">@@ -115,6 +115,9 @@ super + {1,2,3,4,5,6}
+</a> super + shift + {1,2,3,4,5,6}
+   groaw -a {1,2,3,4,5,6}
+ 
+<a href="#h0-3" id="h0-3" class="i">+super + ctrl + {1,2,3,4,5,6}
+</a><a href="#h0-4" id="h0-4" class="i">+  groaw -d {1,2,3,4,5,6}
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a> # remove from group
+ super + alt + {1,2,3,4,5,6}
+   groaw -d {1,2,3,4,5,6}
+<a href="#h1" id="h1" class="h">@@ -131,3 +134,6 @@ super + {Prior,Delete,Next,End}
+</a> # tile windows
+ super + t
+   tilew
+<a href="#h1-3" id="h1-3" class="i">+
+</a><a href="#h1-4" id="h1-4" class="i">+alt + @button1
+</a><a href="#h1-5" id="h1-5" class="i">+  focusw $(windowat $(wmp))
+</a><b>diff --git a/<a href="../file/wmrc/.scripts/wewhandle.html">wmrc/.scripts/wewhandle</a> b/<a href="../file/wmrc/.scripts/wewhandle.html">wmrc/.scripts/wewhandle</a></b>
+<a href="#h0" id="h0" class="h">@@ -21,7 +21,7 @@ while IFS=: read ev wid; do
+</a>     19)
+       if ! wattr o $wid; then
+         focusw $wid
+<a href="#h0-3" id="h0-3" class="d">-        test $(lsw | wc -l) -ge 1 &amp;&amp; hsetroot -fill $BLUR
+</a><a href="#h0-4" id="h0-4" class="i">+        #test $(lsw | wc -l) -ge 1 &amp;&amp; hsetroot -fill $BLUR
+</a>       fi
+       ;;
+ 
+<a href="#h1" id="h1" class="h">@@ -29,7 +29,7 @@ while IFS=: read ev wid; do
+</a>     18)
+       if ! wattr $(pfw); then
+         focusw $(closestw prev)
+<a href="#h1-3" id="h1-3" class="d">-        test -z &quot;$(lsw)&quot; &amp;&amp; hsetroot -fill $WALL
+</a><a href="#h1-4" id="h1-4" class="i">+        #test -z &quot;$(lsw)&quot; &amp;&amp; hsetroot -fill $WALL
+</a>       fi
+       ;;
+   esac
+<b>diff --git a/<a href="../file/wmrc/.scripts/windowat.html">wmrc/.scripts/windowat</a> b/<a href="../file/wmrc/.scripts/windowat.html">wmrc/.scripts/windowat</a></b>
+<a href="#h0" id="h0" class="h">@@ -14,7 +14,7 @@ test $# -ne 2 &amp;&amp; usage
+</a> 
+ x=$1
+ y=$2
+<a href="#h0-3" id="h0-3" class="d">-lsw | while read -r wid; do
+</a><a href="#h0-4" id="h0-4" class="i">+lsw | tac | while read -r wid; do
+</a>   data=$(wattr xywh $wid)
+   wx=$(echo $data | cut -d&apos; &apos; -f1)
+   wy=$(echo $data | cut -d&apos; &apos; -f2)
+<a href="#h1" id="h1" class="h">@@ -24,3 +24,5 @@ lsw | while read -r wid; do
+</a>     test $y -ge $wy &amp;&amp; test $y -le $((wy + wh - 1)) &amp;&amp; \
+     echo $wid &amp;&amp; break
+ done
+<a href="#h1-3" id="h1-3" class="i">+
+</a><a href="#h1-4" id="h1-4" class="i">+# vim: set ft=sh :
+</a><b>diff --git a/<a href="../file/x/.xres/st.html">x/.xres/st</a> b/<a href="../file/x/.xres/st.html">x/.xres/st</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,6 @@
+</a><a href="#h0-0" id="h0-0" class="d">-st.font: -*-gohufont-medium-*-*-*-14-*-*-*-*-*-*-*
+</a><a href="#h0-1" id="h0-1" class="i">+st.font: Erusfont
+</a> st.bold_font: 0
+ st.termname: xterm-256color
+<a href="#h0-4" id="h0-4" class="i">+st.bellvolume: 0
+</a><a href="#h0-5" id="h0-5" class="i">+st.tabspaces: 4
+</a> ! vim: set ft=xdefaults :
+</pre>
+</div>
+</body>
+</html>
