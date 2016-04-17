@@ -4,6 +4,38 @@
 <subtitle>My small load of configuration files and scripts.
 </subtitle>
 <entry>
+<id>e1810f35d42444602b6638ab0d84a6ab841db5aa</id>
+<updated>2016-04-17T22:42:35Z</updated>
+<title type="text">new things</title>
+<link rel="alternate" type="text/html" href="commit/e1810f35d42444602b6638ab0d84a6ab841db5aa.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit e1810f35d42444602b6638ab0d84a6ab841db5aa
+parent c1c9798617c81be3ef55aab72911d18899d58e6b
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun Apr 17 22:42:35 2016
+
+new things
+
+</content>
+</entry>
+<entry>
+<id>c1c9798617c81be3ef55aab72911d18899d58e6b</id>
+<updated>2016-04-17T01:57:22Z</updated>
+<title type="text">color scheme: designr by dkeg</title>
+<link rel="alternate" type="text/html" href="commit/c1c9798617c81be3ef55aab72911d18899d58e6b.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit c1c9798617c81be3ef55aab72911d18899d58e6b
+parent f9cf6a197c4cef8cfe784f0d0093e867c7eb0d1c
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun Apr 17 01:57:22 2016
+
+color scheme: designr by dkeg
+
+</content>
+</entry>
+<entry>
 <id>f9cf6a197c4cef8cfe784f0d0093e867c7eb0d1c</id>
 <updated>2016-04-16T21:27:03Z</updated>
 <title type="text">tab size</title>
@@ -1577,38 +1609,6 @@ Author: Tudor &lt;tudurom@gmail.com&gt;
 Date:   Sat Feb 27 16:18:00 2016
 
 Readme
-
-</content>
-</entry>
-<entry>
-<id>bb46788827f3f21d7c04e96bd5c51a4f681b768d</id>
-<updated>2016-02-27T15:53:33Z</updated>
-<title type="text">Moved to stow!</title>
-<link rel="alternate" type="text/html" href="commit/bb46788827f3f21d7c04e96bd5c51a4f681b768d.html" /><author><name>Tudor</name>
-<email>tudurom@gmail.com</email>
-</author>
-<content type="text">commit bb46788827f3f21d7c04e96bd5c51a4f681b768d
-parent a91ae1256d7db6a67397a011465e91ab71594de2
-Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Sat Feb 27 15:53:33 2016
-
-Moved to stow!
-
-</content>
-</entry>
-<entry>
-<id>a91ae1256d7db6a67397a011465e91ab71594de2</id>
-<updated>2016-02-26T16:20:08Z</updated>
-<title type="text">Oopes</title>
-<link rel="alternate" type="text/html" href="commit/a91ae1256d7db6a67397a011465e91ab71594de2.html" /><author><name>Tudor</name>
-<email>tudurom@gmail.com</email>
-</author>
-<content type="text">commit a91ae1256d7db6a67397a011465e91ab71594de2
-parent cb20443167eda03b7b34dd68b797f53a558c4657
-Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Feb 26 16:20:08 2016
-
-Oopes
 
 </content>
 </entry>

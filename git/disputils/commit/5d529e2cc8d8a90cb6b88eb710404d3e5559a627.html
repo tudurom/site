@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>rewrite take 2 - disputils - wmutils/xrandr powered multimonitor display utils
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/5d529e2cc8d8a90cb6b88eb710404d3e5559a627.html">5d529e2cc8d8a90cb6b88eb710404d3e5559a627</a>
+<b>parent</b> <a href="../commit/edcf18b25f929bf8be9b6a2a7df7921730f0443a.html">edcf18b25f929bf8be9b6a2a7df7921730f0443a</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Apr 17 02:47:48 2016
+
+rewrite take 2
+
+<b>Diffstat:</b>
+ Makefile     |  2 +-
+ dattr.c      | 72 +++++++++++++++++++++++++++++++++++++++----------------------
+ lsd.c        |  6 +----
+ man/Makefile | 16 ++++++++++++++-
+ man/dattr.1  | 56 +++++++++++++++++++++++++++++++++++++++++++++++-
+ man/lsd.1    | 16 ++++++++++++++-
+ man/pfd.1    | 16 ++++++++++++++-
+ randr.c      | 57 ++++++++++++++++++++++++++++++++++++++++++------
+ randr.h      | 37 +++++++++++++++++++++++--------
+ util.c       | 19 +++++++---------
+ util.h       |  6 +-----
+ 11 files changed, 243 insertions(+), 60 deletions(-)
+<hr/><b>diff --git a/<a href="../file/Makefile.html">Makefile</a> b/<a href="../file/Makefile.html">Makefile</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,7 +1,7 @@
+</a> include config.mk
+ 
+ HDR = arg.h util.h randr.h
+<a href="#h0-3" id="h0-3" class="d">-SRC = lsd.c dattr.c
+</a><a href="#h0-4" id="h0-4" class="i">+SRC = lsd.c dattr.c pfd.c
+</a> 
+ OBJ = $(SRC:.c=.o)
+ BIN = $(SRC:.c=)
+<b>diff --git a/<a href="../file/dattr.c.html">dattr.c</a> b/<a href="../file/dattr.c.html">dattr.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,6 +1,3 @@
+</a><a href="#h0-0" id="h0-0" class="d">-/* disputils dattr.c 04/15/2016 tudurom &lt;unknown&gt;
+</a><a href="#h0-1" id="h0-1" class="d">- * ix &lt;arcetera@openmailbox.org&gt;
+</a><a href="#h0-2" id="h0-2" class="d">- */
+</a> #include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+ #include &lt;string.h&gt;
+<a href="#h1" id="h1" class="h">@@ -15,27 +12,21 @@ static xcb_screen_t *scrn;
+</a> static void
+ usage(char *name)
+ {
+<a href="#h1-3" id="h1-3" class="d">-    printf(&quot;usage: %s \n&quot;, name);
+</a><a href="#h1-4" id="h1-4" class="i">+    printf(&quot;usage: [whxy] %s \n&quot;, name);
+</a>     exit(0);
+ }
+ 
+<a href="#h1-8" id="h1-8" class="d">-void
+</a><a href="#h1-9" id="h1-9" class="d">-print_output(xcb_connection_t* conn, xcb_randr_output_t output)
+</a><a href="#h1-10" id="h1-10" class="d">-{ /* print the actual output */
+</a><a href="#h1-11" id="h1-11" class="d">-    uint8_t* name = get_output_name(conn, output);
+</a><a href="#h1-12" id="h1-12" class="d">-    if (get_output_connection(conn, output) == 0) {
+</a><a href="#h1-13" id="h1-13" class="d">-        printf(&quot;%s\n&quot;, name);
+</a><a href="#h1-14" id="h1-14" class="d">-    }
+</a><a href="#h1-15" id="h1-15" class="d">-}
+</a><a href="#h1-16" id="h1-16" class="d">-
+</a> int
+ main(int argc, char *argv[])
+ {
+     xcb_randr_output_t output = -1;
+<a href="#h1-21" id="h1-21" class="i">+    xcb_randr_get_output_info_reply_t *output_info = NULL;
+</a><a href="#h1-22" id="h1-22" class="i">+    xcb_randr_crtc_t screen_crtc;
+</a><a href="#h1-23" id="h1-23" class="i">+    xcb_randr_get_crtc_info_reply_t *screen_crtc_info = NULL;
+</a>     char *output_name;
+ 
+<a href="#h1-26" id="h1-26" class="d">-    if (argc != 2) usage(argv[0]);
+</a><a href="#h1-27" id="h1-27" class="d">-    output_name = argv[1];
+</a><a href="#h1-28" id="h1-28" class="i">+    if (argc != 3) usage(argv[0]);
+</a><a href="#h1-29" id="h1-29" class="i">+    output_name = argv[2];
+</a> 
+     init_xcb(&amp;conn);
+     get_screen(conn, &amp;scrn);
+<a href="#h2" id="h2" class="h">@@ -43,24 +34,55 @@ main(int argc, char *argv[])
+</a>     xcb_randr_provider_t* providers;
+     int p_len = get_providers(conn, scrn, &amp;providers);
+ 
+<a href="#h2-3" id="h2-3" class="i">+    // get the id of the output
+</a>     int i = 0;
+     while (i &lt; p_len &amp;&amp; output == -1) {
+<a href="#h2-6" id="h2-6" class="d">-      xcb_randr_output_t *os;
+</a><a href="#h2-7" id="h2-7" class="d">-      int o_len = get_outputs(conn, providers[i], &amp;os);
+</a><a href="#h2-8" id="h2-8" class="i">+        xcb_randr_output_t *os;
+</a><a href="#h2-9" id="h2-9" class="i">+        int o_len = get_outputs(conn, providers[i], &amp;os);
+</a> 
+<a href="#h2-11" id="h2-11" class="d">-      int j = 0;
+</a><a href="#h2-12" id="h2-12" class="d">-      while (j &lt; o_len &amp;&amp; output == -1) {
+</a><a href="#h2-13" id="h2-13" class="d">-        if (strcmp(output_name, (const char *)get_output_name(conn, os[j])) == 0)
+</a><a href="#h2-14" id="h2-14" class="d">-          output = os[j];
+</a><a href="#h2-15" id="h2-15" class="i">+        int j = 0;
+</a><a href="#h2-16" id="h2-16" class="i">+        while (j &lt; o_len &amp;&amp; output == -1) {
+</a><a href="#h2-17" id="h2-17" class="i">+            if (strcmp(output_name, (const char *)get_output_name(conn, os[j])) == 0)
+</a><a href="#h2-18" id="h2-18" class="i">+                output = os[j];
+</a> 
+<a href="#h2-20" id="h2-20" class="d">-        j++;
+</a><a href="#h2-21" id="h2-21" class="d">-      }
+</a><a href="#h2-22" id="h2-22" class="i">+            j++;
+</a><a href="#h2-23" id="h2-23" class="i">+        }
+</a> 
+<a href="#h2-25" id="h2-25" class="d">-      i++;
+</a><a href="#h2-26" id="h2-26" class="i">+        i++;
+</a>     }
+ 
+     if (output == -1) {
+<a href="#h2-30" id="h2-30" class="d">-      errx(1, &quot;Output not found&quot;);
+</a><a href="#h2-31" id="h2-31" class="i">+        errx(1, &quot;Output not found&quot;);
+</a><a href="#h2-32" id="h2-32" class="i">+    }
+</a><a href="#h2-33" id="h2-33" class="i">+    output_info = get_output_info(conn, output);
+</a><a href="#h2-34" id="h2-34" class="i">+
+</a><a href="#h2-35" id="h2-35" class="i">+    // get info about output
+</a><a href="#h2-36" id="h2-36" class="i">+    screen_crtc = output_info-&gt;crtc;
+</a><a href="#h2-37" id="h2-37" class="i">+    screen_crtc_info = get_output_crtc_info(conn, screen_crtc);
+</a><a href="#h2-38" id="h2-38" class="i">+    if (!screen_crtc_info)
+</a><a href="#h2-39" id="h2-39" class="i">+        errx(1, &quot;Output not in use&quot;);
+</a><a href="#h2-40" id="h2-40" class="i">+
+</a><a href="#h2-41" id="h2-41" class="i">+    // print info
+</a><a href="#h2-42" id="h2-42" class="i">+    for (int i = 0; i &lt; strlen(argv[1]); i++) {
+</a><a href="#h2-43" id="h2-43" class="i">+        switch (argv[1][i]) {
+</a><a href="#h2-44" id="h2-44" class="i">+            case &apos;w&apos;:
+</a><a href="#h2-45" id="h2-45" class="i">+                printf(&quot;%d&quot;, screen_crtc_info-&gt;width);
+</a><a href="#h2-46" id="h2-46" class="i">+                break;
+</a><a href="#h2-47" id="h2-47" class="i">+            case &apos;h&apos;:
+</a><a href="#h2-48" id="h2-48" class="i">+                printf(&quot;%d&quot;, screen_crtc_info-&gt;height);
+</a><a href="#h2-49" id="h2-49" class="i">+                break;
+</a><a href="#h2-50" id="h2-50" class="i">+            case &apos;x&apos;:
+</a><a href="#h2-51" id="h2-51" class="i">+                printf(&quot;%d&quot;, screen_crtc_info-&gt;x);
+</a><a href="#h2-52" id="h2-52" class="i">+                break;
+</a><a href="#h2-53" id="h2-53" class="i">+            case &apos;y&apos;:
+</a><a href="#h2-54" id="h2-54" class="i">+                printf(&quot;%d&quot;, screen_crtc_info-&gt;y);
+</a><a href="#h2-55" id="h2-55" class="i">+                break;
+</a><a href="#h2-56" id="h2-56" class="i">+        }
+</a><a href="#h2-57" id="h2-57" class="i">+        // print a space if more attributes come after
+</a><a href="#h2-58" id="h2-58" class="i">+        putc(i + 1 &lt; strlen(argv[1]) ? &apos; &apos; : &apos;\n&apos;, stdout);
+</a>     }
+<a href="#h2-60" id="h2-60" class="i">+    free(output_info);
+</a><a href="#h2-61" id="h2-61" class="i">+    free(screen_crtc_info);
+</a><a href="#h2-62" id="h2-62" class="i">+    kill_xcb(&amp;conn);
+</a>     return 0;
+ }
+<b>diff --git a/<a href="../file/lsd.c.html">lsd.c</a> b/<a href="../file/lsd.c.html">lsd.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,9 +1,7 @@
+</a><a href="#h0-0" id="h0-0" class="d">-/* disputils lsd.c 04/15/2016 tudurom &lt;unknown&gt;
+</a><a href="#h0-1" id="h0-1" class="d">- * ix &lt;arcetera@openmailbox.org&gt;
+</a><a href="#h0-2" id="h0-2" class="d">- */
+</a> #include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+ #include &lt;err.h&gt;
+<a href="#h0-6" id="h0-6" class="i">+
+</a> #include &quot;randr.h&quot;
+ #include &quot;util.h&quot;
+ 
+<a href="#h1" id="h1" class="h">@@ -19,7 +17,7 @@ usage(char *name)
+</a> 
+ void
+ print_output(xcb_connection_t* conn, xcb_randr_output_t output)
+<a href="#h1-3" id="h1-3" class="d">-{ /* print output */
+</a><a href="#h1-4" id="h1-4" class="i">+{
+</a>     uint8_t* name = get_output_name(conn, output);
+     if (get_output_connection(conn, output) == 0) {
+         printf(&quot;%s\n&quot;, name);
+<b>diff --git a/<a href="../file/man/Makefile.html">man/Makefile</a> b/<a href="../file/man/Makefile.html">man/Makefile</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,16 @@
+</a><a href="#h0-0" id="h0-0" class="i">+include ../config.mk
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+MAN =           \
+</a><a href="#h0-3" id="h0-3" class="i">+	lsd.1   \
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+.POSIX:
+</a><a href="#h0-6" id="h0-6" class="i">+
+</a><a href="#h0-7" id="h0-7" class="i">+install: $(MAN)
+</a><a href="#h0-8" id="h0-8" class="i">+	mkdir -p $(DESTDIR)$(MANPREFIX)/man1/
+</a><a href="#h0-9" id="h0-9" class="i">+	cp -f $(MAN) $(DESTDIR)$(MANPREFIX)/man1/
+</a><a href="#h0-10" id="h0-10" class="i">+
+</a><a href="#h0-11" id="h0-11" class="i">+uninstall:
+</a><a href="#h0-12" id="h0-12" class="i">+	@echo &quot;uninstalling manpages&quot;
+</a><a href="#h0-13" id="h0-13" class="i">+	@for page in $(MAN); do \
+</a><a href="#h0-14" id="h0-14" class="i">+		rm -f $(DESTDIR)$(MANPREFIX)/man1/$$page; \
+</a><a href="#h0-15" id="h0-15" class="i">+	done
+</a><b>diff --git a/<a href="../file/man/dattr.1.html">man/dattr.1</a> b/<a href="../file/man/dattr.1.html">man/dattr.1</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,56 @@
+</a><a href="#h0-0" id="h0-0" class="i">+&apos;\&quot; e
+</a><a href="#h0-1" id="h0-1" class="i">+.Dd April 16, 2016
+</a><a href="#h0-2" id="h0-2" class="i">+.Dt DATTR 1
+</a><a href="#h0-3" id="h0-3" class="i">+.Os disputils
+</a><a href="#h0-4" id="h0-4" class="i">+.Sh NAME
+</a><a href="#h0-5" id="h0-5" class="i">+.Nm dattr
+</a><a href="#h0-6" id="h0-6" class="i">+.Nd get display attributes
+</a><a href="#h0-7" id="h0-7" class="i">+.Sh SYNOPSIS
+</a><a href="#h0-8" id="h0-8" class="i">+.Nm dattr
+</a><a href="#h0-9" id="h0-9" class="i">+.Op Cm whxy
+</a><a href="#h0-10" id="h0-10" class="i">+.Ar display_id
+</a><a href="#h0-11" id="h0-11" class="i">+.Sh DESCRIPTION
+</a><a href="#h0-12" id="h0-12" class="i">+.Nm
+</a><a href="#h0-13" id="h0-13" class="i">+prints information about the display
+</a><a href="#h0-14" id="h0-14" class="i">+.Ar display_id
+</a><a href="#h0-15" id="h0-15" class="i">+to
+</a><a href="#h0-16" id="h0-16" class="i">+.Dv stdout .
+</a><a href="#h0-17" id="h0-17" class="i">+.Pp
+</a><a href="#h0-18" id="h0-18" class="i">+What information is presented depends on the commands given to
+</a><a href="#h0-19" id="h0-19" class="i">+.Nm .
+</a><a href="#h0-20" id="h0-20" class="i">+The queried arguments are printed in the order they are requested,
+</a><a href="#h0-21" id="h0-21" class="i">+spearated by a space.
+</a><a href="#h0-22" id="h0-22" class="i">+.Bl -tag -display_idth Ds
+</a><a href="#h0-23" id="h0-23" class="i">+.It Cm w
+</a><a href="#h0-24" id="h0-24" class="i">+Print
+</a><a href="#h0-25" id="h0-25" class="i">+.Ar display_id Ns \(cqs width.
+</a><a href="#h0-26" id="h0-26" class="i">+.It Cm h
+</a><a href="#h0-27" id="h0-27" class="i">+Print
+</a><a href="#h0-28" id="h0-28" class="i">+.Ar display_id Ns \(cqs
+</a><a href="#h0-29" id="h0-29" class="i">+height.
+</a><a href="#h0-30" id="h0-30" class="i">+.It Cm x
+</a><a href="#h0-31" id="h0-31" class="i">+Print
+</a><a href="#h0-32" id="h0-32" class="i">+.Ar display_id Ns \(cqs
+</a><a href="#h0-33" id="h0-33" class="i">+.EQ
+</a><a href="#h0-34" id="h0-34" class="i">+x
+</a><a href="#h0-35" id="h0-35" class="i">+.EN
+</a><a href="#h0-36" id="h0-36" class="i">+offset.
+</a><a href="#h0-37" id="h0-37" class="i">+.It Cm y
+</a><a href="#h0-38" id="h0-38" class="i">+Print
+</a><a href="#h0-39" id="h0-39" class="i">+.Ar display_id Ns \(cqs
+</a><a href="#h0-40" id="h0-40" class="i">+.EQ
+</a><a href="#h0-41" id="h0-41" class="i">+y
+</a><a href="#h0-42" id="h0-42" class="i">+.EN
+</a><a href="#h0-43" id="h0-43" class="i">+offset.
+</a><a href="#h0-44" id="h0-44" class="i">+.El
+</a><a href="#h0-45" id="h0-45" class="i">+.Sh ENVIRONMENT
+</a><a href="#h0-46" id="h0-46" class="i">+.Nm
+</a><a href="#h0-47" id="h0-47" class="i">+acts on the X display specified by the
+</a><a href="#h0-48" id="h0-48" class="i">+.Ev DISPLAY
+</a><a href="#h0-49" id="h0-49" class="i">+variable.
+</a><a href="#h0-50" id="h0-50" class="i">+.Sh EXAMPLES
+</a><a href="#h0-51" id="h0-51" class="i">+.Dl $ dattr whxy LVDS-1
+</a><a href="#h0-52" id="h0-52" class="i">+.Dl 1600 900 1920 0
+</a><a href="#h0-53" id="h0-53" class="i">+.Pp
+</a><a href="#h0-54" id="h0-54" class="i">+.Dl $ dattr wh DP-1
+</a><a href="#h0-55" id="h0-55" class="i">+.Dl 1920 1080
+</a><b>diff --git a/<a href="../file/man/lsd.1.html">man/lsd.1</a> b/<a href="../file/man/lsd.1.html">man/lsd.1</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,16 @@
+</a><a href="#h0-0" id="h0-0" class="i">+.Dd April 16, 2016
+</a><a href="#h0-1" id="h0-1" class="i">+.Dt LSD 1
+</a><a href="#h0-2" id="h0-2" class="i">+.Os disputils
+</a><a href="#h0-3" id="h0-3" class="i">+.Sh NAME
+</a><a href="#h0-4" id="h0-4" class="i">+.Nm lsd
+</a><a href="#h0-5" id="h0-5" class="i">+.Nd list connected displays
+</a><a href="#h0-6" id="h0-6" class="i">+.Sh SYNOPSIS
+</a><a href="#h0-7" id="h0-7" class="i">+.Nm
+</a><a href="#h0-8" id="h0-8" class="i">+lists connected displays.
+</a><a href="#h0-9" id="h0-9" class="i">+.Sh ENVIRONMENT
+</a><a href="#h0-10" id="h0-10" class="i">+.Nm
+</a><a href="#h0-11" id="h0-11" class="i">+acts on the X display specified by the
+</a><a href="#h0-12" id="h0-12" class="i">+.Ev DISPLAY
+</a><a href="#h0-13" id="h0-13" class="i">+variable
+</a><a href="#h0-14" id="h0-14" class="i">+.Sh SEE ALSO
+</a><a href="#h0-15" id="h0-15" class="i">+.Xr dattr 1
+</a><b>diff --git a/<a href="../file/man/pfd.1.html">man/pfd.1</a> b/<a href="../file/man/pfd.1.html">man/pfd.1</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,16 @@
+</a><a href="#h0-0" id="h0-0" class="i">+.Dd April 16, 2016
+</a><a href="#h0-1" id="h0-1" class="i">+.Dt PFD 1
+</a><a href="#h0-2" id="h0-2" class="i">+.Os disputils
+</a><a href="#h0-3" id="h0-3" class="i">+.Sh NAME
+</a><a href="#h0-4" id="h0-4" class="i">+.Nm pfd
+</a><a href="#h0-5" id="h0-5" class="i">+.Nd print monitor containing the focused window
+</a><a href="#h0-6" id="h0-6" class="i">+.Sh SYNOPSIS
+</a><a href="#h0-7" id="h0-7" class="i">+.Nm pfd
+</a><a href="#h0-8" id="h0-8" class="i">+.Sh DESCRIPTION
+</a><a href="#h0-9" id="h0-9" class="i">+Print the ID of the monitor containing the currently focused window to
+</a><a href="#h0-10" id="h0-10" class="i">+.Dv stdout .
+</a><a href="#h0-11" id="h0-11" class="i">+.Sh ENVIRONMENT
+</a><a href="#h0-12" id="h0-12" class="i">+.Nm
+</a><a href="#h0-13" id="h0-13" class="i">+acts on the X display specified by the
+</a><a href="#h0-14" id="h0-14" class="i">+.Ev DISPLAY
+</a><a href="#h0-15" id="h0-15" class="i">+variable.
+</a><b>diff --git a/<a href="../file/randr.c.html">randr.c</a> b/<a href="../file/randr.c.html">randr.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,5 +1,5 @@
+</a><a href="#h0-0" id="h0-0" class="d">-/* disputils randr.c 04/15/2016 tudurom &lt;unknown&gt;
+</a><a href="#h0-1" id="h0-1" class="d">- * ix &lt;arcetera@openmailbox.org&gt;
+</a><a href="#h0-2" id="h0-2" class="i">+/* disputils randr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org
+</a><a href="#h0-3" id="h0-3" class="i">+ * ix &lt;arcetera@openmailbox.org
+</a>  */
+ 
+ #include &quot;randr.h&quot;
+<a href="#h1" id="h1" class="h">@@ -37,10 +37,9 @@ get_outputs(xcb_connection_t* conn, xcb_randr_provider_t provider, xcb_randr_out
+</a> 
+ xcb_randr_get_output_info_reply_t *
+ get_output_info(xcb_connection_t* conn, xcb_randr_output_t output)
+<a href="#h1-3" id="h1-3" class="d">-{
+</a><a href="#h1-4" id="h1-4" class="i">+{ /* get info about the output like crtc, modes etc */
+</a>     xcb_randr_get_output_info_cookie_t oic;
+ 
+<a href="#h1-7" id="h1-7" class="d">-    /* TODO: Figure out the use of the timestamp below. */
+</a>     oic = xcb_randr_get_output_info(conn, output, 0);
+     xcb_randr_get_output_info_reply_t *output_info_reply;
+ 
+<a href="#h2" id="h2" class="h">@@ -52,15 +51,61 @@ get_output_info(xcb_connection_t* conn, xcb_randr_output_t output)
+</a> }
+ 
+ uint8_t* get_output_name(xcb_connection_t* conn, xcb_randr_output_t output)
+<a href="#h2-3" id="h2-3" class="d">-{
+</a><a href="#h2-4" id="h2-4" class="i">+{ /* get output&apos;s name, like LVDS-1 */
+</a>     xcb_randr_get_output_info_reply_t* r;
+     r = get_output_info(conn, output);
+     return xcb_randr_get_output_info_name(r);
+ }
+ 
+<a href="#h2-10" id="h2-10" class="d">-int get_output_connection(xcb_connection_t* conn, xcb_randr_output_t output){
+</a><a href="#h2-11" id="h2-11" class="i">+int get_output_connection(xcb_connection_t* conn, xcb_randr_output_t output)
+</a><a href="#h2-12" id="h2-12" class="i">+{ /* returns 0 if the output is connected */
+</a>     xcb_randr_get_output_info_reply_t* r;
+     r = get_output_info(conn, output);
+     return r-&gt;connection;
+ }
+ 
+<a href="#h2-18" id="h2-18" class="i">+xcb_randr_get_crtc_info_reply_t *
+</a><a href="#h2-19" id="h2-19" class="i">+get_output_crtc_info(xcb_connection_t* conn, xcb_randr_crtc_t crtc)
+</a><a href="#h2-20" id="h2-20" class="i">+{ /* get crtc info (width, height, x, y, ...) */
+</a><a href="#h2-21" id="h2-21" class="i">+    xcb_randr_get_crtc_info_cookie_t cic;
+</a><a href="#h2-22" id="h2-22" class="i">+
+</a><a href="#h2-23" id="h2-23" class="i">+    cic = xcb_randr_get_crtc_info(conn, crtc, 0);
+</a><a href="#h2-24" id="h2-24" class="i">+
+</a><a href="#h2-25" id="h2-25" class="i">+    xcb_randr_get_crtc_info_reply_t *crtc_info_reply;
+</a><a href="#h2-26" id="h2-26" class="i">+    crtc_info_reply = xcb_randr_get_crtc_info_reply(conn, cic, NULL);
+</a><a href="#h2-27" id="h2-27" class="i">+    if (!crtc_info_reply)
+</a><a href="#h2-28" id="h2-28" class="i">+        errx(1, &quot;Output not in use&quot;);
+</a><a href="#h2-29" id="h2-29" class="i">+
+</a><a href="#h2-30" id="h2-30" class="i">+    return crtc_info_reply;
+</a><a href="#h2-31" id="h2-31" class="i">+}
+</a><a href="#h2-32" id="h2-32" class="i">+
+</a><a href="#h2-33" id="h2-33" class="i">+xcb_window_t
+</a><a href="#h2-34" id="h2-34" class="i">+get_focused_window(xcb_connection_t *conn)
+</a><a href="#h2-35" id="h2-35" class="i">+{ /* returns the id of the focused window */
+</a><a href="#h2-36" id="h2-36" class="i">+    xcb_window_t win = 0;
+</a><a href="#h2-37" id="h2-37" class="i">+    xcb_get_input_focus_cookie_t input_focus_cookie;
+</a><a href="#h2-38" id="h2-38" class="i">+    xcb_get_input_focus_reply_t *input_focus_reply;
+</a><a href="#h2-39" id="h2-39" class="i">+
+</a><a href="#h2-40" id="h2-40" class="i">+    input_focus_cookie = xcb_get_input_focus(conn);
+</a><a href="#h2-41" id="h2-41" class="i">+    input_focus_reply = xcb_get_input_focus_reply(conn, input_focus_cookie, NULL);
+</a><a href="#h2-42" id="h2-42" class="i">+    if (!input_focus_reply)
+</a><a href="#h2-43" id="h2-43" class="i">+        errx(1, &quot;Cannot get focused window.&quot;);
+</a><a href="#h2-44" id="h2-44" class="i">+    win = input_focus_reply-&gt;focus;
+</a><a href="#h2-45" id="h2-45" class="i">+    free(input_focus_reply);
+</a><a href="#h2-46" id="h2-46" class="i">+    return win;
+</a><a href="#h2-47" id="h2-47" class="i">+}
+</a><a href="#h2-48" id="h2-48" class="i">+
+</a><a href="#h2-49" id="h2-49" class="i">+xcb_get_geometry_reply_t*
+</a><a href="#h2-50" id="h2-50" class="i">+get_window_geometry(xcb_connection_t *conn, xcb_window_t window)
+</a><a href="#h2-51" id="h2-51" class="i">+{ /* returns the geometry of a window (width, height, x, y) */
+</a><a href="#h2-52" id="h2-52" class="i">+    xcb_get_geometry_cookie_t get_geometry_cookie;
+</a><a href="#h2-53" id="h2-53" class="i">+    xcb_get_geometry_reply_t *get_geometry_reply;
+</a><a href="#h2-54" id="h2-54" class="i">+
+</a><a href="#h2-55" id="h2-55" class="i">+    get_geometry_cookie = xcb_get_geometry(conn, window);
+</a><a href="#h2-56" id="h2-56" class="i">+    get_geometry_reply = xcb_get_geometry_reply(conn, get_geometry_cookie, NULL);
+</a><a href="#h2-57" id="h2-57" class="i">+
+</a><a href="#h2-58" id="h2-58" class="i">+    if (!get_geometry_reply)
+</a><a href="#h2-59" id="h2-59" class="i">+        errx(1, &quot;0x%08x: no such window&quot;, window);
+</a><a href="#h2-60" id="h2-60" class="i">+    return get_geometry_reply;
+</a><a href="#h2-61" id="h2-61" class="i">+}
+</a><a href="#h2-62" id="h2-62" class="i">+
+</a><b>diff --git a/<a href="../file/randr.h.html">randr.h</a> b/<a href="../file/randr.h.html">randr.h</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,23 +1,42 @@
+</a><a href="#h0-0" id="h0-0" class="d">-/* disputils randr.h 04/15/2016 tudurom &lt;unknown&gt;
+</a><a href="#h0-1" id="h0-1" class="d">- * ix &lt;arcetera@openmailbox.org
+</a><a href="#h0-2" id="h0-2" class="i">+/* disputils randr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+</a><a href="#h0-3" id="h0-3" class="i">+ * ix &lt;arcetera@openmailbox.org&gt;
+</a>  */
+ 
+<a href="#h0-6" id="h0-6" class="d">-#ifndef RANDR_H__
+</a><a href="#h0-7" id="h0-7" class="d">-#define RANDR_H__
+</a><a href="#h0-8" id="h0-8" class="i">+#ifndef WMUTILS_RANDR
+</a><a href="#h0-9" id="h0-9" class="i">+#define WMUTILS_RANDR
+</a> 
+ #include &lt;xcb/xcb.h&gt;
+ #include &lt;xcb/randr.h&gt;
+<a href="#h0-13" id="h0-13" class="i">+#include &lt;stdlib.h&gt;
+</a> #include &lt;err.h&gt;
+ 
+<a href="#h0-16" id="h0-16" class="d">-/* return the list of outputs provided by a provider */
+</a><a href="#h0-17" id="h0-17" class="i">+// Return the list of outputs provided by a provider.
+</a> int
+ get_outputs(xcb_connection_t* conn, xcb_randr_provider_t provider, xcb_randr_output_t** os);
+ 
+<a href="#h0-21" id="h0-21" class="d">-/* return an array of providers shown by randr */
+</a><a href="#h0-22" id="h0-22" class="i">+// Return an array of providers shown by randr.
+</a> int
+ get_providers(xcb_connection_t* con, xcb_screen_t* scrn, xcb_randr_provider_t **ps);
+ 
+<a href="#h0-26" id="h0-26" class="d">-uint8_t* get_output_name(xcb_connection_t* conn, xcb_randr_output_t output);
+</a><a href="#h0-27" id="h0-27" class="d">-int get_output_connection(xcb_connection_t* conn, xcb_randr_output_t output);
+</a><a href="#h0-28" id="h0-28" class="i">+// Return info about an output
+</a><a href="#h0-29" id="h0-29" class="i">+xcb_randr_get_output_info_reply_t *
+</a><a href="#h0-30" id="h0-30" class="i">+get_output_info(xcb_connection_t* conn, xcb_randr_output_t output);
+</a> 
+<a href="#h0-32" id="h0-32" class="d">-#endif /* end of include guard: RANDR_H__ */
+</a><a href="#h0-33" id="h0-33" class="i">+// Return an output&apos;s name
+</a><a href="#h0-34" id="h0-34" class="i">+uint8_t*
+</a><a href="#h0-35" id="h0-35" class="i">+get_output_name(xcb_connection_t* conn, xcb_randr_output_t output);
+</a><a href="#h0-36" id="h0-36" class="i">+
+</a><a href="#h0-37" id="h0-37" class="i">+int
+</a><a href="#h0-38" id="h0-38" class="i">+get_output_connection(xcb_connection_t* conn, xcb_randr_output_t output);
+</a><a href="#h0-39" id="h0-39" class="i">+
+</a><a href="#h0-40" id="h0-40" class="i">+// Return an output&apos;s crtc info
+</a><a href="#h0-41" id="h0-41" class="i">+xcb_randr_get_crtc_info_reply_t *
+</a><a href="#h0-42" id="h0-42" class="i">+get_output_crtc_info(xcb_connection_t* conn, xcb_randr_crtc_t crtc);
+</a><a href="#h0-43" id="h0-43" class="i">+
+</a><a href="#h0-44" id="h0-44" class="i">+xcb_window_t
+</a><a href="#h0-45" id="h0-45" class="i">+get_focused_window(xcb_connection_t *conn);
+</a><a href="#h0-46" id="h0-46" class="i">+
+</a><a href="#h0-47" id="h0-47" class="i">+xcb_get_geometry_reply_t*
+</a><a href="#h0-48" id="h0-48" class="i">+get_window_geometry(xcb_connection_t *conn, xcb_window_t window);
+</a><a href="#h0-49" id="h0-49" class="i">+
+</a><a href="#h0-50" id="h0-50" class="i">+#endif /* end of include guard: WMUTILS_RANDR */
+</a><b>diff --git a/<a href="../file/util.c.html">util.c</a> b/<a href="../file/util.c.html">util.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,38 +1,35 @@
+</a><a href="#h0-0" id="h0-0" class="d">-/* disputils util.c 04/15/2016 ???
+</a><a href="#h0-1" id="h0-1" class="d">- * tudurom &lt;unknown&gt;
+</a><a href="#h0-2" id="h0-2" class="d">- * ix &lt;arcetera@openmailbox.org
+</a><a href="#h0-3" id="h0-3" class="d">- */
+</a> #include &lt;err.h&gt;
+ #include &lt;stdlib.h&gt;
+ #include &lt;xcb/xcb.h&gt;
+<a href="#h0-7" id="h0-7" class="i">+
+</a> #include &quot;util.h&quot;
+ 
+ void
+ init_xcb(xcb_connection_t **con)
+<a href="#h0-12" id="h0-12" class="d">-{ /* initialize a connection to xcb */
+</a><a href="#h0-13" id="h0-13" class="i">+{
+</a>     *con = xcb_connect(NULL, NULL);
+     if (xcb_connection_has_error(*con))
+<a href="#h0-16" id="h0-16" class="d">-        errx(1, &quot;unable to connect to the X server&quot;);
+</a><a href="#h0-17" id="h0-17" class="i">+        errx(1, &quot;unable connect to the X server&quot;);
+</a> }
+ 
+ void
+ kill_xcb(xcb_connection_t **con)
+<a href="#h0-22" id="h0-22" class="d">-{ /* kill xcb */
+</a><a href="#h0-23" id="h0-23" class="i">+{
+</a>     if (*con)
+         xcb_disconnect(*con);
+ }
+ 
+ void
+ get_screen(xcb_connection_t *con, xcb_screen_t **scr)
+<a href="#h0-30" id="h0-30" class="d">-{ /* get the screen */
+</a><a href="#h0-31" id="h0-31" class="i">+{
+</a>     *scr = xcb_setup_roots_iterator(xcb_get_setup(con)).data;
+     if (*scr == NULL)
+<a href="#h0-34" id="h0-34" class="d">-        errx(1, &quot;unable to retrieve screen information&quot;);
+</a><a href="#h0-35" id="h0-35" class="i">+        errx(1, &quot;unable to retrieve screen informations&quot;);
+</a> }
+ 
+ int
+ exists(xcb_connection_t *con, xcb_window_t w)
+<a href="#h0-40" id="h0-40" class="d">-{ /* does it exist */
+</a><a href="#h0-41" id="h0-41" class="i">+{
+</a>     xcb_get_window_attributes_cookie_t c;
+     xcb_get_window_attributes_reply_t  *r;
+ 
+<a href="#h1" id="h1" class="h">@@ -42,6 +39,7 @@ exists(xcb_connection_t *con, xcb_window_t w)
+</a>     if (r == NULL)
+         return 0;
+ 
+<a href="#h1-3" id="h1-3" class="i">+    free(r);
+</a>     return 1;
+ }
+ 
+<a href="#h2" id="h2" class="h">@@ -102,3 +100,4 @@ get_windows(xcb_connection_t *con, xcb_window_t w, xcb_window_t **l)
+</a> 
+     return childnum;
+ }
+<a href="#h2-3" id="h2-3" class="i">+
+</a><b>diff --git a/<a href="../file/util.h.html">util.h</a> b/<a href="../file/util.h.html">util.h</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,8 +1,3 @@
+</a><a href="#h0-0" id="h0-0" class="d">-/* disputils util.h 04/15/2016 ???
+</a><a href="#h0-1" id="h0-1" class="d">- * tudurom &lt;unknown&gt;
+</a><a href="#h0-2" id="h0-2" class="d">- * ix &lt;arcetera@openmailbox.org&gt;
+</a><a href="#h0-3" id="h0-3" class="d">- */
+</a><a href="#h0-4" id="h0-4" class="d">-
+</a> #ifndef UTIL_H__
+ #define UTIL_H__
+ 
+<a href="#h1" id="h1" class="h">@@ -17,3 +12,4 @@ int mapped(xcb_connection_t *, xcb_window_t);
+</a> int ignore(xcb_connection_t *, xcb_window_t);
+ 
+ #endif
+<a href="#h1-3" id="h1-3" class="i">+
+</a></pre>
+</div>
+</body>
+</html>

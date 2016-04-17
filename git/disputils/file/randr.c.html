@@ -12,10 +12,10 @@
 <body>
 <table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
 </span></td></tr><tr><td></td><td>
-<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> randr.c (3321B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> randr.c (3624B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -123,15 +123,20 @@
 <a href="#l105" id="l105">105</a>
 <a href="#l106" id="l106">106</a>
 <a href="#l107" id="l107">107</a>
+<a href="#l108" id="l108">108</a>
+<a href="#l109" id="l109">109</a>
+<a href="#l110" id="l110">110</a>
+<a href="#l111" id="l111">111</a>
 </pre></td><td><pre>
-// randr.c
-//
-// Utilities for getting information about different types of displays.
+/* disputils randr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+ * ix &lt;arcetera@openmailbox.org
+ */
+
 #include &quot;randr.h&quot;
 
 int
 get_providers(xcb_connection_t* conn, xcb_screen_t* scrn, xcb_randr_provider_t **ps)
-{
+{ /* get all providers */
     xcb_randr_get_providers_cookie_t pc;
     pc = xcb_randr_get_providers(conn, scrn-&gt;root);
 
@@ -147,7 +152,7 @@ get_providers(xcb_connection_t* conn, xcb_screen_t* scrn, xcb_randr_provider_t *
 
 int
 get_outputs(xcb_connection_t* conn, xcb_randr_provider_t provider, xcb_randr_output_t** os)
-{
+{ /* get array of outputs */
     xcb_randr_get_provider_info_cookie_t pic;
     pic = xcb_randr_get_provider_info(conn, provider, 0);
 
@@ -161,10 +166,10 @@ get_outputs(xcb_connection_t* conn, xcb_randr_provider_t provider, xcb_randr_out
 }
 
 xcb_randr_get_output_info_reply_t *
-get_output_info(xcb_connection_t* conn, xcb_randr_output_t output){
+get_output_info(xcb_connection_t* conn, xcb_randr_output_t output)
+{ /* get info about the output like crtc, modes etc */
     xcb_randr_get_output_info_cookie_t oic;
 
-    // TODO: Figure out the use of the timestamp below.
     oic = xcb_randr_get_output_info(conn, output, 0);
     xcb_randr_get_output_info_reply_t *output_info_reply;
 
@@ -175,20 +180,23 @@ get_output_info(xcb_connection_t* conn, xcb_randr_output_t output){
     return output_info_reply;
 }
 
-uint8_t* get_output_name(xcb_connection_t* conn, xcb_randr_output_t output){
+uint8_t* get_output_name(xcb_connection_t* conn, xcb_randr_output_t output)
+{ /* get output&apos;s name, like LVDS-1 */
     xcb_randr_get_output_info_reply_t* r;
     r = get_output_info(conn, output);
     return xcb_randr_get_output_info_name(r);
 }
 
-int get_output_connection(xcb_connection_t* conn, xcb_randr_output_t output){
+int get_output_connection(xcb_connection_t* conn, xcb_randr_output_t output)
+{ /* returns 0 if the output is connected */
     xcb_randr_get_output_info_reply_t* r;
     r = get_output_info(conn, output);
     return r-&gt;connection;
 }
 
 xcb_randr_get_crtc_info_reply_t *
-get_output_crtc_info(xcb_connection_t* conn, xcb_randr_crtc_t crtc) {
+get_output_crtc_info(xcb_connection_t* conn, xcb_randr_crtc_t crtc)
+{ /* get crtc info (width, height, x, y, ...) */
     xcb_randr_get_crtc_info_cookie_t cic;
 
     cic = xcb_randr_get_crtc_info(conn, crtc, 0);
@@ -203,7 +211,7 @@ get_output_crtc_info(xcb_connection_t* conn, xcb_randr_crtc_t crtc) {
 
 xcb_window_t
 get_focused_window(xcb_connection_t *conn)
-{
+{ /* returns the id of the focused window */
     xcb_window_t win = 0;
     xcb_get_input_focus_cookie_t input_focus_cookie;
     xcb_get_input_focus_reply_t *input_focus_reply;
@@ -219,7 +227,7 @@ get_focused_window(xcb_connection_t *conn)
 
 xcb_get_geometry_reply_t*
 get_window_geometry(xcb_connection_t *conn, xcb_window_t window)
-{
+{ /* returns the geometry of a window (width, height, x, y) */
     xcb_get_geometry_cookie_t get_geometry_cookie;
     xcb_get_geometry_reply_t *get_geometry_reply;
 

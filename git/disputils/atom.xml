@@ -4,145 +4,289 @@
 <subtitle>wmutils/xrandr powered multimonitor display utils
 </subtitle>
 <entry>
-<id>acea2a93abde30d2b7beb7aa9dcc600c1cbfb929</id>
-<updated>2016-04-16T20:06:44Z</updated>
-<title type="text">indent</title>
-<link rel="alternate" type="text/html" href="commit/acea2a93abde30d2b7beb7aa9dcc600c1cbfb929.html" /><author><name>Tudor</name>
+<id>0ef9d82c260f6eda7fec61ca3beb79cc3e28bf76</id>
+<updated>2016-04-17T22:40:09Z</updated>
+<title type="text">clean it up</title>
+<link rel="alternate" type="text/html" href="commit/0ef9d82c260f6eda7fec61ca3beb79cc3e28bf76.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit acea2a93abde30d2b7beb7aa9dcc600c1cbfb929
-parent 2c4720cc85fda06c8ec5059345b94b9e7811346f
+<content type="text">commit 0ef9d82c260f6eda7fec61ca3beb79cc3e28bf76
+parent 8cc5d210612a5fd3706376e43c5737b067586232
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Sat Apr 16 20:06:44 2016
+Date:   Sun Apr 17 22:40:09 2016
 
-indent
+clean it up
 
 </content>
 </entry>
 <entry>
-<id>2c4720cc85fda06c8ec5059345b94b9e7811346f</id>
-<updated>2016-04-16T20:03:30Z</updated>
-<title type="text">Add pfd and clean code</title>
-<link rel="alternate" type="text/html" href="commit/2c4720cc85fda06c8ec5059345b94b9e7811346f.html" /><author><name>Tudor</name>
+<id>8cc5d210612a5fd3706376e43c5737b067586232</id>
+<updated>2016-04-17T22:35:07Z</updated>
+<title type="text">fix dattr usage</title>
+<link rel="alternate" type="text/html" href="commit/8cc5d210612a5fd3706376e43c5737b067586232.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit 2c4720cc85fda06c8ec5059345b94b9e7811346f
-parent 58aea1f10d8e38db7fc7f5b3aa260fced5fd4a85
+<content type="text">commit 8cc5d210612a5fd3706376e43c5737b067586232
+parent e09ae7c417e0720eb593b78504cf0a3647f9af61
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Sat Apr 16 20:03:30 2016
+Date:   Sun Apr 17 22:35:07 2016
 
-Add pfd and clean code
+fix dattr usage
 
 </content>
 </entry>
 <entry>
-<id>58aea1f10d8e38db7fc7f5b3aa260fced5fd4a85</id>
-<updated>2016-04-16T15:38:27Z</updated>
-<title type="text">add man pages</title>
-<link rel="alternate" type="text/html" href="commit/58aea1f10d8e38db7fc7f5b3aa260fced5fd4a85.html" /><author><name>Tudor</name>
+<id>e09ae7c417e0720eb593b78504cf0a3647f9af61</id>
+<updated>2016-04-17T22:34:07Z</updated>
+<title type="text">remove statics</title>
+<link rel="alternate" type="text/html" href="commit/e09ae7c417e0720eb593b78504cf0a3647f9af61.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit 58aea1f10d8e38db7fc7f5b3aa260fced5fd4a85
-parent 5815b2648ba7226688fdb7468e2cc0088fcf7efc
+<content type="text">commit e09ae7c417e0720eb593b78504cf0a3647f9af61
+parent 3c7e490963856c659530f12abe9a4088f9fd7fe5
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Sat Apr 16 15:38:27 2016
+Date:   Sun Apr 17 22:34:07 2016
 
-add man pages
+remove statics
 
 </content>
 </entry>
 <entry>
-<id>5815b2648ba7226688fdb7468e2cc0088fcf7efc</id>
-<updated>2016-04-16T15:13:00Z</updated>
-<title type="text">rename lsm to lsd</title>
-<link rel="alternate" type="text/html" href="commit/5815b2648ba7226688fdb7468e2cc0088fcf7efc.html" /><author><name>Tudor</name>
+<id>3c7e490963856c659530f12abe9a4088f9fd7fe5</id>
+<updated>2016-04-17T22:27:20Z</updated>
+<title type="text">Begin cleanup</title>
+<link rel="alternate" type="text/html" href="commit/3c7e490963856c659530f12abe9a4088f9fd7fe5.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit 5815b2648ba7226688fdb7468e2cc0088fcf7efc
-parent ea25039534747f4a57707d40731fcfda94a57b49
+<content type="text">commit 3c7e490963856c659530f12abe9a4088f9fd7fe5
+parent 44a57042e9181fb0a3d195025e2903127628b5c5
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Sat Apr 16 15:13:00 2016
+Date:   Sun Apr 17 22:27:20 2016
 
-rename lsm to lsd
+Begin cleanup
 
 </content>
 </entry>
 <entry>
-<id>ea25039534747f4a57707d40731fcfda94a57b49</id>
-<updated>2016-04-16T15:07:20Z</updated>
-<title type="text">add: dattr.c</title>
-<link rel="alternate" type="text/html" href="commit/ea25039534747f4a57707d40731fcfda94a57b49.html" /><author><name>Tudor</name>
+<id>44a57042e9181fb0a3d195025e2903127628b5c5</id>
+<updated>2016-04-17T03:04:00Z</updated>
+<title type="text">our bro pfd.c is here, lads</title>
+<link rel="alternate" type="text/html" href="commit/44a57042e9181fb0a3d195025e2903127628b5c5.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit ea25039534747f4a57707d40731fcfda94a57b49
-parent 67db9f69e6bb4077e7ef767967e8794d938619f1
+<content type="text">commit 44a57042e9181fb0a3d195025e2903127628b5c5
+parent 5d529e2cc8d8a90cb6b88eb710404d3e5559a627
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Sat Apr 16 15:07:20 2016
+Date:   Sun Apr 17 03:04:00 2016
 
-add: dattr.c
+our bro pfd.c is here, lads
 
 </content>
 </entry>
 <entry>
-<id>67db9f69e6bb4077e7ef767967e8794d938619f1</id>
-<updated>2016-04-13T15:59:57Z</updated>
-<title type="text">README</title>
-<link rel="alternate" type="text/html" href="commit/67db9f69e6bb4077e7ef767967e8794d938619f1.html" /><author><name>Tudor</name>
+<id>5d529e2cc8d8a90cb6b88eb710404d3e5559a627</id>
+<updated>2016-04-17T02:47:48Z</updated>
+<title type="text">rewrite take 2</title>
+<link rel="alternate" type="text/html" href="commit/5d529e2cc8d8a90cb6b88eb710404d3e5559a627.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit 67db9f69e6bb4077e7ef767967e8794d938619f1
-parent b862fb23a3f898a97d9223687cf82ec0355a374b
+<content type="text">commit 5d529e2cc8d8a90cb6b88eb710404d3e5559a627
+parent edcf18b25f929bf8be9b6a2a7df7921730f0443a
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Wed Apr 13 15:59:57 2016
+Date:   Sun Apr 17 02:47:48 2016
 
-README
+rewrite take 2
 
 </content>
 </entry>
 <entry>
-<id>b862fb23a3f898a97d9223687cf82ec0355a374b</id>
-<updated>2016-04-13T15:50:37Z</updated>
-<title type="text">Added dattr draft</title>
-<link rel="alternate" type="text/html" href="commit/b862fb23a3f898a97d9223687cf82ec0355a374b.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
+<id>edcf18b25f929bf8be9b6a2a7df7921730f0443a</id>
+<updated>2016-04-15T12:59:43Z</updated>
+<title type="text">begin to 26c8/knf</title>
+<link rel="alternate" type="text/html" href="commit/edcf18b25f929bf8be9b6a2a7df7921730f0443a.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
 </author>
-<content type="text">commit b862fb23a3f898a97d9223687cf82ec0355a374b
-parent d7a42d05f8821ffea69ce61d462d34da5326544c
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Wed Apr 13 15:50:37 2016
+<content type="text">commit edcf18b25f929bf8be9b6a2a7df7921730f0443a
+parent 6a10d27cf4c21bba82404e7dfe6987d01e899ed1
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Fri Apr 15 12:59:43 2016
 
-Added dattr draft
+begin to 26c8/knf
 
 </content>
 </entry>
 <entry>
-<id>d7a42d05f8821ffea69ce61d462d34da5326544c</id>
-<updated>2016-04-12T19:06:47Z</updated>
-<title type="text">Compile with -O2</title>
-<link rel="alternate" type="text/html" href="commit/d7a42d05f8821ffea69ce61d462d34da5326544c.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
+<id>6a10d27cf4c21bba82404e7dfe6987d01e899ed1</id>
+<updated>2016-04-15T12:45:22Z</updated>
+<title type="text">init rewrite commit</title>
+<link rel="alternate" type="text/html" href="commit/6a10d27cf4c21bba82404e7dfe6987d01e899ed1.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
 </author>
-<content type="text">commit d7a42d05f8821ffea69ce61d462d34da5326544c
-parent d4d9ee26b657b4987c353f13cb406115bf11aaa8
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Tue Apr 12 19:06:47 2016
+<content type="text">commit 6a10d27cf4c21bba82404e7dfe6987d01e899ed1
+parent bf3b3aa7773ccf4505038a748c183626e626d911
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Fri Apr 15 12:45:22 2016
 
-Compile with -O2
+init rewrite commit
 
 </content>
 </entry>
 <entry>
-<id>d4d9ee26b657b4987c353f13cb406115bf11aaa8</id>
-<updated>2016-04-12T18:58:14Z</updated>
-<title type="text">Initial commit</title>
-<link rel="alternate" type="text/html" href="commit/d4d9ee26b657b4987c353f13cb406115bf11aaa8.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
+<id>bf3b3aa7773ccf4505038a748c183626e626d911</id>
+<updated>2016-03-30T20:43:05Z</updated>
+<title type="text">docs: rename</title>
+<link rel="alternate" type="text/html" href="commit/bf3b3aa7773ccf4505038a748c183626e626d911.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
 </author>
-<content type="text">commit d4d9ee26b657b4987c353f13cb406115bf11aaa8
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Tue Apr 12 18:58:14 2016
+<content type="text">commit bf3b3aa7773ccf4505038a748c183626e626d911
+parent 73463c1feba933210bf68d4ba3142b4517ae95bc
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Wed Mar 30 20:43:05 2016
 
-Initial commit
+docs: rename
+
+</content>
+</entry>
+<entry>
+<id>73463c1feba933210bf68d4ba3142b4517ae95bc</id>
+<updated>2016-03-30T20:42:38Z</updated>
+<title type="text">docs: text</title>
+<link rel="alternate" type="text/html" href="commit/73463c1feba933210bf68d4ba3142b4517ae95bc.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit 73463c1feba933210bf68d4ba3142b4517ae95bc
+parent 6f7caa895ccd5657fbc031818044990f38eb9a3e
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Wed Mar 30 20:42:38 2016
+
+docs: text
+
+</content>
+</entry>
+<entry>
+<id>6f7caa895ccd5657fbc031818044990f38eb9a3e</id>
+<updated>2016-02-12T10:59:03Z</updated>
+<title type="text">style: alias update</title>
+<link rel="alternate" type="text/html" href="commit/6f7caa895ccd5657fbc031818044990f38eb9a3e.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit 6f7caa895ccd5657fbc031818044990f38eb9a3e
+parent f242d75c2d6a429ce6c82ea10339f7eb8fb9beeb
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Fri Feb 12 10:59:03 2016
+
+style: alias update
+
+</content>
+</entry>
+<entry>
+<id>f242d75c2d6a429ce6c82ea10339f7eb8fb9beeb</id>
+<updated>2016-02-12T10:47:17Z</updated>
+<title type="text">docs: fix the example</title>
+<link rel="alternate" type="text/html" href="commit/f242d75c2d6a429ce6c82ea10339f7eb8fb9beeb.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit f242d75c2d6a429ce6c82ea10339f7eb8fb9beeb
+parent 21a7d69390d2edd8d13b12c344e138c1c2d9849a
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Fri Feb 12 10:47:17 2016
+
+docs: fix the example
+
+</content>
+</entry>
+<entry>
+<id>21a7d69390d2edd8d13b12c344e138c1c2d9849a</id>
+<updated>2016-02-12T10:43:53Z</updated>
+<title type="text">docs: add an example</title>
+<link rel="alternate" type="text/html" href="commit/21a7d69390d2edd8d13b12c344e138c1c2d9849a.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit 21a7d69390d2edd8d13b12c344e138c1c2d9849a
+parent f8ed2989c17a4a9b7881a498f4eae581411c18df
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Fri Feb 12 10:43:53 2016
+
+docs: add an example
+
+</content>
+</entry>
+<entry>
+<id>f8ed2989c17a4a9b7881a498f4eae581411c18df</id>
+<updated>2016-02-12T08:42:11Z</updated>
+<title type="text">feat: rather than using awk or cut you can now use -xywh</title>
+<link rel="alternate" type="text/html" href="commit/f8ed2989c17a4a9b7881a498f4eae581411c18df.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit f8ed2989c17a4a9b7881a498f4eae581411c18df
+parent a649363b4967f50102fca5e18f41da12a325c66c
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Fri Feb 12 08:42:11 2016
+
+feat: rather than using awk or cut you can now use -xywh
+
+</content>
+</entry>
+<entry>
+<id>a649363b4967f50102fca5e18f41da12a325c66c</id>
+<updated>2016-02-12T08:35:08Z</updated>
+<title type="text">docs: markdown</title>
+<link rel="alternate" type="text/html" href="commit/a649363b4967f50102fca5e18f41da12a325c66c.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit a649363b4967f50102fca5e18f41da12a325c66c
+parent 630c277e8bdc1a21d06f82d35182fae31c8755f4
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Fri Feb 12 08:35:08 2016
+
+docs: markdown
+
+</content>
+</entry>
+<entry>
+<id>630c277e8bdc1a21d06f82d35182fae31c8755f4</id>
+<updated>2016-02-11T18:28:55Z</updated>
+<title type="text">style: add license</title>
+<link rel="alternate" type="text/html" href="commit/630c277e8bdc1a21d06f82d35182fae31c8755f4.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit 630c277e8bdc1a21d06f82d35182fae31c8755f4
+parent 2b83c033f718b5e0fad4f3a650585586e1b92fc0
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Thu Feb 11 18:28:55 2016
+
+style: add license
+
+</content>
+</entry>
+<entry>
+<id>2b83c033f718b5e0fad4f3a650585586e1b92fc0</id>
+<updated>2016-02-11T18:26:33Z</updated>
+<title type="text">fix: print current display for current window or $1</title>
+<link rel="alternate" type="text/html" href="commit/2b83c033f718b5e0fad4f3a650585586e1b92fc0.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit 2b83c033f718b5e0fad4f3a650585586e1b92fc0
+parent a39b58bdb6859b9a3879342a2ccf5b367c2e4c1a
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Thu Feb 11 18:26:33 2016
+
+fix: print current display for current window or $1
+
+</content>
+</entry>
+<entry>
+<id>a39b58bdb6859b9a3879342a2ccf5b367c2e4c1a</id>
+<updated>2016-02-11T18:20:16Z</updated>
+<title type="text">initial commit</title>
+<link rel="alternate" type="text/html" href="commit/a39b58bdb6859b9a3879342a2ccf5b367c2e4c1a.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit a39b58bdb6859b9a3879342a2ccf5b367c2e4c1a
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Thu Feb 11 18:20:16 2016
+
+initial commit
 
 </content>
 </entry>

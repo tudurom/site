@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>new things - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/e1810f35d42444602b6638ab0d84a6ab841db5aa.html">e1810f35d42444602b6638ab0d84a6ab841db5aa</a>
+<b>parent</b> <a href="../commit/c1c9798617c81be3ef55aab72911d18899d58e6b.html">c1c9798617c81be3ef55aab72911d18899d58e6b</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Apr 17 22:42:35 2016
+
+new things
+
+<b>Diffstat:</b>
+ firefox/.mozilla/firefox/g93vzeck.default/chrome/userChrome.css | 329 +++++++++-
+ scripts/.scripts/wall-e                                         |   4 +-
+ shell/.crosssh.sh                                               |   8 +-
+ startpage/startpage                                             |   2 +-
+ vimperator/.vimperator/colors/ocean.vimp                        |  34 +-
+ 5 files changed, 352 insertions(+), 25 deletions(-)
+<hr/><b>diff --git a/<a href="../file/firefox/.mozilla/firefox/g93vzeck.default/chrome/userChrome.css.html">firefox/.mozilla/firefox/g93vzeck.default/chrome/userChrome.css</a> b/<a href="../file/firefox/.mozilla/firefox/g93vzeck.default/chrome/userChrome.css.html">firefox/.mozilla/firefox/g93vzeck.default/chrome/userChrome.css</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,329 @@
+</a><a href="#h0-0" id="h0-0" class="i">+@namespace html url(http://www.w3.org/1999/xhtml);
+</a><a href="#h0-1" id="h0-1" class="i">+@namespace xul url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+</a><a href="#h0-2" id="h0-2" class="i">+/*
+</a><a href="#h0-3" id="h0-3" class="i">+    Author: Twily
+</a><a href="#h0-4" id="h0-4" class="i">+    Description: Minimal flat styled tabs for Australis
+</a><a href="#h0-5" id="h0-5" class="i">+    Compitability: Firefox Nightly v31.0a1 - v32.0a1 (Australis)
+</a><a href="#h0-6" id="h0-6" class="i">+       CSS Variables were introduced to Firefox in v29.0a1
+</a><a href="#h0-7" id="h0-7" class="i">+    Website: http://twily.info/
+</a><a href="#h0-8" id="h0-8" class="i">+
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+    Note: To enable the urlbar; search this css for:
+</a><a href="#h0-11" id="h0-11" class="i">+       &quot;make the url-bar visible&quot; and &quot;adjust margin-top to&quot;
+</a><a href="#h0-12" id="h0-12" class="i">+*/
+</a><a href="#h0-13" id="h0-13" class="i">+
+</a><a href="#h0-14" id="h0-14" class="i">+
+</a><a href="#h0-15" id="h0-15" class="i">+:root {
+</a><a href="#h0-16" id="h0-16" class="i">+    /* TAB VARIABLES */
+</a><a href="#h0-17" id="h0-17" class="i">+    /*--bg-light: #524C59; --bg-dark: #282333;*/
+</a><a href="#h0-18" id="h0-18" class="i">+    /*--fg-light: #D6CCDC; --fg-dark: #AAA5AD;*/
+</a><a href="#h0-19" id="h0-19" class="i">+    /*--bg-light: #273941; */
+</a><a href="#h0-20" id="h0-20" class="i">+    --bg-light: #20292d;
+</a><a href="#h0-21" id="h0-21" class="i">+    --bg-dark: #20292d;
+</a><a href="#h0-22" id="h0-22" class="i">+    --fg-light: #a66959;
+</a><a href="#h0-23" id="h0-23" class="i">+    --fg-dark: #60867f;
+</a><a href="#h0-24" id="h0-24" class="i">+    --tab-triangle-correction: -1px;
+</a><a href="#h0-25" id="h0-25" class="i">+    --tab-height: 28px; --tab-icon-size: 10px; --tab-strip-margin: -11px; --tab-overlap: -5px;
+</a><a href="#h0-26" id="h0-26" class="i">+    --tab-fonts: &quot;M+ 1m&quot;, monospace,&quot;Dejavu Sans&quot;; --tab-font-size: 10pt;
+</a><a href="#h0-27" id="h0-27" class="i">+    --tab-text-align: center; /* left | center | right */
+</a><a href="#h0-28" id="h0-28" class="i">+    --tab-triangle: block; /* block | none */
+</a><a href="#h0-29" id="h0-29" class="i">+
+</a><a href="#h0-30" id="h0-30" class="i">+    /* URL VARIABLES */
+</a><a href="#h0-31" id="h0-31" class="i">+    --url-background: var(--bg-light); --url-color: var(--fg-light);
+</a><a href="#h0-32" id="h0-32" class="i">+    --url-height: 18px; --url-right-margin: 5px;
+</a><a href="#h0-33" id="h0-33" class="i">+    --url-fonts: &quot;M+ 1m&quot;,monospace,&quot;Dejavu Sans&quot;; --url-font-size: 7pt;
+</a><a href="#h0-34" id="h0-34" class="i">+    --url-text-align: center; /* left | center | right */
+</a><a href="#h0-35" id="h0-35" class="i">+    --url-position: absolute; /* absolute == top (under tabs) || fixed == bottom of browser */
+</a><a href="#h0-36" id="h0-36" class="i">+
+</a><a href="#h0-37" id="h0-37" class="i">+    margin-bottom: 0 /* var(--url-height) */ !important;
+</a><a href="#h0-38" id="h0-38" class="i">+}
+</a><a href="#h0-39" id="h0-39" class="i">+
+</a><a href="#h0-40" id="h0-40" class="i">+#content browser {
+</a><a href="#h0-41" id="h0-41" class="i">+ margin-right: -14px !important;
+</a><a href="#h0-42" id="h0-42" class="i">+ overflow-y: scroll;
+</a><a href="#h0-43" id="h0-43" class="i">+ overflow-x: hidden;
+</a><a href="#h0-44" id="h0-44" class="i">+}
+</a><a href="#h0-45" id="h0-45" class="i">+
+</a><a href="#h0-46" id="h0-46" class="i">+@-moz-document url(chrome://browser/content/browser.xul) {
+</a><a href="#h0-47" id="h0-47" class="i">+    /* URL-BAR */
+</a><a href="#h0-48" id="h0-48" class="i">+    #back-button, #forward-button, #back-button *, #forward-button *, #identity-box, #urlbar-reload-button, #urlbar-stop-button, #urlbar-go-button,
+</a><a href="#h0-49" id="h0-49" class="i">+    #PanelUI-button, #bookmarks-menu-button, #downloads-button, #home-button, #stylish-toolbar-button, #abp-toolbarbutton,
+</a><a href="#h0-50" id="h0-50" class="i">+    #notification-popup-box, #new-tab-button, #private-browsing-indicator, #search-container, #nav-bar-overflow-button,
+</a><a href="#h0-51" id="h0-51" class="i">+    .tabs-newtab-button, .tab-close-button, .tab-close, .tab-throbber, .tab-background-start, .tab-background-end,
+</a><a href="#h0-52" id="h0-52" class="i">+    #window-controls /*, #alltabs-button, #tabview-button, .tab-icon-image */, .tab-icon-image:not([pinned]) { display: none !important; }
+</a><a href="#h0-53" id="h0-53" class="i">+
+</a><a href="#h0-54" id="h0-54" class="i">+    /* --- Uncomment the section below to enable the Back/Forward buttons [EXPERIMENTAL] (Requires url-bar) --- */
+</a><a href="#h0-55" id="h0-55" class="i">+    /*
+</a><a href="#h0-56" id="h0-56" class="i">+    #back-button, #forward-button { display: block !important; }
+</a><a href="#h0-57" id="h0-57" class="i">+    #back-button::before, #forward-button::before {
+</a><a href="#h0-58" id="h0-58" class="i">+        display: inline-block !important; position: absolute !important;
+</a><a href="#h0-59" id="h0-59" class="i">+        width: var(--url-height) !important; height: var(--url-height) !important; top: 0 !important;
+</a><a href="#h0-60" id="h0-60" class="i">+        text-align: center !important; line-height: var(--url-height) !important;
+</a><a href="#h0-61" id="h0-61" class="i">+    }
+</a><a href="#h0-62" id="h0-62" class="i">+    #back-button::before { content: &quot;&lt;&quot; !important; left: 0 !important; }
+</a><a href="#h0-63" id="h0-63" class="i">+    #forward-button::before { content: &quot;&gt;&quot; !important; left: calc(var(--url-height) + 8px) !important; }
+</a><a href="#h0-64" id="h0-64" class="i">+    /**/
+</a><a href="#h0-65" id="h0-65" class="i">+
+</a><a href="#h0-66" id="h0-66" class="i">+    /* --- Uncomment the section below to enable the New Tab Button [EXPERIMENTAL] --- */
+</a><a href="#h0-67" id="h0-67" class="i">+    /**/
+</a><a href="#h0-68" id="h0-68" class="i">+    .tabs-newtab-button { display: block !important; background: transparent !important; margin: 0 8px 0 0 !important; width: 24px !important; }
+</a><a href="#h0-69" id="h0-69" class="i">+    .tabs-newtab-button::before { content: &quot;+&quot; !important; font-family: Hack;}
+</a><a href="#h0-70" id="h0-70" class="i">+    /**/
+</a><a href="#h0-71" id="h0-71" class="i">+
+</a><a href="#h0-72" id="h0-72" class="i">+    .tab-drop-indicator { margin-bottom: 0 !important; }
+</a><a href="#h0-73" id="h0-73" class="i">+
+</a><a href="#h0-74" id="h0-74" class="i">+    #nav-bar {
+</a><a href="#h0-75" id="h0-75" class="i">+        position: var(--url-position) !important; bottom: 0 !important;
+</a><a href="#h0-76" id="h0-76" class="i">+        width: 100% !important; height: var(--url-height) !important;
+</a><a href="#h0-77" id="h0-77" class="i">+        min-height: var(--url-height) !important; max-height: var(--url-height) !important;
+</a><a href="#h0-78" id="h0-78" class="i">+        margin: 0 0 0 0 !important;
+</a><a href="#h0-79" id="h0-79" class="i">+
+</a><a href="#h0-80" id="h0-80" class="i">+        /* --- Uncomment the section below to attach the url-bar to the tab-bar [EXPERIMENTAL] (Require a line in &quot;#TabsToolbar&quot; below) --- */
+</a><a href="#h0-81" id="h0-81" class="i">+        /*
+</a><a href="#h0-82" id="h0-82" class="i">+        position: fixed !important; top: 0 !important; left: 0 !important;
+</a><a href="#h0-83" id="h0-83" class="i">+        width: 315px !important; max-width: 315px !important;
+</a><a href="#h0-84" id="h0-84" class="i">+        z-index: 100 !important;
+</a><a href="#h0-85" id="h0-85" class="i">+        /**/
+</a><a href="#h0-86" id="h0-86" class="i">+    }
+</a><a href="#h0-87" id="h0-87" class="i">+       #nav-bar-customization-target { width: 100% !important; }
+</a><a href="#h0-88" id="h0-88" class="i">+          #urlbar-wrapper {
+</a><a href="#h0-89" id="h0-89" class="i">+              width: 100% !important; margin-top: -0px !important; /* --- adjust margin-top to ~ -5px if you experience gap --- */
+</a><a href="#h0-90" id="h0-90" class="i">+              position: absolute !important; top: 0 !important; left: 0 !important;
+</a><a href="#h0-91" id="h0-91" class="i">+              border-bottom: 0px solid var(--bg-light) !important;
+</a><a href="#h0-92" id="h0-92" class="i">+          }
+</a><a href="#h0-93" id="h0-93" class="i">+             #urlbar {
+</a><a href="#h0-94" id="h0-94" class="i">+                 border: none !important; border-radius: 0 !important;
+</a><a href="#h0-95" id="h0-95" class="i">+                 margin: 0 0 0 0 !important; padding: 0 2px 0 2px !important;
+</a><a href="#h0-96" id="h0-96" class="i">+                 width: calc(100% + var(--url-right-margin)) !important;
+</a><a href="#h0-97" id="h0-97" class="i">+                 height: var(--url-height) !important; min-height: var(--url-height) !important;
+</a><a href="#h0-98" id="h0-98" class="i">+                 background: var(--url-background) !important; color: var(--url-color) !important;
+</a><a href="#h0-99" id="h0-99" class="i">+                 font-family: var(--url-fonts) !important; font-size: var(--url-font-size) !important;
+</a><a href="#h0-100" id="h0-100" class="i">+                 text-align: var(--url-text-align) !important;
+</a><a href="#h0-101" id="h0-101" class="i">+             }
+</a><a href="#h0-102" id="h0-102" class="i">+             /*#urlbar * { -moz-appearance: none !important; }*/
+</a><a href="#h0-103" id="h0-103" class="i">+
+</a><a href="#h0-104" id="h0-104" class="i">+    /* --- Comment out the section below to make the url-bar visible --- */
+</a><a href="#h0-105" id="h0-105" class="i">+    /**/
+</a><a href="#h0-106" id="h0-106" class="i">+    #nav-bar {
+</a><a href="#h0-107" id="h0-107" class="i">+        width: 0 !important; height: 0 !important;
+</a><a href="#h0-108" id="h0-108" class="i">+        position: fixed !important; left: -1px !important; top: -1px !important;
+</a><a href="#h0-109" id="h0-109" class="i">+        overflow: hidden !important; visibility: hidden !important;
+</a><a href="#h0-110" id="h0-110" class="i">+    }
+</a><a href="#h0-111" id="h0-111" class="i">+    /**/
+</a><a href="#h0-112" id="h0-112" class="i">+
+</a><a href="#h0-113" id="h0-113" class="i">+    /* TABS */
+</a><a href="#h0-114" id="h0-114" class="i">+    .tabbrowser-tab[fadein]:not([pinned]) { min-width: 50px !important; max-width: /*180px*/ 100% !important; }
+</a><a href="#h0-115" id="h0-115" class="i">+    tab {
+</a><a href="#h0-116" id="h0-116" class="i">+        font-family: var(--tab-fonts) !important;
+</a><a href="#h0-117" id="h0-117" class="i">+        height: var(--tab-height) !important; min-height: var(--tab-height) !important;
+</a><a href="#h0-118" id="h0-118" class="i">+        background: var(--bg-dark) !important; color: var(--fg-dark) !important;
+</a><a href="#h0-119" id="h0-119" class="i">+        font-size: var(--tab-font-size); text-shadow: none !important; text-align: var(--tab-text-align) !important;
+</a><a href="#h0-120" id="h0-120" class="i">+    }
+</a><a href="#h0-121" id="h0-121" class="i">+
+</a><a href="#h0-122" id="h0-122" class="i">+    .tabbrowser-tab label { padding: 0 14px 0 14px !important; }
+</a><a href="#h0-123" id="h0-123" class="i">+
+</a><a href="#h0-124" id="h0-124" class="i">+    #tabbrowser-tabs .tabbrowser-tab[pinned]            { width: 38px !important; }
+</a><a href="#h0-125" id="h0-125" class="i">+    #tabbrowser-tabs .tabbrowser-tab[pinned] label      { display: none !important; }
+</a><a href="#h0-126" id="h0-126" class="i">+
+</a><a href="#h0-127" id="h0-127" class="i">+    #tabbrowser-tabs .tabbrowser-tab .tab-icon-image {
+</a><a href="#h0-128" id="h0-128" class="i">+        margin: 0 -10px 0 14px !important;
+</a><a href="#h0-129" id="h0-129" class="i">+        width: var(--tab-icon-size) !important;
+</a><a href="#h0-130" id="h0-130" class="i">+        height: var(--tab-icon-size) !important;
+</a><a href="#h0-131" id="h0-131" class="i">+    }
+</a><a href="#h0-132" id="h0-132" class="i">+
+</a><a href="#h0-133" id="h0-133" class="i">+    .tabbrowser-tab *, .tabs-newtab-button * {
+</a><a href="#h0-134" id="h0-134" class="i">+        background: none !important; list-style-image: none !important;
+</a><a href="#h0-135" id="h0-135" class="i">+        margin: 0 0 0 0 !important; padding: 0 0 0 0 !important;
+</a><a href="#h0-136" id="h0-136" class="i">+        -moz-appearance: none !important;
+</a><a href="#h0-137" id="h0-137" class="i">+    }
+</a><a href="#h0-138" id="h0-138" class="i">+
+</a><a href="#h0-139" id="h0-139" class="i">+    #tabbrowser-tabs .tabbrowser-tab[pinned] .tab-stack { height: var(--tab-height) !important; width: 100% !important; }
+</a><a href="#h0-140" id="h0-140" class="i">+    #tabbrowser-tabs .tabbrowser-arrowscrollbox .box-inherit.scrollbox-innerbox { max-height: var(--tab-height) !important; }
+</a><a href="#h0-141" id="h0-141" class="i">+    .scrollbutton-up, .scrollbutton-down { border: none !important; }
+</a><a href="#h0-142" id="h0-142" class="i">+
+</a><a href="#h0-143" id="h0-143" class="i">+    .tabbrowser-tab[selected=&quot;true&quot;] .tab-stack {
+</a><a href="#h0-144" id="h0-144" class="i">+        background: var(--bg-light) !important; color: var(--fg-light) !important;
+</a><a href="#h0-145" id="h0-145" class="i">+        border-radius: 0px !important; position: relative !important;
+</a><a href="#h0-146" id="h0-146" class="i">+        /*border-top: 1px solid #dc52a5 !important;/**/
+</a><a href="#h0-147" id="h0-147" class="i">+    }
+</a><a href="#h0-148" id="h0-148" class="i">+    .tabbrowser-tab[selected=&quot;true&quot;]:before { /* Left Triangle (of selected tab) */
+</a><a href="#h0-149" id="h0-149" class="i">+        content: &apos;&apos; !important; display: var(--tab-triangle);
+</a><a href="#h0-150" id="h0-150" class="i">+        position: absolute !important; top: 0 !important; left: var(--tab-overlap) !important;
+</a><a href="#h0-151" id="h0-151" class="i">+        width: 0 !important; height: 0 !important;
+</a><a href="#h0-152" id="h0-152" class="i">+        border: none !important; z-index: 2 !important;
+</a><a href="#h0-153" id="h0-153" class="i">+
+</a><a href="#h0-154" id="h0-154" class="i">+        /**/
+</a><a href="#h0-155" id="h0-155" class="i">+        border-left: calc(var(--tab-height)/2) solid var(--bg-dark) !important;
+</a><a href="#h0-156" id="h0-156" class="i">+        border-top: calc((var(--tab-height)/2) - var(--tab-triangle-correction)) solid var(--bg-light) !important;
+</a><a href="#h0-157" id="h0-157" class="i">+        border-bottom: calc((var(--tab-height)/2) + var(--tab-triangle-correction)) solid var(--bg-light) !important;
+</a><a href="#h0-158" id="h0-158" class="i">+        /*
+</a><a href="#h0-159" id="h0-159" class="i">+        border-top: var(--tab-height) solid var(--bg-dark) !important;
+</a><a href="#h0-160" id="h0-160" class="i">+        border-right: calc(var(--tab-height)/2) solid var(--bg-light) !important;
+</a><a href="#h0-161" id="h0-161" class="i">+        /**/
+</a><a href="#h0-162" id="h0-162" class="i">+    }
+</a><a href="#h0-163" id="h0-163" class="i">+    .tabbrowser-tab[selected=&quot;true&quot;]:after { /* Right Triangle (of selected tab) */
+</a><a href="#h0-164" id="h0-164" class="i">+        content: &apos;&apos; !important; display: var(--tab-triangle);
+</a><a href="#h0-165" id="h0-165" class="i">+        position: absolute !important; top: 0 !important; right: var(--tab-overlap) !important;
+</a><a href="#h0-166" id="h0-166" class="i">+        width: 0 !important; height: 0 !important;
+</a><a href="#h0-167" id="h0-167" class="i">+        border: none !important; z-index: 2 !important;
+</a><a href="#h0-168" id="h0-168" class="i">+
+</a><a href="#h0-169" id="h0-169" class="i">+        /**/
+</a><a href="#h0-170" id="h0-170" class="i">+        border-right: calc(var(--tab-height)/2) solid var(--bg-dark) !important;
+</a><a href="#h0-171" id="h0-171" class="i">+        border-top: calc((var(--tab-height)/2) - var(--tab-triangle-correction)) solid var(--bg-light) !important;
+</a><a href="#h0-172" id="h0-172" class="i">+        border-bottom: calc((var(--tab-height)/2) + var(--tab-triangle-correction)) solid var(--bg-light) !important;
+</a><a href="#h0-173" id="h0-173" class="i">+        /*
+</a><a href="#h0-174" id="h0-174" class="i">+        border-top: var(--tab-height) solid var(--bg-dark) !important;
+</a><a href="#h0-175" id="h0-175" class="i">+        border-left: calc(var(--tab-height)/2) solid var(--bg-light) !important;
+</a><a href="#h0-176" id="h0-176" class="i">+        /**/
+</a><a href="#h0-177" id="h0-177" class="i">+    }
+</a><a href="#h0-178" id="h0-178" class="i">+
+</a><a href="#h0-179" id="h0-179" class="i">+    #TabsToolbar, #tabbrowser-tabs {
+</a><a href="#h0-180" id="h0-180" class="i">+        -moz-appearance: none !important;
+</a><a href="#h0-181" id="h0-181" class="i">+        height: var(--tab-height) !important; min-height: var(--tab-height)!important;
+</a><a href="#h0-182" id="h0-182" class="i">+        margin: 0 var(--tab-strip-margin) !important;
+</a><a href="#h0-183" id="h0-183" class="i">+        background: var(--bg-dark) !important;
+</a><a href="#h0-184" id="h0-184" class="i">+
+</a><a href="#h0-185" id="h0-185" class="i">+        /* --- Uncomment the line below to attach the url-bar to the tab-bar [EXPERIMENTAL] (Require a line in &quot;#nav-bar&quot; above) --- */
+</a><a href="#h0-186" id="h0-186" class="i">+        /*margin-left: 150px !important;/**/
+</a><a href="#h0-187" id="h0-187" class="i">+    }
+</a><a href="#h0-188" id="h0-188" class="i">+    #TabsToolbar::after { display: none !important; }
+</a><a href="#h0-189" id="h0-189" class="i">+    .tabbrowser-tab::before, .tabbrowser-tab::after { background: none !important; opacity: 1 !important; visibility: visible !important; }
+</a><a href="#h0-190" id="h0-190" class="i">+
+</a><a href="#h0-191" id="h0-191" class="i">+    /*browser, #navigator-toolbox { -moz-appearance: none !important; background: transparent !important; }*/
+</a><a href="#h0-192" id="h0-192" class="i">+
+</a><a href="#h0-193" id="h0-193" class="i">+    #navigator-toolbox::after { height: 0px !important; background: var(--bg-light) !important; }
+</a><a href="#h0-194" id="h0-194" class="i">+    #liberator-separator { height: 0px !important; background: var(--bg-light) !important; border-top: 0 !important; }
+</a><a href="#h0-195" id="h0-195" class="i">+
+</a><a href="#h0-196" id="h0-196" class="i">+    /* MENUS */
+</a><a href="#h0-197" id="h0-197" class="i">+    menuitem + menuseparator, menu + menuseparator/*, .menu-iconic-left*/ { display: none !important; }
+</a><a href="#h0-198" id="h0-198" class="i">+    /*menuitem &gt; label { margin-left: var(--tab-height) !important; }*/
+</a><a href="#h0-199" id="h0-199" class="i">+    menubar, menubutton, menulist, menu, menuitem {
+</a><a href="#h0-200" id="h0-200" class="i">+        font-family: var(--tab-fonts) !important; font-size: var(--tab-font-size);
+</a><a href="#h0-201" id="h0-201" class="i">+        height: var(--tab-height) !important;
+</a><a href="#h0-202" id="h0-202" class="i">+    }
+</a><a href="#h0-203" id="h0-203" class="i">+
+</a><a href="#h0-204" id="h0-204" class="i">+    /* HIDE ORANGE MENU BUTTON */
+</a><a href="#h0-205" id="h0-205" class="i">+    #appmenu-toolbar-button, #appmenu-button-container { display: none !important; }
+</a><a href="#h0-206" id="h0-206" class="i">+
+</a><a href="#h0-207" id="h0-207" class="i">+    /* HIDE STATUS BAR */
+</a><a href="#h0-208" id="h0-208" class="i">+    #status-bar, #statusbar-display, statuspanel { display: none !important; }
+</a><a href="#h0-209" id="h0-209" class="i">+
+</a><a href="#h0-210" id="h0-210" class="i">+    /* PRIVATE BROWSING ICON HIDE */
+</a><a href="#h0-211" id="h0-211" class="i">+    #main-window[privatebrowsingmode=temporary] #private-browsing-indicator,
+</a><a href="#h0-212" id="h0-212" class="i">+    #main-window[privatebrowsingmode=temporary] #private-browsing-indicator-titlebar { display: none !important; }
+</a><a href="#h0-213" id="h0-213" class="i">+
+</a><a href="#h0-214" id="h0-214" class="i">+    /* Vimperator icon style */
+</a><a href="#h0-215" id="h0-215" class="i">+    #liberator-statusline:not([customizing=&quot;true&quot;]) { margin: -2px -2px !important; padding: 0 0 !important; height: 24px !important; }
+</a><a href="#h0-216" id="h0-216" class="i">+    #liberator-statusline:not([customizing=&quot;true&quot;]) :-moz-any(toolbarbutton) { height: 100% !important; }
+</a><a href="#h0-217" id="h0-217" class="i">+    #tabview-button {
+</a><a href="#h0-218" id="h0-218" class="i">+        list-style-image: url(http://twily.info/img/tabview-button.png?v=2) /* 16x16 px image */ !important;
+</a><a href="#h0-219" id="h0-219" class="i">+        -moz-image-region: rect(0, 0, 0, 0) !important;
+</a><a href="#h0-220" id="h0-220" class="i">+    }
+</a><a href="#h0-221" id="h0-221" class="i">+
+</a><a href="#h0-222" id="h0-222" class="i">+    #liberator-completions { background: var(--bg-dark) !important; }
+</a><a href="#h0-223" id="h0-223" class="i">+
+</a><a href="#h0-224" id="h0-224" class="i">+    /* Tabgroup margin top fix */
+</a><a href="#h0-225" id="h0-225" class="i">+    #tab-view-deck #tab-view { margin: 24px 12px 12px 12px !important; }
+</a><a href="#h0-226" id="h0-226" class="i">+    #tab-view-deck { background: var(--bg-light) !important; }
+</a><a href="#h0-227" id="h0-227" class="i">+
+</a><a href="#h0-228" id="h0-228" class="i">+    window[sizemode=&quot;fullscreen&quot;] #liberator-statusline { display: none !important; }
+</a><a href="#h0-229" id="h0-229" class="i">+    window[sizemode=&quot;fullscreen&quot;] #liberator-bottombar  {
+</a><a href="#h0-230" id="h0-230" class="i">+        margin-top: -24px !important;
+</a><a href="#h0-231" id="h0-231" class="i">+        transition: 1s ease !important; transition-delay: .3s !important;
+</a><a href="#h0-232" id="h0-232" class="i">+    }
+</a><a href="#h0-233" id="h0-233" class="i">+    /*window[sizemode=&quot;fullscreen&quot;] #browser-panel        { margin-top: -1px !important; }*/
+</a><a href="#h0-234" id="h0-234" class="i">+}
+</a><a href="#h0-235" id="h0-235" class="i">+
+</a><a href="#h0-236" id="h0-236" class="i">+
+</a><a href="#h0-237" id="h0-237" class="i">+/* Tab Group Page Style (Ctrl+Shift+E) */
+</a><a href="#h0-238" id="h0-238" class="i">+@-moz-document url(chrome://browser/content/tabview.html) {
+</a><a href="#h0-239" id="h0-239" class="i">+    #content #bg, #actions, body { background: var(--bg-light) !important; }
+</a><a href="#h0-240" id="h0-240" class="i">+    body * { color: var(--fg-light) !important; }
+</a><a href="#h0-241" id="h0-241" class="i">+
+</a><a href="#h0-242" id="h0-242" class="i">+    body .groupItem, #content #actions, body .undo {
+</a><a href="#h0-243" id="h0-243" class="i">+        background: var(--bg-dark) !important;
+</a><a href="#h0-244" id="h0-244" class="i">+        border: 0 !important; border-radius: 0 !important; box-shadow: 0 0 0 0 !important;
+</a><a href="#h0-245" id="h0-245" class="i">+    }
+</a><a href="#h0-246" id="h0-246" class="i">+    #content #actions {
+</a><a href="#h0-247" id="h0-247" class="i">+        opacity: 0 !important; display: none !important; /* block | none */
+</a><a href="#h0-248" id="h0-248" class="i">+        transition: .3s ease-out !important;
+</a><a href="#h0-249" id="h0-249" class="i">+    }
+</a><a href="#h0-250" id="h0-250" class="i">+    #content #actions:hover { opacity: 1 !important; }
+</a><a href="#h0-251" id="h0-251" class="i">+
+</a><a href="#h0-252" id="h0-252" class="i">+    body .appTabTrayContainer { border: 0 !important; }
+</a><a href="#h0-253" id="h0-253" class="i">+    body .tab, body .tab .thumb {
+</a><a href="#h0-254" id="h0-254" class="i">+        box-shadow: 0 0 0 0 !important; border: 0 !important; border-radius: 0 !important;
+</a><a href="#h0-255" id="h0-255" class="i">+        background: transparent !important; padding : 0 !important;
+</a><a href="#h0-256" id="h0-256" class="i">+    }
+</a><a href="#h0-257" id="h0-257" class="i">+    body .tab .favicon { display: none !important; }
+</a><a href="#h0-258" id="h0-258" class="i">+    body .groupItem .name { border: 0 !important; }
+</a><a href="#h0-259" id="h0-259" class="i">+    body .tab .tab-title { padding-top: 2px !important; }
+</a><a href="#h0-260" id="h0-260" class="i">+}
+</a><a href="#h0-261" id="h0-261" class="i">+
+</a><a href="#h0-262" id="h0-262" class="i">+
+</a><a href="#h0-263" id="h0-263" class="i">+/* AGENT_SHEET */
+</a><a href="#h0-264" id="h0-264" class="i">+@-moz-document url-prefix(http://), url-prefix(https://), url-prefix(chrome://liberator/), url-prefix(file:///) {
+</a><a href="#h0-265" id="h0-265" class="i">+    /* SCROLLBAR */
+</a><a href="#h0-266" id="h0-266" class="i">+    scrollbar[orient=&quot;vertical&quot;], scrollbar thumb[orient=&quot;vertical&quot;],
+</a><a href="#h0-267" id="h0-267" class="i">+    scrollbar[orient=&quot;horizontal&quot;], scrollbar thumb[orient=&quot;horizontal&quot;] {
+</a><a href="#h0-268" id="h0-268" class="i">+        display: none !important; /* none = hide || block = show */
+</a><a href="#h0-269" id="h0-269" class="i">+    }
+</a><a href="#h0-270" id="h0-270" class="i">+
+</a><a href="#h0-271" id="h0-271" class="i">+    /*
+</a><a href="#h0-272" id="h0-272" class="i">+    scrollbar &gt; slider { -moz-appearance: none !important; }
+</a><a href="#h0-273" id="h0-273" class="i">+
+</a><a href="#h0-274" id="h0-274" class="i">+    scrollbar[orient=&quot;vertical&quot;] { margin: -3px -7px -3px -3px !important; }
+</a><a href="#h0-275" id="h0-275" class="i">+    scrollbar[orient=&apos;vertical&apos;] &gt; slider { background: #282333 !important; max-width: 5px !important; }
+</a><a href="#h0-276" id="h0-276" class="i">+    scrollbar[orient=&apos;vertical&apos;] &gt; slider &gt; thumb {
+</a><a href="#h0-277" id="h0-277" class="i">+        -moz-appearance: none !important;
+</a><a href="#h0-278" id="h0-278" class="i">+        background: #524C59 !important; border: 0 !important;
+</a><a href="#h0-279" id="h0-279" class="i">+        width: 5px !important; max-width: 5px !important;
+</a><a href="#h0-280" id="h0-280" class="i">+    }
+</a><a href="#h0-281" id="h0-281" class="i">+
+</a><a href="#h0-282" id="h0-282" class="i">+    scrollbar[orient=&quot;horizontal&quot;] { margin: -3px -3px -7px -3px !important; }
+</a><a href="#h0-283" id="h0-283" class="i">+    scrollbar[orient=&apos;horizontal&apos;] &gt; slider { background: #282333 !important; max-height: 5px !important; }
+</a><a href="#h0-284" id="h0-284" class="i">+    scrollbar[orient=&apos;horizontal&apos;] &gt; slider &gt; thumb {
+</a><a href="#h0-285" id="h0-285" class="i">+        -moz-appearance: none !important;
+</a><a href="#h0-286" id="h0-286" class="i">+        background: #524C59 !important; border: 0 !important;
+</a><a href="#h0-287" id="h0-287" class="i">+        height: 5px !important; max-height: 5px !important;
+</a><a href="#h0-288" id="h0-288" class="i">+    }
+</a><a href="#h0-289" id="h0-289" class="i">+
+</a><a href="#h0-290" id="h0-290" class="i">+    scrollbar &gt; scrollbarbutton { -moz-appearance: none !important; border: none !important; background: none !important; }
+</a><a href="#h0-291" id="h0-291" class="i">+    scrollbar[orient=&apos;vertical&apos;] &gt; scrollbarbutton { min-height: 0 !important; }
+</a><a href="#h0-292" id="h0-292" class="i">+    scrollbar[orient=&apos;horizontal&apos;] &gt; scrollbarbutton { min-width: 0 !important; }
+</a><a href="#h0-293" id="h0-293" class="i">+    /**/
+</a><a href="#h0-294" id="h0-294" class="i">+}
+</a><a href="#h0-295" id="h0-295" class="i">+
+</a><a href="#h0-296" id="h0-296" class="i">+
+</a><a href="#h0-297" id="h0-297" class="i">+/* background color around/behind pictures opened in firefox (require html namespace on top) */
+</a><a href="#h0-298" id="h0-298" class="i">+@-moz-document regexp(&quot;(https?://|file:///)(.*)\.(jpeg|jpg|gif|png|apng|svg|bmp|webm|webp)&quot;) {
+</a><a href="#h0-299" id="h0-299" class="i">+    body { background: var(--bg-light) !important; }
+</a><a href="#h0-300" id="h0-300" class="i">+    img.decoded { background-color: transparent !important; }
+</a><a href="#h0-301" id="h0-301" class="i">+}
+</a><a href="#h0-302" id="h0-302" class="i">+
+</a><a href="#h0-303" id="h0-303" class="i">+
+</a><a href="#h0-304" id="h0-304" class="i">+/* About:Blank background */
+</a><a href="#h0-305" id="h0-305" class="i">+@-moz-document url(about:blank) {
+</a><a href="#h0-306" id="h0-306" class="i">+    html,body { background: var(--bg-light) !important; }
+</a><a href="#h0-307" id="h0-307" class="i">+}
+</a><a href="#h0-308" id="h0-308" class="i">+
+</a><a href="#h0-309" id="h0-309" class="i">+/* about:stylish-edit toolbar style */
+</a><a href="#h0-310" id="h0-310" class="i">+@-moz-document regexp(&quot;about:stylish-edit.*&quot;) {
+</a><a href="#h0-311" id="h0-311" class="i">+    #main-area, textbox { background: var(--bg-light) !important; }
+</a><a href="#h0-312" id="h0-312" class="i">+    textbox, grid, columns, rows, separator { border: 0 !important; }
+</a><a href="#h0-313" id="h0-313" class="i">+
+</a><a href="#h0-314" id="h0-314" class="i">+    .devtools-toolbarbutton { background: var(--bg-dark) !important; color: var(--fg-light) !important; }
+</a><a href="#h0-315" id="h0-315" class="i">+}
+</a><a href="#h0-316" id="h0-316" class="i">+
+</a><a href="#h0-317" id="h0-317" class="i">+/*----- Fix for white flash on new tab -----*/
+</a><a href="#h0-318" id="h0-318" class="i">+tabbrowser tabpanels, #appcontent &gt; #content { background: var(--bg-light) !important; }
+</a><a href="#h0-319" id="h0-319" class="i">+
+</a><a href="#h0-320" id="h0-320" class="i">+
+</a><a href="#h0-321" id="h0-321" class="i">+/* Set dark text in light textareas */
+</a><a href="#h0-322" id="h0-322" class="i">+/*
+</a><a href="#h0-323" id="h0-323" class="i">+@-moz-document regexp(&quot;https?://(?!(localhost|twily.info|.*.4chan.org|.*.youtube.com)).*&quot;) {
+</a><a href="#h0-324" id="h0-324" class="i">+    input, textarea { color: #222628 !important; -moz-appearance: none !important; }
+</a><a href="#h0-325" id="h0-325" class="i">+}
+</a><a href="#h0-326" id="h0-326" class="i">+/**/
+</a><a href="#h0-327" id="h0-327" class="i">+
+</a><a href="#h0-328" id="h0-328" class="i">+/* vim: set ft=css :
+</a><b>diff --git a/<a href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a> b/<a href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a></b>
+<a href="#h0" id="h0" class="h">@@ -4,7 +4,7 @@
+</a> # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h0-3" id="h0-3" class="d">-DEFAULT_WALL=&quot;$HOME/wallpapers/bridge.jpg&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+DEFAULT_WALL=&quot;$HOME/wallpapers/tile.png&quot;
+</a> APRIL_WALL=&quot;$HOME/wallpapers/april_wall.png&quot;
+ 
+ if [ &quot;$(date +&quot;%d/%m&quot;)&quot; = &quot;01/04&quot; ]; then
+<a href="#h1" id="h1" class="h">@@ -14,7 +14,7 @@ elif [ $# -ge 1 ]; then
+</a>   test -n $2 &amp;&amp; option=&quot;$2&quot;
+   feh --bg-${option} $1
+ else
+<a href="#h1-3" id="h1-3" class="d">-  feh --bg-fill $DEFAULT_WALL
+</a><a href="#h1-4" id="h1-4" class="i">+  feh --bg-tile $DEFAULT_WALL
+</a> fi
+ 
+ # vim: set ft=sh :
+<b>diff --git a/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a> b/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -18,6 +18,7 @@ export VISUAL=nvim
+</a> export GOPATH=$HOME/Go
+ export PATH=&quot;$HOME/.scripts:.scripts/clint:$GOPATH/bin:$PATH&quot;
+ export PATH=$HOME/.node/bin:$PATH
+<a href="#h0-3" id="h0-3" class="i">+export PATH=$HOME/.gem/ruby/2.3/bin:$PATH
+</a> 
+ # Aliases aka hacks
+ alias :q=exit
+<a href="#h1" id="h1" class="h">@@ -64,10 +65,7 @@ pi() {
+</a>   ssh 192.168.12.122 $1
+ }
+ 
+<a href="#h1-3" id="h1-3" class="d">-iotek() {
+</a><a href="#h1-4" id="h1-4" class="d">-  ssh vps.iotek.org $1
+</a><a href="#h1-5" id="h1-5" class="i">+arcetera() {
+</a><a href="#h1-6" id="h1-6" class="i">+  ssh yuuko $1
+</a> }
+ 
+<a href="#h1-9" id="h1-9" class="d">-z3bra() {
+</a><a href="#h1-10" id="h1-10" class="d">-  ssh phobos.z3bra.org $1
+</a><a href="#h1-11" id="h1-11" class="d">-}
+</a><b>diff --git a/<a href="../file/startpage/startpage.html">startpage/startpage</a> b/<a href="../file/startpage/startpage.html">startpage/startpage</a></b>
+<a href="#h0" id="h0" class="h">@@ -1 +1 @@
+</a><a href="#h0-0" id="h0-0" class="d">-Subproject commit e30cc982f27e074e8b646060e23ff0018f6fefbe
+</a><a href="#h0-1" id="h0-1" class="i">+Subproject commit d1162ffea3087e35e58d0357adc06a45d28d40a1
+</a><b>diff --git a/<a href="../file/vimperator/.vimperator/colors/ocean.vimp.html">vimperator/.vimperator/colors/ocean.vimp</a> b/<a href="../file/vimperator/.vimperator/colors/ocean.vimp.html">vimperator/.vimperator/colors/ocean.vimp</a></b>
+<a href="#h0" id="h0" class="h">@@ -5,23 +5,23 @@
+</a> &quot; ==Ocean_Colorscheme_Settings==
+ 
+ &quot;StatusLine settings
+<a href="#h0-3" id="h0-3" class="d">-hi StatusLine           color: #c0c5ce; background: #1d2a30; font-size: 8pt; font: M+ 1m;
+</a><a href="#h0-4" id="h0-4" class="d">-&quot; hi StatusLineBroken     color: #c0c5ce; background: #afafff; font-size: 8pt; font: M+ 1m;
+</a><a href="#h0-5" id="h0-5" class="d">-&quot; hi StatusLineSecure     color: #c0c5ce; background: #afffaf; font-size: 8pt; font: M+ 1m;
+</a><a href="#h0-6" id="h0-6" class="i">+hi StatusLine           color: #c4c4b5; background: #20292d; font-size: 8pt; font: M+ 1m;
+</a><a href="#h0-7" id="h0-7" class="i">+&quot; hi StatusLineBroken     color: #c4c4b5; background: #afafff; font-size: 8pt; font: M+ 1m;
+</a><a href="#h0-8" id="h0-8" class="i">+&quot; hi StatusLineSecure     color: #c4c4b5; background: #afffaf; font-size: 8pt; font: M+ 1m;
+</a> 
+ &quot;CmdLine settings excluding Gradient
+<a href="#h0-11" id="h0-11" class="d">-hi Normal               color: #c0c5ce; background: #1d2a30;
+</a><a href="#h0-12" id="h0-12" class="d">-hi CmdLine              background:#273941; color: #c0c5ce; font-family: M+ 1m; font-size: 8pt;
+</a><a href="#h0-13" id="h0-13" class="i">+hi Normal               color: #c4c4b5; background: #20292d;
+</a><a href="#h0-14" id="h0-14" class="i">+hi CmdLine              background:#20292d; color: #c4c4b5; font-family: M+ 1m; font-size: 8pt;
+</a> hi CompDesc             color: #c6c6c6; width: 50%; font-family: M+ 1m; font-size: 8pt;
+ hi CompIcon             width: 16px; min-width: 16px; display: inline-block; margin-right: .5ex;
+<a href="#h0-17" id="h0-17" class="d">-hi CompItem[selected]   background: #273941; color: #c27171; font-family: M+ 1m;
+</a><a href="#h0-18" id="h0-18" class="i">+hi CompItem[selected]   background: #20292d; color: #a66959; font-family: M+ 1m;
+</a> &quot; hi CompLess             text-align: center; height: 0; line-height: .5ex; padding-top: 1ex;
+ &quot; hi CompMore             text-align: center; height: .5ex; line-height: .5ex; margin-bottom: -.5ex;
+ hi CompMsg              font-family: M+ 1m; font-style: monospace; margin-left: 16px; font-size: 8pt;
+ hi CompResult           width: 45%; overflow: hidden;font-size: 8pt; font-family: M+ 1m; font-weight: normal;
+<a href="#h0-23" id="h0-23" class="d">-hi CompTitle            color: #c0c5ce; background: #1d2a30; font-weight: bold; font-family: M+ 1m; font-size: 8pt;
+</a><a href="#h0-24" id="h0-24" class="i">+hi CompTitle            color: #c4c4b5; background: #20292d; font-weight: bold; font-family: M+ 1m; font-size: 8pt;
+</a> hi CompTitle&gt;*          padding: 0 .5ex; font-family: M+ 1m; font-size: 8pt;
+<a href="#h0-26" id="h0-26" class="d">-hi Filter               font-weight: bold;color: #c0c5ce; font-family: M+ 1m; font-size: 8pt;
+</a><a href="#h0-27" id="h0-27" class="i">+hi Filter               font-weight: bold;color: #c4c4b5; font-family: M+ 1m; font-size: 8pt;
+</a> 
+ &quot;When using tab complete in CmdLine, line separating Title from function and description
+ &quot; hi Gradient             height: 1px; margin-bottom: -1px; margin-top: -1px;
+<a href="#h1" id="h1" class="h">@@ -39,27 +39,27 @@ hi ErrorMsg             color: #2b303b; background: #bf616a; font-weight: bold;
+</a> &quot;hi Hint                 font-family: M+ 1m; font-size: 10px; font-weight: bold; color: #f6e9e9; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding 0px 1px 0px 1px;
+ hi Hint               	font-family: M+ 1m; font-size: 12px; font-weight: bold; color: #bf616a; background-color: #2b303b; border: solid 1px #65737e;
+ hi Hint::after          content: attr(number);
+<a href="#h1-3" id="h1-3" class="d">-hi HintActive           background: #8fa1b3; color: #eff1f5;
+</a><a href="#h1-4" id="h1-4" class="i">+hi HintActive           background: #8fa1b3; color: #c4c4b5;
+</a> hi HintElem             background-color: #2b303b; color: #a3be8c;
+ hi HintImage            opacity: .5;
+ 
+ &quot;Other important stuff
+<a href="#h1-9" id="h1-9" class="d">-hi InfoMsg              color: #c0c5ce; background: #2b303b;
+</a><a href="#h1-10" id="h1-10" class="i">+hi InfoMsg              color: #c4c4b5; background: #2b303b;
+</a> hi Message              white-space: normal; min-width: 100%; padding-left: 2em; text-indent: -2em; display: block;
+ hi WarningMsg           color: red; background: #2b303b;
+<a href="#h1-13" id="h1-13" class="d">-hi ModeMsg              color: #c0c5ce; background: #2b303b; &quot;CmdLine when Not in Use
+</a><a href="#h1-14" id="h1-14" class="d">-hi MoreMsg              color: #c0c5ce; background: #2b303b;
+</a><a href="#h1-15" id="h1-15" class="i">+hi ModeMsg              color: #c4c4b5; background: #2b303b; &quot;CmdLine when Not in Use
+</a><a href="#h1-16" id="h1-16" class="i">+hi MoreMsg              color: #c4c4b5; background: #2b303b;
+</a> hi NonText              color: lightblue; min-height: 16px; padding-left: 2px;
+<a href="#h1-18" id="h1-18" class="d">-hi Question             color: #eff1f5; background: #2b303b; font-weight: bold;
+</a><a href="#h1-19" id="h1-19" class="i">+hi Question             color: #c4c4b5; background: #2b303b; font-weight: bold;
+</a> &quot;hi Search               font-size: inherit; padding: 0; color: #2b303b; background-color: c0c5ce; padding: 0;
+ hi Function             color: lightgreen; background: #2b303b;
+ hi Number               color: tan; background: #2b303b
+<a href="#h1-23" id="h1-23" class="d">-hi String               color: #2b303b; background: #c0c5ce;
+</a><a href="#h1-24" id="h1-24" class="d">-hi Tag                  color: #2b303b; background: #c0c5ce;
+</a><a href="#h1-25" id="h1-25" class="d">-hi Title                color: #2b303b; background: #c0c5ce; font-weight: bold;
+</a><a href="#h1-26" id="h1-26" class="i">+hi String               color: #2b303b; background: #c4c4b5;
+</a><a href="#h1-27" id="h1-27" class="i">+hi Tag                  color: #2b303b; background: #c4c4b5;
+</a><a href="#h1-28" id="h1-28" class="i">+hi Title                color: #2b303b; background: #c4c4b5; font-weight: bold;
+</a> hi URL                  text-decoration: none; color: lightblue; background: inherit;
+ hi URL:hover            text-decoration: underline; cursor: pointer;
+<a href="#h1-31" id="h1-31" class="d">-hi LineNr               color: #c0c5ce; background: #2b303b;
+</a><a href="#h1-32" id="h1-32" class="i">+hi LineNr               color: #c4c4b5; background: #2b303b;
+</a> 
+ &quot;style -name statusbar chrome://* &lt;&lt;EOM
+ &quot;#status-bar statusbarpanel { padding: 0 1px !important; }
+</pre>
+</div>
+</body>
+</html>

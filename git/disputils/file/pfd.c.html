@@ -12,10 +12,10 @@
 <body>
 <table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
 </span></td></tr><tr><td></td><td>
-<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> pfd.c (2240B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> pfd.c (2333B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -105,7 +105,15 @@
 <a href="#l87" id="l87">87</a>
 <a href="#l88" id="l88">88</a>
 <a href="#l89" id="l89">89</a>
+<a href="#l90" id="l90">90</a>
+<a href="#l91" id="l91">91</a>
+<a href="#l92" id="l92">92</a>
+<a href="#l93" id="l93">93</a>
 </pre></td><td><pre>
+/* disputils pfd.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+ * ix &lt;arcetera@openmailbox.org
+ */
+
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;err.h&gt;
@@ -113,10 +121,10 @@
 #include &quot;randr.h&quot;
 #include &quot;util.h&quot;
 
-static xcb_connection_t *conn;
-static xcb_screen_t *scrn;
+xcb_connection_t *conn;
+xcb_screen_t *scrn;
 
-static void
+void
 usage(char *name)
 {
     printf(&quot;usage: %s \n&quot;, name);
@@ -146,13 +154,13 @@ main(int argc, char *argv[])
     init_xcb(&amp;conn);
     get_screen(conn, &amp;scrn);
 
-    // Get info about the focused window
+    /* Get info about the focused window */
     f_window = get_focused_window(conn);
     window_geometry = get_window_geometry(conn, f_window);
     window_x = window_geometry-&gt;x;
     window_y = window_geometry-&gt;y;
 
-    // Iterate through outputs
+    /* Iterate through outputs */
     xcb_randr_provider_t* providers;
     int p_len = get_providers(conn, scrn, &amp;providers);
 
@@ -165,7 +173,7 @@ main(int argc, char *argv[])
         while (j &lt; o_len &amp;&amp; !output_name) {
             output = os[j];
             if (get_output_connection(conn, output) == 0) {
-                // Check
+                /* Check */
                 output_info = get_output_info(conn, output);
                 output_crtc_info = get_output_crtc_info(conn, output_info-&gt;crtc);
 

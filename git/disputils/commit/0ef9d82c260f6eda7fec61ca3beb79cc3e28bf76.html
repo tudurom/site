@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>clean it up - disputils - wmutils/xrandr powered multimonitor display utils
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/0ef9d82c260f6eda7fec61ca3beb79cc3e28bf76.html">0ef9d82c260f6eda7fec61ca3beb79cc3e28bf76</a>
+<b>parent</b> <a href="../commit/8cc5d210612a5fd3706376e43c5737b067586232.html">8cc5d210612a5fd3706376e43c5737b067586232</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Apr 17 22:40:09 2016
+
+clean it up
+
+<b>Diffstat:</b>
+ dattr.c |  2 +-
+ lsd.c   |  2 +-
+ pfd.c   |  2 +-
+ randr.h | 12 ++++++------
+ util.c  |  2 +-
+ util.h  |  2 +-
+ 6 files changed, 11 insertions(+), 11 deletions(-)
+<hr/><b>diff --git a/<a href="../file/dattr.c.html">dattr.c</a> b/<a href="../file/dattr.c.html">dattr.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-/* disputils randr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+</a><a href="#h0-1" id="h0-1" class="i">+/* disputils dattr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+</a>  * ix &lt;arcetera@openmailbox.org
+  */
+ 
+<b>diff --git a/<a href="../file/lsd.c.html">lsd.c</a> b/<a href="../file/lsd.c.html">lsd.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-/* disputils randr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+</a><a href="#h0-1" id="h0-1" class="i">+/* disputils lsd.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+</a>  * ix &lt;arcetera@openmailbox.org
+  */
+ 
+<b>diff --git a/<a href="../file/pfd.c.html">pfd.c</a> b/<a href="../file/pfd.c.html">pfd.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-/* disputils randr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+</a><a href="#h0-1" id="h0-1" class="i">+/* disputils pfd.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+</a>  * ix &lt;arcetera@openmailbox.org
+  */
+ 
+<b>diff --git a/<a href="../file/randr.h.html">randr.h</a> b/<a href="../file/randr.h.html">randr.h</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-/* disputils randr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+</a><a href="#h0-1" id="h0-1" class="i">+/* disputils randr.h 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+</a>  * ix &lt;arcetera@openmailbox.org&gt;
+  */
+ 
+<a href="#h1" id="h1" class="h">@@ -10,21 +10,21 @@
+</a> #include &lt;stdlib.h&gt;
+ #include &lt;err.h&gt;
+ 
+<a href="#h1-3" id="h1-3" class="d">-// Return the list of outputs provided by a provider.
+</a><a href="#h1-4" id="h1-4" class="i">+/* Return the list of outputs provided by a provider. */
+</a> int get_outputs(xcb_connection_t* conn, xcb_randr_provider_t provider, xcb_randr_output_t** os);
+ 
+<a href="#h1-7" id="h1-7" class="d">-// Return an array of providers shown by randr.
+</a><a href="#h1-8" id="h1-8" class="i">+/* Return an array of providers shown by randr. */
+</a> int get_providers(xcb_connection_t* con, xcb_screen_t* scrn, xcb_randr_provider_t **ps);
+ 
+<a href="#h1-11" id="h1-11" class="d">-// Return info about an output
+</a><a href="#h1-12" id="h1-12" class="i">+/* Return info about an output */
+</a> xcb_randr_get_output_info_reply_t *get_output_info(xcb_connection_t* conn, xcb_randr_output_t output);
+ 
+<a href="#h1-15" id="h1-15" class="d">-// Return an output&apos;s name
+</a><a href="#h1-16" id="h1-16" class="i">+/* Return an output&apos;s name */
+</a> uint8_t* get_output_name(xcb_connection_t* conn, xcb_randr_output_t output);
+ 
+ int get_output_connection(xcb_connection_t* conn, xcb_randr_output_t output);
+ 
+<a href="#h1-21" id="h1-21" class="d">-// Return an output&apos;s crtc info
+</a><a href="#h1-22" id="h1-22" class="i">+/* Return an output&apos;s crtc info */
+</a> xcb_randr_get_crtc_info_reply_t * get_output_crtc_info(xcb_connection_t* conn, xcb_randr_crtc_t crtc);
+ 
+ xcb_window_t get_focused_window(xcb_connection_t *conn);
+<b>diff --git a/<a href="../file/util.c.html">util.c</a> b/<a href="../file/util.c.html">util.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-/* disputils randr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+</a><a href="#h0-1" id="h0-1" class="i">+/* disputils util.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+</a>  * ix &lt;arcetera@openmailbox.org
+  */
+ 
+<b>diff --git a/<a href="../file/util.h.html">util.h</a> b/<a href="../file/util.h.html">util.h</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-/* disputils randr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+</a><a href="#h0-1" id="h0-1" class="i">+/* disputils util.h 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+</a>  * ix &lt;arcetera@openmailbox.org
+  */
+ 
+</pre>
+</div>
+</body>
+</html>

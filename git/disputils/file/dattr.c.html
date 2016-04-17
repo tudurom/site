@@ -12,10 +12,10 @@
 <body>
 <table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
 </span></td></tr><tr><td></td><td>
-<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> dattr.c (2149B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> dattr.c (2260B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -104,7 +104,15 @@
 <a href="#l86" id="l86">86</a>
 <a href="#l87" id="l87">87</a>
 <a href="#l88" id="l88">88</a>
+<a href="#l89" id="l89">89</a>
+<a href="#l90" id="l90">90</a>
+<a href="#l91" id="l91">91</a>
+<a href="#l92" id="l92">92</a>
 </pre></td><td><pre>
+/* disputils dattr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+ * ix &lt;arcetera@openmailbox.org
+ */
+
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;string.h&gt;
@@ -113,13 +121,13 @@
 #include &quot;randr.h&quot;
 #include &quot;util.h&quot;
 
-static xcb_connection_t *conn;
-static xcb_screen_t *scrn;
+xcb_connection_t *conn;
+xcb_screen_t *scrn;
 
-static void
+void
 usage(char *name)
 {
-    printf(&quot;usage: [whxy] %s \n&quot;, name);
+    printf(&quot;usage: %s [whxy] &lt;display_id&gt; \n&quot;, name);
     exit(0);
 }
 
@@ -141,7 +149,7 @@ main(int argc, char *argv[])
     xcb_randr_provider_t* providers;
     int p_len = get_providers(conn, scrn, &amp;providers);
 
-    // get the id of the output
+    /* get the id of the output */
     int i = 0;
     while (i &lt; p_len &amp;&amp; output == -1) {
         xcb_randr_output_t *os;
@@ -163,13 +171,13 @@ main(int argc, char *argv[])
     }
     output_info = get_output_info(conn, output);
 
-    // get info about output
+    /* get info about output */
     screen_crtc = output_info-&gt;crtc;
     screen_crtc_info = get_output_crtc_info(conn, screen_crtc);
     if (!screen_crtc_info)
         errx(1, &quot;Output not in use&quot;);
 
-    // print info
+    /* print info */
     for (int i = 0; i &lt; strlen(argv[1]); i++) {
         switch (argv[1][i]) {
             case &apos;w&apos;:
@@ -185,7 +193,7 @@ main(int argc, char *argv[])
                 printf(&quot;%d&quot;, screen_crtc_info-&gt;y);
                 break;
         }
-        // print a space if more attributes come after
+        /* print a space if more attributes come after */
         putc(i + 1 &lt; strlen(argv[1]) ? &apos; &apos; : &apos;\n&apos;, stdout);
     }
     free(output_info);

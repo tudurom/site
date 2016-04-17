@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>color scheme: designr by dkeg - dotfiles - My small load of configuration files and scripts.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/c1c9798617c81be3ef55aab72911d18899d58e6b.html">c1c9798617c81be3ef55aab72911d18899d58e6b</a>
+<b>parent</b> <a href="../commit/f9cf6a197c4cef8cfe784f0d0093e867c7eb0d1c.html">f9cf6a197c4cef8cfe784f0d0093e867c7eb0d1c</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Apr 17 01:57:22 2016
+
+color scheme: designr by dkeg
+
+<b>Diffstat:</b>
+ compton/.compton.conf          |  2 +-
+ st                             |  2 +-
+ wallpapers/wallpapers/tile.png | Bin 0 -&gt; 436 bytes
+ wmrc/.scripts/focusw           |  4 ++--
+ wmrc/.scripts/statusbar        |  4 ++--
+ x/.Xresources                  |  2 +-
+ x/.xres/colors/designr         | 38 ++++++++++++++++++++++++++++++++++++++
+ 7 files changed, 45 insertions(+), 7 deletions(-)
+<hr/><b>diff --git a/<a href="../file/compton/.compton.conf.html">compton/.compton.conf</a> b/<a href="../file/compton/.compton.conf.html">compton/.compton.conf</a></b>
+<a href="#h0" id="h0" class="h">@@ -32,7 +32,7 @@ shadow-exclude = [
+</a> #menu-opacity = 0.8;
+ #inactive-opacity = 0.8;
+ # active-opacity = 0.8;
+<a href="#h0-3" id="h0-3" class="d">-frame-opacity = 0.8;
+</a><a href="#h0-4" id="h0-4" class="i">+# frame-opacity = 0.8;
+</a> #inactive-opacity-override = false;
+ #alpha-step = 0.06;
+ # inactive-dim = 0.2;
+<b>diff --git a/<a href="../file/st.html">st</a> b/<a href="../file/st.html">st</a></b>
+<a href="#h0" id="h0" class="h">@@ -1 +1 @@
+</a><a href="#h0-0" id="h0-0" class="d">-Subproject commit f9c8522d24f83bc52850cbd4942bc8ac097e333d
+</a><a href="#h0-1" id="h0-1" class="i">+Subproject commit f2f18b1ef054ec3758d361735b5f8485dd98ca76
+</a><b>diff --git a/<a href="../file/wallpapers/wallpapers/tile.png.html">wallpapers/wallpapers/tile.png</a> b/<a href="../file/wallpapers/wallpapers/tile.png.html">wallpapers/wallpapers/tile.png</a></b>
+Binary files differ
+<b>diff --git a/<a href="../file/wmrc/.scripts/focusw.html">wmrc/.scripts/focusw</a> b/<a href="../file/wmrc/.scripts/focusw.html">wmrc/.scripts/focusw</a></b>
+<a href="#h0" id="h0" class="h">@@ -5,8 +5,8 @@
+</a> #
+ 
+ BW=${BW:-3}                    # border width
+<a href="#h0-3" id="h0-3" class="d">-ACTIVE=${ACTIVE:-0x63a690}     # active border color
+</a><a href="#h0-4" id="h0-4" class="d">-INACTIVE=${INACTIVE:-0x456472} # inactive border color
+</a><a href="#h0-5" id="h0-5" class="i">+ACTIVE=${ACTIVE:-0xac8d6e}     # active border color
+</a><a href="#h0-6" id="h0-6" class="i">+INACTIVE=${INACTIVE:-0x4c5356} # inactive border color
+</a> FSFILE=${FSFILE:-~/.fwin}
+ 
+ # get current window id
+<b>diff --git a/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a> b/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a></b>
+<a href="#h0" id="h0" class="h">@@ -37,8 +37,8 @@ is_int() {
+</a>   C15=&quot;$(xrq &apos;*color15&apos;)&quot;
+   #CF=&quot;$(xrq &apos;*foreground&apos;)&quot;
+   CF=&quot;$C6&quot;
+<a href="#h0-3" id="h0-3" class="d">-  #CB=&quot;$(xrq &apos;*background&apos;)&quot;
+</a><a href="#h0-4" id="h0-4" class="d">-  CB=&quot;#1d2a30&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+  CB=&quot;$(xrq &apos;*.color0&apos;)&quot;
+</a><a href="#h0-6" id="h0-6" class="i">+  #CB=&quot;#1d2a30&quot;
+</a> 
+   PD_X=&quot;$(dattr -x $(ppd))&quot;
+   PD_Y=&quot;$(dattr -y $(ppd))&quot;
+<b>diff --git a/<a href="../file/x/.Xresources.html">x/.Xresources</a> b/<a href="../file/x/.Xresources.html">x/.Xresources</a></b>
+<a href="#h0" id="h0" class="h">@@ -6,5 +6,5 @@
+</a> 
+ #include &quot;.xres/xft&quot;
+ #include &quot;.xres/rofi&quot;
+<a href="#h0-3" id="h0-3" class="d">-#include &quot;.xres/colors/cloudy&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+#include &quot;.xres/colors/designr&quot;
+</a> #include &quot;.xres/urxvt&quot;
+<b>diff --git a/<a href="../file/x/.xres/colors/designr.html">x/.xres/colors/designr</a> b/<a href="../file/x/.xres/colors/designr.html">x/.xres/colors/designr</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,38 @@
+</a><a href="#h0-0" id="h0-0" class="i">+! special
+</a><a href="#h0-1" id="h0-1" class="i">+*.foreground:   #c4c4b5
+</a><a href="#h0-2" id="h0-2" class="i">+*.background:   #20292d
+</a><a href="#h0-3" id="h0-3" class="i">+*.cursorColor:  #c4c4b5
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+! black
+</a><a href="#h0-6" id="h0-6" class="i">+*.color0:       #2b3135
+</a><a href="#h0-7" id="h0-7" class="i">+*.color8:       #4c5356
+</a><a href="#h0-8" id="h0-8" class="i">+
+</a><a href="#h0-9" id="h0-9" class="i">+! red
+</a><a href="#h0-10" id="h0-10" class="i">+*.color1:       #a66959
+</a><a href="#h0-11" id="h0-11" class="i">+*.color9:       #a66959
+</a><a href="#h0-12" id="h0-12" class="i">+
+</a><a href="#h0-13" id="h0-13" class="i">+! green
+</a><a href="#h0-14" id="h0-14" class="i">+*.color2:       #769070
+</a><a href="#h0-15" id="h0-15" class="i">+*.color10:      #769070
+</a><a href="#h0-16" id="h0-16" class="i">+
+</a><a href="#h0-17" id="h0-17" class="i">+! yellow
+</a><a href="#h0-18" id="h0-18" class="i">+*.color3:       #ac8d6e
+</a><a href="#h0-19" id="h0-19" class="i">+*.color11:      #ac8d6e
+</a><a href="#h0-20" id="h0-20" class="i">+
+</a><a href="#h0-21" id="h0-21" class="i">+! blue
+</a><a href="#h0-22" id="h0-22" class="i">+*.color4:       #607a86
+</a><a href="#h0-23" id="h0-23" class="i">+*.color12:      #607a86
+</a><a href="#h0-24" id="h0-24" class="i">+
+</a><a href="#h0-25" id="h0-25" class="i">+! orange
+</a><a href="#h0-26" id="h0-26" class="i">+*.color5:       #80757e
+</a><a href="#h0-27" id="h0-27" class="i">+*.color13:      #80757e
+</a><a href="#h0-28" id="h0-28" class="i">+
+</a><a href="#h0-29" id="h0-29" class="i">+! cyan
+</a><a href="#h0-30" id="h0-30" class="i">+*.color6:       #60867f
+</a><a href="#h0-31" id="h0-31" class="i">+*.color14:      #60867f
+</a><a href="#h0-32" id="h0-32" class="i">+
+</a><a href="#h0-33" id="h0-33" class="i">+! white
+</a><a href="#h0-34" id="h0-34" class="i">+*.color7:       #c4c4b5
+</a><a href="#h0-35" id="h0-35" class="i">+*.color15:      #c4c4b5
+</a><a href="#h0-36" id="h0-36" class="i">+
+</a><a href="#h0-37" id="h0-37" class="i">+! vim: set ft=xdefaults :
+</a></pre>
+</div>
+</body>
+</html>

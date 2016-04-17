@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>docs: fix the example - disputils - wmutils/xrandr powered multimonitor display utils
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/f242d75c2d6a429ce6c82ea10339f7eb8fb9beeb.html">f242d75c2d6a429ce6c82ea10339f7eb8fb9beeb</a>
+<b>parent</b> <a href="../commit/21a7d69390d2edd8d13b12c344e138c1c2d9849a.html">21a7d69390d2edd8d13b12c344e138c1c2d9849a</a>
+<b>Author:</b> ix &lt;<a href="mailto:arcetera@openmailbox.org">arcetera@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Feb 12 10:47:17 2016
+
+docs: fix the example
+
+<b>Diffstat:</b>
+ README.md | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h0" id="h0" class="h">@@ -19,9 +19,11 @@ WW=$(wattr w $WID)
+</a> WH=$(wattr h $WID)
+ BW=$(wattr b $WID)
+ 
+<a href="#h0-3" id="h0-3" class="d">-# get monitor w/h
+</a><a href="#h0-4" id="h0-4" class="i">+# get monitor xywh
+</a> SW=$(dattr -w $MON)
+ SH=$(dattr -h $MON)
+<a href="#h0-7" id="h0-7" class="i">+SX=$(dattr -x $MON)
+</a><a href="#h0-8" id="h0-8" class="i">+SY=$(dattr -y $MON)
+</a> 
+ # move the window to the center
+ wtp $((SW/2 + SX - WW/2 - BW)) $((SH/2 - SY - WH/2 - BW)) $WW $WH $WID
+</pre>
+</div>
+</body>
+</html>
