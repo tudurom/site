@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>Makefile - disputils - wmutils/xrandr powered multimonitor display utils
+<title>ppd.c - disputils - wmutils/xrandr powered multimonitor display utils
 </title>
 <link rel="icon" type="image/png" href="../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> Makefile (666B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> ppd.c (675B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -52,53 +52,43 @@
 <a href="#l34" id="l34">34</a>
 <a href="#l35" id="l35">35</a>
 <a href="#l36" id="l36">36</a>
-<a href="#l37" id="l37">37</a>
-<a href="#l38" id="l38">38</a>
-<a href="#l39" id="l39">39</a>
-<a href="#l40" id="l40">40</a>
-<a href="#l41" id="l41">41</a>
 </pre></td><td><pre>
-include config.mk
+/* disputils ppd.c 04/17/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
+ * ix &lt;arcetera@openmailbox.org
+ */
 
-HDR = arg.h util.h randr.h
-SRC = lsd.c dattr.c pfd.c ppd.c
+#include &lt;err.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &quot;randr.h&quot;
+#include &quot;util.h&quot;
 
-OBJ = $(SRC:.c=.o)
-BIN = $(SRC:.c=)
+xcb_connection_t *conn;
+xcb_screen_t *scrn;
 
-.POSIX:
+void
+usage(char *name)
+{
+    printf(&quot;usage: %s \n&quot;, name);
+    exit(0);
+}
 
-all: binutils
+int
+main(int argc, char *argv[])
+{
+    xcb_randr_get_output_primary_reply_t *primary_output;
+    xcb_window_t root;
 
-binutils: $(BIN)
+    if (argc &gt; 1) usage(argv[0]);
+    init_xcb(&amp;conn);
+    get_screen(conn, &amp;scrn);
+    root = scrn-&gt;root;
 
-manpages:
-	cd man; $(MAKE) $(MFLAGS)
+    primary_output = get_primary_output(conn);
 
-$(OBJ): $(HDR) util.o randr.o
-
-.o:
-	@echo &quot;LD $@&quot;
-	@$(LD) $&lt; -o $@ $(LDFLAGS) util.o randr.o
-
-.c.o:
-	@echo &quot;CC $&lt;&quot;
-	@$(CC) -c $&lt; -o $@ $(CFLAGS)
-
-install: $(BIN)
-	mkdir -p $(DESTDIR)$(PREFIX)/bin/
-	cp -f $(BIN) $(DESTDIR)$(PREFIX)/bin/
-	cd man; $(MAKE) $(MFLAGS) install
-
-uninstall:
-	@echo &quot;uninstalling binaries&quot;
-	@for util in $(BIN); do \
-		rm -f $(DESTDIR)$(PREFIX)/bin/$$util; \
-	done
-	cd man; $(MAKE) $(MFLAGS) uninstall
-
-clean:
-	rm -f $(OBJ) $(BIN) util.o randr.o
+    printf(&quot;%s\n&quot;, get_output_name(conn, primary_output-&gt;output));
+    return 0;
+}
 </pre></td></tr></table>
 </div>
 </body>

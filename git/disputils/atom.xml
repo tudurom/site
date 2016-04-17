@@ -4,6 +4,150 @@
 <subtitle>wmutils/xrandr powered multimonitor display utils
 </subtitle>
 <entry>
+<id>244ee870ff21c24c807c265d26fed86cbc8c9d6c</id>
+<updated>2016-04-18T01:31:30Z</updated>
+<title type="text">fix license</title>
+<link rel="alternate" type="text/html" href="commit/244ee870ff21c24c807c265d26fed86cbc8c9d6c.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 244ee870ff21c24c807c265d26fed86cbc8c9d6c
+parent 3e0e0ab415c5a764a751798fce5a3282fe60f6c2
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Apr 18 01:31:30 2016
+
+fix license
+
+</content>
+</entry>
+<entry>
+<id>3e0e0ab415c5a764a751798fce5a3282fe60f6c2</id>
+<updated>2016-04-17T18:19:50Z</updated>
+<title type="text">docs: fix man makefile</title>
+<link rel="alternate" type="text/html" href="commit/3e0e0ab415c5a764a751798fce5a3282fe60f6c2.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit 3e0e0ab415c5a764a751798fce5a3282fe60f6c2
+parent b61e681e6ad489fb9045b19a7a75e864aeddacac
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Sun Apr 17 18:19:50 2016
+
+docs: fix man makefile
+
+</content>
+</entry>
+<entry>
+<id>b61e681e6ad489fb9045b19a7a75e864aeddacac</id>
+<updated>2016-04-17T18:19:20Z</updated>
+<title type="text">docs: fix dattr manpage, add ppd manpage</title>
+<link rel="alternate" type="text/html" href="commit/b61e681e6ad489fb9045b19a7a75e864aeddacac.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit b61e681e6ad489fb9045b19a7a75e864aeddacac
+parent 6e03e58ae2f972f35eefabacd6db5cce82c18abb
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Sun Apr 17 18:19:20 2016
+
+docs: fix dattr manpage, add ppd manpage
+
+</content>
+</entry>
+<entry>
+<id>6e03e58ae2f972f35eefabacd6db5cce82c18abb</id>
+<updated>2016-04-17T17:58:15Z</updated>
+<title type="text">Merge branch &apos;master&apos; of yuuko:/srv/repositories/disputils</title>
+<link rel="alternate" type="text/html" href="commit/6e03e58ae2f972f35eefabacd6db5cce82c18abb.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit 6e03e58ae2f972f35eefabacd6db5cce82c18abb
+parent 1f076f184045c05db5317542804d4656d58f8eff
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Sun Apr 17 17:58:15 2016
+
+Merge branch &apos;master&apos; of yuuko:/srv/repositories/disputils
+
+</content>
+</entry>
+<entry>
+<id>1f076f184045c05db5317542804d4656d58f8eff</id>
+<updated>2016-04-17T17:49:17Z</updated>
+<title type="text">fix: remove .openbsd</title>
+<link rel="alternate" type="text/html" href="commit/1f076f184045c05db5317542804d4656d58f8eff.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit 1f076f184045c05db5317542804d4656d58f8eff
+parent ab8bff25a3cfff18ce268539a31252ce21cfd299
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Sun Apr 17 17:49:17 2016
+
+fix: remove .openbsd
+
+</content>
+</entry>
+<entry>
+<id>ab8bff25a3cfff18ce268539a31252ce21cfd299</id>
+<updated>2016-04-17T17:14:35Z</updated>
+<title type="text">fix: remove junk</title>
+<link rel="alternate" type="text/html" href="commit/ab8bff25a3cfff18ce268539a31252ce21cfd299.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit ab8bff25a3cfff18ce268539a31252ce21cfd299
+parent 467c0930cfb37287919d97feee4cf01b26e2301a
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Sun Apr 17 17:14:35 2016
+
+fix: remove junk
+
+</content>
+</entry>
+<entry>
+<id>467c0930cfb37287919d97feee4cf01b26e2301a</id>
+<updated>2016-04-17T17:14:19Z</updated>
+<title type="text">style: use flags</title>
+<link rel="alternate" type="text/html" href="commit/467c0930cfb37287919d97feee4cf01b26e2301a.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit 467c0930cfb37287919d97feee4cf01b26e2301a
+parent 968935349ab8df30e6d5f5297642d173a01a721a
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Sun Apr 17 17:14:19 2016
+
+style: use flags
+
+</content>
+</entry>
+<entry>
+<id>968935349ab8df30e6d5f5297642d173a01a721a</id>
+<updated>2016-04-17T16:54:09Z</updated>
+<title type="text">style: header orders</title>
+<link rel="alternate" type="text/html" href="commit/968935349ab8df30e6d5f5297642d173a01a721a.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit 968935349ab8df30e6d5f5297642d173a01a721a
+parent 2faa7562f6c0cb6d33611f523f83fb90c3c7679e
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Sun Apr 17 16:54:09 2016
+
+style: header orders
+
+</content>
+</entry>
+<entry>
+<id>2faa7562f6c0cb6d33611f523f83fb90c3c7679e</id>
+<updated>2016-04-17T23:37:42Z</updated>
+<title type="text">add ppd: print primary output</title>
+<link rel="alternate" type="text/html" href="commit/2faa7562f6c0cb6d33611f523f83fb90c3c7679e.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 2faa7562f6c0cb6d33611f523f83fb90c3c7679e
+parent 0ef9d82c260f6eda7fec61ca3beb79cc3e28bf76
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun Apr 17 23:37:42 2016
+
+add ppd: print primary output
+
+</content>
+</entry>
+<entry>
 <id>0ef9d82c260f6eda7fec61ca3beb79cc3e28bf76</id>
 <updated>2016-04-17T22:40:09Z</updated>
 <title type="text">clean it up</title>

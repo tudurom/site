@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> randr.h (1195B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> randr.h (1427B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -50,6 +50,11 @@
 <a href="#l32" id="l32">32</a>
 <a href="#l33" id="l33">33</a>
 <a href="#l34" id="l34">34</a>
+<a href="#l35" id="l35">35</a>
+<a href="#l36" id="l36">36</a>
+<a href="#l37" id="l37">37</a>
+<a href="#l38" id="l38">38</a>
+<a href="#l39" id="l39">39</a>
 </pre></td><td><pre>
 /* disputils randr.h 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
  * ix &lt;arcetera@openmailbox.org&gt;
@@ -80,9 +85,14 @@ int get_output_connection(xcb_connection_t* conn, xcb_randr_output_t output);
 /* Return an output&apos;s crtc info */
 xcb_randr_get_crtc_info_reply_t * get_output_crtc_info(xcb_connection_t* conn, xcb_randr_crtc_t crtc);
 
+/* Return the id of the currently focused window */
 xcb_window_t get_focused_window(xcb_connection_t *conn);
 
+/* Return a window&apos;s geometry (width, height, x, y) */
 xcb_get_geometry_reply_t* get_window_geometry(xcb_connection_t *conn, xcb_window_t window);
+
+/* Return the primary output (display) */
+xcb_randr_get_output_primary_reply_t* get_primary_output(xcb_connection_t *conn);
 
 #endif /* end of include guard: WMUTILS_RANDR */
 </pre></td></tr></table>

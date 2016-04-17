@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> dattr.c (2260B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> dattr.c (2190B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -107,17 +107,16 @@
 <a href="#l89" id="l89">89</a>
 <a href="#l90" id="l90">90</a>
 <a href="#l91" id="l91">91</a>
-<a href="#l92" id="l92">92</a>
 </pre></td><td><pre>
 /* disputils dattr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
  * ix &lt;arcetera@openmailbox.org
  */
 
+#include &lt;err.h&gt;
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;string.h&gt;
-#include &lt;err.h&gt;
-
+#include &quot;arg.h&quot;
 #include &quot;randr.h&quot;
 #include &quot;util.h&quot;
 
@@ -178,24 +177,23 @@ main(int argc, char *argv[])
         errx(1, &quot;Output not in use&quot;);
 
     /* print info */
-    for (int i = 0; i &lt; strlen(argv[1]); i++) {
-        switch (argv[1][i]) {
-            case &apos;w&apos;:
-                printf(&quot;%d&quot;, screen_crtc_info-&gt;width);
-                break;
-            case &apos;h&apos;:
-                printf(&quot;%d&quot;, screen_crtc_info-&gt;height);
-                break;
-            case &apos;x&apos;:
-                printf(&quot;%d&quot;, screen_crtc_info-&gt;x);
-                break;
-            case &apos;y&apos;:
-                printf(&quot;%d&quot;, screen_crtc_info-&gt;y);
-                break;
-        }
-        /* print a space if more attributes come after */
-        putc(i + 1 &lt; strlen(argv[1]) ? &apos; &apos; : &apos;\n&apos;, stdout);
-    }
+    char *argv0;
+    ARGBEGIN {
+        case &apos;w&apos;:
+            printf(&quot;%d \n&quot;, screen_crtc_info-&gt;width);
+            break;
+        case &apos;h&apos;:
+            printf(&quot;%d \n&quot;, screen_crtc_info-&gt;height);
+            break;
+        case &apos;x&apos;:
+            printf(&quot;%d \n&quot;, screen_crtc_info-&gt;x);
+            break;
+        case &apos;y&apos;:
+            printf(&quot;%d \n&quot;, screen_crtc_info-&gt;y);
+            break;
+    } ARGEND;
+    /* print a space if more attributes come after */
+    /* putc(i + 1 &lt; strlen(argv[1]) ? &apos; &apos; : &apos;\n&apos;, stdout); */
     free(output_info);
     free(screen_crtc_info);
     kill_xcb(&amp;conn);

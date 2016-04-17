@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>Makefile - disputils - wmutils/xrandr powered multimonitor display utils
+<title>ppd.1 - disputils - wmutils/xrandr powered multimonitor display utils
 </title>
 <link rel="icon" type="image/png" href="../../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../../atom.xml" />
@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/README.html">README</a> | <a href="../../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> Makefile (314B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> ppd.1 (264B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -32,29 +32,23 @@
 <a href="#l14" id="l14">14</a>
 <a href="#l15" id="l15">15</a>
 <a href="#l16" id="l16">16</a>
-<a href="#l17" id="l17">17</a>
-<a href="#l18" id="l18">18</a>
-<a href="#l19" id="l19">19</a>
 </pre></td><td><pre>
-include ../config.mk
-
-MAN =           \
-	lsd.1   \
-	pfd.1   \
-	ppd.1   \
-	dattr.1 \
-
-.POSIX:
-
-install: $(MAN)
-	mkdir -p $(DESTDIR)$(MANPREFIX)/man1/
-	cp -f $(MAN) $(DESTDIR)$(MANPREFIX)/man1/
-
-uninstall:
-	@echo &quot;uninstalling manpages&quot;
-	@for page in $(MAN); do \
-		rm -f $(DESTDIR)$(MANPREFIX)/man1/$$page; \
-	done
+.Dd April 16, 2016
+.Dt PPD 1
+.Os disputils
+.Sh NAME
+.Nm pfd
+.Nd print primary display
+.Sh SYNOPSIS
+.Nm pfd
+.Sh DESCRIPTION
+Print the ID of the current primary display to
+.Dv stdout .
+.Sh ENVIRONMENT
+.Nm
+acts on the X display specified by the
+.Ev DISPLAY
+variable.
 </pre></td></tr></table>
 </div>
 </body>
