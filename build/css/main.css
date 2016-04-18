@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+@import url(https://fonts.googleapis.com/css?family=Share+Tech+Mono);
 @font-face {
   font-family: "Envy Code R";
   font-style: normal;
@@ -8,7 +8,7 @@
 
 body {
   background-color: #273941;
-  font-family: "Roboto Mono", monospace;
+  font-family: "Share Tech Mono", monospace;
 }
 
 main {

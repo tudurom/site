@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> make.js (2633B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> make.js (2634B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -117,7 +117,7 @@ function addFrame(n, defaultLink, defaultTitle) {
   r += &apos;&lt;/div&gt;&apos;;
   $(&apos;.container&apos;).append(r);
   updateNumbers();
-  $(&apos;#frame&apos; + n + &apos;#deleteFrame&apos;).on(&apos;click&apos;, function () {
+  $(&apos;#frame&apos; + n + &apos; #deleteFrame&apos;).on(&apos;click&apos;, function () {
     $(this.parentNode).remove();
     updateNumbers();
   });
