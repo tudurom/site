@@ -1,0 +1,13 @@
+#!/bin/sh -x
+
+REPO="$1"
+
+REPO_NAME="$(echo "$REPO" | cut -d'.' -f1)"
+
+cd /srv/http/git/${REPO_NAME}
+stagit /srv/git/${REPO}
+
+cd /srv/http/git
+stagit-index /srv/git/*.git > index.html
+
+echo "Done."

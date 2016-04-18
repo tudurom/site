@@ -4,6 +4,38 @@
 <subtitle>wmutils/xrandr powered multimonitor display utils
 </subtitle>
 <entry>
+<id>4273da71d12daaeabbf7a2121054ee8b5cb2d7e1</id>
+<updated>2016-04-18T19:15:03Z</updated>
+<title type="text">dattr: remove spaces from output</title>
+<link rel="alternate" type="text/html" href="commit/4273da71d12daaeabbf7a2121054ee8b5cb2d7e1.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 4273da71d12daaeabbf7a2121054ee8b5cb2d7e1
+parent b58de15e9174c69cc1f4bde6831a5dbc096fc325
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Apr 18 19:15:03 2016
+
+dattr: remove spaces from output
+
+</content>
+</entry>
+<entry>
+<id>b58de15e9174c69cc1f4bde6831a5dbc096fc325</id>
+<updated>2016-04-18T16:35:49Z</updated>
+<title type="text">randr.c: cleaned get_output_name</title>
+<link rel="alternate" type="text/html" href="commit/b58de15e9174c69cc1f4bde6831a5dbc096fc325.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit b58de15e9174c69cc1f4bde6831a5dbc096fc325
+parent 3ef47fa174c03b5f9e591c89a39de5b6c81ebca0
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Apr 18 16:35:49 2016
+
+randr.c: cleaned get_output_name
+
+</content>
+</entry>
+<entry>
 <id>3ef47fa174c03b5f9e591c89a39de5b6c81ebca0</id>
 <updated>2016-04-18T13:48:38Z</updated>
 <title type="text">dattr: removed useless cast</title>
