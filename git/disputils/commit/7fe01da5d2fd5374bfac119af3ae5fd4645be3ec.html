@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>randr.c: double check the name - disputils - wmutils/xrandr powered multimonitor display utils
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/disputils.git">git://thetudor.ddns.net/disputils.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/7fe01da5d2fd5374bfac119af3ae5fd4645be3ec.html">7fe01da5d2fd5374bfac119af3ae5fd4645be3ec</a>
+<b>parent</b> <a href="../commit/e4ef424d779ef7446ccec0ac87a7d02537c3bb65.html">e4ef424d779ef7446ccec0ac87a7d02537c3bb65</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Mon Apr 18 13:38:06 2016
+
+randr.c: double check the name
+
+<b>Diffstat:</b>
+ randr.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a href="../file/randr.c.html">randr.c</a> b/<a href="../file/randr.c.html">randr.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -55,8 +55,12 @@ get_output_info(xcb_connection_t* conn, xcb_randr_output_t output)
+</a> uint8_t* get_output_name(xcb_connection_t* conn, xcb_randr_output_t output)
+ { /* get output&apos;s name, like LVDS-1 */
+     xcb_randr_get_output_info_reply_t* r;
+<a href="#h0-3" id="h0-3" class="i">+    uint8_t *name;
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a>     r = get_output_info(conn, output);
+<a href="#h0-6" id="h0-6" class="d">-    return xcb_randr_get_output_info_name(r);
+</a><a href="#h0-7" id="h0-7" class="i">+    name = xcb_randr_get_output_info_name(r);
+</a><a href="#h0-8" id="h0-8" class="i">+    name[r-&gt;name_len] = &apos;\0&apos;;
+</a><a href="#h0-9" id="h0-9" class="i">+    return name;
+</a> }
+ 
+ int get_output_connection(xcb_connection_t* conn, xcb_randr_output_t output)
+</pre>
+</div>
+</body>
+</html>

@@ -11,11 +11,11 @@
 </head>
 <body>
 <table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
-</span></td></tr><tr><td></td><td>
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/disputils.git">git://thetudor.ddns.net/disputils.git</a></td></tr><tr><td></td><td>
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> lsd.c (1030B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> lsd.c (1492B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -66,6 +66,18 @@
 <a href="#l48" id="l48">48</a>
 <a href="#l49" id="l49">49</a>
 <a href="#l50" id="l50">50</a>
+<a href="#l51" id="l51">51</a>
+<a href="#l52" id="l52">52</a>
+<a href="#l53" id="l53">53</a>
+<a href="#l54" id="l54">54</a>
+<a href="#l55" id="l55">55</a>
+<a href="#l56" id="l56">56</a>
+<a href="#l57" id="l57">57</a>
+<a href="#l58" id="l58">58</a>
+<a href="#l59" id="l59">59</a>
+<a href="#l60" id="l60">60</a>
+<a href="#l61" id="l61">61</a>
+<a href="#l62" id="l62">62</a>
 </pre></td><td><pre>
 /* disputils lsd.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
  * ix &lt;arcetera@openmailbox.org
@@ -74,6 +86,7 @@
 #include &lt;err.h&gt;
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
 #include &quot;randr.h&quot;
 #include &quot;util.h&quot;
 
@@ -90,8 +103,8 @@ usage(char *name)
 void
 print_output(xcb_connection_t* conn, xcb_randr_output_t output)
 {
-    uint8_t* name = get_output_name(conn, output);
     if (get_output_connection(conn, output) == 0) {
+        const char* name = get_output_name(conn, output);
         printf(&quot;%s\n&quot;, name);
     }
 }
@@ -99,6 +112,13 @@ print_output(xcb_connection_t* conn, xcb_randr_output_t output)
 int
 main(int argc, char *argv[])
 {
+    xcb_randr_get_output_info_reply_t *output_info;
+    xcb_randr_get_crtc_info_reply_t *output_crtc_info;
+
+#ifdef __OpenBSD__
+    if (pledge (&quot;stdio rpath unix&quot;, NULL) == -1)
+        err(1, &quot;pledge&quot;);
+#endif
     if (argc &gt; 1) usage(argv[0]);
     init_xcb(&amp;conn);
     get_screen(conn, &amp;scrn);
@@ -112,7 +132,11 @@ main(int argc, char *argv[])
 
         /* Print screens from providers */
         for (int j = 0; j &lt; o_len; ++j) {
-            print_output(conn, os[j]);
+            output_info = get_output_info(conn, os[j]);
+            output_crtc_info = get_output_crtc_info(conn, output_info-&gt;crtc);
+            /* Print screen only if in use */
+            if (output_crtc_info != NULL)
+                print_output(conn, os[j]);
         }
     }
     return 0;

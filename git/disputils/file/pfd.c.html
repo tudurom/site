@@ -11,11 +11,11 @@
 </head>
 <body>
 <table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
-</span></td></tr><tr><td></td><td>
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/disputils.git">git://thetudor.ddns.net/disputils.git</a></td></tr><tr><td></td><td>
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> pfd.c (2332B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> pfd.c (2626B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -108,6 +108,14 @@
 <a href="#l90" id="l90">90</a>
 <a href="#l91" id="l91">91</a>
 <a href="#l92" id="l92">92</a>
+<a href="#l93" id="l93">93</a>
+<a href="#l94" id="l94">94</a>
+<a href="#l95" id="l95">95</a>
+<a href="#l96" id="l96">96</a>
+<a href="#l97" id="l97">97</a>
+<a href="#l98" id="l98">98</a>
+<a href="#l99" id="l99">99</a>
+<a href="#l100" id="l100">100</a>
 </pre></td><td><pre>
 /* disputils pfd.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
  * ix &lt;arcetera@openmailbox.org
@@ -116,6 +124,7 @@
 #include &lt;err.h&gt;
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
 #include &quot;randr.h&quot;
 #include &quot;util.h&quot;
 
@@ -132,6 +141,10 @@ usage(char *name)
 int
 main(int argc, char *argv[])
 {
+#ifdef __OpenBSD__
+    if (pledge (&quot;stdio rpath unix&quot;, NULL) == -1)
+        err(1, &quot;pledge&quot;);
+#endif
     xcb_window_t f_window;
     xcb_get_geometry_reply_t *window_geometry = NULL;
 
@@ -141,7 +154,7 @@ main(int argc, char *argv[])
     xcb_randr_get_output_info_reply_t *output_info = NULL;
     xcb_randr_get_crtc_info_reply_t *output_crtc_info = NULL;
     xcb_randr_output_t output;
-    uint8_t *output_name = NULL;
+    const char *output_name = NULL;
 
     uint16_t output_w;
     uint16_t output_h;
@@ -174,18 +187,19 @@ main(int argc, char *argv[])
                 /* Check */
                 output_info = get_output_info(conn, output);
                 output_crtc_info = get_output_crtc_info(conn, output_info-&gt;crtc);
+                if (output_crtc_info != NULL) {
+                    output_w = output_crtc_info-&gt;width;
+                    output_h = output_crtc_info-&gt;height;
+                    output_x = output_crtc_info-&gt;x;
+                    output_y = output_crtc_info-&gt;y;
 
-                output_w = output_crtc_info-&gt;width;
-                output_h = output_crtc_info-&gt;height;
-                output_x = output_crtc_info-&gt;x;
-                output_y = output_crtc_info-&gt;y;
+                    if (window_x &gt;= output_x &amp;&amp;
+                        window_y &gt;= output_y &amp;&amp;
+                        window_x &lt;= output_x + output_w &amp;&amp;
+                        window_y &lt;= output_y + output_h) {
 
-                if (window_x &gt;= output_x &amp;&amp;
-                    window_y &gt;= output_y &amp;&amp;
-                    window_x &lt;= output_x + output_w &amp;&amp;
-                    window_y &lt;= output_y + output_h) {
-
-                    output_name = get_output_name(conn, output);
+                        output_name = get_output_name(conn, output);
+                    }
                 }
             }
 
@@ -194,6 +208,8 @@ main(int argc, char *argv[])
 
         i++;
     }
+    if (!output_name)
+        errx(1, &quot;Cannot get output name&quot;);
     printf(&quot;%s\n&quot;, output_name);
     free(window_geometry);
     free(output_info);

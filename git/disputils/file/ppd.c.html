@@ -11,11 +11,11 @@
 </head>
 <body>
 <table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
-</span></td></tr><tr><td></td><td>
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/disputils.git">git://thetudor.ddns.net/disputils.git</a></td></tr><tr><td></td><td>
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> ppd.c (675B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> ppd.c (750B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -52,6 +52,9 @@
 <a href="#l34" id="l34">34</a>
 <a href="#l35" id="l35">35</a>
 <a href="#l36" id="l36">36</a>
+<a href="#l37" id="l37">37</a>
+<a href="#l38" id="l38">38</a>
+<a href="#l39" id="l39">39</a>
 </pre></td><td><pre>
 /* disputils ppd.c 04/17/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
  * ix &lt;arcetera@openmailbox.org
@@ -60,6 +63,7 @@
 #include &lt;err.h&gt;
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
 #include &quot;randr.h&quot;
 #include &quot;util.h&quot;
 
@@ -76,13 +80,15 @@ usage(char *name)
 int
 main(int argc, char *argv[])
 {
+#ifdef __OpenBSD__
+    if (pledge (&quot;stdio rpath unix&quot;, NULL) == -1)
+        err(1, &quot;pledge&quot;);
+#endif
     xcb_randr_get_output_primary_reply_t *primary_output;
-    xcb_window_t root;
 
     if (argc &gt; 1) usage(argv[0]);
     init_xcb(&amp;conn);
     get_screen(conn, &amp;scrn);
-    root = scrn-&gt;root;
 
     primary_output = get_primary_output(conn);
 

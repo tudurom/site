@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>style: header orders - disputils - wmutils/xrandr powered multimonitor display utils
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/4a8cc9ffa5419429b7adc207fab19acd4ed7166c.html">4a8cc9ffa5419429b7adc207fab19acd4ed7166c</a>
+<b>parent</b> <a href="../commit/ad604c2104fbb35c4dfc459f7247ddec4e7b92ce.html">ad604c2104fbb35c4dfc459f7247ddec4e7b92ce</a>
+<b>Author:</b> ix &lt;<a href="mailto:arcetera@openmailbox.org">arcetera@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Apr 17 16:54:09 2016
+
+style: header orders
+
+<b>Diffstat:</b>
+ dattr.c | 3 +--
+ lsd.c   | 3 +--
+ pfd.c   | 3 +--
+ ppd.c   | 3 +--
+ randr.c | 1 -
+ util.c  | 1 -
+ 6 files changed, 4 insertions(+), 10 deletions(-)
+<hr/><b>diff --git a/<a href="../file/dattr.c.html">dattr.c</a> b/<a href="../file/dattr.c.html">dattr.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -2,11 +2,10 @@
+</a>  * ix &lt;arcetera@openmailbox.org
+  */
+ 
+<a href="#h0-3" id="h0-3" class="i">+#include &lt;err.h&gt;
+</a> #include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+ #include &lt;string.h&gt;
+<a href="#h0-7" id="h0-7" class="d">-#include &lt;err.h&gt;
+</a><a href="#h0-8" id="h0-8" class="d">-
+</a> #include &quot;randr.h&quot;
+ #include &quot;util.h&quot;
+ 
+<b>diff --git a/<a href="../file/lsd.c.html">lsd.c</a> b/<a href="../file/lsd.c.html">lsd.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -2,10 +2,9 @@
+</a>  * ix &lt;arcetera@openmailbox.org
+  */
+ 
+<a href="#h0-3" id="h0-3" class="i">+#include &lt;err.h&gt;
+</a> #include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+<a href="#h0-6" id="h0-6" class="d">-#include &lt;err.h&gt;
+</a><a href="#h0-7" id="h0-7" class="d">-
+</a> #include &quot;randr.h&quot;
+ #include &quot;util.h&quot;
+ 
+<b>diff --git a/<a href="../file/pfd.c.html">pfd.c</a> b/<a href="../file/pfd.c.html">pfd.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -2,10 +2,9 @@
+</a>  * ix &lt;arcetera@openmailbox.org
+  */
+ 
+<a href="#h0-3" id="h0-3" class="i">+#include &lt;err.h&gt;
+</a> #include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+<a href="#h0-6" id="h0-6" class="d">-#include &lt;err.h&gt;
+</a><a href="#h0-7" id="h0-7" class="d">-
+</a> #include &quot;randr.h&quot;
+ #include &quot;util.h&quot;
+ 
+<b>diff --git a/<a href="../file/ppd.c.html">ppd.c</a> b/<a href="../file/ppd.c.html">ppd.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -2,10 +2,9 @@
+</a>  * ix &lt;arcetera@openmailbox.org
+  */
+ 
+<a href="#h0-3" id="h0-3" class="i">+#include &lt;err.h&gt;
+</a> #include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+<a href="#h0-6" id="h0-6" class="d">-#include &lt;err.h&gt;
+</a><a href="#h0-7" id="h0-7" class="d">-
+</a> #include &quot;randr.h&quot;
+ #include &quot;util.h&quot;
+ 
+<b>diff --git a/<a href="../file/randr.c.html">randr.c</a> b/<a href="../file/randr.c.html">randr.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -3,7 +3,6 @@
+</a>  */
+ 
+ #include &lt;xcb/randr.h&gt;
+<a href="#h0-3" id="h0-3" class="d">-
+</a> #include &quot;util.h&quot;
+ #include &quot;randr.h&quot;
+ 
+<b>diff --git a/<a href="../file/util.c.html">util.c</a> b/<a href="../file/util.c.html">util.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -5,7 +5,6 @@
+</a> #include &lt;err.h&gt;
+ #include &lt;stdlib.h&gt;
+ #include &lt;xcb/xcb.h&gt;
+<a href="#h0-3" id="h0-3" class="d">-
+</a> #include &quot;util.h&quot;
+ 
+ void
+</pre>
+</div>
+</body>
+</html>

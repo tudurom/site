@@ -11,11 +11,11 @@
 </head>
 <body>
 <table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
-</span></td></tr><tr><td></td><td>
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/disputils.git">git://thetudor.ddns.net/disputils.git</a></td></tr><tr><td></td><td>
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> README (833B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> README (837B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -90,10 +90,10 @@ WH=$(wattr h $WID)
 BW=$(wattr b $WID)
 
 # get monitor xywh
-SW=$(dattr w $MON)
-SH=$(dattr h $MON)
-SX=$(dattr x $MON)
-SY=$(dattr y $MON)
+SW=$(dattr -w $MON)
+SH=$(dattr -h $MON)
+SX=$(dattr -x $MON)
+SY=$(dattr -y $MON)
 
 # move the window to the center
 wtp $((SW/2 + SX - WW/2 - BW)) $((SH/2 - SY - WH/2 - BW)) $WW $WH $WID

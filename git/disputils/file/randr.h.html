@@ -11,11 +11,11 @@
 </head>
 <body>
 <table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
-</span></td></tr><tr><td></td><td>
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/disputils.git">git://thetudor.ddns.net/disputils.git</a></td></tr><tr><td></td><td>
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> randr.h (1427B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> randr.h (1430B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -78,7 +78,7 @@ int get_providers(xcb_connection_t* con, xcb_screen_t* scrn, xcb_randr_provider_
 xcb_randr_get_output_info_reply_t *get_output_info(xcb_connection_t* conn, xcb_randr_output_t output);
 
 /* Return an output&apos;s name */
-uint8_t* get_output_name(xcb_connection_t* conn, xcb_randr_output_t output);
+const char* get_output_name(xcb_connection_t* conn, xcb_randr_output_t output);
 
 int get_output_connection(xcb_connection_t* conn, xcb_randr_output_t output);
 

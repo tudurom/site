@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>fix: pfd crashing - disputils - wmutils/xrandr powered multimonitor display utils
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/346818a4d9f6721eee4fba4544779eee919c30c4.html">346818a4d9f6721eee4fba4544779eee919c30c4</a>
+<b>parent</b> <a href="../commit/5cb7dacb05f560c9bef95dd9e7bee2b4e9a157d4.html">5cb7dacb05f560c9bef95dd9e7bee2b4e9a157d4</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Mon Apr 18 12:07:32 2016
+
+fix: pfd crashing
+
+<b>Diffstat:</b>
+ pfd.c   | 29 +++++++++++++++--------------
+ ppd.c   |  2 --
+ randr.c |  2 --
+ 3 files changed, 15 insertions(+), 18 deletions(-)
+<hr/><b>diff --git a/<a href="../file/pfd.c.html">pfd.c</a> b/<a href="../file/pfd.c.html">pfd.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -68,20 +68,19 @@ main(int argc, char *argv[])
+</a>                 /* Check */
+                 output_info = get_output_info(conn, output);
+                 output_crtc_info = get_output_crtc_info(conn, output_info-&gt;crtc);
+<a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-                output_w = output_crtc_info-&gt;width;
+</a><a href="#h0-5" id="h0-5" class="d">-                output_h = output_crtc_info-&gt;height;
+</a><a href="#h0-6" id="h0-6" class="d">-                output_x = output_crtc_info-&gt;x;
+</a><a href="#h0-7" id="h0-7" class="d">-                output_y = output_crtc_info-&gt;y;
+</a><a href="#h0-8" id="h0-8" class="d">-
+</a><a href="#h0-9" id="h0-9" class="d">-                if (window_x &gt;= output_x &amp;&amp;
+</a><a href="#h0-10" id="h0-10" class="d">-                    window_y &gt;= output_y &amp;&amp;
+</a><a href="#h0-11" id="h0-11" class="d">-                    window_x &lt;= output_x + output_w &amp;&amp;
+</a><a href="#h0-12" id="h0-12" class="d">-                    window_y &lt;= output_y + output_h) {
+</a><a href="#h0-13" id="h0-13" class="d">-
+</a><a href="#h0-14" id="h0-14" class="d">-                    output_name = get_output_name(conn, output);
+</a><a href="#h0-15" id="h0-15" class="d">-                } else {
+</a><a href="#h0-16" id="h0-16" class="d">-                    errx(1, &quot;invalid x/y&quot;);
+</a><a href="#h0-17" id="h0-17" class="i">+                if (output_crtc_info != NULL) {
+</a><a href="#h0-18" id="h0-18" class="i">+                    output_w = output_crtc_info-&gt;width;
+</a><a href="#h0-19" id="h0-19" class="i">+                    output_h = output_crtc_info-&gt;height;
+</a><a href="#h0-20" id="h0-20" class="i">+                    output_x = output_crtc_info-&gt;x;
+</a><a href="#h0-21" id="h0-21" class="i">+                    output_y = output_crtc_info-&gt;y;
+</a><a href="#h0-22" id="h0-22" class="i">+
+</a><a href="#h0-23" id="h0-23" class="i">+                    if (window_x &gt;= output_x &amp;&amp;
+</a><a href="#h0-24" id="h0-24" class="i">+                        window_y &gt;= output_y &amp;&amp;
+</a><a href="#h0-25" id="h0-25" class="i">+                        window_x &lt;= output_x + output_w &amp;&amp;
+</a><a href="#h0-26" id="h0-26" class="i">+                        window_y &lt;= output_y + output_h) {
+</a><a href="#h0-27" id="h0-27" class="i">+
+</a><a href="#h0-28" id="h0-28" class="i">+                        output_name = get_output_name(conn, output);
+</a><a href="#h0-29" id="h0-29" class="i">+                    }
+</a>                 }
+             }
+ 
+<a href="#h1" id="h1" class="h">@@ -90,6 +89,8 @@ main(int argc, char *argv[])
+</a> 
+         i++;
+     }
+<a href="#h1-3" id="h1-3" class="i">+    if (!output_name)
+</a><a href="#h1-4" id="h1-4" class="i">+        errx(1, &quot;Cannot get output name&quot;);
+</a>     printf(&quot;%s\n&quot;, output_name);
+     free(window_geometry);
+     free(output_info);
+<b>diff --git a/<a href="../file/ppd.c.html">ppd.c</a> b/<a href="../file/ppd.c.html">ppd.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -27,12 +27,10 @@ main(int argc, char *argv[])
+</a>         err(1, &quot;pledge&quot;);
+ #endif
+     xcb_randr_get_output_primary_reply_t *primary_output;
+<a href="#h0-3" id="h0-3" class="d">-    xcb_window_t root;
+</a> 
+     if (argc &gt; 1) usage(argv[0]);
+     init_xcb(&amp;conn);
+     get_screen(conn, &amp;scrn);
+<a href="#h0-8" id="h0-8" class="d">-    root = scrn-&gt;root;
+</a> 
+     primary_output = get_primary_output(conn);
+ 
+<b>diff --git a/<a href="../file/randr.c.html">randr.c</a> b/<a href="../file/randr.c.html">randr.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -75,8 +75,6 @@ get_output_crtc_info(xcb_connection_t* conn, xcb_randr_crtc_t crtc)
+</a> 
+     xcb_randr_get_crtc_info_reply_t *crtc_info_reply;
+     crtc_info_reply = xcb_randr_get_crtc_info_reply(conn, cic, NULL);
+<a href="#h0-3" id="h0-3" class="d">-    if (!crtc_info_reply)
+</a><a href="#h0-4" id="h0-4" class="d">-        errx(1, &quot;Output not in use&quot;);
+</a> 
+     return crtc_info_reply;
+ }
+</pre>
+</div>
+</body>
+</html>

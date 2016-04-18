@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>fix: segfault fix - disputils - wmutils/xrandr powered multimonitor display utils
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/b2a5278cfc142aaf579084d7a8ec353bbcfc6e98.html">b2a5278cfc142aaf579084d7a8ec353bbcfc6e98</a>
+<b>parent</b> <a href="../commit/32de75ef642f12e7bbe454afed4dba5160adae8f.html">32de75ef642f12e7bbe454afed4dba5160adae8f</a>
+<b>Author:</b> ix &lt;<a href="mailto:arcetera@openmailbox.org">arcetera@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Apr 17 21:05:02 2016
+
+fix: segfault fix
+
+if the window has invalid x/y coordinates pfd will crash. this is not the intended behavior (lol)
+
+<b>Diffstat:</b>
+ pfd.c | 2 ++
+ 1 file changed, 2 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/pfd.c.html">pfd.c</a> b/<a href="../file/pfd.c.html">pfd.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -75,6 +75,8 @@ main(int argc, char *argv[])
+</a>                     window_y &lt;= output_y + output_h) {
+ 
+                     output_name = get_output_name(conn, output);
+<a href="#h0-3" id="h0-3" class="i">+                } else {
+</a><a href="#h0-4" id="h0-4" class="i">+                    errx(1, &quot;invalid x/y&quot;);
+</a>                 }
+             }
+ 
+</pre>
+</div>
+</body>
+</html>
