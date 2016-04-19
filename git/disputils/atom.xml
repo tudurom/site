@@ -4,14 +4,30 @@
 <subtitle>wmutils/xrandr powered multimonitor display utils
 </subtitle>
 <entry>
-<id>4273da71d12daaeabbf7a2121054ee8b5cb2d7e1</id>
-<updated>2016-04-18T19:15:03Z</updated>
-<title type="text">dattr: remove spaces from output</title>
-<link rel="alternate" type="text/html" href="commit/4273da71d12daaeabbf7a2121054ee8b5cb2d7e1.html" /><author><name>Tudor</name>
+<id>43083766b8d1dd37f3d94619948e9f065daf12a4</id>
+<updated>2016-04-19T14:10:25Z</updated>
+<title type="text">dattr: get rid of unused variable warning</title>
+<link rel="alternate" type="text/html" href="commit/43083766b8d1dd37f3d94619948e9f065daf12a4.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit 4273da71d12daaeabbf7a2121054ee8b5cb2d7e1
-parent b58de15e9174c69cc1f4bde6831a5dbc096fc325
+<content type="text">commit 43083766b8d1dd37f3d94619948e9f065daf12a4
+parent b9048f852451cc0949fb03c5ebafde038adfb91c
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Apr 19 14:10:25 2016
+
+dattr: get rid of unused variable warning
+
+</content>
+</entry>
+<entry>
+<id>b9048f852451cc0949fb03c5ebafde038adfb91c</id>
+<updated>2016-04-18T19:15:03Z</updated>
+<title type="text">dattr: remove spaces from output</title>
+<link rel="alternate" type="text/html" href="commit/b9048f852451cc0949fb03c5ebafde038adfb91c.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit b9048f852451cc0949fb03c5ebafde038adfb91c
+parent 4f468d5f5cae93c217288762823a79b5147f7246
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
 Date:   Mon Apr 18 19:15:03 2016
 
@@ -20,14 +36,14 @@ dattr: remove spaces from output
 </content>
 </entry>
 <entry>
-<id>b58de15e9174c69cc1f4bde6831a5dbc096fc325</id>
+<id>4f468d5f5cae93c217288762823a79b5147f7246</id>
 <updated>2016-04-18T16:35:49Z</updated>
 <title type="text">randr.c: cleaned get_output_name</title>
-<link rel="alternate" type="text/html" href="commit/b58de15e9174c69cc1f4bde6831a5dbc096fc325.html" /><author><name>Tudor</name>
+<link rel="alternate" type="text/html" href="commit/4f468d5f5cae93c217288762823a79b5147f7246.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit b58de15e9174c69cc1f4bde6831a5dbc096fc325
-parent 3ef47fa174c03b5f9e591c89a39de5b6c81ebca0
+<content type="text">commit 4f468d5f5cae93c217288762823a79b5147f7246
+parent 0dff05d4c3f505898bb57cdf935cded7f9b1c74a
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
 Date:   Mon Apr 18 16:35:49 2016
 
@@ -36,14 +52,14 @@ randr.c: cleaned get_output_name
 </content>
 </entry>
 <entry>
-<id>3ef47fa174c03b5f9e591c89a39de5b6c81ebca0</id>
+<id>0dff05d4c3f505898bb57cdf935cded7f9b1c74a</id>
 <updated>2016-04-18T13:48:38Z</updated>
 <title type="text">dattr: removed useless cast</title>
-<link rel="alternate" type="text/html" href="commit/3ef47fa174c03b5f9e591c89a39de5b6c81ebca0.html" /><author><name>Tudor</name>
+<link rel="alternate" type="text/html" href="commit/0dff05d4c3f505898bb57cdf935cded7f9b1c74a.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit 3ef47fa174c03b5f9e591c89a39de5b6c81ebca0
-parent d35d8c5d55d4416d2f283c117e1323c353851ab1
+<content type="text">commit 0dff05d4c3f505898bb57cdf935cded7f9b1c74a
+parent 5204366a01638d9a584d04e0937d2d8931d0021c
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
 Date:   Mon Apr 18 13:48:38 2016
 
@@ -52,14 +68,14 @@ dattr: removed useless cast
 </content>
 </entry>
 <entry>
-<id>d35d8c5d55d4416d2f283c117e1323c353851ab1</id>
+<id>5204366a01638d9a584d04e0937d2d8931d0021c</id>
 <updated>2016-04-18T13:46:47Z</updated>
 <title type="text">trying to fix lsd printing strange characters</title>
-<link rel="alternate" type="text/html" href="commit/d35d8c5d55d4416d2f283c117e1323c353851ab1.html" /><author><name>Tudor</name>
+<link rel="alternate" type="text/html" href="commit/5204366a01638d9a584d04e0937d2d8931d0021c.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit d35d8c5d55d4416d2f283c117e1323c353851ab1
-parent 06c1fbae22e7054ef2c2c8417bd2be1a44b964be
+<content type="text">commit 5204366a01638d9a584d04e0937d2d8931d0021c
+parent 6e21dd7a927303444fe76db49ca96dadbeac2bf9
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
 Date:   Mon Apr 18 13:46:47 2016
 
@@ -68,14 +84,14 @@ trying to fix lsd printing strange characters
 </content>
 </entry>
 <entry>
-<id>06c1fbae22e7054ef2c2c8417bd2be1a44b964be</id>
+<id>6e21dd7a927303444fe76db49ca96dadbeac2bf9</id>
 <updated>2016-04-18T13:39:35Z</updated>
 <title type="text">lsd: clean the print name function</title>
-<link rel="alternate" type="text/html" href="commit/06c1fbae22e7054ef2c2c8417bd2be1a44b964be.html" /><author><name>Tudor</name>
+<link rel="alternate" type="text/html" href="commit/6e21dd7a927303444fe76db49ca96dadbeac2bf9.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit 06c1fbae22e7054ef2c2c8417bd2be1a44b964be
-parent 7fe01da5d2fd5374bfac119af3ae5fd4645be3ec
+<content type="text">commit 6e21dd7a927303444fe76db49ca96dadbeac2bf9
+parent b2b85126372f37555441d2e1b4ce541b05243197
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
 Date:   Mon Apr 18 13:39:35 2016
 
@@ -84,14 +100,14 @@ lsd: clean the print name function
 </content>
 </entry>
 <entry>
-<id>7fe01da5d2fd5374bfac119af3ae5fd4645be3ec</id>
+<id>b2b85126372f37555441d2e1b4ce541b05243197</id>
 <updated>2016-04-18T13:38:06Z</updated>
 <title type="text">randr.c: double check the name</title>
-<link rel="alternate" type="text/html" href="commit/7fe01da5d2fd5374bfac119af3ae5fd4645be3ec.html" /><author><name>Tudor</name>
+<link rel="alternate" type="text/html" href="commit/b2b85126372f37555441d2e1b4ce541b05243197.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit 7fe01da5d2fd5374bfac119af3ae5fd4645be3ec
-parent e4ef424d779ef7446ccec0ac87a7d02537c3bb65
+<content type="text">commit b2b85126372f37555441d2e1b4ce541b05243197
+parent 7a5644b7ab0b84f81f462d235b7538bb07d77d04
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
 Date:   Mon Apr 18 13:38:06 2016
 
@@ -100,14 +116,14 @@ randr.c: double check the name
 </content>
 </entry>
 <entry>
-<id>e4ef424d779ef7446ccec0ac87a7d02537c3bb65</id>
+<id>7a5644b7ab0b84f81f462d235b7538bb07d77d04</id>
 <updated>2016-04-18T13:13:58Z</updated>
 <title type="text">dattr: removed two useless lines</title>
-<link rel="alternate" type="text/html" href="commit/e4ef424d779ef7446ccec0ac87a7d02537c3bb65.html" /><author><name>Tudor</name>
+<link rel="alternate" type="text/html" href="commit/7a5644b7ab0b84f81f462d235b7538bb07d77d04.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit e4ef424d779ef7446ccec0ac87a7d02537c3bb65
-parent 004f897465709db110023cc8937c9628a8dec008
+<content type="text">commit 7a5644b7ab0b84f81f462d235b7538bb07d77d04
+parent 11b2eb8e9b2e44d2fbc79d430a9fea4b71be7a50
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
 Date:   Mon Apr 18 13:13:58 2016
 
@@ -116,14 +132,14 @@ dattr: removed two useless lines
 </content>
 </entry>
 <entry>
-<id>004f897465709db110023cc8937c9628a8dec008</id>
+<id>11b2eb8e9b2e44d2fbc79d430a9fea4b71be7a50</id>
 <updated>2016-04-18T12:18:32Z</updated>
 <title type="text">fix: README and LICENSE</title>
-<link rel="alternate" type="text/html" href="commit/004f897465709db110023cc8937c9628a8dec008.html" /><author><name>Tudor</name>
+<link rel="alternate" type="text/html" href="commit/11b2eb8e9b2e44d2fbc79d430a9fea4b71be7a50.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit 004f897465709db110023cc8937c9628a8dec008
-parent 8b2cf5c500f56b59e5dd287105667eac0406804e
+<content type="text">commit 11b2eb8e9b2e44d2fbc79d430a9fea4b71be7a50
+parent bd9d362bd42c821c2ba031bb63317cf7a6df1818
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
 Date:   Mon Apr 18 12:18:32 2016
 
@@ -132,14 +148,14 @@ fix: README and LICENSE
 </content>
 </entry>
 <entry>
-<id>8b2cf5c500f56b59e5dd287105667eac0406804e</id>
+<id>bd9d362bd42c821c2ba031bb63317cf7a6df1818</id>
 <updated>2016-04-18T12:14:55Z</updated>
 <title type="text">lsd: only print displays in use</title>
-<link rel="alternate" type="text/html" href="commit/8b2cf5c500f56b59e5dd287105667eac0406804e.html" /><author><name>Tudor</name>
+<link rel="alternate" type="text/html" href="commit/bd9d362bd42c821c2ba031bb63317cf7a6df1818.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit 8b2cf5c500f56b59e5dd287105667eac0406804e
-parent 346818a4d9f6721eee4fba4544779eee919c30c4
+<content type="text">commit bd9d362bd42c821c2ba031bb63317cf7a6df1818
+parent ef6d0fde2468b817a0ed182b27e68de023fd3dfb
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
 Date:   Mon Apr 18 12:14:55 2016
 
@@ -148,14 +164,14 @@ lsd: only print displays in use
 </content>
 </entry>
 <entry>
-<id>346818a4d9f6721eee4fba4544779eee919c30c4</id>
+<id>ef6d0fde2468b817a0ed182b27e68de023fd3dfb</id>
 <updated>2016-04-18T12:07:32Z</updated>
 <title type="text">fix: pfd crashing</title>
-<link rel="alternate" type="text/html" href="commit/346818a4d9f6721eee4fba4544779eee919c30c4.html" /><author><name>Tudor</name>
+<link rel="alternate" type="text/html" href="commit/ef6d0fde2468b817a0ed182b27e68de023fd3dfb.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit 346818a4d9f6721eee4fba4544779eee919c30c4
-parent 5cb7dacb05f560c9bef95dd9e7bee2b4e9a157d4
+<content type="text">commit ef6d0fde2468b817a0ed182b27e68de023fd3dfb
+parent 738d11a5575f531e77b92b58f6d2eb48a7467d4e
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
 Date:   Mon Apr 18 12:07:32 2016
 
@@ -164,14 +180,14 @@ fix: pfd crashing
 </content>
 </entry>
 <entry>
-<id>5cb7dacb05f560c9bef95dd9e7bee2b4e9a157d4</id>
+<id>738d11a5575f531e77b92b58f6d2eb48a7467d4e</id>
 <updated>2016-04-17T21:39:32Z</updated>
 <title type="text">feat: run pledge(2) on openbsd</title>
-<link rel="alternate" type="text/html" href="commit/5cb7dacb05f560c9bef95dd9e7bee2b4e9a157d4.html" /><author><name>ix</name>
+<link rel="alternate" type="text/html" href="commit/738d11a5575f531e77b92b58f6d2eb48a7467d4e.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
 </author>
-<content type="text">commit 5cb7dacb05f560c9bef95dd9e7bee2b4e9a157d4
-parent b2a5278cfc142aaf579084d7a8ec353bbcfc6e98
+<content type="text">commit 738d11a5575f531e77b92b58f6d2eb48a7467d4e
+parent c56ec622c33425db7e4f10c1f3f59459c7318094
 Author: ix &lt;arcetera@openmailbox.org&gt;
 Date:   Sun Apr 17 21:39:32 2016
 
@@ -180,14 +196,14 @@ feat: run pledge(2) on openbsd
 </content>
 </entry>
 <entry>
-<id>b2a5278cfc142aaf579084d7a8ec353bbcfc6e98</id>
+<id>c56ec622c33425db7e4f10c1f3f59459c7318094</id>
 <updated>2016-04-17T21:05:02Z</updated>
 <title type="text">fix: segfault fix</title>
-<link rel="alternate" type="text/html" href="commit/b2a5278cfc142aaf579084d7a8ec353bbcfc6e98.html" /><author><name>ix</name>
+<link rel="alternate" type="text/html" href="commit/c56ec622c33425db7e4f10c1f3f59459c7318094.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
 </author>
-<content type="text">commit b2a5278cfc142aaf579084d7a8ec353bbcfc6e98
-parent 32de75ef642f12e7bbe454afed4dba5160adae8f
+<content type="text">commit c56ec622c33425db7e4f10c1f3f59459c7318094
+parent 28b515a4004cf82bb712767381085c8841e1d6d4
 Author: ix &lt;arcetera@openmailbox.org&gt;
 Date:   Sun Apr 17 21:05:02 2016
 
@@ -198,14 +214,14 @@ if the window has invalid x/y coordinates pfd will crash. this is not the intend
 </content>
 </entry>
 <entry>
-<id>32de75ef642f12e7bbe454afed4dba5160adae8f</id>
+<id>28b515a4004cf82bb712767381085c8841e1d6d4</id>
 <updated>2016-04-17T18:19:50Z</updated>
 <title type="text">docs: fix man makefile</title>
-<link rel="alternate" type="text/html" href="commit/32de75ef642f12e7bbe454afed4dba5160adae8f.html" /><author><name>ix</name>
+<link rel="alternate" type="text/html" href="commit/28b515a4004cf82bb712767381085c8841e1d6d4.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
 </author>
-<content type="text">commit 32de75ef642f12e7bbe454afed4dba5160adae8f
-parent 5cf3c1e29c6d13f62e9e2aef3aa5e5dfbf3d3cca
+<content type="text">commit 28b515a4004cf82bb712767381085c8841e1d6d4
+parent ed57c934fc3858d84035f23e6f695ec75dffcc95
 Author: ix &lt;arcetera@openmailbox.org&gt;
 Date:   Sun Apr 17 18:19:50 2016
 
@@ -214,14 +230,14 @@ docs: fix man makefile
 </content>
 </entry>
 <entry>
-<id>5cf3c1e29c6d13f62e9e2aef3aa5e5dfbf3d3cca</id>
+<id>ed57c934fc3858d84035f23e6f695ec75dffcc95</id>
 <updated>2016-04-17T18:19:20Z</updated>
 <title type="text">docs: fix dattr manpage, add ppd manpage</title>
-<link rel="alternate" type="text/html" href="commit/5cf3c1e29c6d13f62e9e2aef3aa5e5dfbf3d3cca.html" /><author><name>ix</name>
+<link rel="alternate" type="text/html" href="commit/ed57c934fc3858d84035f23e6f695ec75dffcc95.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
 </author>
-<content type="text">commit 5cf3c1e29c6d13f62e9e2aef3aa5e5dfbf3d3cca
-parent fa3ad1e321ef4ed4487e527ba3f0eca75d68ac9e
+<content type="text">commit ed57c934fc3858d84035f23e6f695ec75dffcc95
+parent b96409fa78e65a75d515e827fb448ec4ac852340
 Author: ix &lt;arcetera@openmailbox.org&gt;
 Date:   Sun Apr 17 18:19:20 2016
 
@@ -230,14 +246,14 @@ docs: fix dattr manpage, add ppd manpage
 </content>
 </entry>
 <entry>
-<id>fa3ad1e321ef4ed4487e527ba3f0eca75d68ac9e</id>
+<id>b96409fa78e65a75d515e827fb448ec4ac852340</id>
 <updated>2016-04-17T17:49:17Z</updated>
 <title type="text">fix: remove .openbsd</title>
-<link rel="alternate" type="text/html" href="commit/fa3ad1e321ef4ed4487e527ba3f0eca75d68ac9e.html" /><author><name>ix</name>
+<link rel="alternate" type="text/html" href="commit/b96409fa78e65a75d515e827fb448ec4ac852340.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
 </author>
-<content type="text">commit fa3ad1e321ef4ed4487e527ba3f0eca75d68ac9e
-parent 3d80e99efd87cf29f5ed710eb39487225e0ad36a
+<content type="text">commit b96409fa78e65a75d515e827fb448ec4ac852340
+parent e0279db299fd6d16dfd6b4bae4eec801d0905c31
 Author: ix &lt;arcetera@openmailbox.org&gt;
 Date:   Sun Apr 17 17:49:17 2016
 
@@ -246,14 +262,14 @@ fix: remove .openbsd
 </content>
 </entry>
 <entry>
-<id>3d80e99efd87cf29f5ed710eb39487225e0ad36a</id>
+<id>e0279db299fd6d16dfd6b4bae4eec801d0905c31</id>
 <updated>2016-04-17T17:14:35Z</updated>
 <title type="text">fix: remove junk</title>
-<link rel="alternate" type="text/html" href="commit/3d80e99efd87cf29f5ed710eb39487225e0ad36a.html" /><author><name>ix</name>
+<link rel="alternate" type="text/html" href="commit/e0279db299fd6d16dfd6b4bae4eec801d0905c31.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
 </author>
-<content type="text">commit 3d80e99efd87cf29f5ed710eb39487225e0ad36a
-parent b942fc3d17e8e4d73dc08fd48385afa6ed1e9d49
+<content type="text">commit e0279db299fd6d16dfd6b4bae4eec801d0905c31
+parent a77ea571c35239a075b75ab410978983335ef318
 Author: ix &lt;arcetera@openmailbox.org&gt;
 Date:   Sun Apr 17 17:14:35 2016
 
@@ -262,18 +278,18 @@ fix: remove junk
 </content>
 </entry>
 <entry>
-<id>b942fc3d17e8e4d73dc08fd48385afa6ed1e9d49</id>
+<id>a77ea571c35239a075b75ab410978983335ef318</id>
 <updated>2016-04-17T17:14:19Z</updated>
-<title type="text">style: use flags. fuck you tudoo</title>
-<link rel="alternate" type="text/html" href="commit/b942fc3d17e8e4d73dc08fd48385afa6ed1e9d49.html" /><author><name>ix</name>
+<title type="text">style: use flags</title>
+<link rel="alternate" type="text/html" href="commit/a77ea571c35239a075b75ab410978983335ef318.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
 </author>
-<content type="text">commit b942fc3d17e8e4d73dc08fd48385afa6ed1e9d49
+<content type="text">commit a77ea571c35239a075b75ab410978983335ef318
 parent b95e2ff84f979674f04b50c0115e888ebc4c7007
 Author: ix &lt;arcetera@openmailbox.org&gt;
 Date:   Sun Apr 17 17:14:19 2016
 
-style: use flags. fuck you tudoo
+style: use flags
 
 </content>
 </entry>

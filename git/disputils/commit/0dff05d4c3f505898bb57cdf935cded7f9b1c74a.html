@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>dattr: removed useless cast - disputils - wmutils/xrandr powered multimonitor display utils
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/disputils.git">git://thetudor.ddns.net/disputils.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/0dff05d4c3f505898bb57cdf935cded7f9b1c74a.html">0dff05d4c3f505898bb57cdf935cded7f9b1c74a</a>
+<b>parent</b> <a href="../commit/5204366a01638d9a584d04e0937d2d8931d0021c.html">5204366a01638d9a584d04e0937d2d8931d0021c</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Mon Apr 18 13:48:38 2016
+
+dattr: removed useless cast
+
+<b>Diffstat:</b>
+ dattr.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+<hr/><b>diff --git a/<a href="../file/dattr.c.html">dattr.c</a> b/<a href="../file/dattr.c.html">dattr.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -51,7 +51,7 @@ main(int argc, char *argv[])
+</a> 
+         int j = 0;
+         while (j &lt; o_len &amp;&amp; output == -1) {
+<a href="#h0-3" id="h0-3" class="d">-            if (strcmp(output_name, (const char *)get_output_name(conn, os[j])) == 0)
+</a><a href="#h0-4" id="h0-4" class="i">+            if (strcmp(output_name, get_output_name(conn, os[j])) == 0)
+</a>                 output = os[j];
+ 
+             j++;
+</pre>
+</div>
+</body>
+</html>

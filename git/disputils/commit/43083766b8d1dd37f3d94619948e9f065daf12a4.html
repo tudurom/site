@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>dattr: get rid of unused variable warning - disputils - wmutils/xrandr powered multimonitor display utils
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/disputils.git">git://thetudor.ddns.net/disputils.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/43083766b8d1dd37f3d94619948e9f065daf12a4.html">43083766b8d1dd37f3d94619948e9f065daf12a4</a>
+<b>parent</b> <a href="../commit/b9048f852451cc0949fb03c5ebafde038adfb91c.html">b9048f852451cc0949fb03c5ebafde038adfb91c</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Tue Apr 19 14:10:25 2016
+
+dattr: get rid of unused variable warning
+
+<b>Diffstat:</b>
+ dattr.c | 2 ++
+ 1 file changed, 2 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a href="../file/dattr.c.html">dattr.c</a> b/<a href="../file/dattr.c.html">dattr.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -86,6 +86,8 @@ main(int argc, char *argv[])
+</a>         case &apos;y&apos;:
+             printf(&quot;%d\n&quot;, screen_crtc_info-&gt;y);
+             break;
+<a href="#h0-3" id="h0-3" class="i">+        default:
+</a><a href="#h0-4" id="h0-4" class="i">+            usage(argv0);
+</a>     } ARGEND;
+ 
+     free(output_info);
+</pre>
+</div>
+</body>
+</html>
