@@ -4,6 +4,22 @@
 <subtitle>Ports for crux. Bassed off arcetera&apos;s ports.
 </subtitle>
 <entry>
+<id>c073c3ac190e5605afc35ed22c965776c3c98146</id>
+<updated>2016-04-19T13:52:56Z</updated>
+<title type="text">add: disputils</title>
+<link rel="alternate" type="text/html" href="commit/c073c3ac190e5605afc35ed22c965776c3c98146.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit c073c3ac190e5605afc35ed22c965776c3c98146
+parent b65a2c892483d601da505d0033f829284b4e809b
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Apr 19 13:52:56 2016
+
+add: disputils
+
+</content>
+</entry>
+<entry>
 <id>b65a2c892483d601da505d0033f829284b4e809b</id>
 <updated>2016-04-16T13:37:57Z</updated>
 <title type="text">tinc: version</title>
