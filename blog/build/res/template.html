@@ -1,11 +1,22 @@
+cat << EOF
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>tudor's blog</title>
-    <meta charset="utf-8">
-  </head>
+    <head>
+        <title>${page_title}</title>
+        <meta charset="utf-8">
 
-  <body>
-    ${posts}
-  </body>
+        <link rel="stylesheet" href="/blog/css/main.css">
+    </head>
+
+    <body>
+        <main>
+            <header class="site-header">
+                <h1 class="site-title">
+                    <a href="/blog">tudor's blog</a>
+                </h1>
+            </header>
+            ${content}
+        </main>
+    </body>
 </html>
+EOF

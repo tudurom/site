@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>fix (in a dirty way): lsd showing strange characters - disputils - wmutils/xrandr powered multimonitor display utils
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/disputils.git">git://thetudor.ddns.net/disputils.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/b003bd4c600794bc7b3f9ef307e7e8a952dbb667.html">b003bd4c600794bc7b3f9ef307e7e8a952dbb667</a>
+<b>parent</b> <a href="../commit/43083766b8d1dd37f3d94619948e9f065daf12a4.html">43083766b8d1dd37f3d94619948e9f065daf12a4</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Wed Apr 20 21:30:50 2016
+
+fix (in a dirty way): lsd showing strange characters
+
+<b>Diffstat:</b>
+ lsd.c | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
+<hr/><b>diff --git a/<a href="../file/lsd.c.html">lsd.c</a> b/<a href="../file/lsd.c.html">lsd.c</a></b>
+<a href="#h0" id="h0" class="h">@@ -20,11 +20,17 @@ usage(char *name)
+</a> }
+ 
+ void
+<a href="#h0-3" id="h0-3" class="d">-print_output(xcb_connection_t* conn, xcb_randr_output_t output)
+</a><a href="#h0-4" id="h0-4" class="i">+print_output(xcb_connection_t* conn, xcb_randr_output_t output, xcb_randr_get_output_info_reply_t* output_info)
+</a> {
+     if (get_output_connection(conn, output) == 0) {
+<a href="#h0-7" id="h0-7" class="d">-        const char* name = get_output_name(conn, output);
+</a><a href="#h0-8" id="h0-8" class="d">-        printf(&quot;%s\n&quot;, name);
+</a><a href="#h0-9" id="h0-9" class="i">+        const unsigned char *name = xcb_randr_get_output_info_name(output_info);
+</a><a href="#h0-10" id="h0-10" class="i">+        /* FIXME: neat hack for fixing the &apos;weird characters bug&apos; */
+</a><a href="#h0-11" id="h0-11" class="i">+        while ((*name &gt;= &apos;a&apos; &amp;&amp; *name &lt;= &apos;z&apos;) || (*name &gt;= &apos;A&apos; &amp;&amp; *name &lt;= &apos;Z&apos;) ||
+</a><a href="#h0-12" id="h0-12" class="i">+                (*name &gt;= &apos;0&apos; &amp;&amp; *name &lt;= &apos;9&apos;) ||
+</a><a href="#h0-13" id="h0-13" class="i">+               *name == &apos;-&apos; || *name == &apos;_&apos;) {
+</a><a href="#h0-14" id="h0-14" class="i">+            fputc(*name, stdout);
+</a><a href="#h0-15" id="h0-15" class="i">+            name++;
+</a><a href="#h0-16" id="h0-16" class="i">+        }
+</a>     }
+ }
+ 
+<a href="#h1" id="h1" class="h">@@ -54,8 +60,11 @@ main(int argc, char *argv[])
+</a>             output_info = get_output_info(conn, os[j]);
+             output_crtc_info = get_output_crtc_info(conn, output_info-&gt;crtc);
+             /* Print screen only if in use */
+<a href="#h1-3" id="h1-3" class="d">-            if (output_crtc_info != NULL)
+</a><a href="#h1-4" id="h1-4" class="d">-                print_output(conn, os[j]);
+</a><a href="#h1-5" id="h1-5" class="i">+            if (output_crtc_info != NULL) {
+</a><a href="#h1-6" id="h1-6" class="i">+                print_output(conn, os[j], output_info);
+</a><a href="#h1-7" id="h1-7" class="i">+                if (j &lt; o_len - 1)
+</a><a href="#h1-8" id="h1-8" class="i">+                    fputc(&apos;\n&apos;, stdout);
+</a><a href="#h1-9" id="h1-9" class="i">+            }
+</a>         }
+     }
+     return 0;
+</pre>
+</div>
+</body>
+</html>

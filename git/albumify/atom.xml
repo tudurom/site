@@ -4,18 +4,18 @@
 <subtitle>Simple webpage to create imgur-like albums out of images from the whole web.
 </subtitle>
 <entry>
-<id>4b6171231c2083ce2741f247fd2d3b10de048877</id>
+<id>9db71f5961ad4a0d1f868dc987ea4da7bd40ce5f</id>
 <updated>2016-04-18T19:50:10Z</updated>
-<title type="text">fix delte frame button</title>
-<link rel="alternate" type="text/html" href="commit/4b6171231c2083ce2741f247fd2d3b10de048877.html" /><author><name>Tudor</name>
+<title type="text">fix delete frame button</title>
+<link rel="alternate" type="text/html" href="commit/9db71f5961ad4a0d1f868dc987ea4da7bd40ce5f.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
 </author>
-<content type="text">commit 4b6171231c2083ce2741f247fd2d3b10de048877
+<content type="text">commit 9db71f5961ad4a0d1f868dc987ea4da7bd40ce5f
 parent 9724e0096664bab091079e9addaacee23ca738fc
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
 Date:   Mon Apr 18 19:50:10 2016
 
-fix delte frame button
+fix delete frame button
 
 </content>
 </entry>

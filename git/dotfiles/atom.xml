@@ -4,6 +4,22 @@
 <subtitle>My small load of configuration files and scripts.
 </subtitle>
 <entry>
+<id>c16c747de56ef7a39178a299bf3710cdbcc88b44</id>
+<updated>2016-04-21T14:29:01Z</updated>
+<title type="text">fullscreenw: multimonitor</title>
+<link rel="alternate" type="text/html" href="commit/c16c747de56ef7a39178a299bf3710cdbcc88b44.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit c16c747de56ef7a39178a299bf3710cdbcc88b44
+parent 4ac082cd0fe4dfdb01b1c1d010684c58f061ef3c
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Apr 21 14:29:01 2016
+
+fullscreenw: multimonitor
+
+</content>
+</entry>
+<entry>
 <id>4ac082cd0fe4dfdb01b1c1d010684c58f061ef3c</id>
 <updated>2016-04-18T19:41:33Z</updated>
 <title type="text">misc</title>
@@ -1593,22 +1609,6 @@ Author: Tudor &lt;tudurom@gmail.com&gt;
 Date:   Sun Feb 28 22:14:32 2016
 
 Fix README
-
-</content>
-</entry>
-<entry>
-<id>958ce39d684dbfc12cfc1a5881e5f53febdc357b</id>
-<updated>2016-02-28T13:39:01Z</updated>
-<title type="text">Will move to wmutils someday...</title>
-<link rel="alternate" type="text/html" href="commit/958ce39d684dbfc12cfc1a5881e5f53febdc357b.html" /><author><name>Tudor</name>
-<email>tudurom@gmail.com</email>
-</author>
-<content type="text">commit 958ce39d684dbfc12cfc1a5881e5f53febdc357b
-parent 9c4ba9464d98b482a9a2786bdd0cb11b5f6f8dfc
-Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Sun Feb 28 13:39:01 2016
-
-Will move to wmutils someday...
 
 </content>
 </entry>

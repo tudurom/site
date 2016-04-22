@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> randr.c (4101B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> randr.c (4525B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -146,12 +146,32 @@
 <a href="#l128" id="l128">128</a>
 <a href="#l129" id="l129">129</a>
 <a href="#l130" id="l130">130</a>
+<a href="#l131" id="l131">131</a>
+<a href="#l132" id="l132">132</a>
+<a href="#l133" id="l133">133</a>
+<a href="#l134" id="l134">134</a>
+<a href="#l135" id="l135">135</a>
+<a href="#l136" id="l136">136</a>
+<a href="#l137" id="l137">137</a>
+<a href="#l138" id="l138">138</a>
+<a href="#l139" id="l139">139</a>
+<a href="#l140" id="l140">140</a>
+<a href="#l141" id="l141">141</a>
+<a href="#l142" id="l142">142</a>
+<a href="#l143" id="l143">143</a>
+<a href="#l144" id="l144">144</a>
+<a href="#l145" id="l145">145</a>
+<a href="#l146" id="l146">146</a>
 </pre></td><td><pre>
 /* disputils randr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
  * ix &lt;arcetera@openmailbox.org
  */
 
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+
 #include &lt;xcb/randr.h&gt;
+
 #include &quot;util.h&quot;
 #include &quot;randr.h&quot;
 
@@ -207,7 +227,19 @@ get_output_name(xcb_connection_t* conn, xcb_randr_output_t output)
     xcb_randr_get_output_info_reply_t* r;
 
     r = get_output_info(conn, output);
-    return (const char *)xcb_randr_get_output_info_name(r);
+    const char *name = (char *)xcb_randr_get_output_info_name(r);
+    char *ret = malloc(sizeof(char) * strlen(name));
+
+    /* FIXME: neat hack for fixing the &apos;weird characters bug&apos; */
+    int i = 0;
+    while ((*name &gt;= &apos;a&apos; &amp;&amp; *name &lt;= &apos;z&apos;) || (*name &gt;= &apos;A&apos; &amp;&amp; *name &lt;= &apos;Z&apos;) ||
+            (*name &gt;= &apos;0&apos; &amp;&amp; *name &lt;= &apos;9&apos;) ||
+           *name == &apos;-&apos; || *name == &apos;_&apos;) {
+        ret[i] = *name;
+        i++;
+        name++;
+    }
+    return ret;
 }
 
 int

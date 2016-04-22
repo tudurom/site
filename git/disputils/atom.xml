@@ -4,6 +4,86 @@
 <subtitle>wmutils/xrandr powered multimonitor display utils
 </subtitle>
 <entry>
+<id>79cff965f5e05658a6fbd80e9c07228ee8395031</id>
+<updated>2016-04-21T21:29:29Z</updated>
+<title type="text">chore: bsd3</title>
+<link rel="alternate" type="text/html" href="commit/79cff965f5e05658a6fbd80e9c07228ee8395031.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit 79cff965f5e05658a6fbd80e9c07228ee8395031
+parent bdf95fd69939ebfc437ddfe013f618250827fb00
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Thu Apr 21 21:29:29 2016
+
+chore: bsd3
+
+</content>
+</entry>
+<entry>
+<id>bdf95fd69939ebfc437ddfe013f618250827fb00</id>
+<updated>2016-04-21T20:28:54Z</updated>
+<title type="text">docs: remove warning about obsolescence</title>
+<link rel="alternate" type="text/html" href="commit/bdf95fd69939ebfc437ddfe013f618250827fb00.html" /><author><name>ix</name>
+<email>arcetera@openmailbox.org</email>
+</author>
+<content type="text">commit bdf95fd69939ebfc437ddfe013f618250827fb00
+parent 1eb40069a41f11874151478917ced55e503e5f39
+Author: ix &lt;arcetera@openmailbox.org&gt;
+Date:   Thu Apr 21 20:28:54 2016
+
+docs: remove warning about obsolescence
+
+</content>
+</entry>
+<entry>
+<id>1eb40069a41f11874151478917ced55e503e5f39</id>
+<updated>2016-04-21T18:34:50Z</updated>
+<title type="text">randr: fix sizeof to char</title>
+<link rel="alternate" type="text/html" href="commit/1eb40069a41f11874151478917ced55e503e5f39.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 1eb40069a41f11874151478917ced55e503e5f39
+parent bc3733ebe1fa7654d635dcd6510ef9157ef72221
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Apr 21 18:34:50 2016
+
+randr: fix sizeof to char
+
+</content>
+</entry>
+<entry>
+<id>bc3733ebe1fa7654d635dcd6510ef9157ef72221</id>
+<updated>2016-04-21T18:32:50Z</updated>
+<title type="text">randr: fix get_output_name</title>
+<link rel="alternate" type="text/html" href="commit/bc3733ebe1fa7654d635dcd6510ef9157ef72221.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit bc3733ebe1fa7654d635dcd6510ef9157ef72221
+parent b003bd4c600794bc7b3f9ef307e7e8a952dbb667
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Apr 21 18:32:50 2016
+
+randr: fix get_output_name
+
+</content>
+</entry>
+<entry>
+<id>b003bd4c600794bc7b3f9ef307e7e8a952dbb667</id>
+<updated>2016-04-20T21:30:50Z</updated>
+<title type="text">fix (in a dirty way): lsd showing strange characters</title>
+<link rel="alternate" type="text/html" href="commit/b003bd4c600794bc7b3f9ef307e7e8a952dbb667.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit b003bd4c600794bc7b3f9ef307e7e8a952dbb667
+parent 43083766b8d1dd37f3d94619948e9f065daf12a4
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Apr 20 21:30:50 2016
+
+fix (in a dirty way): lsd showing strange characters
+
+</content>
+</entry>
+<entry>
 <id>43083766b8d1dd37f3d94619948e9f065daf12a4</id>
 <updated>2016-04-19T14:10:25Z</updated>
 <title type="text">dattr: get rid of unused variable warning</title>
