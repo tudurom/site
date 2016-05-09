@@ -3,19 +3,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>pfd.c - disputils - wmutils/xrandr powered multimonitor display utils
+<title>pfd.c - disputils - Utilities for getting information about connected displays.
 </title>
 <link rel="icon" type="image/png" href="../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
 <link rel="stylesheet" type="text/css" href="../style.css" />
 </head>
 <body>
-<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">Utilities for getting information about connected displays.
 </span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/disputils.git">git://thetudor.ddns.net/disputils.git</a></td></tr><tr><td></td><td>
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> pfd.c (2626B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> pfd.c (2279B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -116,107 +116,109 @@
 <a href="#l98" id="l98">98</a>
 <a href="#l99" id="l99">99</a>
 <a href="#l100" id="l100">100</a>
+<a href="#l101" id="l101">101</a>
 </pre></td><td><pre>
-/* disputils pfd.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
- * ix &lt;arcetera@openmailbox.org
+/*
+ * disputils pfd.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt; ix
+ * &lt;arcetera@openmailbox.org
  */
 
 #include &lt;err.h&gt;
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;unistd.h&gt;
+
 #include &quot;randr.h&quot;
 #include &quot;util.h&quot;
 
 xcb_connection_t *conn;
-xcb_screen_t *scrn;
+xcb_screen_t   *scrn;
 
 void
 usage(char *name)
 {
-    printf(&quot;usage: %s \n&quot;, name);
-    exit(0);
+	printf(&quot;usage: %s \n&quot;, name);
+	exit(0);
 }
 
 int
 main(int argc, char *argv[])
 {
 #ifdef __OpenBSD__
-    if (pledge (&quot;stdio rpath unix&quot;, NULL) == -1)
-        err(1, &quot;pledge&quot;);
+	if (pledge(&quot;stdio rpath unix&quot;, NULL) == -1)
+		err(1, &quot;pledge&quot;);
 #endif
-    xcb_window_t f_window;
-    xcb_get_geometry_reply_t *window_geometry = NULL;
+	xcb_window_t 	f_window;
+	xcb_get_geometry_reply_t *window_geometry = NULL;
 
-    uint16_t window_x;
-    uint16_t window_y;
+	uint16_t 	window_x;
+	uint16_t 	window_y;
 
-    xcb_randr_get_output_info_reply_t *output_info = NULL;
-    xcb_randr_get_crtc_info_reply_t *output_crtc_info = NULL;
-    xcb_randr_output_t output;
-    const char *output_name = NULL;
+	xcb_randr_get_output_info_reply_t *output_info = NULL;
+	xcb_randr_get_crtc_info_reply_t *output_crtc_info = NULL;
+	xcb_randr_output_t output;
+	const char     *output_name = NULL;
 
-    uint16_t output_w;
-    uint16_t output_h;
-    uint16_t output_x;
-    uint16_t output_y;
+	uint16_t 	output_w;
+	uint16_t 	output_h;
+	uint16_t 	output_x;
+	uint16_t 	output_y;
 
-    if (argc &gt; 1) usage(argv[0]);
-    init_xcb(&amp;conn);
-    get_screen(conn, &amp;scrn);
+	if (argc &gt; 1)
+		usage(argv[0]);
+	init_xcb(&amp;conn);
+	get_screen(conn, &amp;scrn);
 
-    /* Get info about the focused window */
-    f_window = get_focused_window(conn);
-    window_geometry = get_window_geometry(conn, f_window);
-    window_x = window_geometry-&gt;x;
-    window_y = window_geometry-&gt;y;
+	/* Get info about the focused window */
+	f_window = get_focused_window(conn);
+	window_geometry = get_window_geometry(conn, f_window);
+	window_x = window_geometry-&gt;x;
+	window_y = window_geometry-&gt;y;
 
-    /* Iterate through outputs */
-    xcb_randr_provider_t* providers;
-    int p_len = get_providers(conn, scrn, &amp;providers);
+	/* Iterate through outputs */
+	xcb_randr_provider_t *providers;
+	int 		p_len = get_providers(conn, scrn, &amp;providers);
 
-    int i = 0;
-    while (i &lt; p_len &amp;&amp; !output_name) {
-        xcb_randr_output_t* os;
-        int o_len = get_outputs(conn, providers[i], &amp;os);
+	int 		i = 0;
+	while (i &lt; p_len &amp;&amp; output_name == &apos;\0&apos;) {
+		xcb_randr_output_t *os;
+		int 		o_len = get_outputs(conn, providers[i], &amp;os);
 
-        int j = 0;
-        while (j &lt; o_len &amp;&amp; !output_name) {
-            output = os[j];
-            if (get_output_connection(conn, output) == 0) {
-                /* Check */
-                output_info = get_output_info(conn, output);
-                output_crtc_info = get_output_crtc_info(conn, output_info-&gt;crtc);
-                if (output_crtc_info != NULL) {
-                    output_w = output_crtc_info-&gt;width;
-                    output_h = output_crtc_info-&gt;height;
-                    output_x = output_crtc_info-&gt;x;
-                    output_y = output_crtc_info-&gt;y;
+		int 		j = 0;
+		while (j &lt; o_len &amp;&amp; output_name == &apos;\0&apos;) {
+			output = os[j];
+			if (get_output_connection(conn, output) == 0) {
+				/* Check */
+				output_info = get_output_info(conn, output);
+				output_crtc_info = get_output_crtc_info(conn, output_info-&gt;crtc);
+				if (output_crtc_info != NULL) {
+					output_w = output_crtc_info-&gt;width;
+					output_h = output_crtc_info-&gt;height;
+					output_x = output_crtc_info-&gt;x;
+					output_y = output_crtc_info-&gt;y;
 
-                    if (window_x &gt;= output_x &amp;&amp;
-                        window_y &gt;= output_y &amp;&amp;
-                        window_x &lt;= output_x + output_w &amp;&amp;
-                        window_y &lt;= output_y + output_h) {
+					if (window_x &gt;= output_x &amp;&amp;
+					    window_y &gt;= output_y &amp;&amp;
+					  window_x &lt;= output_x + output_w &amp;&amp;
+					  window_y &lt;= output_y + output_h) {
 
-                        output_name = get_output_name(conn, output);
-                    }
-                }
-            }
+						output_name = (const char *)get_output_name(conn, output);
+					}
+				}
+			}
+			j++;
+		}
 
-            j++;
-        }
-
-        i++;
-    }
-    if (!output_name)
-        errx(1, &quot;Cannot get output name&quot;);
-    printf(&quot;%s\n&quot;, output_name);
-    free(window_geometry);
-    free(output_info);
-    free(output_crtc_info);
-    return 0;
+		i++;
+	}
+	if (output_name == &apos;\0&apos;)
+		errx(1, &quot;Cannot get output name&quot;);
+	printf(&quot;%s\n&quot;, output_name);
+	free(window_geometry);
+	free(output_info);
+	free(output_crtc_info);
+	return 0;
 }
-
 </pre></td></tr></table>
 </div>
 </body>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>nioup - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../../../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../../../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../../../"><img src="../../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> nioup (218B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<a href="#l1" id="l1">1</a>
+<a href="#l2" id="l2">2</a>
+<a href="#l3" id="l3">3</a>
+<a href="#l4" id="l4">4</a>
+<a href="#l5" id="l5">5</a>
+<a href="#l6" id="l6">6</a>
+<a href="#l7" id="l7">7</a>
+<a href="#l8" id="l8">8</a>
+<a href="#l9" id="l9">9</a>
+<a href="#l10" id="l10">10</a>
+<a href="#l11" id="l11">11</a>
+<a href="#l12" id="l12">12</a>
+</pre></td><td><pre>
+#! /bin/sh
+#
+# nioup - Simple scripts to upload files to the iotek pastebin
+# (c) tudurom - 2016 (wtfpl)
+#
+
+test $# -ne 1 &amp;&amp; {
+  echo &quot;Usage: $(basename &quot;$0&quot;) &lt;file to paste&gt;&quot;
+  exit 1
+}
+
+curl -sLT- p.iotek.org &lt; &quot;$1&quot;
+</pre></td></tr></table>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>fix ruby path - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/dcb8432b32267dcb3de909731f3bc4f95e5b9ef9.html">dcb8432b32267dcb3de909731f3bc4f95e5b9ef9</a>
+<b>parent</b> <a href="../commit/18509d9ce93b6247f3c1d25410ec5a0e8a2e90bc.html">18509d9ce93b6247f3c1d25410ec5a0e8a2e90bc</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat May  7 21:07:42 2016
+
+fix ruby path
+
+<b>Diffstat:</b>
+ .gitignore        | 1 +
+ shell/.crosssh.sh | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a href="../file/.gitignore.html">.gitignore</a> b/<a href="../file/.gitignore.html">.gitignore</a></b>
+<a href="#h0" id="h0" class="h">@@ -3,6 +3,7 @@ nvim/.config/nvim/autoload
+</a> !nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/cloudy.vim
+ nvim/.config/nvim/tmp
+ nvim/.config/nvim/.netrwhist
+<a href="#h0-3" id="h0-3" class="i">+nvim/.config/htop
+</a> 
+ mpd/.mpd/*
+ !mpd/.mpd/mpd.conf
+<b>diff --git a/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a> b/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -27,7 +27,8 @@ fi
+</a> # Ruby
+ if [ -f /usr/bin/ruby ]; then
+     export PATH=$HOME/.node/bin:$PATH
+<a href="#h0-3" id="h0-3" class="d">-    export PATH=$HOME/.gem/ruby/2.3/bin:$PATH
+</a><a href="#h0-4" id="h0-4" class="i">+    ruby_ver=&quot;$(ls -1 $HOME/.gem/ruby | sort -nr | head -n 1)&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+    export PATH=$HOME/.gem/ruby/$ruby_ver/bin:$PATH
+</a> fi
+ 
+ # Source local scripts
+</pre>
+</div>
+</body>
+</html>

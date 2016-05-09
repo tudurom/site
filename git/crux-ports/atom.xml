@@ -1,11 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>crux-ports, branch HEAD</title>
-<subtitle>Ports for crux. Bassed off arcetera&apos;s ports.
+<subtitle>Ports for the CRUX Linux distro.
 </subtitle>
 <entry>
+<id>3e9cc2ec08ba49cec1b68326ba2d79a5e0400e33</id>
+<published>2016-05-05T12:06:13Z</published>
+<updated>2016-05-05T12:06:13Z</updated>
+<title type="text">go: bump version</title>
+<link rel="alternate" type="text/html" href="commit/3e9cc2ec08ba49cec1b68326ba2d79a5e0400e33.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 3e9cc2ec08ba49cec1b68326ba2d79a5e0400e33
+parent e887a42fb757c82ced3280b82465eb9023b4f5ff
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu May  5 15:06:13 +0300
+
+go: bump version
+
+</content>
+</entry>
+<entry>
+<id>e887a42fb757c82ced3280b82465eb9023b4f5ff</id>
+<published>2016-05-05T11:58:35Z</published>
+<updated>2016-05-05T11:58:35Z</updated>
+<title type="text">Add: mongodb-bin and alt-ca-certificates</title>
+<link rel="alternate" type="text/html" href="commit/e887a42fb757c82ced3280b82465eb9023b4f5ff.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit e887a42fb757c82ced3280b82465eb9023b4f5ff
+parent 5e8ee8ea966ece05bd0e873bded9796872e06f71
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu May  5 14:58:35 +0300
+
+Add: mongodb-bin and alt-ca-certificates
+
+</content>
+</entry>
+<entry>
+<id>5e8ee8ea966ece05bd0e873bded9796872e06f71</id>
+<published>2016-05-04T12:18:09Z</published>
+<updated>2016-05-04T12:18:09Z</updated>
+<title type="text">remove sind, add ncmpcpp</title>
+<link rel="alternate" type="text/html" href="commit/5e8ee8ea966ece05bd0e873bded9796872e06f71.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 5e8ee8ea966ece05bd0e873bded9796872e06f71
+parent 0d1db49e0f71ed5b967073ba269555e4be6e1065
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed May  4 15:18:09 +0300
+
+remove sind, add ncmpcpp
+
+</content>
+</entry>
+<entry>
+<id>0d1db49e0f71ed5b967073ba269555e4be6e1065</id>
+<published>2016-04-29T17:14:53Z</published>
+<updated>2016-04-29T17:14:53Z</updated>
+<title type="text">mod: maintainer (me)</title>
+<link rel="alternate" type="text/html" href="commit/0d1db49e0f71ed5b967073ba269555e4be6e1065.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 0d1db49e0f71ed5b967073ba269555e4be6e1065
+parent c630b5210ecb966567f8faa29b05ca58a213bfff
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Apr 29 20:14:53 +0300
+
+mod: maintainer (me)
+
+</content>
+</entry>
+<entry>
+<id>c630b5210ecb966567f8faa29b05ca58a213bfff</id>
+<published>2016-04-28T18:27:53Z</published>
+<updated>2016-04-28T18:27:53Z</updated>
+<title type="text">add: light</title>
+<link rel="alternate" type="text/html" href="commit/c630b5210ecb966567f8faa29b05ca58a213bfff.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit c630b5210ecb966567f8faa29b05ca58a213bfff
+parent d20a7b9455de82e30535c1f1bc6aabd9b438ee9f
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Apr 28 21:27:53 +0300
+
+add: light
+
+</content>
+</entry>
+<entry>
+<id>d20a7b9455de82e30535c1f1bc6aabd9b438ee9f</id>
+<published>2016-04-27T19:42:39Z</published>
+<updated>2016-04-27T19:42:39Z</updated>
+<title type="text">add: gnu typist</title>
+<link rel="alternate" type="text/html" href="commit/d20a7b9455de82e30535c1f1bc6aabd9b438ee9f.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit d20a7b9455de82e30535c1f1bc6aabd9b438ee9f
+parent d365aa2d9c9b323d4f530d583beb82efb1128063
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Apr 27 22:42:39 +0300
+
+add: gnu typist
+
+</content>
+</entry>
+<entry>
+<id>d365aa2d9c9b323d4f530d583beb82efb1128063</id>
+<published>2016-04-25T17:45:30Z</published>
+<updated>2016-04-25T17:45:30Z</updated>
+<title type="text">add: mumble</title>
+<link rel="alternate" type="text/html" href="commit/d365aa2d9c9b323d4f530d583beb82efb1128063.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit d365aa2d9c9b323d4f530d583beb82efb1128063
+parent e03ab4272ce845fd41096b351fcb55b2dc526ad3
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Apr 25 20:45:30 +0300
+
+add: mumble
+
+</content>
+</entry>
+<entry>
+<id>e03ab4272ce845fd41096b351fcb55b2dc526ad3</id>
+<published>2016-04-22T08:36:54Z</published>
+<updated>2016-04-22T08:36:54Z</updated>
+<title type="text">neofetch: add maintainer</title>
+<link rel="alternate" type="text/html" href="commit/e03ab4272ce845fd41096b351fcb55b2dc526ad3.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit e03ab4272ce845fd41096b351fcb55b2dc526ad3
+parent c073c3ac190e5605afc35ed22c965776c3c98146
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Apr 22 11:36:54 +0300
+
+neofetch: add maintainer
+
+</content>
+</entry>
+<entry>
 <id>c073c3ac190e5605afc35ed22c965776c3c98146</id>
-<updated>2016-04-19T13:52:56Z</updated>
+<published>2016-04-19T10:52:56Z</published>
+<updated>2016-04-19T10:52:56Z</updated>
 <title type="text">add: disputils</title>
 <link rel="alternate" type="text/html" href="commit/c073c3ac190e5605afc35ed22c965776c3c98146.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
@@ -13,7 +150,7 @@
 <content type="text">commit c073c3ac190e5605afc35ed22c965776c3c98146
 parent b65a2c892483d601da505d0033f829284b4e809b
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Tue Apr 19 13:52:56 2016
+Date:   Tue Apr 19 13:52:56 +0300
 
 add: disputils
 
@@ -21,7 +158,8 @@ add: disputils
 </entry>
 <entry>
 <id>b65a2c892483d601da505d0033f829284b4e809b</id>
-<updated>2016-04-16T13:37:57Z</updated>
+<published>2016-04-16T10:37:57Z</published>
+<updated>2016-04-16T10:37:57Z</updated>
 <title type="text">tinc: version</title>
 <link rel="alternate" type="text/html" href="commit/b65a2c892483d601da505d0033f829284b4e809b.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
@@ -29,7 +167,7 @@ add: disputils
 <content type="text">commit b65a2c892483d601da505d0033f829284b4e809b
 parent 93711ce72c45599f2464364e086f41b87fe586d3
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Sat Apr 16 13:37:57 2016
+Date:   Sat Apr 16 13:37:57 +0300
 
 tinc: version
 
@@ -37,7 +175,8 @@ tinc: version
 </entry>
 <entry>
 <id>93711ce72c45599f2464364e086f41b87fe586d3</id>
-<updated>2016-04-15T18:26:39Z</updated>
+<published>2016-04-15T15:26:39Z</published>
+<updated>2016-04-15T15:26:39Z</updated>
 <title type="text">Add: zathura-pdf-poppler</title>
 <link rel="alternate" type="text/html" href="commit/93711ce72c45599f2464364e086f41b87fe586d3.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
@@ -45,7 +184,7 @@ tinc: version
 <content type="text">commit 93711ce72c45599f2464364e086f41b87fe586d3
 parent 9864ff69951f593b50d3af6a5ce2fb45f5fc6f18
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Fri Apr 15 18:26:39 2016
+Date:   Fri Apr 15 18:26:39 +0300
 
 Add: zathura-pdf-poppler
 
@@ -53,7 +192,8 @@ Add: zathura-pdf-poppler
 </entry>
 <entry>
 <id>9864ff69951f593b50d3af6a5ce2fb45f5fc6f18</id>
-<updated>2016-04-11T21:59:06Z</updated>
+<published>2016-04-11T18:59:06Z</published>
+<updated>2016-04-11T18:59:06Z</updated>
 <title type="text">added: telegram-cli</title>
 <link rel="alternate" type="text/html" href="commit/9864ff69951f593b50d3af6a5ce2fb45f5fc6f18.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
@@ -61,7 +201,7 @@ Add: zathura-pdf-poppler
 <content type="text">commit 9864ff69951f593b50d3af6a5ce2fb45f5fc6f18
 parent 6cd274fdabadf61b239ad04326e2a0d91da9be1e
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Mon Apr 11 21:59:06 2016
+Date:   Mon Apr 11 21:59:06 +0300
 
 added: telegram-cli
 
@@ -69,7 +209,8 @@ added: telegram-cli
 </entry>
 <entry>
 <id>6cd274fdabadf61b239ad04326e2a0d91da9be1e</id>
-<updated>2016-04-05T22:38:06Z</updated>
+<published>2016-04-05T19:38:06Z</published>
+<updated>2016-04-05T19:38:06Z</updated>
 <title type="text">skroll: install to /usr/bin</title>
 <link rel="alternate" type="text/html" href="commit/6cd274fdabadf61b239ad04326e2a0d91da9be1e.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
@@ -77,7 +218,7 @@ added: telegram-cli
 <content type="text">commit 6cd274fdabadf61b239ad04326e2a0d91da9be1e
 parent 06da0179dfe89d8c9ae40a4fb09eafc98d7a21ac
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Tue Apr  5 22:38:06 2016
+Date:   Tue Apr  5 22:38:06 +0300
 
 skroll: install to /usr/bin
 
@@ -85,7 +226,8 @@ skroll: install to /usr/bin
 </entry>
 <entry>
 <id>06da0179dfe89d8c9ae40a4fb09eafc98d7a21ac</id>
-<updated>2016-04-04T20:57:35Z</updated>
+<published>2016-04-04T17:57:35Z</published>
+<updated>2016-04-04T17:57:35Z</updated>
 <title type="text">add: mkb</title>
 <link rel="alternate" type="text/html" href="commit/06da0179dfe89d8c9ae40a4fb09eafc98d7a21ac.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
@@ -93,7 +235,7 @@ skroll: install to /usr/bin
 <content type="text">commit 06da0179dfe89d8c9ae40a4fb09eafc98d7a21ac
 parent a7faff5727e4e0d905cb7ce30bd92f287941cf02
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Mon Apr  4 20:57:35 2016
+Date:   Mon Apr  4 20:57:35 +0300
 
 add: mkb
 
@@ -101,7 +243,8 @@ add: mkb
 </entry>
 <entry>
 <id>a7faff5727e4e0d905cb7ce30bd92f287941cf02</id>
-<updated>2016-04-04T18:59:01Z</updated>
+<published>2016-04-04T15:59:01Z</published>
+<updated>2016-04-04T15:59:01Z</updated>
 <title type="text">add: go and skroll</title>
 <link rel="alternate" type="text/html" href="commit/a7faff5727e4e0d905cb7ce30bd92f287941cf02.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
@@ -109,7 +252,7 @@ add: mkb
 <content type="text">commit a7faff5727e4e0d905cb7ce30bd92f287941cf02
 parent af13f0817dacbc3a90136a9fbd4289d83f43242a
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Mon Apr  4 18:59:01 2016
+Date:   Mon Apr  4 18:59:01 +0300
 
 add: go and skroll
 
@@ -117,7 +260,8 @@ add: go and skroll
 </entry>
 <entry>
 <id>af13f0817dacbc3a90136a9fbd4289d83f43242a</id>
-<updated>2016-04-04T14:48:47Z</updated>
+<published>2016-04-04T11:48:47Z</published>
+<updated>2016-04-04T11:48:47Z</updated>
 <title type="text">footprint: lemonbar-border</title>
 <link rel="alternate" type="text/html" href="commit/af13f0817dacbc3a90136a9fbd4289d83f43242a.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
@@ -125,7 +269,7 @@ add: go and skroll
 <content type="text">commit af13f0817dacbc3a90136a9fbd4289d83f43242a
 parent 65d2b6595631dc9cf4a3c28561229b087bad5ec9
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Mon Apr  4 14:48:47 2016
+Date:   Mon Apr  4 14:48:47 +0300
 
 footprint: lemonbar-border
 
@@ -133,7 +277,8 @@ footprint: lemonbar-border
 </entry>
 <entry>
 <id>65d2b6595631dc9cf4a3c28561229b087bad5ec9</id>
-<updated>2016-04-03T20:51:59Z</updated>
+<published>2016-04-03T17:51:59Z</published>
+<updated>2016-04-03T17:51:59Z</updated>
 <title type="text">port for cwm</title>
 <link rel="alternate" type="text/html" href="commit/65d2b6595631dc9cf4a3c28561229b087bad5ec9.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
@@ -141,7 +286,7 @@ footprint: lemonbar-border
 <content type="text">commit 65d2b6595631dc9cf4a3c28561229b087bad5ec9
 parent 8c44a735e413aa69e01dafc061ce811a6dfcba0b
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Sun Apr  3 20:51:59 2016
+Date:   Sun Apr  3 20:51:59 +0300
 
 port for cwm
 
@@ -149,7 +294,8 @@ port for cwm
 </entry>
 <entry>
 <id>8c44a735e413aa69e01dafc061ce811a6dfcba0b</id>
-<updated>2016-04-03T14:20:09Z</updated>
+<published>2016-04-03T11:20:09Z</published>
+<updated>2016-04-03T11:20:09Z</updated>
 <title type="text">footprints</title>
 <link rel="alternate" type="text/html" href="commit/8c44a735e413aa69e01dafc061ce811a6dfcba0b.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
@@ -157,7 +303,7 @@ port for cwm
 <content type="text">commit 8c44a735e413aa69e01dafc061ce811a6dfcba0b
 parent 68aad313c4bb891d246fc572dea72cdeecf89b75
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Sun Apr  3 14:20:09 2016
+Date:   Sun Apr  3 14:20:09 +0300
 
 footprints
 
@@ -165,7 +311,8 @@ footprints
 </entry>
 <entry>
 <id>68aad313c4bb891d246fc572dea72cdeecf89b75</id>
-<updated>2016-04-03T12:30:00Z</updated>
+<published>2016-04-03T09:30:00Z</published>
+<updated>2016-04-03T09:30:00Z</updated>
 <title type="text">Added sind</title>
 <link rel="alternate" type="text/html" href="commit/68aad313c4bb891d246fc572dea72cdeecf89b75.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
@@ -173,7 +320,7 @@ footprints
 <content type="text">commit 68aad313c4bb891d246fc572dea72cdeecf89b75
 parent f8017d8bf377ca6bb0a83438ffae83c5851833c5
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Sun Apr  3 12:30:00 2016
+Date:   Sun Apr  3 12:30:00 +0300
 
 Added sind
 
@@ -181,7 +328,8 @@ Added sind
 </entry>
 <entry>
 <id>f8017d8bf377ca6bb0a83438ffae83c5851833c5</id>
-<updated>2016-04-02T21:52:26Z</updated>
+<published>2016-04-02T18:52:26Z</published>
+<updated>2016-04-02T18:52:26Z</updated>
 <title type="text">added: autocutsel, unclutter-xfixes, xrq</title>
 <link rel="alternate" type="text/html" href="commit/f8017d8bf377ca6bb0a83438ffae83c5851833c5.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
@@ -189,7 +337,7 @@ Added sind
 <content type="text">commit f8017d8bf377ca6bb0a83438ffae83c5851833c5
 parent abc98baf70089015841b91d613cf826c15016691
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Sat Apr  2 21:52:26 2016
+Date:   Sat Apr  2 21:52:26 +0300
 
 added: autocutsel, unclutter-xfixes, xrq
 
@@ -197,7 +345,8 @@ added: autocutsel, unclutter-xfixes, xrq
 </entry>
 <entry>
 <id>abc98baf70089015841b91d613cf826c15016691</id>
-<updated>2016-03-29T17:33:03Z</updated>
+<published>2016-03-29T21:33:03Z</published>
+<updated>2016-03-29T21:33:03Z</updated>
 <title type="text">add chicken</title>
 <link rel="alternate" type="text/html" href="commit/abc98baf70089015841b91d613cf826c15016691.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -205,7 +354,7 @@ added: autocutsel, unclutter-xfixes, xrq
 <content type="text">commit abc98baf70089015841b91d613cf826c15016691
 parent 15553bacf751893acfefef251122976ee4cc76c7
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Tue Mar 29 17:33:03 2016
+Date:   Tue Mar 29 17:33:03 -0400
 
 add chicken
 
@@ -213,7 +362,8 @@ add chicken
 </entry>
 <entry>
 <id>15553bacf751893acfefef251122976ee4cc76c7</id>
-<updated>2016-03-26T19:55:18Z</updated>
+<published>2016-03-26T23:55:18Z</published>
+<updated>2016-03-26T23:55:18Z</updated>
 <title type="text">add sup</title>
 <link rel="alternate" type="text/html" href="commit/15553bacf751893acfefef251122976ee4cc76c7.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -221,7 +371,7 @@ add chicken
 <content type="text">commit 15553bacf751893acfefef251122976ee4cc76c7
 parent 13cf847b83a213b9fdb4bbb2fe17f85d790b50ea
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sat Mar 26 19:55:18 2016
+Date:   Sat Mar 26 19:55:18 -0400
 
 add sup
 
@@ -229,7 +379,8 @@ add sup
 </entry>
 <entry>
 <id>13cf847b83a213b9fdb4bbb2fe17f85d790b50ea</id>
-<updated>2016-03-22T18:27:37Z</updated>
+<published>2016-03-22T22:27:37Z</published>
+<updated>2016-03-22T22:27:37Z</updated>
 <title type="text">use optional field, check for clisp</title>
 <link rel="alternate" type="text/html" href="commit/13cf847b83a213b9fdb4bbb2fe17f85d790b50ea.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -237,7 +388,7 @@ add sup
 <content type="text">commit 13cf847b83a213b9fdb4bbb2fe17f85d790b50ea
 parent 6c85a05f42bed26e980e549faa5c1a14ff8fa2d6
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Tue Mar 22 18:27:37 2016
+Date:   Tue Mar 22 18:27:37 -0400
 
 use optional field, check for clisp
 
@@ -245,7 +396,8 @@ use optional field, check for clisp
 </entry>
 <entry>
 <id>6c85a05f42bed26e980e549faa5c1a14ff8fa2d6</id>
-<updated>2016-03-20T14:11:38Z</updated>
+<published>2016-03-20T18:11:38Z</published>
+<updated>2016-03-20T18:11:38Z</updated>
 <title type="text">add sxhkd</title>
 <link rel="alternate" type="text/html" href="commit/6c85a05f42bed26e980e549faa5c1a14ff8fa2d6.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -253,7 +405,7 @@ use optional field, check for clisp
 <content type="text">commit 6c85a05f42bed26e980e549faa5c1a14ff8fa2d6
 parent 9819985da2282f6145f38875735276a3ccdb5dc5
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sun Mar 20 14:11:38 2016
+Date:   Sun Mar 20 14:11:38 -0400
 
 add sxhkd
 
@@ -261,7 +413,8 @@ add sxhkd
 </entry>
 <entry>
 <id>9819985da2282f6145f38875735276a3ccdb5dc5</id>
-<updated>2016-03-19T09:26:42Z</updated>
+<published>2016-03-19T13:26:42Z</published>
+<updated>2016-03-19T13:26:42Z</updated>
 <title type="text">add rlwrap</title>
 <link rel="alternate" type="text/html" href="commit/9819985da2282f6145f38875735276a3ccdb5dc5.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -269,7 +422,7 @@ add sxhkd
 <content type="text">commit 9819985da2282f6145f38875735276a3ccdb5dc5
 parent 91c1725e22c88ac37aed591f0413782808d33afa
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sat Mar 19 09:26:42 2016
+Date:   Sat Mar 19 09:26:42 -0400
 
 add rlwrap
 
@@ -277,7 +430,8 @@ add rlwrap
 </entry>
 <entry>
 <id>91c1725e22c88ac37aed591f0413782808d33afa</id>
-<updated>2016-03-18T17:01:47Z</updated>
+<published>2016-03-18T21:01:47Z</published>
+<updated>2016-03-18T21:01:47Z</updated>
 <title type="text">add sbcl</title>
 <link rel="alternate" type="text/html" href="commit/91c1725e22c88ac37aed591f0413782808d33afa.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -285,7 +439,7 @@ add rlwrap
 <content type="text">commit 91c1725e22c88ac37aed591f0413782808d33afa
 parent 5ad5e6631a357a830c62275d9e4f4924c50c8374
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar 18 17:01:47 2016
+Date:   Fri Mar 18 17:01:47 -0400
 
 add sbcl
 
@@ -293,7 +447,8 @@ add sbcl
 </entry>
 <entry>
 <id>5ad5e6631a357a830c62275d9e4f4924c50c8374</id>
-<updated>2016-03-17T08:51:10Z</updated>
+<published>2016-03-17T12:51:10Z</published>
+<updated>2016-03-17T12:51:10Z</updated>
 <title type="text">neofetch: update footprint</title>
 <link rel="alternate" type="text/html" href="commit/5ad5e6631a357a830c62275d9e4f4924c50c8374.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -301,7 +456,7 @@ add sbcl
 <content type="text">commit 5ad5e6631a357a830c62275d9e4f4924c50c8374
 parent 04d4007b03b1016f60ee13dd4e61fb39958c3930
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Thu Mar 17 08:51:10 2016
+Date:   Thu Mar 17 08:51:10 -0400
 
 neofetch: update footprint
 
@@ -309,7 +464,8 @@ neofetch: update footprint
 </entry>
 <entry>
 <id>04d4007b03b1016f60ee13dd4e61fb39958c3930</id>
-<updated>2016-03-13T15:46:50Z</updated>
+<published>2016-03-13T19:46:50Z</published>
+<updated>2016-03-13T19:46:50Z</updated>
 <title type="text">remove binary</title>
 <link rel="alternate" type="text/html" href="commit/04d4007b03b1016f60ee13dd4e61fb39958c3930.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -317,7 +473,7 @@ neofetch: update footprint
 <content type="text">commit 04d4007b03b1016f60ee13dd4e61fb39958c3930
 parent ba8275fa2340c646d18cbd711ec950fa3faf48c8
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sun Mar 13 15:46:50 2016
+Date:   Sun Mar 13 15:46:50 -0400
 
 remove binary
 
@@ -325,7 +481,8 @@ remove binary
 </entry>
 <entry>
 <id>ba8275fa2340c646d18cbd711ec950fa3faf48c8</id>
-<updated>2016-03-13T15:46:40Z</updated>
+<published>2016-03-13T19:46:40Z</published>
+<updated>2016-03-13T19:46:40Z</updated>
 <title type="text">update url</title>
 <link rel="alternate" type="text/html" href="commit/ba8275fa2340c646d18cbd711ec950fa3faf48c8.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -333,7 +490,7 @@ remove binary
 <content type="text">commit ba8275fa2340c646d18cbd711ec950fa3faf48c8
 parent db284cd505e58bd7674d7bd01affd2d69dba6577
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sun Mar 13 15:46:40 2016
+Date:   Sun Mar 13 15:46:40 -0400
 
 update url
 
@@ -341,7 +498,8 @@ update url
 </entry>
 <entry>
 <id>db284cd505e58bd7674d7bd01affd2d69dba6577</id>
-<updated>2016-03-12T16:26:15Z</updated>
+<published>2016-03-12T21:26:15Z</published>
+<updated>2016-03-12T21:26:15Z</updated>
 <title type="text">rm panda</title>
 <link rel="alternate" type="text/html" href="commit/db284cd505e58bd7674d7bd01affd2d69dba6577.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -349,7 +507,7 @@ update url
 <content type="text">commit db284cd505e58bd7674d7bd01affd2d69dba6577
 parent 02c0994560cac3843109daa0aaee6caa4f16dc7c
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sat Mar 12 16:26:15 2016
+Date:   Sat Mar 12 16:26:15 -0500
 
 rm panda
 
@@ -357,7 +515,8 @@ rm panda
 </entry>
 <entry>
 <id>02c0994560cac3843109daa0aaee6caa4f16dc7c</id>
-<updated>2016-03-12T16:00:07Z</updated>
+<published>2016-03-12T21:00:07Z</published>
+<updated>2016-03-12T21:00:07Z</updated>
 <title type="text">add panda</title>
 <link rel="alternate" type="text/html" href="commit/02c0994560cac3843109daa0aaee6caa4f16dc7c.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -365,7 +524,7 @@ rm panda
 <content type="text">commit 02c0994560cac3843109daa0aaee6caa4f16dc7c
 parent 545fd7b210e47f3cbe7bd8125a9e479ccb614a20
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sat Mar 12 16:00:07 2016
+Date:   Sat Mar 12 16:00:07 -0500
 
 add panda
 
@@ -373,7 +532,8 @@ add panda
 </entry>
 <entry>
 <id>545fd7b210e47f3cbe7bd8125a9e479ccb614a20</id>
-<updated>2016-03-12T15:48:52Z</updated>
+<published>2016-03-12T20:48:52Z</published>
+<updated>2016-03-12T20:48:52Z</updated>
 <title type="text">remove binaries</title>
 <link rel="alternate" type="text/html" href="commit/545fd7b210e47f3cbe7bd8125a9e479ccb614a20.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -381,7 +541,7 @@ add panda
 <content type="text">commit 545fd7b210e47f3cbe7bd8125a9e479ccb614a20
 parent ba3851e28bcfa4265093316b4617e6e39419fe9a
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sat Mar 12 15:48:52 2016
+Date:   Sat Mar 12 15:48:52 -0500
 
 remove binaries
 
@@ -389,7 +549,8 @@ remove binaries
 </entry>
 <entry>
 <id>ba3851e28bcfa4265093316b4617e6e39419fe9a</id>
-<updated>2016-03-12T15:48:38Z</updated>
+<published>2016-03-12T20:48:38Z</published>
+<updated>2016-03-12T20:48:38Z</updated>
 <title type="text">add rakudo and deps</title>
 <link rel="alternate" type="text/html" href="commit/ba3851e28bcfa4265093316b4617e6e39419fe9a.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -397,7 +558,7 @@ remove binaries
 <content type="text">commit ba3851e28bcfa4265093316b4617e6e39419fe9a
 parent b4fc787378d27636574d2e6ec999d1e33fbd77a8
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sat Mar 12 15:48:38 2016
+Date:   Sat Mar 12 15:48:38 -0500
 
 add rakudo and deps
 
@@ -405,7 +566,8 @@ add rakudo and deps
 </entry>
 <entry>
 <id>b4fc787378d27636574d2e6ec999d1e33fbd77a8</id>
-<updated>2016-03-11T16:27:29Z</updated>
+<published>2016-03-11T21:27:29Z</published>
+<updated>2016-03-11T21:27:29Z</updated>
 <title type="text">add tinc</title>
 <link rel="alternate" type="text/html" href="commit/b4fc787378d27636574d2e6ec999d1e33fbd77a8.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -413,7 +575,7 @@ add rakudo and deps
 <content type="text">commit b4fc787378d27636574d2e6ec999d1e33fbd77a8
 parent 430567f720e7d3282c371d36d820ee401712718c
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar 11 16:27:29 2016
+Date:   Fri Mar 11 16:27:29 -0500
 
 add tinc
 
@@ -421,7 +583,8 @@ add tinc
 </entry>
 <entry>
 <id>430567f720e7d3282c371d36d820ee401712718c</id>
-<updated>2016-03-10T22:31:52Z</updated>
+<published>2016-03-11T03:31:52Z</published>
+<updated>2016-03-11T03:31:52Z</updated>
 <title type="text">libotr: update to 4.1.1</title>
 <link rel="alternate" type="text/html" href="commit/430567f720e7d3282c371d36d820ee401712718c.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -429,7 +592,7 @@ add tinc
 <content type="text">commit 430567f720e7d3282c371d36d820ee401712718c
 parent 4d32f529edc57284e20e6a6c90db32cd8f316177
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Thu Mar 10 22:31:52 2016
+Date:   Thu Mar 10 22:31:52 -0500
 
 libotr: update to 4.1.1
 
@@ -439,7 +602,8 @@ fixes CVE-2016-2851, fixing integer overflow: https://otr.cypherpunks.ca/news.ph
 </entry>
 <entry>
 <id>4d32f529edc57284e20e6a6c90db32cd8f316177</id>
-<updated>2016-03-09T20:08:41Z</updated>
+<published>2016-03-10T01:08:41Z</published>
+<updated>2016-03-10T01:08:41Z</updated>
 <title type="text">urc: add urc.local support</title>
 <link rel="alternate" type="text/html" href="commit/4d32f529edc57284e20e6a6c90db32cd8f316177.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -447,7 +611,7 @@ fixes CVE-2016-2851, fixing integer overflow: https://otr.cypherpunks.ca/news.ph
 <content type="text">commit 4d32f529edc57284e20e6a6c90db32cd8f316177
 parent 8ceb1d249c4848488c66ea295cd4537a55846a07
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Wed Mar  9 20:08:41 2016
+Date:   Wed Mar  9 20:08:41 -0500
 
 urc: add urc.local support
 
@@ -455,7 +619,8 @@ urc: add urc.local support
 </entry>
 <entry>
 <id>8ceb1d249c4848488c66ea295cd4537a55846a07</id>
-<updated>2016-03-08T17:12:19Z</updated>
+<published>2016-03-08T22:12:19Z</published>
+<updated>2016-03-08T22:12:19Z</updated>
 <title type="text">add x11fs</title>
 <link rel="alternate" type="text/html" href="commit/8ceb1d249c4848488c66ea295cd4537a55846a07.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -463,7 +628,7 @@ urc: add urc.local support
 <content type="text">commit 8ceb1d249c4848488c66ea295cd4537a55846a07
 parent dee7061f2807d132504b1ea446ca1b62a4165130
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Tue Mar  8 17:12:19 2016
+Date:   Tue Mar  8 17:12:19 -0500
 
 add x11fs
 
@@ -471,7 +636,8 @@ add x11fs
 </entry>
 <entry>
 <id>dee7061f2807d132504b1ea446ca1b62a4165130</id>
-<updated>2016-03-06T09:58:30Z</updated>
+<published>2016-03-06T14:58:30Z</published>
+<updated>2016-03-06T14:58:30Z</updated>
 <title type="text">add missing dep</title>
 <link rel="alternate" type="text/html" href="commit/dee7061f2807d132504b1ea446ca1b62a4165130.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -479,7 +645,7 @@ add x11fs
 <content type="text">commit dee7061f2807d132504b1ea446ca1b62a4165130
 parent 405d2aea43aabd28b5e2d7a1bbc2e2b2fd2fef1f
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sun Mar  6 09:58:30 2016
+Date:   Sun Mar  6 09:58:30 -0500
 
 add missing dep
 
@@ -487,7 +653,8 @@ add missing dep
 </entry>
 <entry>
 <id>405d2aea43aabd28b5e2d7a1bbc2e2b2fd2fef1f</id>
-<updated>2016-03-06T09:13:21Z</updated>
+<published>2016-03-06T14:13:21Z</published>
+<updated>2016-03-06T14:13:21Z</updated>
 <title type="text">add nq</title>
 <link rel="alternate" type="text/html" href="commit/405d2aea43aabd28b5e2d7a1bbc2e2b2fd2fef1f.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -495,7 +662,7 @@ add missing dep
 <content type="text">commit 405d2aea43aabd28b5e2d7a1bbc2e2b2fd2fef1f
 parent fcf0b8761d68672a9f5b05845d9fba6e1fb57b9a
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sun Mar  6 09:13:21 2016
+Date:   Sun Mar  6 09:13:21 -0500
 
 add nq
 
@@ -503,7 +670,8 @@ add nq
 </entry>
 <entry>
 <id>fcf0b8761d68672a9f5b05845d9fba6e1fb57b9a</id>
-<updated>2016-03-05T13:05:53Z</updated>
+<published>2016-03-05T18:05:53Z</published>
+<updated>2016-03-05T18:05:53Z</updated>
 <title type="text">urc: update url</title>
 <link rel="alternate" type="text/html" href="commit/fcf0b8761d68672a9f5b05845d9fba6e1fb57b9a.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -511,7 +679,7 @@ add nq
 <content type="text">commit fcf0b8761d68672a9f5b05845d9fba6e1fb57b9a
 parent ef3dd77b80ab9a3d1b2cec6af090dc29cc39ed98
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sat Mar  5 13:05:53 2016
+Date:   Sat Mar  5 13:05:53 -0500
 
 urc: update url
 
@@ -519,7 +687,8 @@ urc: update url
 </entry>
 <entry>
 <id>ef3dd77b80ab9a3d1b2cec6af090dc29cc39ed98</id>
-<updated>2016-03-04T21:28:35Z</updated>
+<published>2016-03-05T02:28:35Z</published>
+<updated>2016-03-05T02:28:35Z</updated>
 <title type="text">dpkg, fetch: add md5sums</title>
 <link rel="alternate" type="text/html" href="commit/ef3dd77b80ab9a3d1b2cec6af090dc29cc39ed98.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -527,7 +696,7 @@ urc: update url
 <content type="text">commit ef3dd77b80ab9a3d1b2cec6af090dc29cc39ed98
 parent 1d29e67523d4b64b86d9fd36089ce2bce399c5e6
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:28:35 2016
+Date:   Fri Mar  4 21:28:35 -0500
 
 dpkg, fetch: add md5sums
 
@@ -535,7 +704,8 @@ dpkg, fetch: add md5sums
 </entry>
 <entry>
 <id>1d29e67523d4b64b86d9fd36089ce2bce399c5e6</id>
-<updated>2016-03-04T21:27:23Z</updated>
+<published>2016-03-05T02:27:23Z</published>
+<updated>2016-03-05T02:27:23Z</updated>
 <title type="text">remove binaries</title>
 <link rel="alternate" type="text/html" href="commit/1d29e67523d4b64b86d9fd36089ce2bce399c5e6.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -543,7 +713,7 @@ dpkg, fetch: add md5sums
 <content type="text">commit 1d29e67523d4b64b86d9fd36089ce2bce399c5e6
 parent 14cce6a79b3c381e2af0014606a63684e6e41b1f
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:27:23 2016
+Date:   Fri Mar  4 21:27:23 -0500
 
 remove binaries
 
@@ -551,7 +721,8 @@ remove binaries
 </entry>
 <entry>
 <id>14cce6a79b3c381e2af0014606a63684e6e41b1f</id>
-<updated>2016-03-04T21:06:46Z</updated>
+<published>2016-03-05T02:06:46Z</published>
+<updated>2016-03-05T02:06:46Z</updated>
 <title type="text">urc: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/14cce6a79b3c381e2af0014606a63684e6e41b1f.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -559,7 +730,7 @@ remove binaries
 <content type="text">commit 14cce6a79b3c381e2af0014606a63684e6e41b1f
 parent 4340f6432de40a9702759918d9fb3f535abb792e
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:06:46 2016
+Date:   Fri Mar  4 21:06:46 -0500
 
 urc: Update footprint.
 
@@ -567,7 +738,8 @@ urc: Update footprint.
 </entry>
 <entry>
 <id>4340f6432de40a9702759918d9fb3f535abb792e</id>
-<updated>2016-03-04T21:06:45Z</updated>
+<published>2016-03-05T02:06:45Z</published>
+<updated>2016-03-05T02:06:45Z</updated>
 <title type="text">thermald: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/4340f6432de40a9702759918d9fb3f535abb792e.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -575,7 +747,7 @@ urc: Update footprint.
 <content type="text">commit 4340f6432de40a9702759918d9fb3f535abb792e
 parent 9fca324df549832caf7612442abbd620ac6731f9
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:06:45 2016
+Date:   Fri Mar  4 21:06:45 -0500
 
 thermald: Update footprint.
 
@@ -583,7 +755,8 @@ thermald: Update footprint.
 </entry>
 <entry>
 <id>9fca324df549832caf7612442abbd620ac6731f9</id>
-<updated>2016-03-04T21:06:29Z</updated>
+<published>2016-03-05T02:06:29Z</published>
+<updated>2016-03-05T02:06:29Z</updated>
 <title type="text">tbclock: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/9fca324df549832caf7612442abbd620ac6731f9.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -591,7 +764,7 @@ thermald: Update footprint.
 <content type="text">commit 9fca324df549832caf7612442abbd620ac6731f9
 parent 09f1acf5684285ac81c9bef9b39073f06ee39ade
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:06:29 2016
+Date:   Fri Mar  4 21:06:29 -0500
 
 tbclock: Update footprint.
 
@@ -599,7 +772,8 @@ tbclock: Update footprint.
 </entry>
 <entry>
 <id>09f1acf5684285ac81c9bef9b39073f06ee39ade</id>
-<updated>2016-03-04T21:06:28Z</updated>
+<published>2016-03-05T02:06:28Z</published>
+<updated>2016-03-05T02:06:28Z</updated>
 <title type="text">profanity: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/09f1acf5684285ac81c9bef9b39073f06ee39ade.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -607,7 +781,7 @@ tbclock: Update footprint.
 <content type="text">commit 09f1acf5684285ac81c9bef9b39073f06ee39ade
 parent 77aa5c1a2a1e4bdc5707e5dc264498fa9fa3c2ed
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:06:28 2016
+Date:   Fri Mar  4 21:06:28 -0500
 
 profanity: Update footprint.
 
@@ -615,7 +789,8 @@ profanity: Update footprint.
 </entry>
 <entry>
 <id>77aa5c1a2a1e4bdc5707e5dc264498fa9fa3c2ed</id>
-<updated>2016-03-04T21:06:17Z</updated>
+<published>2016-03-05T02:06:17Z</published>
+<updated>2016-03-05T02:06:17Z</updated>
 <title type="text">osd_clock: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/77aa5c1a2a1e4bdc5707e5dc264498fa9fa3c2ed.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -623,7 +798,7 @@ profanity: Update footprint.
 <content type="text">commit 77aa5c1a2a1e4bdc5707e5dc264498fa9fa3c2ed
 parent f865fdf89df7687ec5cdae38247f7a2bd469f008
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:06:17 2016
+Date:   Fri Mar  4 21:06:17 -0500
 
 osd_clock: Update footprint.
 
@@ -631,7 +806,8 @@ osd_clock: Update footprint.
 </entry>
 <entry>
 <id>f865fdf89df7687ec5cdae38247f7a2bd469f008</id>
-<updated>2016-03-04T21:05:22Z</updated>
+<published>2016-03-05T02:05:22Z</published>
+<updated>2016-03-05T02:05:22Z</updated>
 <title type="text">rm nethack</title>
 <link rel="alternate" type="text/html" href="commit/f865fdf89df7687ec5cdae38247f7a2bd469f008.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -639,7 +815,7 @@ osd_clock: Update footprint.
 <content type="text">commit f865fdf89df7687ec5cdae38247f7a2bd469f008
 parent 471db8be24ad62503485b1fda10000aab8ee6dde
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:05:22 2016
+Date:   Fri Mar  4 21:05:22 -0500
 
 rm nethack
 
@@ -647,7 +823,8 @@ rm nethack
 </entry>
 <entry>
 <id>471db8be24ad62503485b1fda10000aab8ee6dde</id>
-<updated>2016-03-04T21:04:23Z</updated>
+<published>2016-03-05T02:04:23Z</published>
+<updated>2016-03-05T02:04:23Z</updated>
 <title type="text">neofetch: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/471db8be24ad62503485b1fda10000aab8ee6dde.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -655,7 +832,7 @@ rm nethack
 <content type="text">commit 471db8be24ad62503485b1fda10000aab8ee6dde
 parent 822fdab9b2b81e5c7c47e348639f1503169baea1
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:04:23 2016
+Date:   Fri Mar  4 21:04:23 -0500
 
 neofetch: Update footprint.
 
@@ -663,7 +840,8 @@ neofetch: Update footprint.
 </entry>
 <entry>
 <id>822fdab9b2b81e5c7c47e348639f1503169baea1</id>
-<updated>2016-03-04T21:03:34Z</updated>
+<published>2016-03-05T02:03:34Z</published>
+<updated>2016-03-05T02:03:34Z</updated>
 <title type="text">libxosd: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/822fdab9b2b81e5c7c47e348639f1503169baea1.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -671,7 +849,7 @@ neofetch: Update footprint.
 <content type="text">commit 822fdab9b2b81e5c7c47e348639f1503169baea1
 parent 363fce465fa4db527bcdc8815cd5cec08a55434f
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:03:34 2016
+Date:   Fri Mar  4 21:03:34 -0500
 
 libxosd: Update footprint.
 
@@ -679,7 +857,8 @@ libxosd: Update footprint.
 </entry>
 <entry>
 <id>363fce465fa4db527bcdc8815cd5cec08a55434f</id>
-<updated>2016-03-04T21:03:27Z</updated>
+<published>2016-03-05T02:03:27Z</published>
+<updated>2016-03-05T02:03:27Z</updated>
 <title type="text">libwebp: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/363fce465fa4db527bcdc8815cd5cec08a55434f.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -687,7 +866,7 @@ libxosd: Update footprint.
 <content type="text">commit 363fce465fa4db527bcdc8815cd5cec08a55434f
 parent d78f6e2fffda3091bafe86a8780b556de4232292
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:03:27 2016
+Date:   Fri Mar  4 21:03:27 -0500
 
 libwebp: Update footprint.
 
@@ -695,7 +874,8 @@ libwebp: Update footprint.
 </entry>
 <entry>
 <id>d78f6e2fffda3091bafe86a8780b556de4232292</id>
-<updated>2016-03-04T21:02:53Z</updated>
+<published>2016-03-05T02:02:53Z</published>
+<updated>2016-03-05T02:02:53Z</updated>
 <title type="text">libstrophe: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/d78f6e2fffda3091bafe86a8780b556de4232292.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -703,7 +883,7 @@ libwebp: Update footprint.
 <content type="text">commit d78f6e2fffda3091bafe86a8780b556de4232292
 parent 274e7b44e76b5ad4a8568504de4dcab5edfed5d9
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:02:53 2016
+Date:   Fri Mar  4 21:02:53 -0500
 
 libstrophe: Update footprint.
 
@@ -711,7 +891,8 @@ libstrophe: Update footprint.
 </entry>
 <entry>
 <id>274e7b44e76b5ad4a8568504de4dcab5edfed5d9</id>
-<updated>2016-03-04T21:02:37Z</updated>
+<published>2016-03-05T02:02:37Z</published>
+<updated>2016-03-05T02:02:37Z</updated>
 <title type="text">libotr: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/274e7b44e76b5ad4a8568504de4dcab5edfed5d9.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -719,7 +900,7 @@ libstrophe: Update footprint.
 <content type="text">commit 274e7b44e76b5ad4a8568504de4dcab5edfed5d9
 parent 39b08721f2a185203a1d9d0f378a56f685053747
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:02:37 2016
+Date:   Fri Mar  4 21:02:37 -0500
 
 libotr: Update footprint.
 
@@ -727,7 +908,8 @@ libotr: Update footprint.
 </entry>
 <entry>
 <id>39b08721f2a185203a1d9d0f378a56f685053747</id>
-<updated>2016-03-04T21:02:31Z</updated>
+<published>2016-03-05T02:02:31Z</published>
+<updated>2016-03-05T02:02:31Z</updated>
 <title type="text">lemonbar-border: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/39b08721f2a185203a1d9d0f378a56f685053747.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -735,7 +917,7 @@ libotr: Update footprint.
 <content type="text">commit 39b08721f2a185203a1d9d0f378a56f685053747
 parent 7e90b18f06f676994f747ae533640241355c005c
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:02:31 2016
+Date:   Fri Mar  4 21:02:31 -0500
 
 lemonbar-border: Update footprint.
 
@@ -743,7 +925,8 @@ lemonbar-border: Update footprint.
 </entry>
 <entry>
 <id>7e90b18f06f676994f747ae533640241355c005c</id>
-<updated>2016-03-04T21:02:29Z</updated>
+<published>2016-03-05T02:02:29Z</published>
+<updated>2016-03-05T02:02:29Z</updated>
 <title type="text">keepassx2: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/7e90b18f06f676994f747ae533640241355c005c.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -751,7 +934,7 @@ lemonbar-border: Update footprint.
 <content type="text">commit 7e90b18f06f676994f747ae533640241355c005c
 parent a96aab3a9666a34fc5adc8840990edd04ccc0401
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:02:29 2016
+Date:   Fri Mar  4 21:02:29 -0500
 
 keepassx2: Update footprint.
 
@@ -759,7 +942,8 @@ keepassx2: Update footprint.
 </entry>
 <entry>
 <id>a96aab3a9666a34fc5adc8840990edd04ccc0401</id>
-<updated>2016-03-04T21:01:23Z</updated>
+<published>2016-03-05T02:01:23Z</published>
+<updated>2016-03-05T02:01:23Z</updated>
 <title type="text">imgur: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/a96aab3a9666a34fc5adc8840990edd04ccc0401.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -767,7 +951,7 @@ keepassx2: Update footprint.
 <content type="text">commit a96aab3a9666a34fc5adc8840990edd04ccc0401
 parent b46ac32cb67a2ebbd0e551f76f8da409d1eef04f
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:01:23 2016
+Date:   Fri Mar  4 21:01:23 -0500
 
 imgur: Update footprint.
 
@@ -775,7 +959,8 @@ imgur: Update footprint.
 </entry>
 <entry>
 <id>b46ac32cb67a2ebbd0e551f76f8da409d1eef04f</id>
-<updated>2016-03-04T21:01:23Z</updated>
+<published>2016-03-05T02:01:23Z</published>
+<updated>2016-03-05T02:01:23Z</updated>
 <title type="text">fetch: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/b46ac32cb67a2ebbd0e551f76f8da409d1eef04f.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -783,7 +968,7 @@ imgur: Update footprint.
 <content type="text">commit b46ac32cb67a2ebbd0e551f76f8da409d1eef04f
 parent 825b5f8972d0387c7756bb2a0d71e5563afd1fda
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:01:23 2016
+Date:   Fri Mar  4 21:01:23 -0500
 
 fetch: Update footprint.
 
@@ -791,7 +976,8 @@ fetch: Update footprint.
 </entry>
 <entry>
 <id>825b5f8972d0387c7756bb2a0d71e5563afd1fda</id>
-<updated>2016-03-04T21:01:22Z</updated>
+<published>2016-03-05T02:01:22Z</published>
+<updated>2016-03-05T02:01:22Z</updated>
 <title type="text">dpkg: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/825b5f8972d0387c7756bb2a0d71e5563afd1fda.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -799,7 +985,7 @@ fetch: Update footprint.
 <content type="text">commit 825b5f8972d0387c7756bb2a0d71e5563afd1fda
 parent 58b46087a7e23e155f403e9aa8c88841d4e5c00d
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:01:22 2016
+Date:   Fri Mar  4 21:01:22 -0500
 
 dpkg: Update footprint.
 
@@ -807,7 +993,8 @@ dpkg: Update footprint.
 </entry>
 <entry>
 <id>58b46087a7e23e155f403e9aa8c88841d4e5c00d</id>
-<updated>2016-03-04T21:00:59Z</updated>
+<published>2016-03-05T02:00:59Z</published>
+<updated>2016-03-05T02:00:59Z</updated>
 <title type="text">fetch: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/58b46087a7e23e155f403e9aa8c88841d4e5c00d.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -815,7 +1002,7 @@ dpkg: Update footprint.
 <content type="text">commit 58b46087a7e23e155f403e9aa8c88841d4e5c00d
 parent 6577ea2d36279895c8c105d1701a495e24552c55
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:00:59 2016
+Date:   Fri Mar  4 21:00:59 -0500
 
 fetch: Update footprint.
 
@@ -823,7 +1010,8 @@ fetch: Update footprint.
 </entry>
 <entry>
 <id>6577ea2d36279895c8c105d1701a495e24552c55</id>
-<updated>2016-03-04T21:00:59Z</updated>
+<published>2016-03-05T02:00:59Z</published>
+<updated>2016-03-05T02:00:59Z</updated>
 <title type="text">dpkg: Update footprint.</title>
 <link rel="alternate" type="text/html" href="commit/6577ea2d36279895c8c105d1701a495e24552c55.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -831,7 +1019,7 @@ fetch: Update footprint.
 <content type="text">commit 6577ea2d36279895c8c105d1701a495e24552c55
 parent 7a41d5b0651c8d83431ca2e81e73563d4adfe80b
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 21:00:59 2016
+Date:   Fri Mar  4 21:00:59 -0500
 
 dpkg: Update footprint.
 
@@ -839,7 +1027,8 @@ dpkg: Update footprint.
 </entry>
 <entry>
 <id>7a41d5b0651c8d83431ca2e81e73563d4adfe80b</id>
-<updated>2016-03-04T20:38:52Z</updated>
+<published>2016-03-05T01:38:52Z</published>
+<updated>2016-03-05T01:38:52Z</updated>
 <title type="text">style and alias fixes</title>
 <link rel="alternate" type="text/html" href="commit/7a41d5b0651c8d83431ca2e81e73563d4adfe80b.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -847,7 +1036,7 @@ dpkg: Update footprint.
 <content type="text">commit 7a41d5b0651c8d83431ca2e81e73563d4adfe80b
 parent ef172dd994e433b0195192b3c99ba1cc86085ad1
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 20:38:52 2016
+Date:   Fri Mar  4 20:38:52 -0500
 
 style and alias fixes
 
@@ -855,7 +1044,8 @@ style and alias fixes
 </entry>
 <entry>
 <id>ef172dd994e433b0195192b3c99ba1cc86085ad1</id>
-<updated>2016-03-04T20:20:47Z</updated>
+<published>2016-03-05T01:20:47Z</published>
+<updated>2016-03-05T01:20:47Z</updated>
 <title type="text">rm readme and ports driver</title>
 <link rel="alternate" type="text/html" href="commit/ef172dd994e433b0195192b3c99ba1cc86085ad1.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -863,7 +1053,7 @@ style and alias fixes
 <content type="text">commit ef172dd994e433b0195192b3c99ba1cc86085ad1
 parent 125ea7df70606c6a7f4df3dfd6e2e4a062d7ab63
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Mar  4 20:20:47 2016
+Date:   Fri Mar  4 20:20:47 -0500
 
 rm readme and ports driver
 
@@ -871,7 +1061,8 @@ rm readme and ports driver
 </entry>
 <entry>
 <id>125ea7df70606c6a7f4df3dfd6e2e4a062d7ab63</id>
-<updated>2016-03-03T22:33:12Z</updated>
+<published>2016-03-04T03:33:12Z</published>
+<updated>2016-03-04T03:33:12Z</updated>
 <title type="text">urc: update clone url, style fix</title>
 <link rel="alternate" type="text/html" href="commit/125ea7df70606c6a7f4df3dfd6e2e4a062d7ab63.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -879,7 +1070,7 @@ rm readme and ports driver
 <content type="text">commit 125ea7df70606c6a7f4df3dfd6e2e4a062d7ab63
 parent 552740fd2495a7a891376fe73dc00ada94dd003c
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Thu Mar  3 22:33:12 2016
+Date:   Thu Mar  3 22:33:12 -0500
 
 urc: update clone url, style fix
 
@@ -887,7 +1078,8 @@ urc: update clone url, style fix
 </entry>
 <entry>
 <id>552740fd2495a7a891376fe73dc00ada94dd003c</id>
-<updated>2016-03-03T18:56:21Z</updated>
+<published>2016-03-03T23:56:21Z</published>
+<updated>2016-03-03T23:56:21Z</updated>
 <title type="text">update url</title>
 <link rel="alternate" type="text/html" href="commit/552740fd2495a7a891376fe73dc00ada94dd003c.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -895,7 +1087,7 @@ urc: update clone url, style fix
 <content type="text">commit 552740fd2495a7a891376fe73dc00ada94dd003c
 parent 469daa6b2d6eb32ae96103c893f28e819dc43a16
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Thu Mar  3 18:56:21 2016
+Date:   Thu Mar  3 18:56:21 -0500
 
 update url
 
@@ -903,7 +1095,8 @@ update url
 </entry>
 <entry>
 <id>469daa6b2d6eb32ae96103c893f28e819dc43a16</id>
-<updated>2016-02-27T20:49:48Z</updated>
+<published>2016-02-28T01:49:48Z</published>
+<updated>2016-02-28T01:49:48Z</updated>
 <title type="text">UPDATE</title>
 <link rel="alternate" type="text/html" href="commit/469daa6b2d6eb32ae96103c893f28e819dc43a16.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -911,7 +1104,7 @@ update url
 <content type="text">commit 469daa6b2d6eb32ae96103c893f28e819dc43a16
 parent 392a1d6fecfd17fbff6bad3a2d5dd51ce2e217df
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sat Feb 27 20:49:48 2016
+Date:   Sat Feb 27 20:49:48 -0500
 
 UPDATE
 
@@ -919,7 +1112,8 @@ UPDATE
 </entry>
 <entry>
 <id>392a1d6fecfd17fbff6bad3a2d5dd51ce2e217df</id>
-<updated>2016-02-27T20:49:36Z</updated>
+<published>2016-02-28T01:49:36Z</published>
+<updated>2016-02-28T01:49:36Z</updated>
 <title type="text">update</title>
 <link rel="alternate" type="text/html" href="commit/392a1d6fecfd17fbff6bad3a2d5dd51ce2e217df.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -927,7 +1121,7 @@ UPDATE
 <content type="text">commit 392a1d6fecfd17fbff6bad3a2d5dd51ce2e217df
 parent 55edffc254e6f0994a686e8eb2056799dda1723e
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sat Feb 27 20:49:36 2016
+Date:   Sat Feb 27 20:49:36 -0500
 
 update
 
@@ -935,7 +1129,8 @@ update
 </entry>
 <entry>
 <id>55edffc254e6f0994a686e8eb2056799dda1723e</id>
-<updated>2016-02-27T20:49:07Z</updated>
+<published>2016-02-28T01:49:07Z</published>
+<updated>2016-02-28T01:49:07Z</updated>
 <title type="text">update</title>
 <link rel="alternate" type="text/html" href="commit/55edffc254e6f0994a686e8eb2056799dda1723e.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -943,7 +1138,7 @@ update
 <content type="text">commit 55edffc254e6f0994a686e8eb2056799dda1723e
 parent b96daee9507e9dd36e54899a94b36a4d69420584
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sat Feb 27 20:49:07 2016
+Date:   Sat Feb 27 20:49:07 -0500
 
 update
 
@@ -951,7 +1146,8 @@ update
 </entry>
 <entry>
 <id>b96daee9507e9dd36e54899a94b36a4d69420584</id>
-<updated>2016-02-22T21:09:31Z</updated>
+<published>2016-02-23T02:09:31Z</published>
+<updated>2016-02-23T02:09:31Z</updated>
 <title type="text">remove binary</title>
 <link rel="alternate" type="text/html" href="commit/b96daee9507e9dd36e54899a94b36a4d69420584.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -959,7 +1155,7 @@ update
 <content type="text">commit b96daee9507e9dd36e54899a94b36a4d69420584
 parent b69e3d01784c469aaa977fb36243141d06772eb8
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Mon Feb 22 21:09:31 2016
+Date:   Mon Feb 22 21:09:31 -0500
 
 remove binary
 
@@ -967,7 +1163,8 @@ remove binary
 </entry>
 <entry>
 <id>b69e3d01784c469aaa977fb36243141d06772eb8</id>
-<updated>2016-02-22T21:09:08Z</updated>
+<published>2016-02-23T02:09:08Z</published>
+<updated>2016-02-23T02:09:08Z</updated>
 <title type="text">urc: no symlinks</title>
 <link rel="alternate" type="text/html" href="commit/b69e3d01784c469aaa977fb36243141d06772eb8.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -975,7 +1172,7 @@ remove binary
 <content type="text">commit b69e3d01784c469aaa977fb36243141d06772eb8
 parent 98d75716f08e829d768fd8daf62b9e16db906ddb
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Mon Feb 22 21:09:08 2016
+Date:   Mon Feb 22 21:09:08 -0500
 
 urc: no symlinks
 
@@ -983,7 +1180,8 @@ urc: no symlinks
 </entry>
 <entry>
 <id>98d75716f08e829d768fd8daf62b9e16db906ddb</id>
-<updated>2016-02-22T21:06:15Z</updated>
+<published>2016-02-23T02:06:15Z</published>
+<updated>2016-02-23T02:06:15Z</updated>
 <title type="text">urc: style fixes, use new scripts</title>
 <link rel="alternate" type="text/html" href="commit/98d75716f08e829d768fd8daf62b9e16db906ddb.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -991,7 +1189,7 @@ urc: no symlinks
 <content type="text">commit 98d75716f08e829d768fd8daf62b9e16db906ddb
 parent 2ac73dc2680d56a1f6aca4d66d51fed04205f099
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Mon Feb 22 21:06:15 2016
+Date:   Mon Feb 22 21:06:15 -0500
 
 urc: style fixes, use new scripts
 
@@ -999,7 +1197,8 @@ urc: style fixes, use new scripts
 </entry>
 <entry>
 <id>2ac73dc2680d56a1f6aca4d66d51fed04205f099</id>
-<updated>2016-02-19T17:20:44Z</updated>
+<published>2016-02-19T22:20:44Z</published>
+<updated>2016-02-19T22:20:44Z</updated>
 <title type="text">add a few packages for profanity and its deps</title>
 <link rel="alternate" type="text/html" href="commit/2ac73dc2680d56a1f6aca4d66d51fed04205f099.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -1007,7 +1206,7 @@ urc: style fixes, use new scripts
 <content type="text">commit 2ac73dc2680d56a1f6aca4d66d51fed04205f099
 parent fd485e3b5d2162283240eaf0f3e0d02d30e35539
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Feb 19 17:20:44 2016
+Date:   Fri Feb 19 17:20:44 -0500
 
 add a few packages for profanity and its deps
 
@@ -1015,7 +1214,8 @@ add a few packages for profanity and its deps
 </entry>
 <entry>
 <id>fd485e3b5d2162283240eaf0f3e0d02d30e35539</id>
-<updated>2016-02-17T18:08:46Z</updated>
+<published>2016-02-17T23:08:46Z</published>
+<updated>2016-02-17T23:08:46Z</updated>
 <title type="text">style fix</title>
 <link rel="alternate" type="text/html" href="commit/fd485e3b5d2162283240eaf0f3e0d02d30e35539.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -1023,7 +1223,7 @@ add a few packages for profanity and its deps
 <content type="text">commit fd485e3b5d2162283240eaf0f3e0d02d30e35539
 parent 40baea8733b4dde8f31bd52e16736a7018b09df9
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Wed Feb 17 18:08:46 2016
+Date:   Wed Feb 17 18:08:46 -0500
 
 style fix
 
@@ -1031,7 +1231,8 @@ style fix
 </entry>
 <entry>
 <id>40baea8733b4dde8f31bd52e16736a7018b09df9</id>
-<updated>2016-02-17T09:30:53Z</updated>
+<published>2016-02-17T14:30:53Z</published>
+<updated>2016-02-17T14:30:53Z</updated>
 <title type="text">add thermald</title>
 <link rel="alternate" type="text/html" href="commit/40baea8733b4dde8f31bd52e16736a7018b09df9.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -1039,7 +1240,7 @@ style fix
 <content type="text">commit 40baea8733b4dde8f31bd52e16736a7018b09df9
 parent 3a2794822681bebb441e0f92147eb55d4d9adad6
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Wed Feb 17 09:30:53 2016
+Date:   Wed Feb 17 09:30:53 -0500
 
 add thermald
 
@@ -1047,7 +1248,8 @@ add thermald
 </entry>
 <entry>
 <id>3a2794822681bebb441e0f92147eb55d4d9adad6</id>
-<updated>2016-02-17T08:43:58Z</updated>
+<published>2016-02-17T13:43:58Z</published>
+<updated>2016-02-17T13:43:58Z</updated>
 <title type="text">add fetch</title>
 <link rel="alternate" type="text/html" href="commit/3a2794822681bebb441e0f92147eb55d4d9adad6.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -1055,7 +1257,7 @@ add thermald
 <content type="text">commit 3a2794822681bebb441e0f92147eb55d4d9adad6
 parent e9556f8a926f345a3c2ef73c4badddfc24765a4f
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Wed Feb 17 08:43:58 2016
+Date:   Wed Feb 17 08:43:58 -0500
 
 add fetch
 
@@ -1063,7 +1265,8 @@ add fetch
 </entry>
 <entry>
 <id>e9556f8a926f345a3c2ef73c4badddfc24765a4f</id>
-<updated>2016-02-14T06:48:17Z</updated>
+<published>2016-02-14T11:48:17Z</published>
+<updated>2016-02-14T11:48:17Z</updated>
 <title type="text">add libwebp</title>
 <link rel="alternate" type="text/html" href="commit/e9556f8a926f345a3c2ef73c4badddfc24765a4f.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -1071,7 +1274,7 @@ add fetch
 <content type="text">commit e9556f8a926f345a3c2ef73c4badddfc24765a4f
 parent 0b52ec0d7e4e284221598ab379baa25973ffe406
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sun Feb 14 06:48:17 2016
+Date:   Sun Feb 14 06:48:17 -0500
 
 add libwebp
 
@@ -1079,7 +1282,8 @@ add libwebp
 </entry>
 <entry>
 <id>0b52ec0d7e4e284221598ab379baa25973ffe406</id>
-<updated>2016-02-09T17:49:43Z</updated>
+<published>2016-02-09T22:49:43Z</published>
+<updated>2016-02-09T22:49:43Z</updated>
 <title type="text">add imgur</title>
 <link rel="alternate" type="text/html" href="commit/0b52ec0d7e4e284221598ab379baa25973ffe406.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -1087,7 +1291,7 @@ add libwebp
 <content type="text">commit 0b52ec0d7e4e284221598ab379baa25973ffe406
 parent 55e27340adb527580a444ae858e980d910c48c71
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Tue Feb  9 17:49:43 2016
+Date:   Tue Feb  9 17:49:43 -0500
 
 add imgur
 
@@ -1095,7 +1299,8 @@ add imgur
 </entry>
 <entry>
 <id>55e27340adb527580a444ae858e980d910c48c71</id>
-<updated>2016-02-06T10:29:30Z</updated>
+<published>2016-02-06T15:29:30Z</published>
+<updated>2016-02-06T15:29:30Z</updated>
 <title type="text">urc: use manpage</title>
 <link rel="alternate" type="text/html" href="commit/55e27340adb527580a444ae858e980d910c48c71.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -1103,7 +1308,7 @@ add imgur
 <content type="text">commit 55e27340adb527580a444ae858e980d910c48c71
 parent 215cf52fb6c2d4a76cd0ce8b5dfb8985cbaa5f2c
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Sat Feb  6 10:29:30 2016
+Date:   Sat Feb  6 10:29:30 -0500
 
 urc: use manpage
 
@@ -1111,7 +1316,8 @@ urc: use manpage
 </entry>
 <entry>
 <id>215cf52fb6c2d4a76cd0ce8b5dfb8985cbaa5f2c</id>
-<updated>2016-02-03T17:48:09Z</updated>
+<published>2016-02-03T22:48:09Z</published>
+<updated>2016-02-03T22:48:09Z</updated>
 <title type="text">remove binary</title>
 <link rel="alternate" type="text/html" href="commit/215cf52fb6c2d4a76cd0ce8b5dfb8985cbaa5f2c.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -1119,7 +1325,7 @@ urc: use manpage
 <content type="text">commit 215cf52fb6c2d4a76cd0ce8b5dfb8985cbaa5f2c
 parent 16be10feca495494cd9ef427334446319fae4491
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Wed Feb  3 17:48:09 2016
+Date:   Wed Feb  3 17:48:09 -0500
 
 remove binary
 
@@ -1127,7 +1333,8 @@ remove binary
 </entry>
 <entry>
 <id>16be10feca495494cd9ef427334446319fae4491</id>
-<updated>2016-02-03T17:31:43Z</updated>
+<published>2016-02-03T22:31:43Z</published>
+<updated>2016-02-03T22:31:43Z</updated>
 <title type="text">add urc</title>
 <link rel="alternate" type="text/html" href="commit/16be10feca495494cd9ef427334446319fae4491.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -1135,7 +1342,7 @@ remove binary
 <content type="text">commit 16be10feca495494cd9ef427334446319fae4491
 parent 4a4d5c63f82e849a1f407b2d8b85a088548aa3df
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Wed Feb  3 17:31:43 2016
+Date:   Wed Feb  3 17:31:43 -0500
 
 add urc
 
@@ -1143,7 +1350,8 @@ add urc
 </entry>
 <entry>
 <id>4a4d5c63f82e849a1f407b2d8b85a088548aa3df</id>
-<updated>2016-01-22T18:59:45Z</updated>
+<published>2016-01-22T23:59:45Z</published>
+<updated>2016-01-22T23:59:45Z</updated>
 <title type="text">s</title>
 <link rel="alternate" type="text/html" href="commit/4a4d5c63f82e849a1f407b2d8b85a088548aa3df.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -1151,7 +1359,7 @@ add urc
 <content type="text">commit 4a4d5c63f82e849a1f407b2d8b85a088548aa3df
 parent bb9363f585ac5bc79b15853f76787f32e2eba1eb
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Jan 22 18:59:45 2016
+Date:   Fri Jan 22 18:59:45 -0500
 
 s
 
@@ -1159,7 +1367,8 @@ s
 </entry>
 <entry>
 <id>bb9363f585ac5bc79b15853f76787f32e2eba1eb</id>
-<updated>2016-01-22T18:59:28Z</updated>
+<published>2016-01-22T23:59:28Z</published>
+<updated>2016-01-22T23:59:28Z</updated>
 <title type="text">remove: tldr (moved to 6c37/crux-ports-git)</title>
 <link rel="alternate" type="text/html" href="commit/bb9363f585ac5bc79b15853f76787f32e2eba1eb.html" /><author><name>ix</name>
 <email>arcetera@openmailbox.org</email>
@@ -1167,7 +1376,7 @@ s
 <content type="text">commit bb9363f585ac5bc79b15853f76787f32e2eba1eb
 parent 668c4186566bc432bf17a6566d85007507d81652
 Author: ix &lt;arcetera@openmailbox.org&gt;
-Date:   Fri Jan 22 18:59:28 2016
+Date:   Fri Jan 22 18:59:28 -0500
 
 remove: tldr (moved to 6c37/crux-ports-git)
 
@@ -1175,7 +1384,8 @@ remove: tldr (moved to 6c37/crux-ports-git)
 </entry>
 <entry>
 <id>668c4186566bc432bf17a6566d85007507d81652</id>
-<updated>2016-01-15T18:43:07Z</updated>
+<published>2016-01-15T23:43:07Z</published>
+<updated>2016-01-15T23:43:07Z</updated>
 <title type="text">remove: st-xresources (moved to 6c37/crux-ports)</title>
 <link rel="alternate" type="text/html" href="commit/668c4186566bc432bf17a6566d85007507d81652.html" /><author><name>ix</name>
 <email>arcetera@cock.li</email>
@@ -1183,7 +1393,7 @@ remove: tldr (moved to 6c37/crux-ports-git)
 <content type="text">commit 668c4186566bc432bf17a6566d85007507d81652
 parent fa10c78ebc8ea8232c643b50a349dbcc45ddaf3c
 Author: ix &lt;arcetera@cock.li&gt;
-Date:   Fri Jan 15 18:43:07 2016
+Date:   Fri Jan 15 18:43:07 -0500
 
 remove: st-xresources (moved to 6c37/crux-ports)
 
@@ -1191,7 +1401,8 @@ remove: st-xresources (moved to 6c37/crux-ports)
 </entry>
 <entry>
 <id>fa10c78ebc8ea8232c643b50a349dbcc45ddaf3c</id>
-<updated>2016-01-15T18:38:03Z</updated>
+<published>2016-01-15T23:38:03Z</published>
+<updated>2016-01-15T23:38:03Z</updated>
 <title type="text">style(README.md): add</title>
 <link rel="alternate" type="text/html" href="commit/fa10c78ebc8ea8232c643b50a349dbcc45ddaf3c.html" /><author><name>ix</name>
 <email>arcetera@cock.li</email>
@@ -1199,7 +1410,7 @@ remove: st-xresources (moved to 6c37/crux-ports)
 <content type="text">commit fa10c78ebc8ea8232c643b50a349dbcc45ddaf3c
 parent 5013d5d9ece7fc76181d481dc0a3bcef1aea1732
 Author: ix &lt;arcetera@cock.li&gt;
-Date:   Fri Jan 15 18:38:03 2016
+Date:   Fri Jan 15 18:38:03 -0500
 
 style(README.md): add
 
@@ -1207,7 +1418,8 @@ style(README.md): add
 </entry>
 <entry>
 <id>5013d5d9ece7fc76181d481dc0a3bcef1aea1732</id>
-<updated>2016-01-15T18:36:59Z</updated>
+<published>2016-01-15T23:36:59Z</published>
+<updated>2016-01-15T23:36:59Z</updated>
 <title type="text">feat(dpkg): add</title>
 <link rel="alternate" type="text/html" href="commit/5013d5d9ece7fc76181d481dc0a3bcef1aea1732.html" /><author><name>ix</name>
 <email>arcetera@cock.li</email>
@@ -1215,7 +1427,7 @@ style(README.md): add
 <content type="text">commit 5013d5d9ece7fc76181d481dc0a3bcef1aea1732
 parent 46b6322b9c005cebe985949c554c8fb5cc1240d2
 Author: ix &lt;arcetera@cock.li&gt;
-Date:   Fri Jan 15 18:36:59 2016
+Date:   Fri Jan 15 18:36:59 -0500
 
 feat(dpkg): add
 
@@ -1223,7 +1435,8 @@ feat(dpkg): add
 </entry>
 <entry>
 <id>46b6322b9c005cebe985949c554c8fb5cc1240d2</id>
-<updated>2016-01-08T16:38:12Z</updated>
+<published>2016-01-08T21:38:12Z</published>
+<updated>2016-01-08T21:38:12Z</updated>
 <title type="text">fix(st-xresources): don&apos;t install in /usr/local</title>
 <link rel="alternate" type="text/html" href="commit/46b6322b9c005cebe985949c554c8fb5cc1240d2.html" /><author><name>ix</name>
 <email>arcetera@cock.li</email>
@@ -1231,7 +1444,7 @@ feat(dpkg): add
 <content type="text">commit 46b6322b9c005cebe985949c554c8fb5cc1240d2
 parent 23fc01e5bbbcae05d744b29908a7616e1c2c9f7a
 Author: ix &lt;arcetera@cock.li&gt;
-Date:   Fri Jan  8 16:38:12 2016
+Date:   Fri Jan  8 16:38:12 -0500
 
 fix(st-xresources): don&apos;t install in /usr/local
 
@@ -1239,7 +1452,8 @@ fix(st-xresources): don&apos;t install in /usr/local
 </entry>
 <entry>
 <id>23fc01e5bbbcae05d744b29908a7616e1c2c9f7a</id>
-<updated>2016-01-08T15:11:01Z</updated>
+<published>2016-01-08T20:11:01Z</published>
+<updated>2016-01-08T20:11:01Z</updated>
 <title type="text">add: st-xresources</title>
 <link rel="alternate" type="text/html" href="commit/23fc01e5bbbcae05d744b29908a7616e1c2c9f7a.html" /><author><name>ix</name>
 <email>arcetera@cock.li</email>
@@ -1247,7 +1461,7 @@ fix(st-xresources): don&apos;t install in /usr/local
 <content type="text">commit 23fc01e5bbbcae05d744b29908a7616e1c2c9f7a
 parent 53bbb029e737ca0a05add867f95216e647086bc5
 Author: ix &lt;arcetera@cock.li&gt;
-Date:   Fri Jan  8 15:11:01 2016
+Date:   Fri Jan  8 15:11:01 -0500
 
 add: st-xresources
 
@@ -1255,7 +1469,8 @@ add: st-xresources
 </entry>
 <entry>
 <id>53bbb029e737ca0a05add867f95216e647086bc5</id>
-<updated>2016-01-06T18:52:45Z</updated>
+<published>2016-01-06T23:52:45Z</published>
+<updated>2016-01-06T23:52:45Z</updated>
 <title type="text">feat(tldr): add</title>
 <link rel="alternate" type="text/html" href="commit/53bbb029e737ca0a05add867f95216e647086bc5.html" /><author><name>ix</name>
 <email>arcetera@cock.li</email>
@@ -1263,7 +1478,7 @@ add: st-xresources
 <content type="text">commit 53bbb029e737ca0a05add867f95216e647086bc5
 parent a7e79875c2f17e476fe380119ca3b9d2334aee14
 Author: ix &lt;arcetera@cock.li&gt;
-Date:   Wed Jan  6 18:52:45 2016
+Date:   Wed Jan  6 18:52:45 -0500
 
 feat(tldr): add
 
@@ -1271,7 +1486,8 @@ feat(tldr): add
 </entry>
 <entry>
 <id>a7e79875c2f17e476fe380119ca3b9d2334aee14</id>
-<updated>2016-01-02T18:24:21Z</updated>
+<published>2016-01-02T23:24:21Z</published>
+<updated>2016-01-02T23:24:21Z</updated>
 <title type="text">osd_clock: update md5sum</title>
 <link rel="alternate" type="text/html" href="commit/a7e79875c2f17e476fe380119ca3b9d2334aee14.html" /><author><name>ix</name>
 <email>arcetera@cock.li</email>
@@ -1279,7 +1495,7 @@ feat(tldr): add
 <content type="text">commit a7e79875c2f17e476fe380119ca3b9d2334aee14
 parent e7c39096763888562cb54e6a169bb3a9a648a85f
 Author: ix &lt;arcetera@cock.li&gt;
-Date:   Sat Jan  2 18:24:21 2016
+Date:   Sat Jan  2 18:24:21 -0500
 
 osd_clock: update md5sum
 
@@ -1287,7 +1503,8 @@ osd_clock: update md5sum
 </entry>
 <entry>
 <id>e7c39096763888562cb54e6a169bb3a9a648a85f</id>
-<updated>2016-01-02T18:22:39Z</updated>
+<published>2016-01-02T23:22:39Z</published>
+<updated>2016-01-02T23:22:39Z</updated>
 <title type="text">libxosd: update footprint</title>
 <link rel="alternate" type="text/html" href="commit/e7c39096763888562cb54e6a169bb3a9a648a85f.html" /><author><name>ix</name>
 <email>arcetera@cock.li</email>
@@ -1295,7 +1512,7 @@ osd_clock: update md5sum
 <content type="text">commit e7c39096763888562cb54e6a169bb3a9a648a85f
 parent b6daabe17cecd442477154378fbb3df354916605
 Author: ix &lt;arcetera@cock.li&gt;
-Date:   Sat Jan  2 18:22:39 2016
+Date:   Sat Jan  2 18:22:39 -0500
 
 libxosd: update footprint
 
@@ -1303,7 +1520,8 @@ libxosd: update footprint
 </entry>
 <entry>
 <id>b6daabe17cecd442477154378fbb3df354916605</id>
-<updated>2016-01-02T18:21:49Z</updated>
+<published>2016-01-02T23:21:49Z</published>
+<updated>2016-01-02T23:21:49Z</updated>
 <title type="text">osd_clock: fix build, add footprint</title>
 <link rel="alternate" type="text/html" href="commit/b6daabe17cecd442477154378fbb3df354916605.html" /><author><name>ix</name>
 <email>arcetera@cock.li</email>
@@ -1311,7 +1529,7 @@ libxosd: update footprint
 <content type="text">commit b6daabe17cecd442477154378fbb3df354916605
 parent 1597a93157a7bbc15f6a2e4b38a6b8bd5f9fc102
 Author: ix &lt;arcetera@cock.li&gt;
-Date:   Sat Jan  2 18:21:49 2016
+Date:   Sat Jan  2 18:21:49 -0500
 
 osd_clock: fix build, add footprint
 
@@ -1319,7 +1537,8 @@ osd_clock: fix build, add footprint
 </entry>
 <entry>
 <id>1597a93157a7bbc15f6a2e4b38a6b8bd5f9fc102</id>
-<updated>2016-01-02T18:17:21Z</updated>
+<published>2016-01-02T23:17:21Z</published>
+<updated>2016-01-02T23:17:21Z</updated>
 <title type="text">add: osd_clock</title>
 <link rel="alternate" type="text/html" href="commit/1597a93157a7bbc15f6a2e4b38a6b8bd5f9fc102.html" /><author><name>ix</name>
 <email>arcetera@cock.li</email>
@@ -1327,7 +1546,7 @@ osd_clock: fix build, add footprint
 <content type="text">commit 1597a93157a7bbc15f6a2e4b38a6b8bd5f9fc102
 parent f378877e11a582ea822d214feb090a1e30ece3e3
 Author: ix &lt;arcetera@cock.li&gt;
-Date:   Sat Jan  2 18:17:21 2016
+Date:   Sat Jan  2 18:17:21 -0500
 
 add: osd_clock
 
@@ -1335,7 +1554,8 @@ add: osd_clock
 </entry>
 <entry>
 <id>f378877e11a582ea822d214feb090a1e30ece3e3</id>
-<updated>2016-01-02T18:17:07Z</updated>
+<published>2016-01-02T23:17:07Z</published>
+<updated>2016-01-02T23:17:07Z</updated>
 <title type="text">libxosd: update install location</title>
 <link rel="alternate" type="text/html" href="commit/f378877e11a582ea822d214feb090a1e30ece3e3.html" /><author><name>ix</name>
 <email>arcetera@cock.li</email>
@@ -1343,7 +1563,7 @@ add: osd_clock
 <content type="text">commit f378877e11a582ea822d214feb090a1e30ece3e3
 parent c5e430681b595c53b66976544b30deffc2ba8b19
 Author: ix &lt;arcetera@cock.li&gt;
-Date:   Sat Jan  2 18:17:07 2016
+Date:   Sat Jan  2 18:17:07 -0500
 
 libxosd: update install location
 
@@ -1351,7 +1571,8 @@ libxosd: update install location
 </entry>
 <entry>
 <id>c5e430681b595c53b66976544b30deffc2ba8b19</id>
-<updated>2016-01-02T16:46:54Z</updated>
+<published>2016-01-02T21:46:54Z</published>
+<updated>2016-01-02T21:46:54Z</updated>
 <title type="text">add: libxosd</title>
 <link rel="alternate" type="text/html" href="commit/c5e430681b595c53b66976544b30deffc2ba8b19.html" /><author><name>ix</name>
 <email>arcetera@cock.li</email>
@@ -1359,7 +1580,7 @@ libxosd: update install location
 <content type="text">commit c5e430681b595c53b66976544b30deffc2ba8b19
 parent b7a1115c2b52e873a7b446ceb768cfe76dc7ed19
 Author: ix &lt;arcetera@cock.li&gt;
-Date:   Sat Jan  2 16:46:54 2016
+Date:   Sat Jan  2 16:46:54 -0500
 
 add: libxosd
 
@@ -1367,7 +1588,8 @@ add: libxosd
 </entry>
 <entry>
 <id>b7a1115c2b52e873a7b446ceb768cfe76dc7ed19</id>
-<updated>2016-01-02T16:35:01Z</updated>
+<published>2016-01-02T21:35:01Z</published>
+<updated>2016-01-02T21:35:01Z</updated>
 <title type="text">meta: add item to be used in /etc/ports w/ the 6c37 git driver</title>
 <link rel="alternate" type="text/html" href="commit/b7a1115c2b52e873a7b446ceb768cfe76dc7ed19.html" /><author><name>ix</name>
 <email>arcetera@cock.li</email>
@@ -1375,7 +1597,7 @@ add: libxosd
 <content type="text">commit b7a1115c2b52e873a7b446ceb768cfe76dc7ed19
 parent 190671c90f429c96043f43736c626498cc66cc01
 Author: ix &lt;arcetera@cock.li&gt;
-Date:   Sat Jan  2 16:35:01 2016
+Date:   Sat Jan  2 16:35:01 -0500
 
 meta: add item to be used in /etc/ports w/ the 6c37 git driver
 
@@ -1383,7 +1605,8 @@ meta: add item to be used in /etc/ports w/ the 6c37 git driver
 </entry>
 <entry>
 <id>190671c90f429c96043f43736c626498cc66cc01</id>
-<updated>2015-12-02T20:02:07Z</updated>
+<published>2015-12-03T01:02:07Z</published>
+<updated>2015-12-03T01:02:07Z</updated>
 <title type="text">new pkg: keepassx2</title>
 <link rel="alternate" type="text/html" href="commit/190671c90f429c96043f43736c626498cc66cc01.html" /><author><name>arcetera</name>
 <email>arcticsn0wdev@gmail.com</email>
@@ -1391,7 +1614,7 @@ meta: add item to be used in /etc/ports w/ the 6c37 git driver
 <content type="text">commit 190671c90f429c96043f43736c626498cc66cc01
 parent ae7a84f567324836747993a8c8cd5d56982e96ca
 Author: arcetera &lt;arcticsn0wdev@gmail.com&gt;
-Date:   Wed Dec  2 20:02:07 2015
+Date:   Wed Dec  2 20:02:07 -0500
 
 new pkg: keepassx2
 
@@ -1399,7 +1622,8 @@ new pkg: keepassx2
 </entry>
 <entry>
 <id>ae7a84f567324836747993a8c8cd5d56982e96ca</id>
-<updated>2015-12-01T21:03:32Z</updated>
+<published>2015-12-02T02:03:32Z</published>
+<updated>2015-12-02T02:03:32Z</updated>
 <title type="text">new package: nethack</title>
 <link rel="alternate" type="text/html" href="commit/ae7a84f567324836747993a8c8cd5d56982e96ca.html" /><author><name>arcetera</name>
 <email>arcticsn0wdev@gmail.com</email>
@@ -1407,7 +1631,7 @@ new pkg: keepassx2
 <content type="text">commit ae7a84f567324836747993a8c8cd5d56982e96ca
 parent 2fbc577d4f59020c6a69e323f85e35f5a00b307d
 Author: arcetera &lt;arcticsn0wdev@gmail.com&gt;
-Date:   Tue Dec  1 21:03:32 2015
+Date:   Tue Dec  1 21:03:32 -0500
 
 new package: nethack
 
@@ -1415,14 +1639,15 @@ new package: nethack
 </entry>
 <entry>
 <id>2fbc577d4f59020c6a69e323f85e35f5a00b307d</id>
-<updated>2015-11-30T20:12:20Z</updated>
+<published>2015-12-01T01:12:20Z</published>
+<updated>2015-12-01T01:12:20Z</updated>
 <title type="text">new package: interrobang</title>
 <link rel="alternate" type="text/html" href="commit/2fbc577d4f59020c6a69e323f85e35f5a00b307d.html" /><author><name>arcetera</name>
 <email>arcticsn0wdev@gmail.com</email>
 </author>
 <content type="text">commit 2fbc577d4f59020c6a69e323f85e35f5a00b307d
 Author: arcetera &lt;arcticsn0wdev@gmail.com&gt;
-Date:   Mon Nov 30 20:12:20 2015
+Date:   Mon Nov 30 20:12:20 -0500
 
 new package: interrobang
 

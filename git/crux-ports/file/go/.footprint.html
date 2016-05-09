@@ -3,19 +3,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>.footprint - crux-ports - Ports for crux. Bassed off arcetera&apos;s ports.
+<title>.footprint - crux-ports - Ports for the CRUX Linux distro.
 </title>
 <link rel="icon" type="image/png" href="../../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../../atom.xml" />
 <link rel="stylesheet" type="text/css" href="../../style.css" />
 </head>
 <body>
-<table><tr><td><a href="../../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for crux. Bassed off arcetera&apos;s ports.
+<table><tr><td><a href="../../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for the CRUX Linux distro.
 </span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> .footprint (394358B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> .footprint (394661B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -6346,6 +6346,10 @@
 <a href="#l6328" id="l6328">6328</a>
 <a href="#l6329" id="l6329">6329</a>
 <a href="#l6330" id="l6330">6330</a>
+<a href="#l6331" id="l6331">6331</a>
+<a href="#l6332" id="l6332">6332</a>
+<a href="#l6333" id="l6333">6333</a>
+<a href="#l6334" id="l6334">6334</a>
 </pre></td><td><pre>
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
@@ -7336,6 +7340,7 @@ drwxr-xr-x	root/root	usr/lib/go/pkg/linux_amd64/internal/golang.org/x/net/http2/
 drwxr-xr-x	root/root	usr/lib/go/pkg/linux_amd64/internal/syscall/
 -rw-r--r--	root/root	usr/lib/go/pkg/linux_amd64/internal/syscall/unix.a
 drwxr-xr-x	root/root	usr/lib/go/pkg/linux_amd64/internal/syscall/windows/
+-rw-r--r--	root/root	usr/lib/go/pkg/linux_amd64/internal/syscall/windows/sysdll.a
 -rw-r--r--	root/root	usr/lib/go/pkg/linux_amd64/internal/testenv.a
 -rw-r--r--	root/root	usr/lib/go/pkg/linux_amd64/internal/trace.a
 -rw-r--r--	root/root	usr/lib/go/pkg/linux_amd64/io.a
@@ -9389,6 +9394,8 @@ drwxr-xr-x	root/root	usr/lib/go/src/internal/syscall/windows/registry/
 -rw-r--r--	root/root	usr/lib/go/src/internal/syscall/windows/registry/value.go
 -rw-r--r--	root/root	usr/lib/go/src/internal/syscall/windows/registry/zsyscall_windows.go
 -rw-r--r--	root/root	usr/lib/go/src/internal/syscall/windows/syscall_windows.go
+drwxr-xr-x	root/root	usr/lib/go/src/internal/syscall/windows/sysdll/
+-rw-r--r--	root/root	usr/lib/go/src/internal/syscall/windows/sysdll/sysdll.go
 -rw-r--r--	root/root	usr/lib/go/src/internal/syscall/windows/zsyscall_windows.go
 drwxr-xr-x	root/root	usr/lib/go/src/internal/testenv/
 -rw-r--r--	root/root	usr/lib/go/src/internal/testenv/testenv.go
@@ -10709,6 +10716,7 @@ drwxr-xr-x	root/root	usr/lib/go/src/runtime/testdata/testprog/
 -rw-r--r--	root/root	usr/lib/go/src/runtime/testdata/testprog/stringconcat.go
 -rw-r--r--	root/root	usr/lib/go/src/runtime/testdata/testprog/syscall_windows.go
 drwxr-xr-x	root/root	usr/lib/go/src/runtime/testdata/testprogcgo/
+-rw-r--r--	root/root	usr/lib/go/src/runtime/testdata/testprogcgo/aprof.go
 -rw-r--r--	root/root	usr/lib/go/src/runtime/testdata/testprogcgo/callback.go
 -rw-r--r--	root/root	usr/lib/go/src/runtime/testdata/testprogcgo/cgo.go
 -rw-r--r--	root/root	usr/lib/go/src/runtime/testdata/testprogcgo/crash.go

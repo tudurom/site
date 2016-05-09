@@ -3,19 +3,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>config - dotfiles - My small load of configuration files and scripts.
+<title>config - dotfiles - Small loan of configuration files.
 </title>
 <link rel="icon" type="image/png" href="../../../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../../../atom.xml" />
 <link rel="stylesheet" type="text/css" href="../../../style.css" />
 </head>
 <body>
-<table><tr><td><a href="../../../../"><img src="../../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+<table><tr><td><a href="../../../../"><img src="../../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
 </span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
-<a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a></td></tr></table>
+<a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> config (1128B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> config (1285B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -72,6 +72,13 @@
 <a href="#l54" id="l54">54</a>
 <a href="#l55" id="l55">55</a>
 <a href="#l56" id="l56">56</a>
+<a href="#l57" id="l57">57</a>
+<a href="#l58" id="l58">58</a>
+<a href="#l59" id="l59">59</a>
+<a href="#l60" id="l60">60</a>
+<a href="#l61" id="l61">61</a>
+<a href="#l62" id="l62">62</a>
+<a href="#l63" id="l63">63</a>
 </pre></td><td><pre>
 # Host and music location
 mpd_host = &quot;localhost&quot;
@@ -82,21 +89,28 @@ mpd_music_dir = &quot;/home/tudurom/Music&quot;
 playlist_display_mode = &quot;classic&quot;
 song_list_format = &quot;$2{%a}|{%A}$8 $6-$8 $7%t$8&quot;
 
-song_status_format = &quot;$8%a$9 - $8%t$9&quot;
+song_status_format = &quot;{$2%t $b$1- %a}|{%f}&quot;
 now_playing_prefix = &quot;$b&quot;
 now_playing_suffix = &quot;$/b&quot;
 
 header_visibility = &quot;no&quot;
 autocenter_mode = &quot;yes&quot;
-statusbar_visibility = &quot;no&quot;
 main_window_highlight_color = &quot;white&quot;
 discard_colors_if_item_is_selected = &quot;no&quot;
 
 # Progressbar look
-progressbar_look = &quot;___&quot;
-progressbar_color = &quot;234&quot;
-progressbar_elapsed_color = &quot;white&quot;
+progressbar_look = &quot;━━━&quot;
+progressbar_elapsed_color = &quot;cyan&quot;
 progressbar_boldness = &quot;no&quot;
+
+# Visualizer
+visualizer_in_stereo = &quot;yes&quot;
+visualizer_sync_interval = &quot;30&quot;
+visualizer_output_name = &quot;Pipe&quot;
+visualizer_fifo_path = &quot;/tmp/mpd.fifo&quot;
+visualizer_type = &quot;spectrum&quot;
+visualizer_color = 9
+visualizer_look = &quot;▋▋&quot;
 
 # Misc
 display_bitrate = &quot;no&quot;
@@ -118,17 +132,17 @@ enable_window_title = &quot;no&quot;
 # %d - disc
 # %C - comment
 # $R - begin right alignment
-  # colors
-  # $0 - default window color
-  # $1 - black
-  # $2 - red
-  # $3 - green
-  # $4 - yellow
-  # $5 - blue
-  # $6 - magenta
-  # $7 - cyan
-  # $8 - white
-  # $9 - end of current color
+# colors
+# $0 - default window color
+# $1 - black
+# $2 - red
+# $3 - green
+# $4 - yellow
+# $5 - blue
+# $6 - magenta
+# $7 - cyan
+# $8 - white
+# $9 - end of current color
 </pre></td></tr></table>
 </div>
 </body>

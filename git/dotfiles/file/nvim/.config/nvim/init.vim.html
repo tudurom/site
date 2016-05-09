@@ -3,19 +3,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>init.vim - dotfiles - My small load of configuration files and scripts.
+<title>init.vim - dotfiles - Small loan of configuration files.
 </title>
 <link rel="icon" type="image/png" href="../../../../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../../../../atom.xml" />
 <link rel="stylesheet" type="text/css" href="../../../../style.css" />
 </head>
 <body>
-<table><tr><td><a href="../../../../../"><img src="../../../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+<table><tr><td><a href="../../../../../"><img src="../../../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
 </span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
-<a href="../../../../log.html">Log</a> | <a href="../../../../files.html">Files</a> | <a href="../../../../refs.html">Refs</a></td></tr></table>
+<a href="../../../../log.html">Log</a> | <a href="../../../../files.html">Files</a> | <a href="../../../../refs.html">Refs</a> | <a href="../../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> init.vim (3634B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> init.vim (3649B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -195,6 +195,28 @@
 <a href="#l177" id="l177">177</a>
 <a href="#l178" id="l178">178</a>
 <a href="#l179" id="l179">179</a>
+<a href="#l180" id="l180">180</a>
+<a href="#l181" id="l181">181</a>
+<a href="#l182" id="l182">182</a>
+<a href="#l183" id="l183">183</a>
+<a href="#l184" id="l184">184</a>
+<a href="#l185" id="l185">185</a>
+<a href="#l186" id="l186">186</a>
+<a href="#l187" id="l187">187</a>
+<a href="#l188" id="l188">188</a>
+<a href="#l189" id="l189">189</a>
+<a href="#l190" id="l190">190</a>
+<a href="#l191" id="l191">191</a>
+<a href="#l192" id="l192">192</a>
+<a href="#l193" id="l193">193</a>
+<a href="#l194" id="l194">194</a>
+<a href="#l195" id="l195">195</a>
+<a href="#l196" id="l196">196</a>
+<a href="#l197" id="l197">197</a>
+<a href="#l198" id="l198">198</a>
+<a href="#l199" id="l199">199</a>
+<a href="#l200" id="l200">200</a>
+<a href="#l201" id="l201">201</a>
 </pre></td><td><pre>
 &quot; ╻┏┓╻╻╺┳╸ ╻ ╻╻┏┳┓
 &quot; ┃┃┗┫┃ ┃  ┃┏┛┃┃┃┃
@@ -206,173 +228,195 @@ filetype off                  &quot; required
 
 &quot; Plugins {{{
 
-  call plug#begin(&apos;~/.config/nvim/bundle&apos;)
+call plug#begin(&apos;~/.config/nvim/bundle&apos;)
 
-  &quot; For obvious reasons
-  Plug &apos;ntpeters/vim-better-whitespace&apos;
+&quot; For obvious reasons
+Plug &apos;ntpeters/vim-better-whitespace&apos;
 
-  &quot; Statusline
-  Plug &apos;itchyny/lightline.vim&apos;
+&quot; Statusline
+&quot; Plug &apos;itchyny/lightline.vim&apos;
 
-  &quot; Syntax plugins
-  Plug &apos;gabrielelana/vim-markdown&apos;
-  Plug &apos;othree/html5.vim&apos;
+&quot; Syntax plugins
+Plug &apos;gabrielelana/vim-markdown&apos;
+Plug &apos;othree/html5.vim&apos;
 
-  &quot; Simple tab completion
-  Plug &apos;Shougo/deoplete.nvim&apos;
-  Plug &apos;zchee/deoplete-clang&apos;
+&quot; Simple tab completion
+Plug &apos;Shougo/deoplete.nvim&apos;
+if executable(&apos;clang&apos;)
+    Plug &apos;zchee/deoplete-clang&apos;
+endif
+if executable(&apos;go&apos;)
+    Plug &apos;zchee/deoplete-go&apos;, { &apos;do&apos;: &apos;make&apos;}
+endif
 
-  &quot; Syntax checking
-  Plug &apos;scrooloose/syntastic&apos;
+&quot; Syntax checking
+Plug &apos;scrooloose/syntastic&apos;
 
-  &quot; Show changes
-  Plug &apos;airblade/vim-gitgutter&apos;
+&quot; Show changes
+Plug &apos;airblade/vim-gitgutter&apos;
 
-  &quot; One plugin to rule them all
-  Plug &apos;sheerun/vim-polyglot&apos;
+&quot; One plugin to rule them all
+Plug &apos;sheerun/vim-polyglot&apos;
 
-  call plug#end()              &quot; required
-  filetype plugin indent on    &quot; required
+call plug#end()              &quot; required
+filetype plugin indent on    &quot; required
 
 &quot; }}}
 
 &quot; Essential things {{{
 
-  &quot; Syntax and tabs
-  syntax enable &quot; Enable syntax highlighting, duh
-  set number    &quot; Looks better
-  set tabstop=4
-  set expandtab
-  set shiftwidth=4
-  set smartindent
-  set cindent
-  &quot; Make things snappy
-  set updatetime=250
-  &quot; Fold markers
-  set fdm=marker
-  &quot; ingorecase + smartcase
-  set ignorecase
-  set smartcase
-  &quot; Make it natural
-  set splitright
-  set splitbelow
+&quot; Syntax and tabs
+syntax enable &quot; Enable syntax highlighting, duh
+set number    &quot; Looks better
+set backspace=indent,eol,start
+set tabstop=4
+set expandtab
+set shiftwidth=4
+set smartindent
+set cindent
+&quot; Make things snappy
+set updatetime=250
+&quot; Fold markers
+set fdm=marker
+&quot; ingorecase + smartcase
+set ignorecase
+set smartcase
+&quot; Make it natural
+set splitright
+set splitbelow
 
-  &quot; Nope
-  set noswapfile
-  &quot; Set backup/undo dirs
-  set backupdir=~/.config/nvim/tmp/backups/
-  set undodir=~/.config/nvim/tmp/undo/
+&quot; Nope
+set noswapfile
+&quot; Set backup/undo dirs
+set backupdir=~/.config/nvim/tmp/backups/
+set undodir=~/.config/nvim/tmp/undo/
 
-  &quot; Make the folders automatically if they don&apos;t already exist.
-  if !isdirectory(expand(&amp;backupdir))
-  	call mkdir(expand(&amp;backupdir), &quot;p&quot;)
-  endif
+&quot; Make the folders automatically if they don&apos;t already exist.
+if !isdirectory(expand(&amp;backupdir))
+    call mkdir(expand(&amp;backupdir), &quot;p&quot;)
+endif
 
-  if !isdirectory(expand(&amp;undodir))
-  	call mkdir(expand(&amp;undodir), &quot;p&quot;)
-  endif
+if !isdirectory(expand(&amp;undodir))
+    call mkdir(expand(&amp;undodir), &quot;p&quot;)
+endif
 
-  &quot; Make undo work after the file is closed
-  set undofile
-  set undolevels=500
-  set undoreload=500
+&quot; Make undo work after the file is closed
+set undofile
+set undolevels=500
+set undoreload=500
 
 &quot; }}}
 
 &quot; Keybindings {{{
 
-  &quot; C-d to hide find results
-  nnoremap &lt;silent&gt; &lt;C-d&gt; :noh&lt;CR&gt;
-  tnoremap &lt;Esc&gt; &lt;C-\&gt;&lt;C-n&gt;
+&quot; C-d to hide find results
+nnoremap &lt;silent&gt; &lt;C-d&gt; :noh&lt;CR&gt;
+&quot; Esc in terminal
+tnoremap &lt;Esc&gt; &lt;C-\&gt;&lt;C-n&gt;
+&quot; jk to exit insert mode
+inoremap jk &lt;ESC&gt;
+&quot; Navigate long lines easily
+map j gj
+map k gk
+&quot; Just in case
+cabbr W w
+cabbr Q q
 
 &quot; }}}
 
 &quot; Colors {{{
 
-  set background=dark
-  colo shblah
+set background=dark
+colo shblah
 &quot; }}}
 
 &quot; NERD things {{{
 
-  &quot; Toggle NERDTree
-  map &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;
+&quot; Toggle NERDTree
+map &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;
 
 &quot; }}}
 
 &quot; Statusline {{{
 
-  set laststatus=2 &quot; Make the bar permanent
-  let g:lightline = {
-    \ &apos;colorscheme&apos;: &apos;cloudy&apos;,
-    \ &apos;active&apos;: {
-    \   &apos;left&apos;: [ [ &apos;filename&apos; ],
-    \             [ &apos;readonly&apos; ] ],
-    \   &apos;right&apos;: [ [ &apos;percent&apos;, &apos;lineinfo&apos; ],
-    \              [ &apos;fileencoding&apos;, &apos;filetype&apos; ],
-    \              [ &apos;fileformat&apos;, &apos;syntastic&apos; ] ]
-    \ },
-    \ &apos;separator&apos;: { &apos;left&apos;: &apos;▓▒░&apos;, &apos;right&apos;: &apos;░▒▓&apos; },
-    \ &apos;subseparator&apos;: { &apos;left&apos;: &apos;▒&apos;, &apos;right&apos;: &apos;░&apos; }
-    \ }
+set laststatus=2 &quot; Make the bar permanent
+set showmode
 
 &quot; }}}
 
 &quot; Clipboard setting {{{
 
-  set clipboard^=unnamed,unnamedplus
+set clipboard^=unnamed,unnamedplus
 
 &quot; }}}
 
 &quot; Word wrapping {{{
 
-  set wrap
-  set linebreak
-  set nolist
-  set textwidth=0
-  set wrapmargin=0
+set wrap
+set linebreak
+set nolist
+set textwidth=0
+set wrapmargin=0
+
+&quot; }}}
+
+&quot; Filetypes {{{
+
+filetype plugin indent on
+augroup Filetypes
+    au!
+
+    au BufRead,BufNewFile *.md setlocal textwidth=80
+
+    au FileType mail,gitcommit setlocal tw=68 cursorcolumn=69 spell
+augroup end
 
 &quot; }}}
 
 &quot; Leader hax {{{
 
-  map &lt;Space&gt; &lt;Leader&gt;
-  nmap &lt;Leader&gt;- :split&lt;CR&gt;
-  nmap &lt;Leader&gt;\| :vsplit&lt;CR&gt;
+map &lt;Space&gt; &lt;Leader&gt;
+nmap &lt;Leader&gt;- :split&lt;CR&gt;
+nmap &lt;Leader&gt;\| :vsplit&lt;CR&gt;
+
+map &lt;Leader&gt;h &lt;C-w&gt;h
+map &lt;Leader&gt;j &lt;C-w&gt;j
+map &lt;Leader&gt;k &lt;C-w&gt;k
+map &lt;Leader&gt;l &lt;C-w&gt;l
 
 &quot; }}}
 
 &quot; Completion {{{
 
-  let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
-  &quot; C/C++ things
-  let g:deoplete#sources#clang#libclang_path = &apos;/usr/lib/libclang.so&apos;
-  let g:deoplete#sources#clang#clang_header = &apos;/usr/include/clang/&apos;
-  &quot; C or C++ standard version
-  let g:deoplete#sources#clang#std#c = &apos;c11&apos;
-  &quot; or c++
-  let g:deoplete#sources#clang#std#cpp = &apos;c++11&apos;
+&quot; C/C++ things
+let g:deoplete#sources#clang#libclang_path = &apos;/usr/lib/libclang.so&apos;
+let g:deoplete#sources#clang#clang_header = &apos;/usr/include/clang/&apos;
+&quot; C or C++ standard version
+let g:deoplete#sources#clang#std#c = &apos;c11&apos;
+&quot; or c++
+let g:deoplete#sources#clang#std#cpp = &apos;c++11&apos;
 
-  &quot; Tab completion
-  imap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt;
-      \ pumvisible() ? &quot;\&lt;C-n&gt;&quot; :
-      \ &lt;SID&gt;check_back_space() ? &quot;\&lt;TAB&gt;&quot; :
-      \ deoplete#mappings#manual_complete()
+&quot; Tab completion
+imap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt;
+            \ pumvisible() ? &quot;\&lt;C-n&gt;&quot; :
+            \ &lt;SID&gt;check_back_space() ? &quot;\&lt;TAB&gt;&quot; :
+            \ deoplete#mappings#manual_complete()
 
-  function! s:check_back_space() abort &quot;{{{
+function! s:check_back_space() abort &quot;{{{
     let col = col(&apos;.&apos;) - 1
     return !col || getline(&apos;.&apos;)[col - 1]  =~ &apos;\s&apos;
-  endfunction&quot;}}}
+endfunction&quot;}}}
 
 &quot; }}}
 
 &quot; Syntax checking {{{
 
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 &quot; }}}
 </pre></td></tr></table>

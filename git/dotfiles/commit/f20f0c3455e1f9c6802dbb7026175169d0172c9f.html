@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>fix tilew - dotfiles - Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/f20f0c3455e1f9c6802dbb7026175169d0172c9f.html">f20f0c3455e1f9c6802dbb7026175169d0172c9f</a>
+<b>parent</b> <a href="../commit/215413e164cc1eecc538a36ed4846b1270bf69fa.html">215413e164cc1eecc538a36ed4846b1270bf69fa</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat Apr 30 21:47:01 2016
+
+fix tilew
+
+<b>Diffstat:</b>
+ shell/.crosssh.sh   | 2 +-
+ wmrc/.scripts/tilew | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+<hr/><b>diff --git a/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a> b/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -15,7 +15,7 @@
+</a> 
+ export EDITOR=nvim
+ export VISUAL=nvim
+<a href="#h0-3" id="h0-3" class="d">-export GOPATH=$HOME/Go
+</a><a href="#h0-4" id="h0-4" class="i">+export GOPATH=$HOME/gopath
+</a> export PATH=&quot;$HOME/.scripts/clint:$HOME/.scripts:$GOPATH/bin:$PATH&quot;
+ export PATH=$HOME/.node/bin:$PATH
+ export PATH=$HOME/.gem/ruby/2.3/bin:$PATH
+<b>diff --git a/<a href="../file/wmrc/.scripts/tilew.html">wmrc/.scripts/tilew</a> b/<a href="../file/wmrc/.scripts/tilew.html">wmrc/.scripts/tilew</a></b>
+<a href="#h0" id="h0" class="h">@@ -41,9 +41,9 @@ done
+</a> 
+ # calculate usable screen size (without borders and gaps)
+ SW=$((SW - GAP - 2*BW))
+<a href="#h0-3" id="h0-3" class="d">-SH=$((SH - GAP - PANEL))
+</a><a href="#h0-4" id="h0-4" class="i">+SH=$((SH - 2 * GAP - PANEL))
+</a> 
+<a href="#h0-6" id="h0-6" class="d">-Y=$((0 + GAP + PANEL))
+</a><a href="#h0-7" id="h0-7" class="i">+Y=$((2 * GAP + PANEL))
+</a> # put current window in master area
+ wtp $(( SX + GAP )) $(( SY + Y )) $((MASTER - GAP - 2*BW)) $((SH - GAP - 2 * BW)) $PFW
+ 
+</pre>
+</div>
+</body>
+</html>

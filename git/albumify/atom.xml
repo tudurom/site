@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>albumify, branch HEAD</title>
-<subtitle>Simple webpage to create imgur-like albums out of images from the whole web.
+<subtitle>Web app for creating imgur-like image albums that gives you the freedom to use any image hoster you like.
 </subtitle>
 <entry>
 <id>9db71f5961ad4a0d1f868dc987ea4da7bd40ce5f</id>
-<updated>2016-04-18T19:50:10Z</updated>
+<published>2016-04-18T16:50:10Z</published>
+<updated>2016-04-21T11:12:24Z</updated>
 <title type="text">fix delete frame button</title>
 <link rel="alternate" type="text/html" href="commit/9db71f5961ad4a0d1f868dc987ea4da7bd40ce5f.html" /><author><name>Tudor</name>
 <email>xenogenesis@openmailbox.org</email>
@@ -13,7 +14,7 @@
 <content type="text">commit 9db71f5961ad4a0d1f868dc987ea4da7bd40ce5f
 parent 9724e0096664bab091079e9addaacee23ca738fc
 Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Mon Apr 18 19:50:10 2016
+Date:   Mon Apr 18 19:50:10 +0300
 
 fix delete frame button
 
@@ -21,7 +22,8 @@ fix delete frame button
 </entry>
 <entry>
 <id>9724e0096664bab091079e9addaacee23ca738fc</id>
-<updated>2016-02-27T15:41:23Z</updated>
+<published>2016-02-27T13:41:23Z</published>
+<updated>2016-02-27T13:41:23Z</updated>
 <title type="text">Added webm support</title>
 <link rel="alternate" type="text/html" href="commit/9724e0096664bab091079e9addaacee23ca738fc.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -29,7 +31,7 @@ fix delete frame button
 <content type="text">commit 9724e0096664bab091079e9addaacee23ca738fc
 parent 03040689513aa40e2585fd21e7b1b23a25546b03
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Sat Feb 27 15:41:23 2016
+Date:   Sat Feb 27 15:41:23 +0200
 
 Added webm support
 
@@ -37,7 +39,8 @@ Added webm support
 </entry>
 <entry>
 <id>03040689513aa40e2585fd21e7b1b23a25546b03</id>
-<updated>2016-02-21T10:09:19Z</updated>
+<published>2016-02-21T08:09:19Z</published>
+<updated>2016-02-21T08:09:19Z</updated>
 <title type="text">Gone legal</title>
 <link rel="alternate" type="text/html" href="commit/03040689513aa40e2585fd21e7b1b23a25546b03.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -45,7 +48,7 @@ Added webm support
 <content type="text">commit 03040689513aa40e2585fd21e7b1b23a25546b03
 parent f2ff25cbd09b1b50d6d34c700758a412633f8523
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Sun Feb 21 10:09:19 2016
+Date:   Sun Feb 21 10:09:19 +0200
 
 Gone legal
 
@@ -53,7 +56,8 @@ Gone legal
 </entry>
 <entry>
 <id>f2ff25cbd09b1b50d6d34c700758a412633f8523</id>
-<updated>2016-02-19T18:52:43Z</updated>
+<published>2016-02-19T16:52:43Z</published>
+<updated>2016-02-19T16:52:43Z</updated>
 <title type="text">Made the javascript work for older browsers</title>
 <link rel="alternate" type="text/html" href="commit/f2ff25cbd09b1b50d6d34c700758a412633f8523.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -61,7 +65,7 @@ Gone legal
 <content type="text">commit f2ff25cbd09b1b50d6d34c700758a412633f8523
 parent 487fc3023f270879e62fb81a9c5ff40ecec24401
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Feb 19 18:52:43 2016
+Date:   Fri Feb 19 18:52:43 +0200
 
 Made the javascript work for older browsers
 
@@ -69,7 +73,8 @@ Made the javascript work for older browsers
 </entry>
 <entry>
 <id>487fc3023f270879e62fb81a9c5ff40ecec24401</id>
-<updated>2016-02-19T18:37:00Z</updated>
+<published>2016-02-19T16:37:00Z</published>
+<updated>2016-02-19T16:37:00Z</updated>
 <title type="text">Replaced Zepto with jQuery for compatibility</title>
 <link rel="alternate" type="text/html" href="commit/487fc3023f270879e62fb81a9c5ff40ecec24401.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -77,7 +82,7 @@ Made the javascript work for older browsers
 <content type="text">commit 487fc3023f270879e62fb81a9c5ff40ecec24401
 parent 433358c4b57d561eb19567c2e47e02bbfe7cdf33
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Feb 19 18:37:00 2016
+Date:   Fri Feb 19 18:37:00 +0200
 
 Replaced Zepto with jQuery for compatibility
 
@@ -85,7 +90,8 @@ Replaced Zepto with jQuery for compatibility
 </entry>
 <entry>
 <id>433358c4b57d561eb19567c2e47e02bbfe7cdf33</id>
-<updated>2016-02-19T15:55:28Z</updated>
+<published>2016-02-19T13:55:28Z</published>
+<updated>2016-02-19T13:55:28Z</updated>
 <title type="text">Fixed big header size on mobile devices</title>
 <link rel="alternate" type="text/html" href="commit/433358c4b57d561eb19567c2e47e02bbfe7cdf33.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -93,7 +99,7 @@ Replaced Zepto with jQuery for compatibility
 <content type="text">commit 433358c4b57d561eb19567c2e47e02bbfe7cdf33
 parent a17e7934e77ddd226fae6d453f5975314f79a47a
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Feb 19 15:55:28 2016
+Date:   Fri Feb 19 15:55:28 +0200
 
 Fixed big header size on mobile devices
 
@@ -101,7 +107,8 @@ Fixed big header size on mobile devices
 </entry>
 <entry>
 <id>a17e7934e77ddd226fae6d453f5975314f79a47a</id>
-<updated>2016-02-16T18:42:00Z</updated>
+<published>2016-02-16T16:42:00Z</published>
+<updated>2016-02-16T16:42:00Z</updated>
 <title type="text">README</title>
 <link rel="alternate" type="text/html" href="commit/a17e7934e77ddd226fae6d453f5975314f79a47a.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -109,7 +116,7 @@ Fixed big header size on mobile devices
 <content type="text">commit a17e7934e77ddd226fae6d453f5975314f79a47a
 parent 26f0b3454780187962f93372f722c2fd674604f4
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Tue Feb 16 18:42:00 2016
+Date:   Tue Feb 16 18:42:00 +0200
 
 README
 
@@ -117,7 +124,8 @@ README
 </entry>
 <entry>
 <id>26f0b3454780187962f93372f722c2fd674604f4</id>
-<updated>2016-02-16T18:39:32Z</updated>
+<published>2016-02-16T16:39:32Z</published>
+<updated>2016-02-16T16:39:32Z</updated>
 <title type="text">Changed example</title>
 <link rel="alternate" type="text/html" href="commit/26f0b3454780187962f93372f722c2fd674604f4.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -125,7 +133,7 @@ README
 <content type="text">commit 26f0b3454780187962f93372f722c2fd674604f4
 parent f6b74557fef38bef6668ac901368fd7a9ff6a172
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Tue Feb 16 18:39:32 2016
+Date:   Tue Feb 16 18:39:32 +0200
 
 Changed example
 
@@ -133,7 +141,8 @@ Changed example
 </entry>
 <entry>
 <id>f6b74557fef38bef6668ac901368fd7a9ff6a172</id>
-<updated>2016-02-15T16:24:58Z</updated>
+<published>2016-02-15T14:24:58Z</published>
+<updated>2016-02-15T14:24:58Z</updated>
 <title type="text">Now images are clickable</title>
 <link rel="alternate" type="text/html" href="commit/f6b74557fef38bef6668ac901368fd7a9ff6a172.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -141,7 +150,7 @@ Changed example
 <content type="text">commit f6b74557fef38bef6668ac901368fd7a9ff6a172
 parent 9d91374ef7d4684c9d1b1fc533b7eca0305cd5b9
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Mon Feb 15 16:24:58 2016
+Date:   Mon Feb 15 16:24:58 +0200
 
 Now images are clickable
 
@@ -149,7 +158,8 @@ Now images are clickable
 </entry>
 <entry>
 <id>9d91374ef7d4684c9d1b1fc533b7eca0305cd5b9</id>
-<updated>2016-01-23T22:01:24Z</updated>
+<published>2016-01-23T20:01:24Z</published>
+<updated>2016-01-23T20:01:24Z</updated>
 <title type="text">Titles are optional</title>
 <link rel="alternate" type="text/html" href="commit/9d91374ef7d4684c9d1b1fc533b7eca0305cd5b9.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -157,7 +167,7 @@ Now images are clickable
 <content type="text">commit 9d91374ef7d4684c9d1b1fc533b7eca0305cd5b9
 parent f086cd8b9c68305fe7f126647eb48c77f7c10bd8
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Sat Jan 23 22:01:24 2016
+Date:   Sat Jan 23 22:01:24 +0200
 
 Titles are optional
 
@@ -168,7 +178,8 @@ Fixed spacing in `view.html` (also hope commit messages can be formatted
 </entry>
 <entry>
 <id>f086cd8b9c68305fe7f126647eb48c77f7c10bd8</id>
-<updated>2016-01-22T16:55:19Z</updated>
+<published>2016-01-22T14:55:19Z</published>
+<updated>2016-01-22T14:55:19Z</updated>
 <title type="text">Derp2</title>
 <link rel="alternate" type="text/html" href="commit/f086cd8b9c68305fe7f126647eb48c77f7c10bd8.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -176,7 +187,7 @@ Fixed spacing in `view.html` (also hope commit messages can be formatted
 <content type="text">commit f086cd8b9c68305fe7f126647eb48c77f7c10bd8
 parent 033f741c4cd11ba7534aceb626a3564e734f8ff5
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Jan 22 16:55:19 2016
+Date:   Fri Jan 22 16:55:19 +0200
 
 Derp2
 
@@ -184,7 +195,8 @@ Derp2
 </entry>
 <entry>
 <id>033f741c4cd11ba7534aceb626a3564e734f8ff5</id>
-<updated>2016-01-22T16:54:19Z</updated>
+<published>2016-01-22T14:54:19Z</published>
+<updated>2016-01-22T14:54:19Z</updated>
 <title type="text">Derp</title>
 <link rel="alternate" type="text/html" href="commit/033f741c4cd11ba7534aceb626a3564e734f8ff5.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -192,7 +204,7 @@ Derp2
 <content type="text">commit 033f741c4cd11ba7534aceb626a3564e734f8ff5
 parent 5d15f871a4904f355e04a098cc5c16b137004633
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Jan 22 16:54:19 2016
+Date:   Fri Jan 22 16:54:19 +0200
 
 Derp
 
@@ -200,7 +212,8 @@ Derp
 </entry>
 <entry>
 <id>5d15f871a4904f355e04a098cc5c16b137004633</id>
-<updated>2016-01-22T16:52:57Z</updated>
+<published>2016-01-22T14:52:57Z</published>
+<updated>2016-01-22T14:52:57Z</updated>
 <title type="text">Updated READme</title>
 <link rel="alternate" type="text/html" href="commit/5d15f871a4904f355e04a098cc5c16b137004633.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -208,7 +221,7 @@ Derp
 <content type="text">commit 5d15f871a4904f355e04a098cc5c16b137004633
 parent 13a2999cdf7b42c67448447f867ad62edd7b99f7
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Jan 22 16:52:57 2016
+Date:   Fri Jan 22 16:52:57 +0200
 
 Updated READme
 
@@ -216,7 +229,8 @@ Updated READme
 </entry>
 <entry>
 <id>13a2999cdf7b42c67448447f867ad62edd7b99f7</id>
-<updated>2016-01-22T16:47:45Z</updated>
+<published>2016-01-22T14:47:45Z</published>
+<updated>2016-01-22T14:47:45Z</updated>
 <title type="text">Fixed remix button</title>
 <link rel="alternate" type="text/html" href="commit/13a2999cdf7b42c67448447f867ad62edd7b99f7.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -224,7 +238,7 @@ Updated READme
 <content type="text">commit 13a2999cdf7b42c67448447f867ad62edd7b99f7
 parent 23ea4bd978a3a75279c549d7be4eb2a2f8209814
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Jan 22 16:47:45 2016
+Date:   Fri Jan 22 16:47:45 +0200
 
 Fixed remix button
 
@@ -232,7 +246,8 @@ Fixed remix button
 </entry>
 <entry>
 <id>23ea4bd978a3a75279c549d7be4eb2a2f8209814</id>
-<updated>2016-01-22T16:46:05Z</updated>
+<published>2016-01-22T14:46:05Z</published>
+<updated>2016-01-22T14:46:05Z</updated>
 <title type="text">Added markdown support in album description. And fixed critical bug.</title>
 <link rel="alternate" type="text/html" href="commit/23ea4bd978a3a75279c549d7be4eb2a2f8209814.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -240,7 +255,7 @@ Fixed remix button
 <content type="text">commit 23ea4bd978a3a75279c549d7be4eb2a2f8209814
 parent 198792f7edb75460c9314988fdcbd77ca1f281e8
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Jan 22 16:46:05 2016
+Date:   Fri Jan 22 16:46:05 +0200
 
 Added markdown support in album description.
 And fixed critical bug.
@@ -249,7 +264,8 @@ And fixed critical bug.
 </entry>
 <entry>
 <id>198792f7edb75460c9314988fdcbd77ca1f281e8</id>
-<updated>2016-01-22T16:12:34Z</updated>
+<published>2016-01-22T14:12:34Z</published>
+<updated>2016-01-22T14:12:34Z</updated>
 <title type="text">Albums now can be remixed (forked)</title>
 <link rel="alternate" type="text/html" href="commit/198792f7edb75460c9314988fdcbd77ca1f281e8.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -257,7 +273,7 @@ And fixed critical bug.
 <content type="text">commit 198792f7edb75460c9314988fdcbd77ca1f281e8
 parent 331ebe374014392a96db7646303f947e5b901d7b
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Jan 22 16:12:34 2016
+Date:   Fri Jan 22 16:12:34 +0200
 
 Albums now can be remixed (forked)
 
@@ -265,7 +281,8 @@ Albums now can be remixed (forked)
 </entry>
 <entry>
 <id>331ebe374014392a96db7646303f947e5b901d7b</id>
-<updated>2016-01-22T15:47:44Z</updated>
+<published>2016-01-22T13:47:44Z</published>
+<updated>2016-01-22T13:47:44Z</updated>
 <title type="text">Added delete button for images</title>
 <link rel="alternate" type="text/html" href="commit/331ebe374014392a96db7646303f947e5b901d7b.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -273,7 +290,7 @@ Albums now can be remixed (forked)
 <content type="text">commit 331ebe374014392a96db7646303f947e5b901d7b
 parent df12c9ae1516f7295b51d4b56431f56a0aac88bd
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Jan 22 15:47:44 2016
+Date:   Fri Jan 22 15:47:44 +0200
 
 Added delete button for images
 
@@ -281,7 +298,8 @@ Added delete button for images
 </entry>
 <entry>
 <id>df12c9ae1516f7295b51d4b56431f56a0aac88bd</id>
-<updated>2016-01-22T15:11:32Z</updated>
+<published>2016-01-22T13:11:32Z</published>
+<updated>2016-01-22T13:11:32Z</updated>
 <title type="text">Merge branch &apos;gh-pages&apos; of https://github.com/tudurom/albumify into gh-pages</title>
 <link rel="alternate" type="text/html" href="commit/df12c9ae1516f7295b51d4b56431f56a0aac88bd.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -289,7 +307,7 @@ Added delete button for images
 <content type="text">commit df12c9ae1516f7295b51d4b56431f56a0aac88bd
 parent 9237629b6e5f57e2b373c242d953202ce142e51b
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Jan 22 15:11:32 2016
+Date:   Fri Jan 22 15:11:32 +0200
 
 Merge branch &apos;gh-pages&apos; of https://github.com/tudurom/albumify into gh-pages
 
@@ -297,7 +315,8 @@ Merge branch &apos;gh-pages&apos; of https://github.com/tudurom/albumify into gh
 </entry>
 <entry>
 <id>9237629b6e5f57e2b373c242d953202ce142e51b</id>
-<updated>2016-01-22T15:11:09Z</updated>
+<published>2016-01-22T13:11:09Z</published>
+<updated>2016-01-22T13:11:09Z</updated>
 <title type="text">Validation trickery</title>
 <link rel="alternate" type="text/html" href="commit/9237629b6e5f57e2b373c242d953202ce142e51b.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -305,7 +324,7 @@ Merge branch &apos;gh-pages&apos; of https://github.com/tudurom/albumify into gh
 <content type="text">commit 9237629b6e5f57e2b373c242d953202ce142e51b
 parent a054d3e44b4b73fd0d08508cddebc38adcbb82be
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Jan 22 15:11:09 2016
+Date:   Fri Jan 22 15:11:09 +0200
 
 Validation trickery
 
@@ -313,7 +332,8 @@ Validation trickery
 </entry>
 <entry>
 <id>a054d3e44b4b73fd0d08508cddebc38adcbb82be</id>
-<updated>2016-01-22T14:27:45Z</updated>
+<published>2016-01-22T12:27:45Z</published>
+<updated>2016-01-22T12:27:45Z</updated>
 <title type="text">Derp2</title>
 <link rel="alternate" type="text/html" href="commit/a054d3e44b4b73fd0d08508cddebc38adcbb82be.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -321,7 +341,7 @@ Validation trickery
 <content type="text">commit a054d3e44b4b73fd0d08508cddebc38adcbb82be
 parent f86264ff3cfe6ab8620cecf92bc714b7d983cd90
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Jan 22 14:27:45 2016
+Date:   Fri Jan 22 14:27:45 +0200
 
 Derp2
 
@@ -329,7 +349,8 @@ Derp2
 </entry>
 <entry>
 <id>f86264ff3cfe6ab8620cecf92bc714b7d983cd90</id>
-<updated>2016-01-22T10:09:02Z</updated>
+<published>2016-01-22T08:09:02Z</published>
+<updated>2016-01-22T08:09:02Z</updated>
 <title type="text">Added title in view.html</title>
 <link rel="alternate" type="text/html" href="commit/f86264ff3cfe6ab8620cecf92bc714b7d983cd90.html" /><author><name>Tudor Roman</name>
 <email>tudurom@gmail.com</email>
@@ -337,7 +358,7 @@ Derp2
 <content type="text">commit f86264ff3cfe6ab8620cecf92bc714b7d983cd90
 parent cb231ddbfb33781d5b68280a96f9034f052b3ae3
 Author: Tudor Roman &lt;tudurom@gmail.com&gt;
-Date:   Fri Jan 22 10:09:02 2016
+Date:   Fri Jan 22 10:09:02 +0200
 
 Added title in view.html
 
@@ -345,7 +366,8 @@ Added title in view.html
 </entry>
 <entry>
 <id>cb231ddbfb33781d5b68280a96f9034f052b3ae3</id>
-<updated>2016-01-22T09:59:10Z</updated>
+<published>2016-01-22T07:59:10Z</published>
+<updated>2016-01-22T07:59:10Z</updated>
 <title type="text">Merge from dylanaraps</title>
 <link rel="alternate" type="text/html" href="commit/cb231ddbfb33781d5b68280a96f9034f052b3ae3.html" /><author><name>Tudor Roman</name>
 <email>tudurom@gmail.com</email>
@@ -353,7 +375,7 @@ Added title in view.html
 <content type="text">commit cb231ddbfb33781d5b68280a96f9034f052b3ae3
 parent 3105a1c6e7966a4606d3d4b95acea2256cf84437
 Author: Tudor Roman &lt;tudurom@gmail.com&gt;
-Date:   Fri Jan 22 09:59:10 2016
+Date:   Fri Jan 22 09:59:10 +0200
 
 Merge from dylanaraps
 
@@ -361,7 +383,8 @@ Merge from dylanaraps
 </entry>
 <entry>
 <id>3105a1c6e7966a4606d3d4b95acea2256cf84437</id>
-<updated>2016-01-21T21:20:13Z</updated>
+<published>2016-01-21T19:20:13Z</published>
+<updated>2016-01-21T19:20:13Z</updated>
 <title type="text">Derp</title>
 <link rel="alternate" type="text/html" href="commit/3105a1c6e7966a4606d3d4b95acea2256cf84437.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -369,7 +392,7 @@ Merge from dylanaraps
 <content type="text">commit 3105a1c6e7966a4606d3d4b95acea2256cf84437
 parent cb7015d8f24d71ab6ae0d18429957966f60f51bf
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Thu Jan 21 21:20:13 2016
+Date:   Thu Jan 21 21:20:13 +0200
 
 Derp
 
@@ -377,7 +400,8 @@ Derp
 </entry>
 <entry>
 <id>cb7015d8f24d71ab6ae0d18429957966f60f51bf</id>
-<updated>2016-01-21T20:23:07Z</updated>
+<published>2016-01-21T18:23:07Z</published>
+<updated>2016-01-21T18:23:07Z</updated>
 <title type="text">Added README</title>
 <link rel="alternate" type="text/html" href="commit/cb7015d8f24d71ab6ae0d18429957966f60f51bf.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
@@ -385,7 +409,7 @@ Derp
 <content type="text">commit cb7015d8f24d71ab6ae0d18429957966f60f51bf
 parent 650eb1a5cacb9d1e9ccd715be2e13acd74e8332a
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Thu Jan 21 20:23:07 2016
+Date:   Thu Jan 21 20:23:07 +0200
 
 Added README
 
@@ -393,14 +417,15 @@ Added README
 </entry>
 <entry>
 <id>650eb1a5cacb9d1e9ccd715be2e13acd74e8332a</id>
-<updated>2016-01-21T20:10:31Z</updated>
+<published>2016-01-21T18:10:31Z</published>
+<updated>2016-01-21T18:10:31Z</updated>
 <title type="text">Initial commit</title>
 <link rel="alternate" type="text/html" href="commit/650eb1a5cacb9d1e9ccd715be2e13acd74e8332a.html" /><author><name>Tudor</name>
 <email>tudurom@gmail.com</email>
 </author>
 <content type="text">commit 650eb1a5cacb9d1e9ccd715be2e13acd74e8332a
 Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Thu Jan 21 20:10:31 2016
+Date:   Thu Jan 21 20:10:31 +0200
 
 Initial commit
 

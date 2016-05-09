@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Pkgfile - crux-ports - Ports for the CRUX Linux distro.
+</title>
+<link rel="icon" type="image/png" href="../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">Ports for the CRUX Linux distro.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> Pkgfile (1186B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<a href="#l1" id="l1">1</a>
+<a href="#l2" id="l2">2</a>
+<a href="#l3" id="l3">3</a>
+<a href="#l4" id="l4">4</a>
+<a href="#l5" id="l5">5</a>
+<a href="#l6" id="l6">6</a>
+<a href="#l7" id="l7">7</a>
+<a href="#l8" id="l8">8</a>
+<a href="#l9" id="l9">9</a>
+<a href="#l10" id="l10">10</a>
+<a href="#l11" id="l11">11</a>
+<a href="#l12" id="l12">12</a>
+<a href="#l13" id="l13">13</a>
+<a href="#l14" id="l14">14</a>
+<a href="#l15" id="l15">15</a>
+<a href="#l16" id="l16">16</a>
+<a href="#l17" id="l17">17</a>
+<a href="#l18" id="l18">18</a>
+<a href="#l19" id="l19">19</a>
+<a href="#l20" id="l20">20</a>
+<a href="#l21" id="l21">21</a>
+<a href="#l22" id="l22">22</a>
+<a href="#l23" id="l23">23</a>
+<a href="#l24" id="l24">24</a>
+<a href="#l25" id="l25">25</a>
+<a href="#l26" id="l26">26</a>
+<a href="#l27" id="l27">27</a>
+<a href="#l28" id="l28">28</a>
+<a href="#l29" id="l29">29</a>
+<a href="#l30" id="l30">30</a>
+<a href="#l31" id="l31">31</a>
+<a href="#l32" id="l32">32</a>
+<a href="#l33" id="l33">33</a>
+<a href="#l34" id="l34">34</a>
+<a href="#l35" id="l35">35</a>
+<a href="#l36" id="l36">36</a>
+<a href="#l37" id="l37">37</a>
+<a href="#l38" id="l38">38</a>
+</pre></td><td><pre>
+# Description: Voice chat application (client only!)
+# URL:         http://mumble.sourceforge.net
+# Packager:    ??
+# Maintainer:  tudurom, xenogenesis@openmailbox.org
+# Depends on:  boost qt4 speex libsndfile protobuf
+
+name=mumble-client
+version=1.2.9
+release=1
+source=(http://downloads.sourceforge.net/project/mumble/Mumble/$version/mumble-$version.tar.gz)
+
+build() {
+	cd mumble-$version
+
+	qmake main.pro \
+	    CONFIG+=no-bundled-speex \
+	    CONFIG+=no-dbus \
+	    CONFIG+=no-embed-qt-translations \
+	    CONFIG+=no-speechd \
+	    CONFIG+=no-bonjour \
+	    CONFIG+=no-g15 \
+	    CONFIG+=no-11x \
+	    CONFIG+=no-server \
+            DEFINES+=&quot;PLUGIN_PATH=/usr/lib/mumble&quot;
+
+	make release
+
+	install -d $PKG/usr/{bin,lib}
+	install -o root -g root release/mumble $PKG/usr/bin/mumble
+
+	install -m755 -o root -g root -D release/plugins/liblink.so $PKG/usr/lib/mumble/liblink.so
+	install -m755 -o root -g root -D release/plugins/libmanual.so $PKG/usr/lib/mumble/libmanual.so
+	install -o root -g root release/libcelt0.so.0.7.0 $PKG/usr/lib/mumble
+	cd $PKG/usr/lib/mumble
+	ln -s libcelt0.so.0.7.0 libcelt0.so.0.7
+	ln -s libcelt0.so.0.7.0 libcelt0.so.0
+	ln -s libcelt0.so.0.7.0 libcelt0.so
+}
+</pre></td></tr></table>
+</div>
+</body>
+</html>

@@ -3,19 +3,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>lsd.c - disputils - wmutils/xrandr powered multimonitor display utils
+<title>lsd.c - disputils - Utilities for getting information about connected displays.
 </title>
 <link rel="icon" type="image/png" href="../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
 <link rel="stylesheet" type="text/css" href="../style.css" />
 </head>
 <body>
-<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">Utilities for getting information about connected displays.
 </span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/disputils.git">git://thetudor.ddns.net/disputils.git</a></td></tr><tr><td></td><td>
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> lsd.c (1610B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> lsd.c (1509B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -80,9 +80,13 @@
 <a href="#l62" id="l62">62</a>
 <a href="#l63" id="l63">63</a>
 <a href="#l64" id="l64">64</a>
+<a href="#l65" id="l65">65</a>
+<a href="#l66" id="l66">66</a>
+<a href="#l67" id="l67">67</a>
 </pre></td><td><pre>
-/* disputils lsd.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
- * ix &lt;arcetera@openmailbox.org
+/*
+ * disputils lsd.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt; ix
+ * &lt;arcetera@openmailbox.org
  */
 
 #include &lt;err.h&gt;
@@ -93,57 +97,59 @@
 #include &quot;util.h&quot;
 
 xcb_connection_t *conn;
-xcb_screen_t *scrn;
+xcb_screen_t   *scrn;
 
 void
 usage(char *name)
 {
-    printf(&quot;usage: %s \n&quot;, name);
-    exit(0);
+	printf(&quot;usage: %s \n&quot;, name);
+	exit(0);
 }
 
 void
-print_output(xcb_connection_t* conn, xcb_randr_output_t output, xcb_randr_get_output_info_reply_t* output_info)
+print_output(xcb_connection_t * conn, xcb_randr_output_t output, xcb_randr_get_output_info_reply_t * output_info)
 {
-    if (get_output_connection(conn, output) == 0) {
-        printf(&quot;%s&quot;, get_output_name(conn, output));
-    }
+	if (get_output_connection(conn, output) == 0) {
+		printf(&quot;%s&quot;, get_output_name(conn, output));
+	}
 }
 
 int
 main(int argc, char *argv[])
 {
-    xcb_randr_get_output_info_reply_t *output_info;
-    xcb_randr_get_crtc_info_reply_t *output_crtc_info;
+	xcb_randr_get_output_info_reply_t *output_info;
+	xcb_randr_get_crtc_info_reply_t *output_crtc_info;
 
 #ifdef __OpenBSD__
-    if (pledge (&quot;stdio rpath unix&quot;, NULL) == -1)
-        err(1, &quot;pledge&quot;);
+	if (pledge(&quot;stdio rpath unix&quot;, NULL) == -1)
+		err(1, &quot;pledge&quot;);
 #endif
-    if (argc &gt; 1) usage(argv[0]);
-    init_xcb(&amp;conn);
-    get_screen(conn, &amp;scrn);
+	if (argc &gt; 1)
+		usage(argv[0]);
+	init_xcb(&amp;conn);
+	get_screen(conn, &amp;scrn);
 
-    xcb_randr_provider_t* providers;
-    int p_len = get_providers(conn, scrn, &amp;providers);
+	xcb_randr_provider_t *providers;
+	int 		p_len = get_providers(conn, scrn, &amp;providers);
 
-    for (int i = 0; i &lt; p_len; ++i) {
-        xcb_randr_output_t* os;
-        int o_len = get_outputs(conn, providers[i], &amp;os);
+	for (int i = 0; i &lt; p_len; ++i) {
+		xcb_randr_output_t *os;
+		int 		o_len = get_outputs(conn, providers[i], &amp;os);
 
-        /* Print screens from providers */
-        for (int j = 0; j &lt; o_len; ++j) {
-            output_info = get_output_info(conn, os[j]);
-            output_crtc_info = get_output_crtc_info(conn, output_info-&gt;crtc);
-            /* Print screen only if in use */
-            if (output_crtc_info != NULL) {
+		/* Print screens from providers */
+		for (int j = 0; j &lt; o_len; ++j) {
+			output_info = get_output_info(conn, os[j]);
+			output_crtc_info = get_output_crtc_info(conn, output_info-&gt;crtc);
+			/* Print screen only if in use */
+			if (output_crtc_info != NULL) {
                 print_output(conn, os[j], output_info);
-                if (j &lt; o_len - 1)
-                    fputc(&apos;\n&apos;, stdout);
-            }
-        }
-    }
-    return 0;
+				//print_output(conn, os[j], output_info);
+				if (j &lt; o_len - 1)
+					fputc(&apos;\n&apos;, stdout);
+			}
+		}
+	}
+	return 0;
 }
 </pre></td></tr></table>
 </div>

@@ -3,19 +3,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>util.h - disputils - wmutils/xrandr powered multimonitor display utils
+<title>util.h - disputils - Utilities for getting information about connected displays.
 </title>
 <link rel="icon" type="image/png" href="../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
 <link rel="stylesheet" type="text/css" href="../style.css" />
 </head>
 <body>
-<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">Utilities for getting information about connected displays.
 </span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/disputils.git">git://thetudor.ddns.net/disputils.git</a></td></tr><tr><td></td><td>
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> util.h (484B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> util.h (514B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -36,25 +36,25 @@
 <a href="#l18" id="l18">18</a>
 <a href="#l19" id="l19">19</a>
 </pre></td><td><pre>
-/* disputils util.h 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
- * ix &lt;arcetera@openmailbox.org
+/*
+ * disputils util.h 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt; ix
+ * &lt;arcetera@openmailbox.org
  */
 
 #ifndef UTIL_H__
 #define UTIL_H__
 
-void init_xcb(xcb_connection_t **);
-void kill_xcb(xcb_connection_t **);
+void 		init_xcb (xcb_connection_t **);
+void 		kill_xcb (xcb_connection_t **);
 
-void get_screen(xcb_connection_t *, xcb_screen_t **);
-int get_windows(xcb_connection_t *, xcb_window_t, xcb_window_t **);
+void 		get_screen(xcb_connection_t *, xcb_screen_t **);
+int 		get_windows(xcb_connection_t *, xcb_window_t, xcb_window_t **);
 
-int exists(xcb_connection_t *, xcb_window_t);
-int mapped(xcb_connection_t *, xcb_window_t);
-int ignore(xcb_connection_t *, xcb_window_t);
+int 		exists    (xcb_connection_t *, xcb_window_t);
+int 		mapped    (xcb_connection_t *, xcb_window_t);
+int 		ignore    (xcb_connection_t *, xcb_window_t);
 
 #endif
-
 </pre></td></tr></table>
 </div>
 </body>

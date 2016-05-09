@@ -3,19 +3,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>README.md - dotfiles - My small load of configuration files and scripts.
+<title>README.md - dotfiles - Small loan of configuration files.
 </title>
 <link rel="icon" type="image/png" href="../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
 <link rel="stylesheet" type="text/css" href="../style.css" />
 </head>
 <body>
-<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">My small load of configuration files and scripts.
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
 </span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
-<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> README.md (6542B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> README.md (5350B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -109,25 +109,6 @@
 <a href="#l91" id="l91">91</a>
 <a href="#l92" id="l92">92</a>
 <a href="#l93" id="l93">93</a>
-<a href="#l94" id="l94">94</a>
-<a href="#l95" id="l95">95</a>
-<a href="#l96" id="l96">96</a>
-<a href="#l97" id="l97">97</a>
-<a href="#l98" id="l98">98</a>
-<a href="#l99" id="l99">99</a>
-<a href="#l100" id="l100">100</a>
-<a href="#l101" id="l101">101</a>
-<a href="#l102" id="l102">102</a>
-<a href="#l103" id="l103">103</a>
-<a href="#l104" id="l104">104</a>
-<a href="#l105" id="l105">105</a>
-<a href="#l106" id="l106">106</a>
-<a href="#l107" id="l107">107</a>
-<a href="#l108" id="l108">108</a>
-<a href="#l109" id="l109">109</a>
-<a href="#l110" id="l110">110</a>
-<a href="#l111" id="l111">111</a>
-<a href="#l112" id="l112">112</a>
 </pre></td><td><pre>
 tudurom&apos;s dotfiles
 ==================
@@ -151,18 +132,20 @@ List of programs
 * **Shell**: [mksh](https://www.mirbsd.org/mksh.htm)
   * Also using [tmux](https://wiki.archlinux.org/index.php/tmux).
 * **Terminal emulator**: [suckless st](https://wiki.archlinux.org/index.php/St)
-* **Notification daemon**: [Simple Notification Daemon](https://github.com/htylo/simplenotifydaemon) in combination with [my script](https://github.com/tudurom/dotfiles/blob/master/scripts/.scripts/notifyd)
 * **Window manager**: [wmutils](http://wmutils.io) + [my scripts](https://github.com/tudurom/dotfiles/tree/master/wmrc/.scripts)
-  * **Panel**: [lemonbar](https://wiki.archlinux.org/index.php/Lemonbar) (see `wmrc/.scripts/*panel`)
+  * **Panel**: [lemonbar](https://wiki.archlinux.org/index.php/Lemonbar) (see `wmrc/.scripts/*bar`)
 * **Browser**: Firefox
   * **Theme**: Twily&apos;s modified
 * **Music player**: [mpd](https://wiki.archlinux.org/index.php/Music_Player_Daemon) + [ncmpcpp](https://wiki.archlinux.org/index.php/Ncmpcpp)
+* **Special Sauce**: [Rainbou](https://github.com/tudurom/rainbou) (configration
+  file generator)
 
 Directory structure
 -------------------
 
 ```bash
-tud|| ~/dotfiles &gt; tree -L 1
+~
+─── tree -L 1
 ```
 
 ```
@@ -194,27 +177,9 @@ tud|| ~/dotfiles &gt; tree -L 1
 21 directories, 1 file
 ```
 
-Inspiration / People where I steal from
----------------------------------------
-
-* [dylanaraps](http://github.com/dylanaraps/dotfiles) - little bits from the nvim config and from the color scheme
-* [xero](http://git.io/.files) - bits from the tmux config. nice article about stow!
-* [onodera-punpun](http://github.com/onodera-punpun/dotfiles) - ncmpcpp config. Made it better, check it out!
-* [z3bra](http://git.z3bra.org/scripts/files.html) - bits (or whole chunks) from his wmutils scripts.
-* I think that&apos;s it.
-
-Thanks
-------
-
-* [z3bra](http://z3bra.org) and [dcat](https://github.com/dcat) for [wmutils](https://github.com/wmutils)
-* [baskerville](https://github.com/baskerville) for bspwm and sxhkd
-* [Nixers](https://nixers.net) for being cool ;)
-
 TODO
 ----
 
-- [x] Switch from Arch to [Crux](http://crux.nu)
-- [x] Switch from bspwm to [wmutils](http://wmutils.io)
 - [ ] Document this setup more
   - [x] This README
   - [ ] A big article at the `gh-pages` branch
@@ -222,7 +187,11 @@ TODO
 Screenshots
 -----------
 
-### [Current state](http://pub.iotek.org/p/YdrGGvR.png)
+### [Sanity](http://pub.iotek.org/p/vBEtVnd.png)
+
+### [2AM Ricing](http://pub.iotek.org/p/VsbSaGT.png)
+
+### [Lost cat](http://pub.iotek.org/p/YdrGGvR.png)
 
 ### [First wmutils screenie](http://pub.iotek.org/p/9DIdJjP.png)
 
@@ -234,13 +203,6 @@ Screenshots
 
 ### [i3](http://tudurom.github.io/albumify/view.html#eyJ0aXRsZSI6ImkzIC0gRmlyc3QgcmljZSIsImRlc2NyaXB0aW9uIjoiIiwiYWxidW0iOlt7InBpY1NyYyI6Imh0dHA6Ly9pLmltZ3VyLmNvbS96YVo0dHBoLnBuZyIsInRpdGxlIjoiQ2xlYW4ifSx7InBpY1NyYyI6Imh0dHA6Ly9pLmltZ3VyLmNvbS84blgxSGFlLnBuZyIsInRpdGxlIjoiRGlydHkifSx7InBpY1NyYyI6Imh0dHA6Ly9pLmltZ3VyLmNvbS9lNjVIN21JLnBuZyIsInRpdGxlIjoiQmx1ZSByb2ZpIn0seyJwaWNTcmMiOiJodHRwOi8vaS5pbWd1ci5jb20vOXdQYTA5WC5wbmciLCJ0aXRsZSI6IlNjcmVlbmZldGNoIn1dfQ==)
 
-Sub-projects
-------------
-
-This project has some sub-projects in it, defined as submodules[:](https://github.com/tudurom/dotfiles/blob/master/wallpapers/wallpapers/xero_said_this_one_is_rad.png)
-
-* [clint](https://github.com/tudurom/clint) - notes script.
-* [startpage](https://github.com/tudurom/startpage) - yes.
 </pre></td></tr></table>
 </div>
 </body>

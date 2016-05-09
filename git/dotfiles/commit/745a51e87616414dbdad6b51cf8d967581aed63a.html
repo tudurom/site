@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>magic - dotfiles - Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/745a51e87616414dbdad6b51cf8d967581aed63a.html">745a51e87616414dbdad6b51cf8d967581aed63a</a>
+<b>parent</b> <a href="../commit/3380abdba47defa21b382d67e65e8b73c3e86030.html">3380abdba47defa21b382d67e65e8b73c3e86030</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri May  6 23:17:54 2016
+
+magic
+
+<b>Diffstat:</b>
+ gtk/.config/gtk-3.0/settings.ini |  2 +-
+ gtk/.themes/oomox-cloudy         |  2 +-
+ pre_magic.sh                     |  6 ++++++
+ scripts/.scripts/colorscheme     | 26 ++++++++++++++++++++++++++
+ scripts/bin                      |  1 -
+ wallpapers/wallpapers/Cutu.jpg   | Bin 0 -&gt; 96951 bytes
+ 6 files changed, 34 insertions(+), 3 deletions(-)
+<hr/><b>diff --git a/<a href="../file/gtk/.config/gtk-3.0/settings.ini.html">gtk/.config/gtk-3.0/settings.ini</a> b/<a href="../file/gtk/.config/gtk-3.0/settings.ini.html">gtk/.config/gtk-3.0/settings.ini</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,7 +1,7 @@
+</a> [Settings]
+ gtk-theme-name=oomox-cloudy
+ gtk-icon-theme-name=Flattr Dark
+<a href="#h0-3" id="h0-3" class="d">-gtk-font-name=Roboto Condensed, 11
+</a><a href="#h0-4" id="h0-4" class="i">+gtk-font-name=Share 13
+</a> gtk-cursor-theme-name=Human
+ gtk-cursor-theme-size=0
+ gtk-toolbar-style=GTK_TOOLBAR_BOTH
+<b>diff --git a/<a href="../file/gtk/.themes/oomox-cloudy.html">gtk/.themes/oomox-cloudy</a> b/<a href="../file/gtk/.themes/oomox-cloudy.html">gtk/.themes/oomox-cloudy</a></b>
+<a href="#h0" id="h0" class="h">@@ -1 +1 @@
+</a><a href="#h0-0" id="h0-0" class="d">-Subproject commit 2dc9f70f5c3830c95d43313eb6edc6f610774c2a
+</a><a href="#h0-1" id="h0-1" class="i">+Subproject commit 20740e62611d88c36e3d9276ac9f5d865872bad8
+</a><b>diff --git a/<a href="../file/pre_magic.sh.html">pre_magic.sh</a> b/<a href="../file/pre_magic.sh.html">pre_magic.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,6 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#!/bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+# Symlink .scripts to bin
+</a><a href="#h0-3" id="h0-3" class="i">+cd $HOME
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+ln -s .scripts bin
+</a><b>diff --git a/<a href="../file/scripts/.scripts/colorscheme.html">scripts/.scripts/colorscheme</a> b/<a href="../file/scripts/.scripts/colorscheme.html">scripts/.scripts/colorscheme</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,26 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#!/bin/bash
+</a><a href="#h0-1" id="h0-1" class="i">+#
+</a><a href="#h0-2" id="h0-2" class="i">+#   This file echoes a bunch of color codes to the 
+</a><a href="#h0-3" id="h0-3" class="i">+#   terminal to demonstrate what&apos;s available.  Each 
+</a><a href="#h0-4" id="h0-4" class="i">+#   line is the color code of one forground color,
+</a><a href="#h0-5" id="h0-5" class="i">+#   out of 17 (default + 16 escapes), followed by a 
+</a><a href="#h0-6" id="h0-6" class="i">+#   test use of that color on all nine background 
+</a><a href="#h0-7" id="h0-7" class="i">+#   colors (default + 8 escapes).
+</a><a href="#h0-8" id="h0-8" class="i">+#
+</a><a href="#h0-9" id="h0-9" class="i">+
+</a><a href="#h0-10" id="h0-10" class="i">+T=&apos;niX&apos;   # The test text
+</a><a href="#h0-11" id="h0-11" class="i">+
+</a><a href="#h0-12" id="h0-12" class="i">+echo -e &quot;\n                 40m     41m     42m     43m\
+</a><a href="#h0-13" id="h0-13" class="i">+     44m     45m     46m     47m&quot;;
+</a><a href="#h0-14" id="h0-14" class="i">+
+</a><a href="#h0-15" id="h0-15" class="i">+for FGs in &apos;    m&apos; &apos;   1m&apos; &apos;  30m&apos; &apos;1;30m&apos; &apos;  31m&apos; &apos;1;31m&apos; &apos;  32m&apos; \
+</a><a href="#h0-16" id="h0-16" class="i">+           &apos;1;32m&apos; &apos;  33m&apos; &apos;1;33m&apos; &apos;  34m&apos; &apos;1;34m&apos; &apos;  35m&apos; &apos;1;35m&apos; \
+</a><a href="#h0-17" id="h0-17" class="i">+           &apos;  36m&apos; &apos;1;36m&apos; &apos;  37m&apos; &apos;1;37m&apos;;
+</a><a href="#h0-18" id="h0-18" class="i">+  do FG=${FGs// /}
+</a><a href="#h0-19" id="h0-19" class="i">+  echo -en &quot; $FGs \033[$FG  $T  &quot;
+</a><a href="#h0-20" id="h0-20" class="i">+  for BG in 40m 41m 42m 43m 44m 45m 46m 47m;
+</a><a href="#h0-21" id="h0-21" class="i">+    do echo -en &quot;$EINS \033[$FG\033[$BG  $T  \033[0m&quot;;
+</a><a href="#h0-22" id="h0-22" class="i">+  done
+</a><a href="#h0-23" id="h0-23" class="i">+  echo;
+</a><a href="#h0-24" id="h0-24" class="i">+done
+</a><a href="#h0-25" id="h0-25" class="i">+echo
+</a><b>diff --git a/<a href="../file/scripts/bin.html">scripts/bin</a> b/<a href="../file/scripts/bin.html">scripts/bin</a></b>
+<a href="#h0" id="h0" class="h">@@ -1 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-.scripts</a><a href="#h0-1" id="h0-1" class="d">-
+\ No newline at end of file
+</a><b>diff --git a/<a href="../file/wallpapers/wallpapers/Cutu.jpg.html">wallpapers/wallpapers/Cutu.jpg</a> b/<a href="../file/wallpapers/wallpapers/Cutu.jpg.html">wallpapers/wallpapers/Cutu.jpg</a></b>
+Binary files differ
+</pre>
+</div>
+</body>
+</html>

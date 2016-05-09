@@ -3,19 +3,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>util.c - disputils - wmutils/xrandr powered multimonitor display utils
+<title>util.c - disputils - Utilities for getting information about connected displays.
 </title>
 <link rel="icon" type="image/png" href="../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
 <link rel="stylesheet" type="text/css" href="../style.css" />
 </head>
 <body>
-<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">wmutils/xrandr powered multimonitor display utils
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">Utilities for getting information about connected displays.
 </span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/disputils.git">git://thetudor.ddns.net/disputils.git</a></td></tr><tr><td></td><td>
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> util.c (2080B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> util.c (1933B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -122,113 +122,115 @@
 <a href="#l104" id="l104">104</a>
 <a href="#l105" id="l105">105</a>
 <a href="#l106" id="l106">106</a>
+<a href="#l107" id="l107">107</a>
 </pre></td><td><pre>
-/* disputils util.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt;
- * ix &lt;arcetera@openmailbox.org
+/*
+ * disputils util.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt; ix
+ * &lt;arcetera@openmailbox.org
  */
 
 #include &lt;err.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;xcb/xcb.h&gt;
+
 #include &quot;util.h&quot;
 
 void
-init_xcb(xcb_connection_t **con)
+init_xcb(xcb_connection_t ** con)
 {
-    *con = xcb_connect(NULL, NULL);
-    if (xcb_connection_has_error(*con))
-        errx(1, &quot;unable connect to the X server&quot;);
+	*con = xcb_connect(NULL, NULL);
+	if (xcb_connection_has_error(*con))
+		errx(1, &quot;unable connect to the X server&quot;);
 }
 
 void
-kill_xcb(xcb_connection_t **con)
+kill_xcb(xcb_connection_t ** con)
 {
-    if (*con)
-        xcb_disconnect(*con);
+	if (*con)
+		xcb_disconnect(*con);
 }
 
 void
-get_screen(xcb_connection_t *con, xcb_screen_t **scr)
+get_screen(xcb_connection_t * con, xcb_screen_t ** scr)
 {
-    *scr = xcb_setup_roots_iterator(xcb_get_setup(con)).data;
-    if (*scr == NULL)
-        errx(1, &quot;unable to retrieve screen informations&quot;);
+	*scr = xcb_setup_roots_iterator(xcb_get_setup(con)).data;
+	if (*scr == NULL)
+		errx(1, &quot;unable to retrieve screen informations&quot;);
 }
 
 int
-exists(xcb_connection_t *con, xcb_window_t w)
+exists(xcb_connection_t * con, xcb_window_t w)
 {
-    xcb_get_window_attributes_cookie_t c;
-    xcb_get_window_attributes_reply_t  *r;
+	xcb_get_window_attributes_cookie_t c;
+	xcb_get_window_attributes_reply_t *r;
 
-    c = xcb_get_window_attributes(con, w);
-    r = xcb_get_window_attributes_reply(con, c, NULL);
+	c = xcb_get_window_attributes(con, w);
+	r = xcb_get_window_attributes_reply(con, c, NULL);
 
-    if (r == NULL)
-        return 0;
+	if (r == NULL)
+		return 0;
 
-    free(r);
-    return 1;
+	free(r);
+	return 1;
 }
 
 int
-mapped(xcb_connection_t *con, xcb_window_t w)
+mapped(xcb_connection_t * con, xcb_window_t w)
 {
-    int ms;
-    xcb_get_window_attributes_cookie_t c;
-    xcb_get_window_attributes_reply_t  *r;
+	int 		ms;
+	xcb_get_window_attributes_cookie_t c;
+	xcb_get_window_attributes_reply_t *r;
 
-    c = xcb_get_window_attributes(con, w);
-    r = xcb_get_window_attributes_reply(con, c, NULL);
+	c = xcb_get_window_attributes(con, w);
+	r = xcb_get_window_attributes_reply(con, c, NULL);
 
-    if (r == NULL)
-        return 0;
+	if (r == NULL)
+		return 0;
 
-    ms = r-&gt;map_state;
+	ms = r-&gt;map_state;
 
-    free(r);
-    return ms == XCB_MAP_STATE_VIEWABLE;
+	free(r);
+	return ms == XCB_MAP_STATE_VIEWABLE;
 }
 
 int
-ignore(xcb_connection_t *con, xcb_window_t w)
+ignore(xcb_connection_t * con, xcb_window_t w)
 {
-    int or;
-    xcb_get_window_attributes_cookie_t c;
-    xcb_get_window_attributes_reply_t  *r;
+	int 		or;
+	xcb_get_window_attributes_cookie_t c;
+	xcb_get_window_attributes_reply_t *r;
 
-    c = xcb_get_window_attributes(con, w);
-    r = xcb_get_window_attributes_reply(con, c, NULL);
+	c = xcb_get_window_attributes(con, w);
+	r = xcb_get_window_attributes_reply(con, c, NULL);
 
-    if (r == NULL)
-        return 0;
+	if (r == NULL)
+		return 0;
 
-    or = r-&gt;override_redirect;
+	or = r-&gt;override_redirect;
 
-    free(r);
-    return or;
+	free(r);
+	return or;
 }
 
 int
-get_windows(xcb_connection_t *con, xcb_window_t w, xcb_window_t **l)
+get_windows(xcb_connection_t * con, xcb_window_t w, xcb_window_t ** l)
 {
-    int childnum = 0;
-    xcb_query_tree_cookie_t c;
-    xcb_query_tree_reply_t *r;
+	int 		childnum = 0;
+	xcb_query_tree_cookie_t c;
+	xcb_query_tree_reply_t *r;
 
-    c = xcb_query_tree(con, w);
-    r = xcb_query_tree_reply(con, c, NULL);
-    if (r == NULL)
-        errx(1, &quot;0x%08x: no such window&quot;, w);
+	c = xcb_query_tree(con, w);
+	r = xcb_query_tree_reply(con, c, NULL);
+	if (r == NULL)
+		errx(1, &quot;0x%08x: no such window&quot;, w);
 
-    *l = xcb_query_tree_children(r);
+	*l = xcb_query_tree_children(r);
 
-    childnum = r-&gt;children_len;
-    free(r);
+	childnum = r-&gt;children_len;
+	free(r);
 
-    return childnum;
+	return childnum;
 }
-
 </pre></td></tr></table>
 </div>
 </body>

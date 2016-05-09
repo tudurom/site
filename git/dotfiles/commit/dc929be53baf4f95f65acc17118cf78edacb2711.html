@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>update - dotfiles - Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/dc929be53baf4f95f65acc17118cf78edacb2711.html">dc929be53baf4f95f65acc17118cf78edacb2711</a>
+<b>parent</b> <a href="../commit/b4752a88b81e19f3fdebe9dc7f57a50277b4151a.html">b4752a88b81e19f3fdebe9dc7f57a50277b4151a</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri May  6 13:46:16 2016
+
+update
+
+<b>Diffstat:</b>
+ bspwm/.scripts/panel          | 84 ++++++++++++++++++++++++++++++++++++++++++-
+ bspwm/.scripts/panel_bar      | 87 ++++++++++++++++++++++++++++++++++++++++++++-
+ bspwm/.scripts/panel_colors   |  7 ++++-
+ bspwm/.scripts/panel_config   | 21 +++++++++++-
+ bspwm/.scripts/panel_icons    | 29 +++++++++++++++-
+ mpd/.mpd/mpd.conf             |  2 +-
+ nvim/.config/nvim/init.vim    |  7 ++++-
+ oomox                         |  1 +-
+ scripts/.scripts/panel        | 85 +-------------------------------------------
+ scripts/.scripts/panel_bar    | 87 +--------------------------------------------
+ scripts/.scripts/panel_colors |  7 +----
+ scripts/.scripts/panel_config | 21 +-----------
+ scripts/.scripts/panel_icons  | 29 +---------------
+ scripts/.scripts/screenie     |  2 +-
+ scripts/bin                   |  1 +-
+ shell/.crosssh.sh             | 41 +++++++++++++--------
+ x/.xres/urxvt                 |  1 +-
+ xdg/.config/user-dirs.dirs    |  7 ++++-
+ 18 files changed, 274 insertions(+), 245 deletions(-)
+<hr/><b>diff --git a/<a href="../file/bspwm/.scripts/panel.html">bspwm/.scripts/panel</a> b/<a href="../file/bspwm/.scripts/panel.html">bspwm/.scripts/panel</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,84 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#! /bin/bash
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+. panel_config
+</a><a href="#h0-3" id="h0-3" class="i">+. panel_icons
+</a><a href="#h0-4" id="h0-4" class="i">+
+</a><a href="#h0-5" id="h0-5" class="i">+#EPOCH=1
+</a><a href="#h0-6" id="h0-6" class="i">+
+</a><a href="#h0-7" id="h0-7" class="i">+if [ $(pgrep -cx panel) -gt 1 ] ; then
+</a><a href="#h0-8" id="h0-8" class="i">+	printf &quot;%s\n&quot; &quot;The panel is already running.&quot; &gt;&amp;2
+</a><a href="#h0-9" id="h0-9" class="i">+exit 1
+</a><a href="#h0-10" id="h0-10" class="i">+fi
+</a><a href="#h0-11" id="h0-11" class="i">+
+</a><a href="#h0-12" id="h0-12" class="i">+trap &apos;trap - TERM; kill 0&apos; INT TERM QUIT EXIT
+</a><a href="#h0-13" id="h0-13" class="i">+
+</a><a href="#h0-14" id="h0-14" class="i">+[ -e &quot;$PANEL_FIFO&quot; ] &amp;&amp; rm &quot;$PANEL_FIFO&quot;
+</a><a href="#h0-15" id="h0-15" class="i">+mkfifo &quot;$PANEL_FIFO&quot;
+</a><a href="#h0-16" id="h0-16" class="i">+
+</a><a href="#h0-17" id="h0-17" class="i">+bspc config -m &quot;$(xrandr | grep primary | cut -d&apos; &apos; -f1)&quot; top_padding $(expr $PANEL_HEIGHT + $top_pad)
+</a><a href="#h0-18" id="h0-18" class="i">+bspc subscribe &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h0-19" id="h0-19" class="i">+xtitle -sf &apos;T%s&apos; &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h0-20" id="h0-20" class="i">+if [ $EPOCH -eq 1 ]; then
+</a><a href="#h0-21" id="h0-21" class="i">+  clock_format=&apos;%s&apos;
+</a><a href="#h0-22" id="h0-22" class="i">+else
+</a><a href="#h0-23" id="h0-23" class="i">+  clock_format=&apos;%a %d %B %H:%M&apos;
+</a><a href="#h0-24" id="h0-24" class="i">+fi
+</a><a href="#h0-25" id="h0-25" class="i">+
+</a><a href="#h0-26" id="h0-26" class="i">+# Clock
+</a><a href="#h0-27" id="h0-27" class="i">+while true; do
+</a><a href="#h0-28" id="h0-28" class="i">+  echo &quot;S$(date +&quot;$clock_format&quot;)&quot;
+</a><a href="#h0-29" id="h0-29" class="i">+  sleep 10
+</a><a href="#h0-30" id="h0-30" class="i">+done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h0-31" id="h0-31" class="i">+
+</a><a href="#h0-32" id="h0-32" class="i">+# Volume
+</a><a href="#h0-33" id="h0-33" class="i">+while true; do
+</a><a href="#h0-34" id="h0-34" class="i">+  # Not quering pulse because it uses a hell lot of CPU
+</a><a href="#h0-35" id="h0-35" class="i">+  state=$(amixer get Master | grep &apos;Mono: Playback&apos; | grep &apos;\[on]&apos;)
+</a><a href="#h0-36" id="h0-36" class="i">+  volume=$(amixer -D pulse get Master | grep &apos;Front Left: Playback&apos; | grep -o &apos;...%&apos; | sed &apos;s/\[//&apos; | sed &apos;s/%//&apos; | sed &apos;s/ //&apos;)
+</a><a href="#h0-37" id="h0-37" class="i">+  if [ $state ]; then
+</a><a href="#h0-38" id="h0-38" class="i">+    if [ $volume -ge 50 ]; then
+</a><a href="#h0-39" id="h0-39" class="i">+      vicon=$ICON_VOLUME
+</a><a href="#h0-40" id="h0-40" class="i">+    elif [ $volume -gt 0 ] &amp;&amp; [ $volume -lt 50 ]; then
+</a><a href="#h0-41" id="h0-41" class="i">+      vicon=$ICON_VOLUME_LOW
+</a><a href="#h0-42" id="h0-42" class="i">+    else
+</a><a href="#h0-43" id="h0-43" class="i">+      vicon=$ICON_VOLUME_LOW
+</a><a href="#h0-44" id="h0-44" class="i">+    fi
+</a><a href="#h0-45" id="h0-45" class="i">+  else
+</a><a href="#h0-46" id="h0-46" class="i">+    vicon=$ICON_MUTE
+</a><a href="#h0-47" id="h0-47" class="i">+  fi
+</a><a href="#h0-48" id="h0-48" class="i">+  echo -e &quot;V$(icon $vicon) $volume&quot;
+</a><a href="#h0-49" id="h0-49" class="i">+  sleep $REFRESH_VOLUME
+</a><a href="#h0-50" id="h0-50" class="i">+done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h0-51" id="h0-51" class="i">+
+</a><a href="#h0-52" id="h0-52" class="i">+# Player status
+</a><a href="#h0-53" id="h0-53" class="i">+last_title=&quot;-&quot;
+</a><a href="#h0-54" id="h0-54" class="i">+while true; do
+</a><a href="#h0-55" id="h0-55" class="i">+  if [[ $(mpc status | wc -l) -eq 3 ]]; then
+</a><a href="#h0-56" id="h0-56" class="i">+    last_title=$(mpc status | head -n 1) # In case the music is stopped
+</a><a href="#h0-57" id="h0-57" class="i">+  elif [[ $(mpc status | wc -l) -eq 0 ]]; then
+</a><a href="#h0-58" id="h0-58" class="i">+    last_title=&quot;-&quot;
+</a><a href="#h0-59" id="h0-59" class="i">+  fi
+</a><a href="#h0-60" id="h0-60" class="i">+
+</a><a href="#h0-61" id="h0-61" class="i">+  if [[ -n $(mpc status | grep paused) ]]; then
+</a><a href="#h0-62" id="h0-62" class="i">+    icon=&quot;$ICON_PAUSE&quot;
+</a><a href="#h0-63" id="h0-63" class="i">+  elif [[ -n $(mpc status | grep playing) ]]; then
+</a><a href="#h0-64" id="h0-64" class="i">+    icon=&quot;$ICON_PLAY&quot;
+</a><a href="#h0-65" id="h0-65" class="i">+  else
+</a><a href="#h0-66" id="h0-66" class="i">+    icon=&quot;$ICON_STOP&quot;
+</a><a href="#h0-67" id="h0-67" class="i">+  fi
+</a><a href="#h0-68" id="h0-68" class="i">+  echo -e &quot;PS$(icon $icon) $last_title&quot;
+</a><a href="#h0-69" id="h0-69" class="i">+  sleep $REFRESH_MUSIC
+</a><a href="#h0-70" id="h0-70" class="i">+done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h0-71" id="h0-71" class="i">+
+</a><a href="#h0-72" id="h0-72" class="i">+# Battery percentage and time until full charge/discharge
+</a><a href="#h0-73" id="h0-73" class="i">+while true; do
+</a><a href="#h0-74" id="h0-74" class="i">+  batt_status=&quot;$(battery $ICON_BATTERY_CHARGING $ICON_BATTERY_FULL $ICON_BATTERY_HALF $ICON_BATTERY_EMPTY 2 $COLOR_ICON)&quot;
+</a><a href="#h0-75" id="h0-75" class="i">+  echo &quot;B$batt_status&quot;
+</a><a href="#h0-76" id="h0-76" class="i">+  sleep $REFRESH_BATTERY
+</a><a href="#h0-77" id="h0-77" class="i">+done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h0-78" id="h0-78" class="i">+
+</a><a href="#h0-79" id="h0-79" class="i">+. panel_colors
+</a><a href="#h0-80" id="h0-80" class="i">+
+</a><a href="#h0-81" id="h0-81" class="i">+cat &quot;$PANEL_FIFO&quot; | panel_bar | lemonbar -d -n &quot;$PANEL_WM_NAME&quot; -g &quot;$BAR_GEOMETRY&quot; -f &quot;$PANEL_FONT_FAMILY&quot; -f &quot;$PANEL_ICON_FONT_FAMILY&quot; -F &quot;$COLOR_FOREGROUND&quot; -B &quot;$COLOR_BACKGROUND&quot; -U &quot;$COLOR_UNDERLINE&quot; -a 30 -u 2| bash &amp;
+</a><a href="#h0-82" id="h0-82" class="i">+
+</a><a href="#h0-83" id="h0-83" class="i">+wait
+</a><b>diff --git a/<a href="../file/bspwm/.scripts/panel_bar.html">bspwm/.scripts/panel_bar</a> b/<a href="../file/bspwm/.scripts/panel_bar.html">bspwm/.scripts/panel_bar</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,87 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#! /bin/sh
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+. panel_icons
+</a><a href="#h0-3" id="h0-3" class="i">+
+</a><a href="#h0-4" id="h0-4" class="i">+num_mon=$(bspc query -M | wc -l)
+</a><a href="#h0-5" id="h0-5" class="i">+
+</a><a href="#h0-6" id="h0-6" class="i">+separator=&quot;%{F$COLOR_SEPARATOR}|%{F-}&quot;
+</a><a href="#h0-7" id="h0-7" class="i">+
+</a><a href="#h0-8" id="h0-8" class="i">+while read -r line ; do
+</a><a href="#h0-9" id="h0-9" class="i">+  case $line in
+</a><a href="#h0-10" id="h0-10" class="i">+    PS*)
+</a><a href="#h0-11" id="h0-11" class="i">+      playing=&quot;%{A1:mpc toggle:}%{A2:urxvt -e /usr/bin/cava &amp;:}%{A3:mpc stop:}%{A4:mpc next:}%{A5:mpc prev:}${line#??}%{A}%{A}%{A}%{A}%{A}&quot;
+</a><a href="#h0-12" id="h0-12" class="i">+      ;;
+</a><a href="#h0-13" id="h0-13" class="i">+    S*)
+</a><a href="#h0-14" id="h0-14" class="i">+      # clock output
+</a><a href="#h0-15" id="h0-15" class="i">+      time=&quot; ${line#?}&quot;
+</a><a href="#h0-16" id="h0-16" class="i">+      ;;
+</a><a href="#h0-17" id="h0-17" class="i">+    T*)
+</a><a href="#h0-18" id="h0-18" class="i">+      # xtitle output
+</a><a href="#h0-19" id="h0-19" class="i">+      title=&quot; %{T2}%{F$COLOR_TITLE}${line#?}%{F-}%{T-}&quot;
+</a><a href="#h0-20" id="h0-20" class="i">+      ;;
+</a><a href="#h0-21" id="h0-21" class="i">+    B*)
+</a><a href="#h0-22" id="h0-22" class="i">+      # battery output
+</a><a href="#h0-23" id="h0-23" class="i">+      battery=&quot; ${line#?}&quot;
+</a><a href="#h0-24" id="h0-24" class="i">+      ;;
+</a><a href="#h0-25" id="h0-25" class="i">+    V*)
+</a><a href="#h0-26" id="h0-26" class="i">+      # volume
+</a><a href="#h0-27" id="h0-27" class="i">+      volume=&quot;%{A3:amixer sset Master toggle:}%{A4:amixer sset Master 5%+:}%{A5:amixer sset Master 5%-:}${line#?}%{A}%{A}%{A}&quot;
+</a><a href="#h0-28" id="h0-28" class="i">+      ;;
+</a><a href="#h0-29" id="h0-29" class="i">+    W*)
+</a><a href="#h0-30" id="h0-30" class="i">+      # bspwm internal state
+</a><a href="#h0-31" id="h0-31" class="i">+      wm_infos=&quot;&quot;
+</a><a href="#h0-32" id="h0-32" class="i">+      IFS=&apos;:&apos;
+</a><a href="#h0-33" id="h0-33" class="i">+      set -- ${line#?}
+</a><a href="#h0-34" id="h0-34" class="i">+      while [ $# -gt 0 ] ; do
+</a><a href="#h0-35" id="h0-35" class="i">+        item=$1
+</a><a href="#h0-36" id="h0-36" class="i">+        name=&quot;${item#?}&quot;
+</a><a href="#h0-37" id="h0-37" class="i">+        #name=&quot;$(icon $ICON_CLOCK)&quot;
+</a><a href="#h0-38" id="h0-38" class="i">+        name=&quot;%{A:bspc desktop -f $name:} ${name} %{A}&quot;
+</a><a href="#h0-39" id="h0-39" class="i">+        case $item in
+</a><a href="#h0-40" id="h0-40" class="i">+          #M*)
+</a><a href="#h0-41" id="h0-41" class="i">+          # # active monitor
+</a><a href="#h0-42" id="h0-42" class="i">+          # if [ $num_mon -gt 1 ] ; then
+</a><a href="#h0-43" id="h0-43" class="i">+          #   wm_infos=&quot;$wm_infos %{F$COLOR_ACTIVE_MONITOR_FG}%{B$COLOR_ACTIVE_MONITOR_BG} ${name} %{B-}%{F-}  &quot;
+</a><a href="#h0-44" id="h0-44" class="i">+          # fi
+</a><a href="#h0-45" id="h0-45" class="i">+          # ;;
+</a><a href="#h0-46" id="h0-46" class="i">+          #m*)
+</a><a href="#h0-47" id="h0-47" class="i">+          # # inactive monitor
+</a><a href="#h0-48" id="h0-48" class="i">+          # if [ $num_mon -gt 1 ] ; then
+</a><a href="#h0-49" id="h0-49" class="i">+          #   wm_infos=&quot;$wm_infos %{F$COLOR_INACTIVE_MONITOR_FG}%{B$COLOR_INACTIVE_MONITOR_BG} ${name} %{B-}%{F-}  &quot;
+</a><a href="#h0-50" id="h0-50" class="i">+          # fi
+</a><a href="#h0-51" id="h0-51" class="i">+          # ;;
+</a><a href="#h0-52" id="h0-52" class="i">+          O*)
+</a><a href="#h0-53" id="h0-53" class="i">+            # focused occupied desktop
+</a><a href="#h0-54" id="h0-54" class="i">+            wm_infos=&quot;$wm_infos%{+u}${name}%{-u}&quot;
+</a><a href="#h0-55" id="h0-55" class="i">+            ;;
+</a><a href="#h0-56" id="h0-56" class="i">+          F*)
+</a><a href="#h0-57" id="h0-57" class="i">+            # focused free desktop
+</a><a href="#h0-58" id="h0-58" class="i">+            wm_infos=&quot;$wm_infos%{+u}${name}%{-u}&quot;
+</a><a href="#h0-59" id="h0-59" class="i">+            ;;
+</a><a href="#h0-60" id="h0-60" class="i">+          U*)
+</a><a href="#h0-61" id="h0-61" class="i">+            # focused urgent desktop
+</a><a href="#h0-62" id="h0-62" class="i">+            wm_infos=&quot;$wm_infos%{B$COLOR_URGENT}%{+u}${name}%{-u}%{B-}&quot;
+</a><a href="#h0-63" id="h0-63" class="i">+            ;;
+</a><a href="#h0-64" id="h0-64" class="i">+          o*)
+</a><a href="#h0-65" id="h0-65" class="i">+            # occupied desktop
+</a><a href="#h0-66" id="h0-66" class="i">+            wm_infos=&quot;$wm_infos${name}&quot;
+</a><a href="#h0-67" id="h0-67" class="i">+            ;;
+</a><a href="#h0-68" id="h0-68" class="i">+          f*)
+</a><a href="#h0-69" id="h0-69" class="i">+            # free desktop
+</a><a href="#h0-70" id="h0-70" class="i">+            wm_infos=&quot;$wm_infos${name}&quot;
+</a><a href="#h0-71" id="h0-71" class="i">+            ;;
+</a><a href="#h0-72" id="h0-72" class="i">+          u*)
+</a><a href="#h0-73" id="h0-73" class="i">+            # urgent desktop
+</a><a href="#h0-74" id="h0-74" class="i">+            wm_infos=&quot;$wm_infos%{B$COLOR_URGENT}${name}%{B-}&quot;
+</a><a href="#h0-75" id="h0-75" class="i">+            ;;
+</a><a href="#h0-76" id="h0-76" class="i">+          #L*)
+</a><a href="#h0-77" id="h0-77" class="i">+          # # layout
+</a><a href="#h0-78" id="h0-78" class="i">+          # wm_infos=&quot;$wm_infos  %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${name} %{B-}%{F-}&quot;
+</a><a href="#h0-79" id="h0-79" class="i">+          # ;;
+</a><a href="#h0-80" id="h0-80" class="i">+        esac
+</a><a href="#h0-81" id="h0-81" class="i">+        shift
+</a><a href="#h0-82" id="h0-82" class="i">+      done
+</a><a href="#h0-83" id="h0-83" class="i">+      ;;
+</a><a href="#h0-84" id="h0-84" class="i">+  esac
+</a><a href="#h0-85" id="h0-85" class="i">+  echo -e &quot;%{l}${wm_infos} $separator ${title}%{r}${battery} $separator ${volume} $separator $(icon $ICON_CLOCK)${time} $separator ${playing} &quot;
+</a><a href="#h0-86" id="h0-86" class="i">+done
+</a><b>diff --git a/<a href="../file/bspwm/.scripts/panel_colors.html">bspwm/.scripts/panel_colors</a> b/<a href="../file/bspwm/.scripts/panel_colors.html">bspwm/.scripts/panel_colors</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,7 @@
+</a><a href="#h0-0" id="h0-0" class="i">+COLOR_BACKGROUND=#1d2a30
+</a><a href="#h0-1" id="h0-1" class="i">+COLOR_FOREGROUND=#71c2af
+</a><a href="#h0-2" id="h0-2" class="i">+COLOR_UNDERLINE=#c27171
+</a><a href="#h0-3" id="h0-3" class="i">+COLOR_SEPARATOR=#65737e
+</a><a href="#h0-4" id="h0-4" class="i">+COLOR_TITLE=#c0c5ce
+</a><a href="#h0-5" id="h0-5" class="i">+COLOR_URGENT=#c27171
+</a><a href="#h0-6" id="h0-6" class="i">+COLOR_ICON=$COLOR_UNDERLINE
+</a><b>diff --git a/<a href="../file/bspwm/.scripts/panel_config.html">bspwm/.scripts/panel_config</a> b/<a href="../file/bspwm/.scripts/panel_config.html">bspwm/.scripts/panel_config</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,21 @@
+</a><a href="#h0-0" id="h0-0" class="i">+#! /bin/bash
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+PANEL_FIFO=/tmp/pamel-fifo
+</a><a href="#h0-3" id="h0-3" class="i">+PANEL_HEIGHT=30
+</a><a href="#h0-4" id="h0-4" class="i">+PANEL_WM_NAME=&quot;lemonbar&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+PANEL_FONT_FAMILY=-*-erusfont-medium-*-*-*-11-*-*-*-*-*-*-*
+</a><a href="#h0-6" id="h0-6" class="i">+PANEL_ICON_FONT_FAMILY=-*-siji-medium-*-*-*-10-*-*-*-*-*-*-*
+</a><a href="#h0-7" id="h0-7" class="i">+REFRESH_VOLUME=0.5
+</a><a href="#h0-8" id="h0-8" class="i">+REFRESH_MUSIC=1
+</a><a href="#h0-9" id="h0-9" class="i">+REFRESH_BATTERY=10
+</a><a href="#h0-10" id="h0-10" class="i">+
+</a><a href="#h0-11" id="h0-11" class="i">+#num_mon=$(bspc query -M | wc -l)
+</a><a href="#h0-12" id="h0-12" class="i">+num_mon=$(xrandr | grep &quot; connected&quot; | wc -l)
+</a><a href="#h0-13" id="h0-13" class="i">+max_res=$(xrandr | grep &quot;primary&quot; | awk -F&apos;[ +]&apos; &apos;{print $4}&apos;)
+</a><a href="#h0-14" id="h0-14" class="i">+IFS=x; read -a sizes &lt;&lt;&lt;&quot;$max_res&quot;
+</a><a href="#h0-15" id="h0-15" class="i">+top_pad=$(bspc config window_gap)
+</a><a href="#h0-16" id="h0-16" class="i">+side_pad=$(bspc config window_gap)
+</a><a href="#h0-17" id="h0-17" class="i">+monitor_pad=$(xrandr | grep &quot;primary&quot; | awk -F&apos;+&apos; &apos;{print $2}&apos;)
+</a><a href="#h0-18" id="h0-18" class="i">+IFS=x; read -a sizes &lt;&lt;&lt;&quot;$max_res&quot;
+</a><a href="#h0-19" id="h0-19" class="i">+rwidth=$(expr ${sizes[0]} - 2 \* $side_pad)
+</a><a href="#h0-20" id="h0-20" class="i">+BAR_GEOMETRY=&quot;${rwidth}x${PANEL_HEIGHT}+$(($side_pad + $monitor_pad))+${top_pad}&quot;
+</a><b>diff --git a/<a href="../file/bspwm/.scripts/panel_icons.html">bspwm/.scripts/panel_icons</a> b/<a href="../file/bspwm/.scripts/panel_icons.html">bspwm/.scripts/panel_icons</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,29 @@
+</a><a href="#h0-0" id="h0-0" class="i">+. panel_colors
+</a><a href="#h0-1" id="h0-1" class="i">+
+</a><a href="#h0-2" id="h0-2" class="i">+function icon()
+</a><a href="#h0-3" id="h0-3" class="i">+{
+</a><a href="#h0-4" id="h0-4" class="i">+  echo &quot;%{F$COLOR_ICON}%{T2}$(printf $1)%{T-}%{F-}&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+}
+</a><a href="#h0-6" id="h0-6" class="i">+
+</a><a href="#h0-7" id="h0-7" class="i">+#ICON_VOLUME=&quot;\u00ed&quot;
+</a><a href="#h0-8" id="h0-8" class="i">+#ICON_CLOCK=&quot;\u00c9&quot;
+</a><a href="#h0-9" id="h0-9" class="i">+#ICON_LEFT=&quot;\u00ab&quot;
+</a><a href="#h0-10" id="h0-10" class="i">+#ICON_PLAY=&quot;\u00e6&quot;
+</a><a href="#h0-11" id="h0-11" class="i">+#ICON_PAUSE=&quot;\u00e7&quot;
+</a><a href="#h0-12" id="h0-12" class="i">+#ICON_STOP=&quot;\u00e5&quot;
+</a><a href="#h0-13" id="h0-13" class="i">+#ICON_BATTERY=&quot;\u00f0&quot;
+</a><a href="#h0-14" id="h0-14" class="i">+
+</a><a href="#h0-15" id="h0-15" class="i">+ICON_VOLUME=&quot;\ue050&quot;
+</a><a href="#h0-16" id="h0-16" class="i">+ICON_VOLUME_LOW=&quot;\ue04e&quot;
+</a><a href="#h0-17" id="h0-17" class="i">+ICON_MUTE=&quot;\ue04f&quot;
+</a><a href="#h0-18" id="h0-18" class="i">+ICON_CLOCK=&quot;\ue015&quot;
+</a><a href="#h0-19" id="h0-19" class="i">+ICON_LEFT=&quot;\u00ab&quot;
+</a><a href="#h0-20" id="h0-20" class="i">+ICON_PLAY=&quot;\ue058&quot;
+</a><a href="#h0-21" id="h0-21" class="i">+ICON_PAUSE=&quot;\ue059&quot;
+</a><a href="#h0-22" id="h0-22" class="i">+ICON_STOP=&quot;\ue057&quot;
+</a><a href="#h0-23" id="h0-23" class="i">+ICON_BATTERY=&quot;\ue238&quot;
+</a><a href="#h0-24" id="h0-24" class="i">+ICON_BATTERY_CHARGING=&quot;\ue200&quot;
+</a><a href="#h0-25" id="h0-25" class="i">+ICON_BATTERY_FULL=&quot;\ue1ff&quot;
+</a><a href="#h0-26" id="h0-26" class="i">+ICON_BATTERY_HALF=&quot;\ue1fe&quot;
+</a><a href="#h0-27" id="h0-27" class="i">+ICON_BATTERY_EMPTY=&quot;\ue1fd&quot;
+</a><a href="#h0-28" id="h0-28" class="i">+ICON_CIRCLE=&quot;\ue190&quot;
+</a><b>diff --git a/<a href="../file/mpd/.mpd/mpd.conf.html">mpd/.mpd/mpd.conf</a> b/<a href="../file/mpd/.mpd/mpd.conf.html">mpd/.mpd/mpd.conf</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0" id="h0-0" class="d">-music_directory    &quot;/home/tudurom/Music&quot;
+</a><a href="#h0-1" id="h0-1" class="i">+music_directory    &quot;/home/tudurom/usr/music&quot;
+</a> playlist_directory &quot;/home/tudurom/.mpd/playlists&quot;
+ db_file            &quot;/home/tudurom/.mpd/mpd.db&quot;
+ log_file           &quot;/home/tudurom/.mpd/mpd.log&quot;
+<b>diff --git a/<a href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a> b/<a href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a></b>
+<a href="#h0" id="h0" class="h">@@ -91,7 +91,14 @@ set undoreload=500
+</a> 
+ &quot; C-d to hide find results
+ nnoremap &lt;silent&gt; &lt;C-d&gt; :noh&lt;CR&gt;
+<a href="#h0-3" id="h0-3" class="i">+&quot; Esc in terminal
+</a> tnoremap &lt;Esc&gt; &lt;C-\&gt;&lt;C-n&gt;
+<a href="#h0-5" id="h0-5" class="i">+&quot; jk to exit insert mode
+</a><a href="#h0-6" id="h0-6" class="i">+inoremap jk &lt;ESC&gt;
+</a><a href="#h0-7" id="h0-7" class="i">+&quot; Navigate long lines easily
+</a><a href="#h0-8" id="h0-8" class="i">+map j gj
+</a><a href="#h0-9" id="h0-9" class="i">+map k gk
+</a><a href="#h0-10" id="h0-10" class="i">+&quot; Just in case
+</a> cabbr W w
+ cabbr Q q
+ 
+<b>diff --git a/<a href="../file/oomox.html">oomox</a> b/<a href="../file/oomox.html">oomox</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+Subproject commit 5ef989844d1d1c105abaa961a9a0325aacd33dc6
+</a><b>diff --git a/<a href="../file/scripts/.scripts/panel.html">scripts/.scripts/panel</a> b/<a href="../file/scripts/.scripts/panel.html">scripts/.scripts/panel</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,85 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/bash
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-. panel_config
+</a><a href="#h0-3" id="h0-3" class="d">-. panel_icons
+</a><a href="#h0-4" id="h0-4" class="d">-
+</a><a href="#h0-5" id="h0-5" class="d">-#EPOCH=1
+</a><a href="#h0-6" id="h0-6" class="d">-
+</a><a href="#h0-7" id="h0-7" class="d">-if [ $(pgrep -cx panel) -gt 1 ] ; then
+</a><a href="#h0-8" id="h0-8" class="d">-	printf &quot;%s\n&quot; &quot;The panel is already running.&quot; &gt;&amp;2
+</a><a href="#h0-9" id="h0-9" class="d">-exit 1
+</a><a href="#h0-10" id="h0-10" class="d">-fi
+</a><a href="#h0-11" id="h0-11" class="d">-
+</a><a href="#h0-12" id="h0-12" class="d">-trap &apos;trap - TERM; kill 0&apos; INT TERM QUIT EXIT
+</a><a href="#h0-13" id="h0-13" class="d">-
+</a><a href="#h0-14" id="h0-14" class="d">-[ -e &quot;$PANEL_FIFO&quot; ] &amp;&amp; rm &quot;$PANEL_FIFO&quot;
+</a><a href="#h0-15" id="h0-15" class="d">-mkfifo &quot;$PANEL_FIFO&quot;
+</a><a href="#h0-16" id="h0-16" class="d">-
+</a><a href="#h0-17" id="h0-17" class="d">-bspc config -m &quot;$(xrandr | grep primary | cut -d&apos; &apos; -f1)&quot; top_padding $(expr $PANEL_HEIGHT + $top_pad)
+</a><a href="#h0-18" id="h0-18" class="d">-bspc subscribe &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h0-19" id="h0-19" class="d">-xtitle -sf &apos;T%s&apos; &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h0-20" id="h0-20" class="d">-if [ $EPOCH -eq 1 ]; then
+</a><a href="#h0-21" id="h0-21" class="d">-  clock_format=&apos;%s&apos;
+</a><a href="#h0-22" id="h0-22" class="d">-else
+</a><a href="#h0-23" id="h0-23" class="d">-  clock_format=&apos;%a %d %B %H:%M&apos;
+</a><a href="#h0-24" id="h0-24" class="d">-fi
+</a><a href="#h0-25" id="h0-25" class="d">-
+</a><a href="#h0-26" id="h0-26" class="d">-# Clock
+</a><a href="#h0-27" id="h0-27" class="d">-while true; do
+</a><a href="#h0-28" id="h0-28" class="d">-  echo &quot;S$(date +&quot;$clock_format&quot;)&quot;
+</a><a href="#h0-29" id="h0-29" class="d">-  sleep 10
+</a><a href="#h0-30" id="h0-30" class="d">-done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h0-31" id="h0-31" class="d">-
+</a><a href="#h0-32" id="h0-32" class="d">-# Volume
+</a><a href="#h0-33" id="h0-33" class="d">-while true; do
+</a><a href="#h0-34" id="h0-34" class="d">-  # Not quering pulse because it uses a hell lot of CPU
+</a><a href="#h0-35" id="h0-35" class="d">-  state=$(amixer get Master | grep &apos;Mono: Playback&apos; | grep &apos;\[on]&apos;)
+</a><a href="#h0-36" id="h0-36" class="d">-  volume=$(amixer -D pulse get Master | grep &apos;Front Left: Playback&apos; | grep -o &apos;...%&apos; | sed &apos;s/\[//&apos; | sed &apos;s/%//&apos; | sed &apos;s/ //&apos;)
+</a><a href="#h0-37" id="h0-37" class="d">-  if [ $state ]; then
+</a><a href="#h0-38" id="h0-38" class="d">-    if [ $volume -ge 50 ]; then
+</a><a href="#h0-39" id="h0-39" class="d">-      vicon=$ICON_VOLUME
+</a><a href="#h0-40" id="h0-40" class="d">-    elif [ $volume -gt 0 ] &amp;&amp; [ $volume -lt 50 ]; then
+</a><a href="#h0-41" id="h0-41" class="d">-      vicon=$ICON_VOLUME_LOW
+</a><a href="#h0-42" id="h0-42" class="d">-    else
+</a><a href="#h0-43" id="h0-43" class="d">-      vicon=$ICON_VOLUME_LOW
+</a><a href="#h0-44" id="h0-44" class="d">-    fi
+</a><a href="#h0-45" id="h0-45" class="d">-  else
+</a><a href="#h0-46" id="h0-46" class="d">-    vicon=$ICON_MUTE
+</a><a href="#h0-47" id="h0-47" class="d">-  fi
+</a><a href="#h0-48" id="h0-48" class="d">-  echo -e &quot;V$(icon $vicon) $volume&quot;
+</a><a href="#h0-49" id="h0-49" class="d">-  sleep $REFRESH_VOLUME
+</a><a href="#h0-50" id="h0-50" class="d">-done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h0-51" id="h0-51" class="d">-
+</a><a href="#h0-52" id="h0-52" class="d">-# Player status
+</a><a href="#h0-53" id="h0-53" class="d">-last_title=&quot;-&quot;
+</a><a href="#h0-54" id="h0-54" class="d">-while true; do
+</a><a href="#h0-55" id="h0-55" class="d">-  if [[ $(mpc status | wc -l) -eq 3 ]]; then
+</a><a href="#h0-56" id="h0-56" class="d">-    last_title=$(mpc status | head -n 1) # In case the music is stopped
+</a><a href="#h0-57" id="h0-57" class="d">-  elif [[ $(mpc status | wc -l) -eq 0 ]]; then
+</a><a href="#h0-58" id="h0-58" class="d">-    last_title=&quot;-&quot;
+</a><a href="#h0-59" id="h0-59" class="d">-  fi
+</a><a href="#h0-60" id="h0-60" class="d">-
+</a><a href="#h0-61" id="h0-61" class="d">-  if [[ -n $(mpc status | grep paused) ]]; then
+</a><a href="#h0-62" id="h0-62" class="d">-    icon=&quot;$ICON_PAUSE&quot;
+</a><a href="#h0-63" id="h0-63" class="d">-  elif [[ -n $(mpc status | grep playing) ]]; then
+</a><a href="#h0-64" id="h0-64" class="d">-    icon=&quot;$ICON_PLAY&quot;
+</a><a href="#h0-65" id="h0-65" class="d">-  else
+</a><a href="#h0-66" id="h0-66" class="d">-    icon=&quot;$ICON_STOP&quot;
+</a><a href="#h0-67" id="h0-67" class="d">-  fi
+</a><a href="#h0-68" id="h0-68" class="d">-  echo -e &quot;PS$(icon $icon) $last_title&quot;
+</a><a href="#h0-69" id="h0-69" class="d">-  sleep $REFRESH_MUSIC
+</a><a href="#h0-70" id="h0-70" class="d">-done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h0-71" id="h0-71" class="d">-
+</a><a href="#h0-72" id="h0-72" class="d">-# Battery percentage and time until full charge/discharge
+</a><a href="#h0-73" id="h0-73" class="d">-while true; do
+</a><a href="#h0-74" id="h0-74" class="d">-  #~/.scripts/i3blocks/battery | read batt_status
+</a><a href="#h0-75" id="h0-75" class="d">-  batt_status=&quot;$(~/.scripts/battery $ICON_BATTERY_CHARGING $ICON_BATTERY_FULL $ICON_BATTERY_HALF $ICON_BATTERY_EMPTY 2 $COLOR_ICON)&quot;
+</a><a href="#h0-76" id="h0-76" class="d">-  echo &quot;B$batt_status&quot;
+</a><a href="#h0-77" id="h0-77" class="d">-  sleep $REFRESH_BATTERY
+</a><a href="#h0-78" id="h0-78" class="d">-done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h0-79" id="h0-79" class="d">-
+</a><a href="#h0-80" id="h0-80" class="d">-. panel_colors
+</a><a href="#h0-81" id="h0-81" class="d">-
+</a><a href="#h0-82" id="h0-82" class="d">-cat &quot;$PANEL_FIFO&quot; | panel_bar | lemonbar -d -n &quot;$PANEL_WM_NAME&quot; -g &quot;$BAR_GEOMETRY&quot; -f &quot;$PANEL_FONT_FAMILY&quot; -f &quot;$PANEL_ICON_FONT_FAMILY&quot; -F &quot;$COLOR_FOREGROUND&quot; -B &quot;$COLOR_BACKGROUND&quot; -U &quot;$COLOR_UNDERLINE&quot; -a 30 -u 2| bash &amp;
+</a><a href="#h0-83" id="h0-83" class="d">-
+</a><a href="#h0-84" id="h0-84" class="d">-wait
+</a><b>diff --git a/<a href="../file/scripts/.scripts/panel_bar.html">scripts/.scripts/panel_bar</a> b/<a href="../file/scripts/.scripts/panel_bar.html">scripts/.scripts/panel_bar</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,87 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/sh
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-. panel_icons
+</a><a href="#h0-3" id="h0-3" class="d">-
+</a><a href="#h0-4" id="h0-4" class="d">-num_mon=$(bspc query -M | wc -l)
+</a><a href="#h0-5" id="h0-5" class="d">-
+</a><a href="#h0-6" id="h0-6" class="d">-separator=&quot;%{F$COLOR_SEPARATOR}|%{F-}&quot;
+</a><a href="#h0-7" id="h0-7" class="d">-
+</a><a href="#h0-8" id="h0-8" class="d">-while read -r line ; do
+</a><a href="#h0-9" id="h0-9" class="d">-  case $line in
+</a><a href="#h0-10" id="h0-10" class="d">-    PS*)
+</a><a href="#h0-11" id="h0-11" class="d">-      playing=&quot;%{A1:mpc toggle:}%{A2:urxvt -e /usr/bin/cava &amp;:}%{A3:mpc stop:}%{A4:mpc next:}%{A5:mpc prev:}${line#??}%{A}%{A}%{A}%{A}%{A}&quot;
+</a><a href="#h0-12" id="h0-12" class="d">-      ;;
+</a><a href="#h0-13" id="h0-13" class="d">-    S*)
+</a><a href="#h0-14" id="h0-14" class="d">-      # clock output
+</a><a href="#h0-15" id="h0-15" class="d">-      time=&quot; ${line#?}&quot;
+</a><a href="#h0-16" id="h0-16" class="d">-      ;;
+</a><a href="#h0-17" id="h0-17" class="d">-    T*)
+</a><a href="#h0-18" id="h0-18" class="d">-      # xtitle output
+</a><a href="#h0-19" id="h0-19" class="d">-      title=&quot; %{T2}%{F$COLOR_TITLE}${line#?}%{F-}%{T-}&quot;
+</a><a href="#h0-20" id="h0-20" class="d">-      ;;
+</a><a href="#h0-21" id="h0-21" class="d">-    B*)
+</a><a href="#h0-22" id="h0-22" class="d">-      # battery output
+</a><a href="#h0-23" id="h0-23" class="d">-      battery=&quot; ${line#?}&quot;
+</a><a href="#h0-24" id="h0-24" class="d">-      ;;
+</a><a href="#h0-25" id="h0-25" class="d">-    V*)
+</a><a href="#h0-26" id="h0-26" class="d">-      # volume
+</a><a href="#h0-27" id="h0-27" class="d">-      volume=&quot;%{A3:amixer sset Master toggle:}%{A4:amixer sset Master 5%+:}%{A5:amixer sset Master 5%-:}${line#?}%{A}%{A}%{A}&quot;
+</a><a href="#h0-28" id="h0-28" class="d">-      ;;
+</a><a href="#h0-29" id="h0-29" class="d">-    W*)
+</a><a href="#h0-30" id="h0-30" class="d">-      # bspwm internal state
+</a><a href="#h0-31" id="h0-31" class="d">-      wm_infos=&quot;&quot;
+</a><a href="#h0-32" id="h0-32" class="d">-      IFS=&apos;:&apos;
+</a><a href="#h0-33" id="h0-33" class="d">-      set -- ${line#?}
+</a><a href="#h0-34" id="h0-34" class="d">-      while [ $# -gt 0 ] ; do
+</a><a href="#h0-35" id="h0-35" class="d">-        item=$1
+</a><a href="#h0-36" id="h0-36" class="d">-        name=&quot;${item#?}&quot;
+</a><a href="#h0-37" id="h0-37" class="d">-        #name=&quot;$(icon $ICON_CLOCK)&quot;
+</a><a href="#h0-38" id="h0-38" class="d">-        name=&quot;%{A:bspc desktop -f $name:} ${name} %{A}&quot;
+</a><a href="#h0-39" id="h0-39" class="d">-        case $item in
+</a><a href="#h0-40" id="h0-40" class="d">-          #M*)
+</a><a href="#h0-41" id="h0-41" class="d">-          # # active monitor
+</a><a href="#h0-42" id="h0-42" class="d">-          # if [ $num_mon -gt 1 ] ; then
+</a><a href="#h0-43" id="h0-43" class="d">-          #   wm_infos=&quot;$wm_infos %{F$COLOR_ACTIVE_MONITOR_FG}%{B$COLOR_ACTIVE_MONITOR_BG} ${name} %{B-}%{F-}  &quot;
+</a><a href="#h0-44" id="h0-44" class="d">-          # fi
+</a><a href="#h0-45" id="h0-45" class="d">-          # ;;
+</a><a href="#h0-46" id="h0-46" class="d">-          #m*)
+</a><a href="#h0-47" id="h0-47" class="d">-          # # inactive monitor
+</a><a href="#h0-48" id="h0-48" class="d">-          # if [ $num_mon -gt 1 ] ; then
+</a><a href="#h0-49" id="h0-49" class="d">-          #   wm_infos=&quot;$wm_infos %{F$COLOR_INACTIVE_MONITOR_FG}%{B$COLOR_INACTIVE_MONITOR_BG} ${name} %{B-}%{F-}  &quot;
+</a><a href="#h0-50" id="h0-50" class="d">-          # fi
+</a><a href="#h0-51" id="h0-51" class="d">-          # ;;
+</a><a href="#h0-52" id="h0-52" class="d">-          O*)
+</a><a href="#h0-53" id="h0-53" class="d">-            # focused occupied desktop
+</a><a href="#h0-54" id="h0-54" class="d">-            wm_infos=&quot;$wm_infos%{+u}${name}%{-u}&quot;
+</a><a href="#h0-55" id="h0-55" class="d">-            ;;
+</a><a href="#h0-56" id="h0-56" class="d">-          F*)
+</a><a href="#h0-57" id="h0-57" class="d">-            # focused free desktop
+</a><a href="#h0-58" id="h0-58" class="d">-            wm_infos=&quot;$wm_infos%{+u}${name}%{-u}&quot;
+</a><a href="#h0-59" id="h0-59" class="d">-            ;;
+</a><a href="#h0-60" id="h0-60" class="d">-          U*)
+</a><a href="#h0-61" id="h0-61" class="d">-            # focused urgent desktop
+</a><a href="#h0-62" id="h0-62" class="d">-            wm_infos=&quot;$wm_infos%{B$COLOR_URGENT}%{+u}${name}%{-u}%{B-}&quot;
+</a><a href="#h0-63" id="h0-63" class="d">-            ;;
+</a><a href="#h0-64" id="h0-64" class="d">-          o*)
+</a><a href="#h0-65" id="h0-65" class="d">-            # occupied desktop
+</a><a href="#h0-66" id="h0-66" class="d">-            wm_infos=&quot;$wm_infos${name}&quot;
+</a><a href="#h0-67" id="h0-67" class="d">-            ;;
+</a><a href="#h0-68" id="h0-68" class="d">-          f*)
+</a><a href="#h0-69" id="h0-69" class="d">-            # free desktop
+</a><a href="#h0-70" id="h0-70" class="d">-            wm_infos=&quot;$wm_infos${name}&quot;
+</a><a href="#h0-71" id="h0-71" class="d">-            ;;
+</a><a href="#h0-72" id="h0-72" class="d">-          u*)
+</a><a href="#h0-73" id="h0-73" class="d">-            # urgent desktop
+</a><a href="#h0-74" id="h0-74" class="d">-            wm_infos=&quot;$wm_infos%{B$COLOR_URGENT}${name}%{B-}&quot;
+</a><a href="#h0-75" id="h0-75" class="d">-            ;;
+</a><a href="#h0-76" id="h0-76" class="d">-          #L*)
+</a><a href="#h0-77" id="h0-77" class="d">-          # # layout
+</a><a href="#h0-78" id="h0-78" class="d">-          # wm_infos=&quot;$wm_infos  %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${name} %{B-}%{F-}&quot;
+</a><a href="#h0-79" id="h0-79" class="d">-          # ;;
+</a><a href="#h0-80" id="h0-80" class="d">-        esac
+</a><a href="#h0-81" id="h0-81" class="d">-        shift
+</a><a href="#h0-82" id="h0-82" class="d">-      done
+</a><a href="#h0-83" id="h0-83" class="d">-      ;;
+</a><a href="#h0-84" id="h0-84" class="d">-  esac
+</a><a href="#h0-85" id="h0-85" class="d">-  echo -e &quot;%{l}${wm_infos} $separator ${title}%{r}${battery} $separator ${volume} $separator $(icon $ICON_CLOCK)${time} $separator ${playing} &quot;
+</a><a href="#h0-86" id="h0-86" class="d">-done
+</a><b>diff --git a/<a href="../file/scripts/.scripts/panel_colors.html">scripts/.scripts/panel_colors</a> b/<a href="../file/scripts/.scripts/panel_colors.html">scripts/.scripts/panel_colors</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,7 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-COLOR_BACKGROUND=#1d2a30
+</a><a href="#h0-1" id="h0-1" class="d">-COLOR_FOREGROUND=#71c2af
+</a><a href="#h0-2" id="h0-2" class="d">-COLOR_UNDERLINE=#c27171
+</a><a href="#h0-3" id="h0-3" class="d">-COLOR_SEPARATOR=#65737e
+</a><a href="#h0-4" id="h0-4" class="d">-COLOR_TITLE=#c0c5ce
+</a><a href="#h0-5" id="h0-5" class="d">-COLOR_URGENT=#c27171
+</a><a href="#h0-6" id="h0-6" class="d">-COLOR_ICON=$COLOR_UNDERLINE
+</a><b>diff --git a/<a href="../file/scripts/.scripts/panel_config.html">scripts/.scripts/panel_config</a> b/<a href="../file/scripts/.scripts/panel_config.html">scripts/.scripts/panel_config</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,21 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-#! /bin/bash
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-PANEL_FIFO=/tmp/pamel-fifo
+</a><a href="#h0-3" id="h0-3" class="d">-PANEL_HEIGHT=30
+</a><a href="#h0-4" id="h0-4" class="d">-PANEL_WM_NAME=&quot;lemonbar&quot;
+</a><a href="#h0-5" id="h0-5" class="d">-PANEL_FONT_FAMILY=-*-erusfont-medium-*-*-*-11-*-*-*-*-*-*-*
+</a><a href="#h0-6" id="h0-6" class="d">-PANEL_ICON_FONT_FAMILY=-*-siji-medium-*-*-*-10-*-*-*-*-*-*-*
+</a><a href="#h0-7" id="h0-7" class="d">-REFRESH_VOLUME=0.5
+</a><a href="#h0-8" id="h0-8" class="d">-REFRESH_MUSIC=1
+</a><a href="#h0-9" id="h0-9" class="d">-REFRESH_BATTERY=10
+</a><a href="#h0-10" id="h0-10" class="d">-
+</a><a href="#h0-11" id="h0-11" class="d">-#num_mon=$(bspc query -M | wc -l)
+</a><a href="#h0-12" id="h0-12" class="d">-num_mon=$(xrandr | grep &quot; connected&quot; | wc -l)
+</a><a href="#h0-13" id="h0-13" class="d">-max_res=$(xrandr | grep &quot;primary&quot; | awk -F&apos;[ +]&apos; &apos;{print $4}&apos;)
+</a><a href="#h0-14" id="h0-14" class="d">-IFS=x; read -a sizes &lt;&lt;&lt;&quot;$max_res&quot;
+</a><a href="#h0-15" id="h0-15" class="d">-top_pad=$(bspc config window_gap)
+</a><a href="#h0-16" id="h0-16" class="d">-side_pad=$(bspc config window_gap)
+</a><a href="#h0-17" id="h0-17" class="d">-monitor_pad=$(xrandr | grep &quot;primary&quot; | awk -F&apos;+&apos; &apos;{print $2}&apos;)
+</a><a href="#h0-18" id="h0-18" class="d">-IFS=x; read -a sizes &lt;&lt;&lt;&quot;$max_res&quot;
+</a><a href="#h0-19" id="h0-19" class="d">-rwidth=$(expr ${sizes[0]} - 2 \* $side_pad)
+</a><a href="#h0-20" id="h0-20" class="d">-BAR_GEOMETRY=&quot;${rwidth}x${PANEL_HEIGHT}+$(($side_pad + $monitor_pad))+${top_pad}&quot;
+</a><b>diff --git a/<a href="../file/scripts/.scripts/panel_icons.html">scripts/.scripts/panel_icons</a> b/<a href="../file/scripts/.scripts/panel_icons.html">scripts/.scripts/panel_icons</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,29 +0,0 @@
+</a><a href="#h0-0" id="h0-0" class="d">-. panel_colors
+</a><a href="#h0-1" id="h0-1" class="d">-
+</a><a href="#h0-2" id="h0-2" class="d">-function icon()
+</a><a href="#h0-3" id="h0-3" class="d">-{
+</a><a href="#h0-4" id="h0-4" class="d">-  echo &quot;%{F$COLOR_ICON}%{T2}$(printf $1)%{T-}%{F-}&quot;
+</a><a href="#h0-5" id="h0-5" class="d">-}
+</a><a href="#h0-6" id="h0-6" class="d">-
+</a><a href="#h0-7" id="h0-7" class="d">-#ICON_VOLUME=&quot;\u00ed&quot;
+</a><a href="#h0-8" id="h0-8" class="d">-#ICON_CLOCK=&quot;\u00c9&quot;
+</a><a href="#h0-9" id="h0-9" class="d">-#ICON_LEFT=&quot;\u00ab&quot;
+</a><a href="#h0-10" id="h0-10" class="d">-#ICON_PLAY=&quot;\u00e6&quot;
+</a><a href="#h0-11" id="h0-11" class="d">-#ICON_PAUSE=&quot;\u00e7&quot;
+</a><a href="#h0-12" id="h0-12" class="d">-#ICON_STOP=&quot;\u00e5&quot;
+</a><a href="#h0-13" id="h0-13" class="d">-#ICON_BATTERY=&quot;\u00f0&quot;
+</a><a href="#h0-14" id="h0-14" class="d">-
+</a><a href="#h0-15" id="h0-15" class="d">-ICON_VOLUME=&quot;\ue050&quot;
+</a><a href="#h0-16" id="h0-16" class="d">-ICON_VOLUME_LOW=&quot;\ue04e&quot;
+</a><a href="#h0-17" id="h0-17" class="d">-ICON_MUTE=&quot;\ue04f&quot;
+</a><a href="#h0-18" id="h0-18" class="d">-ICON_CLOCK=&quot;\ue015&quot;
+</a><a href="#h0-19" id="h0-19" class="d">-ICON_LEFT=&quot;\u00ab&quot;
+</a><a href="#h0-20" id="h0-20" class="d">-ICON_PLAY=&quot;\ue058&quot;
+</a><a href="#h0-21" id="h0-21" class="d">-ICON_PAUSE=&quot;\ue059&quot;
+</a><a href="#h0-22" id="h0-22" class="d">-ICON_STOP=&quot;\ue057&quot;
+</a><a href="#h0-23" id="h0-23" class="d">-ICON_BATTERY=&quot;\ue238&quot;
+</a><a href="#h0-24" id="h0-24" class="d">-ICON_BATTERY_CHARGING=&quot;\ue200&quot;
+</a><a href="#h0-25" id="h0-25" class="d">-ICON_BATTERY_FULL=&quot;\ue1ff&quot;
+</a><a href="#h0-26" id="h0-26" class="d">-ICON_BATTERY_HALF=&quot;\ue1fe&quot;
+</a><a href="#h0-27" id="h0-27" class="d">-ICON_BATTERY_EMPTY=&quot;\ue1fd&quot;
+</a><a href="#h0-28" id="h0-28" class="d">-ICON_CIRCLE=&quot;\ue190&quot;
+</a><b>diff --git a/<a href="../file/scripts/.scripts/screenie.html">scripts/.scripts/screenie</a> b/<a href="../file/scripts/.scripts/screenie.html">scripts/.scripts/screenie</a></b>
+<a href="#h0" id="h0" class="h">@@ -1,5 +1,7 @@
+</a> #! /bin/bash
+ 
+<a href="#h0-2" id="h0-2" class="i">+mkdir -p &quot;$HOME/tmp/screenies&quot;
+</a><a href="#h0-3" id="h0-3" class="i">+
+</a> number=&quot;$(ls -1 $HOME/tmp/screenies | cut -d&apos;.&apos; -f1 | sort -n | tail -n 1)&quot;
+ number=&quot;$(( number + 1 ))&quot;
+ 
+<b>diff --git a/<a href="../file/scripts/bin.html">scripts/bin</a> b/<a href="../file/scripts/bin.html">scripts/bin</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0" id="h0-0" class="i">+.scripts</a><a href="#h0-1" id="h0-1" class="i">+
+\ No newline at end of file
+</a><b>diff --git a/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a> b/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a></b>
+<a href="#h0" id="h0" class="h">@@ -15,10 +15,23 @@
+</a> 
+ export EDITOR=nvim
+ export VISUAL=nvim
+<a href="#h0-3" id="h0-3" class="d">-export GOPATH=$HOME/gopath
+</a><a href="#h0-4" id="h0-4" class="d">-export PATH=&quot;$HOME/.scripts/clint:$HOME/.scripts:$GOPATH/bin:$PATH&quot;
+</a><a href="#h0-5" id="h0-5" class="d">-export PATH=$HOME/.node/bin:$PATH
+</a><a href="#h0-6" id="h0-6" class="d">-export PATH=$HOME/.gem/ruby/2.3/bin:$PATH
+</a><a href="#h0-7" id="h0-7" class="i">+
+</a><a href="#h0-8" id="h0-8" class="i">+# Golang specific variables
+</a><a href="#h0-9" id="h0-9" class="i">+if [ -d /usr/local/go ]; then
+</a><a href="#h0-10" id="h0-10" class="i">+    export GOPATH=$HOME/gopath
+</a><a href="#h0-11" id="h0-11" class="i">+    export GOROOT=/usr/local/go
+</a><a href="#h0-12" id="h0-12" class="i">+    export PATH=&quot;$GOROOT/bin:$PATH&quot;
+</a><a href="#h0-13" id="h0-13" class="i">+    export PATH=&quot;$GOPATH/bin:$PATH&quot;
+</a><a href="#h0-14" id="h0-14" class="i">+fi
+</a><a href="#h0-15" id="h0-15" class="i">+
+</a><a href="#h0-16" id="h0-16" class="i">+# Ruby
+</a><a href="#h0-17" id="h0-17" class="i">+if [ -f /usr/bin/ruby ]; then
+</a><a href="#h0-18" id="h0-18" class="i">+    export PATH=$HOME/.node/bin:$PATH
+</a><a href="#h0-19" id="h0-19" class="i">+    export PATH=$HOME/.gem/ruby/2.3/bin:$PATH
+</a><a href="#h0-20" id="h0-20" class="i">+fi
+</a><a href="#h0-21" id="h0-21" class="i">+
+</a><a href="#h0-22" id="h0-22" class="i">+# Source local scripts
+</a><a href="#h0-23" id="h0-23" class="i">+export PATH=&quot;$HOME/bin/clint:$HOME/bin:$PATH&quot;
+</a> 
+ # Aliases aka hacks
+ alias :q=exit
+<a href="#h1" id="h1" class="h">@@ -38,30 +51,30 @@ export LESS=&apos;-F -g -i -M -R -S -w -X -z-4&apos;
+</a> 
+ # Remove unnecessary packages
+ pclean() {
+<a href="#h1-3" id="h1-3" class="d">-  sudo pacman -Rns $(pacman -Qdtq)
+</a><a href="#h1-4" id="h1-4" class="i">+    sudo pacman -Rns $(pacman -Qdtq)
+</a> }
+ 
+ testnet() {
+<a href="#h1-8" id="h1-8" class="d">-  ping duckduckgo.com
+</a><a href="#h1-9" id="h1-9" class="i">+    ping duckduckgo.com
+</a> }
+ 
+ cless() {
+<a href="#h1-13" id="h1-13" class="d">-  pygmentize -f terminal &quot;$1&quot; | less -R
+</a><a href="#h1-14" id="h1-14" class="i">+    pygmentize -f terminal &quot;$1&quot; | less -R
+</a> }
+ 
+ ghclone() {
+<a href="#h1-18" id="h1-18" class="d">-  git clone https://github.com/${1}.git
+</a><a href="#h1-19" id="h1-19" class="i">+    git clone https://github.com/${1}.git
+</a> }
+ 
+ transfer() {
+<a href="#h1-23" id="h1-23" class="d">-  local tmpfile=&quot;$(mktemp -t tranferXXX)&quot;
+</a><a href="#h1-24" id="h1-24" class="d">-  curl --progress-bar --upload-file $1 &quot;https://transfer.sh/$(basename $1)&quot; &gt;&gt; $tmpfile
+</a><a href="#h1-25" id="h1-25" class="d">-  cat $tmpfile
+</a><a href="#h1-26" id="h1-26" class="d">-  rm -rf $tmpfile
+</a><a href="#h1-27" id="h1-27" class="d">-  unset tmpfile
+</a><a href="#h1-28" id="h1-28" class="i">+    local tmpfile=&quot;$(mktemp -t tranferXXX)&quot;
+</a><a href="#h1-29" id="h1-29" class="i">+    curl --progress-bar --upload-file $1 &quot;https://transfer.sh/$(basename $1)&quot; &gt;&gt; $tmpfile
+</a><a href="#h1-30" id="h1-30" class="i">+    cat $tmpfile
+</a><a href="#h1-31" id="h1-31" class="i">+    rm -rf $tmpfile
+</a><a href="#h1-32" id="h1-32" class="i">+    unset tmpfile
+</a> }
+ 
+ pi() {
+<a href="#h1-36" id="h1-36" class="d">-  ssh tudoo $1
+</a><a href="#h1-37" id="h1-37" class="i">+    ssh tudoo $1
+</a> }
+ 
+<b>diff --git a/<a href="../file/x/.xres/urxvt.html">x/.xres/urxvt</a> b/<a href="../file/x/.xres/urxvt.html">x/.xres/urxvt</a></b>
+<a href="#h0" id="h0" class="h">@@ -2,7 +2,6 @@
+</a> ! No bold font
+ URxvt.boldFont:
+ URxvt.scrollBar: false
+<a href="#h0-3" id="h0-3" class="d">-URxvt.letterSpace: 0
+</a> URxvt.cursorBlink: true
+ URxvt.cursorUnderline: false
+ URxvt.internalBorder: 20
+<b>diff --git a/<a href="../file/xdg/.config/user-dirs.dirs.html">xdg/.config/user-dirs.dirs</a> b/<a href="../file/xdg/.config/user-dirs.dirs.html">xdg/.config/user-dirs.dirs</a></b>
+<a href="#h0" id="h0" class="h">@@ -0,0 +1,7 @@
+</a><a href="#h0-0" id="h0-0" class="i">+XDG_DESKTOP_DIR=&quot;/dev/null&quot;
+</a><a href="#h0-1" id="h0-1" class="i">+XDG_DOWNLOAD_DIR=&quot;$HOME/tmp/downloads&quot;
+</a><a href="#h0-2" id="h0-2" class="i">+XDG_MUSIC_DIR=&quot;$HOME/media/music&quot;
+</a><a href="#h0-3" id="h0-3" class="i">+XDG_PICTURES_DIR=&quot;$HOME/media/images&quot;
+</a><a href="#h0-4" id="h0-4" class="i">+XDG_PUBLICSHARE_DIR=&quot;/dev/null&quot;
+</a><a href="#h0-5" id="h0-5" class="i">+XDG_TEMPLATES_DIR=&quot;/dev/null&quot;
+</a><a href="#h0-6" id="h0-6" class="i">+XDG_VIDEOS_DIR=&quot;$HOME/media/videos&quot;
+</a></pre>
+</div>
+</body>
+</html>
