@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Merriweather:400,400italic,700);
+@import url(https://fonts.googleapis.com/css?family=Fira+Mono:700,400&subset=latin,latin-ext);
 .black {
   color: #111; }
 
@@ -52,7 +53,7 @@
 
 body {
   margin: 0;
-  font-family: Merriweather, Helvetica, Arial, sans-serif;
+  font-family: "Fira Mono", monospace;
   font-size: 16px;
   line-height: 1.5;
   color: #333; }
@@ -109,7 +110,7 @@ pre {
   overflow-x: auto; }
 
 code {
-  font-family: 'Courier New',Consolas,monopace;
+  font-family: "Fira Mono", monospace;
   tab-size: 4; }
 
 hr {
@@ -389,3 +390,61 @@ green     #859900  operators, other keywords
     color: #268bd2; }
   .highlight .il {
     color: #2aa198; }
+
+em:before {
+  content: "*";
+  position: relative;
+  vertical-align: super;
+  font-size: 75%;
+  font-family: "Fira Mono", monospace; }
+
+em:after {
+  content: "*";
+  position: relative;
+  vertical-align: super;
+  font-size: 75%;
+  font-family: "Fira Mono", monospace; }
+
+strong:before {
+  content: "**";
+  position: relative;
+  vertical-align: super;
+  font-size: 75%;
+  font-family: "Fira Mono", monospace; }
+
+strong:after {
+  content: "**";
+  position: relative;
+  vertical-align: super;
+  font-size: 75%;
+  font-family: "Fira Mono", monospace; }
+
+h1:before {
+  content: "# ";
+  font-family: "Fira Mono", monospace;
+  color: #b0b0b0; }
+
+h2:before {
+  content: "## ";
+  font-family: "Fira Mono", monospace;
+  color: #b0b0b0; }
+
+h3:before {
+  content: "### ";
+  font-family: "Fira Mono", monospace;
+  color: #b0b0b0; }
+
+h4:before {
+  content: "#### ";
+  font-family: "Fira Mono", monospace;
+  color: #b0b0b0; }
+
+h5:before {
+  content: "##### ";
+  font-family: "Fira Mono", monospace;
+  color: #b0b0b0; }
+
+h6:before {
+  content: "###### ";
+  font-family: "Fira Mono", monospace;
+  color: #b0b0b0; }

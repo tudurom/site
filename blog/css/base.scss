@@ -1,7 +1,7 @@
 @charset "utf-8";
 body {
     margin: 0;
-    font-family: $base-font-family;
+    font-family: $base-mono-font-family;
     font-size: $base-font-size;
     line-height: $base-line-height;
     color: $text-color;
@@ -59,7 +59,7 @@ pre {
     overflow-x: auto;
 }
 code {
-    font-family: 'Courier New',Consolas,monopace;
+    font-family: $base-mono-font-family;
     tab-size: 4;
 }
 hr {

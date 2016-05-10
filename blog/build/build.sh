@@ -2,10 +2,12 @@
 
 MAIN_PAGE_TITLE="tudor's blog"
 
-for article in *; do
+for article in $(ls -1 | grep -Ev "res|tm"); do
     # only consider directories
     # the res dir is special. skip it
-    if [ "$article" != "res" ] && [ -d "$article" ]; then
+    if [ -d "$article" ]; then
+        echo "$(tput setaf 8)[ HTML ]$(tput setaf 10) $article$(tput sgr0)"
+
         . "${PWD}/${article}/metadata"
 
         year="$(echo "$date" | cut -d'-' -f1)"
@@ -27,6 +29,7 @@ for article in *; do
     fi
 done
 
+echo "$(tput setaf 8)[ HOME ]$(tput setaf 10) Generating index page$(tput sgr0)"
 export content="$index_links"
 links_page="$(. "${PWD}/res/post_list.html")"
 

@@ -1,0 +1,15 @@
+$markdownd-color: #b0b0b0;
+
+em:before { content: "*"; position: relative; vertical-align: super; font-size: 75%; font-family: $base-mono-font-family;}
+em:after { content: "*"; position: relative; vertical-align: super; font-size: 75%; font-family: $base-mono-font-family;}
+
+strong:before { content: "**"; position: relative; vertical-align: super; font-size: 75%; font-family: $base-mono-font-family;}
+strong:after { content: "**"; position: relative; vertical-align: super; font-size: 75%; font-family: $base-mono-font-family;}
+
+h1:before { content: "# "; font-family: $base-mono-font-family;color: $markdownd-color;}
+h2:before { content: "## "; font-family: $base-mono-font-family;color: $markdownd-color;}
+h3:before { content: "### "; font-family: $base-mono-font-family;color: $markdownd-color;}
+h4:before { content: "#### "; font-family: $base-mono-font-family;color: $markdownd-color;}
+h5:before { content: "##### "; font-family: $base-mono-font-family;color: $markdownd-color;}
+h6:before { content: "###### "; font-family: $base-mono-font-family;color: $markdownd-color;}
+

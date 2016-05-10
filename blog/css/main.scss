@@ -1,4 +1,5 @@
 $base-font-family: Merriweather, Helvetica, Arial, sans-serif;
+$base-mono-font-family: "Fira Mono", monospace;
 $base-font-size:   16px;
 $small-font-size:  0.875rem;
 $base-line-height: 1.5;
@@ -9,7 +10,9 @@ $meta-color:   #a0a0a0;
 $border-color: #ddd;
 
 @import url(http://fonts.googleapis.com/css?family=Merriweather:400,400italic,700);
+@import url(https://fonts.googleapis.com/css?family=Fira+Mono:700,400&subset=latin,latin-ext);
 @import "color";
 @import "base";
 @import "layout";
 @import "syntax";
+@import "markdownd";
