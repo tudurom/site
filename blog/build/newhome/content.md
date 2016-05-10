@@ -2,7 +2,7 @@ No, it's not about a new living place, it's about my new home on the internet!
 In this first post, I am going to describe how I set up this server and the
 problems I ran through.
 
-## The hardware
+### The hardware
 
 This website is hosted on a Raspberry Pi 3 running in my home (the physical
 one), connected to my home network. I live in Bucharest, where internet is
@@ -12,7 +12,7 @@ Another problem with the Pi is the disk space. Solution: 16GB SD card and a
 random 32GB usb stick I found. The website and git repos are on the stick, while
 the OS is on the SD.
 
-## Software
+### Software
 
 It runs [Void Linux](http://voidlinux.eu). No graphics, no X, no nothing, just
 console.
@@ -24,7 +24,7 @@ where it belongs.
 
 Web server is nginx, nothing special.
 
-## Adventures
+### Adventures
 
 Two or three days ago I was using Arch on the Pi, until I installed mongodb. The
 OS is 32 bit, so mongodb's wiredtiger engine was not supported. Instead, I had
@@ -43,7 +43,7 @@ also preset on Void, too! I reported the issue on the IRC and luckily it was
 fixed very quickly. Void Linux is an interesting distro, especially runit, the
 init system. I recommend it.
 
-## The Website
+### The Website
 
 The main website, is generated using shell scripts. Even the templates are shell
 scripts!
@@ -68,3 +68,4 @@ and so on. The css is generated using sass (scss). The stylesheet is
 
 I hope you enjoyed my first blog post. I promise you next time I will come with
 a more interesting subject!
+

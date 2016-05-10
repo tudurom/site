@@ -20,6 +20,8 @@ for article in $(ls -1 | grep -Ev "res|tm"); do
         gen_post="$(mark "${article}/content.md")"
         export content="$gen_post"
         export page_title="$title | $MAIN_PAGE_TITLE"
+        gen_post="$(. "$PWD/res/post.html")"
+        export content="$gen_post"
         # title and subtitle are already exported
 
         # generates page
@@ -41,4 +43,5 @@ export page_title="$MAIN_PAGE_TITLE"
 
 # generate css
 cd ../css
+echo "$(tput setaf 8)[ SCSS ]$(tput setaf 10) Generating css$(tput sgr0)"
 scss main.scss > main.css
