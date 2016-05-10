@@ -1,7 +1,7 @@
 @charset "utf-8";
 body {
     margin: 0;
-    font-family: $base-mono-font-family;
+    font-family: $base-font-family;
     font-size: $base-font-size;
     line-height: $base-line-height;
     color: $text-color;
@@ -25,6 +25,10 @@ h5,
 h6 {
     font-weight: 300;
     word-break: break-word;
+}
+h2 small {
+    font-size: 65%;
+    color: #b0b0b0;
 }
 blockquote {
     font-style: italic;
