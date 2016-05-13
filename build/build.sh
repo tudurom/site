@@ -4,12 +4,12 @@ build() {
   echo "$(tput setaf 2)$(tput bold)BUILDING: $1$(tput sgr0)"
 
   # Take only directories with an extension at the end
-  ext="$(echo $dir | rev | cut -d. -f1 | rev)"
+  ext="$(echo $1 | rev | cut -d. -f1 | rev)"
   case "$ext" in
     # Special cases
     md)
       test -f "$PWD/$1/content.html" && rm "$PWD/$1/content.html"
-      pandoc -f markdown_github -t html5 "$PWD/$1/content.md" > "$PWD/$1/content.html"
+      mark "$PWD/$1/content.md" > "$PWD/$1/content.html"
       ;;
   esac
   # Read metadata
@@ -41,6 +41,8 @@ while read -r file; do
 done
 
 install_page "gen/index.html" "../index.html"
+mkdir ../whoami
+install_page "gen/whoami.html" "../whoami/index.html"
 
 install_page "css/" "../css"
 install_page "js/" "../js"

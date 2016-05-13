@@ -4,6 +4,23 @@
 <subtitle>ASCII user interface in JS.
 </subtitle>
 <entry>
+<id>9f52c6120c2ab1e0b20b33473c3accba725f28ad</id>
+<published>2016-05-13T13:22:27Z</published>
+<updated>2016-05-13T13:22:27Z</updated>
+<title type="text">fix spacing</title>
+<link rel="alternate" type="text/html" href="commit/9f52c6120c2ab1e0b20b33473c3accba725f28ad.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 9f52c6120c2ab1e0b20b33473c3accba725f28ad
+parent d91939d29493bc42755d9a71bea8627a93aed8f1
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri May 13 16:22:27 +0300
+
+fix spacing
+
+</content>
+</entry>
+<entry>
 <id>d91939d29493bc42755d9a71bea8627a93aed8f1</id>
 <published>2016-05-13T13:05:43Z</published>
 <updated>2016-05-13T13:05:43Z</updated>

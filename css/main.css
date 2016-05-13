@@ -41,6 +41,19 @@ h3 {
   font-size: 1.5em;
 }
 
+h4 {
+  font-family: "Envy Code R";
+  font-weight: normal;
+  color: #63a69b;
+  font-size: 1em;
+}
+
+h5 {
+  color: #a66363;
+  font-size: 0.7em;
+  font-family: "Share Tech Mono";
+}
+
 a {
   text-decoration: none;
 }
