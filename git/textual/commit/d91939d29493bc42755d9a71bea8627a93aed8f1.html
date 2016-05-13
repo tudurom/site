@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>init - textual - Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="textual.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>textual</h1><span class="desc">Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/d91939d29493bc42755d9a71bea8627a93aed8f1.html">d91939d29493bc42755d9a71bea8627a93aed8f1</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri May 13 16:05:43 +0300
+
+init
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">README.md</a></td><td> | </td><td class="num">6</td><td><span class="i">++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h1">demo/button.html</a></td><td> | </td><td class="num">29</td><td><span class="i">+++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h2">demo/store.html</a></td><td> | </td><td class="num">82</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h3">demo/style.css</a></td><td> | </td><td class="num">11</td><td><span class="i">+++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h4">demo/table.html</a></td><td> | </td><td class="num">17</td><td><span class="i">+++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h5">src/button.js</a></td><td> | </td><td class="num">41</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h6">src/table.js</a></td><td> | </td><td class="num">55</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table>7 files changed, 241 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -0,0 +1,6 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+textual
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+=======
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+ASCII interface library in JS.
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+Mostly buttons.
+</a><b>diff --git a/<a id="h1" href="../file/demo/button.html.html">demo/button.html</a> b/<a href="../file/demo/button.html.html">demo/button.html</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -0,0 +1,29 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="i">+&lt;!DOCTYPE html&gt;
+</a><a href="#h1-0-1" id="h1-0-1" class="i">+&lt;html&gt;
+</a><a href="#h1-0-2" id="h1-0-2" class="i">+    &lt;head&gt;
+</a><a href="#h1-0-3" id="h1-0-3" class="i">+        &lt;title&gt;textual.js demo - buttons&lt;/title&gt;
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+        &lt;meta charset=&quot;utf-8&quot;&gt;
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+        &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+    &lt;/head&gt;
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+    &lt;body&gt;
+</a><a href="#h1-0-9" id="h1-0-9" class="i">+        &lt;div id=&quot;table&quot;&gt;&lt;/div&gt;
+</a><a href="#h1-0-10" id="h1-0-10" class="i">+        &lt;br /&gt;
+</a><a href="#h1-0-11" id="h1-0-11" class="i">+        &lt;script src=&quot;../src/table.js&quot;&gt;&lt;/script&gt;
+</a><a href="#h1-0-12" id="h1-0-12" class="i">+        &lt;script src=&quot;../src/button.js&quot;&gt;&lt;/script&gt;
+</a><a href="#h1-0-13" id="h1-0-13" class="i">+        &lt;script&gt;
+</a><a href="#h1-0-14" id="h1-0-14" class="i">+            var el = document.getElementById(&quot;table&quot;);
+</a><a href="#h1-0-15" id="h1-0-15" class="i">+            var table = new Textual.Table(el, 50, 50);
+</a><a href="#h1-0-16" id="h1-0-16" class="i">+            var button1 = new Textual.Button(table, &quot;test 1&quot;, 0, 0, 10, 10);
+</a><a href="#h1-0-17" id="h1-0-17" class="i">+            var button2 = new Textual.Button(table, &quot;test 2&quot;, 3, 20, 8, 3);
+</a><a href="#h1-0-18" id="h1-0-18" class="i">+
+</a><a href="#h1-0-19" id="h1-0-19" class="i">+            button1.attachHandler(function (e) {
+</a><a href="#h1-0-20" id="h1-0-20" class="i">+                console.log(&quot;hello from button 1 at x &quot; + button1._x + &quot; and y &quot; + button1._y);
+</a><a href="#h1-0-21" id="h1-0-21" class="i">+            });
+</a><a href="#h1-0-22" id="h1-0-22" class="i">+
+</a><a href="#h1-0-23" id="h1-0-23" class="i">+            button2.attachHandler(function (e) {
+</a><a href="#h1-0-24" id="h1-0-24" class="i">+                console.log(&quot;hello from button 2&quot;);
+</a><a href="#h1-0-25" id="h1-0-25" class="i">+            });
+</a><a href="#h1-0-26" id="h1-0-26" class="i">+        &lt;/script&gt;
+</a><a href="#h1-0-27" id="h1-0-27" class="i">+    &lt;/body&gt;
+</a><a href="#h1-0-28" id="h1-0-28" class="i">+&lt;/html&gt;
+</a><b>diff --git a/<a id="h2" href="../file/demo/store.html.html">demo/store.html</a> b/<a href="../file/demo/store.html.html">demo/store.html</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1,82 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+&lt;!DOCTYPE html&gt;
+</a><a href="#h2-0-1" id="h2-0-1" class="i">+&lt;html&gt;
+</a><a href="#h2-0-2" id="h2-0-2" class="i">+    &lt;head&gt;
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+        &lt;title&gt;textual.js demo - the glasses store&lt;/title&gt;
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+        &lt;meta charset=&quot;utf-8&quot;&gt;
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+        &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+    &lt;/head&gt;
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+    &lt;body&gt;
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+        &lt;div id=&quot;table&quot;&gt;&lt;/div&gt;
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+        &lt;script src=&quot;../src/table.js&quot;&gt;&lt;/script&gt;
+</a><a href="#h2-0-11" id="h2-0-11" class="i">+        &lt;script src=&quot;../src/button.js&quot;&gt;&lt;/script&gt;
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+        &lt;script&gt;
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+            var el = document.getElementById(&quot;table&quot;);
+</a><a href="#h2-0-14" id="h2-0-14" class="i">+            var table = new Textual.Table(el, 30, 11);
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+
+</a><a href="#h2-0-16" id="h2-0-16" class="i">+            function changeGlasses(style) {
+</a><a href="#h2-0-17" id="h2-0-17" class="i">+                table.putStr(&quot;|              |&quot;, 0, 2);
+</a><a href="#h2-0-18" id="h2-0-18" class="i">+                table.putStr(style, 3, 2);
+</a><a href="#h2-0-19" id="h2-0-19" class="i">+            }
+</a><a href="#h2-0-20" id="h2-0-20" class="i">+
+</a><a href="#h2-0-21" id="h2-0-21" class="i">+            function updateBalance(money) {
+</a><a href="#h2-0-22" id="h2-0-22" class="i">+                table.putStr(&quot; &quot;.repeat(30), 0, 10);
+</a><a href="#h2-0-23" id="h2-0-23" class="i">+                table.putStr(money + &quot; ,.&quot;, 0, 10);
+</a><a href="#h2-0-24" id="h2-0-24" class="i">+            }
+</a><a href="#h2-0-25" id="h2-0-25" class="i">+
+</a><a href="#h2-0-26" id="h2-0-26" class="i">+            table.putStr(&quot;.--------------.&quot;, 0, 0);
+</a><a href="#h2-0-27" id="h2-0-27" class="i">+            table.putStr(&quot;|   ,;;\&quot;&apos;\&quot;&apos;&apos;   |&quot;, 0, 1);
+</a><a href="#h2-0-28" id="h2-0-28" class="i">+            table.putStr(&quot;|  ,-\&quot;(O)^(O)  |&quot;, 0, 2);
+</a><a href="#h2-0-29" id="h2-0-29" class="i">+            table.putStr(&quot;|   (    &apos;&apos; |  |&quot;, 0, 3);
+</a><a href="#h2-0-30" id="h2-0-30" class="i">+            table.putStr(&quot;|    \\ `---/   |&quot;, 0, 4);
+</a><a href="#h2-0-31" id="h2-0-31" class="i">+            table.putStr(&quot;| ___|&apos;---&apos;___ |&quot;, 0, 5);
+</a><a href="#h2-0-32" id="h2-0-32" class="i">+            table.putStr(&quot;|/   \\   )/   \\|&quot;, 0, 6);
+</a><a href="#h2-0-33" id="h2-0-33" class="i">+            table.putStr(&quot;||    \\__/    ||&quot;, 0, 7);
+</a><a href="#h2-0-34" id="h2-0-34" class="i">+            table.putStr(&quot;&apos;--------------&apos;&quot;, 0, 8);
+</a><a href="#h2-0-35" id="h2-0-35" class="i">+
+</a><a href="#h2-0-36" id="h2-0-36" class="i">+            var counter = 0;
+</a><a href="#h2-0-37" id="h2-0-37" class="i">+            var glasses = [
+</a><a href="#h2-0-38" id="h2-0-38" class="i">+                &quot;,-\&quot;(O)^(O)&quot;,
+</a><a href="#h2-0-39" id="h2-0-39" class="i">+                &quot;,-\&quot;[O]^[O]&quot;,
+</a><a href="#h2-0-40" id="h2-0-40" class="i">+                &quot;,-\&quot;{O}^{O}&quot;,
+</a><a href="#h2-0-41" id="h2-0-41" class="i">+                &quot;,-\&quot;  0^0&quot;,
+</a><a href="#h2-0-42" id="h2-0-42" class="i">+                &quot;,-\&quot;[~}^{~]&quot;,
+</a><a href="#h2-0-43" id="h2-0-43" class="i">+                &quot;,-\&quot;  o^o&quot;,
+</a><a href="#h2-0-44" id="h2-0-44" class="i">+                &quot;,--\&quot;IIvII&quot;,
+</a><a href="#h2-0-45" id="h2-0-45" class="i">+                &quot;,-\&quot;101^101&quot;,
+</a><a href="#h2-0-46" id="h2-0-46" class="i">+                &quot;,-\&quot;L3t^t3⅃&quot;,
+</a><a href="#h2-0-47" id="h2-0-47" class="i">+                &quot;,--\&quot;cↃ^cↃ&quot;
+</a><a href="#h2-0-48" id="h2-0-48" class="i">+            ];
+</a><a href="#h2-0-49" id="h2-0-49" class="i">+            changeGlasses(glasses[0]);
+</a><a href="#h2-0-50" id="h2-0-50" class="i">+            updateBalance(0);
+</a><a href="#h2-0-51" id="h2-0-51" class="i">+
+</a><a href="#h2-0-52" id="h2-0-52" class="i">+            var buybtn = new Textual.Button(table, &quot;BUY&quot;, 18, 0, 8, 3);
+</a><a href="#h2-0-53" id="h2-0-53" class="i">+            var nextbtn = new Textual.Button(table, &quot;NEXT&quot;, 18, 3, 8, 3);
+</a><a href="#h2-0-54" id="h2-0-54" class="i">+            var prevbtn = new Textual.Button(table, &quot;PREV&quot;, 18, 6, 8, 3);
+</a><a href="#h2-0-55" id="h2-0-55" class="i">+            var money = 0;
+</a><a href="#h2-0-56" id="h2-0-56" class="i">+
+</a><a href="#h2-0-57" id="h2-0-57" class="i">+            nextbtn.attachHandler(function () {
+</a><a href="#h2-0-58" id="h2-0-58" class="i">+                counter = (counter + 1) % glasses.length;
+</a><a href="#h2-0-59" id="h2-0-59" class="i">+                changeGlasses(glasses[counter]);
+</a><a href="#h2-0-60" id="h2-0-60" class="i">+                money++;
+</a><a href="#h2-0-61" id="h2-0-61" class="i">+                updateBalance(money);
+</a><a href="#h2-0-62" id="h2-0-62" class="i">+            });
+</a><a href="#h2-0-63" id="h2-0-63" class="i">+
+</a><a href="#h2-0-64" id="h2-0-64" class="i">+            prevbtn.attachHandler(function () {
+</a><a href="#h2-0-65" id="h2-0-65" class="i">+                counter = (counter + glasses.length - 1) % glasses.length;
+</a><a href="#h2-0-66" id="h2-0-66" class="i">+                changeGlasses(glasses[counter]);
+</a><a href="#h2-0-67" id="h2-0-67" class="i">+                money++;
+</a><a href="#h2-0-68" id="h2-0-68" class="i">+                updateBalance(money);
+</a><a href="#h2-0-69" id="h2-0-69" class="i">+            });
+</a><a href="#h2-0-70" id="h2-0-70" class="i">+
+</a><a href="#h2-0-71" id="h2-0-71" class="i">+            buybtn.attachHandler(function() {
+</a><a href="#h2-0-72" id="h2-0-72" class="i">+                if (money &gt; 0) {
+</a><a href="#h2-0-73" id="h2-0-73" class="i">+                    money--;
+</a><a href="#h2-0-74" id="h2-0-74" class="i">+                    updateBalance(money);
+</a><a href="#h2-0-75" id="h2-0-75" class="i">+                } else {
+</a><a href="#h2-0-76" id="h2-0-76" class="i">+                    table.putStr(&quot;Out of money!&quot;, 0, 10);
+</a><a href="#h2-0-77" id="h2-0-77" class="i">+                }
+</a><a href="#h2-0-78" id="h2-0-78" class="i">+            });
+</a><a href="#h2-0-79" id="h2-0-79" class="i">+        &lt;/script&gt;
+</a><a href="#h2-0-80" id="h2-0-80" class="i">+    &lt;/body&gt;
+</a><a href="#h2-0-81" id="h2-0-81" class="i">+&lt;/html&gt;
+</a><b>diff --git a/<a id="h3" href="../file/demo/style.css.html">demo/style.css</a> b/<a href="../file/demo/style.css.html">demo/style.css</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -0,0 +1,11 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="i">+td {
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+    padding: 0px;
+</a><a href="#h3-0-2" id="h3-0-2" class="i">+}
+</a><a href="#h3-0-3" id="h3-0-3" class="i">+
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+table {
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+    border-spacing: 1px;
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+    border-collapse: separate;
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+    border-width: 0px;
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+    font-family: monospace;
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+    empty-cells: show;
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+}
+</a><b>diff --git a/<a id="h4" href="../file/demo/table.html.html">demo/table.html</a> b/<a href="../file/demo/table.html.html">demo/table.html</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -0,0 +1,17 @@
+</a><a href="#h4-0-0" id="h4-0-0" class="i">+&lt;!DOCTYPE html&gt;
+</a><a href="#h4-0-1" id="h4-0-1" class="i">+&lt;html&gt;
+</a><a href="#h4-0-2" id="h4-0-2" class="i">+    &lt;head&gt;
+</a><a href="#h4-0-3" id="h4-0-3" class="i">+        &lt;title&gt;textual.js demo - table layout&lt;/title&gt;
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+        &lt;meta charset=&quot;utf-8&quot;&gt;
+</a><a href="#h4-0-5" id="h4-0-5" class="i">+        &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+</a><a href="#h4-0-6" id="h4-0-6" class="i">+    &lt;/head&gt;
+</a><a href="#h4-0-7" id="h4-0-7" class="i">+
+</a><a href="#h4-0-8" id="h4-0-8" class="i">+    &lt;body&gt;
+</a><a href="#h4-0-9" id="h4-0-9" class="i">+        &lt;div id=&quot;table&quot;&gt;&lt;/div&gt;
+</a><a href="#h4-0-10" id="h4-0-10" class="i">+        &lt;script src=&quot;../src/table.js&quot;&gt;&lt;/script&gt;
+</a><a href="#h4-0-11" id="h4-0-11" class="i">+        &lt;script&gt;
+</a><a href="#h4-0-12" id="h4-0-12" class="i">+            var el = document.getElementById(&quot;table&quot;);
+</a><a href="#h4-0-13" id="h4-0-13" class="i">+            var table = new Textual.Table(el, 10, 10);
+</a><a href="#h4-0-14" id="h4-0-14" class="i">+        &lt;/script&gt;
+</a><a href="#h4-0-15" id="h4-0-15" class="i">+    &lt;/body&gt;
+</a><a href="#h4-0-16" id="h4-0-16" class="i">+&lt;/html&gt;
+</a><b>diff --git a/<a id="h5" href="../file/src/button.js.html">src/button.js</a> b/<a href="../file/src/button.js.html">src/button.js</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -0,0 +1,41 @@
+</a><a href="#h5-0-0" id="h5-0-0" class="i">+var Textual = Textual || {};
+</a><a href="#h5-0-1" id="h5-0-1" class="i">+
+</a><a href="#h5-0-2" id="h5-0-2" class="i">+Textual.Button = function (table, str, x, y, width, height) {
+</a><a href="#h5-0-3" id="h5-0-3" class="i">+    this._table = table;
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+    this._x = x;
+</a><a href="#h5-0-5" id="h5-0-5" class="i">+    this._y = y;
+</a><a href="#h5-0-6" id="h5-0-6" class="i">+    this._w = width;
+</a><a href="#h5-0-7" id="h5-0-7" class="i">+    this._h = height;
+</a><a href="#h5-0-8" id="h5-0-8" class="i">+
+</a><a href="#h5-0-9" id="h5-0-9" class="i">+    table.putStr(&quot;.&quot; + &quot;-&quot;.repeat(width - 2) + &quot;.&quot;, x, y);
+</a><a href="#h5-0-10" id="h5-0-10" class="i">+    for (var i = 1; i &lt; height - 1; i++) {
+</a><a href="#h5-0-11" id="h5-0-11" class="i">+        table.putStr(&quot;|&quot; + &quot; &quot;.repeat(width - 2) + &quot;|&quot;, x, y + i);
+</a><a href="#h5-0-12" id="h5-0-12" class="i">+    }
+</a><a href="#h5-0-13" id="h5-0-13" class="i">+    table.putStr(&quot;&apos;&quot; + &quot;-&quot;.repeat(width - 2) + &quot;&apos;&quot;, x, y + height - 1);
+</a><a href="#h5-0-14" id="h5-0-14" class="i">+
+</a><a href="#h5-0-15" id="h5-0-15" class="i">+    var textX = ((width - str.length) / 2) | 0;
+</a><a href="#h5-0-16" id="h5-0-16" class="i">+    var textY = ((height - 1) / 2) | 0;
+</a><a href="#h5-0-17" id="h5-0-17" class="i">+    table.putStr(str, x + textX, y + textY);
+</a><a href="#h5-0-18" id="h5-0-18" class="i">+};
+</a><a href="#h5-0-19" id="h5-0-19" class="i">+
+</a><a href="#h5-0-20" id="h5-0-20" class="i">+Textual.Button.prototype.attachHandler = function(handler) {
+</a><a href="#h5-0-21" id="h5-0-21" class="i">+    var cells = this._table.getInternalRepr().cells;
+</a><a href="#h5-0-22" id="h5-0-22" class="i">+    for (var i = 0; i &lt; this._w; i++) {
+</a><a href="#h5-0-23" id="h5-0-23" class="i">+        for (var j = 0; j &lt; this._h; j++) {
+</a><a href="#h5-0-24" id="h5-0-24" class="i">+            var el = cells[this._y + j][this._x + i];
+</a><a href="#h5-0-25" id="h5-0-25" class="i">+            el.addEventListener(&quot;click&quot;, handler);
+</a><a href="#h5-0-26" id="h5-0-26" class="i">+        }
+</a><a href="#h5-0-27" id="h5-0-27" class="i">+    }
+</a><a href="#h5-0-28" id="h5-0-28" class="i">+};
+</a><a href="#h5-0-29" id="h5-0-29" class="i">+
+</a><a href="#h5-0-30" id="h5-0-30" class="i">+Textual.Button.prototype.getCells = function() {
+</a><a href="#h5-0-31" id="h5-0-31" class="i">+    var self = this;
+</a><a href="#h5-0-32" id="h5-0-32" class="i">+
+</a><a href="#h5-0-33" id="h5-0-33" class="i">+    var cells = [];
+</a><a href="#h5-0-34" id="h5-0-34" class="i">+    for (var i = 0; i &lt; this._w; i++) {
+</a><a href="#h5-0-35" id="h5-0-35" class="i">+        cells[i] = [];
+</a><a href="#h5-0-36" id="h5-0-36" class="i">+        for (var j = 0; j &lt; this._h; j++) {
+</a><a href="#h5-0-37" id="h5-0-37" class="i">+            cells[i][j] = self._table.getInternalRepr().cells[this._y + j][this._x + i];
+</a><a href="#h5-0-38" id="h5-0-38" class="i">+        }
+</a><a href="#h5-0-39" id="h5-0-39" class="i">+    }
+</a><a href="#h5-0-40" id="h5-0-40" class="i">+};
+</a><b>diff --git a/<a id="h6" href="../file/src/table.js.html">src/table.js</a> b/<a href="../file/src/table.js.html">src/table.js</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -0,0 +1,55 @@
+</a><a href="#h6-0-0" id="h6-0-0" class="i">+var Textual = Textual || {};
+</a><a href="#h6-0-1" id="h6-0-1" class="i">+Textual.Table = function (targetElement, width, height) {
+</a><a href="#h6-0-2" id="h6-0-2" class="i">+    this._targetElement = targetElement;
+</a><a href="#h6-0-3" id="h6-0-3" class="i">+    this._width = width;
+</a><a href="#h6-0-4" id="h6-0-4" class="i">+    this._height = height;
+</a><a href="#h6-0-5" id="h6-0-5" class="i">+
+</a><a href="#h6-0-6" id="h6-0-6" class="i">+    // Create table and insert it into the target element
+</a><a href="#h6-0-7" id="h6-0-7" class="i">+    this._table = {};
+</a><a href="#h6-0-8" id="h6-0-8" class="i">+    this._table.element = document.createElement(&apos;table&apos;);
+</a><a href="#h6-0-9" id="h6-0-9" class="i">+    targetElement.appendChild(this._table.element);
+</a><a href="#h6-0-10" id="h6-0-10" class="i">+
+</a><a href="#h6-0-11" id="h6-0-11" class="i">+    // Create table body and insert it into table
+</a><a href="#h6-0-12" id="h6-0-12" class="i">+    this._table.tbody = document.createElement(&apos;tbody&apos;);
+</a><a href="#h6-0-13" id="h6-0-13" class="i">+    this._table.element.appendChild(this._table.tbody);
+</a><a href="#h6-0-14" id="h6-0-14" class="i">+
+</a><a href="#h6-0-15" id="h6-0-15" class="i">+    // Create rows
+</a><a href="#h6-0-16" id="h6-0-16" class="i">+    this._table.cells = [];
+</a><a href="#h6-0-17" id="h6-0-17" class="i">+    var self = this;
+</a><a href="#h6-0-18" id="h6-0-18" class="i">+    for (var j = 0; j &lt; height; j++) {
+</a><a href="#h6-0-19" id="h6-0-19" class="i">+        self._table.cells[j] = [];
+</a><a href="#h6-0-20" id="h6-0-20" class="i">+        var tr = this._table.element.insertRow();
+</a><a href="#h6-0-21" id="h6-0-21" class="i">+        for (var i = 0; i &lt; width; i++) {
+</a><a href="#h6-0-22" id="h6-0-22" class="i">+            var td = tr.insertCell();
+</a><a href="#h6-0-23" id="h6-0-23" class="i">+            self._table.cells[j][i] = td;
+</a><a href="#h6-0-24" id="h6-0-24" class="i">+            td.dataset.x = j;
+</a><a href="#h6-0-25" id="h6-0-25" class="i">+            td.dataset.y = i;
+</a><a href="#h6-0-26" id="h6-0-26" class="i">+            // Fill cell so it is always shown
+</a><a href="#h6-0-27" id="h6-0-27" class="i">+            td.innerHTML = &quot;&amp;nbsp;&quot;;
+</a><a href="#h6-0-28" id="h6-0-28" class="i">+        }
+</a><a href="#h6-0-29" id="h6-0-29" class="i">+    }
+</a><a href="#h6-0-30" id="h6-0-30" class="i">+};
+</a><a href="#h6-0-31" id="h6-0-31" class="i">+
+</a><a href="#h6-0-32" id="h6-0-32" class="i">+Textual.Table.prototype.getInternalRepr = function () {
+</a><a href="#h6-0-33" id="h6-0-33" class="i">+    return this._table;
+</a><a href="#h6-0-34" id="h6-0-34" class="i">+};
+</a><a href="#h6-0-35" id="h6-0-35" class="i">+
+</a><a href="#h6-0-36" id="h6-0-36" class="i">+Textual.Table.prototype.putChar = function(ch, x, y) {
+</a><a href="#h6-0-37" id="h6-0-37" class="i">+    // Make sure the cell is always shown
+</a><a href="#h6-0-38" id="h6-0-38" class="i">+    if (ch == &quot; &quot;)
+</a><a href="#h6-0-39" id="h6-0-39" class="i">+        ch = &quot;&amp;nbsp;&quot;
+</a><a href="#h6-0-40" id="h6-0-40" class="i">+    this._table.cells[y][x].innerHTML = ch;
+</a><a href="#h6-0-41" id="h6-0-41" class="i">+};
+</a><a href="#h6-0-42" id="h6-0-42" class="i">+
+</a><a href="#h6-0-43" id="h6-0-43" class="i">+Textual.Table.prototype.putStr = function(str, x, y) {
+</a><a href="#h6-0-44" id="h6-0-44" class="i">+    var arr = str.split(&quot;&quot;)
+</a><a href="#h6-0-45" id="h6-0-45" class="i">+    if (arr.indexOf(&quot;\n&quot;) != -1) {
+</a><a href="#h6-0-46" id="h6-0-46" class="i">+        throw &quot;\\n not supported&quot;;
+</a><a href="#h6-0-47" id="h6-0-47" class="i">+    }
+</a><a href="#h6-0-48" id="h6-0-48" class="i">+
+</a><a href="#h6-0-49" id="h6-0-49" class="i">+    var self = this;
+</a><a href="#h6-0-50" id="h6-0-50" class="i">+    for (var i = 0; i &lt; arr.length; i++) {
+</a><a href="#h6-0-51" id="h6-0-51" class="i">+        self.putChar(arr[i], x, y);
+</a><a href="#h6-0-52" id="h6-0-52" class="i">+        x++;
+</a><a href="#h6-0-53" id="h6-0-53" class="i">+    }
+</a><a href="#h6-0-54" id="h6-0-54" class="i">+};
+</a></pre>
+</div>
+</body>
+</html>

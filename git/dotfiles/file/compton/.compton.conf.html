@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> .compton.conf (2488B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> .compton.conf (2103B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -105,29 +105,15 @@
 <a href="#l87" id="l87">87</a>
 <a href="#l88" id="l88">88</a>
 <a href="#l89" id="l89">89</a>
-<a href="#l90" id="l90">90</a>
-<a href="#l91" id="l91">91</a>
-<a href="#l92" id="l92">92</a>
-<a href="#l93" id="l93">93</a>
-<a href="#l94" id="l94">94</a>
-<a href="#l95" id="l95">95</a>
-<a href="#l96" id="l96">96</a>
 </pre></td><td><pre>
-#                                __
-#                               /\ \__
-#  ___    ___    ___ ___   _____\ \ ,_\   ___    ___
-# /&apos;___\ / __`\/&apos; __` __`\/\ &apos;__`\ \ \/  / __`\/&apos; _ `\
-#/\ \__//\ \L\ /\ \/\ \/\ \ \ \L\ \ \ \_/\ \L\ /\ \/\ \
-#\ \____\ \____\ \_\ \_\ \_\ \ ,__/\ \__\ \____\ \_\ \_\
-# \/____/\/___/ \/_/\/_/\/_/\ \ \/  \/__/\/___/ \/_/\/_/
-#                            \ \_\
-#                             \/_/
-shadow = false;
+shadow = true;
 no-dnd-shadow = true;
 no-dock-shadow = false;
 clear-shadow = true;
-shadow-radius = 11;
+shadow-radius = 1;
 shadow-opacity = 0.4;
+shadow-offset-x = 1;
+shadow-offset-y = 1;
 # shadow-red = 0.0;
 # shadow-green = 0.0;
 # shadow-blue = 0.0;
@@ -147,7 +133,7 @@ shadow-exclude = [
 #menu-opacity = 0.8;
 #inactive-opacity = 0.8;
 # active-opacity = 0.8;
-# frame-opacity = 0.8;
+frame-opacity = 0.8;
 #inactive-opacity-override = false;
 #alpha-step = 0.06;
 # inactive-dim = 0.2;
@@ -167,8 +153,8 @@ blur-background-exclude = [
 # Fading
 fading = true;
 # fade-delta = 30;
-fade-in-step = 0.05;
-fade-out-step = 0.05;
+fade-in-step = 0.18;
+fade-out-step = 0.18;
 # no-fading-openclose = true;
 # no-fading-destroyed-argb = true;
 fade-exclude = [ ];

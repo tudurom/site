@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>upd8 - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/861ec2e81ff39274d847c68e139385644d3664db.html">861ec2e81ff39274d847c68e139385644d3664db</a>
+<b>parent</b> <a href="../commit/dcb8432b32267dcb3de909731f3bc4f95e5b9ef9.html">dcb8432b32267dcb3de909731f3bc4f95e5b9ef9</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Tue May 10 21:55:11 +0300
+
+upd8
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">bspwm/.config/bspwm/bspwmrc</a></td><td> | </td><td class="num">11</td><td><span class="i">++++++</span><span class="d">-----</span></td></tr>
+<tr><td><a href="#h1">bspwm/.config/sxhkd/sxhkdrc-bspwm</a></td><td> | </td><td class="num">146</td><td><span class="i"></span><span class="d">-------------------------------------------------------------------------------</span></td></tr>
+<tr><td><a href="#h2">bspwm/.config/sxhkd/sxhkdrc_bspwm</a></td><td> | </td><td class="num">91</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h3">compton/.compton.conf</a></td><td> | </td><td class="num">21</td><td><span class="i">+++++++</span><span class="d">--------------</span></td></tr>
+<tr><td><a href="#h4">cwm/.cwmrc</a></td><td> | </td><td class="num">11</td><td><span class="i">+++++++</span><span class="d">----</span></td></tr>
+<tr><td><a href="#h5">gtk/.config/gtk-3.0/bookmarks</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td><a href="#h6">scripts/.scripts/srht</a></td><td> | </td><td class="num">4</td><td><span class="i">++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h7">scripts/.scripts/wall-e</a></td><td> | </td><td class="num">9</td><td><span class="i">++++</span><span class="d">-----</span></td></tr>
+<tr><td><a href="#h8">shell/.profile</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td><a href="#h9">st</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h10">sxhkd/.config/sxhkd/commons</a></td><td> | </td><td class="num">54</td><td><span class="i"></span><span class="d">------------------------------------------------------</span></td></tr>
+<tr><td><a href="#h11">wmrc/.config/sxhkd/commons</a></td><td> | </td><td class="num">45</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h12">wmrc/.scripts/focusw</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h13">wmrc/.scripts/infobar</a></td><td> | </td><td class="num">10</td><td><span class="i">+++++++</span><span class="d">---</span></td></tr>
+<tr><td><a href="#h14">wmrc/.scripts/panelsrc</a></td><td> | </td><td class="num">4</td><td><span class="i"></span><span class="d">----</span></td></tr>
+<tr><td><a href="#h15">wmrc/.scripts/startwmutils</a></td><td> | </td><td class="num">3</td><td><span class="i"></span><span class="d">---</span></td></tr>
+<tr><td><a href="#h16">wmrc/.scripts/tilew</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h17">x/.xinitrc</a></td><td> | </td><td class="num">21</td><td><span class="i">++++++++++++++++++</span><span class="d">---</span></td></tr>
+<tr><td><a href="#h18">x/.xres/colors/barrage</a></td><td> | </td><td class="num">18</td><td><span class="i">++++++++++++++++++</span><span class="d"></span></td></tr>
+</table>19 files changed, 213 insertions(+), 245 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/bspwm/.config/bspwm/bspwmrc.html">bspwm/.config/bspwm/bspwmrc</a> b/<a href="../file/bspwm/.config/bspwm/bspwmrc.html">bspwm/.config/bspwm/bspwmrc</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -7,7 +7,7 @@ if [ -e &quot;$BSPWM_STATE&quot; ]; then
+</a>   rm &quot;$BSPWM_STATE&quot;
+ fi
+ 
+<a href="#h0-0-3" id="h0-0-3" class="d">-bspc config window_gap          0
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+bspc config window_gap          $GENERAL_GAP
+</a> bspc config border_width        2
+ 
+ bspc config split_ratio         0.50
+<a href="#h0-1" id="h0-1" class="h">@@ -22,12 +22,13 @@ bspc config active_border_color &quot;$(bspc config normal_border_color)&quot;
+</a> 
+ 
+ if [ $(bspc query -M | wc -l) -eq 2 ]; then
+<a href="#h0-1-3" id="h0-1-3" class="d">-  bspc monitor LVDS-0 -d 4 5 6
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-  bspc monitor $(bspc query -M | grep -v &quot;LVDS-0&quot; | head -n 1) -d 1 2 3
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+  bspc monitor LVDS-1 -d 4 5 6
+</a><a href="#h0-1-6" id="h0-1-6" class="i">+  bspc monitor $(bspc query -M | grep -v &quot;LVDS-1&quot; | head -n 1) -d 1 2 3
+</a> else
+   bspc monitor -d 1 2 3 4 5 6
+ fi
+ 
+ compton -b
+<a href="#h0-1-12" id="h0-1-12" class="d">-panel &amp;
+</a><a href="#h0-1-13" id="h0-1-13" class="d">-setwall &amp;
+</a><a href="#h0-1-14" id="h0-1-14" class="i">+statusbar &amp;
+</a><a href="#h0-1-15" id="h0-1-15" class="i">+bspc config -m &quot;$(ppd)&quot; top_padding $(( PANEL_STATUS_HEIGHT + GENERAL_GAP ))
+</a><a href="#h0-1-16" id="h0-1-16" class="i">+wall-e &amp;
+</a><b>diff --git a/<a id="h1" href="../file/bspwm/.config/sxhkd/sxhkdrc-bspwm.html">bspwm/.config/sxhkd/sxhkdrc-bspwm</a> b/<a href="../file/bspwm/.config/sxhkd/sxhkdrc-bspwm.html">bspwm/.config/sxhkd/sxhkdrc-bspwm</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -1,146 +0,0 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="d">-#
+</a><a href="#h1-0-1" id="h1-0-1" class="d">-## my hotkeys
+</a><a href="#h1-0-2" id="h1-0-2" class="d">-#
+</a><a href="#h1-0-3" id="h1-0-3" class="d">-
+</a><a href="#h1-0-4" id="h1-0-4" class="d">-# Lock screen
+</a><a href="#h1-0-5" id="h1-0-5" class="d">-super + shift + x
+</a><a href="#h1-0-6" id="h1-0-6" class="d">-  lock.sh
+</a><a href="#h1-0-7" id="h1-0-7" class="d">-
+</a><a href="#h1-0-8" id="h1-0-8" class="d">-XF86AudioRaiseVolume
+</a><a href="#h1-0-9" id="h1-0-9" class="d">-  amixer sset Master 5%+ unmute
+</a><a href="#h1-0-10" id="h1-0-10" class="d">-
+</a><a href="#h1-0-11" id="h1-0-11" class="d">-XF86AudioLowerVolume
+</a><a href="#h1-0-12" id="h1-0-12" class="d">-  amixer sset Master 5%- unmute
+</a><a href="#h1-0-13" id="h1-0-13" class="d">-
+</a><a href="#h1-0-14" id="h1-0-14" class="d">-XF86AudioMute
+</a><a href="#h1-0-15" id="h1-0-15" class="d">-  amixer sset Master toggle
+</a><a href="#h1-0-16" id="h1-0-16" class="d">-
+</a><a href="#h1-0-17" id="h1-0-17" class="d">-XF86MonBrightnessUp
+</a><a href="#h1-0-18" id="h1-0-18" class="d">-  xbacklight -inc 10%
+</a><a href="#h1-0-19" id="h1-0-19" class="d">-
+</a><a href="#h1-0-20" id="h1-0-20" class="d">-XF86MonBrightnessDown
+</a><a href="#h1-0-21" id="h1-0-21" class="d">-  xbacklight -dec 10%
+</a><a href="#h1-0-22" id="h1-0-22" class="d">-
+</a><a href="#h1-0-23" id="h1-0-23" class="d">-XF86AudioPlay
+</a><a href="#h1-0-24" id="h1-0-24" class="d">-  mpc toggle
+</a><a href="#h1-0-25" id="h1-0-25" class="d">-
+</a><a href="#h1-0-26" id="h1-0-26" class="d">-XF86AudioStop
+</a><a href="#h1-0-27" id="h1-0-27" class="d">-  mpc stop
+</a><a href="#h1-0-28" id="h1-0-28" class="d">-
+</a><a href="#h1-0-29" id="h1-0-29" class="d">-XF86AudioNext
+</a><a href="#h1-0-30" id="h1-0-30" class="d">-  mpc next
+</a><a href="#h1-0-31" id="h1-0-31" class="d">-
+</a><a href="#h1-0-32" id="h1-0-32" class="d">-XF86AudioPrev
+</a><a href="#h1-0-33" id="h1-0-33" class="d">-  mpc prev
+</a><a href="#h1-0-34" id="h1-0-34" class="d">-
+</a><a href="#h1-0-35" id="h1-0-35" class="d">-#
+</a><a href="#h1-0-36" id="h1-0-36" class="d">-## bspwm hotkeys
+</a><a href="#h1-0-37" id="h1-0-37" class="d">-#
+</a><a href="#h1-0-38" id="h1-0-38" class="d">-
+</a><a href="#h1-0-39" id="h1-0-39" class="d">-# Quit bspwm and kill the panel
+</a><a href="#h1-0-40" id="h1-0-40" class="d">-super + alt + Escape
+</a><a href="#h1-0-41" id="h1-0-41" class="d">-#~/.scripts/exitbspwm
+</a><a href="#h1-0-42" id="h1-0-42" class="d">-  pkill panel; bspc quit 1
+</a><a href="#h1-0-43" id="h1-0-43" class="d">-super + alt + shift + Escape
+</a><a href="#h1-0-44" id="h1-0-44" class="d">-  pkill panel; bspc wm -d &gt; &quot;$BSPWM_STATE&quot;; bspc quit
+</a><a href="#h1-0-45" id="h1-0-45" class="d">-# Close the focused window
+</a><a href="#h1-0-46" id="h1-0-46" class="d">-super + w
+</a><a href="#h1-0-47" id="h1-0-47" class="d">-	bspc node -c
+</a><a href="#h1-0-48" id="h1-0-48" class="d">-
+</a><a href="#h1-0-49" id="h1-0-49" class="d">-# Toggle monocle layout
+</a><a href="#h1-0-50" id="h1-0-50" class="d">-super + n
+</a><a href="#h1-0-51" id="h1-0-51" class="d">-	bspc desktop -l next
+</a><a href="#h1-0-52" id="h1-0-52" class="d">-
+</a><a href="#h1-0-53" id="h1-0-53" class="d">-# Change selected window&apos;s mode into tiled, pseudo-tiled, floating or fullscreen
+</a><a href="#h1-0-54" id="h1-0-54" class="d">-super + {t,p,s,f}
+</a><a href="#h1-0-55" id="h1-0-55" class="d">-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+</a><a href="#h1-0-56" id="h1-0-56" class="d">-
+</a><a href="#h1-0-57" id="h1-0-57" class="d">-# Focus the last window/desktop
+</a><a href="#h1-0-58" id="h1-0-58" class="d">-super + {grave,Tab}
+</a><a href="#h1-0-59" id="h1-0-59" class="d">-	bspc {node,desktop} -f last
+</a><a href="#h1-0-60" id="h1-0-60" class="d">-
+</a><a href="#h1-0-61" id="h1-0-61" class="d">-# Swap the focused window with the last window
+</a><a href="#h1-0-62" id="h1-0-62" class="d">-super + apostrophe
+</a><a href="#h1-0-63" id="h1-0-63" class="d">-	bspc node -s last
+</a><a href="#h1-0-64" id="h1-0-64" class="d">-
+</a><a href="#h1-0-65" id="h1-0-65" class="d">-# Focus the next older/newer window
+</a><a href="#h1-0-66" id="h1-0-66" class="d">-super + {o,i}
+</a><a href="#h1-0-67" id="h1-0-67" class="d">-	bspc control --record-history off; \
+</a><a href="#h1-0-68" id="h1-0-68" class="d">-	bspc node {older,newer} -f; \
+</a><a href="#h1-0-69" id="h1-0-69" class="d">-	bspc control --record-history on
+</a><a href="#h1-0-70" id="h1-0-70" class="d">-
+</a><a href="#h1-0-71" id="h1-0-71" class="d">-
+</a><a href="#h1-0-72" id="h1-0-72" class="d">-super + y
+</a><a href="#h1-0-73" id="h1-0-73" class="d">-	bspc node -n last.!automatic
+</a><a href="#h1-0-74" id="h1-0-74" class="d">-
+</a><a href="#h1-0-75" id="h1-0-75" class="d">-super + m
+</a><a href="#h1-0-76" id="h1-0-76" class="d">-	bspc node -s biggest
+</a><a href="#h1-0-77" id="h1-0-77" class="d">-
+</a><a href="#h1-0-78" id="h1-0-78" class="d">-
+</a><a href="#h1-0-79" id="h1-0-79" class="d">-super + {_,shift + }{h,j,k,l}
+</a><a href="#h1-0-80" id="h1-0-80" class="d">-	bspc node -{f,s} {west,south,north,east}
+</a><a href="#h1-0-81" id="h1-0-81" class="d">-
+</a><a href="#h1-0-82" id="h1-0-82" class="d">-super + {_,shift + }c
+</a><a href="#h1-0-83" id="h1-0-83" class="d">-	bspc node -f {next,prev}
+</a><a href="#h1-0-84" id="h1-0-84" class="d">-
+</a><a href="#h1-0-85" id="h1-0-85" class="d">-super + {comma,period}
+</a><a href="#h1-0-86" id="h1-0-86" class="d">-	bspc desktop -C {backward,forward}
+</a><a href="#h1-0-87" id="h1-0-87" class="d">-
+</a><a href="#h1-0-88" id="h1-0-88" class="d">-super + bracket{left,right}
+</a><a href="#h1-0-89" id="h1-0-89" class="d">-	bspc desktop -f {prev,next}
+</a><a href="#h1-0-90" id="h1-0-90" class="d">-
+</a><a href="#h1-0-91" id="h1-0-91" class="d">-super + ctrl + {h,j,k,l}
+</a><a href="#h1-0-92" id="h1-0-92" class="d">-	bspc node -p {west,south,north,east}
+</a><a href="#h1-0-93" id="h1-0-93" class="d">-
+</a><a href="#h1-0-94" id="h1-0-94" class="d">-super + ctrl + {_,shift + }space
+</a><a href="#h1-0-95" id="h1-0-95" class="d">-	bspc {node -p cancel,desktop -c}
+</a><a href="#h1-0-96" id="h1-0-96" class="d">-
+</a><a href="#h1-0-97" id="h1-0-97" class="d">-# expand the tiled space in the given direction
+</a><a href="#h1-0-98" id="h1-0-98" class="d">-super + alt + {h,j,k,l}
+</a><a href="#h1-0-99" id="h1-0-99" class="d">-	bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+</a><a href="#h1-0-100" id="h1-0-100" class="d">-
+</a><a href="#h1-0-101" id="h1-0-101" class="d">-# contract the tiled space in the given direction
+</a><a href="#h1-0-102" id="h1-0-102" class="d">-super + alt + shift + {h,j,k,l}
+</a><a href="#h1-0-103" id="h1-0-103" class="d">-	bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
+</a><a href="#h1-0-104" id="h1-0-104" class="d">-
+</a><a href="#h1-0-105" id="h1-0-105" class="d">-super + ctrl + {1-9}
+</a><a href="#h1-0-106" id="h1-0-106" class="d">-	bspc node -r 0.{1-9}
+</a><a href="#h1-0-107" id="h1-0-107" class="d">-
+</a><a href="#h1-0-108" id="h1-0-108" class="d">-super + {Left,Down,Up,Right}
+</a><a href="#h1-0-109" id="h1-0-109" class="d">-	xdo move {-x -20,-y +20,-y -20,-x +20}
+</a><a href="#h1-0-110" id="h1-0-110" class="d">-
+</a><a href="#h1-0-111" id="h1-0-111" class="d">-super + {_,shift + }{1-9,0}
+</a><a href="#h1-0-112" id="h1-0-112" class="d">-	bspc {desktop -f,node -d} &apos;^{1-9,10}&apos;
+</a><a href="#h1-0-113" id="h1-0-113" class="d">-
+</a><a href="#h1-0-114" id="h1-0-114" class="d">-super + shift + s
+</a><a href="#h1-0-115" id="h1-0-115" class="d">-  bspc node -g sticky
+</a><a href="#h1-0-116" id="h1-0-116" class="d">-
+</a><a href="#h1-0-117" id="h1-0-117" class="d">-~button1
+</a><a href="#h1-0-118" id="h1-0-118" class="d">-	bspc pointer -g focus
+</a><a href="#h1-0-119" id="h1-0-119" class="d">-
+</a><a href="#h1-0-120" id="h1-0-120" class="d">-super + button{1-3}
+</a><a href="#h1-0-121" id="h1-0-121" class="d">-	; bspc pointer -g {move,resize_side,resize_corner}
+</a><a href="#h1-0-122" id="h1-0-122" class="d">-
+</a><a href="#h1-0-123" id="h1-0-123" class="d">-super + @button{1-3}
+</a><a href="#h1-0-124" id="h1-0-124" class="d">-	bspc pointer -u
+</a><a href="#h1-0-125" id="h1-0-125" class="d">-
+</a><a href="#h1-0-126" id="h1-0-126" class="d">-#
+</a><a href="#h1-0-127" id="h1-0-127" class="d">-# wm independent hotkeys
+</a><a href="#h1-0-128" id="h1-0-128" class="d">-#
+</a><a href="#h1-0-129" id="h1-0-129" class="d">-
+</a><a href="#h1-0-130" id="h1-0-130" class="d">-super + Return
+</a><a href="#h1-0-131" id="h1-0-131" class="d">-	urxvt
+</a><a href="#h1-0-132" id="h1-0-132" class="d">-
+</a><a href="#h1-0-133" id="h1-0-133" class="d">-super + space
+</a><a href="#h1-0-134" id="h1-0-134" class="d">-  ~/.scripts/run_dmenu
+</a><a href="#h1-0-135" id="h1-0-135" class="d">-
+</a><a href="#h1-0-136" id="h1-0-136" class="d">-Print
+</a><a href="#h1-0-137" id="h1-0-137" class="d">-  ~/.scripts/screenie
+</a><a href="#h1-0-138" id="h1-0-138" class="d">-
+</a><a href="#h1-0-139" id="h1-0-139" class="d">-# make sxhkd reload its configuration files:
+</a><a href="#h1-0-140" id="h1-0-140" class="d">-super + Escape
+</a><a href="#h1-0-141" id="h1-0-141" class="d">-	pkill -USR1 -x sxhkd
+</a><a href="#h1-0-142" id="h1-0-142" class="d">-
+</a><a href="#h1-0-143" id="h1-0-143" class="d">-# Shortcuts
+</a><a href="#h1-0-144" id="h1-0-144" class="d">-super + shift + f
+</a><a href="#h1-0-145" id="h1-0-145" class="d">-  firefox &amp;
+</a><b>diff --git a/<a id="h2" href="../file/bspwm/.config/sxhkd/sxhkdrc_bspwm.html">bspwm/.config/sxhkd/sxhkdrc_bspwm</a> b/<a href="../file/bspwm/.config/sxhkd/sxhkdrc_bspwm.html">bspwm/.config/sxhkd/sxhkdrc_bspwm</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1,91 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+#
+</a><a href="#h2-0-1" id="h2-0-1" class="i">+## bspwm hotkeys
+</a><a href="#h2-0-2" id="h2-0-2" class="i">+#
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+# Quit bspwm and kill the panel
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+super + alt + Escape
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+#~/.scripts/exitbspwm
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+  pkill panel; bspc quit 1
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+super + alt + shift + Escape
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+  pkill panel; bspc wm -d &gt; &quot;$BSPWM_STATE&quot;; bspc quit
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+# Close the focused window
+</a><a href="#h2-0-11" id="h2-0-11" class="i">+super + w
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+	bspc node -c
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+
+</a><a href="#h2-0-14" id="h2-0-14" class="i">+# Toggle monocle layout
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+super + n
+</a><a href="#h2-0-16" id="h2-0-16" class="i">+	bspc desktop -l next
+</a><a href="#h2-0-17" id="h2-0-17" class="i">+
+</a><a href="#h2-0-18" id="h2-0-18" class="i">+# Change selected window&apos;s mode into tiled, pseudo-tiled, floating or fullscreen
+</a><a href="#h2-0-19" id="h2-0-19" class="i">+super + {t,p,s,f}
+</a><a href="#h2-0-20" id="h2-0-20" class="i">+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+</a><a href="#h2-0-21" id="h2-0-21" class="i">+
+</a><a href="#h2-0-22" id="h2-0-22" class="i">+# Focus the last window/desktop
+</a><a href="#h2-0-23" id="h2-0-23" class="i">+super + {grave,Tab}
+</a><a href="#h2-0-24" id="h2-0-24" class="i">+	bspc {node,desktop} -f last
+</a><a href="#h2-0-25" id="h2-0-25" class="i">+
+</a><a href="#h2-0-26" id="h2-0-26" class="i">+# Swap the focused window with the last window
+</a><a href="#h2-0-27" id="h2-0-27" class="i">+super + apostrophe
+</a><a href="#h2-0-28" id="h2-0-28" class="i">+	bspc node -s last
+</a><a href="#h2-0-29" id="h2-0-29" class="i">+
+</a><a href="#h2-0-30" id="h2-0-30" class="i">+# Focus the next older/newer window
+</a><a href="#h2-0-31" id="h2-0-31" class="i">+super + {o,i}
+</a><a href="#h2-0-32" id="h2-0-32" class="i">+	bspc control --record-history off; \
+</a><a href="#h2-0-33" id="h2-0-33" class="i">+	bspc node {older,newer} -f; \
+</a><a href="#h2-0-34" id="h2-0-34" class="i">+	bspc control --record-history on
+</a><a href="#h2-0-35" id="h2-0-35" class="i">+
+</a><a href="#h2-0-36" id="h2-0-36" class="i">+
+</a><a href="#h2-0-37" id="h2-0-37" class="i">+super + y
+</a><a href="#h2-0-38" id="h2-0-38" class="i">+	bspc node -n last.!automatic
+</a><a href="#h2-0-39" id="h2-0-39" class="i">+
+</a><a href="#h2-0-40" id="h2-0-40" class="i">+super + m
+</a><a href="#h2-0-41" id="h2-0-41" class="i">+	bspc node -s biggest
+</a><a href="#h2-0-42" id="h2-0-42" class="i">+
+</a><a href="#h2-0-43" id="h2-0-43" class="i">+
+</a><a href="#h2-0-44" id="h2-0-44" class="i">+super + {_,shift + }{h,j,k,l}
+</a><a href="#h2-0-45" id="h2-0-45" class="i">+	bspc node -{f,s} {west,south,north,east}
+</a><a href="#h2-0-46" id="h2-0-46" class="i">+
+</a><a href="#h2-0-47" id="h2-0-47" class="i">+super + {_,shift + }c
+</a><a href="#h2-0-48" id="h2-0-48" class="i">+	bspc node -f {next,prev}
+</a><a href="#h2-0-49" id="h2-0-49" class="i">+
+</a><a href="#h2-0-50" id="h2-0-50" class="i">+super + {comma,period}
+</a><a href="#h2-0-51" id="h2-0-51" class="i">+	bspc desktop -C {backward,forward}
+</a><a href="#h2-0-52" id="h2-0-52" class="i">+
+</a><a href="#h2-0-53" id="h2-0-53" class="i">+super + bracket{left,right}
+</a><a href="#h2-0-54" id="h2-0-54" class="i">+	bspc desktop -f {prev,next}
+</a><a href="#h2-0-55" id="h2-0-55" class="i">+
+</a><a href="#h2-0-56" id="h2-0-56" class="i">+super + ctrl + {h,j,k,l}
+</a><a href="#h2-0-57" id="h2-0-57" class="i">+	bspc node -p {west,south,north,east}
+</a><a href="#h2-0-58" id="h2-0-58" class="i">+
+</a><a href="#h2-0-59" id="h2-0-59" class="i">+super + ctrl + {_,shift + }space
+</a><a href="#h2-0-60" id="h2-0-60" class="i">+	bspc {node -p cancel,desktop -c}
+</a><a href="#h2-0-61" id="h2-0-61" class="i">+
+</a><a href="#h2-0-62" id="h2-0-62" class="i">+# expand the tiled space in the given direction
+</a><a href="#h2-0-63" id="h2-0-63" class="i">+super + alt + {h,j,k,l}
+</a><a href="#h2-0-64" id="h2-0-64" class="i">+	bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+</a><a href="#h2-0-65" id="h2-0-65" class="i">+
+</a><a href="#h2-0-66" id="h2-0-66" class="i">+# contract the tiled space in the given direction
+</a><a href="#h2-0-67" id="h2-0-67" class="i">+super + alt + shift + {h,j,k,l}
+</a><a href="#h2-0-68" id="h2-0-68" class="i">+	bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
+</a><a href="#h2-0-69" id="h2-0-69" class="i">+
+</a><a href="#h2-0-70" id="h2-0-70" class="i">+super + ctrl + {1-9}
+</a><a href="#h2-0-71" id="h2-0-71" class="i">+	bspc node -r 0.{1-9}
+</a><a href="#h2-0-72" id="h2-0-72" class="i">+
+</a><a href="#h2-0-73" id="h2-0-73" class="i">+super + {Left,Down,Up,Right}
+</a><a href="#h2-0-74" id="h2-0-74" class="i">+	xdo move {-x -20,-y +20,-y -20,-x +20}
+</a><a href="#h2-0-75" id="h2-0-75" class="i">+
+</a><a href="#h2-0-76" id="h2-0-76" class="i">+super + {_,shift + }{1-9,0}
+</a><a href="#h2-0-77" id="h2-0-77" class="i">+	bspc {desktop -f,node -d} &apos;^{1-9,10}&apos;
+</a><a href="#h2-0-78" id="h2-0-78" class="i">+
+</a><a href="#h2-0-79" id="h2-0-79" class="i">+super + shift + s
+</a><a href="#h2-0-80" id="h2-0-80" class="i">+  bspc node -g sticky
+</a><a href="#h2-0-81" id="h2-0-81" class="i">+
+</a><a href="#h2-0-82" id="h2-0-82" class="i">+~button1
+</a><a href="#h2-0-83" id="h2-0-83" class="i">+	bspc pointer -g focus
+</a><a href="#h2-0-84" id="h2-0-84" class="i">+
+</a><a href="#h2-0-85" id="h2-0-85" class="i">+super + button{1-3}
+</a><a href="#h2-0-86" id="h2-0-86" class="i">+	; bspc pointer -g {move,resize_side,resize_corner}
+</a><a href="#h2-0-87" id="h2-0-87" class="i">+
+</a><a href="#h2-0-88" id="h2-0-88" class="i">+super + @button{1-3}
+</a><a href="#h2-0-89" id="h2-0-89" class="i">+	bspc pointer -u
+</a><a href="#h2-0-90" id="h2-0-90" class="i">+
+</a><b>diff --git a/<a id="h3" href="../file/compton/.compton.conf.html">compton/.compton.conf</a> b/<a href="../file/compton/.compton.conf.html">compton/.compton.conf</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -1,18 +1,11 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="d">-#                                __
+</a><a href="#h3-0-1" id="h3-0-1" class="d">-#                               /\ \__
+</a><a href="#h3-0-2" id="h3-0-2" class="d">-#  ___    ___    ___ ___   _____\ \ ,_\   ___    ___
+</a><a href="#h3-0-3" id="h3-0-3" class="d">-# /&apos;___\ / __`\/&apos; __` __`\/\ &apos;__`\ \ \/  / __`\/&apos; _ `\
+</a><a href="#h3-0-4" id="h3-0-4" class="d">-#/\ \__//\ \L\ /\ \/\ \/\ \ \ \L\ \ \ \_/\ \L\ /\ \/\ \
+</a><a href="#h3-0-5" id="h3-0-5" class="d">-#\ \____\ \____\ \_\ \_\ \_\ \ ,__/\ \__\ \____\ \_\ \_\
+</a><a href="#h3-0-6" id="h3-0-6" class="d">-# \/____/\/___/ \/_/\/_/\/_/\ \ \/  \/__/\/___/ \/_/\/_/
+</a><a href="#h3-0-7" id="h3-0-7" class="d">-#                            \ \_\
+</a><a href="#h3-0-8" id="h3-0-8" class="d">-#                             \/_/
+</a><a href="#h3-0-9" id="h3-0-9" class="d">-shadow = false;
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+shadow = true;
+</a> no-dnd-shadow = true;
+ no-dock-shadow = false;
+ clear-shadow = true;
+<a href="#h3-0-14" id="h3-0-14" class="d">-shadow-radius = 11;
+</a><a href="#h3-0-15" id="h3-0-15" class="i">+shadow-radius = 1;
+</a> shadow-opacity = 0.4;
+<a href="#h3-0-17" id="h3-0-17" class="i">+shadow-offset-x = 1;
+</a><a href="#h3-0-18" id="h3-0-18" class="i">+shadow-offset-y = 1;
+</a> # shadow-red = 0.0;
+ # shadow-green = 0.0;
+ # shadow-blue = 0.0;
+<a href="#h3-1" id="h3-1" class="h">@@ -32,7 +25,7 @@ shadow-exclude = [
+</a> #menu-opacity = 0.8;
+ #inactive-opacity = 0.8;
+ # active-opacity = 0.8;
+<a href="#h3-1-3" id="h3-1-3" class="d">-# frame-opacity = 0.8;
+</a><a href="#h3-1-4" id="h3-1-4" class="i">+frame-opacity = 0.8;
+</a> #inactive-opacity-override = false;
+ #alpha-step = 0.06;
+ # inactive-dim = 0.2;
+<a href="#h3-2" id="h3-2" class="h">@@ -52,8 +45,8 @@ blur-background-exclude = [
+</a> # Fading
+ fading = true;
+ # fade-delta = 30;
+<a href="#h3-2-3" id="h3-2-3" class="d">-fade-in-step = 0.05;
+</a><a href="#h3-2-4" id="h3-2-4" class="d">-fade-out-step = 0.05;
+</a><a href="#h3-2-5" id="h3-2-5" class="i">+fade-in-step = 0.18;
+</a><a href="#h3-2-6" id="h3-2-6" class="i">+fade-out-step = 0.18;
+</a> # no-fading-openclose = true;
+ # no-fading-destroyed-argb = true;
+ fade-exclude = [ ];
+<b>diff --git a/<a id="h4" href="../file/cwm/.cwmrc.html">cwm/.cwmrc</a> b/<a href="../file/cwm/.cwmrc.html">cwm/.cwmrc</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -12,8 +12,8 @@ borderwidth 3
+</a> moveamount 10
+ 
+ # colors
+<a href="#h4-0-3" id="h4-0-3" class="d">-color activeborder   &apos;#63a690&apos;
+</a><a href="#h4-0-4" id="h4-0-4" class="d">-color inactiveborder &apos;#456472&apos;
+</a><a href="#h4-0-5" id="h4-0-5" class="i">+color activeborder   &apos;#3c5a5d&apos;
+</a><a href="#h4-0-6" id="h4-0-6" class="i">+color inactiveborder &apos;#374650&apos;
+</a> color font           &apos;#e8eaec&apos;
+ color menubg         &apos;#212121&apos;
+ color menufg         &apos;#e8eaec&apos;
+<a href="#h4-1" id="h4-1" class="h">@@ -24,6 +24,9 @@ color urgencyborder  &apos;#ef9a89&apos;
+</a> # autogroups
+ autogroup 2 Firefox
+ autogroup 3 mpv
+<a href="#h4-1-3" id="h4-1-3" class="i">+autogroup 6 Mumble
+</a><a href="#h4-1-4" id="h4-1-4" class="i">+
+</a><a href="#h4-1-5" id="h4-1-5" class="i">+sticky no
+</a> 
+ # menu
+ command term    /usr/local/bin/st
+<a href="#h4-2" id="h4-2" class="h">@@ -79,8 +82,8 @@ bind 4M-7     grouponly7
+</a> bind 4M-8     grouponly8
+ bind 4M-9     grouponly9
+ 
+<a href="#h4-2-3" id="h4-2-3" class="d">-bind 4M-r     restart
+</a><a href="#h4-2-4" id="h4-2-4" class="d">-bind 4M-q     quit
+</a><a href="#h4-2-5" id="h4-2-5" class="i">+bind 4M-r        restart
+</a><a href="#h4-2-6" id="h4-2-6" class="i">+bind 4M-Escape   quit
+</a> 
+ bind 4-d      exec
+ bind 4-n      ssh
+<b>diff --git a/<a id="h5" href="../file/gtk/.config/gtk-3.0/bookmarks.html">gtk/.config/gtk-3.0/bookmarks</a> b/<a href="../file/gtk/.config/gtk-3.0/bookmarks.html">gtk/.config/gtk-3.0/bookmarks</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -1,3 +1,4 @@
+</a><a href="#h5-0-0" id="h5-0-0" class="i">+file:///home/tudurom/tmp
+</a> file:///home/tudurom/school
+ file:///home/tudurom/problems
+ file:///gamez
+<b>diff --git a/<a id="h6" href="../file/scripts/.scripts/srht.html">scripts/.scripts/srht</a> b/<a href="../file/scripts/.scripts/srht.html">scripts/.scripts/srht</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -0,0 +1,4 @@
+</a><a href="#h6-0-0" id="h6-0-0" class="i">+curl \
+</a><a href="#h6-0-1" id="h6-0-1" class="i">+         -F key=$SRHT_TOKEN \
+</a><a href="#h6-0-2" id="h6-0-2" class="i">+         -F file=@example.png \
+</a><a href="#h6-0-3" id="h6-0-3" class="i">+         https://sr.ht/api/upload
+</a><b>diff --git a/<a id="h7" href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a> b/<a href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -1,20 +1,19 @@
+</a><a href="#h7-0-0" id="h7-0-0" class="d">-#! /bin/dash
+</a><a href="#h7-0-1" id="h7-0-1" class="i">+#! /bin/sh -x
+</a> #
+ # Set wallpaper
+ # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h7-0-7" id="h7-0-7" class="d">-DEFAULT_WALL=&quot;$HOME/wallpapers/moonbow.png&quot;
+</a><a href="#h7-0-8" id="h7-0-8" class="i">+DEFAULT_WALL=&quot;$HOME/wallpapers/venice.jpg&quot;
+</a> APRIL_WALL=&quot;$HOME/wallpapers/april_wall.png&quot;
+ 
+ if [ &quot;$(date +&quot;%d/%m&quot;)&quot; = &quot;01/04&quot; ]; then
+   feh -fill &quot;$APRIL_WALL&quot;
+ elif [ $# -ge 1 ]; then
+   option=&quot;fill&quot;
+<a href="#h7-0-15" id="h7-0-15" class="d">-  test -n $2 &amp;&amp; option=&quot;$2&quot;
+</a><a href="#h7-0-16" id="h7-0-16" class="i">+  test -n &quot;$2&quot; &amp;&amp; option=&quot;$2&quot;
+</a>   feh --bg-${option} $1
+ else
+<a href="#h7-0-19" id="h7-0-19" class="d">-  hsetroot -tile $DEFAULT_WALL
+</a><a href="#h7-0-20" id="h7-0-20" class="i">+  feh --bg-fill $DEFAULT_WALL
+</a> fi
+ 
+<a href="#h7-0-23" id="h7-0-23" class="d">-# vim: set ft=sh :
+</a><b>diff --git a/<a id="h8" href="../file/shell/.profile.html">shell/.profile</a> b/<a href="../file/shell/.profile.html">shell/.profile</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -2,6 +2,7 @@ export PATH=&quot;$PATH:$HOME/.scripts&quot;
+</a> export BSPWM_STATE=&quot;/tmp/bspwm-state.json&quot;
+ export PANEL_FIFO=&quot;/tmp/panel-fifo&quot;
+ test -f $HOME/.iotoken &amp;&amp; export IOUP_TOKEN=&quot;$(cat ~/.iotoken)&quot;
+<a href="#h8-0-3" id="h8-0-3" class="i">+test -f $HOME/.srtoken &amp;&amp; export SHRT_TOKEN=&quot;$(cat ~/.srtoken)&quot;
+</a> 
+ export GOROOT=&quot;/usr/lib/go&quot;
+ 
+<b>diff --git a/<a id="h9" href="../file/st.html">st</a> b/<a href="../file/st.html">st</a></b>
+<a href="#h9-0" id="h9-0" class="h">@@ -1 +1 @@
+</a><a href="#h9-0-0" id="h9-0-0" class="d">-Subproject commit 3bd7039c4fae1588318287db1a5578f4d1af56c3
+</a><a href="#h9-0-1" id="h9-0-1" class="i">+Subproject commit 01174f4fa182a2707c1ce6d822eea59fbd3fab34
+</a><b>diff --git a/<a id="h10" href="../file/sxhkd/.config/sxhkd/commons.html">sxhkd/.config/sxhkd/commons</a> b/<a href="../file/sxhkd/.config/sxhkd/commons.html">sxhkd/.config/sxhkd/commons</a></b>
+<a href="#h10-0" id="h10-0" class="h">@@ -1,54 +0,0 @@
+</a><a href="#h10-0-0" id="h10-0-0" class="d">-## wm-independent hotkeys
+</a><a href="#h10-0-1" id="h10-0-1" class="d">-
+</a><a href="#h10-0-2" id="h10-0-2" class="d">-# reload sxhkd
+</a><a href="#h10-0-3" id="h10-0-3" class="d">-super + Escape
+</a><a href="#h10-0-4" id="h10-0-4" class="d">-	pkill -USR1 -x sxhkd
+</a><a href="#h10-0-5" id="h10-0-5" class="d">-
+</a><a href="#h10-0-6" id="h10-0-6" class="d">-# launch dmenu
+</a><a href="#h10-0-7" id="h10-0-7" class="d">-super + space
+</a><a href="#h10-0-8" id="h10-0-8" class="d">-  ~/.scripts/run_dmenu
+</a><a href="#h10-0-9" id="h10-0-9" class="d">-
+</a><a href="#h10-0-10" id="h10-0-10" class="d">-# launch a term
+</a><a href="#h10-0-11" id="h10-0-11" class="d">-super + Return
+</a><a href="#h10-0-12" id="h10-0-12" class="d">-  st -g 100x30
+</a><a href="#h10-0-13" id="h10-0-13" class="d">-
+</a><a href="#h10-0-14" id="h10-0-14" class="d">-# screenshot
+</a><a href="#h10-0-15" id="h10-0-15" class="d">-Print
+</a><a href="#h10-0-16" id="h10-0-16" class="d">-  ~/.scripts/screenie
+</a><a href="#h10-0-17" id="h10-0-17" class="d">-
+</a><a href="#h10-0-18" id="h10-0-18" class="d">-# launch a browser
+</a><a href="#h10-0-19" id="h10-0-19" class="d">-super + shift + f
+</a><a href="#h10-0-20" id="h10-0-20" class="d">-  firefox
+</a><a href="#h10-0-21" id="h10-0-21" class="d">-
+</a><a href="#h10-0-22" id="h10-0-22" class="d">-# lock screen
+</a><a href="#h10-0-23" id="h10-0-23" class="d">-super + shift + x
+</a><a href="#h10-0-24" id="h10-0-24" class="d">-  lock.sh
+</a><a href="#h10-0-25" id="h10-0-25" class="d">-
+</a><a href="#h10-0-26" id="h10-0-26" class="d">-# media keys things
+</a><a href="#h10-0-27" id="h10-0-27" class="d">-XF86AudioRaiseVolume
+</a><a href="#h10-0-28" id="h10-0-28" class="d">-  amixer sset Master 5%+ unmute
+</a><a href="#h10-0-29" id="h10-0-29" class="d">-
+</a><a href="#h10-0-30" id="h10-0-30" class="d">-XF86AudioLowerVolume
+</a><a href="#h10-0-31" id="h10-0-31" class="d">-  amixer sset Master 5%- unmute
+</a><a href="#h10-0-32" id="h10-0-32" class="d">-
+</a><a href="#h10-0-33" id="h10-0-33" class="d">-XF86AudioMute
+</a><a href="#h10-0-34" id="h10-0-34" class="d">-  amixer sset Master toggle
+</a><a href="#h10-0-35" id="h10-0-35" class="d">-
+</a><a href="#h10-0-36" id="h10-0-36" class="d">-XF86MonBrightnessUp
+</a><a href="#h10-0-37" id="h10-0-37" class="d">-  light -A 10
+</a><a href="#h10-0-38" id="h10-0-38" class="d">-
+</a><a href="#h10-0-39" id="h10-0-39" class="d">-XF86MonBrightnessDown
+</a><a href="#h10-0-40" id="h10-0-40" class="d">-  light -U 10
+</a><a href="#h10-0-41" id="h10-0-41" class="d">-
+</a><a href="#h10-0-42" id="h10-0-42" class="d">-XF86AudioPlay
+</a><a href="#h10-0-43" id="h10-0-43" class="d">-  mpc toggle
+</a><a href="#h10-0-44" id="h10-0-44" class="d">-
+</a><a href="#h10-0-45" id="h10-0-45" class="d">-XF86AudioStop
+</a><a href="#h10-0-46" id="h10-0-46" class="d">-  mpc stop
+</a><a href="#h10-0-47" id="h10-0-47" class="d">-
+</a><a href="#h10-0-48" id="h10-0-48" class="d">-XF86AudioNext
+</a><a href="#h10-0-49" id="h10-0-49" class="d">-  mpc next
+</a><a href="#h10-0-50" id="h10-0-50" class="d">-
+</a><a href="#h10-0-51" id="h10-0-51" class="d">-XF86AudioPrev
+</a><a href="#h10-0-52" id="h10-0-52" class="d">-  mpc prev
+</a><a href="#h10-0-53" id="h10-0-53" class="d">-
+</a><b>diff --git a/<a id="h11" href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a> b/<a href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a></b>
+<a href="#h11-0" id="h11-0" class="h">@@ -0,0 +1,45 @@
+</a><a href="#h11-0-0" id="h11-0-0" class="i">+# reload sxhkd
+</a><a href="#h11-0-1" id="h11-0-1" class="i">+super + Escape
+</a><a href="#h11-0-2" id="h11-0-2" class="i">+  pkill -USR1 -x sxhkd
+</a><a href="#h11-0-3" id="h11-0-3" class="i">+
+</a><a href="#h11-0-4" id="h11-0-4" class="i">+super + Return
+</a><a href="#h11-0-5" id="h11-0-5" class="i">+  st -g 100x30
+</a><a href="#h11-0-6" id="h11-0-6" class="i">+
+</a><a href="#h11-0-7" id="h11-0-7" class="i">+super + space
+</a><a href="#h11-0-8" id="h11-0-8" class="i">+  run_dmenu
+</a><a href="#h11-0-9" id="h11-0-9" class="i">+
+</a><a href="#h11-0-10" id="h11-0-10" class="i">+super + shift + f
+</a><a href="#h11-0-11" id="h11-0-11" class="i">+  firefox
+</a><a href="#h11-0-12" id="h11-0-12" class="i">+
+</a><a href="#h11-0-13" id="h11-0-13" class="i">+super + shift + x
+</a><a href="#h11-0-14" id="h11-0-14" class="i">+  slock
+</a><a href="#h11-0-15" id="h11-0-15" class="i">+
+</a><a href="#h11-0-16" id="h11-0-16" class="i">+XF86AudioRaiseVolume
+</a><a href="#h11-0-17" id="h11-0-17" class="i">+  amixer sset Master 5%+ unmute
+</a><a href="#h11-0-18" id="h11-0-18" class="i">+
+</a><a href="#h11-0-19" id="h11-0-19" class="i">+XF86AudioLowerVolume
+</a><a href="#h11-0-20" id="h11-0-20" class="i">+  amixer sset Master 5%- unmute
+</a><a href="#h11-0-21" id="h11-0-21" class="i">+
+</a><a href="#h11-0-22" id="h11-0-22" class="i">+XF86AudioMute
+</a><a href="#h11-0-23" id="h11-0-23" class="i">+  amixer sset Master toggle
+</a><a href="#h11-0-24" id="h11-0-24" class="i">+
+</a><a href="#h11-0-25" id="h11-0-25" class="i">+XF86MonBrightnessUp
+</a><a href="#h11-0-26" id="h11-0-26" class="i">+  xbacklight -inc 10%
+</a><a href="#h11-0-27" id="h11-0-27" class="i">+
+</a><a href="#h11-0-28" id="h11-0-28" class="i">+XF86MonBrightnessDown
+</a><a href="#h11-0-29" id="h11-0-29" class="i">+  xbacklight -dec 10%
+</a><a href="#h11-0-30" id="h11-0-30" class="i">+
+</a><a href="#h11-0-31" id="h11-0-31" class="i">+XF86AudioPlay
+</a><a href="#h11-0-32" id="h11-0-32" class="i">+  mpc toggle
+</a><a href="#h11-0-33" id="h11-0-33" class="i">+
+</a><a href="#h11-0-34" id="h11-0-34" class="i">+XF86AudioStop
+</a><a href="#h11-0-35" id="h11-0-35" class="i">+  mpc stop
+</a><a href="#h11-0-36" id="h11-0-36" class="i">+
+</a><a href="#h11-0-37" id="h11-0-37" class="i">+XF86AudioNext
+</a><a href="#h11-0-38" id="h11-0-38" class="i">+  mpc next
+</a><a href="#h11-0-39" id="h11-0-39" class="i">+
+</a><a href="#h11-0-40" id="h11-0-40" class="i">+XF86AudioPrev
+</a><a href="#h11-0-41" id="h11-0-41" class="i">+  mpc prev
+</a><a href="#h11-0-42" id="h11-0-42" class="i">+
+</a><a href="#h11-0-43" id="h11-0-43" class="i">+Print
+</a><a href="#h11-0-44" id="h11-0-44" class="i">+  screenie
+</a><b>diff --git a/<a id="h12" href="../file/wmrc/.scripts/focusw.html">wmrc/.scripts/focusw</a> b/<a href="../file/wmrc/.scripts/focusw.html">wmrc/.scripts/focusw</a></b>
+<a href="#h12-0" id="h12-0" class="h">@@ -5,8 +5,8 @@
+</a> #
+ 
+ BW=${BW:-3}                    # border width
+<a href="#h12-0-3" id="h12-0-3" class="d">-ACTIVE=${ACTIVE:-0x63a690}     # active border color
+</a><a href="#h12-0-4" id="h12-0-4" class="d">-INACTIVE=${INACTIVE:-0x456472} # inactive border color
+</a><a href="#h12-0-5" id="h12-0-5" class="i">+ACTIVE=${ACTIVE:-0x3c5a5d}     # active border color
+</a><a href="#h12-0-6" id="h12-0-6" class="i">+INACTIVE=${INACTIVE:-0x374650} # inactive border color
+</a> 
+ # get current window id
+ CUR=$(pfw)
+<b>diff --git a/<a id="h13" href="../file/wmrc/.scripts/infobar.html">wmrc/.scripts/infobar</a> b/<a href="../file/wmrc/.scripts/infobar.html">wmrc/.scripts/infobar</a></b>
+<a href="#h13-0" id="h13-0" class="h">@@ -1,11 +1,15 @@
+</a><a href="#h13-0-0" id="h13-0-0" class="d">-#! /bin/bash
+</a><a href="#h13-0-1" id="h13-0-1" class="i">+#! /bin/sh -x
+</a> # A little panel that shows the current time in the corner
+ # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h13-0-6" id="h13-0-6" class="i">+PANEL_ACCENT_COLOR=&quot;$(xrq &apos;*.color9&apos;)&quot;
+</a><a href="#h13-0-7" id="h13-0-7" class="i">+PANEL_BG_COLOR=&quot;$(xrq &apos;*background&apos;)&quot;
+</a><a href="#h13-0-8" id="h13-0-8" class="i">+PANEL_FG_COLOR=&quot;$(xrq &apos;*.color14&apos;)&quot;
+</a><a href="#h13-0-9" id="h13-0-9" class="i">+
+</a> clock() {
+   format=&apos;%a %d %B %H:%M&apos;
+<a href="#h13-0-12" id="h13-0-12" class="d">-  echo -e &quot;%{c}%{T2}%{F$PANEL_ACCENT_COLOR}$ICON_CLOCK%{T-}%{F-} $(date &quot;+$format&quot;)&quot;
+</a><a href="#h13-0-13" id="h13-0-13" class="i">+  echo &quot;%{c}%{T2}%{F$PANEL_ACCENT_COLOR}%{T-}%{F-} $(date &quot;+$format&quot;)&quot;
+</a> }
+ 
+ width=110
+<a href="#h13-1" id="h13-1" class="h">@@ -19,7 +23,7 @@ panel_width=$(( width + 2 * GENERAL_GAP ))
+</a> panel_height=$(( height + 2 * GENERAL_GAP ))
+ panel_x=$(( (pd_x + pd_width) - panel_width - GENERAL_GAP ))
+ panel_y=$(( (pd_y + pd_height) - panel_height - GENERAL_GAP ))
+<a href="#h13-1-3" id="h13-1-3" class="d">-panel_opts=&quot;$PANEL_OPTS -g ${panel_width}x${panel_height}+${panel_x}+${panel_y}&quot;
+</a><a href="#h13-1-4" id="h13-1-4" class="i">+panel_opts=&quot;-d -a 30 -f $PANEL_FONT -f $PANEL_ICON_FONT -B $PANEL_BG_COLOR -F $PANEL_FG_COLOR -g ${panel_width}x${panel_height}+${panel_x}+${panel_y}&quot;
+</a> 
+ while true; do
+   clock
+<b>diff --git a/<a id="h14" href="../file/wmrc/.scripts/panelsrc.html">wmrc/.scripts/panelsrc</a> b/<a href="../file/wmrc/.scripts/panelsrc.html">wmrc/.scripts/panelsrc</a></b>
+<a href="#h14-0" id="h14-0" class="h">@@ -4,10 +4,6 @@
+</a> #export PANEL_FONT=&quot;-*-erusfont-medium-*-*-*-11-*-*-*-*-*-*-*&quot;
+ export PANEL_FONT=&quot;-*-anorexia-medium-*-*-*-11-*-*-*-*-*-*-*&quot;
+ export PANEL_ICON_FONT=&quot;-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*&quot;
+<a href="#h14-0-3" id="h14-0-3" class="d">-export PANEL_BG_COLOR=&quot;#1d2a30&quot;
+</a><a href="#h14-0-4" id="h14-0-4" class="d">-export PANEL_FG_COLOR=&quot;#71c2af&quot;
+</a><a href="#h14-0-5" id="h14-0-5" class="d">-export PANEL_ACCENT_COLOR=&quot;#c27171&quot;
+</a><a href="#h14-0-6" id="h14-0-6" class="d">-export PANEL_OPTS=&quot;-d -a 30 -f $PANEL_FONT -f $PANEL_ICON_FONT -B $PANEL_BG_COLOR -F $PANEL_FG_COLOR&quot;
+</a> 
+ export PANEL_STATUS_HEIGHT=&quot;30&quot;
+ 
+<b>diff --git a/<a id="h15" href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a> b/<a href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a></b>
+<a href="#h15-0" id="h15-0" class="h">@@ -3,10 +3,7 @@
+</a> # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h15-0-3" id="h15-0-3" class="d">-compton -b
+</a><a href="#h15-0-4" id="h15-0-4" class="d">-sxhkd -c ~/.config/sxhkd/sxhkdrc_wmutils ~/.config/sxhkd/commons &amp;
+</a> wew | wewhandle &amp;
+<a href="#h15-0-6" id="h15-0-6" class="d">-wall-e &amp;
+</a> groupbar &amp;
+ statusbar &amp;
+ xwait
+<b>diff --git a/<a id="h16" href="../file/wmrc/.scripts/tilew.html">wmrc/.scripts/tilew</a> b/<a href="../file/wmrc/.scripts/tilew.html">wmrc/.scripts/tilew</a></b>
+<a href="#h16-0" id="h16-0" class="h">@@ -5,7 +5,7 @@
+</a> # arrange windows in a tiled pattern
+ 
+ # default values for gaps and master area
+<a href="#h16-0-3" id="h16-0-3" class="d">-PANEL=&quot;$(( PANEL_STATUS_HEIGHT ))&quot;
+</a><a href="#h16-0-4" id="h16-0-4" class="i">+PANEL=&quot;${PANEL:-$(( PANEL_STATUS_HEIGHT ))}&quot;
+</a> test `pfd` = `ppd` || PANEL=0
+ GAP=${GAP:-$GENERAL_GAP}
+ MASTER=&quot;$(( $(dattr -w $(pfd)) / 2 ))&quot;
+<b>diff --git a/<a id="h17" href="../file/x/.xinitrc.html">x/.xinitrc</a> b/<a href="../file/x/.xinitrc.html">x/.xinitrc</a></b>
+<a href="#h17-0" id="h17-0" class="h">@@ -44,18 +44,33 @@ fi
+</a> xset +fp ~/.fonts
+ xset fp rehash
+ 
+<a href="#h17-0-3" id="h17-0-3" class="i">+# Start nice programs {{{
+</a><a href="#h17-0-4" id="h17-0-4" class="i">+
+</a> # Map Caps to Ctrl
+ setxkbmap -option ctrl:nocaps
+ # URxvt clipboard magic
+<a href="#h17-0-8" id="h17-0-8" class="d">-autocutsel -selection clipboard -fork &amp;
+</a><a href="#h17-0-9" id="h17-0-9" class="i">+autocutsel -selection clipboard -fork
+</a> 
+<a href="#h17-0-11" id="h17-0-11" class="i">+# Multi monitor
+</a> screenlayout
+<a href="#h17-0-13" id="h17-0-13" class="d">-# It&apos;s unclutter-xfixes
+</a><a href="#h17-0-14" id="h17-0-14" class="i">+# Github: airblader/unclutter-xfixes
+</a> unclutter -b
+<a href="#h17-0-16" id="h17-0-16" class="i">+
+</a><a href="#h17-0-17" id="h17-0-17" class="i">+# Music!
+</a> if ! pidof mpd; then
+   mpd &amp;
+ fi
+<a href="#h17-0-21" id="h17-0-21" class="i">+# Set cursor from X to pointer
+</a> xsetroot -cursor_name left_ptr &amp;
+<a href="#h17-0-23" id="h17-0-23" class="i">+# Listen to popup requests
+</a> notifyd &amp;
+<a href="#h17-0-25" id="h17-0-25" class="i">+# Window compositor
+</a><a href="#h17-0-26" id="h17-0-26" class="i">+compton -b
+</a><a href="#h17-0-27" id="h17-0-27" class="i">+# Wallpaper
+</a><a href="#h17-0-28" id="h17-0-28" class="i">+wall-e &amp;
+</a><a href="#h17-0-29" id="h17-0-29" class="i">+
+</a><a href="#h17-0-30" id="h17-0-30" class="i">+# }}}
+</a> 
+<a href="#h17-0-32" id="h17-0-32" class="d">-. $HOME/.scripts/startwmutils
+</a><a href="#h17-0-33" id="h17-0-33" class="i">+statusbar &amp;
+</a><a href="#h17-0-34" id="h17-0-34" class="i">+sxhkd -c ~/.config/sxhkd/sxhkdrc_cwm ~/.config/sxhkd/commons &amp;
+</a><a href="#h17-0-35" id="h17-0-35" class="i">+exec cwm
+</a><b>diff --git a/<a id="h18" href="../file/x/.xres/colors/barrage.html">x/.xres/colors/barrage</a> b/<a href="../file/x/.xres/colors/barrage.html">x/.xres/colors/barrage</a></b>
+<a href="#h18-0" id="h18-0" class="h">@@ -0,0 +1,18 @@
+</a><a href="#h18-0-0" id="h18-0-0" class="i">+*background: #1d1f21
+</a><a href="#h18-0-1" id="h18-0-1" class="i">+*foreground: #7b8695
+</a><a href="#h18-0-2" id="h18-0-2" class="i">+*color0: #404040
+</a><a href="#h18-0-3" id="h18-0-3" class="i">+*color1: #785561
+</a><a href="#h18-0-4" id="h18-0-4" class="i">+*color2: #58614f
+</a><a href="#h18-0-5" id="h18-0-5" class="i">+*color3: #7e735a
+</a><a href="#h18-0-6" id="h18-0-6" class="i">+*color4: #424a64
+</a><a href="#h18-0-7" id="h18-0-7" class="i">+*color5: #4d3e4c
+</a><a href="#h18-0-8" id="h18-0-8" class="i">+*color6: #3c5a5d
+</a><a href="#h18-0-9" id="h18-0-9" class="i">+*color7: #7b8695
+</a><a href="#h18-0-10" id="h18-0-10" class="i">+*color8: #464646
+</a><a href="#h18-0-11" id="h18-0-11" class="i">+*color9: #8a6270
+</a><a href="#h18-0-12" id="h18-0-12" class="i">+*color10: #6d7762
+</a><a href="#h18-0-13" id="h18-0-13" class="i">+*color11: #8d8063
+</a><a href="#h18-0-14" id="h18-0-14" class="i">+*color12: #626c94
+</a><a href="#h18-0-15" id="h18-0-15" class="i">+*color13: #665064
+</a><a href="#h18-0-16" id="h18-0-16" class="i">+*color14: #548084
+</a><a href="#h18-0-17" id="h18-0-17" class="i">+*color15: #94a1B3
+</a></pre>
+</div>
+</body>
+</html>

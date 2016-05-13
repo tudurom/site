@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> infobar (714B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> infobar (952B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -43,15 +43,25 @@
 <a href="#l25" id="l25">25</a>
 <a href="#l26" id="l26">26</a>
 <a href="#l27" id="l27">27</a>
+<a href="#l28" id="l28">28</a>
+<a href="#l29" id="l29">29</a>
+<a href="#l30" id="l30">30</a>
+<a href="#l31" id="l31">31</a>
+<a href="#l32" id="l32">32</a>
 </pre></td><td><pre>
-#! /bin/bash
+#! /bin/sh
 # A little panel that shows the current time in the corner
 # (c) tudurom 2016 - wtfpl
 #
 
+PANEL_ACCENT_COLOR=&quot;$(xrq &apos;*.color9&apos;)&quot;
+PANEL_BG_COLOR=&quot;$(xrq &apos;*background&apos;)&quot;
+PANEL_FG_COLOR=&quot;$(xrq &apos;*.color14&apos;)&quot;
+PANEL_BORDER_COLOR=&quot;$(xrq &apos;*.color6&apos;)&quot;
+
 clock() {
   format=&apos;%a %d %B %H:%M&apos;
-  echo -e &quot;%{c}%{T2}%{F$PANEL_ACCENT_COLOR}$ICON_CLOCK%{T-}%{F-} $(date &quot;+$format&quot;)&quot;
+  echo &quot;%{c}%{T2}%{F$PANEL_ACCENT_COLOR}%{T-}%{F-} $(date &quot;+$format&quot;)&quot;
 }
 
 width=110
@@ -65,7 +75,7 @@ panel_width=$(( width + 2 * GENERAL_GAP ))
 panel_height=$(( height + 2 * GENERAL_GAP ))
 panel_x=$(( (pd_x + pd_width) - panel_width - GENERAL_GAP ))
 panel_y=$(( (pd_y + pd_height) - panel_height - GENERAL_GAP ))
-panel_opts=&quot;$PANEL_OPTS -g ${panel_width}x${panel_height}+${panel_x}+${panel_y}&quot;
+panel_opts=&quot;-d -a 30 -f $PANEL_FONT -f $PANEL_ICON_FONT -B $PANEL_BG_COLOR -F $PANEL_FG_COLOR -R $PANEL_BORDER_COLOR -r 3 -g ${panel_width}x${panel_height}+${panel_x}+${panel_y}&quot;
 
 while true; do
   clock

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>cwm now - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/906e5c7859dfc45c436fc1f0ab5559520892a989.html">906e5c7859dfc45c436fc1f0ab5559520892a989</a>
+<b>parent</b> <a href="../commit/861ec2e81ff39274d847c68e139385644d3664db.html">861ec2e81ff39274d847c68e139385644d3664db</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri May 13 14:12:10 +0300
+
+cwm now
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">cwm/.cwmrc</a></td><td> | </td><td class="num">4</td><td><span class="i">+++</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h1">scripts/.scripts/screenlayout</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h2">scripts/.scripts/url-open</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h3">st</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h4">startpage/startpage</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h5">wmrc/.scripts/infobar</a></td><td> | </td><td class="num">5</td><td><span class="i">+++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h6">wmrc/.scripts/musicbar</a></td><td> | </td><td class="num">7</td><td><span class="i">++++++</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h7">wmrc/.scripts/notifyd</a></td><td> | </td><td class="num">10</td><td><span class="i">+++++</span><span class="d">-----</span></td></tr>
+<tr><td><a href="#h8">wmrc/.scripts/panelsrc</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h9">wmrc/.scripts/statusbar</a></td><td> | </td><td class="num">5</td><td><span class="i">++</span><span class="d">---</span></td></tr>
+<tr><td><a href="#h10">x/.xinitrc</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h11">x/.xres/colors/moonbow</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h12">x/.xres/urxvt</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+</table>13 files changed, 28 insertions(+), 21 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/cwm/.cwmrc.html">cwm/.cwmrc</a> b/<a href="../file/cwm/.cwmrc.html">cwm/.cwmrc</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -29,7 +29,9 @@ autogroup 6 Mumble
+</a> sticky no
+ 
+ # menu
+<a href="#h0-0-3" id="h0-0-3" class="d">-command term    /usr/local/bin/st
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+command term    /usr/local/bin/st -g 100x30
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+command lock    /usr/bin/slock
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+command firefox /usr/bin/firefox
+</a> 
+ # binds
+ bind 4-v      vmaximize
+<b>diff --git a/<a id="h1" href="../file/scripts/.scripts/screenlayout.html">scripts/.scripts/screenlayout</a> b/<a href="../file/scripts/.scripts/screenlayout.html">scripts/.scripts/screenlayout</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -2,7 +2,7 @@
+</a> 
+ LAPTOP_SCREEN=&quot;$(xrandr | grep &quot;LVDS-*[0-9]&quot; | cut -d&apos; &apos; -f1)&quot;
+ 
+<a href="#h1-0-3" id="h1-0-3" class="d">-single_ext=&quot;off&quot;
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+single_ext=&quot;on&quot;
+</a> ext_monitor=$(xrandr | grep &quot; connected&quot; | grep -v &quot;$LAPTOP_SCREEN&quot; | awk &apos;{print $1}&apos;)
+ if [ $ext_monitor = &quot;&quot; ]; then
+   xrandr --output &quot;$LAPTOP_SCREEN&quot; --primary
+<b>diff --git a/<a id="h2" href="../file/scripts/.scripts/url-open.html">scripts/.scripts/url-open</a> b/<a href="../file/scripts/.scripts/url-open.html">scripts/.scripts/url-open</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -7,7 +7,7 @@ monitor_width=&quot;$(dattr -w $(ppd))&quot;
+</a> font=&quot;-benis-lemon-medium-r-normal--10-110-75-75-m-50-*&quot;
+ 
+ while read -r line; do
+<a href="#h2-0-3" id="h2-0-3" class="d">-  echo $line
+</a><a href="#h2-0-4" id="h2-0-4" class="d">-done | dmenu -s 0 -nf &quot;#71c2af&quot; -nb &quot;#273941&quot; -sb &quot;#1d2a30&quot; -sf &quot;#c27171&quot; -i -h 30 -w &quot;${monitor_width}&quot; -x 0 -y 0 -fn &quot;${font}&quot; -p &quot;&gt;&quot; -l 3 | xargs -r xdg-open
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+  echo &quot;$line&quot;
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+done | dmenu -s 0 -nf &quot;#71c2af&quot; -nb &quot;#273941&quot; -sb &quot;#1d2a30&quot; -sf &quot;#c27171&quot; -i -h 30 -w &quot;${monitor_width}&quot; -x 0 -y 0 -fn &quot;${font}&quot; -p &quot;&gt;&quot; -l 3 | xargs xdg-open
+</a> 
+ # vim: set ft=sh :
+<b>diff --git a/<a id="h3" href="../file/st.html">st</a> b/<a href="../file/st.html">st</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -1 +1 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="d">-Subproject commit 01174f4fa182a2707c1ce6d822eea59fbd3fab34
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+Subproject commit da819f561811204f6da7b51bfc6d4324fb44e7ae
+</a><b>diff --git a/<a id="h4" href="../file/startpage/startpage.html">startpage/startpage</a> b/<a href="../file/startpage/startpage.html">startpage/startpage</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -1 +1 @@
+</a><a href="#h4-0-0" id="h4-0-0" class="d">-Subproject commit b9e0b3556d3c34639f5384f9da32e790aab796f7
+</a><a href="#h4-0-1" id="h4-0-1" class="i">+Subproject commit 9c734bcb9721c677310ed250624a295202c31ebd
+</a><b>diff --git a/<a id="h5" href="../file/wmrc/.scripts/infobar.html">wmrc/.scripts/infobar</a> b/<a href="../file/wmrc/.scripts/infobar.html">wmrc/.scripts/infobar</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h5-0-0" id="h5-0-0" class="d">-#! /bin/sh -x
+</a><a href="#h5-0-1" id="h5-0-1" class="i">+#! /bin/sh
+</a> # A little panel that shows the current time in the corner
+ # (c) tudurom 2016 - wtfpl
+ #
+<a href="#h5-1" id="h5-1" class="h">@@ -6,6 +6,7 @@
+</a> PANEL_ACCENT_COLOR=&quot;$(xrq &apos;*.color9&apos;)&quot;
+ PANEL_BG_COLOR=&quot;$(xrq &apos;*background&apos;)&quot;
+ PANEL_FG_COLOR=&quot;$(xrq &apos;*.color14&apos;)&quot;
+<a href="#h5-1-3" id="h5-1-3" class="i">+PANEL_BORDER_COLOR=&quot;$(xrq &apos;*.color6&apos;)&quot;
+</a> 
+ clock() {
+   format=&apos;%a %d %B %H:%M&apos;
+<a href="#h5-2" id="h5-2" class="h">@@ -23,7 +24,7 @@ panel_width=$(( width + 2 * GENERAL_GAP ))
+</a> panel_height=$(( height + 2 * GENERAL_GAP ))
+ panel_x=$(( (pd_x + pd_width) - panel_width - GENERAL_GAP ))
+ panel_y=$(( (pd_y + pd_height) - panel_height - GENERAL_GAP ))
+<a href="#h5-2-3" id="h5-2-3" class="d">-panel_opts=&quot;-d -a 30 -f $PANEL_FONT -f $PANEL_ICON_FONT -B $PANEL_BG_COLOR -F $PANEL_FG_COLOR -g ${panel_width}x${panel_height}+${panel_x}+${panel_y}&quot;
+</a><a href="#h5-2-4" id="h5-2-4" class="i">+panel_opts=&quot;-d -a 30 -f $PANEL_FONT -f $PANEL_ICON_FONT -B $PANEL_BG_COLOR -F $PANEL_FG_COLOR -R $PANEL_BORDER_COLOR -r 3 -g ${panel_width}x${panel_height}+${panel_x}+${panel_y}&quot;
+</a> 
+ while true; do
+   clock
+<b>diff --git a/<a id="h6" href="../file/wmrc/.scripts/musicbar.html">wmrc/.scripts/musicbar</a> b/<a href="../file/wmrc/.scripts/musicbar.html">wmrc/.scripts/musicbar</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -1,9 +1,14 @@
+</a><a href="#h6-0-0" id="h6-0-0" class="d">-#! /bin/bash
+</a><a href="#h6-0-1" id="h6-0-1" class="i">+#! /bin/sh
+</a> #
+ # Little panel to show current playing song
+ # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h6-0-7" id="h6-0-7" class="i">+PANEL_ACCENT_COLOR=&quot;$(xrq &apos;*.color9&apos;)&quot;
+</a><a href="#h6-0-8" id="h6-0-8" class="i">+PANEL_BG_COLOR=&quot;$(xrq &apos;*.background&apos;)&quot;
+</a><a href="#h6-0-9" id="h6-0-9" class="i">+PANEL_FG_COLOR=&quot;$(xrq &apos;*.color14&apos;)&quot;
+</a><a href="#h6-0-10" id="h6-0-10" class="i">+PANEL_BORDER_COLOR=&quot;$(xrq &apos;*.color6&apos;)&quot;
+</a><a href="#h6-0-11" id="h6-0-11" class="i">+
+</a> last_title=&quot;-&quot;
+ music() {
+   if [ $(mpc status | wc -l ) -eq 3 ]; then
+<b>diff --git a/<a id="h7" href="../file/wmrc/.scripts/notifyd.html">wmrc/.scripts/notifyd</a> b/<a href="../file/wmrc/.scripts/notifyd.html">wmrc/.scripts/notifyd</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -16,10 +16,10 @@ DISPLAY_Y=&quot;$(dattr -y `ppd`)&quot;
+</a> DISPLAY_W=&quot;$(dattr -w `ppd`)&quot;
+ DISPLAY_H=&quot;$(dattr -h `ppd`)&quot;
+ 
+<a href="#h7-0-3" id="h7-0-3" class="d">-NOTIFY_W=&quot;${NOTIFY_W:-150}&quot;
+</a><a href="#h7-0-4" id="h7-0-4" class="d">-NOTIFY_H=&quot;${NOTIFY_H:-35}&quot;
+</a><a href="#h7-0-5" id="h7-0-5" class="d">-NOTIFY_X=&quot;$(( DISPLAY_X + DISPLAY_W - GENERAL_GAP ))&quot;
+</a><a href="#h7-0-6" id="h7-0-6" class="d">-NOTIFY_Y=&quot;$GENERAL_GAP&quot;
+</a><a href="#h7-0-7" id="h7-0-7" class="i">+NOTIFY_W=&quot;$(( 110 + 2 * GENERAL_GAP ))&quot;
+</a><a href="#h7-0-8" id="h7-0-8" class="i">+NOTIFY_H=&quot;$(( 5 + 2 * GENERAL_GAP  ))&quot;
+</a><a href="#h7-0-9" id="h7-0-9" class="i">+NOTIFY_X=&quot;$(( DISPLAY_X + DISPLAY_W - NOTIFY_W - GENERAL_GAP ))&quot;
+</a><a href="#h7-0-10" id="h7-0-10" class="i">+NOTIFY_Y=&quot;$(( DISPLAY_Y + DISPLAY_H - NOTIFY_H - GENERAL_GAP ))&quot;
+</a> 
+ n=0
+ echo &quot;$n&quot; &gt; &quot;$NOTIFY_COUNTER_PATH&quot;
+<a href="#h7-1" id="h7-1" class="h">@@ -31,7 +31,7 @@ tail -f &quot;$NOTIFY_FIFO_PATH&quot; | while IFS= read -r message; do
+</a>   echo &quot;$n&quot; &gt; &quot;$NOTIFY_COUNTER_PATH&quot;
+ 
+   {
+<a href="#h7-1-3" id="h7-1-3" class="d">-    popup $(( NOTIFY_X - $NOTIFY_W )) $(( DISPLAY_H - (NOTIFY_H + NOTIFY_Y) * n )) $NOTIFY_W $NOTIFY_H &quot;$message&quot;
+</a><a href="#h7-1-4" id="h7-1-4" class="i">+    popup $(( NOTIFY_X - NOTIFY_W )) $(( DISPLAY_H - (NOTIFY_H + NOTIFY_Y) * n )) $NOTIFY_W $NOTIFY_H &quot;$message&quot;
+</a>     n=&quot;$(cat &quot;$NOTIFY_COUNTER_PATH&quot;)&quot;
+     n=&quot;$(( n - 1 ))&quot;
+     echo &quot;$n&quot; &gt; &quot;$NOTIFY_COUNTER_PATH&quot;
+<b>diff --git a/<a id="h8" href="../file/wmrc/.scripts/panelsrc.html">wmrc/.scripts/panelsrc</a> b/<a href="../file/wmrc/.scripts/panelsrc.html">wmrc/.scripts/panelsrc</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -2,7 +2,7 @@
+</a> # (c) tudurom 2016 - wtfpl
+ 
+ #export PANEL_FONT=&quot;-*-erusfont-medium-*-*-*-11-*-*-*-*-*-*-*&quot;
+<a href="#h8-0-3" id="h8-0-3" class="d">-export PANEL_FONT=&quot;-*-anorexia-medium-*-*-*-11-*-*-*-*-*-*-*&quot;
+</a><a href="#h8-0-4" id="h8-0-4" class="i">+export PANEL_FONT=&quot;-*-gohufont-medium-*-*-*-11-*-*-*-*-*-*-*&quot;
+</a> export PANEL_ICON_FONT=&quot;-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*&quot;
+ 
+ export PANEL_STATUS_HEIGHT=&quot;30&quot;
+<b>diff --git a/<a id="h9" href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a> b/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a></b>
+<a href="#h9-0" id="h9-0" class="h">@@ -67,7 +67,7 @@ is_int() {
+</a>   # Gonna position it centered and respect the gaps
+   BAR_OPTS=&quot;${BAR_OPTS} -g ${BAR_WIDTH}x${BAR_HEIGHT}+${BAR_X}+${BAR_Y}&quot;
+   # Colors
+<a href="#h9-0-3" id="h9-0-3" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -B ${CB} -F ${CF} -U ${C1}&quot;
+</a><a href="#h9-0-4" id="h9-0-4" class="i">+  BAR_OPTS=&quot;${BAR_OPTS} -B ${CB} -F ${CF}&quot;
+</a>   BAR_OPTS=&quot;${BAR_OPTS} -u 2&quot;
+   BAR_OPTS=&quot;${BAR_OPTS} -f ${PANEL_FONT} -f ${PANEL_ICON_FONT}&quot;
+ 
+<a href="#h9-1" id="h9-1" class="h">@@ -80,8 +80,7 @@ is_int() {
+</a>   # If it&apos;s first of April, show the Epoch time
+   test &quot;$(date +&quot;%d %m&quot;)&quot; = &quot;01 04&quot; &amp;&amp; time_format=&apos;%s&apos;
+   while true; do
+<a href="#h9-1-3" id="h9-1-3" class="d">-    # That LC_ALL=C is to disable localization. Still thinking about it
+</a><a href="#h9-1-4" id="h9-1-4" class="d">-    echo &quot;T%{F$C14}%{F-} $(date +&quot;$time_format&quot;)&quot;
+</a><a href="#h9-1-5" id="h9-1-5" class="i">+    echo &quot;T%{F$C14}%{F-} $(date +&quot;$time_format&quot;)&quot;
+</a>     sleep 10
+   done &gt; &quot;$FIFO_PATH&quot; &amp;
+ 
+<b>diff --git a/<a id="h10" href="../file/x/.xinitrc.html">x/.xinitrc</a> b/<a href="../file/x/.xinitrc.html">x/.xinitrc</a></b>
+<a href="#h10-0" id="h10-0" class="h">@@ -71,6 +71,6 @@ wall-e &amp;
+</a> 
+ # }}}
+ 
+<a href="#h10-0-3" id="h10-0-3" class="d">-statusbar &amp;
+</a><a href="#h10-0-4" id="h10-0-4" class="i">+infobar &amp;
+</a> sxhkd -c ~/.config/sxhkd/sxhkdrc_cwm ~/.config/sxhkd/commons &amp;
+ exec cwm
+<b>diff --git a/<a id="h11" href="../file/x/.xres/colors/moonbow.html">x/.xres/colors/moonbow</a> b/<a href="../file/x/.xres/colors/moonbow.html">x/.xres/colors/moonbow</a></b>
+<a href="#h11-0" id="h11-0" class="h">@@ -4,7 +4,7 @@
+</a> *.cursorColor:  #7b8695
+ 
+ ! black
+<a href="#h11-0-3" id="h11-0-3" class="d">-*.color0:       #2b363e
+</a><a href="#h11-0-4" id="h11-0-4" class="i">+*.color0:       #1b2227
+</a> *.color8:       #374650
+ 
+ ! red
+<b>diff --git a/<a id="h12" href="../file/x/.xres/urxvt.html">x/.xres/urxvt</a> b/<a href="../file/x/.xres/urxvt.html">x/.xres/urxvt</a></b>
+<a href="#h12-0" id="h12-0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h12-0-0" id="h12-0-0" class="d">-*.font: -*-erusfont-medium-*-*-*-11-*-*-*-*-*-*-*
+</a><a href="#h12-0-1" id="h12-0-1" class="i">+*.font: -*-lemon-medium-*-*-*-10-*-*-*-*-*-*-*
+</a> ! No bold font
+ URxvt.boldFont:
+ URxvt.scrollBar: false
+</pre>
+</div>
+</body>
+</html>

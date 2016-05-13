@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>textual, branch HEAD</title>
+<subtitle>ASCII user interface in JS.
+</subtitle>
+<entry>
+<id>d91939d29493bc42755d9a71bea8627a93aed8f1</id>
+<published>2016-05-13T13:05:43Z</published>
+<updated>2016-05-13T13:05:43Z</updated>
+<title type="text">init</title>
+<link rel="alternate" type="text/html" href="commit/d91939d29493bc42755d9a71bea8627a93aed8f1.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit d91939d29493bc42755d9a71bea8627a93aed8f1
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri May 13 16:05:43 +0300
+
+init
+
+</content>
+</entry>
+</feed>

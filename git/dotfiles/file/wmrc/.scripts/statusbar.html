@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> statusbar (5775B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> statusbar (5694B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -253,7 +253,6 @@
 <a href="#l235" id="l235">235</a>
 <a href="#l236" id="l236">236</a>
 <a href="#l237" id="l237">237</a>
-<a href="#l238" id="l238">238</a>
 </pre></td><td><pre>
 #! /bin/sh
 #
@@ -324,7 +323,7 @@ is_int() {
   # Gonna position it centered and respect the gaps
   BAR_OPTS=&quot;${BAR_OPTS} -g ${BAR_WIDTH}x${BAR_HEIGHT}+${BAR_X}+${BAR_Y}&quot;
   # Colors
-  BAR_OPTS=&quot;${BAR_OPTS} -B ${CB} -F ${CF} -U ${C1}&quot;
+  BAR_OPTS=&quot;${BAR_OPTS} -B ${CB} -F ${CF}&quot;
   BAR_OPTS=&quot;${BAR_OPTS} -u 2&quot;
   BAR_OPTS=&quot;${BAR_OPTS} -f ${PANEL_FONT} -f ${PANEL_ICON_FONT}&quot;
 
@@ -337,8 +336,7 @@ is_int() {
   # If it&apos;s first of April, show the Epoch time
   test &quot;$(date +&quot;%d %m&quot;)&quot; = &quot;01 04&quot; &amp;&amp; time_format=&apos;%s&apos;
   while true; do
-    # That LC_ALL=C is to disable localization. Still thinking about it
-    echo &quot;T%{F$C14}%{F-} $(date +&quot;$time_format&quot;)&quot;
+    echo &quot;T%{F$C14}%{F-} $(date +&quot;$time_format&quot;)&quot;
     sleep 10
   done &gt; &quot;$FIFO_PATH&quot; &amp;
 

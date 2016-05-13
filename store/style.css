@@ -1,0 +1,11 @@
+td {
+    padding: 0px;
+}
+
+table {
+    border-spacing: 1px;
+    border-collapse: separate;
+    border-width: 0px;
+    font-family: monospace;
+    empty-cells: show;
+}

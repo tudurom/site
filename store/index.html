@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>textual.js demo - the glasses store</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div id="table"></div>
+        <script src="table.js"></script>
+        <script src="button.js"></script>
+        <script>
+            var el = document.getElementById("table");
+            var table = new Textual.Table(el, 30, 11);
+
+            function changeGlasses(style) {
+                table.putStr("|              |", 0, 2);
+                table.putStr(style, 3, 2);
+            }
+
+            function updateBalance(money) {
+                table.putStr(" ".repeat(30), 0, 10);
+                table.putStr(money + " ,.", 0, 10);
+            }
+
+            table.putStr(".--------------.", 0, 0);
+            table.putStr("|   ,;;\"'\"''   |", 0, 1);
+            table.putStr("|  ,-\"(O)^(O)  |", 0, 2);
+            table.putStr("|   (    '' |  |", 0, 3);
+            table.putStr("|    \\ `---/   |", 0, 4);
+            table.putStr("| ___|'---'___ |", 0, 5);
+            table.putStr("|/   \\   )/   \\|", 0, 6);
+            table.putStr("||    \\__/    ||", 0, 7);
+            table.putStr("'--------------'", 0, 8);
+
+            var counter = 0;
+            var glasses = [
+                ",-\"(O)^(O)",
+                ",-\"[O]^[O]",
+                ",-\"{O}^{O}",
+                ",-\"  0^0",
+                ",-\"[~}^{~]",
+                ",-\"  o^o",
+                ",--\"IIvII",
+                ",-\"101^101",
+                ",-\"L3t^t3⅃",
+                ",--\"cↃ^cↃ"
+            ];
+            changeGlasses(glasses[0]);
+            updateBalance(0);
+
+            var buybtn = new Textual.Button(table, "BUY", 18, 0, 8, 3);
+            var nextbtn = new Textual.Button(table, "NEXT", 18, 3, 8, 3);
+            var prevbtn = new Textual.Button(table, "PREV", 18, 6, 8, 3);
+            var money = 0;
+
+            nextbtn.attachHandler(function () {
+                counter = (counter + 1) % glasses.length;
+                changeGlasses(glasses[counter]);
+                money++;
+                updateBalance(money);
+            });
+
+            prevbtn.attachHandler(function () {
+                counter = (counter + glasses.length - 1) % glasses.length;
+                changeGlasses(glasses[counter]);
+                money++;
+                updateBalance(money);
+            });
+
+            buybtn.attachHandler(function() {
+                if (money > 0) {
+                    money--;
+                    updateBalance(money);
+                } else {
+                    table.putStr("Out of money!", 0, 10);
+                }
+            });
+        </script>
+    </body>
+</html>

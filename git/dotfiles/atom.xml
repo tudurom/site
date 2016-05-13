@@ -4,6 +4,40 @@
 <subtitle>Small loan of configuration files.
 </subtitle>
 <entry>
+<id>906e5c7859dfc45c436fc1f0ab5559520892a989</id>
+<published>2016-05-13T11:12:10Z</published>
+<updated>2016-05-13T11:12:10Z</updated>
+<title type="text">cwm now</title>
+<link rel="alternate" type="text/html" href="commit/906e5c7859dfc45c436fc1f0ab5559520892a989.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 906e5c7859dfc45c436fc1f0ab5559520892a989
+parent 861ec2e81ff39274d847c68e139385644d3664db
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri May 13 14:12:10 +0300
+
+cwm now
+
+</content>
+</entry>
+<entry>
+<id>861ec2e81ff39274d847c68e139385644d3664db</id>
+<published>2016-05-10T18:55:11Z</published>
+<updated>2016-05-10T18:55:11Z</updated>
+<title type="text">upd8</title>
+<link rel="alternate" type="text/html" href="commit/861ec2e81ff39274d847c68e139385644d3664db.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 861ec2e81ff39274d847c68e139385644d3664db
+parent dcb8432b32267dcb3de909731f3bc4f95e5b9ef9
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue May 10 21:55:11 +0300
+
+upd8
+
+</content>
+</entry>
+<entry>
 <id>dcb8432b32267dcb3de909731f3bc4f95e5b9ef9</id>
 <published>2016-05-07T21:07:42Z</published>
 <updated>2016-05-07T21:07:42Z</updated>
@@ -1673,40 +1707,6 @@ Author: Tudor &lt;tudurom@gmail.com&gt;
 Date:   Fri Mar 11 21:49:19 +0200
 
 Huge update
-
-</content>
-</entry>
-<entry>
-<id>33362fedf748759e2224a0e97284e2ce93eea325</id>
-<published>2016-03-11T08:49:34Z</published>
-<updated>2016-03-11T08:49:34Z</updated>
-<title type="text">It&apos;s not THAT MUCH inspired</title>
-<link rel="alternate" type="text/html" href="commit/33362fedf748759e2224a0e97284e2ce93eea325.html" /><author><name>Tudor</name>
-<email>tudurom@gmail.com</email>
-</author>
-<content type="text">commit 33362fedf748759e2224a0e97284e2ce93eea325
-parent 829589661b138381fad8b86ce0e5b18ed8105020
-Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Mar 11 10:49:34 +0200
-
-It&apos;s not THAT MUCH inspired
-
-</content>
-</entry>
-<entry>
-<id>829589661b138381fad8b86ce0e5b18ed8105020</id>
-<published>2016-03-10T20:57:47Z</published>
-<updated>2016-03-10T20:57:47Z</updated>
-<title type="text">Fixes to record script</title>
-<link rel="alternate" type="text/html" href="commit/829589661b138381fad8b86ce0e5b18ed8105020.html" /><author><name>Tudor</name>
-<email>tudurom@gmail.com</email>
-</author>
-<content type="text">commit 829589661b138381fad8b86ce0e5b18ed8105020
-parent ec444bfbff37f5e9ec309834b6c27fcbaddfb16d
-Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Thu Mar 10 22:57:47 +0200
-
-Fixes to record script
 
 </content>
 </entry>

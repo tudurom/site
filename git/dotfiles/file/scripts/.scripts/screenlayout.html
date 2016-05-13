@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> screenlayout (424B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> screenlayout (423B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -35,7 +35,7 @@
 
 LAPTOP_SCREEN=&quot;$(xrandr | grep &quot;LVDS-*[0-9]&quot; | cut -d&apos; &apos; -f1)&quot;
 
-single_ext=&quot;off&quot;
+single_ext=&quot;on&quot;
 ext_monitor=$(xrandr | grep &quot; connected&quot; | grep -v &quot;$LAPTOP_SCREEN&quot; | awk &apos;{print $1}&apos;)
 if [ $ext_monitor = &quot;&quot; ]; then
   xrandr --output &quot;$LAPTOP_SCREEN&quot; --primary

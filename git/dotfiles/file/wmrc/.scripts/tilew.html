@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> tilew (1695B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> tilew (1705B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -89,7 +89,7 @@
 # arrange windows in a tiled pattern
 
 # default values for gaps and master area
-PANEL=&quot;$(( PANEL_STATUS_HEIGHT ))&quot;
+PANEL=&quot;${PANEL:-$(( PANEL_STATUS_HEIGHT ))}&quot;
 test `pfd` = `ppd` || PANEL=0
 GAP=${GAP:-$GENERAL_GAP}
 MASTER=&quot;$(( $(dattr -w $(pfd)) / 2 ))&quot;

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 
 build() {
   echo "$(tput setaf 2)$(tput bold)BUILDING: $1$(tput sgr0)"
@@ -15,9 +15,9 @@ build() {
   # Read metadata
   # the metadata file needs to have this form:
   # export title="title here"
-  source "$PWD/$1/metadata"
+  . "$PWD/$1/metadata"
   export content="$(cat $PWD/$1/content.html)"
-  source "$PWD/template.html.sh" > "gen/$(echo "$1" | cut -d. -f1).html"
+  . "$PWD/template.html.sh" > "gen/$(echo "$1" | cut -d. -f1).html"
 }
 
 install_page() {
