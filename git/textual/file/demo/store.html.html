@@ -114,6 +114,24 @@
         &lt;script&gt;
             var el = document.getElementById(&quot;table&quot;);
             var table = new Textual.Table(el, 30, 11);
+            var counter = 0;
+            var buybtn = new Textual.Button(table, &quot;BUY&quot;, 18, 0, 8, 3);
+            var nextbtn = new Textual.Button(table, &quot;NEXT&quot;, 18, 3, 8, 3);
+            var prevbtn = new Textual.Button(table, &quot;PREV&quot;, 18, 6, 8, 3);
+            var money = 0;
+
+            var glasses = [
+                &quot;,-\&quot;(O)^(O)&quot;,
+                &quot;,-\&quot;[O]^[O]&quot;,
+                &quot;,-\&quot;{O}^{O}&quot;,
+                &quot;,-\&quot;  0^0&quot;,
+                &quot;,-\&quot;[~}^{~]&quot;,
+                &quot;,-\&quot;  o^o&quot;,
+                &quot;,--\&quot;IIvII&quot;,
+                &quot;,-\&quot;101^101&quot;,
+                &quot;,-\&quot;L3t^t3⅃&quot;,
+                &quot;,--\&quot;cↃ^cↃ&quot;
+            ];
 
             function changeGlasses(style) {
                 table.putStr(&quot;|              |&quot;, 0, 2);
@@ -135,26 +153,8 @@
             table.putStr(&quot;||    \\__/    ||&quot;, 0, 7);
             table.putStr(&quot;&apos;--------------&apos;&quot;, 0, 8);
 
-            var counter = 0;
-            var glasses = [
-                &quot;,-\&quot;(O)^(O)&quot;,
-                &quot;,-\&quot;[O]^[O]&quot;,
-                &quot;,-\&quot;{O}^{O}&quot;,
-                &quot;,-\&quot;  0^0&quot;,
-                &quot;,-\&quot;[~}^{~]&quot;,
-                &quot;,-\&quot;  o^o&quot;,
-                &quot;,--\&quot;IIvII&quot;,
-                &quot;,-\&quot;101^101&quot;,
-                &quot;,-\&quot;L3t^t3⅃&quot;,
-                &quot;,--\&quot;cↃ^cↃ&quot;
-            ];
             changeGlasses(glasses[0]);
             updateBalance(0);
-
-            var buybtn = new Textual.Button(table, &quot;BUY&quot;, 18, 0, 8, 3);
-            var nextbtn = new Textual.Button(table, &quot;NEXT&quot;, 18, 3, 8, 3);
-            var prevbtn = new Textual.Button(table, &quot;PREV&quot;, 18, 6, 8, 3);
-            var money = 0;
 
             nextbtn.attachHandler(function () {
                 counter = (counter + 1) % glasses.length;

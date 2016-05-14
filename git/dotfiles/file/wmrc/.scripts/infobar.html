@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> infobar (952B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> infobar (922B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -72,8 +72,8 @@ pd_width=&quot;$(dattr -w $(ppd))&quot;
 pd_height=&quot;$(dattr -h $(ppd))&quot;
 
 panel_width=$(( width + 2 * GENERAL_GAP ))
-panel_height=$(( height + 2 * GENERAL_GAP ))
-panel_x=$(( (pd_x + pd_width) - panel_width - GENERAL_GAP ))
+panel_height=$PANEL_STATUS_HEIGHT
+panel_x=$(((pd_width - panel_width) / 2))
 panel_y=$(( (pd_y + pd_height) - panel_height - GENERAL_GAP ))
 panel_opts=&quot;-d -a 30 -f $PANEL_FONT -f $PANEL_ICON_FONT -B $PANEL_BG_COLOR -F $PANEL_FG_COLOR -R $PANEL_BORDER_COLOR -r 3 -g ${panel_width}x${panel_height}+${panel_x}+${panel_y}&quot;
 

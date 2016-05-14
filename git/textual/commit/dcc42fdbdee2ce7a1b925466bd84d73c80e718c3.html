@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>clean - textual - ASCII user interface in JS.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="textual.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>textual</h1><span class="desc">ASCII user interface in JS.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/textual.git">git://thetudor.ddns.net/textual.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/dcc42fdbdee2ce7a1b925466bd84d73c80e718c3.html">dcc42fdbdee2ce7a1b925466bd84d73c80e718c3</a>
+<b>parent</b> <a href="../commit/9f52c6120c2ab1e0b20b33473c3accba725f28ad.html">9f52c6120c2ab1e0b20b33473c3accba725f28ad</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat May 14 13:12:01 +0300
+
+clean
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">demo/store.html</a></td><td> | </td><td class="num">36</td><td><span class="i">++++++++++++++++++</span><span class="d">------------------</span></td></tr>
+<tr><td><a href="#h1">src/button.js</a></td><td> | </td><td class="num">6</td><td><span class="i">+++++</span><span class="d">-</span></td></tr>
+</table>2 files changed, 23 insertions(+), 19 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/demo/store.html.html">demo/store.html</a> b/<a href="../file/demo/store.html.html">demo/store.html</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -13,6 +13,24 @@
+</a>         &lt;script&gt;
+             var el = document.getElementById(&quot;table&quot;);
+             var table = new Textual.Table(el, 30, 11);
+<a href="#h0-0-3" id="h0-0-3" class="i">+            var counter = 0;
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+            var buybtn = new Textual.Button(table, &quot;BUY&quot;, 18, 0, 8, 3);
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+            var nextbtn = new Textual.Button(table, &quot;NEXT&quot;, 18, 3, 8, 3);
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+            var prevbtn = new Textual.Button(table, &quot;PREV&quot;, 18, 6, 8, 3);
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+            var money = 0;
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+            var glasses = [
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+                &quot;,-\&quot;(O)^(O)&quot;,
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+                &quot;,-\&quot;[O]^[O]&quot;,
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+                &quot;,-\&quot;{O}^{O}&quot;,
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+                &quot;,-\&quot;  0^0&quot;,
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+                &quot;,-\&quot;[~}^{~]&quot;,
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+                &quot;,-\&quot;  o^o&quot;,
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+                &quot;,--\&quot;IIvII&quot;,
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+                &quot;,-\&quot;101^101&quot;,
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+                &quot;,-\&quot;L3t^t3⅃&quot;,
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+                &quot;,--\&quot;cↃ^cↃ&quot;
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+            ];
+</a> 
+             function changeGlasses(style) {
+                 table.putStr(&quot;|              |&quot;, 0, 2);
+<a href="#h0-1" id="h0-1" class="h">@@ -34,27 +52,9 @@
+</a>             table.putStr(&quot;||    \\__/    ||&quot;, 0, 7);
+             table.putStr(&quot;&apos;--------------&apos;&quot;, 0, 8);
+ 
+<a href="#h0-1-3" id="h0-1-3" class="d">-            var counter = 0;
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-            var glasses = [
+</a><a href="#h0-1-5" id="h0-1-5" class="d">-                &quot;,-\&quot;(O)^(O)&quot;,
+</a><a href="#h0-1-6" id="h0-1-6" class="d">-                &quot;,-\&quot;[O]^[O]&quot;,
+</a><a href="#h0-1-7" id="h0-1-7" class="d">-                &quot;,-\&quot;{O}^{O}&quot;,
+</a><a href="#h0-1-8" id="h0-1-8" class="d">-                &quot;,-\&quot;  0^0&quot;,
+</a><a href="#h0-1-9" id="h0-1-9" class="d">-                &quot;,-\&quot;[~}^{~]&quot;,
+</a><a href="#h0-1-10" id="h0-1-10" class="d">-                &quot;,-\&quot;  o^o&quot;,
+</a><a href="#h0-1-11" id="h0-1-11" class="d">-                &quot;,--\&quot;IIvII&quot;,
+</a><a href="#h0-1-12" id="h0-1-12" class="d">-                &quot;,-\&quot;101^101&quot;,
+</a><a href="#h0-1-13" id="h0-1-13" class="d">-                &quot;,-\&quot;L3t^t3⅃&quot;,
+</a><a href="#h0-1-14" id="h0-1-14" class="d">-                &quot;,--\&quot;cↃ^cↃ&quot;
+</a><a href="#h0-1-15" id="h0-1-15" class="d">-            ];
+</a>             changeGlasses(glasses[0]);
+             updateBalance(0);
+ 
+<a href="#h0-1-19" id="h0-1-19" class="d">-            var buybtn = new Textual.Button(table, &quot;BUY&quot;, 18, 0, 8, 3);
+</a><a href="#h0-1-20" id="h0-1-20" class="d">-            var nextbtn = new Textual.Button(table, &quot;NEXT&quot;, 18, 3, 8, 3);
+</a><a href="#h0-1-21" id="h0-1-21" class="d">-            var prevbtn = new Textual.Button(table, &quot;PREV&quot;, 18, 6, 8, 3);
+</a><a href="#h0-1-22" id="h0-1-22" class="d">-            var money = 0;
+</a><a href="#h0-1-23" id="h0-1-23" class="d">-
+</a>             nextbtn.attachHandler(function () {
+                 counter = (counter + 1) % glasses.length;
+                 changeGlasses(glasses[counter]);
+<b>diff --git a/<a id="h1" href="../file/src/button.js.html">src/button.js</a> b/<a href="../file/src/button.js.html">src/button.js</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -7,12 +7,15 @@ Textual.Button = function (table, str, x, y, width, height) {
+</a>     this._w = width;
+     this._h = height;
+ 
+<a href="#h1-0-3" id="h1-0-3" class="i">+    // Put top part of the button
+</a>     table.putStr(&quot;.&quot; + &quot;-&quot;.repeat(width - 2) + &quot;.&quot;, x, y);
+<a href="#h1-0-5" id="h1-0-5" class="i">+    // Complete with middle segments
+</a>     for (var i = 1; i &lt; height - 1; i++) {
+         table.putStr(&quot;|&quot; + &quot; &quot;.repeat(width - 2) + &quot;|&quot;, x, y + i);
+     }
+<a href="#h1-0-9" id="h1-0-9" class="i">+    // Put bottom part
+</a>     table.putStr(&quot;&apos;&quot; + &quot;-&quot;.repeat(width - 2) + &quot;&apos;&quot;, x, y + height - 1);
+<a href="#h1-0-11" id="h1-0-11" class="d">-
+</a><a href="#h1-0-12" id="h1-0-12" class="i">+    // Put text in the middle
+</a>     var textX = ((width - str.length) / 2) | 0;
+     var textY = ((height - 1) / 2) | 0;
+     table.putStr(str, x + textX, y + textY);
+<a href="#h1-1" id="h1-1" class="h">@@ -28,6 +31,7 @@ Textual.Button.prototype.attachHandler = function(handler) {
+</a>     }
+ };
+ 
+<a href="#h1-1-3" id="h1-1-3" class="i">+// Return cell objects present in the button
+</a> Textual.Button.prototype.getCells = function() {
+     var self = this;
+ 
+</pre>
+</div>
+</body>
+</html>

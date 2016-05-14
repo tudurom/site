@@ -4,6 +4,23 @@
 <subtitle>Small loan of configuration files.
 </subtitle>
 <entry>
+<id>ff50cc8d71b89e2eaf92b91b21621eb790c90ff4</id>
+<published>2016-05-14T10:20:56Z</published>
+<updated>2016-05-14T10:20:56Z</updated>
+<title type="text">cleanup</title>
+<link rel="alternate" type="text/html" href="commit/ff50cc8d71b89e2eaf92b91b21621eb790c90ff4.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit ff50cc8d71b89e2eaf92b91b21621eb790c90ff4
+parent 906e5c7859dfc45c436fc1f0ab5559520892a989
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat May 14 13:20:56 +0300
+
+cleanup
+
+</content>
+</entry>
+<entry>
 <id>906e5c7859dfc45c436fc1f0ab5559520892a989</id>
 <published>2016-05-13T11:12:10Z</published>
 <updated>2016-05-13T11:12:10Z</updated>
@@ -1690,23 +1707,6 @@ Author: Tudor &lt;tudurom@gmail.com&gt;
 Date:   Sat Mar 12 17:58:33 +0200
 
 *shrug*
-
-</content>
-</entry>
-<entry>
-<id>0387cea3b7292a928ad3dacbda90934babc7c8f6</id>
-<published>2016-03-11T19:49:19Z</published>
-<updated>2016-03-11T19:49:19Z</updated>
-<title type="text">Huge update</title>
-<link rel="alternate" type="text/html" href="commit/0387cea3b7292a928ad3dacbda90934babc7c8f6.html" /><author><name>Tudor</name>
-<email>tudurom@gmail.com</email>
-</author>
-<content type="text">commit 0387cea3b7292a928ad3dacbda90934babc7c8f6
-parent 33362fedf748759e2224a0e97284e2ce93eea325
-Author: Tudor &lt;tudurom@gmail.com&gt;
-Date:   Fri Mar 11 21:49:19 +0200
-
-Huge update
 
 </content>
 </entry>

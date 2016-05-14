@@ -4,6 +4,40 @@
 <subtitle>ASCII user interface in JS.
 </subtitle>
 <entry>
+<id>cf9f574bd81ee64b33057001bbaf77bddfa1b7a0</id>
+<published>2016-05-14T10:15:03Z</published>
+<updated>2016-05-14T10:15:03Z</updated>
+<title type="text">readme</title>
+<link rel="alternate" type="text/html" href="commit/cf9f574bd81ee64b33057001bbaf77bddfa1b7a0.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit cf9f574bd81ee64b33057001bbaf77bddfa1b7a0
+parent dcc42fdbdee2ce7a1b925466bd84d73c80e718c3
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat May 14 13:15:03 +0300
+
+readme
+
+</content>
+</entry>
+<entry>
+<id>dcc42fdbdee2ce7a1b925466bd84d73c80e718c3</id>
+<published>2016-05-14T10:12:01Z</published>
+<updated>2016-05-14T10:12:01Z</updated>
+<title type="text">clean</title>
+<link rel="alternate" type="text/html" href="commit/dcc42fdbdee2ce7a1b925466bd84d73c80e718c3.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit dcc42fdbdee2ce7a1b925466bd84d73c80e718c3
+parent 9f52c6120c2ab1e0b20b33473c3accba725f28ad
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat May 14 13:12:01 +0300
+
+clean
+
+</content>
+</entry>
+<entry>
 <id>9f52c6120c2ab1e0b20b33473c3accba725f28ad</id>
 <published>2016-05-13T13:22:27Z</published>
 <updated>2016-05-13T13:22:27Z</updated>

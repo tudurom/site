@@ -7,12 +7,15 @@ Textual.Button = function (table, str, x, y, width, height) {
     this._w = width;
     this._h = height;
 
+    // Put top part of the button
     table.putStr("." + "-".repeat(width - 2) + ".", x, y);
+    // Complete with middle segments
     for (var i = 1; i < height - 1; i++) {
         table.putStr("|" + " ".repeat(width - 2) + "|", x, y + i);
     }
+    // Put bottom part
     table.putStr("'" + "-".repeat(width - 2) + "'", x, y + height - 1);
-
+    // Put text in the middle
     var textX = ((width - str.length) / 2) | 0;
     var textY = ((height - 1) / 2) | 0;
     table.putStr(str, x + textX, y + textY);
@@ -28,6 +31,7 @@ Textual.Button.prototype.attachHandler = function(handler) {
     }
 };
 
+// Return cell objects present in the button
 Textual.Button.prototype.getCells = function() {
     var self = this;
 
