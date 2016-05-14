@@ -16,11 +16,7 @@ from this website. I also have a [blog](/blog).
 
 Romanian, C, Go, JavaScript, POSIX shell, Ruby\*, English, Java\*, French
 
-##### * I speak very rarely in those languages or I'm not very experienced with them
+##### \* I speak very rarely in those languages or I'm not very experienced with them
 
 #### Visit Romania, it's a very beautiful country!
 
-<script>
-  var el = document.getElementById("age");
-  el.innerHTML = new Date().getFullYear() - 2002;
-</script>
