@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>thunderstorm - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/f925c1ba24954ca394f9ee87949873eb22f7ee95.html">f925c1ba24954ca394f9ee87949873eb22f7ee95</a>
+<b>parent</b> <a href="../commit/9b6642760dbf58f8b4269baecd9358a7167b6ce2.html">9b6642760dbf58f8b4269baecd9358a7167b6ce2</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Thu Jun  2 22:03:56 +0300
+
+thunderstorm
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">cwm/.cwmrc</a></td><td> | </td><td class="num">14</td><td><span class="i">+++++++</span><span class="d">-------</span></td></tr>
+<tr><td><a href="#h1">nvim/.config/nvim/colors/shblah.vim</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h2">nvim/.config/nvim/init.vim</a></td><td> | </td><td class="num">14</td><td><span class="i">++++++++</span><span class="d">------</span></td></tr>
+<tr><td><a href="#h3">scripts/.scripts/wall-e</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h4">shell/.crosssh.sh</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h5">st</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h6">startpage/startpage</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h7">vimperator/.vimperator/colors/thunder.vimp</a></td><td> | </td><td class="num">69</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h8">vimperator/.vimperatorrc</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h9">wallpapers/wallpapers/test_tile7_1.png</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td><a href="#h10">x/.Xresources</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h11">x/.xres/colors/thunder</a></td><td> | </td><td class="num">38</td><td><span class="i">++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table>12 files changed, 129 insertions(+), 20 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/cwm/.cwmrc.html">cwm/.cwmrc</a> b/<a href="../file/cwm/.cwmrc.html">cwm/.cwmrc</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -12,13 +12,13 @@ borderwidth 3
+</a> moveamount 10
+ 
+ # colors
+<a href="#h0-0-3" id="h0-0-3" class="d">-color activeborder   &apos;#3c5a5d&apos;
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-color inactiveborder &apos;#374650&apos;
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-color font           &apos;#e8eaec&apos;
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-color menubg         &apos;#212121&apos;
+</a><a href="#h0-0-7" id="h0-0-7" class="d">-color menufg         &apos;#e8eaec&apos;
+</a><a href="#h0-0-8" id="h0-0-8" class="d">-color groupborder    &apos;#ef9a89&apos;
+</a><a href="#h0-0-9" id="h0-0-9" class="d">-color ungroupborder  &apos;#eec87c&apos;
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+color activeborder   &apos;#63a69b&apos;
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+color inactiveborder &apos;#456472&apos;
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+color font           &apos;#c0c5ce&apos;
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+color menubg         &apos;#1d2a30&apos;
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+color menufg         &apos;#c0c5ce&apos;
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+color groupborder    &apos;#a66363&apos;
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+color ungroupborder  &apos;#a6a663&apos;
+</a> color urgencyborder  &apos;#ef9a89&apos;
+ 
+ # autogroups
+<b>diff --git a/<a id="h1" href="../file/nvim/.config/nvim/colors/shblah.vim.html">nvim/.config/nvim/colors/shblah.vim</a> b/<a href="../file/nvim/.config/nvim/colors/shblah.vim.html">nvim/.config/nvim/colors/shblah.vim</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -16,7 +16,7 @@ endif
+</a> let g:colors_name=&quot;shblah_orig&quot;
+ 
+ &quot; Actual colours and styles.
+<a href="#h1-0-3" id="h1-0-3" class="d">-highlight ColorColumn  term=NONE cterm=NONE ctermfg=NONE ctermbg=5
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+highlight ColorColumn  term=NONE cterm=NONE ctermfg=NONE ctermbg=0
+</a> highlight Comment      term=NONE cterm=NONE ctermfg=8    ctermbg=NONE
+ highlight Constant     term=NONE cterm=NONE ctermfg=6    ctermbg=NONE
+ highlight Cursor       term=NONE cterm=bold ctermfg=3    ctermbg=NONE
+<b>diff --git a/<a id="h2" href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a> b/<a href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -5,6 +5,8 @@
+</a> 
+ filetype off
+ 
+<a href="#h2-0-3" id="h2-0-3" class="i">+let g:uname = substitute(system(&quot;uname&quot;), &apos;\n\+$&apos;, &apos;&apos;, &apos;&apos;)
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+
+</a> &quot; Plugins {{{
+ 
+ call plug#begin(&apos;~/.config/nvim/bundle&apos;)
+<a href="#h2-1" id="h2-1" class="h">@@ -19,9 +21,9 @@ Plug &apos;gabrielelana/vim-markdown&apos;
+</a> &quot; neovim-python is required
+ if has(&quot;python3&quot;)
+     Plug &apos;Shougo/deoplete.nvim&apos;
+<a href="#h2-1-3" id="h2-1-3" class="d">-    &quot; if executable(&apos;clang&apos;)
+</a><a href="#h2-1-4" id="h2-1-4" class="d">-    &quot;     Plug &apos;zchee/deoplete-clang&apos;
+</a><a href="#h2-1-5" id="h2-1-5" class="d">-    &quot; endif
+</a><a href="#h2-1-6" id="h2-1-6" class="i">+    if executable(&apos;clang&apos;)
+</a><a href="#h2-1-7" id="h2-1-7" class="i">+        &quot;Plug &apos;zchee/deoplete-clang&apos;
+</a><a href="#h2-1-8" id="h2-1-8" class="i">+    endif
+</a>     if executable(&apos;go&apos;)
+         Plug &apos;zchee/deoplete-go&apos;, { &apos;do&apos;: &apos;make&apos;}
+     endif
+<a href="#h2-2" id="h2-2" class="h">@@ -64,9 +66,6 @@ set splitright
+</a> set splitbelow
+ &quot; Show a color column to limit the line width to 80 chars
+ set cc=80
+<a href="#h2-2-3" id="h2-2-3" class="d">-&quot; SCREAM
+</a><a href="#h2-2-4" id="h2-2-4" class="d">-set cursorline
+</a><a href="#h2-2-5" id="h2-2-5" class="d">-set cursorcolumn
+</a> 
+ &quot; Nope
+ set noswapfile
+<a href="#h2-3" id="h2-3" class="h">@@ -176,6 +175,9 @@ let g:deoplete#enable_at_startup = 1
+</a> 
+ &quot; C/C++ things
+ let g:deoplete#sources#clang#libclang_path = &apos;/usr/lib/libclang.so&apos;
+<a href="#h2-3-3" id="h2-3-3" class="i">+if g:uname == &quot;FreeBSD&quot;
+</a><a href="#h2-3-4" id="h2-3-4" class="i">+    let g:deoplete#sources#clang#libclang_path = &apos;/usr/local/llvm37/lib/libclang.so&apos;
+</a><a href="#h2-3-5" id="h2-3-5" class="i">+endif
+</a> let g:deoplete#sources#clang#clang_header = &apos;/usr/include/clang/&apos;
+ &quot; C or C++ standard version
+ let g:deoplete#sources#clang#std#c = &apos;c11&apos;
+<b>diff --git a/<a id="h3" href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a> b/<a href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -4,7 +4,7 @@
+</a> # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h3-0-3" id="h3-0-3" class="d">-DEFAULT_WALL=&quot;$HOME/wallpapers/test_tile7.png&quot;
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+DEFAULT_WALL=&quot;$HOME/wallpapers/test_tile7_1.png&quot;
+</a> APRIL_WALL=&quot;$HOME/wallpapers/april_wall.png&quot;
+ 
+ if [ &quot;$(date +&quot;%d/%m&quot;)&quot; = &quot;01/04&quot; ]; then
+<b>diff --git a/<a id="h4" href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a> b/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -41,7 +41,7 @@ alias rm=&quot;rm -I&quot;
+</a> alias fkh=&quot;fortune khaled&quot;
+ alias poweroff=&quot;sudo poweroff&quot;
+ alias reboot=&quot;sudo reboot&quot;
+<a href="#h4-0-3" id="h4-0-3" class="d">-alias tput=&quot;/usr/local/bin/tput&quot;
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+test &quot;$(uname)&quot; = &quot;FreeBSD&quot; &amp;&amp; alias tput=&quot;/usr/local/bin/tput&quot;
+</a> export LESS=&apos;-F -g -i -M -R -S -w -X -z-4&apos;
+ 
+ # Remove unnecessary packages
+<b>diff --git a/<a id="h5" href="../file/st.html">st</a> b/<a href="../file/st.html">st</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -1 +1 @@
+</a><a href="#h5-0-0" id="h5-0-0" class="d">-Subproject commit b9d89a05dc0a3cc45a09c54d25182969eda2fe96
+</a><a href="#h5-0-1" id="h5-0-1" class="i">+Subproject commit 96c93b8e6c906dafb7f8b40ad096f6c9a3d5f854
+</a><b>diff --git a/<a id="h6" href="../file/startpage/startpage.html">startpage/startpage</a> b/<a href="../file/startpage/startpage.html">startpage/startpage</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -1 +1 @@
+</a><a href="#h6-0-0" id="h6-0-0" class="d">-Subproject commit 3caa82013263e86a2da0e2da63b106b4c66c013e
+</a><a href="#h6-0-1" id="h6-0-1" class="i">+Subproject commit 62cf716338ed0b7f9ffcb2b8d77d3dfb1c7b907b
+</a><b>diff --git a/<a id="h7" href="../file/vimperator/.vimperator/colors/thunder.vimp.html">vimperator/.vimperator/colors/thunder.vimp</a> b/<a href="../file/vimperator/.vimperator/colors/thunder.vimp.html">vimperator/.vimperator/colors/thunder.vimp</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -0,0 +1,69 @@
+</a><a href="#h7-0-0" id="h7-0-0" class="i">+&quot; ==Vimperator_Color_Scheme==
+</a><a href="#h7-0-1" id="h7-0-1" class="i">+&quot; name: Base16 Ocean dark
+</a><a href="#h7-0-2" id="h7-0-2" class="i">+&quot; url: http://code.google.com/p/vimperator-labs/issues/detail?id=280&amp;q=label%3Aproject-vimperator%20label%3Atype-colorscheme&amp;colspec=ID%20Summary%20Project%20Type%20Status%20Priority%20Stars%20Owner
+</a><a href="#h7-0-3" id="h7-0-3" class="i">+&quot; modified by tudurom for the rainbou config generator
+</a><a href="#h7-0-4" id="h7-0-4" class="i">+&quot; ==Ocean_Colorscheme_Settings==
+</a><a href="#h7-0-5" id="h7-0-5" class="i">+
+</a><a href="#h7-0-6" id="h7-0-6" class="i">+&quot;StatusLine settings
+</a><a href="#h7-0-7" id="h7-0-7" class="i">+hi StatusLine           color: #c0c5ce; background: #1d2a30; font-size: 8pt; font: monospace;
+</a><a href="#h7-0-8" id="h7-0-8" class="i">+&quot; hi StatusLineBroken     color: #c0c5ce; background: #afafff; font-size: 8pt; font: monospace;
+</a><a href="#h7-0-9" id="h7-0-9" class="i">+&quot; hi StatusLineSecure     color: #c0c5ce; background: #afffaf; font-size: 8pt; font: monospace;
+</a><a href="#h7-0-10" id="h7-0-10" class="i">+
+</a><a href="#h7-0-11" id="h7-0-11" class="i">+&quot;CmdLine settings excluding Gradient
+</a><a href="#h7-0-12" id="h7-0-12" class="i">+hi Normal               color: #c0c5ce; background: #1d2a30;
+</a><a href="#h7-0-13" id="h7-0-13" class="i">+hi CmdLine              background:#1d2a30; color: #c0c5ce; font-family: monospace; font-size: 8pt;
+</a><a href="#h7-0-14" id="h7-0-14" class="i">+hi CompDesc             color: #c6c6c6; width: 50%; font-family: monospace; font-size: 8pt;
+</a><a href="#h7-0-15" id="h7-0-15" class="i">+hi CompIcon             width: 16px; min-width: 16px; display: inline-block; margin-right: .5ex;
+</a><a href="#h7-0-16" id="h7-0-16" class="i">+hi CompItem[selected]   background: #1d2a30; color: #c27171; font-family: monospace;
+</a><a href="#h7-0-17" id="h7-0-17" class="i">+&quot; hi CompLess             text-align: center; height: 0; line-height: .5ex; padding-top: 1ex;
+</a><a href="#h7-0-18" id="h7-0-18" class="i">+&quot; hi CompMore             text-align: center; height: .5ex; line-height: .5ex; margin-bottom: -.5ex;
+</a><a href="#h7-0-19" id="h7-0-19" class="i">+hi CompMsg              font-family: monospace; font-style: monospace; margin-left: 16px; font-size: 8pt;
+</a><a href="#h7-0-20" id="h7-0-20" class="i">+hi CompResult           width: 45%; overflow: hidden;font-size: 8pt; font-family: monospace; font-weight: normal;
+</a><a href="#h7-0-21" id="h7-0-21" class="i">+hi CompTitle            color: #c0c5ce; background: #1d2a30; font-weight: bold; font-family: monospace; font-size: 8pt;
+</a><a href="#h7-0-22" id="h7-0-22" class="i">+hi CompTitle&gt;*          padding: 0 .5ex; font-family: monospace; font-size: 8pt;
+</a><a href="#h7-0-23" id="h7-0-23" class="i">+hi Filter               font-weight: bold;color: #c0c5ce; font-family: monospace; font-size: 8pt;
+</a><a href="#h7-0-24" id="h7-0-24" class="i">+
+</a><a href="#h7-0-25" id="h7-0-25" class="i">+&quot;When using tab complete in CmdLine, line separating Title from function and description
+</a><a href="#h7-0-26" id="h7-0-26" class="i">+&quot; hi Gradient             height: 1px; margin-bottom: -1px; margin-top: -1px;
+</a><a href="#h7-0-27" id="h7-0-27" class="i">+&quot; hi GradientLeft         background-color: #00bbff;
+</a><a href="#h7-0-28" id="h7-0-28" class="i">+&quot; hi GradientRight        background-color: #2b303b;
+</a><a href="#h7-0-29" id="h7-0-29" class="i">+
+</a><a href="#h7-0-30" id="h7-0-30" class="i">+&quot;Used with ]f and [f
+</a><a href="#h7-0-31" id="h7-0-31" class="i">+hi FrameIndicator       background-color: #2b303b; opacity: 0.5; z-index: 999; position: fixed; top: 0; bottom: 0; left: 0; right: 0;
+</a><a href="#h7-0-32" id="h7-0-32" class="i">+
+</a><a href="#h7-0-33" id="h7-0-33" class="i">+hi Bell                 border: 0 none; background-color: #2b303b;
+</a><a href="#h7-0-34" id="h7-0-34" class="i">+hi ErrorMsg             color: #2b303b; background: #bf616a; font-weight: bold;
+</a><a href="#h7-0-35" id="h7-0-35" class="i">+
+</a><a href="#h7-0-36" id="h7-0-36" class="i">+
+</a><a href="#h7-0-37" id="h7-0-37" class="i">+&quot;Hint section
+</a><a href="#h7-0-38" id="h7-0-38" class="i">+&quot;hi Hint                 font-family: monospace; font-size: 10px; font-weight: bold; color: #f6e9e9; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding 0px 1px 0px 1px;
+</a><a href="#h7-0-39" id="h7-0-39" class="i">+hi Hint               	font-family: monospace; font-size: 12px; font-weight: bold; color: #bf616a; background-color: #2b303b; border: solid 1px #65737e;
+</a><a href="#h7-0-40" id="h7-0-40" class="i">+hi Hint::after          content: attr(number);
+</a><a href="#h7-0-41" id="h7-0-41" class="i">+hi HintActive           background: #8fa1b3; color: #eff1f5;
+</a><a href="#h7-0-42" id="h7-0-42" class="i">+hi HintElem             background-color: #2b303b; color: #a3be8c;
+</a><a href="#h7-0-43" id="h7-0-43" class="i">+hi HintImage            opacity: .5;
+</a><a href="#h7-0-44" id="h7-0-44" class="i">+
+</a><a href="#h7-0-45" id="h7-0-45" class="i">+&quot;Other important stuff
+</a><a href="#h7-0-46" id="h7-0-46" class="i">+hi InfoMsg              color: #c0c5ce; background: #2b303b;
+</a><a href="#h7-0-47" id="h7-0-47" class="i">+hi Message              white-space: normal; min-width: 100%; padding-left: 2em; text-indent: -2em; display: block;
+</a><a href="#h7-0-48" id="h7-0-48" class="i">+hi WarningMsg           color: red; background: #2b303b;
+</a><a href="#h7-0-49" id="h7-0-49" class="i">+hi ModeMsg              color: #c0c5ce; background: #2b303b; &quot;CmdLine when Not in Use
+</a><a href="#h7-0-50" id="h7-0-50" class="i">+hi MoreMsg              color: #c0c5ce; background: #2b303b;
+</a><a href="#h7-0-51" id="h7-0-51" class="i">+hi NonText              color: lightblue; min-height: 16px; padding-left: 2px;
+</a><a href="#h7-0-52" id="h7-0-52" class="i">+hi Question             color: #eff1f5; background: #2b303b; font-weight: bold;
+</a><a href="#h7-0-53" id="h7-0-53" class="i">+&quot;hi Search               font-size: inherit; padding: 0; color: #2b303b; background-color: c0c5ce; padding: 0;
+</a><a href="#h7-0-54" id="h7-0-54" class="i">+hi Function             color: lightgreen; background: #2b303b;
+</a><a href="#h7-0-55" id="h7-0-55" class="i">+hi Number               color: tan; background: #2b303b
+</a><a href="#h7-0-56" id="h7-0-56" class="i">+hi String               color: #2b303b; background: #c0c5ce;
+</a><a href="#h7-0-57" id="h7-0-57" class="i">+hi Tag                  color: #2b303b; background: #c0c5ce;
+</a><a href="#h7-0-58" id="h7-0-58" class="i">+hi Title                color: #2b303b; background: #c0c5ce; font-weight: bold;
+</a><a href="#h7-0-59" id="h7-0-59" class="i">+hi URL                  text-decoration: none; color: lightblue; background: inherit;
+</a><a href="#h7-0-60" id="h7-0-60" class="i">+hi URL:hover            text-decoration: underline; cursor: pointer;
+</a><a href="#h7-0-61" id="h7-0-61" class="i">+hi LineNr               color: #c0c5ce; background: #2b303b;
+</a><a href="#h7-0-62" id="h7-0-62" class="i">+
+</a><a href="#h7-0-63" id="h7-0-63" class="i">+&quot;style -name statusbar chrome://* &lt;&lt;EOM
+</a><a href="#h7-0-64" id="h7-0-64" class="i">+&quot;#status-bar statusbarpanel { padding: 0 1px !important; }
+</a><a href="#h7-0-65" id="h7-0-65" class="i">+&quot;statusbarpanel &gt; * { margin: 0 !important; padding: 0 2px 0 0 !important; }
+</a><a href="#h7-0-66" id="h7-0-66" class="i">+&quot;EOM
+</a><a href="#h7-0-67" id="h7-0-67" class="i">+
+</a><a href="#h7-0-68" id="h7-0-68" class="i">+&quot;For other descriptions of each item, please see ``Styling&apos;&apos; section included with Vimperator
+</a><b>diff --git a/<a id="h8" href="../file/vimperator/.vimperatorrc.html">vimperator/.vimperatorrc</a> b/<a href="../file/vimperator/.vimperatorrc.html">vimperator/.vimperatorrc</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -1,3 +1,3 @@
+</a><a href="#h8-0-0" id="h8-0-0" class="d">-colo moonbow
+</a><a href="#h8-0-1" id="h8-0-1" class="i">+colo thunder
+</a> 
+ &quot; vim: set ft=vim:
+<b>diff --git a/<a id="h9" href="../file/wallpapers/wallpapers/test_tile7_1.png.html">wallpapers/wallpapers/test_tile7_1.png</a> b/<a href="../file/wallpapers/wallpapers/test_tile7_1.png.html">wallpapers/wallpapers/test_tile7_1.png</a></b>
+Binary files differ.
+<b>diff --git a/<a id="h10" href="../file/x/.Xresources.html">x/.Xresources</a> b/<a href="../file/x/.Xresources.html">x/.Xresources</a></b>
+<a href="#h10-0" id="h10-0" class="h">@@ -7,5 +7,5 @@
+</a> Xcursor.theme: HumanAzul
+ 
+ #include &quot;.xres/xft&quot;
+<a href="#h10-0-3" id="h10-0-3" class="d">-#include &quot;.xres/colors/moonbow&quot;
+</a><a href="#h10-0-4" id="h10-0-4" class="i">+#include &quot;.xres/colors/thunder&quot;
+</a> #include &quot;.xres/urxvt&quot;
+<b>diff --git a/<a id="h11" href="../file/x/.xres/colors/thunder.html">x/.xres/colors/thunder</a> b/<a href="../file/x/.xres/colors/thunder.html">x/.xres/colors/thunder</a></b>
+<a href="#h11-0" id="h11-0" class="h">@@ -0,0 +1,38 @@
+</a><a href="#h11-0-0" id="h11-0-0" class="i">+! special
+</a><a href="#h11-0-1" id="h11-0-1" class="i">+*.foreground:   #c0c5ce
+</a><a href="#h11-0-2" id="h11-0-2" class="i">+*.background:   #1d2a30
+</a><a href="#h11-0-3" id="h11-0-3" class="i">+*.cursorColor:  #c0c5ce
+</a><a href="#h11-0-4" id="h11-0-4" class="i">+
+</a><a href="#h11-0-5" id="h11-0-5" class="i">+! black
+</a><a href="#h11-0-6" id="h11-0-6" class="i">+*.color0:       #273941
+</a><a href="#h11-0-7" id="h11-0-7" class="i">+*.color8:       #456472
+</a><a href="#h11-0-8" id="h11-0-8" class="i">+
+</a><a href="#h11-0-9" id="h11-0-9" class="i">+! red
+</a><a href="#h11-0-10" id="h11-0-10" class="i">+*.color1:       #a66363
+</a><a href="#h11-0-11" id="h11-0-11" class="i">+*.color9:       #c27171
+</a><a href="#h11-0-12" id="h11-0-12" class="i">+
+</a><a href="#h11-0-13" id="h11-0-13" class="i">+! green
+</a><a href="#h11-0-14" id="h11-0-14" class="i">+*.color2:       #63a690
+</a><a href="#h11-0-15" id="h11-0-15" class="i">+*.color10:      #6dc2a3
+</a><a href="#h11-0-16" id="h11-0-16" class="i">+
+</a><a href="#h11-0-17" id="h11-0-17" class="i">+! yellow
+</a><a href="#h11-0-18" id="h11-0-18" class="i">+*.color3:       #a6a663
+</a><a href="#h11-0-19" id="h11-0-19" class="i">+*.color11:      #bfc271
+</a><a href="#h11-0-20" id="h11-0-20" class="i">+
+</a><a href="#h11-0-21" id="h11-0-21" class="i">+! blue
+</a><a href="#h11-0-22" id="h11-0-22" class="i">+*.color4:       #6385a6
+</a><a href="#h11-0-23" id="h11-0-23" class="i">+*.color12:      #719bc2
+</a><a href="#h11-0-24" id="h11-0-24" class="i">+
+</a><a href="#h11-0-25" id="h11-0-25" class="i">+! orange
+</a><a href="#h11-0-26" id="h11-0-26" class="i">+*.color5:       #BF9C86
+</a><a href="#h11-0-27" id="h11-0-27" class="i">+*.color13:      #BF9C86
+</a><a href="#h11-0-28" id="h11-0-28" class="i">+
+</a><a href="#h11-0-29" id="h11-0-29" class="i">+! cyan
+</a><a href="#h11-0-30" id="h11-0-30" class="i">+*.color6:       #63a69b
+</a><a href="#h11-0-31" id="h11-0-31" class="i">+*.color14:      #71c2af
+</a><a href="#h11-0-32" id="h11-0-32" class="i">+
+</a><a href="#h11-0-33" id="h11-0-33" class="i">+! white
+</a><a href="#h11-0-34" id="h11-0-34" class="i">+*.color7:       #c0c5ce
+</a><a href="#h11-0-35" id="h11-0-35" class="i">+*.color15:      #eff1f5
+</a><a href="#h11-0-36" id="h11-0-36" class="i">+
+</a><a href="#h11-0-37" id="h11-0-37" class="i">+! vim: set ft=xdefaults :
+</a></pre>
+</div>
+</body>
+</html>

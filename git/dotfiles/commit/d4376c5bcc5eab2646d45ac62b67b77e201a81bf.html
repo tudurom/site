@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>fix notify script - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/d4376c5bcc5eab2646d45ac62b67b77e201a81bf.html">d4376c5bcc5eab2646d45ac62b67b77e201a81bf</a>
+<b>parent</b> <a href="../commit/ff50cc8d71b89e2eaf92b91b21621eb790c90ff4.html">ff50cc8d71b89e2eaf92b91b21621eb790c90ff4</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat May 14 15:53:57 +0300
+
+fix notify script
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">st</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h1">wmrc/.config/sxhkd/commons</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h2">wmrc/.scripts/notifyd</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h3">wmrc/.scripts/popup</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+</table>4 files changed, 4 insertions(+), 4 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/st.html">st</a> b/<a href="../file/st.html">st</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1 +1 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="d">-Subproject commit 0e94f4da751b11801ce75909a70692b816c54b0e
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+Subproject commit d33e3800139a9ea5897e095f09ee8d619b8d4af2
+</a><b>diff --git a/<a id="h1" href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a> b/<a href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -3,7 +3,7 @@ super + Escape
+</a>   pkill -USR1 -x sxhkd
+ 
+ super + Return
+<a href="#h1-0-3" id="h1-0-3" class="d">-  st -g 100x30
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+  st
+</a> 
+ super + space
+   run_dmenu
+<b>diff --git a/<a id="h2" href="../file/wmrc/.scripts/notifyd.html">wmrc/.scripts/notifyd</a> b/<a href="../file/wmrc/.scripts/notifyd.html">wmrc/.scripts/notifyd</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -31,7 +31,7 @@ tail -f &quot;$NOTIFY_FIFO_PATH&quot; | while IFS= read -r message; do
+</a>   echo &quot;$n&quot; &gt; &quot;$NOTIFY_COUNTER_PATH&quot;
+ 
+   {
+<a href="#h2-0-3" id="h2-0-3" class="d">-    popup $(( NOTIFY_X - NOTIFY_W )) $(( DISPLAY_H - (NOTIFY_H + NOTIFY_Y) * n )) $NOTIFY_W $NOTIFY_H &quot;$message&quot;
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+      popup $NOTIFY_X $(( NOTIFY_Y - (NOTIFY_H + GENERAL_GAP) * (n - 1) )) $NOTIFY_W $NOTIFY_H &quot;$message&quot;
+</a>     n=&quot;$(cat &quot;$NOTIFY_COUNTER_PATH&quot;)&quot;
+     n=&quot;$(( n - 1 ))&quot;
+     echo &quot;$n&quot; &gt; &quot;$NOTIFY_COUNTER_PATH&quot;
+<b>diff --git a/<a id="h3" href="../file/wmrc/.scripts/popup.html">wmrc/.scripts/popup</a> b/<a href="../file/wmrc/.scripts/popup.html">wmrc/.scripts/popup</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="d">-#!/bin/sh -x
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+#!/bin/sh
+</a> #
+ # popup - display popup
+ # (c) tudurom 2016 - wtfpl
+</pre>
+</div>
+</body>
+</html>

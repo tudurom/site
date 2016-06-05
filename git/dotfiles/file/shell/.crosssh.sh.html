@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> .crosssh.sh (1881B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> .crosssh.sh (1777B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -91,27 +91,12 @@
 <a href="#l73" id="l73">73</a>
 <a href="#l74" id="l74">74</a>
 <a href="#l75" id="l75">75</a>
-<a href="#l76" id="l76">76</a>
-<a href="#l77" id="l77">77</a>
-<a href="#l78" id="l78">78</a>
-<a href="#l79" id="l79">79</a>
-<a href="#l80" id="l80">80</a>
-<a href="#l81" id="l81">81</a>
 </pre></td><td><pre>
 # ┏━╸┏━┓┏━┓┏━┓┏━┓┏━┓╻ ╻
 # ┃  ┣┳┛┃ ┃┗━┓┗━┓┗━┓┣━┫
 # ┗━╸╹┗╸┗━┛┗━┛┗━┛┗━┛╹ ╹
 # by tudurom
 # bits shared between different shells (bash, mksh, zsh)
-
-# if [[ $- == *i* ]] &amp;&amp; [[ -z &quot;$TMUX&quot; ]]; then
-#   if [[ $(tmux ls | grep -v &quot;attached&quot; | wc -l) -gt 0 ]]; then
-#     # Auto-attach to the first detached one
-#     exec tmux a -t $(tmux ls | grep -v &quot;attached&quot; | head -n 1 | cut -d: -f1)
-#   else
-#     exec tmux
-#   fi
-# fi
 
 export EDITOR=nvim
 export VISUAL=nvim
@@ -125,7 +110,7 @@ if [ -d /usr/local/go ]; then
 fi
 
 # Ruby
-if [ -f /usr/bin/ruby ]; then
+if [ -f /usr/local/bin/ruby ]; then
     export PATH=$HOME/.node/bin:$PATH
     ruby_ver=&quot;$(ls -1 $HOME/.gem/ruby | sort -nr | head -n 1)&quot;
     export PATH=$HOME/.gem/ruby/$ruby_ver/bin:$PATH
@@ -133,6 +118,12 @@ fi
 
 # Source local scripts
 export PATH=&quot;$HOME/bin/clint:$HOME/bin:$PATH&quot;
+
+# god&apos;s own os
+export PATH=&quot;$PATH:/usr/local/plan9/bin&quot;
+
+# Python packages
+export PATH=&quot;$PATH:$HOME/.local/bin&quot;
 
 # Aliases aka hacks
 alias :q=exit
@@ -144,27 +135,18 @@ alias tls=&quot;tmux ls&quot;
 alias tswitch=&quot;tmux switch -t&quot;
 alias tkill=&quot;tmux kill-session -t&quot;
 alias rm=&quot;rm -I&quot;
-alias fkh=&quot;fortune khaled&quot;
-alias ls=&quot;ls -N&quot;
+alias clip=&quot;xclip -selection clipboard&quot;
 alias poweroff=&quot;sudo poweroff&quot;
 alias reboot=&quot;sudo reboot&quot;
+test &quot;$(uname)&quot; = &quot;FreeBSD&quot; &amp;&amp; alias tput=&quot;/usr/local/bin/tput&quot;
 export LESS=&apos;-F -g -i -M -R -S -w -X -z-4&apos;
-
-# Remove unnecessary packages
-pclean() {
-    sudo pacman -Rns $(pacman -Qdtq)
-}
 
 testnet() {
     ping duckduckgo.com
 }
 
-cless() {
-    pygmentize -f terminal &quot;$1&quot; | less -R
-}
-
 ghclone() {
-    git clone https://github.com/${1}.git
+    git clone https://github.com/${1}.git ${2}
 }
 
 transfer() {
@@ -179,6 +161,12 @@ pi() {
     ssh tudoo $1
 }
 
+push() {
+    local branch=&quot;${1:-master}&quot;
+    git remote | while read -r line; do
+        git push $line $branch
+    done
+}
 </pre></td></tr></table>
 </div>
 </body>

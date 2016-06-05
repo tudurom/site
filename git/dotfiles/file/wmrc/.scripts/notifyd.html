@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> notifyd (1042B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> notifyd (1027B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -82,14 +82,14 @@ NOTIFY_Y=&quot;$(( DISPLAY_Y + DISPLAY_H - NOTIFY_H - GENERAL_GAP ))&quot;
 n=0
 echo &quot;$n&quot; &gt; &quot;$NOTIFY_COUNTER_PATH&quot;
 
-tail -f &quot;$NOTIFY_FIFO_PATH&quot; | while IFS= read -r message; do
+while IFS= read -r message &lt; &quot;$NOTIFY_FIFO_PATH&quot;; do
   # increment counter
   n=&quot;$(cat &quot;$NOTIFY_COUNTER_PATH&quot;)&quot;
   n=&quot;$(( n + 1 ))&quot;
   echo &quot;$n&quot; &gt; &quot;$NOTIFY_COUNTER_PATH&quot;
 
   {
-    popup $(( NOTIFY_X - NOTIFY_W )) $(( DISPLAY_H - (NOTIFY_H + NOTIFY_Y) * n )) $NOTIFY_W $NOTIFY_H &quot;$message&quot;
+      popup $NOTIFY_X $(( NOTIFY_Y - (NOTIFY_H + GENERAL_GAP) * (n - 1) )) $NOTIFY_W $NOTIFY_H &quot;$message&quot;
     n=&quot;$(cat &quot;$NOTIFY_COUNTER_PATH&quot;)&quot;
     n=&quot;$(( n - 1 ))&quot;
     echo &quot;$n&quot; &gt; &quot;$NOTIFY_COUNTER_PATH&quot;

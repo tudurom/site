@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>magic - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/56f673cf230e5db822a0dd57292b52432a4eb358.html">56f673cf230e5db822a0dd57292b52432a4eb358</a>
+<b>parent</b> <a href="../commit/cc5b210e24634eae4f1974afeaaa131282f54d6f.html">cc5b210e24634eae4f1974afeaaa131282f54d6f</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Thu May 26 22:44:41 +0300
+
+magic
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">nvim/.config/nvim/init.vim</a></td><td> | </td><td class="num">12</td><td><span class="i">++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h1">shell/.crosssh.sh</a></td><td> | </td><td class="num">3</td><td><span class="i">+++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h2">x/.xinitrc</a></td><td> | </td><td class="num">3</td><td><span class="i">+</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h3">xmodmap/.xmodmaprc</a></td><td> | </td><td class="num">7</td><td><span class="i">+++++++</span><span class="d"></span></td></tr>
+</table>4 files changed, 23 insertions(+), 2 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a> b/<a href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -198,3 +198,15 @@ let g:syntastic_check_on_open = 1
+</a> let g:syntastic_check_on_wq = 0
+ 
+ &quot; }}}
+<a href="#h0-0-3" id="h0-0-3" class="i">+
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+&quot; Hard mode {{{
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+noremap &lt;Up&gt; &lt;NOP&gt;
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+noremap &lt;Down&gt; &lt;NOP&gt;
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+noremap &lt;Left&gt; &lt;NOP&gt;
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+noremap &lt;Right&gt; &lt;NOP&gt;
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+inoremap &lt;Up&gt; &lt;NOP&gt;
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+inoremap &lt;Down&gt; &lt;NOP&gt;
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+inoremap &lt;Left&gt; &lt;NOP&gt;
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+inoremap &lt;Right&gt; &lt;NOP&gt;
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+&quot; }}}
+</a><b>diff --git a/<a id="h1" href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a> b/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -25,6 +25,9 @@ fi
+</a> # Source local scripts
+ export PATH=&quot;$HOME/bin/clint:$HOME/bin:$PATH&quot;
+ 
+<a href="#h1-0-3" id="h1-0-3" class="i">+# god&apos;s own os
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+export PATH=&quot;$PATH:/usr/local/plan9/bin&quot;
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+
+</a> # Aliases aka hacks
+ alias :q=exit
+ alias irb=pry
+<b>diff --git a/<a id="h2" href="../file/x/.xinitrc.html">x/.xinitrc</a> b/<a href="../file/x/.xinitrc.html">x/.xinitrc</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -46,8 +46,7 @@ xset fp rehash
+</a> 
+ # Start nice programs {{{
+ 
+<a href="#h2-0-3" id="h2-0-3" class="d">-# Map Caps to Ctrl
+</a><a href="#h2-0-4" id="h2-0-4" class="d">-setxkbmap -option ctrl:nocaps
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+xmodmap ~/.xmodmaprc
+</a> # URxvt clipboard magic
+ autocutsel -selection clipboard -fork
+ 
+<b>diff --git a/<a id="h3" href="../file/xmodmap/.xmodmaprc.html">xmodmap/.xmodmaprc</a> b/<a href="../file/xmodmap/.xmodmaprc.html">xmodmap/.xmodmaprc</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -0,0 +1,7 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="i">+! remove caps
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+clear lock
+</a><a href="#h3-0-2" id="h3-0-2" class="i">+remove Lock = Caps_Lock
+</a><a href="#h3-0-3" id="h3-0-3" class="i">+remove Shift = Caps_Lock
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+! make caps esc
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+keysym Caps_Lock = Escape
+</a></pre>
+</div>
+</body>
+</html>

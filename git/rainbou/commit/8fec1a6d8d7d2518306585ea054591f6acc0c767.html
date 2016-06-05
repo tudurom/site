@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>respect fg/bg colors - rainbou - Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="rainbou.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>rainbou</h1><span class="desc">Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/8fec1a6d8d7d2518306585ea054591f6acc0c767.html">8fec1a6d8d7d2518306585ea054591f6acc0c767</a>
+<b>parent</b> <a href="../commit/f7e36f085de1f99b2bbf3ec84253903c408fafe2.html">f7e36f085de1f99b2bbf3ec84253903c408fafe2</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri May  6 23:24:35 +0300
+
+respect fg/bg colors
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">templates/st</a></td><td> | </td><td class="num">9</td><td><span class="i">++++</span><span class="d">-----</span></td></tr>
+<tr><td><a href="#h1">templates/st_light</a></td><td> | </td><td class="num">6</td><td><span class="i">+++</span><span class="d">---</span></td></tr>
+</table>2 files changed, 7 insertions(+), 8 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/templates/st.html">templates/st</a> b/<a href="../file/templates/st.html">templates/st</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -8,9 +8,9 @@ static const char *colorname[] = {
+</a>   &quot;$COLOR_5$&quot;,
+   &quot;$COLOR_6$&quot;,
+   &quot;$COLOR_7$&quot;,
+<a href="#h0-0-3" id="h0-0-3" class="d">-  &quot;$COLOR_8$&quot;,
+</a> 
+   /* 8 brightcolors */
+<a href="#h0-0-6" id="h0-0-6" class="i">+  &quot;$COLOR_8$&quot;,
+</a>   &quot;$COLOR_9$&quot;,
+   &quot;$COLOR_10$&quot;,
+   &quot;$COLOR_11$&quot;,
+<a href="#h0-1" id="h0-1" class="h">@@ -18,7 +18,6 @@ static const char *colorname[] = {
+</a>   &quot;$COLOR_13$&quot;,
+   &quot;$COLOR_14$&quot;,
+   &quot;$COLOR_15$&quot;,
+<a href="#h0-1-3" id="h0-1-3" class="d">-  &quot;$COLOR_16$&quot;,
+</a> 
+   [255] = 0,
+ 
+<a href="#h0-2" id="h0-2" class="h">@@ -28,9 +27,9 @@ static const char *colorname[] = {
+</a> };
+ 
+ /* Default colors for foreground, background and cursor */
+<a href="#h0-2-3" id="h0-2-3" class="d">-static unsigned int defaultfg = 7;
+</a><a href="#h0-2-4" id="h0-2-4" class="d">-static unsigned int defaultbg = 0;
+</a><a href="#h0-2-5" id="h0-2-5" class="d">-static unsigned int defaultcs = 7;
+</a><a href="#h0-2-6" id="h0-2-6" class="i">+static unsigned int defaultfg = 257;
+</a><a href="#h0-2-7" id="h0-2-7" class="i">+static unsigned int defaultbg = 256;
+</a><a href="#h0-2-8" id="h0-2-8" class="i">+static unsigned int defaultcs = 257;
+</a> 
+ /*
+  * Colors used, when the specific fg == defaultfg. So in reverse mode this
+<b>diff --git a/<a id="h1" href="../file/templates/st_light.html">templates/st_light</a> b/<a href="../file/templates/st_light.html">templates/st_light</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -28,9 +28,9 @@ static const char *colorname[] = {
+</a> };
+ 
+ /* Default colors for foreground, background and cursor */
+<a href="#h1-0-3" id="h1-0-3" class="d">-static unsigned int defaultfg = 0;
+</a><a href="#h1-0-4" id="h1-0-4" class="d">-static unsigned int defaultbg = 7;
+</a><a href="#h1-0-5" id="h1-0-5" class="d">-static unsigned int defaultcs = 0;
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+static unsigned int defaultfg = 256;
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+static unsigned int defaultbg = 257;
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+static unsigned int defaultcs = 256;
+</a> 
+ /*
+  * Colors used, when the specific fg == defaultfg. So in reverse mode this
+</pre>
+</div>
+</body>
+</html>

@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> statusbar (5694B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> statusbar (3772B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -187,78 +187,14 @@
 <a href="#l169" id="l169">169</a>
 <a href="#l170" id="l170">170</a>
 <a href="#l171" id="l171">171</a>
-<a href="#l172" id="l172">172</a>
-<a href="#l173" id="l173">173</a>
-<a href="#l174" id="l174">174</a>
-<a href="#l175" id="l175">175</a>
-<a href="#l176" id="l176">176</a>
-<a href="#l177" id="l177">177</a>
-<a href="#l178" id="l178">178</a>
-<a href="#l179" id="l179">179</a>
-<a href="#l180" id="l180">180</a>
-<a href="#l181" id="l181">181</a>
-<a href="#l182" id="l182">182</a>
-<a href="#l183" id="l183">183</a>
-<a href="#l184" id="l184">184</a>
-<a href="#l185" id="l185">185</a>
-<a href="#l186" id="l186">186</a>
-<a href="#l187" id="l187">187</a>
-<a href="#l188" id="l188">188</a>
-<a href="#l189" id="l189">189</a>
-<a href="#l190" id="l190">190</a>
-<a href="#l191" id="l191">191</a>
-<a href="#l192" id="l192">192</a>
-<a href="#l193" id="l193">193</a>
-<a href="#l194" id="l194">194</a>
-<a href="#l195" id="l195">195</a>
-<a href="#l196" id="l196">196</a>
-<a href="#l197" id="l197">197</a>
-<a href="#l198" id="l198">198</a>
-<a href="#l199" id="l199">199</a>
-<a href="#l200" id="l200">200</a>
-<a href="#l201" id="l201">201</a>
-<a href="#l202" id="l202">202</a>
-<a href="#l203" id="l203">203</a>
-<a href="#l204" id="l204">204</a>
-<a href="#l205" id="l205">205</a>
-<a href="#l206" id="l206">206</a>
-<a href="#l207" id="l207">207</a>
-<a href="#l208" id="l208">208</a>
-<a href="#l209" id="l209">209</a>
-<a href="#l210" id="l210">210</a>
-<a href="#l211" id="l211">211</a>
-<a href="#l212" id="l212">212</a>
-<a href="#l213" id="l213">213</a>
-<a href="#l214" id="l214">214</a>
-<a href="#l215" id="l215">215</a>
-<a href="#l216" id="l216">216</a>
-<a href="#l217" id="l217">217</a>
-<a href="#l218" id="l218">218</a>
-<a href="#l219" id="l219">219</a>
-<a href="#l220" id="l220">220</a>
-<a href="#l221" id="l221">221</a>
-<a href="#l222" id="l222">222</a>
-<a href="#l223" id="l223">223</a>
-<a href="#l224" id="l224">224</a>
-<a href="#l225" id="l225">225</a>
-<a href="#l226" id="l226">226</a>
-<a href="#l227" id="l227">227</a>
-<a href="#l228" id="l228">228</a>
-<a href="#l229" id="l229">229</a>
-<a href="#l230" id="l230">230</a>
-<a href="#l231" id="l231">231</a>
-<a href="#l232" id="l232">232</a>
-<a href="#l233" id="l233">233</a>
-<a href="#l234" id="l234">234</a>
-<a href="#l235" id="l235">235</a>
-<a href="#l236" id="l236">236</a>
-<a href="#l237" id="l237">237</a>
 </pre></td><td><pre>
-#! /bin/sh
+#!/bin/sh
 #
 # &quot;Simple&quot; status bar
 # (c) tudurom 2016 - wtfpl
 #
+
+test -z &quot;$DISPLAY&quot; &amp;&amp; echo &quot;statusbar needs a working X environment&quot; &amp;&amp; exit 1
 
 is_int() {
   case $1 in
@@ -319,7 +255,7 @@ is_int() {
   # Bar options
   BAR_OPTS=&quot;&quot;
   # Because wmutils
-  BAR_OPTS=&quot;${BAR_OPTS} -d&quot;
+  BAR_OPTS=&quot;${BAR_OPTS} -d -R $C8 -r 3&quot;
   # Gonna position it centered and respect the gaps
   BAR_OPTS=&quot;${BAR_OPTS} -g ${BAR_WIDTH}x${BAR_HEIGHT}+${BAR_X}+${BAR_Y}&quot;
   # Colors
@@ -361,39 +297,27 @@ is_int() {
 
   # Battery status
   while true; do
-    batt_status=&quot;$(cat /sys/class/power_supply/BAT0/status)&quot;
-    batt_percentage=&quot;$(cat /sys/class/power_supply/BAT0/capacity)&quot;
+    batt_status=&quot;$(apm -b)&quot;
+    batt_percentage=&quot;$(apm -l)&quot;
     # Icons
-    if [ &quot;$batt_status&quot; = &quot;Charging&quot; ]; then
+    if [ &quot;$batt_status&quot; -eq 3 ]; then
       BATT_ICON=&quot;&quot;
-    elif [ &quot;$batt_percentage&quot; -gt 50 ]; then
+    elif [ &quot;$batt_status&quot; -eq 0 ]; then
       BATT_ICON=&quot;&quot;
-    elif [ &quot;$batt_percentage&quot; -gt 30 ]; then
+    elif [ &quot;$batt_status&quot; -eq 1 ]; then
       BATT_ICON=&quot;&quot;
     else
       BATT_ICON=&quot;&quot;
     fi
-    echo &quot;B%{F$C11}${BATT_ICON}%{F-} ${batt_percentage}&quot;
-    sleep 10
-  done &gt; &quot;$FIFO_PATH&quot; &amp;
-
-  # Memory usage
-  while true; do
-    t=$(grep MemTotal /proc/meminfo | awk &apos;{print $2}&apos;)
-    f=$(grep MemFree  /proc/meminfo | awk &apos;{print $2}&apos;)
-    b=$(grep ^Buffers /proc/meminfo | awk &apos;{print $2}&apos;)
-    c=$(grep ^Cached  /proc/meminfo | awk &apos;{print $2}&apos;)
-
-    mem=`echo &quot;($t - $f - $c - $b) / 1024&quot; | bc`
-    echo &quot;R%{F$C9}%{F-} $mem&quot;
+    echo &quot;B%{F$C13}${BATT_ICON}%{F-} ${batt_percentage}&quot;
     sleep 10
   done &gt; &quot;$FIFO_PATH&quot; &amp;
 
   # Volume
   while true; do
-    state=$(amixer get Master | grep &apos;Mono: Playback&apos; | grep &apos;\[on]&apos;)
-    volume=$(amixer get Master | grep &quot;Mono: &quot; | grep -o &apos;...%&apos; | sed &apos;s/\[//g&apos; | sed &apos;s/%//g&apos;)
-    if [ &quot;$state&quot; ]; then
+    pcm=$(mixer -S pcm | cut -d&apos;:&apos; -f2)
+    volume=$(mixer -S vol | cut -d&apos;:&apos; -f2)
+    if [ &quot;$pcm&quot; -gt 0 ]; then
       if [ $volume -ge 50 ]; then
         vicon=
       else
@@ -402,59 +326,9 @@ is_int() {
     else
       vicon=
     fi
-    echo &quot;V%{A3:amixer sset Master toggle:}%{A4:amixer sset Master 5%+ unmute:}%{A5:amixer sset Master 5%- unmute:}%{F$C10}$vicon%{F-} $volume%{A}%{A}%{A}&quot;
+    echo &quot;V%{A3:mute:}%{A4:mixer vol +5:}%{A5:mixer vol -5:}%{F$C12}$vicon%{F-} $volume%{A}%{A}%{A}&quot;
     sleep 0.5
   done &gt; &quot;$FIFO_PATH&quot; &amp;
-
-  # Group status
-  # while true; do
-  #   g_out=&quot;G&quot;
-  #   # Check each group
-  #   for gid in $(seq 1 $GNUMBER); do
-  #     # If we find no icon, fall back to group id
-  #     g_icon=&quot;$gid&quot;
-  #     # Get the first window in the group, if there&apos;s any
-  #     g_window=&quot;$(ls -1 /tmp/groaw/$gid | sort -n | head -n 1)&quot;
-  #     g_name=&quot;$(xtitle $g_window)&quot;
-
-  #     case $g_name in
-  #       *Vimperator*)
-  #         g_icon=&quot;&quot;
-  #         ;;
-  #       *urxvt*|*st*)
-  #         g_icon=&quot;&quot;
-  #         ;;
-  #       Transmission)
-  #         g_icon=&quot;&quot;
-  #         ;;
-  #       imv*)
-  #         g_icon=&quot;&quot;
-  #         ;;
-  #       *&quot;File Manager&quot;*)
-  #         g_icon=&quot;&quot;
-  #         ;;
-  #       *LibreOffice*)
-  #         g_icon=&quot;&quot;
-  #         ;;
-  #       *Thunderbird)
-  #         g_icon=&quot;&quot;
-  #         ;;
-  #       *)
-  #         test -z &quot;$g_name&quot; || g_icon=&quot;&quot;
-  #         ;;
-  #     esac
-  #     if groaw -p $gid; then
-  #       g_this_out=&quot;%{+u} %{F$C6}${g_icon}%{F-} %{-u}&quot;
-  #     else
-  #       g_this_out=&quot; ${g_icon} &quot;
-  #     fi
-  #     test -z &quot;$g_name&quot; &amp;&amp; g_this_out=&quot;%{F$C8}${g_this_out}%{F-}&quot;
-  #     g_this_out=&quot;%{A1:groaw -t ${gid}:}${g_this_out}%{A}&quot;
-  #     g_out=&quot;${g_out}${g_this_out}&quot;
-  #   done
-  #   echo &quot;$g_out&quot;
-  #   sleep 0.3
-  # done &gt; &quot;$FIFO_PATH&quot; &amp;
 
 # }}}
 
@@ -467,9 +341,6 @@ is_int() {
       T*)
         time=&quot;${line#?}&quot;
         ;;
-      # G*)
-      #   groups=&quot;${line#?}&quot;
-      #   ;;
       M*)
         music=&quot;${line#?}&quot;
         ;;
@@ -479,12 +350,9 @@ is_int() {
       V*)
         vol=&quot;${line#?}&quot;
         ;;
-      R*)
-        ram=&quot;${line#?}&quot;
-        ;;
       esac
     # Show time!
-    echo &quot;%{c}${SEP_BIG}${music}${SEP_SMALL}${vol}${SEP_SMALL}${ram}${SEP_SMALL}${batt}${SEP_SMALL}${time}${SEP_BIG}&quot;
+    echo &quot;%{c}${SEP_BIG}${music}${SEP_SMALL}${vol}${SEP_SMALL}${batt}${SEP_SMALL}${time}${SEP_BIG}&quot;
   done |\
   lemonbar $BAR_OPTS | sh
 # }}}

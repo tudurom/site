@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> README.md (5350B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> README.md (1984B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -74,41 +74,6 @@
 <a href="#l56" id="l56">56</a>
 <a href="#l57" id="l57">57</a>
 <a href="#l58" id="l58">58</a>
-<a href="#l59" id="l59">59</a>
-<a href="#l60" id="l60">60</a>
-<a href="#l61" id="l61">61</a>
-<a href="#l62" id="l62">62</a>
-<a href="#l63" id="l63">63</a>
-<a href="#l64" id="l64">64</a>
-<a href="#l65" id="l65">65</a>
-<a href="#l66" id="l66">66</a>
-<a href="#l67" id="l67">67</a>
-<a href="#l68" id="l68">68</a>
-<a href="#l69" id="l69">69</a>
-<a href="#l70" id="l70">70</a>
-<a href="#l71" id="l71">71</a>
-<a href="#l72" id="l72">72</a>
-<a href="#l73" id="l73">73</a>
-<a href="#l74" id="l74">74</a>
-<a href="#l75" id="l75">75</a>
-<a href="#l76" id="l76">76</a>
-<a href="#l77" id="l77">77</a>
-<a href="#l78" id="l78">78</a>
-<a href="#l79" id="l79">79</a>
-<a href="#l80" id="l80">80</a>
-<a href="#l81" id="l81">81</a>
-<a href="#l82" id="l82">82</a>
-<a href="#l83" id="l83">83</a>
-<a href="#l84" id="l84">84</a>
-<a href="#l85" id="l85">85</a>
-<a href="#l86" id="l86">86</a>
-<a href="#l87" id="l87">87</a>
-<a href="#l88" id="l88">88</a>
-<a href="#l89" id="l89">89</a>
-<a href="#l90" id="l90">90</a>
-<a href="#l91" id="l91">91</a>
-<a href="#l92" id="l92">92</a>
-<a href="#l93" id="l93">93</a>
 </pre></td><td><pre>
 tudurom&apos;s dotfiles
 ==================
@@ -122,86 +87,51 @@ Managing
 
 I manage my dotfiles using GNU Stow. [Here&apos;s a neat article about managing your dotfiles with stow](http://blog.xero.nu/managing_dotfiles_with_gnu_stow).
 
-List of programs
------------------
-
-* **Operating System**: [CRUX](http://crux.nu)
-* **Text editor**: [neovim](http://neovim.io)
-  * See `nvim/.config/nvim/init.vim` for plugins
-* **Color scheme**: [cloudy](https://github.com/tudurom/dotfiles/blob/master/x/.xres/colors/cloudy)
-* **Shell**: [mksh](https://www.mirbsd.org/mksh.htm)
-  * Also using [tmux](https://wiki.archlinux.org/index.php/tmux).
-* **Terminal emulator**: [suckless st](https://wiki.archlinux.org/index.php/St)
-* **Window manager**: [wmutils](http://wmutils.io) + [my scripts](https://github.com/tudurom/dotfiles/tree/master/wmrc/.scripts)
-  * **Panel**: [lemonbar](https://wiki.archlinux.org/index.php/Lemonbar) (see `wmrc/.scripts/*bar`)
-* **Browser**: Firefox
-  * **Theme**: Twily&apos;s modified
-* **Music player**: [mpd](https://wiki.archlinux.org/index.php/Music_Player_Daemon) + [ncmpcpp](https://wiki.archlinux.org/index.php/Ncmpcpp)
-* **Special Sauce**: [Rainbou](https://github.com/tudurom/rainbou) (configration
-  file generator)
-
 Directory structure
 -------------------
 
-```bash
-~
-─── tree -L 1
+```
+.
+├── README.md
+├── alsa - sound config for linux
+├── asciiart - ascii art bin
+├── bspwm - old rice, keeping it for historical purposes
+├── compton - window compositor
+├── cwm - window manager of choice
+├── firefox - theme for firefox
+├── git - global git config
+├── gtk - theme
+├── mpd - music player daemon
+├── ncmpcpp - client for mpd. theme file is here
+├── npm - Node.js package manager. i have a simple config for installing packages in the home folder
+├── nvim - text editor that i use
+├── ports - CRUX ports
+├── pre_magic.sh - script that does magic after stowing the files
+├── scripts
+├── shell - configuration files for mksh
+├── st - the terminal emulator i use
+├── startpage - startpage for firefox
+├── tmux - configs for Terminal MUltipleXer
+├── vimperator - cool firefox addon i use for vim style keybindings
+├── wallpapers
+├── wmrc - wmutils scripts
+├── x - x resources and .xinitrc
+├── xdg
+└── xmodmap - keybind changes and fixes for media keys under freebsd
 ```
 
-```
-. &lt;- you&apos;re here
-├── alsa - Advanced Linux Sound Architecture config
-├── asciiart - Random asciiart from everywhere
-├── bspwm - old bspwm rice
-├── cava - configs for cava, a sound visualizer
-├── compton - configuration for compton, the best window compozitor
-├── git - configuration file for git, the version control system
-├── gtk - config for gtk and a micro stylesheet to avoid some bugs with some gtk themes
-├── herbstluftwm - old herblasfhjasdklwm rice
-├── i3 - ancient i3 (n00b) rice
-├── mksh - Mir Korn SHell - my shell config. very simple shell
-├── mpd - Music Player Daemon configuration
-├── ncmpcpp - configration file for ncmpcpp, an ncurses Music Player Daemon (MPD) client
-├── neofetch - neofetch config. very cool project
-├── npm - small config for the Node Package Manager. i save all the packages in the home directory
-├── nvim - configuration files for Neovim, the best text editor known to the mankind
-├── README.md - README, the novel, written by tudurom
-├── scripts - all my shell scripts used in my workflow
-├── startpage - startpage
-├── tmux - Terminal MUltipleXer configuration file and status bar script
-├── vimperator - config for a neat extension for firefox. theme included
-├── wallpapers - collection of wallpapers
-├── wmrc - all files related to my wmutils setup - scripts and sxhkd config
-└── x - x resources and xinitrc
+24 directories, 2 files
 
-21 directories, 1 file
-```
+Backups
+-------
 
-TODO
-----
+In case of fire, my dotfiles are mirrored on a number of servers:
 
-- [ ] Document this setup more
-  - [x] This README
-  - [ ] A big article at the `gh-pages` branch
-
-Screenshots
------------
-
-### [Sanity](http://pub.iotek.org/p/vBEtVnd.png)
-
-### [2AM Ricing](http://pub.iotek.org/p/VsbSaGT.png)
-
-### [Lost cat](http://pub.iotek.org/p/YdrGGvR.png)
-
-### [First wmutils screenie](http://pub.iotek.org/p/9DIdJjP.png)
-
-### [Previous BSPWM desktop](http://goo.gl/2vj5Yk)
-
-### [Older BSPWM desktop](http://tudurom.github.io/albumify/view.html#eyJ0aXRsZSI6ImJzcHdtIC0gU3ByaW5nIiwiZGVzY3JpcHRpb24iOiIiLCJhbGJ1bSI6W3sicGljU3JjIjoiaHR0cDovL2kuaW1ndXIuY29tL0ZwNGJZTkwucG5nIiwidGl0bGUiOiJJbmZvIn0seyJwaWNTcmMiOiJodHRwOi8vaS5pbWd1ci5jb20vQ2lYQlowRC5wbmciLCJ0aXRsZSI6IlRlcm1zIn0seyJwaWNTcmMiOiJodHRwOi8vaS5pbWd1ci5jb20vbnA4cmRuTC5wbmciLCJ0aXRsZSI6IkNsZWFuIn0seyJwaWNTcmMiOiJodHRwOi8vaS5pbWd1ci5jb20vZGU2UEtJWi5wbmciLCJ0aXRsZSI6IlRlcm1zIHdpdGhvdXQgc3lzaW5mbyJ9XX0=)
-
-### [Herbstluftwm](http://tudurom.github.io/albumify/view.html#eyJ0aXRsZSI6Imhsd20gLSBNb25vZHkgZnQuIFJ1YnkgcG93ZXJlZCBsZW1vbmJhciIsImRlc2NyaXB0aW9uIjoiV2hpbGUgSSB3YXMgcHJlcGFyaW5nIHRvIHB1c2ggYWxsIHRoZSByZW1haW5pbmcgY2hhbmdlcyB0byBnaXRodWIsIEkgcmFuIGBnaXQgcmVzZXQgLS1oYXJkYCBieSBtaXN0YWtlLiBJIGhhZCB0byByZS1tYWtlIGFsbCB0aGUgdGhpbmdzIEkgbWFkZSB0b2RheS4gRGlkIGl0IGluIGFuIGhvdXIhICIsImFsYnVtIjpbeyJwaWNTcmMiOiJodHRwOi8vaS5pbWd1ci5jb20vVzlUWms2eC5wbmciLCJ0aXRsZSI6IlNlbGZpZSB3aXRoIC9yL3VuaXhwb3JuIn0seyJwaWNTcmMiOiJodHRwOi8vaS5pbWd1ci5jb20valZmTE51Vy5wbmciLCJ0aXRsZSI6IkZha2UgZGlydHkifSx7InBpY1NyYyI6Imh0dHA6Ly9pLmltZ3VyLmNvbS9Zc0lteWVOLnBuZyIsInRpdGxlIjoiUm9maSJ9LHsicGljU3JjIjoiaHR0cDovL2kuaW1ndXIuY29tL0ZsMzdqTloucG5nIiwidGl0bGUiOiJDbGVhbiJ9LHsicGljU3JjIjoiaHR0cDovL2kuaW1ndXIuY29tLzU0WThpVnYucG5nIiwidGl0bGUiOiJuY21wY3BwIGFuZCBjYXZhIn0seyJwaWNTcmMiOiJodHRwOi8vaS5pbWd1ci5jb20vTEI2Q1F3OS5qcGciLCJ0aXRsZSI6IldhbGxwYXBlci4gQ3JlZGl0cyB0byBKb3JkYW4gR3JpbW1lciJ9XX0=)
-
-### [i3](http://tudurom.github.io/albumify/view.html#eyJ0aXRsZSI6ImkzIC0gRmlyc3QgcmljZSIsImRlc2NyaXB0aW9uIjoiIiwiYWxidW0iOlt7InBpY1NyYyI6Imh0dHA6Ly9pLmltZ3VyLmNvbS96YVo0dHBoLnBuZyIsInRpdGxlIjoiQ2xlYW4ifSx7InBpY1NyYyI6Imh0dHA6Ly9pLmltZ3VyLmNvbS84blgxSGFlLnBuZyIsInRpdGxlIjoiRGlydHkifSx7InBpY1NyYyI6Imh0dHA6Ly9pLmltZ3VyLmNvbS9lNjVIN21JLnBuZyIsInRpdGxlIjoiQmx1ZSByb2ZpIn0seyJwaWNTcmMiOiJodHRwOi8vaS5pbWd1ci5jb20vOXdQYTA5WC5wbmciLCJ0aXRsZSI6IlNjcmVlbmZldGNoIn1dfQ==)
+- [GitHub](https://github.com/tudurom/dotfiles)
+- [notabug](https://notabug.org/tudurom/dotfiles)
+- [sr.ht](https://gogs.sr.ht/xenogenesis/dotfiles)
+- [gitgud](https://gitgud.io/tudurom/dotfiles_backup)
+- [my server](http://thetudor.ddns.net/git/dotfiles/log.html)
 
 </pre></td></tr></table>
 </div>

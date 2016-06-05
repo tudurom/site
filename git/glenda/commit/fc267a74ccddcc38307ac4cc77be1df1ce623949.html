@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>greedy strategy - glenda - Program that plays the Flood Wars game for a contest.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="glenda.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>glenda</h1><span class="desc">Program that plays the Flood Wars game for a contest.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/glenda.git">git://thetudor.ddns.net/glenda.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/fc267a74ccddcc38307ac4cc77be1df1ce623949.html">fc267a74ccddcc38307ac4cc77be1df1ce623949</a>
+<b>parent</b> <a href="../commit/e0ba01733d9e0cb8c91cbd5da81f661b90a89562.html">e0ba01733d9e0cb8c91cbd5da81f661b90a89562</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Mon May 30 19:09:17 +0300
+
+greedy strategy
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">.gitignore</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td><a href="#h1">glenda.c</a></td><td> | </td><td class="num">122</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">---------------------------------</span></td></tr>
+</table>2 files changed, 72 insertions(+), 51 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.gitignore.html">.gitignore</a> b/<a href="../file/.gitignore.html">.gitignore</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,3 +1,4 @@
+</a> glenda
+ glenda.in
+ glenda.out
+<a href="#h0-0-3" id="h0-0-3" class="i">+glenda.core
+</a><b>diff --git a/<a id="h1" href="../file/glenda.c.html">glenda.c</a> b/<a href="../file/glenda.c.html">glenda.c</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -30,8 +30,10 @@
+</a> http://glenda.cat-v.org/
+ */
+ 
+<a href="#h1-0-3" id="h1-0-3" class="i">+#include &lt;limits.h&gt;
+</a> #include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+<a href="#h1-0-6" id="h1-0-6" class="i">+#include &lt;string.h&gt;
+</a> #include &lt;time.h&gt;
+ 
+ /* Constants {{{ */
+<a href="#h1-1" id="h1-1" class="h">@@ -43,7 +45,6 @@ http://glenda.cat-v.org/
+</a> #define debug(...)
+ #endif
+ 
+<a href="#h1-1-3" id="h1-1-3" class="d">-#define USE_BFS
+</a> /* NO. of colors */
+ #define N_COL 5
+ /* Maximum size of the board */
+<a href="#h1-2" id="h1-2" class="h">@@ -52,17 +53,24 @@ http://glenda.cat-v.org/
+</a> /* Player values. S is up (sus) and J is down (jos) */
+ #define S -1
+ #define J 1
+<a href="#h1-2-3" id="h1-2-3" class="i">+/* Infinity, for minimax */
+</a><a href="#h1-2-4" id="h1-2-4" class="i">+#define INFINITY SCHAR_MAX
+</a> /* borders are pre-initialized with -infinity (-1) for faster flooding, so all values are shifted by one */
+ #define B(lin, col) board[lin + 1][col + 1]
+<a href="#h1-2-7" id="h1-2-7" class="i">+#define BO(b, lin, col) b[lin + 1][col + 1]
+</a><a href="#h1-2-8" id="h1-2-8" class="i">+#define color_to_char(x) colors[x - 1]
+</a> /* }}} */
+ 
+ typedef char color;
+ typedef char player;
+ 
+ color board[1 + MAX_H + 1][1 + MAX_W + 1];
+<a href="#h1-2-15" id="h1-2-15" class="i">+color alt_board[1 + MAX_H + 1][1 + MAX_W + 1];
+</a> int board_lines, board_cols;
+ 
+<a href="#h1-2-18" id="h1-2-18" class="d">-color colors[] = {&apos;@&apos;, &apos;#&apos;, &apos;+&apos;, &apos;.&apos;, &apos;*&apos;};
+</a><a href="#h1-2-19" id="h1-2-19" class="i">+/* &apos;@&apos; has the biggest ascii value */
+</a><a href="#h1-2-20" id="h1-2-20" class="i">+color char_to_color[&apos;@&apos; + 1];
+</a><a href="#h1-2-21" id="h1-2-21" class="i">+char colors[] = {&apos;@&apos;, &apos;#&apos;, &apos;+&apos;, &apos;.&apos;, &apos;*&apos;};
+</a> player current_player;
+ 
+ unsigned char bfs_lines[MAX_W * MAX_H * 4];
+<a href="#h1-3" id="h1-3" class="h">@@ -92,53 +100,37 @@ inline void get_corner(player current_player, int *lin, int *col) {
+</a> /* Create board border (for faster filling) {{{ */
+ void init_board(int lin, int col, color (*board)[MAX_W + 2]) {
+     int i, j;
+<a href="#h1-3-3" id="h1-3-3" class="i">+    debug(&quot;initializing board with %d\n&quot;, -INFINITY);
+</a>     for (i = 0; i &lt;= 1; i++)
+         for (j = 0; j &lt; col + 2; j++)
+<a href="#h1-3-6" id="h1-3-6" class="d">-            board[i * (lin + 2 - 1)][j] = -1;
+</a><a href="#h1-3-7" id="h1-3-7" class="i">+            board[i * (lin + 2 - 1)][j] = -INFINITY;
+</a> 
+     for (j = 0; j &lt;= 1; j++)
+         for (i = 0; i &lt; lin + 2; i++)
+<a href="#h1-3-11" id="h1-3-11" class="d">-            board[i][j * (col + 2 - 1)] = -1;
+</a><a href="#h1-3-12" id="h1-3-12" class="i">+            board[i][j * (col + 2 - 1)] = -INFINITY;
+</a> }
+ /* }}} */
+ 
+<a href="#h1-3-16" id="h1-3-16" class="d">-/* Flood fill old color with new one {{{ */
+</a><a href="#h1-3-17" id="h1-3-17" class="d">-#ifndef USE_BFS
+</a><a href="#h1-3-18" id="h1-3-18" class="d">-int fill(int lin, int col, color old, color new) { /* {{{ */
+</a><a href="#h1-3-19" id="h1-3-19" class="d">-    debug(&quot;[FIL] replacing at line %d col %d\n&quot;, lin, col);
+</a><a href="#h1-3-20" id="h1-3-20" class="d">-    int cnt = 1;
+</a><a href="#h1-3-21" id="h1-3-21" class="d">-    B(lin, col) = new;
+</a><a href="#h1-3-22" id="h1-3-22" class="d">-    if (B(lin - 1, col) == old)
+</a><a href="#h1-3-23" id="h1-3-23" class="d">-        cnt += fill(lin - 1, col, old, new);
+</a><a href="#h1-3-24" id="h1-3-24" class="d">-    if (B(lin + 1, col) == old)
+</a><a href="#h1-3-25" id="h1-3-25" class="d">-        cnt += fill(lin + 1, col, old, new);
+</a><a href="#h1-3-26" id="h1-3-26" class="d">-    if (B(lin, col - 1) == old)
+</a><a href="#h1-3-27" id="h1-3-27" class="d">-        cnt += fill(lin, col - 1, old, new);
+</a><a href="#h1-3-28" id="h1-3-28" class="d">-    if (B(lin, col + 1) == old)
+</a><a href="#h1-3-29" id="h1-3-29" class="d">-        cnt += fill(lin, col + 1, old, new);
+</a><a href="#h1-3-30" id="h1-3-30" class="d">-    return cnt;
+</a><a href="#h1-3-31" id="h1-3-31" class="d">-} /* }}} */
+</a><a href="#h1-3-32" id="h1-3-32" class="d">-#endif
+</a><a href="#h1-3-33" id="h1-3-33" class="d">-
+</a><a href="#h1-3-34" id="h1-3-34" class="d">-#ifdef USE_BFS
+</a><a href="#h1-3-35" id="h1-3-35" class="d">-int fill(int lin, int col, color old, color new) { /* {{{ */
+</a><a href="#h1-3-36" id="h1-3-36" class="i">+/* Replace old color with new one in the podle {{{ */
+</a><a href="#h1-3-37" id="h1-3-37" class="i">+int fill(color (*board)[MAX_W + 2], int lin, int col, color old, color new) {
+</a>     int cnt = 1;
+     int l, c;
+     int d;
+     bfs_begin = bfs_end = 0;
+     bfs_lines[bfs_end] = lin;
+     bfs_cols[bfs_end] = col;
+<a href="#h1-3-44" id="h1-3-44" class="d">-    B(lin, col) = new;
+</a><a href="#h1-3-45" id="h1-3-45" class="i">+    BO(board, lin, col) = new;
+</a><a href="#h1-3-46" id="h1-3-46" class="i">+    debug(&quot;[BFS] replacing at line %d col %d\n&quot;, lin, col);
+</a>     bfs_end++;
+     while (bfs_begin &lt; bfs_end) {
+         l = bfs_lines[bfs_begin];
+         c = bfs_cols[bfs_begin];
+         bfs_begin++;
+         for (d = 0; d &lt; N_DIR; d++) {
+<a href="#h1-3-53" id="h1-3-53" class="d">-            if (B(l + dlin[d], c + dcol[d]) == old) {
+</a><a href="#h1-3-54" id="h1-3-54" class="i">+            if (BO(board, l + dlin[d], c + dcol[d]) == old) {
+</a>                 debug(&quot;[BFS] replacing at line %d col %d\n&quot;, l + dlin[d], c + dcol[d]);
+                 cnt++;
+<a href="#h1-3-57" id="h1-3-57" class="d">-                B(l + dlin[d], c + dcol[d]) = new;
+</a><a href="#h1-3-58" id="h1-3-58" class="i">+                BO(board, l + dlin[d], c + dcol[d]) = new;
+</a>                 bfs_lines[bfs_end] = l + dlin[d];
+                 bfs_cols[bfs_end] = c + dcol[d];
+                 bfs_end++;
+<a href="#h1-4" id="h1-4" class="h">@@ -147,17 +139,39 @@ int fill(int lin, int col, color old, color new) { /* {{{ */
+</a>     }
+     return cnt;
+ } /* }}} */
+<a href="#h1-4-3" id="h1-4-3" class="d">-#endif
+</a><a href="#h1-4-4" id="h1-4-4" class="i">+
+</a><a href="#h1-4-5" id="h1-4-5" class="i">+/* Check game over {{{ */
+</a><a href="#h1-4-6" id="h1-4-6" class="i">+
+</a><a href="#h1-4-7" id="h1-4-7" class="i">+short game_over_fv[N_COL + 1];
+</a><a href="#h1-4-8" id="h1-4-8" class="i">+inline unsigned char game_over(color (*board)[MAX_W + 2], int lines, int cols) {
+</a><a href="#h1-4-9" id="h1-4-9" class="i">+    int i, j;
+</a><a href="#h1-4-10" id="h1-4-10" class="i">+    int n_col = 0;
+</a><a href="#h1-4-11" id="h1-4-11" class="i">+    for (i = 0; i &lt;  lines; i++) {
+</a><a href="#h1-4-12" id="h1-4-12" class="i">+        for (j = 0; j &lt; cols; j++) {
+</a><a href="#h1-4-13" id="h1-4-13" class="i">+            game_over_fv[B(i, j)]++;
+</a><a href="#h1-4-14" id="h1-4-14" class="i">+            if (game_over_fv[B(i, j)] == 1)
+</a><a href="#h1-4-15" id="h1-4-15" class="i">+                n_col++;
+</a><a href="#h1-4-16" id="h1-4-16" class="i">+        }
+</a><a href="#h1-4-17" id="h1-4-17" class="i">+    }
+</a><a href="#h1-4-18" id="h1-4-18" class="i">+
+</a><a href="#h1-4-19" id="h1-4-19" class="i">+    return n_col == 2;
+</a><a href="#h1-4-20" id="h1-4-20" class="i">+}
+</a><a href="#h1-4-21" id="h1-4-21" class="i">+
+</a> /* }}} */
+ 
+ int main() { /* {{{ */
+     int lin, col;
+<a href="#h1-4-26" id="h1-4-26" class="d">-    color c;
+</a><a href="#h1-4-27" id="h1-4-27" class="i">+    char c;
+</a>     /* colors of the current player and opponent */
+     color me, op;
+<a href="#h1-4-30" id="h1-4-30" class="i">+    int lin_me = 0, col_me = 0;
+</a>     int i;
+<a href="#h1-4-32" id="h1-4-32" class="d">-    int pos;
+</a><a href="#h1-4-33" id="h1-4-33" class="d">-    int cnt;
+</a><a href="#h1-4-34" id="h1-4-34" class="i">+    int cnt, maxcnt;
+</a><a href="#h1-4-35" id="h1-4-35" class="i">+    color maxcolor;
+</a><a href="#h1-4-36" id="h1-4-36" class="i">+
+</a><a href="#h1-4-37" id="h1-4-37" class="i">+    for (i = 0; i &lt; N_COL; i++) {
+</a><a href="#h1-4-38" id="h1-4-38" class="i">+        char_to_color[(unsigned char)colors[i]] = i + 1;
+</a><a href="#h1-4-39" id="h1-4-39" class="i">+    }
+</a> 
+     /* Reopen stdin and stdout to files for easier debugging */
+     if (D) {
+<a href="#h1-5" id="h1-5" class="h">@@ -181,7 +195,7 @@ int main() { /* {{{ */
+</a>             lin++;
+             col = 0;
+         } else {
+<a href="#h1-5-3" id="h1-5-3" class="d">-            B(lin, col) = c;
+</a><a href="#h1-5-4" id="h1-5-4" class="i">+            B(lin, col) = char_to_color[(unsigned char) c];
+</a>             col++;
+         }
+         c = fgetc(stdin);
+<a href="#h1-6" id="h1-6" class="h">@@ -196,38 +210,44 @@ int main() { /* {{{ */
+</a>     }
+     init_board(board_lines, board_cols, board);
+     /* }}} */
+<a href="#h1-6-3" id="h1-6-3" class="d">-    debug(&quot;i&apos;m %c and he is %c\n&quot;, me, op);
+</a><a href="#h1-6-4" id="h1-6-4" class="i">+    get_corner(current_player, &amp;lin_me, &amp;col_me);
+</a><a href="#h1-6-5" id="h1-6-5" class="i">+    debug(&quot;i&apos;m %c/%d (%d, %d) and he is %c/%d\n&quot;, color_to_char(me), current_player, lin_me, col_me, color_to_char(op), -current_player);
+</a> 
+<a href="#h1-6-7" id="h1-6-7" class="d">-    /* Remove colors used by the player and the opponent */
+</a><a href="#h1-6-8" id="h1-6-8" class="i">+    maxcnt = 0;
+</a><a href="#h1-6-9" id="h1-6-9" class="i">+    init_board(board_lines, board_cols, alt_board);
+</a>     for (i = 0; i &lt; N_COL; i++) {
+<a href="#h1-6-11" id="h1-6-11" class="d">-        if (colors[i] == me || colors[i] == op)
+</a><a href="#h1-6-12" id="h1-6-12" class="d">-            colors[i] = -1;
+</a><a href="#h1-6-13" id="h1-6-13" class="i">+        cnt = -1;
+</a><a href="#h1-6-14" id="h1-6-14" class="i">+        if (colors[i] != color_to_char(me) &amp;&amp; colors[i] != color_to_char(op)) {
+</a><a href="#h1-6-15" id="h1-6-15" class="i">+            debug(&quot;testing color %c\n&quot;, colors[i]);
+</a><a href="#h1-6-16" id="h1-6-16" class="i">+            for (lin = 0; lin &lt; board_lines; lin++) {
+</a><a href="#h1-6-17" id="h1-6-17" class="i">+                for (col = 0; col &lt; board_cols; col++)
+</a><a href="#h1-6-18" id="h1-6-18" class="i">+                    BO(alt_board, lin, col) = B(lin, col);
+</a><a href="#h1-6-19" id="h1-6-19" class="i">+            }
+</a><a href="#h1-6-20" id="h1-6-20" class="i">+            fill(alt_board, lin_me, col_me, BO(alt_board, lin_me, col_me), char_to_color[colors[i]]);
+</a><a href="#h1-6-21" id="h1-6-21" class="i">+            cnt = fill(alt_board, lin_me, col_me, BO(alt_board, lin_me, col_me), -INFINITY);
+</a><a href="#h1-6-22" id="h1-6-22" class="i">+            debug(&quot;[%c] filled %d squares\n&quot;, colors[i], cnt);
+</a><a href="#h1-6-23" id="h1-6-23" class="i">+            if (cnt &gt; maxcnt) {
+</a><a href="#h1-6-24" id="h1-6-24" class="i">+                debug(&quot;[%c] NEW MAXIMUM\n&quot;, colors[i]);
+</a><a href="#h1-6-25" id="h1-6-25" class="i">+                maxcnt = cnt;
+</a><a href="#h1-6-26" id="h1-6-26" class="i">+                maxcolor = char_to_color[colors[i]];
+</a><a href="#h1-6-27" id="h1-6-27" class="i">+            }
+</a><a href="#h1-6-28" id="h1-6-28" class="i">+        }
+</a>     }
+ 
+<a href="#h1-6-31" id="h1-6-31" class="d">-    /* Get color to play */
+</a><a href="#h1-6-32" id="h1-6-32" class="d">-    srand(time(NULL));
+</a><a href="#h1-6-33" id="h1-6-33" class="d">-    pos = rand() % N_COL;
+</a><a href="#h1-6-34" id="h1-6-34" class="d">-    while (colors[pos] == -1)
+</a><a href="#h1-6-35" id="h1-6-35" class="d">-        pos = (pos + 1) % N_COL;
+</a><a href="#h1-6-36" id="h1-6-36" class="d">-    debug(&quot;now i&apos;m %c\n&quot;, colors[pos]);
+</a><a href="#h1-6-37" id="h1-6-37" class="d">-
+</a><a href="#h1-6-38" id="h1-6-38" class="d">-    /* do the move */
+</a><a href="#h1-6-39" id="h1-6-39" class="d">-    get_corner(current_player, &amp;lin, &amp;col);
+</a><a href="#h1-6-40" id="h1-6-40" class="d">-    debug(&quot;my corner is line %d col %d\n&quot;, lin, col);
+</a><a href="#h1-6-41" id="h1-6-41" class="d">-    cnt = fill(lin, col, B(lin, col), colors[pos]);
+</a><a href="#h1-6-42" id="h1-6-42" class="d">-    debug(&quot;replaced %d squares&quot;, cnt);
+</a><a href="#h1-6-43" id="h1-6-43" class="d">-
+</a>     /* print the board */
+     if (current_player == J)
+         fputc(&apos;S&apos;, stdout);
+     else
+         fputc(&apos;J&apos;, stdout);
+     fputc(&apos;\n&apos;, stdout);
+<a href="#h1-6-50" id="h1-6-50" class="i">+    cnt = fill(board, lin_me, col_me, B(lin_me, col_me), maxcolor);
+</a>     for (lin = 0; lin &lt; board_lines; lin++) {
+<a href="#h1-6-52" id="h1-6-52" class="d">-        for (col = 0; col &lt; board_cols; col++)
+</a><a href="#h1-6-53" id="h1-6-53" class="d">-            fputc(B(lin, col), stdout);
+</a><a href="#h1-6-54" id="h1-6-54" class="i">+        for (col = 0; col &lt; board_cols; col++) {
+</a><a href="#h1-6-55" id="h1-6-55" class="i">+            fputc(color_to_char(B(lin, col)), stdout);
+</a><a href="#h1-6-56" id="h1-6-56" class="i">+        }
+</a>         fputc(&apos;\n&apos;, stdout);
+     }
+<a href="#h1-6-59" id="h1-6-59" class="i">+    debug(&quot;game over: %d\n&quot;, game_over(board, board_lines, board_cols));
+</a> 
+     /* Closes files just in case D flag is 1 */
+     fclose(stdin);
+</pre>
+</div>
+</body>
+</html>

@@ -15,7 +15,7 @@
 <a href="../../../../log.html">Log</a> | <a href="../../../../files.html">Files</a> | <a href="../../../../refs.html">Refs</a> | <a href="../../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> init.vim (3649B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> init.vim (4555B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -217,14 +217,46 @@
 <a href="#l199" id="l199">199</a>
 <a href="#l200" id="l200">200</a>
 <a href="#l201" id="l201">201</a>
+<a href="#l202" id="l202">202</a>
+<a href="#l203" id="l203">203</a>
+<a href="#l204" id="l204">204</a>
+<a href="#l205" id="l205">205</a>
+<a href="#l206" id="l206">206</a>
+<a href="#l207" id="l207">207</a>
+<a href="#l208" id="l208">208</a>
+<a href="#l209" id="l209">209</a>
+<a href="#l210" id="l210">210</a>
+<a href="#l211" id="l211">211</a>
+<a href="#l212" id="l212">212</a>
+<a href="#l213" id="l213">213</a>
+<a href="#l214" id="l214">214</a>
+<a href="#l215" id="l215">215</a>
+<a href="#l216" id="l216">216</a>
+<a href="#l217" id="l217">217</a>
+<a href="#l218" id="l218">218</a>
+<a href="#l219" id="l219">219</a>
+<a href="#l220" id="l220">220</a>
+<a href="#l221" id="l221">221</a>
+<a href="#l222" id="l222">222</a>
+<a href="#l223" id="l223">223</a>
+<a href="#l224" id="l224">224</a>
+<a href="#l225" id="l225">225</a>
+<a href="#l226" id="l226">226</a>
+<a href="#l227" id="l227">227</a>
+<a href="#l228" id="l228">228</a>
+<a href="#l229" id="l229">229</a>
+<a href="#l230" id="l230">230</a>
+<a href="#l231" id="l231">231</a>
+<a href="#l232" id="l232">232</a>
 </pre></td><td><pre>
 &quot; ╻┏┓╻╻╺┳╸ ╻ ╻╻┏┳┓
 &quot; ┃┃┗┫┃ ┃  ┃┏┛┃┃┃┃
 &quot; ╹╹ ╹╹ ╹ ╹┗┛ ╹╹ ╹
 &quot; init.vim written with extensibility in mind
 
-set nocompatible              &quot; be iMproved, required
-filetype off                  &quot; required
+filetype off
+
+let g:uname = substitute(system(&quot;uname&quot;), &apos;\n\+$&apos;, &apos;&apos;, &apos;&apos;)
 
 &quot; Plugins {{{
 
@@ -233,20 +265,17 @@ call plug#begin(&apos;~/.config/nvim/bundle&apos;)
 &quot; For obvious reasons
 Plug &apos;ntpeters/vim-better-whitespace&apos;
 
-&quot; Statusline
-&quot; Plug &apos;itchyny/lightline.vim&apos;
-
-&quot; Syntax plugins
-Plug &apos;gabrielelana/vim-markdown&apos;
-Plug &apos;othree/html5.vim&apos;
-
 &quot; Simple tab completion
-Plug &apos;Shougo/deoplete.nvim&apos;
-if executable(&apos;clang&apos;)
-    Plug &apos;zchee/deoplete-clang&apos;
-endif
-if executable(&apos;go&apos;)
-    Plug &apos;zchee/deoplete-go&apos;, { &apos;do&apos;: &apos;make&apos;}
+&quot; neovim-python is required
+if has(&quot;python3&quot;)
+    Plug &apos;Shougo/deoplete.nvim&apos;
+    if executable(&apos;clang&apos;)
+        Plug &apos;zchee/deoplete-clang&apos;
+    endif
+    if executable(&apos;go&apos;)
+        Plug &apos;zchee/deoplete-go&apos;, { &apos;do&apos;: &apos;make&apos;}
+        Plug &apos;fatih/vim-go&apos;
+    endif
 endif
 
 &quot; Syntax checking
@@ -263,7 +292,7 @@ filetype plugin indent on    &quot; required
 
 &quot; }}}
 
-&quot; Essential things {{{
+&quot; Essential settings {{{
 
 &quot; Syntax and tabs
 syntax enable &quot; Enable syntax highlighting, duh
@@ -321,6 +350,7 @@ map k gk
 &quot; Just in case
 cabbr W w
 cabbr Q q
+cabbr Wq wq
 
 &quot; }}}
 
@@ -366,9 +396,8 @@ filetype plugin indent on
 augroup Filetypes
     au!
 
-    au BufRead,BufNewFile *.md setlocal textwidth=80
+    au BufRead,BufNewFile *.md setlocal textwidth=80 spell spelllang=en_us
 
-    au FileType mail,gitcommit setlocal tw=68 cursorcolumn=69 spell
 augroup end
 
 &quot; }}}
@@ -389,26 +418,47 @@ map &lt;Leader&gt;l &lt;C-w&gt;l
 &quot; Completion {{{
 
 let g:deoplete#enable_at_startup = 1
-
 &quot; C/C++ things
-let g:deoplete#sources#clang#libclang_path = &apos;/usr/lib/libclang.so&apos;
-let g:deoplete#sources#clang#clang_header = &apos;/usr/include/clang/&apos;
+let g:deoplete#sources#clang#libclang_path = &apos;/usr/local/llvm37/lib/libclang.so&apos;
+let g:deoplete#sources#clang#clang_header = &apos;/usr/local/llvm37/include/clang/&apos;
 &quot; C or C++ standard version
 let g:deoplete#sources#clang#std#c = &apos;c11&apos;
 &quot; or c++
 let g:deoplete#sources#clang#std#cpp = &apos;c++11&apos;
 
-&quot; Tab completion
+&quot; Stolen from shougo {{{
 imap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt;
-            \ pumvisible() ? &quot;\&lt;C-n&gt;&quot; :
-            \ &lt;SID&gt;check_back_space() ? &quot;\&lt;TAB&gt;&quot; :
-            \ deoplete#mappings#manual_complete()
+      \ pumvisible() ? &quot;\&lt;C-n&gt;&quot; :
+      \ &lt;SID&gt;check_back_space() ? &quot;\&lt;TAB&gt;&quot; :
+      \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort &quot;{{{
+  let col = col(&apos;.&apos;) - 1
+  return !col || getline(&apos;.&apos;)[col - 1]  =~ &apos;\s&apos;
+endfunction&quot;}}}
 
 function! s:check_back_space() abort &quot;{{{
     let col = col(&apos;.&apos;) - 1
     return !col || getline(&apos;.&apos;)[col - 1]  =~ &apos;\s&apos;
 endfunction&quot;}}}
+&quot;}}}
 
+&quot; }}}
+
+&quot; Golang {{{
+let g:go_fmt_command = &quot;goimports&quot;
+let g:go_term_mode = &quot;split&quot;
+let g:go_term_enabled = 1
+let g:syntastic_go_checkers = [&apos;golint&apos;, &apos;govet&apos;, &apos;errcheck&apos;]
+let g:syntastic_mode_map = { &apos;mode&apos;: &apos;active&apos;, &apos;passive_filetypes&apos;: [&apos;go&apos;] }
+let g:go_list_type = &quot;quickfix&quot;
+au FileType go nmap &lt;leader&gt;rt &lt;Plug&gt;(go-run-tab)
+au FileType go nmap &lt;Leader&gt;rs &lt;Plug&gt;(go-run-split)
+au FileType go nmap &lt;Leader&gt;rv &lt;Plug&gt;(go-run-vertical)
+
+au FileType go nmap &lt;leader&gt;r &lt;Plug&gt;(go-run)
+au FileType go nmap &lt;leader&gt;b &lt;Plug&gt;(go-build)
+au FileType go nmap &lt;leader&gt;t &lt;Plug&gt;(go-test)
+au FileType go nmap &lt;leader&gt;c &lt;Plug&gt;(go-coverage)
 &quot; }}}
 
 &quot; Syntax checking {{{
@@ -418,6 +468,18 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+&quot; }}}
+
+&quot; Hard mode {{{
+noremap &lt;Up&gt; &lt;NOP&gt;
+noremap &lt;Down&gt; &lt;NOP&gt;
+noremap &lt;Left&gt; &lt;NOP&gt;
+noremap &lt;Right&gt; &lt;NOP&gt;
+
+inoremap &lt;Up&gt; &lt;NOP&gt;
+inoremap &lt;Down&gt; &lt;NOP&gt;
+inoremap &lt;Left&gt; &lt;NOP&gt;
+inoremap &lt;Right&gt; &lt;NOP&gt;
 &quot; }}}
 </pre></td></tr></table>
 </div>

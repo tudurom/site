@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>now it uses BFS for filling. added debug messages - glenda - Program that plays the Flood Wars game for a contest.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="glenda.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>glenda</h1><span class="desc">Program that plays the Flood Wars game for a contest.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/glenda.git">git://thetudor.ddns.net/glenda.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/1a8d7fa75febd05b44564c308c379502437056cb.html">1a8d7fa75febd05b44564c308c379502437056cb</a>
+<b>parent</b> <a href="../commit/a0c7457d4771e326abcdc05ff24a031d36924f45.html">a0c7457d4771e326abcdc05ff24a031d36924f45</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri May 27 22:17:35 +0300
+
+now it uses BFS for filling. added debug messages
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">.gitignore</a></td><td> | </td><td class="num">2</td><td><span class="i"></span><span class="d">--</span></td></tr>
+<tr><td><a href="#h1">glenda.c</a></td><td> | </td><td class="num">72</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">--------</span></td></tr>
+<tr><td><a href="#h2">glenda.in</a></td><td> | </td><td class="num">51</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h3">glenda.out</a></td><td> | </td><td class="num">51</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table>4 files changed, 166 insertions(+), 10 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.gitignore.html">.gitignore</a> b/<a href="../file/.gitignore.html">.gitignore</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,3 +1 @@
+</a> glenda
+<a href="#h0-0-1" id="h0-0-1" class="d">-glenda.in
+</a><a href="#h0-0-2" id="h0-0-2" class="d">-glenda.out
+</a><b>diff --git a/<a id="h1" href="../file/glenda.c.html">glenda.c</a> b/<a href="../file/glenda.c.html">glenda.c</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -35,9 +35,14 @@ http://glenda.cat-v.org/
+</a> #include &lt;time.h&gt;
+ 
+ /* DEBUG */
+<a href="#h1-0-3" id="h1-0-3" class="d">-#ifndef D
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+#ifdef D
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+#define debug(...) fprintf(stderr, __VA_ARGS__)
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+#else
+</a> #define D 0
+<a href="#h1-0-8" id="h1-0-8" class="i">+#define debug(...)
+</a> #endif
+<a href="#h1-0-10" id="h1-0-10" class="i">+
+</a><a href="#h1-0-11" id="h1-0-11" class="i">+#define USE_BFS
+</a> /* NO. of colors */
+ #define N_COL 5
+ /* Maximum size of the board */
+<a href="#h1-1" id="h1-1" class="h">@@ -55,7 +60,19 @@ color board[1 + MAX_H + 1][1 + MAX_W + 1];
+</a> color colors[] = {&apos;@&apos;, &apos;#&apos;, &apos;+&apos;, &apos;.&apos;, &apos;*&apos;};
+ color player;
+ 
+<a href="#h1-1-3" id="h1-1-3" class="d">-inline void init_board(int lin, int col, color (*board)[MAX_W + 2]) {
+</a><a href="#h1-1-4" id="h1-1-4" class="i">+unsigned char bfs_lines[MAX_W * MAX_H * 4];
+</a><a href="#h1-1-5" id="h1-1-5" class="i">+unsigned char bfs_cols[MAX_W * MAX_H * 4];
+</a><a href="#h1-1-6" id="h1-1-6" class="i">+int bfs_begin, bfs_end;
+</a><a href="#h1-1-7" id="h1-1-7" class="i">+
+</a><a href="#h1-1-8" id="h1-1-8" class="i">+/* directional arrays */
+</a><a href="#h1-1-9" id="h1-1-9" class="i">+/* left, down, up, right (h, j, k, l :) */
+</a><a href="#h1-1-10" id="h1-1-10" class="i">+/* i can do for (i = 0; i &lt; sizeof(dlin) / sizeof(char); i++), but this way I enforce
+</a><a href="#h1-1-11" id="h1-1-11" class="i">+   the number of directions */
+</a><a href="#h1-1-12" id="h1-1-12" class="i">+#define N_DIR 4
+</a><a href="#h1-1-13" id="h1-1-13" class="i">+char dlin[N_DIR] = { 0, -1, +1,  0};
+</a><a href="#h1-1-14" id="h1-1-14" class="i">+char dcol[N_DIR] = {-1,  0,  0, +1};
+</a><a href="#h1-1-15" id="h1-1-15" class="i">+
+</a><a href="#h1-1-16" id="h1-1-16" class="i">+void init_board(int lin, int col, color (*board)[MAX_W + 2]) {
+</a>     int i, j;
+     for (i = 0; i &lt;= 1; i++)
+         for (j = 0; j &lt; col + 2; j++)
+<a href="#h1-2" id="h1-2" class="h">@@ -67,17 +84,51 @@ inline void init_board(int lin, int col, color (*board)[MAX_W + 2]) {
+</a> }
+ 
+ /* Flood fill old color with new one */
+<a href="#h1-2-3" id="h1-2-3" class="d">-void fill(int lin, int col, int n, int m, color old, color new) {
+</a><a href="#h1-2-4" id="h1-2-4" class="i">+#ifndef USE_BFS
+</a><a href="#h1-2-5" id="h1-2-5" class="i">+int fill(int lin, int col, color old, color new) {
+</a><a href="#h1-2-6" id="h1-2-6" class="i">+    int cnt = 1;
+</a>     B(lin, col) = new;
+     if (B(lin - 1, col) == old)
+<a href="#h1-2-9" id="h1-2-9" class="d">-        fill(lin - 1, col, n, m, old, new);
+</a><a href="#h1-2-10" id="h1-2-10" class="i">+        cnt += fill(lin - 1, col, old, new);
+</a>     if (B(lin + 1, col) == old)
+<a href="#h1-2-12" id="h1-2-12" class="d">-        fill(lin + 1, col, n, m, old, new);
+</a><a href="#h1-2-13" id="h1-2-13" class="i">+        cnt += fill(lin + 1, col, old, new);
+</a>     if (B(lin, col - 1) == old)
+<a href="#h1-2-15" id="h1-2-15" class="d">-        fill(lin, col - 1, n, m, old, new);
+</a><a href="#h1-2-16" id="h1-2-16" class="i">+        cnt += fill(lin, col - 1, old, new);
+</a>     if (B(lin, col + 1) == old)
+<a href="#h1-2-18" id="h1-2-18" class="d">-        fill(lin, col + 1, n, m, old, new);
+</a><a href="#h1-2-19" id="h1-2-19" class="i">+        cnt += fill(lin, col + 1, old, new);
+</a><a href="#h1-2-20" id="h1-2-20" class="i">+    return cnt;
+</a> }
+<a href="#h1-2-22" id="h1-2-22" class="i">+#endif
+</a><a href="#h1-2-23" id="h1-2-23" class="i">+
+</a><a href="#h1-2-24" id="h1-2-24" class="i">+#ifdef USE_BFS
+</a><a href="#h1-2-25" id="h1-2-25" class="i">+/* Iterative flood fill (BFS). Replaces old color with new one at a given position and spreads */
+</a><a href="#h1-2-26" id="h1-2-26" class="i">+int fill(int lin, int col, color old, color new) {
+</a><a href="#h1-2-27" id="h1-2-27" class="i">+    int cnt = 1;
+</a><a href="#h1-2-28" id="h1-2-28" class="i">+    int l, c;
+</a><a href="#h1-2-29" id="h1-2-29" class="i">+    int d;
+</a><a href="#h1-2-30" id="h1-2-30" class="i">+    bfs_begin = bfs_end = 0;
+</a><a href="#h1-2-31" id="h1-2-31" class="i">+    bfs_lines[bfs_end] = lin;
+</a><a href="#h1-2-32" id="h1-2-32" class="i">+    bfs_cols[bfs_end] = col;
+</a><a href="#h1-2-33" id="h1-2-33" class="i">+    B(lin, col) = new;
+</a><a href="#h1-2-34" id="h1-2-34" class="i">+    bfs_end++;
+</a><a href="#h1-2-35" id="h1-2-35" class="i">+    while (bfs_begin &lt; bfs_end) {
+</a><a href="#h1-2-36" id="h1-2-36" class="i">+        l = bfs_lines[bfs_begin];
+</a><a href="#h1-2-37" id="h1-2-37" class="i">+        c = bfs_cols[bfs_begin];
+</a><a href="#h1-2-38" id="h1-2-38" class="i">+        bfs_begin++;
+</a><a href="#h1-2-39" id="h1-2-39" class="i">+        for (d = 0; d &lt; N_DIR; d++) {
+</a><a href="#h1-2-40" id="h1-2-40" class="i">+            if (B(l + dlin[d], c + dcol[d]) == old) {
+</a><a href="#h1-2-41" id="h1-2-41" class="i">+                cnt++;
+</a><a href="#h1-2-42" id="h1-2-42" class="i">+                B(l + dlin[d], c + dcol[d]) = new;
+</a><a href="#h1-2-43" id="h1-2-43" class="i">+                bfs_lines[bfs_end] = l + dlin[d];
+</a><a href="#h1-2-44" id="h1-2-44" class="i">+                bfs_cols[bfs_end] = c + dcol[d];
+</a><a href="#h1-2-45" id="h1-2-45" class="i">+                bfs_end++;
+</a><a href="#h1-2-46" id="h1-2-46" class="i">+            }
+</a><a href="#h1-2-47" id="h1-2-47" class="i">+        }
+</a><a href="#h1-2-48" id="h1-2-48" class="i">+    }
+</a><a href="#h1-2-49" id="h1-2-49" class="i">+
+</a><a href="#h1-2-50" id="h1-2-50" class="i">+    return cnt;
+</a><a href="#h1-2-51" id="h1-2-51" class="i">+}
+</a><a href="#h1-2-52" id="h1-2-52" class="i">+#endif
+</a> 
+ int main() {
+     int lin, col;
+<a href="#h1-3" id="h1-3" class="h">@@ -87,6 +138,7 @@ int main() {
+</a>     color me, op;
+     int i;
+     int pos;
+<a href="#h1-3-3" id="h1-3-3" class="i">+    int cnt;
+</a> 
+     /* Reopen stdin and stdout to files for easier debugging */
+     if (D) {
+<a href="#h1-4" id="h1-4" class="h">@@ -123,6 +175,7 @@ int main() {
+</a>         op = B(n - 1, 0);
+     }
+     init_board(n, m, board);
+<a href="#h1-4-3" id="h1-4-3" class="i">+    debug(&quot;i&apos;m %c and he is %c\n&quot;, me, op);
+</a> 
+     /* Remove colors used by the player and the opponent */
+     for (i = 0; i &lt; N_COL; i++) {
+<a href="#h1-5" id="h1-5" class="h">@@ -135,6 +188,7 @@ int main() {
+</a>     pos = rand() % N_COL;
+     while (colors[pos] == -1)
+         pos = (pos + 1) % N_COL;
+<a href="#h1-5-3" id="h1-5-3" class="i">+    debug(&quot;now i&apos;m %c\n&quot;, colors[pos]);
+</a> 
+     /* do the move */
+     if (player == S) {
+<a href="#h1-6" id="h1-6" class="h">@@ -144,7 +198,9 @@ int main() {
+</a>         lin = n - 1;
+         col = 0;
+     }
+<a href="#h1-6-3" id="h1-6-3" class="d">-    fill(lin, col, n, m, B(lin, col), colors[pos]);
+</a><a href="#h1-6-4" id="h1-6-4" class="i">+    debug(&quot;my corner is line %d col %d\n&quot;, lin, col);
+</a><a href="#h1-6-5" id="h1-6-5" class="i">+    cnt = fill(lin, col, B(lin, col), colors[pos]);
+</a><a href="#h1-6-6" id="h1-6-6" class="i">+    debug(&quot;replaced %d squares&quot;, cnt);
+</a> 
+     /* print the board */
+     if (player == J)
+<b>diff --git a/<a id="h2" href="../file/glenda.in.html">glenda.in</a> b/<a href="../file/glenda.in.html">glenda.in</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1,51 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+J
+</a><a href="#h2-0-1" id="h2-0-1" class="i">+*##@#.@*++.+#+#+#@@#.#+...**.@@#**##+***..*@##+*#@
+</a><a href="#h2-0-2" id="h2-0-2" class="i">+++#@*@.#*@*@#.*+*+.**@+#@..*.+@#*#.**+#*##*.**#@#.
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+@+.+@+.+++*+#*.*#@+.*+.**.@*+#.*.#++.#*@#.+.@..@.*
+</a><a href="#h2-0-4" id="h2-0-4" class="i">++#.*+#+++@.**###@*++*@#*+*@*@+@*.+*@@+##*+#*@++##+
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+.##*#+#*.@#+@@.@@+@.+@#.**@*+*.#+*##+*+.@.#.#@.**.
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+@+.**#@*+###*###+++*###+*.*+.**#+#+..###*++#.@+##+
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+@.@#@.@@*+@#@++@*#*#+#+*+*+.*@#@***@@*@*.@@*#+@##*
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+#.@.##@@**.#@@@*@@*.+#+##.@#.*#*+#.@#..##+*#@**.@*
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+@+++@@.##+#*+.+#+.*#++#.#*.+@+....@+...+*...+*@.+*
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+@***.+##@.@+++##++@#*@@.+@@++#*###*@.##+@.@**.#.#.
+</a><a href="#h2-0-11" id="h2-0-11" class="i">++#++*.#@#@@+@#.@@##*.@@#@+**##.@+@@+.#+@.+@+#.+*+@
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+#*@.+.*+++@#@+#.*@@*+.++#.*@@.#.+*#@++***@#@@*.@**
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+*.@*#.@*++..**++.@*.**+#+#+*@##@*.*@#+*@*.*#+..*..
+</a><a href="#h2-0-14" id="h2-0-14" class="i">+..@#@##***#+*#*.#+##@#.*+*@#*+*@*@#*@+#@.+##+**@++
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+.+@#.+++.+@.+*..@+@*#+##@@#*.@++*#.@.*@+.@##++.+@+
+</a><a href="#h2-0-16" id="h2-0-16" class="i">++@*@#....*.@+@*@#+@*@#*.+.##*#.###*+*+#.+++*+#@..+
+</a><a href="#h2-0-17" id="h2-0-17" class="i">+@+.+##*+*@#@*.*#.*@*+#.**.#@#@#@*@##@++*#@@++.##@*
+</a><a href="#h2-0-18" id="h2-0-18" class="i">+*#*.@*#**#.@*.@+*.@.@@.##.@.*.+*..++....*+.#**.@@#
+</a><a href="#h2-0-19" id="h2-0-19" class="i">+.##@.+.+@.##+@@@+..@++#..*@**@#.*.+.#*#*+*+**+***@
+</a><a href="#h2-0-20" id="h2-0-20" class="i">+*###@+#@+#.@.++*#.@*++#@+#@.+*++####..*#.+##@.#*+#
+</a><a href="#h2-0-21" id="h2-0-21" class="i">+#@@+++##*.#*.#+@+#.#+#..+.++.@@++#*@.###+.+#*@#**@
+</a><a href="#h2-0-22" id="h2-0-22" class="i">++..*##@@..@*##+@#**.#.*.@*.#*...#+@....*@*##+.*+.@
+</a><a href="#h2-0-23" id="h2-0-23" class="i">+*.+*+*@@+@+**+.@#*#+*#.++*#*+@@#.++@.#..@#@*@#*.##
+</a><a href="#h2-0-24" id="h2-0-24" class="i">+##+@@.**.#*..##*#+*@#**#*.+##.#.*..@+.***.@.*.+##.
+</a><a href="#h2-0-25" id="h2-0-25" class="i">+#+.+@.*@*#+#*#..#**@.*+.++#@@++**#++@*#@+@@*#+.*+.
+</a><a href="#h2-0-26" id="h2-0-26" class="i">+@#+#+@@...@#@@+#+++@+++#...+.@.+*#@+*.@@+.#+.@#.+@
+</a><a href="#h2-0-27" id="h2-0-27" class="i">++@#*@*#.*@+@***@.##+*@*+@###*.*..*#+*+@*+#@++*@.##
+</a><a href="#h2-0-28" id="h2-0-28" class="i">+*+*@@*#*##@@**@#.@@+.@+.+*#+...+.++.+.##*#**#*@+@@
+</a><a href="#h2-0-29" id="h2-0-29" class="i">+*+@..@#*#@..+#*@+..@*.#*#**#..*@*+*@+#@@#*+++.#**.
+</a><a href="#h2-0-30" id="h2-0-30" class="i">+**#@.+*@@@+..#*@#.*.+*@.++#@##+#@##.@+.+#@*.##++@#
+</a><a href="#h2-0-31" id="h2-0-31" class="i">+####*.#@++#+@#@@@@+##+*+*#...+@.+#@+@*+*.+.#..##+.
+</a><a href="#h2-0-32" id="h2-0-32" class="i">+++*.@#@*....##+@++**+#+#..@*@*.+++*+@*...*@.##+@.+
+</a><a href="#h2-0-33" id="h2-0-33" class="i">++@@@*+.+...***.*.+*@.+*+*#@.@.*#.+##*.@##+#@.@*#+@
+</a><a href="#h2-0-34" id="h2-0-34" class="i">+##+#@+#.#**#+.@@*++*@#.####+#.#+..++#.@+@@++.#++@+
+</a><a href="#h2-0-35" id="h2-0-35" class="i">++.@.*#@#.#.++##@@#..@+.#***++@*@#*.####++**@+#.#.+
+</a><a href="#h2-0-36" id="h2-0-36" class="i">+.*@##*++*@*#+#@*.*+*++*++++@#*#**@#*@#+*#.@.@.+#.@
+</a><a href="#h2-0-37" id="h2-0-37" class="i">+#.+*#++.+@+.@..@@*#**+.@@*+#+@#@.#@@@*##*@*.++.@+@
+</a><a href="#h2-0-38" id="h2-0-38" class="i">+@.++##.@+#.#.#..@+@*@+**#++@+*.+#*..*++.#@@**.@*##
+</a><a href="#h2-0-39" id="h2-0-39" class="i">+#*@#@#+#*@@@*#*@@*#+#.##@*+#*@.@+.*#@+.@*.@#*@*@.+
+</a><a href="#h2-0-40" id="h2-0-40" class="i">+**@#+.#@**+.*@#*#*#**+#@@#+*@#+@###..##.#.@#.#+@@@
+</a><a href="#h2-0-41" id="h2-0-41" class="i">+**+#.#**#*#+@.@##++.@@+.#**#**#..+@#.*+.*@#*+*@@#+
+</a><a href="#h2-0-42" id="h2-0-42" class="i">+#*@.@##@+#++*#@....*#+*..+#.++..+.@+@##*.@.##+@@*.
+</a><a href="#h2-0-43" id="h2-0-43" class="i">+****.#.**.+.+*++.*.+*@+.###*#+@@.+@@@**@@####@++@*
+</a><a href="#h2-0-44" id="h2-0-44" class="i">+***.@#**+@#@@@+.@+@+#@..@**#.@+..**++*#.*+.@###..*
+</a><a href="#h2-0-45" id="h2-0-45" class="i">+**.@#+@+.*+*@*#@*#.+*.@.*#@#@.+*.*@*.#+##+**.#.@.#
+</a><a href="#h2-0-46" id="h2-0-46" class="i">+#.*#+#*+.**.@#@@+**+++*+#.#*#*#+#++.#+@@.@.+#*@##*
+</a><a href="#h2-0-47" id="h2-0-47" class="i">+@.*@.+.*.@***+++@.*.*.+..#@+.*+++.###*#@++@.+@*#.#
+</a><a href="#h2-0-48" id="h2-0-48" class="i">+@@@+#+.**+@#@#*#+@@@@##+*@+#**+*+#*.+@@.@@*@#..@.+
+</a><a href="#h2-0-49" id="h2-0-49" class="i">+.+@.*@.+*+*++.@.++#+@*@@@*+++**##@@#.*+@.++*#*+.+.
+</a><a href="#h2-0-50" id="h2-0-50" class="i">+*#.*@..#@#*@+++*@*##.@@****+@#*....+*#+*.+*.@+@.#*
+</a><b>diff --git a/<a id="h3" href="../file/glenda.out.html">glenda.out</a> b/<a href="../file/glenda.out.html">glenda.out</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -0,0 +1,51 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="i">+S
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+*##@#.@*++.+#+#+#@@#.#+...**.@@#**##+***..*@##+*#@
+</a><a href="#h3-0-2" id="h3-0-2" class="i">+++#@*@.#*@*@#.*+*+.**@+#@..*.+@#*#.**+#*##*.**#@#.
+</a><a href="#h3-0-3" id="h3-0-3" class="i">+@+.+@+.+++*+#*.*#@+.*+.**.@*+#.*.#++.#*@#.+.@..@.*
+</a><a href="#h3-0-4" id="h3-0-4" class="i">++#.*+#+++@.**###@*++*@#*+*@*@+@*.+*@@+##*+#*@++##+
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+.##*#+#*.@#+@@.@@+@.+@#.**@*+*.#+*##+*+.@.#.#@.**.
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+@+.**#@*+###*###+++*###+*.*+.**#+#+..###*++#.@+##+
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+@.@#@.@@*+@#@++@*#*#+#+*+*+.*@#@***@@*@*.@@*#+@##*
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+#.@.##@@**.#@@@*@@*.+#+##.@#.*#*+#.@#..##+*#@**.@*
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+@+++@@.##+#*+.+#+.*#++#.#*.+@+....@+...+*...+*@.+*
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+@***.+##@.@+++##++@#*@@.+@@++#*###*@.##+@.@**.#.#.
+</a><a href="#h3-0-11" id="h3-0-11" class="i">++#++*.#@#@@+@#.@@##*.@@#@+**##.@+@@+.#+@.+@+#.+*+@
+</a><a href="#h3-0-12" id="h3-0-12" class="i">+#*@.+.*+++@#@+#.*@@*+.++#.*@@.#.+*#@++***@#@@*.@**
+</a><a href="#h3-0-13" id="h3-0-13" class="i">+*.@*#.@*++..**++.@*.**+#+#+*@##@*.*@#+*@*.*#+..*..
+</a><a href="#h3-0-14" id="h3-0-14" class="i">+..@#@##***#+*#*.#+##@#.*+*@#*+*@*@#*@+#@.+##+**@++
+</a><a href="#h3-0-15" id="h3-0-15" class="i">+.+@#.+++.+@.+*..@+@*#+##@@#*.@++*#.@.*@+.@##++.+@+
+</a><a href="#h3-0-16" id="h3-0-16" class="i">++@*@#....*.@+@*@#+@*@#*.+.##*#.###*+*+#.+++*+#@..+
+</a><a href="#h3-0-17" id="h3-0-17" class="i">+@+.+##*+*@#@*.*#.*@*+#.**.#@#@#@*@##@++*#@@++.##@*
+</a><a href="#h3-0-18" id="h3-0-18" class="i">+*#*.@*#**#.@*.@+*.@.@@.##.@.*.+*..++....*+.#**.@@#
+</a><a href="#h3-0-19" id="h3-0-19" class="i">+.##@.+.+@.##+@@@+..@++#..*@**@#.*.+.#*#*+*+**+***@
+</a><a href="#h3-0-20" id="h3-0-20" class="i">+*###@+#@+#.@.++*#.@*++#@+#@.+*++####..*#.+##@.#*+#
+</a><a href="#h3-0-21" id="h3-0-21" class="i">+#@@+++##*.#*.#+@+#.#+#..+.++.@@++#*@.###+.+#*@#**@
+</a><a href="#h3-0-22" id="h3-0-22" class="i">++..*##@@..@*##+@#**.#.*.@*.#*...#+@....*@*##+.*+.@
+</a><a href="#h3-0-23" id="h3-0-23" class="i">+*.+*+*@@+@+**+.@#*#+*#.++*#*+@@#.++@.#..@#@*@#*.##
+</a><a href="#h3-0-24" id="h3-0-24" class="i">+##+@@.**.#*..##*#+*@#**#*.+##.#.*..@+.***.@.*.+##.
+</a><a href="#h3-0-25" id="h3-0-25" class="i">+#+.+@.*@*#+#*#..#**@.*+.++#@@++**#++@*#@+@@*#+.*+.
+</a><a href="#h3-0-26" id="h3-0-26" class="i">+@#+#+@@...@#@@+#+++@+++#...+.@.+*#@+*.@@+.#+.@#.+@
+</a><a href="#h3-0-27" id="h3-0-27" class="i">++@#*@*#.*@+@***@.##+*@*+@###*.*..*#+*+@*+#@++*@.##
+</a><a href="#h3-0-28" id="h3-0-28" class="i">+*+*@@*#*##@@**@#.@@+.@+.+*#+...+.++.+.##*#**#*@+@@
+</a><a href="#h3-0-29" id="h3-0-29" class="i">+*+@..@#*#@..+#*@+..@*.#*#**#..*@*+*@+#@@#*+++.#**.
+</a><a href="#h3-0-30" id="h3-0-30" class="i">+**#@.+*@@@+..#*@#.*.+*@.++#@##+#@##.@+.+#@*.##++@#
+</a><a href="#h3-0-31" id="h3-0-31" class="i">+####*.#@++#+@#@@@@+##+*+*#...+@.+#@+@*+*.+.#..##+.
+</a><a href="#h3-0-32" id="h3-0-32" class="i">+++*.@#@*....##+@++**+#+#..@*@*.+++*+@*...*@.##+@.+
+</a><a href="#h3-0-33" id="h3-0-33" class="i">++@@@*+.+...***.*.+*@.+*+*#@.@.*#.+##*.@##+#@.@*#+@
+</a><a href="#h3-0-34" id="h3-0-34" class="i">+##+#@+#.#**#+.@@*++*@#.####+#.#+..++#.@+@@++.#++@+
+</a><a href="#h3-0-35" id="h3-0-35" class="i">++.@.*#@#.#.++##@@#..@+.#***++@*@#*.####++**@+#.#.+
+</a><a href="#h3-0-36" id="h3-0-36" class="i">+.*@##*++*@*#+#@*.*+*++*++++@#*#**@#*@#+*#.@.@.+#.@
+</a><a href="#h3-0-37" id="h3-0-37" class="i">+#.+*#++.+@+.@..@@*#**+.@@*+#+@#@.#@@@*##*@*.++.@+@
+</a><a href="#h3-0-38" id="h3-0-38" class="i">+@.++##.@+#.#.#..@+@*@+**#++@+*.+#*..*++.#@@**.@*##
+</a><a href="#h3-0-39" id="h3-0-39" class="i">+#*@#@#+#*@@@*#*@@*#+#.##@*+#*@.@+.*#@+.@*.@#*@*@.+
+</a><a href="#h3-0-40" id="h3-0-40" class="i">+**@#+.#@**+.*@#*#*#**+#@@#+*@#+@###..##.#.@#.#+@@@
+</a><a href="#h3-0-41" id="h3-0-41" class="i">+**+#.#**#*#+@.@##++.@@+.#**#**#..+@#.*+.*@#*+*@@#+
+</a><a href="#h3-0-42" id="h3-0-42" class="i">+#*@.@##@+#++*#@....*#+*..+#.++..+.@+@##*.@.##+@@*.
+</a><a href="#h3-0-43" id="h3-0-43" class="i">+****.#.**.+.+*++.*.+*@+.###*#+@@.+@@@**@@####@++@*
+</a><a href="#h3-0-44" id="h3-0-44" class="i">+***.@#**+@#@@@+.@+@+#@..@**#.@+..**++*#.*+.@###..*
+</a><a href="#h3-0-45" id="h3-0-45" class="i">+**.@#+@+.*+*@*#@*#.+*.@.*#@#@.+*.*@*.#+##+**.#.@.#
+</a><a href="#h3-0-46" id="h3-0-46" class="i">+#.*#+#*+.**.@#@@+**+++*+#.#*#*#+#++.#+@@.@.+#*@##*
+</a><a href="#h3-0-47" id="h3-0-47" class="i">+@.*@.+.*.@***+++@.*.*.+..#@+.*+++.###*#@++@.+@*#.#
+</a><a href="#h3-0-48" id="h3-0-48" class="i">+@@@+#+.**+@#@#*#+@@@@##+*@+#**+*+#*.+@@.@@*@#..@.+
+</a><a href="#h3-0-49" id="h3-0-49" class="i">+.+@.*@.+*+*++.@.++#+@*@@@*+++**##@@#.*+@.++*#*+.+.
+</a><a href="#h3-0-50" id="h3-0-50" class="i">+##.*@..#@#*@+++*@*##.@@****+@#*....+*#+*.+*.@+@.#*
+</a></pre>
+</div>
+</body>
+</html>

@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> problemhelper (634B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> problemhelper (636B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -59,7 +59,7 @@
 <a href="#l41" id="l41">41</a>
 <a href="#l42" id="l42">42</a>
 </pre></td><td><pre>
-#! /usr/bin/ruby
+#!/usr/bin/env ruby
 
 $pwd = Dir.pwd
 $problem_name = Dir.pwd.split(&apos;/&apos;)[-1]
@@ -71,7 +71,7 @@ def center(s)
 end
 
 def compile
-  puts `gcc #{$problem_name}.c -o #{$problem_name} -Wall -O2`
+  puts `cc #{$problem_name}.c -o #{$problem_name} -Wall -O2`
 end
 
 def run

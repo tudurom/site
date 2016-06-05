@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>misc changes - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/e1d00de3f43598b37ad3491ef4f0321315809092.html">e1d00de3f43598b37ad3491ef4f0321315809092</a>
+<b>parent</b> <a href="../commit/2d2c21a010e849249ad82518d4ed712dece080e5.html">2d2c21a010e849249ad82518d4ed712dece080e5</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun May 22 23:03:59 +0300
+
+misc changes
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">gtk/.config/gtk-3.0/bookmarks</a></td><td> | </td><td class="num">3</td><td><span class="i">+</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h1">nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/cloudy.vim</a></td><td> | </td><td class="num">35</td><td><span class="i"></span><span class="d">-----------------------------------</span></td></tr>
+<tr><td><a href="#h2">nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/woody.vim</a></td><td> | </td><td class="num">21</td><td><span class="i"></span><span class="d">---------------------</span></td></tr>
+<tr><td><a href="#h3">nvim/.config/nvim/init.vim</a></td><td> | </td><td class="num">3</td><td><span class="i">++</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h4">scripts/.scripts/problemhelper</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h5">scripts/.scripts/scaffoldsolution</a></td><td> | </td><td class="num">20</td><td><span class="i">++++++++++</span><span class="d">----------</span></td></tr>
+<tr><td><a href="#h6">wmrc/.config/sxhkd/commons</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h7">wmrc/.scripts/wewhandle</a></td><td> | </td><td class="num">42</td><td><span class="i">+++++++++++++++++++++</span><span class="d">---------------------</span></td></tr>
+</table>8 files changed, 37 insertions(+), 93 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/gtk/.config/gtk-3.0/bookmarks.html">gtk/.config/gtk-3.0/bookmarks</a> b/<a href="../file/gtk/.config/gtk-3.0/bookmarks.html">gtk/.config/gtk-3.0/bookmarks</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,4 +1,3 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+file:///home/tudurom/usr/work/problems
+</a> file:///home/tudurom/tmp
+ file:///home/tudurom/school
+<a href="#h0-0-3" id="h0-0-3" class="d">-file:///home/tudurom/problems
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-file:///gamez
+</a><b>diff --git a/<a id="h1" href="../file/nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/cloudy.vim.html">nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/cloudy.vim</a> b/<a href="../file/nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/cloudy.vim.html">nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/cloudy.vim</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -1,35 +0,0 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="d">-
+</a><a href="#h1-0-1" id="h1-0-1" class="d">-let s:base03 = [ &apos;#151513&apos;, 233 ]
+</a><a href="#h1-0-2" id="h1-0-2" class="d">-let s:base02 = [ &apos;#222222&apos;, 0 ]
+</a><a href="#h1-0-3" id="h1-0-3" class="d">-let s:base01 = [ &apos;#4e4e43&apos;, 239 ]
+</a><a href="#h1-0-4" id="h1-0-4" class="d">-let s:base00 = [ &apos;#666656&apos;, 242  ]
+</a><a href="#h1-0-5" id="h1-0-5" class="d">-let s:base0 = [ &apos;#808070&apos;, 244 ]
+</a><a href="#h1-0-6" id="h1-0-6" class="d">-let s:base1 = [ &apos;#949484&apos;, 246 ]
+</a><a href="#h1-0-7" id="h1-0-7" class="d">-let s:base2 = [ &apos;#a8a897&apos;, 248 ]
+</a><a href="#h1-0-8" id="h1-0-8" class="d">-let s:base3 = [ &apos;#e8e8d3&apos;, 253 ]
+</a><a href="#h1-0-9" id="h1-0-9" class="d">-let s:yellow = [ &apos;#a6a663&apos;, 11 ]
+</a><a href="#h1-0-10" id="h1-0-10" class="d">-let s:orange = [ &apos;#bfc271&apos;, 3 ]
+</a><a href="#h1-0-11" id="h1-0-11" class="d">-let s:red = [ &apos;#a66363&apos;, 1 ]
+</a><a href="#h1-0-12" id="h1-0-12" class="d">-let s:magenta = [ &apos;#a66390&apos;, 13 ]
+</a><a href="#h1-0-13" id="h1-0-13" class="d">-let s:cyan = [ &apos;#71c2af&apos;, 14 ]
+</a><a href="#h1-0-14" id="h1-0-14" class="d">-let s:green = [ &apos;#63a67a&apos;, 2 ]
+</a><a href="#h1-0-15" id="h1-0-15" class="d">-let s:blue = [ &apos;#719bc2&apos;, 4]
+</a><a href="#h1-0-16" id="h1-0-16" class="d">-
+</a><a href="#h1-0-17" id="h1-0-17" class="d">-let s:p = {&apos;normal&apos;: {}, &apos;inactive&apos;: {}, &apos;insert&apos;: {}, &apos;replace&apos;: {}, &apos;visual&apos;: {}, &apos;tabline&apos;: {}}
+</a><a href="#h1-0-18" id="h1-0-18" class="d">-let s:p.normal.left = [ [ s:base02, s:blue ], [ s:base3, s:base01 ] ]
+</a><a href="#h1-0-19" id="h1-0-19" class="d">-let s:p.normal.right = [ [ s:base02, s:base1 ], [ s:base2, s:base01 ] ]
+</a><a href="#h1-0-20" id="h1-0-20" class="d">-let s:p.inactive.right = [ [ s:base02, s:base00 ], [ s:base0, s:base02 ] ]
+</a><a href="#h1-0-21" id="h1-0-21" class="d">-let s:p.inactive.left =  [ [ s:base0, s:base02 ], [ s:base00, s:base02 ] ]
+</a><a href="#h1-0-22" id="h1-0-22" class="d">-let s:p.insert.left = [ [ s:base02, s:cyan ], [ s:base3, s:base01 ] ]
+</a><a href="#h1-0-23" id="h1-0-23" class="d">-let s:p.replace.left = [ [ s:base02, s:red ], [ s:base3, s:base01 ] ]
+</a><a href="#h1-0-24" id="h1-0-24" class="d">-let s:p.visual.left = [ [ s:base02, s:green ], [ s:base3, s:base01 ] ]
+</a><a href="#h1-0-25" id="h1-0-25" class="d">-let s:p.normal.middle = [ [ s:base0, s:base02 ] ]
+</a><a href="#h1-0-26" id="h1-0-26" class="d">-let s:p.inactive.middle = [ [ s:base00, s:base02 ] ]
+</a><a href="#h1-0-27" id="h1-0-27" class="d">-let s:p.tabline.left = [ [ s:base3, s:base00 ] ]
+</a><a href="#h1-0-28" id="h1-0-28" class="d">-let s:p.tabline.tabsel = [ [ s:base3, s:base02 ] ]
+</a><a href="#h1-0-29" id="h1-0-29" class="d">-let s:p.tabline.middle = [ [ s:base01, s:base1 ] ]
+</a><a href="#h1-0-30" id="h1-0-30" class="d">-let s:p.tabline.right = copy(s:p.normal.right)
+</a><a href="#h1-0-31" id="h1-0-31" class="d">-let s:p.normal.error = [ [ s:red, s:base02 ] ]
+</a><a href="#h1-0-32" id="h1-0-32" class="d">-let s:p.normal.warning = [ [ s:yellow, s:base01 ] ]
+</a><a href="#h1-0-33" id="h1-0-33" class="d">-
+</a><a href="#h1-0-34" id="h1-0-34" class="d">-let g:lightline#colorscheme#cloudy#palette = lightline#colorscheme#flatten(s:p)
+</a><b>diff --git a/<a id="h2" href="../file/nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/woody.vim.html">nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/woody.vim</a> b/<a href="../file/nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/woody.vim.html">nvim/.config/nvim/bundle/lightline.vim/autoload/lightline/colorscheme/woody.vim</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -1,21 +0,0 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="d">-let s:black = [ &apos;#8e7b71&apos;, 8 ]
+</a><a href="#h2-0-1" id="h2-0-1" class="d">-let s:white = [ &apos;#3f3a3c&apos;, 7 ]
+</a><a href="#h2-0-2" id="h2-0-2" class="d">-
+</a><a href="#h2-0-3" id="h2-0-3" class="d">-let s:p = {&apos;normal&apos;: {}, &apos;inactive&apos;: {}, &apos;insert&apos;: {}, &apos;replace&apos;: {}, &apos;visual&apos;: {}, &apos;tabline&apos;: {}}
+</a><a href="#h2-0-4" id="h2-0-4" class="d">-let s:p.normal.left = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h2-0-5" id="h2-0-5" class="d">-let s:p.normal.right = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h2-0-6" id="h2-0-6" class="d">-let s:p.inactive.right = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h2-0-7" id="h2-0-7" class="d">-let s:p.inactive.left = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h2-0-8" id="h2-0-8" class="d">-let s:p.insert.left = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h2-0-9" id="h2-0-9" class="d">-let s:p.replace.left = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h2-0-10" id="h2-0-10" class="d">-let s:p.visual.left = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h2-0-11" id="h2-0-11" class="d">-let s:p.normal.middle = [ [s:black, s:white] ]
+</a><a href="#h2-0-12" id="h2-0-12" class="d">-let s:p.inactive.middle = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h2-0-13" id="h2-0-13" class="d">-let s:p.tabline.left = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h2-0-14" id="h2-0-14" class="d">-let s:p.tabline.tabsel = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h2-0-15" id="h2-0-15" class="d">-let s:p.tabline.middle = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h2-0-16" id="h2-0-16" class="d">-let s:p.tabline.right = copy(s:p.normal.right)
+</a><a href="#h2-0-17" id="h2-0-17" class="d">-let s:p.normal.error = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h2-0-18" id="h2-0-18" class="d">-let s:p.normal.warning = [ [s:white, s:black], [s:white, s:black] ]
+</a><a href="#h2-0-19" id="h2-0-19" class="d">-
+</a><a href="#h2-0-20" id="h2-0-20" class="d">-let g:lightline#colorscheme#woody#palette = lightline#colorscheme#flatten(s:p)
+</a><b>diff --git a/<a id="h3" href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a> b/<a href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -31,7 +31,7 @@ endif
+</a> Plug &apos;scrooloose/syntastic&apos;
+ 
+ &quot; Show changes
+<a href="#h3-0-3" id="h3-0-3" class="d">-&quot; Plug &apos;airblade/vim-gitgutter&apos;
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+Plug &apos;airblade/vim-gitgutter&apos;
+</a> 
+ &quot; One plugin to rule them all
+ Plug &apos;sheerun/vim-polyglot&apos;
+<a href="#h3-1" id="h3-1" class="h">@@ -99,6 +99,7 @@ map k gk
+</a> &quot; Just in case
+ cabbr W w
+ cabbr Q q
+<a href="#h3-1-3" id="h3-1-3" class="i">+cabbr Wq wq
+</a> 
+ &quot; }}}
+ 
+<b>diff --git a/<a id="h4" href="../file/scripts/.scripts/problemhelper.html">scripts/.scripts/problemhelper</a> b/<a href="../file/scripts/.scripts/problemhelper.html">scripts/.scripts/problemhelper</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h4-0-0" id="h4-0-0" class="d">-#! /usr/bin/ruby
+</a><a href="#h4-0-1" id="h4-0-1" class="i">+#!/usr/bin/env ruby
+</a> 
+ $pwd = Dir.pwd
+ $problem_name = Dir.pwd.split(&apos;/&apos;)[-1]
+<a href="#h4-1" id="h4-1" class="h">@@ -10,7 +10,7 @@ def center(s)
+</a> end
+ 
+ def compile
+<a href="#h4-1-3" id="h4-1-3" class="d">-  puts `gcc #{$problem_name}.c -o #{$problem_name} -Wall -O2`
+</a><a href="#h4-1-4" id="h4-1-4" class="i">+  puts `cc #{$problem_name}.c -o #{$problem_name} -Wall -O2`
+</a> end
+ 
+ def run
+<b>diff --git a/<a id="h5" href="../file/scripts/.scripts/scaffoldsolution.html">scripts/.scripts/scaffoldsolution</a> b/<a href="../file/scripts/.scripts/scaffoldsolution.html">scripts/.scripts/scaffoldsolution</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -1,18 +1,18 @@
+</a><a href="#h5-0-0" id="h5-0-0" class="d">-#! /bin/bash
+</a><a href="#h5-0-1" id="h5-0-1" class="i">+#!/usr/bin/env bash
+</a> 
+<a href="#h5-0-3" id="h5-0-3" class="d">-dir=&quot;$HOME/problems&quot;
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+dir=&quot;$HOME/usr/work/problems&quot;
+</a> 
+ if [ $# -lt 1  ]; then
+<a href="#h5-0-7" id="h5-0-7" class="d">-  printf &quot;Project name? &quot;
+</a><a href="#h5-0-8" id="h5-0-8" class="d">-  read proj_name
+</a><a href="#h5-0-9" id="h5-0-9" class="d">-  printf &quot;\n&quot;
+</a><a href="#h5-0-10" id="h5-0-10" class="i">+    printf &quot;Project name? &quot;
+</a><a href="#h5-0-11" id="h5-0-11" class="i">+    read proj_name
+</a><a href="#h5-0-12" id="h5-0-12" class="i">+    printf &quot;\n&quot;
+</a> else
+<a href="#h5-0-14" id="h5-0-14" class="d">-  proj_name=$1
+</a><a href="#h5-0-15" id="h5-0-15" class="i">+    proj_name=$1
+</a> fi
+ 
+ dongers=(&quot;┌༼▀̿ Ĺ̯▀̿༽┐&quot; &quot;(つ▀¯▀)つ&quot; &quot;┌(▀Ĺ̯▀)┐&quot; &quot;( ͡° ͜ʖ ͡°)&gt;⌐■-■&quot; &quot;ヽ༼ ຈل͜ຈ༼ ▀̿̿Ĺ̯̿̿▀̿ ̿༽Ɵ͆ل͜Ɵ͆ ༽ﾉ&quot;)
+ arr_size=${#dongers[@]}
+<a href="#h5-0-20" id="h5-0-20" class="d">-random_donger=${dongers[$(shuf -i 0-$((arr_size - 1)) -n 1)]}
+</a><a href="#h5-0-21" id="h5-0-21" class="i">+random_donger=${dongers[$(shuffle -n $arr_size -p 1)]}
+</a> project_dir=&quot;${dir}/${proj_name}&quot;
+ 
+ echo &quot;$(tput bold)&quot;
+<a href="#h5-1" id="h5-1" class="h">@@ -27,9 +27,9 @@ cat &gt;&quot;${project_dir}/${proj_name}.c&quot; &lt;&lt;EOF
+</a> #include &lt;stdio.h&gt;
+ 
+ int main() {
+<a href="#h5-1-3" id="h5-1-3" class="d">-  FILE *fin, *fout;
+</a><a href="#h5-1-4" id="h5-1-4" class="d">-  printf(&quot;Hello!&quot;);
+</a><a href="#h5-1-5" id="h5-1-5" class="d">-  return 0;
+</a><a href="#h5-1-6" id="h5-1-6" class="i">+    FILE *fin, *fout;
+</a><a href="#h5-1-7" id="h5-1-7" class="i">+    printf(&quot;Hello!&quot;);
+</a><a href="#h5-1-8" id="h5-1-8" class="i">+    return 0;
+</a> }
+ EOF
+ echo &quot;$(tput setaf 2)created ${project_dir}/${proj_name}.c&quot;
+<b>diff --git a/<a id="h6" href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a> b/<a href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -6,7 +6,7 @@ super + Return
+</a>   st
+ 
+ super + space
+<a href="#h6-0-3" id="h6-0-3" class="d">-  run_dmenu
+</a><a href="#h6-0-4" id="h6-0-4" class="i">+  dmenu_run
+</a> 
+ super + shift + f
+   firefox
+<b>diff --git a/<a id="h7" href="../file/wmrc/.scripts/wewhandle.html">wmrc/.scripts/wewhandle</a> b/<a href="../file/wmrc/.scripts/wewhandle.html">wmrc/.scripts/wewhandle</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -5,29 +5,29 @@
+</a> #
+ 
+ while IFS=: read -r ev wid; do
+<a href="#h7-0-3" id="h7-0-3" class="d">-  case $ev in
+</a><a href="#h7-0-4" id="h7-0-4" class="d">-    # Window creation
+</a><a href="#h7-0-5" id="h7-0-5" class="d">-    16)
+</a><a href="#h7-0-6" id="h7-0-6" class="d">-      if ! wattr o $wid; then
+</a><a href="#h7-0-7" id="h7-0-7" class="d">-        cornerw md $wid
+</a><a href="#h7-0-8" id="h7-0-8" class="d">-      fi
+</a><a href="#h7-0-9" id="h7-0-9" class="d">-      ;;
+</a><a href="#h7-0-10" id="h7-0-10" class="i">+    case $ev in
+</a><a href="#h7-0-11" id="h7-0-11" class="i">+        # Window creation
+</a><a href="#h7-0-12" id="h7-0-12" class="i">+        16)
+</a><a href="#h7-0-13" id="h7-0-13" class="i">+        if ! wattr o $wid; then
+</a><a href="#h7-0-14" id="h7-0-14" class="i">+            cornerw md $wid
+</a><a href="#h7-0-15" id="h7-0-15" class="i">+        fi
+</a><a href="#h7-0-16" id="h7-0-16" class="i">+        ;;
+</a> 
+<a href="#h7-0-18" id="h7-0-18" class="d">-    # Mapping request aka group activated
+</a><a href="#h7-0-19" id="h7-0-19" class="d">-    19)
+</a><a href="#h7-0-20" id="h7-0-20" class="d">-      if ! wattr o $wid; then
+</a><a href="#h7-0-21" id="h7-0-21" class="d">-        focusw $wid
+</a><a href="#h7-0-22" id="h7-0-22" class="d">-      fi
+</a><a href="#h7-0-23" id="h7-0-23" class="d">-      ;;
+</a><a href="#h7-0-24" id="h7-0-24" class="i">+        # Mapping request aka group activated
+</a><a href="#h7-0-25" id="h7-0-25" class="i">+        19)
+</a><a href="#h7-0-26" id="h7-0-26" class="i">+        if ! wattr o $wid; then
+</a><a href="#h7-0-27" id="h7-0-27" class="i">+            focusw $wid
+</a><a href="#h7-0-28" id="h7-0-28" class="i">+        fi
+</a><a href="#h7-0-29" id="h7-0-29" class="i">+        ;;
+</a> 
+<a href="#h7-0-31" id="h7-0-31" class="d">-    # Window closed
+</a><a href="#h7-0-32" id="h7-0-32" class="d">-    18)
+</a><a href="#h7-0-33" id="h7-0-33" class="d">-      if ! wattr $(pfw); then
+</a><a href="#h7-0-34" id="h7-0-34" class="d">-        focusw $(closestw prev)
+</a><a href="#h7-0-35" id="h7-0-35" class="d">-        groaw # Force cleanup
+</a><a href="#h7-0-36" id="h7-0-36" class="d">-      fi
+</a><a href="#h7-0-37" id="h7-0-37" class="d">-      ;;
+</a><a href="#h7-0-38" id="h7-0-38" class="d">-  esac
+</a><a href="#h7-0-39" id="h7-0-39" class="i">+        # Window closed
+</a><a href="#h7-0-40" id="h7-0-40" class="i">+        18)
+</a><a href="#h7-0-41" id="h7-0-41" class="i">+        if ! wattr $(pfw); then
+</a><a href="#h7-0-42" id="h7-0-42" class="i">+            focusw $(closestw prev)
+</a><a href="#h7-0-43" id="h7-0-43" class="i">+            groaw # Force cleanup
+</a><a href="#h7-0-44" id="h7-0-44" class="i">+        fi
+</a><a href="#h7-0-45" id="h7-0-45" class="i">+        ;;
+</a><a href="#h7-0-46" id="h7-0-46" class="i">+esac
+</a> done
+ 
+ # vim: set ft=sh :
+</pre>
+</div>
+</body>
+</html>

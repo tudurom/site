@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>save the wmutils rice! - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/2d2c21a010e849249ad82518d4ed712dece080e5.html">2d2c21a010e849249ad82518d4ed712dece080e5</a>
+<b>parent</b> <a href="../commit/74cbda062839c5649b08ef8b0d3fddb63c4bea8a.html">74cbda062839c5649b08ef8b0d3fddb63c4bea8a</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun May 22 15:10:21 +0300
+
+save the wmutils rice!
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">.gitignore</a></td><td> | </td><td class="num">4</td><td><span class="i">+</span><span class="d">---</span></td></tr>
+<tr><td><a href="#h1">ncmpcpp/.ncmpcpp/config</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td><a href="#h2">scripts/.scripts/timer</a></td><td> | </td><td class="num">4</td><td><span class="i">++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h3">scripts/.scripts/wall-e</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h4">shell/.mkshrc</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h5">startpage/startpage</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h6">tmux/.tmux/bin/statusline</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h7">wallpapers/wallpapers/test_tile7.png</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td><a href="#h8">wmrc/.scripts/groupbar</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h9">wmrc/.scripts/popup</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h10">wmrc/.scripts/startwmutils</a></td><td> | </td><td class="num">1</td><td><span class="i"></span><span class="d">-</span></td></tr>
+<tr><td><a href="#h11">wmrc/.scripts/statusbar</a></td><td> | </td><td class="num">96</td><td><span class="i">+++++++++++++</span><span class="d">------------------------------------------------------------------</span></td></tr>
+<tr><td><a href="#h12">wmrc/.scripts/xwait</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td><a href="#h13">wmrc/.scripts/xwait.c</a></td><td> | </td><td class="num">10</td><td><span class="i">++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h14">x/.Xresources</a></td><td> | </td><td class="num">2</td><td><span class="i">++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h15">x/.xinitrc</a></td><td> | </td><td class="num">7</td><td><span class="i">++++</span><span class="d">---</span></td></tr>
+</table>16 files changed, 45 insertions(+), 96 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.gitignore.html">.gitignore</a> b/<a href="../file/.gitignore.html">.gitignore</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -13,8 +13,6 @@ st/st.o
+</a> 
+ vimperator/.vimperator/info
+ 
+<a href="#h0-0-3" id="h0-0-3" class="d">-wmrc/contrib/killwa/killwa
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-wmrc/contrib/killwa/killwa.o
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-wmrc/contrib/killwa/util.o
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+wmrc/.scripts/xwait
+</a> 
+ gtk/.config/gtk-2.0/gtkfilechooser.ini
+<b>diff --git a/<a id="h1" href="../file/ncmpcpp/.ncmpcpp/config.html">ncmpcpp/.ncmpcpp/config</a> b/<a href="../file/ncmpcpp/.ncmpcpp/config.html">ncmpcpp/.ncmpcpp/config</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -33,6 +33,7 @@ visualizer_look = &quot;▋▋&quot;
+</a> # Misc
+ display_bitrate = &quot;no&quot;
+ enable_window_title = &quot;no&quot;
+<a href="#h1-0-3" id="h1-0-3" class="i">+execute_on_song_change=&quot;echo $(mpc current) &gt; /tmp/notifyd.fifo&quot;
+</a> 
+ # cheat sheet
+ # %l - length
+<b>diff --git a/<a id="h2" href="../file/scripts/.scripts/timer.html">scripts/.scripts/timer</a> b/<a href="../file/scripts/.scripts/timer.html">scripts/.scripts/timer</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -1,4 +1,8 @@
+</a> #!/bin/sh
+<a href="#h2-0-1" id="h2-0-1" class="i">+#
+</a><a href="#h2-0-2" id="h2-0-2" class="i">+# Rings when it should ring
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+# (c) tudurom 2016 - wtfpl
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+#
+</a> 
+ usage() {
+     echo &quot;Usage: timer &lt;hour&gt;:&lt;minute&gt; [message]&quot;
+<b>diff --git a/<a id="h3" href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a> b/<a href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -4,7 +4,7 @@
+</a> # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h3-0-3" id="h3-0-3" class="d">-DEFAULT_WALL=&quot;$HOME/wallpapers/venice.jpg&quot;
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+DEFAULT_WALL=&quot;$HOME/wallpapers/test_tile7.png&quot;
+</a> APRIL_WALL=&quot;$HOME/wallpapers/april_wall.png&quot;
+ 
+ if [ &quot;$(date +&quot;%d/%m&quot;)&quot; = &quot;01/04&quot; ]; then
+<a href="#h3-1" id="h3-1" class="h">@@ -14,6 +14,6 @@ elif [ $# -ge 1 ]; then
+</a>   test -n &quot;$2&quot; &amp;&amp; option=&quot;$2&quot;
+   feh --bg-${option} $1
+ else
+<a href="#h3-1-3" id="h3-1-3" class="d">-  feh --bg-fill $DEFAULT_WALL
+</a><a href="#h3-1-4" id="h3-1-4" class="i">+  feh --bg-tile $DEFAULT_WALL
+</a> fi
+ 
+<b>diff --git a/<a id="h4" href="../file/shell/.mkshrc.html">shell/.mkshrc</a> b/<a href="../file/shell/.mkshrc.html">shell/.mkshrc</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -19,7 +19,7 @@ prompt () {
+</a>   if [[ $_ERR -ne 0 ]]; then
+     exit_color=1
+   fi
+<a href="#h4-0-3" id="h4-0-3" class="d">-  dir=&quot;$(tput setaf 8)$(pwd | sed -e &quot;s/\/home\/$USER/~/&quot;)&quot;
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+  dir=&quot;$(tput setaf 8)$(pwd | sed -e &quot;s/\/usr\/home\/$USER/~/&quot; | sed -e &quot;s/\/home\/$USER/~/&quot;)&quot;
+</a>   arrow=&quot;$(tput setaf $exit_color)───&quot;
+   echo -n &quot;${dir}\n${arrow}$(tput sgr0) &quot;
+ }
+<b>diff --git a/<a id="h5" href="../file/startpage/startpage.html">startpage/startpage</a> b/<a href="../file/startpage/startpage.html">startpage/startpage</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -1 +1 @@
+</a><a href="#h5-0-0" id="h5-0-0" class="d">-Subproject commit e30cc982f27e074e8b646060e23ff0018f6fefbe
+</a><a href="#h5-0-1" id="h5-0-1" class="i">+Subproject commit 3caa82013263e86a2da0e2da63b106b4c66c013e
+</a><b>diff --git a/<a id="h6" href="../file/tmux/.tmux/bin/statusline.html">tmux/.tmux/bin/statusline</a> b/<a href="../file/tmux/.tmux/bin/statusline.html">tmux/.tmux/bin/statusline</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h6-0-0" id="h6-0-0" class="d">-#! /bin/bash
+</a><a href="#h6-0-1" id="h6-0-1" class="i">+#!/bin/sh
+</a> 
+ reset=&quot;#[fg=default,bg=colour0]&quot;
+ 
+<b>diff --git a/<a id="h7" href="../file/wallpapers/wallpapers/test_tile7.png.html">wallpapers/wallpapers/test_tile7.png</a> b/<a href="../file/wallpapers/wallpapers/test_tile7.png.html">wallpapers/wallpapers/test_tile7.png</a></b>
+Binary files differ.
+<b>diff --git a/<a id="h8" href="../file/wmrc/.scripts/groupbar.html">wmrc/.scripts/groupbar</a> b/<a href="../file/wmrc/.scripts/groupbar.html">wmrc/.scripts/groupbar</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -19,7 +19,7 @@ BAR_FG=&quot;$(xrq &apos;*.foreground&apos;)&quot;
+</a> BAR_UN=&quot;$(xrq &apos;*.color9&apos;)&quot;
+ BAR_FONT=&quot;$PANEL_FONT&quot;
+ BAR_ICON_FONT=&quot;-*-siji-*-*-*-*-10-*-*-*-*-*-*-*&quot;
+<a href="#h8-0-3" id="h8-0-3" class="d">-BAR_OPT=&quot;-d -b -f $BAR_FONT -f $BAR_ICON_FONT -g ${BAR_W}x${BAR_H}+${BAR_X}+${BAR_Y} -B $BAR_BG -F $BAR_FG -U $BAR_UN -u 2 -a 30&quot;
+</a><a href="#h8-0-4" id="h8-0-4" class="i">+BAR_OPT=&quot;-d -f $BAR_FONT -f $BAR_ICON_FONT -g ${BAR_W}x${BAR_H}+${BAR_X}+${BAR_Y} -B $BAR_BG -F $BAR_FG -u 2 -a 30 -r $BW -R `xrq *.color8`&quot;
+</a> 
+ FIFO_PATH=&quot;/tmp/groups.fifo&quot;
+ test -e &quot;$FIFO_PATH&quot; &amp;&amp; rm &quot;$FIFO_PATH&quot;
+<a href="#h8-1" id="h8-1" class="h">@@ -62,7 +62,7 @@ while true; do
+</a>                 ;;
+         esac
+         if groaw -p $gid; then
+<a href="#h8-1-3" id="h8-1-3" class="d">-            g_this_out=&quot;%{+u} ${g_icon} %{-u}&quot;
+</a><a href="#h8-1-4" id="h8-1-4" class="i">+            g_this_out=&quot;%{U${BAR_UN}}%{+u} ${g_icon} %{-u}%{U-}&quot;
+</a>         else
+             g_this_out=&quot; ${g_icon} &quot;
+         fi
+<b>diff --git a/<a id="h9" href="../file/wmrc/.scripts/popup.html">wmrc/.scripts/popup</a> b/<a href="../file/wmrc/.scripts/popup.html">wmrc/.scripts/popup</a></b>
+<a href="#h9-0" id="h9-0" class="h">@@ -17,7 +17,7 @@ BAR_BG=`xrq &apos;*.background&apos;`
+</a> BAR_FG=`xrq &apos;*.color14&apos;`
+ BAR_FONT=&quot;$PANEL_FONT&quot;
+ 
+<a href="#h9-0-3" id="h9-0-3" class="d">-bar_opts=&quot;-g ${BAR_W}x${BAR_H}+${BAR_X}+${BAR_Y} -B${BAR_BG} -F${BAR_FG} -f ${BAR_FONT} -d&quot;
+</a><a href="#h9-0-4" id="h9-0-4" class="i">+bar_opts=&quot;-g ${BAR_W}x${BAR_H}+${BAR_X}+${BAR_Y} -B${BAR_BG} -F${BAR_FG} -f ${BAR_FONT} -d -r $BW -R `xrq *.color6`&quot;
+</a> 
+ (
+ tx_len=&quot;35&quot;
+<b>diff --git a/<a id="h10" href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a> b/<a href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a></b>
+<a href="#h10-0" id="h10-0" class="h">@@ -5,7 +5,6 @@
+</a> 
+ wew | wewhandle &amp;
+ groupbar &amp;
+<a href="#h10-0-3" id="h10-0-3" class="d">-statusbar &amp;
+</a> xwait
+ 
+ # vim: set ft=sh :
+<b>diff --git a/<a id="h11" href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a> b/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a></b>
+<a href="#h11-0" id="h11-0" class="h">@@ -1,9 +1,11 @@
+</a><a href="#h11-0-0" id="h11-0-0" class="d">-#! /bin/sh
+</a><a href="#h11-0-1" id="h11-0-1" class="i">+#!/bin/sh
+</a> #
+ # &quot;Simple&quot; status bar
+ # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h11-0-7" id="h11-0-7" class="i">+test -z &quot;$DISPLAY&quot; &amp;&amp; echo &quot;statusbar needs a working X environment&quot; &amp;&amp; exit 1
+</a><a href="#h11-0-8" id="h11-0-8" class="i">+
+</a> is_int() {
+   case $1 in
+     &apos;&apos;|*[!0-9]*) return 1 ;;
+<a href="#h11-1" id="h11-1" class="h">@@ -63,7 +65,7 @@ is_int() {
+</a>   # Bar options
+   BAR_OPTS=&quot;&quot;
+   # Because wmutils
+<a href="#h11-1-3" id="h11-1-3" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -d&quot;
+</a><a href="#h11-1-4" id="h11-1-4" class="i">+  BAR_OPTS=&quot;${BAR_OPTS} -d -b -R $C8 -r 3&quot;
+</a>   # Gonna position it centered and respect the gaps
+   BAR_OPTS=&quot;${BAR_OPTS} -g ${BAR_WIDTH}x${BAR_HEIGHT}+${BAR_X}+${BAR_Y}&quot;
+   # Colors
+<a href="#h11-2" id="h11-2" class="h">@@ -105,39 +107,27 @@ is_int() {
+</a> 
+   # Battery status
+   while true; do
+<a href="#h11-2-3" id="h11-2-3" class="d">-    batt_status=&quot;$(cat /sys/class/power_supply/BAT0/status)&quot;
+</a><a href="#h11-2-4" id="h11-2-4" class="d">-    batt_percentage=&quot;$(cat /sys/class/power_supply/BAT0/capacity)&quot;
+</a><a href="#h11-2-5" id="h11-2-5" class="i">+    batt_status=&quot;$(apm -b)&quot;
+</a><a href="#h11-2-6" id="h11-2-6" class="i">+    batt_percentage=&quot;$(apm -l)&quot;
+</a>     # Icons
+<a href="#h11-2-8" id="h11-2-8" class="d">-    if [ &quot;$batt_status&quot; = &quot;Charging&quot; ]; then
+</a><a href="#h11-2-9" id="h11-2-9" class="i">+    if [ &quot;$batt_status&quot; -eq 3 ]; then
+</a>       BATT_ICON=&quot;&quot;
+<a href="#h11-2-11" id="h11-2-11" class="d">-    elif [ &quot;$batt_percentage&quot; -gt 50 ]; then
+</a><a href="#h11-2-12" id="h11-2-12" class="i">+    elif [ &quot;$batt_status&quot; -eq 0 ]; then
+</a>       BATT_ICON=&quot;&quot;
+<a href="#h11-2-14" id="h11-2-14" class="d">-    elif [ &quot;$batt_percentage&quot; -gt 30 ]; then
+</a><a href="#h11-2-15" id="h11-2-15" class="i">+    elif [ &quot;$batt_status&quot; -eq 1 ]; then
+</a>       BATT_ICON=&quot;&quot;
+     else
+       BATT_ICON=&quot;&quot;
+     fi
+<a href="#h11-2-20" id="h11-2-20" class="d">-    echo &quot;B%{F$C11}${BATT_ICON}%{F-} ${batt_percentage}&quot;
+</a><a href="#h11-2-21" id="h11-2-21" class="d">-    sleep 10
+</a><a href="#h11-2-22" id="h11-2-22" class="d">-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a><a href="#h11-2-23" id="h11-2-23" class="d">-
+</a><a href="#h11-2-24" id="h11-2-24" class="d">-  # Memory usage
+</a><a href="#h11-2-25" id="h11-2-25" class="d">-  while true; do
+</a><a href="#h11-2-26" id="h11-2-26" class="d">-    t=$(grep MemTotal /proc/meminfo | awk &apos;{print $2}&apos;)
+</a><a href="#h11-2-27" id="h11-2-27" class="d">-    f=$(grep MemFree  /proc/meminfo | awk &apos;{print $2}&apos;)
+</a><a href="#h11-2-28" id="h11-2-28" class="d">-    b=$(grep ^Buffers /proc/meminfo | awk &apos;{print $2}&apos;)
+</a><a href="#h11-2-29" id="h11-2-29" class="d">-    c=$(grep ^Cached  /proc/meminfo | awk &apos;{print $2}&apos;)
+</a><a href="#h11-2-30" id="h11-2-30" class="d">-
+</a><a href="#h11-2-31" id="h11-2-31" class="d">-    mem=`echo &quot;($t - $f - $c - $b) / 1024&quot; | bc`
+</a><a href="#h11-2-32" id="h11-2-32" class="d">-    echo &quot;R%{F$C9}%{F-} $mem&quot;
+</a><a href="#h11-2-33" id="h11-2-33" class="i">+    echo &quot;B%{F$C13}${BATT_ICON}%{F-} ${batt_percentage}&quot;
+</a>     sleep 10
+   done &gt; &quot;$FIFO_PATH&quot; &amp;
+ 
+   # Volume
+   while true; do
+<a href="#h11-2-39" id="h11-2-39" class="d">-    state=$(amixer get Master | grep &apos;Mono: Playback&apos; | grep &apos;\[on]&apos;)
+</a><a href="#h11-2-40" id="h11-2-40" class="d">-    volume=$(amixer get Master | grep &quot;Mono: &quot; | grep -o &apos;...%&apos; | sed &apos;s/\[//g&apos; | sed &apos;s/%//g&apos;)
+</a><a href="#h11-2-41" id="h11-2-41" class="d">-    if [ &quot;$state&quot; ]; then
+</a><a href="#h11-2-42" id="h11-2-42" class="i">+    pcm=$(mixer -S pcm | cut -d&apos;:&apos; -f2)
+</a><a href="#h11-2-43" id="h11-2-43" class="i">+    volume=$(mixer -S vol | cut -d&apos;:&apos; -f2)
+</a><a href="#h11-2-44" id="h11-2-44" class="i">+    if [ &quot;$pcm&quot; -gt 0 ]; then
+</a>       if [ $volume -ge 50 ]; then
+         vicon=
+       else
+<a href="#h11-3" id="h11-3" class="h">@@ -146,60 +136,10 @@ is_int() {
+</a>     else
+       vicon=
+     fi
+<a href="#h11-3-3" id="h11-3-3" class="d">-    echo &quot;V%{A3:amixer sset Master toggle:}%{A4:amixer sset Master 5%+ unmute:}%{A5:amixer sset Master 5%- unmute:}%{F$C10}$vicon%{F-} $volume%{A}%{A}%{A}&quot;
+</a><a href="#h11-3-4" id="h11-3-4" class="i">+    echo &quot;V%{A3:mute:}%{A4:mixer vol +5:}%{A5:mixer vol -5:}%{F$C12}$vicon%{F-} $volume%{A}%{A}%{A}&quot;
+</a>     sleep 0.5
+   done &gt; &quot;$FIFO_PATH&quot; &amp;
+ 
+<a href="#h11-3-8" id="h11-3-8" class="d">-  # Group status
+</a><a href="#h11-3-9" id="h11-3-9" class="d">-  # while true; do
+</a><a href="#h11-3-10" id="h11-3-10" class="d">-  #   g_out=&quot;G&quot;
+</a><a href="#h11-3-11" id="h11-3-11" class="d">-  #   # Check each group
+</a><a href="#h11-3-12" id="h11-3-12" class="d">-  #   for gid in $(seq 1 $GNUMBER); do
+</a><a href="#h11-3-13" id="h11-3-13" class="d">-  #     # If we find no icon, fall back to group id
+</a><a href="#h11-3-14" id="h11-3-14" class="d">-  #     g_icon=&quot;$gid&quot;
+</a><a href="#h11-3-15" id="h11-3-15" class="d">-  #     # Get the first window in the group, if there&apos;s any
+</a><a href="#h11-3-16" id="h11-3-16" class="d">-  #     g_window=&quot;$(ls -1 /tmp/groaw/$gid | sort -n | head -n 1)&quot;
+</a><a href="#h11-3-17" id="h11-3-17" class="d">-  #     g_name=&quot;$(xtitle $g_window)&quot;
+</a><a href="#h11-3-18" id="h11-3-18" class="d">-
+</a><a href="#h11-3-19" id="h11-3-19" class="d">-  #     case $g_name in
+</a><a href="#h11-3-20" id="h11-3-20" class="d">-  #       *Vimperator*)
+</a><a href="#h11-3-21" id="h11-3-21" class="d">-  #         g_icon=&quot;&quot;
+</a><a href="#h11-3-22" id="h11-3-22" class="d">-  #         ;;
+</a><a href="#h11-3-23" id="h11-3-23" class="d">-  #       *urxvt*|*st*)
+</a><a href="#h11-3-24" id="h11-3-24" class="d">-  #         g_icon=&quot;&quot;
+</a><a href="#h11-3-25" id="h11-3-25" class="d">-  #         ;;
+</a><a href="#h11-3-26" id="h11-3-26" class="d">-  #       Transmission)
+</a><a href="#h11-3-27" id="h11-3-27" class="d">-  #         g_icon=&quot;&quot;
+</a><a href="#h11-3-28" id="h11-3-28" class="d">-  #         ;;
+</a><a href="#h11-3-29" id="h11-3-29" class="d">-  #       imv*)
+</a><a href="#h11-3-30" id="h11-3-30" class="d">-  #         g_icon=&quot;&quot;
+</a><a href="#h11-3-31" id="h11-3-31" class="d">-  #         ;;
+</a><a href="#h11-3-32" id="h11-3-32" class="d">-  #       *&quot;File Manager&quot;*)
+</a><a href="#h11-3-33" id="h11-3-33" class="d">-  #         g_icon=&quot;&quot;
+</a><a href="#h11-3-34" id="h11-3-34" class="d">-  #         ;;
+</a><a href="#h11-3-35" id="h11-3-35" class="d">-  #       *LibreOffice*)
+</a><a href="#h11-3-36" id="h11-3-36" class="d">-  #         g_icon=&quot;&quot;
+</a><a href="#h11-3-37" id="h11-3-37" class="d">-  #         ;;
+</a><a href="#h11-3-38" id="h11-3-38" class="d">-  #       *Thunderbird)
+</a><a href="#h11-3-39" id="h11-3-39" class="d">-  #         g_icon=&quot;&quot;
+</a><a href="#h11-3-40" id="h11-3-40" class="d">-  #         ;;
+</a><a href="#h11-3-41" id="h11-3-41" class="d">-  #       *)
+</a><a href="#h11-3-42" id="h11-3-42" class="d">-  #         test -z &quot;$g_name&quot; || g_icon=&quot;&quot;
+</a><a href="#h11-3-43" id="h11-3-43" class="d">-  #         ;;
+</a><a href="#h11-3-44" id="h11-3-44" class="d">-  #     esac
+</a><a href="#h11-3-45" id="h11-3-45" class="d">-  #     if groaw -p $gid; then
+</a><a href="#h11-3-46" id="h11-3-46" class="d">-  #       g_this_out=&quot;%{+u} %{F$C6}${g_icon}%{F-} %{-u}&quot;
+</a><a href="#h11-3-47" id="h11-3-47" class="d">-  #     else
+</a><a href="#h11-3-48" id="h11-3-48" class="d">-  #       g_this_out=&quot; ${g_icon} &quot;
+</a><a href="#h11-3-49" id="h11-3-49" class="d">-  #     fi
+</a><a href="#h11-3-50" id="h11-3-50" class="d">-  #     test -z &quot;$g_name&quot; &amp;&amp; g_this_out=&quot;%{F$C8}${g_this_out}%{F-}&quot;
+</a><a href="#h11-3-51" id="h11-3-51" class="d">-  #     g_this_out=&quot;%{A1:groaw -t ${gid}:}${g_this_out}%{A}&quot;
+</a><a href="#h11-3-52" id="h11-3-52" class="d">-  #     g_out=&quot;${g_out}${g_this_out}&quot;
+</a><a href="#h11-3-53" id="h11-3-53" class="d">-  #   done
+</a><a href="#h11-3-54" id="h11-3-54" class="d">-  #   echo &quot;$g_out&quot;
+</a><a href="#h11-3-55" id="h11-3-55" class="d">-  #   sleep 0.3
+</a><a href="#h11-3-56" id="h11-3-56" class="d">-  # done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a><a href="#h11-3-57" id="h11-3-57" class="d">-
+</a> # }}}
+ 
+ # Process the data and show it {{{
+<a href="#h11-4" id="h11-4" class="h">@@ -211,9 +151,6 @@ is_int() {
+</a>       T*)
+         time=&quot;${line#?}&quot;
+         ;;
+<a href="#h11-4-3" id="h11-4-3" class="d">-      # G*)
+</a><a href="#h11-4-4" id="h11-4-4" class="d">-      #   groups=&quot;${line#?}&quot;
+</a><a href="#h11-4-5" id="h11-4-5" class="d">-      #   ;;
+</a>       M*)
+         music=&quot;${line#?}&quot;
+         ;;
+<a href="#h11-5" id="h11-5" class="h">@@ -223,12 +160,9 @@ is_int() {
+</a>       V*)
+         vol=&quot;${line#?}&quot;
+         ;;
+<a href="#h11-5-3" id="h11-5-3" class="d">-      R*)
+</a><a href="#h11-5-4" id="h11-5-4" class="d">-        ram=&quot;${line#?}&quot;
+</a><a href="#h11-5-5" id="h11-5-5" class="d">-        ;;
+</a>       esac
+     # Show time!
+<a href="#h11-5-8" id="h11-5-8" class="d">-    echo &quot;%{c}${SEP_BIG}${music}${SEP_SMALL}${vol}${SEP_SMALL}${ram}${SEP_SMALL}${batt}${SEP_SMALL}${time}${SEP_BIG}&quot;
+</a><a href="#h11-5-9" id="h11-5-9" class="i">+    echo &quot;%{c}${SEP_BIG}${music}${SEP_SMALL}${vol}${SEP_SMALL}${batt}${SEP_SMALL}${time}${SEP_BIG}&quot;
+</a>   done |\
+   lemonbar $BAR_OPTS | sh
+ # }}}
+<b>diff --git a/<a id="h12" href="../file/wmrc/.scripts/xwait.html">wmrc/.scripts/xwait</a> b/<a href="../file/wmrc/.scripts/xwait.html">wmrc/.scripts/xwait</a></b>
+Binary files differ.
+<b>diff --git a/<a id="h13" href="../file/wmrc/.scripts/xwait.c.html">wmrc/.scripts/xwait.c</a> b/<a href="../file/wmrc/.scripts/xwait.c.html">wmrc/.scripts/xwait.c</a></b>
+<a href="#h13-0" id="h13-0" class="h">@@ -0,0 +1,10 @@
+</a><a href="#h13-0-0" id="h13-0-0" class="i">+#include &lt;unistd.h&gt;
+</a><a href="#h13-0-1" id="h13-0-1" class="i">+
+</a><a href="#h13-0-2" id="h13-0-2" class="i">+#define SLEEP_INTERVAL 1000000
+</a><a href="#h13-0-3" id="h13-0-3" class="i">+
+</a><a href="#h13-0-4" id="h13-0-4" class="i">+int main() {
+</a><a href="#h13-0-5" id="h13-0-5" class="i">+    while (1) {
+</a><a href="#h13-0-6" id="h13-0-6" class="i">+        usleep(SLEEP_INTERVAL);
+</a><a href="#h13-0-7" id="h13-0-7" class="i">+    }
+</a><a href="#h13-0-8" id="h13-0-8" class="i">+    return 0;
+</a><a href="#h13-0-9" id="h13-0-9" class="i">+}
+</a><b>diff --git a/<a id="h14" href="../file/x/.Xresources.html">x/.Xresources</a> b/<a href="../file/x/.Xresources.html">x/.Xresources</a></b>
+<a href="#h14-0" id="h14-0" class="h">@@ -4,6 +4,8 @@
+</a> ! by tudurom
+ ! managed like they are supposed to be
+ 
+<a href="#h14-0-3" id="h14-0-3" class="i">+Xcursor.theme: HumanAzul
+</a><a href="#h14-0-4" id="h14-0-4" class="i">+
+</a> #include &quot;.xres/xft&quot;
+ #include &quot;.xres/colors/moonbow&quot;
+ #include &quot;.xres/urxvt&quot;
+<b>diff --git a/<a id="h15" href="../file/x/.xinitrc.html">x/.xinitrc</a> b/<a href="../file/x/.xinitrc.html">x/.xinitrc</a></b>
+<a href="#h15-0" id="h15-0" class="h">@@ -71,6 +71,7 @@ wall-e &amp;
+</a> 
+ # }}}
+ 
+<a href="#h15-0-3" id="h15-0-3" class="d">-infobar &amp;
+</a><a href="#h15-0-4" id="h15-0-4" class="d">-sxhkd -c ~/.config/sxhkd/sxhkdrc_cwm ~/.config/sxhkd/commons &amp;
+</a><a href="#h15-0-5" id="h15-0-5" class="d">-exec cwm
+</a><a href="#h15-0-6" id="h15-0-6" class="i">+statusbar &amp;
+</a><a href="#h15-0-7" id="h15-0-7" class="i">+sxhkd -c ~/.config/sxhkd/sxhkdrc_wmutils ~/.config/sxhkd/commons &amp;
+</a><a href="#h15-0-8" id="h15-0-8" class="i">+#exec cwm
+</a><a href="#h15-0-9" id="h15-0-9" class="i">+. bin/startwmutils
+</a></pre>
+</div>
+</body>
+</html>

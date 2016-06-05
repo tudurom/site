@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> url-open (431B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> url-open (301B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -30,7 +30,7 @@
 <a href="#l12" id="l12">12</a>
 <a href="#l13" id="l13">13</a>
 </pre></td><td><pre>
-#!/bin/dash
+#!/bin/sh
 # Reads list of urls, shows them in a nice menu and then opens the selected url
 # (c) tudurom 2016 - wtfpl
 #
@@ -40,7 +40,7 @@ font=&quot;-benis-lemon-medium-r-normal--10-110-75-75-m-50-*&quot;
 
 while read -r line; do
   echo &quot;$line&quot;
-done | dmenu -s 0 -nf &quot;#71c2af&quot; -nb &quot;#273941&quot; -sb &quot;#1d2a30&quot; -sf &quot;#c27171&quot; -i -h 30 -w &quot;${monitor_width}&quot; -x 0 -y 0 -fn &quot;${font}&quot; -p &quot;&gt;&quot; -l 3 | xargs xdg-open
+done | dmenu | xargs xdg-open
 
 # vim: set ft=sh :
 </pre></td></tr></table>

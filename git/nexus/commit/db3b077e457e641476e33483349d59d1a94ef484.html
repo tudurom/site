@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Nu se mai foloseste a doua functie de evaluare pozitionala - e inutila si nu e sigura - nexus - Bot that plays the Pah-Tum game. Available here for historical purposes. Warning: comments are in Romanian.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="nexus.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>nexus</h1><span class="desc">Bot that plays the Pah-Tum game. Available here for historical purposes. Warning: comments are in Romanian.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/db3b077e457e641476e33483349d59d1a94ef484.html">db3b077e457e641476e33483349d59d1a94ef484</a>
+<b>parent</b> <a href="../commit/6a49c28535e0ba769229fe5ee2133343b1f8d092.html">6a49c28535e0ba769229fe5ee2133343b1f8d092</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudor.roman@outlook.com">tudor.roman@outlook.com</a>&gt;
+<b>Date:</b>   Sat Jun 13 12:45:33 +0300
+
+Nu se mai foloseste a doua functie de evaluare pozitionala - e inutila si nu e sigura
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">nexus.c</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+</table>1 file changed, 1 insertion(+), 1 deletion(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/nexus.c.html">nexus.c</a> b/<a href="../file/nexus.c.html">nexus.c</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -114,7 +114,7 @@ int main() {
+</a>     for ( col = 0; col &lt; TABLE_WIDTH; col++) {
+       if ( board[lin][col] == GOL ) {
+         board[lin][col] = thisPlayer;
+<a href="#h0-0-3" id="h0-0-3" class="d">-        tempScore = (-minimax(board, DEPTH, -INFINIT, +INFINIT, -thisPlayer, thisPlayer) * MULT_POS_1 + positionalEval(lin, col)) * MULT_POS_2 + dynamicPositionalEval(lin, col, board, thisPlayer); // Magie
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+        tempScore = (-minimax(board, DEPTH, -INFINIT, +INFINIT, -thisPlayer, thisPlayer) * MULT_POS_1 + positionalEval(lin, col)); // Magie
+</a>         board[lin][col] = GOL;
+         if ( tempScore &gt; score ) {
+           score = tempScore;
+</pre>
+</div>
+</body>
+</html>

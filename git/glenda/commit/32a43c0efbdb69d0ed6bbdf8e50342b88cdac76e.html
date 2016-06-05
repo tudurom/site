@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>added test that makes the program play with itself - glenda - Program that plays the Flood Wars game for a contest.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="glenda.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>glenda</h1><span class="desc">Program that plays the Flood Wars game for a contest.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/glenda.git">git://thetudor.ddns.net/glenda.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/32a43c0efbdb69d0ed6bbdf8e50342b88cdac76e.html">32a43c0efbdb69d0ed6bbdf8e50342b88cdac76e</a>
+<b>parent</b> <a href="../commit/2fcfb859947a848d885e1c371e91fcc5c00ff287.html">2fcfb859947a848d885e1c371e91fcc5c00ff287</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Mon May 30 21:23:31 +0300
+
+added test that makes the program play with itself
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">.gitignore</a></td><td> | </td><td class="num">2</td><td><span class="i">++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h1">tests/self.sh</a></td><td> | </td><td class="num">12</td><td><span class="i">++++++++++++</span><span class="d"></span></td></tr>
+</table>2 files changed, 14 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.gitignore.html">.gitignore</a> b/<a href="../file/.gitignore.html">.gitignore</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -2,3 +2,5 @@ glenda
+</a> glenda.in
+ glenda.out
+ glenda.core
+<a href="#h0-0-3" id="h0-0-3" class="i">+
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+tests/self.log
+</a><b>diff --git a/<a id="h1" href="../file/tests/self.sh.html">tests/self.sh</a> b/<a href="../file/tests/self.sh.html">tests/self.sh</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -0,0 +1,12 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="i">+#!/bin/sh
+</a><a href="#h1-0-1" id="h1-0-1" class="i">+
+</a><a href="#h1-0-2" id="h1-0-2" class="i">+OUTPUT_DIR=&quot;$(dirname $0)&quot;
+</a><a href="#h1-0-3" id="h1-0-3" class="i">+LOG_FILE=&quot;${LOG_FILE:-&quot;self.log&quot;}&quot;
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+rm &quot;${OUTPUT_DIR}/${LOG_FILE}&quot;
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+while :; do
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+    &quot;$PWD/glenda&quot; 2&gt; /dev/null
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+    cat glenda.out | tee glenda.in | tee -a &quot;${OUTPUT_DIR}/${LOG_FILE}&quot;
+</a><a href="#h1-0-9" id="h1-0-9" class="i">+    sleep 1
+</a><a href="#h1-0-10" id="h1-0-10" class="i">+done
+</a><a href="#h1-0-11" id="h1-0-11" class="i">+
+</a></pre>
+</div>
+</body>
+</html>

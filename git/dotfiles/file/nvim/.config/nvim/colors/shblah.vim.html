@@ -15,7 +15,7 @@
 <a href="../../../../../log.html">Log</a> | <a href="../../../../../files.html">Files</a> | <a href="../../../../../refs.html">Refs</a> | <a href="../../../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> shblah.vim (6015B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> shblah.vim (3530B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -84,63 +84,6 @@
 <a href="#l66" id="l66">66</a>
 <a href="#l67" id="l67">67</a>
 <a href="#l68" id="l68">68</a>
-<a href="#l69" id="l69">69</a>
-<a href="#l70" id="l70">70</a>
-<a href="#l71" id="l71">71</a>
-<a href="#l72" id="l72">72</a>
-<a href="#l73" id="l73">73</a>
-<a href="#l74" id="l74">74</a>
-<a href="#l75" id="l75">75</a>
-<a href="#l76" id="l76">76</a>
-<a href="#l77" id="l77">77</a>
-<a href="#l78" id="l78">78</a>
-<a href="#l79" id="l79">79</a>
-<a href="#l80" id="l80">80</a>
-<a href="#l81" id="l81">81</a>
-<a href="#l82" id="l82">82</a>
-<a href="#l83" id="l83">83</a>
-<a href="#l84" id="l84">84</a>
-<a href="#l85" id="l85">85</a>
-<a href="#l86" id="l86">86</a>
-<a href="#l87" id="l87">87</a>
-<a href="#l88" id="l88">88</a>
-<a href="#l89" id="l89">89</a>
-<a href="#l90" id="l90">90</a>
-<a href="#l91" id="l91">91</a>
-<a href="#l92" id="l92">92</a>
-<a href="#l93" id="l93">93</a>
-<a href="#l94" id="l94">94</a>
-<a href="#l95" id="l95">95</a>
-<a href="#l96" id="l96">96</a>
-<a href="#l97" id="l97">97</a>
-<a href="#l98" id="l98">98</a>
-<a href="#l99" id="l99">99</a>
-<a href="#l100" id="l100">100</a>
-<a href="#l101" id="l101">101</a>
-<a href="#l102" id="l102">102</a>
-<a href="#l103" id="l103">103</a>
-<a href="#l104" id="l104">104</a>
-<a href="#l105" id="l105">105</a>
-<a href="#l106" id="l106">106</a>
-<a href="#l107" id="l107">107</a>
-<a href="#l108" id="l108">108</a>
-<a href="#l109" id="l109">109</a>
-<a href="#l110" id="l110">110</a>
-<a href="#l111" id="l111">111</a>
-<a href="#l112" id="l112">112</a>
-<a href="#l113" id="l113">113</a>
-<a href="#l114" id="l114">114</a>
-<a href="#l115" id="l115">115</a>
-<a href="#l116" id="l116">116</a>
-<a href="#l117" id="l117">117</a>
-<a href="#l118" id="l118">118</a>
-<a href="#l119" id="l119">119</a>
-<a href="#l120" id="l120">120</a>
-<a href="#l121" id="l121">121</a>
-<a href="#l122" id="l122">122</a>
-<a href="#l123" id="l123">123</a>
-<a href="#l124" id="l124">124</a>
-<a href="#l125" id="l125">125</a>
 </pre></td><td><pre>
 &quot; ┏━┓╻ ╻┏┓ ╻  ┏━┓╻ ╻   ╻ ╻╻┏┳┓
 &quot; ┗━┓┣━┫┣┻┓┃  ┣━┫┣━┫   ┃┏┛┃┃┃┃
@@ -160,11 +103,13 @@ endif
 let g:colors_name=&quot;shblah_orig&quot;
 
 &quot; Actual colours and styles.
-highlight ColorColumn  term=NONE cterm=NONE ctermfg=NONE ctermbg=3
+highlight ColorColumn  term=NONE cterm=NONE ctermfg=NONE ctermbg=0
 highlight Comment      term=NONE cterm=NONE ctermfg=8    ctermbg=NONE
 highlight Constant     term=NONE cterm=NONE ctermfg=6    ctermbg=NONE
 highlight Cursor       term=NONE cterm=bold ctermfg=3    ctermbg=NONE
-highlight CursorLine   term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+highlight CursorLine   term=NONE cterm=NONE ctermfg=NONE ctermbg=0
+highlight CursorLineNr term=NONE cterm=NONE ctermfg=5    ctermbg=NONE
+highlight CursorColumn term=NONE cterm=NONE ctermfg=NONE ctermbg=0
 highlight DiffAdd      term=NONE cterm=bold ctermfg=2    ctermbg=NONE
 highlight DiffChange   term=NONE cterm=bold ctermfg=NONE ctermbg=NONE
 highlight DiffDelete   term=NONE cterm=bold ctermfg=7    ctermbg=1
@@ -186,7 +131,6 @@ highlight Special      term=NONE cterm=NONE ctermfg=2    ctermbg=NONE
 highlight SpecialKey   term=NONE cterm=NONE ctermfg=0    ctermbg=NONE
 highlight Statement    term=NONE cterm=NONE ctermfg=4    ctermbg=NONE
 highlight StatusLine   term=NONE cterm=bold ctermfg=0    ctermbg=NONE
-&quot; highlight StatusLineNC term=NONE cterm=bold ctermfg=0    ctermbg=NONE
 highlight String       term=NONE cterm=NONE ctermfg=2    ctermbg=NONE
 highlight TabLineSel   term=NONE cterm=bold ctermfg=7    ctermbg=NONE
 highlight Todo         term=NONE cterm=bold ctermfg=7    ctermbg=1
@@ -209,64 +153,6 @@ highlight! link TabLine         StatusLineNC
 highlight! link TabLineFill     StatusLineNC
 highlight! link VimHiGroup      VimGroup
 
-&quot; Test the actual colorscheme
-syn match Comment      &quot;\&quot;__Comment.*&quot;
-syn match Constant     &quot;\&quot;__Constant.*&quot;
-syn match Cursor       &quot;\&quot;__Cursor.*&quot;
-syn match CursorLine   &quot;\&quot;__CursorLine.*&quot;
-syn match DiffAdd      &quot;\&quot;__DiffAdd.*&quot;
-syn match DiffChange   &quot;\&quot;__DiffChange.*&quot;
-syn match DiffText     &quot;\&quot;__DiffText.*&quot;
-syn match DiffDelete   &quot;\&quot;__DiffDelete.*&quot;
-syn match Folded       &quot;\&quot;__Folded.*&quot;
-syn match Function     &quot;\&quot;__Function.*&quot;
-syn match Identifier   &quot;\&quot;__Identifier.*&quot;
-syn match IncSearch    &quot;\&quot;__IncSearch.*&quot;
-syn match NonText      &quot;\&quot;__NonText.*&quot;
-syn match Normal       &quot;\&quot;__Normal.*&quot;
-syn match Pmenu        &quot;\&quot;__Pmenu.*&quot;
-syn match PreProc      &quot;\&quot;__PreProc.*&quot;
-syn match Search       &quot;\&quot;__Search.*&quot;
-syn match Special      &quot;\&quot;__Special.*&quot;
-syn match SpecialKey   &quot;\&quot;__SpecialKey.*&quot;
-syn match Statement    &quot;\&quot;__Statement.*&quot;
-syn match StatusLine   &quot;\&quot;__StatusLine.*&quot;
-syn match StatusLineNC &quot;\&quot;__StatusLineNC.*&quot;
-syn match String       &quot;\&quot;__String.*&quot;
-syn match Todo         &quot;\&quot;__Todo.*&quot;
-syn match Type         &quot;\&quot;__Type.*&quot;
-syn match Underlined   &quot;\&quot;__Underlined.*&quot;
-syn match VertSplit    &quot;\&quot;__VertSplit.*&quot;
-syn match Visual       &quot;\&quot;__Visual.*&quot;
-
-&quot;__Comment              /* this is a comment */
-&quot;__Constant             var = SHBLAH
-&quot;__Cursor               char under the cursor?
-&quot;__CursorLine           Line where the cursor is
-&quot;__DiffAdd              +line added from file.orig
-&quot;__DiffChange           line changed from file.orig
-&quot;__DiffText             actual changes on this line
-&quot;__DiffDelete           -line removed from file.orig
-&quot;__Folded               +--- 1 line : Folded line ---
-&quot;__Function             function sblah()
-&quot;__Identifier           Never ran into that actually...
-&quot;__IncSearch            Next search term
-&quot;__NonText              This is not a text, move on
-&quot;__Normal               Typical text goes like this
-&quot;__Pmenu                Currently selected menu item
-&quot;__PreProc              #define SHBLAH true
-&quot;__Search               This is what you&apos;re searching for
-&quot;__Special              true false NULL SIGTERM
-&quot;__SpecialKey           Never ran into that either
-&quot;__Statement            if else return for switch
-&quot;__StatusLine           Statusline of current windows
-&quot;__StatusLineNC         Statusline of other windows
-&quot;__String               &quot;Hello, World!&quot;
-&quot;__Todo                 TODO: remove todos from source
-&quot;__Type                 int float char void unsigned uint32_t
-&quot;__Underlined           Anything underlined
-&quot;__VertSplit            :vsplit will only show &apos; | &apos;
-&quot;__Visual               Selected text looks like this
 </pre></td></tr></table>
 </div>
 </body>

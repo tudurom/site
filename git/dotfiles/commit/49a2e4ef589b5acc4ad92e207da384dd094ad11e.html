@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>fixes - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/49a2e4ef589b5acc4ad92e207da384dd094ad11e.html">49a2e4ef589b5acc4ad92e207da384dd094ad11e</a>
+<b>parent</b> <a href="../commit/5d1b6acffdf72a2987c91fb2915f8d4f558ae98a.html">5d1b6acffdf72a2987c91fb2915f8d4f558ae98a</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat Jun  4 13:31:51 +0300
+
+fixes
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">scripts/.scripts/todo</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h1">wmrc/.config/sxhkd/commons</a></td><td> | </td><td class="num">3</td><td><span class="i">+++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h2">wmrc/.scripts/cornerw</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h3">wmrc/.scripts/focusw</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+</table>4 files changed, 8 insertions(+), 5 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/scripts/.scripts/todo.html">scripts/.scripts/todo</a> b/<a href="../file/scripts/.scripts/todo.html">scripts/.scripts/todo</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -42,8 +42,8 @@ elif [ &quot;$1&quot; = &apos;-d&apos; ]; then
+</a>     echo &quot;missing option&quot;
+     echo &quot;pass an item number to delete&quot;
+   else
+<a href="#h0-0-3" id="h0-0-3" class="d">-      new=&quot;$(sed &quot;$2&quot;&apos;d&apos; $file)&quot;
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-      echo &quot;$new&quot; &gt; &quot;$file&quot;
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+      new=&quot;$(sed &quot;${2}d&quot; $file)&quot;
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+      echo &quot;$new&quot; | tee &quot;$file&quot;
+</a>       unset new
+   fi
+ elif [ &quot;$1&quot; = &apos;-a&apos; ]; then
+<b>diff --git a/<a id="h1" href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a> b/<a href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -8,6 +8,9 @@ super + Return
+</a> super + space
+   dmenu_run
+ 
+<a href="#h1-0-3" id="h1-0-3" class="i">+super + q
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+  showtodo
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+
+</a> super + shift + f
+   firefox
+ 
+<b>diff --git a/<a id="h2" href="../file/wmrc/.scripts/cornerw.html">wmrc/.scripts/cornerw</a> b/<a href="../file/wmrc/.scripts/cornerw.html">wmrc/.scripts/cornerw</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -1,6 +1,6 @@
+</a> #! /bin/sh
+ #
+<a href="#h2-0-2" id="h2-0-2" class="d">-# puts a window in a given corner or in the middle of the scree
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+# puts a window in a given corner or in the middle of the screen
+</a> # (c) tudurom 2016 - wtfpl
+ #
+ 
+<b>diff --git a/<a id="h3" href="../file/wmrc/.scripts/focusw.html">wmrc/.scripts/focusw</a> b/<a href="../file/wmrc/.scripts/focusw.html">wmrc/.scripts/focusw</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -5,8 +5,8 @@
+</a> #
+ 
+ BW=${BW:-3}                    # border width
+<a href="#h3-0-3" id="h3-0-3" class="d">-ACTIVE=${ACTIVE:-0x3c5a5d}     # active border color
+</a><a href="#h3-0-4" id="h3-0-4" class="d">-INACTIVE=${INACTIVE:-0x374650} # inactive border color
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+ACTIVE=${ACTIVE:-0x$(xrq &apos;*.color6&apos; | cut -d&apos;#&apos; -f2)}     # active border color
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+INACTIVE=${INACTIVE:-0x$(xrq &apos;*.color6&apos; | cut -d&apos;#&apos; -f2)} # inactive border color
+</a> 
+ # get current window id
+ CUR=$(pfw)
+</pre>
+</div>
+</body>
+</html>

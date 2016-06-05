@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>main.go - albumify-next - Next gen albumify, written in Go. Uses mongodb. WIP!
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="albumify-next.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>albumify-next</h1><span class="desc">Next gen albumify, written in Go. Uses mongodb. WIP!
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/albumify-next.git">git://thetudor.ddns.net/albumify-next.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> main.go (984B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<a href="#l1" id="l1">1</a>
+<a href="#l2" id="l2">2</a>
+<a href="#l3" id="l3">3</a>
+<a href="#l4" id="l4">4</a>
+<a href="#l5" id="l5">5</a>
+<a href="#l6" id="l6">6</a>
+<a href="#l7" id="l7">7</a>
+<a href="#l8" id="l8">8</a>
+<a href="#l9" id="l9">9</a>
+<a href="#l10" id="l10">10</a>
+<a href="#l11" id="l11">11</a>
+<a href="#l12" id="l12">12</a>
+<a href="#l13" id="l13">13</a>
+<a href="#l14" id="l14">14</a>
+<a href="#l15" id="l15">15</a>
+<a href="#l16" id="l16">16</a>
+<a href="#l17" id="l17">17</a>
+<a href="#l18" id="l18">18</a>
+<a href="#l19" id="l19">19</a>
+<a href="#l20" id="l20">20</a>
+<a href="#l21" id="l21">21</a>
+<a href="#l22" id="l22">22</a>
+<a href="#l23" id="l23">23</a>
+<a href="#l24" id="l24">24</a>
+<a href="#l25" id="l25">25</a>
+<a href="#l26" id="l26">26</a>
+<a href="#l27" id="l27">27</a>
+<a href="#l28" id="l28">28</a>
+<a href="#l29" id="l29">29</a>
+<a href="#l30" id="l30">30</a>
+<a href="#l31" id="l31">31</a>
+<a href="#l32" id="l32">32</a>
+<a href="#l33" id="l33">33</a>
+<a href="#l34" id="l34">34</a>
+<a href="#l35" id="l35">35</a>
+<a href="#l36" id="l36">36</a>
+<a href="#l37" id="l37">37</a>
+<a href="#l38" id="l38">38</a>
+<a href="#l39" id="l39">39</a>
+<a href="#l40" id="l40">40</a>
+</pre></td><td><pre>
+package main
+
+import (
+	&quot;flag&quot;
+	&quot;fmt&quot;
+	&quot;log&quot;
+	&quot;net/http&quot;
+	&quot;os&quot;
+
+	&quot;github.com/gorilla/handlers&quot;
+
+	&quot;github.com/gnotclub/albumify-next/controllers&quot;
+	&quot;github.com/gnotclub/albumify-next/util&quot;
+)
+
+func main() {
+	util.GetLogger()
+
+	// Get config file path from command line args
+	var configFile = flag.String(&quot;config&quot;, &quot;config.json&quot;, &quot;path of the config file&quot;)
+	flag.Parse()
+	util.ReadConfig(*configFile)
+
+	util.GetDBSession()
+	defer util.DBSession.Close()
+
+	util.GetRouter()
+
+	// Register routes for all of Album&apos;s controllers
+	controllers.AlbumRegisterController()
+	// Register main client&apos;s controllers
+	controllers.CompileClientTemplates()
+	controllers.ClientRegisterController()
+
+	// Listen
+	address := fmt.Sprintf(&quot;%s:%d&quot;, util.Config.ServerHostname, util.Config.ServerPort)
+	util.Logger.Printf(&quot;Listening on %s&quot;, address)
+	http.Handle(&quot;/&quot;, &amp;util.MyServer{util.MainRouter})
+	log.Fatal(http.ListenAndServe(address, handlers.LoggingHandler(os.Stdout, &amp;util.MyServer{util.MainRouter})))
+}
+</pre></td></tr></table>
+</div>
+</body>
+</html>

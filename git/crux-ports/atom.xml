@@ -4,6 +4,23 @@
 <subtitle>Ports for the CRUX Linux distro.
 </subtitle>
 <entry>
+<id>8d85f6316a9071164d78cd4ee0093558c68bd8c9</id>
+<published>2016-05-14T20:57:05Z</published>
+<updated>2016-05-14T20:57:05Z</updated>
+<title type="text">neofetch: xprop is optional</title>
+<link rel="alternate" type="text/html" href="commit/8d85f6316a9071164d78cd4ee0093558c68bd8c9.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 8d85f6316a9071164d78cd4ee0093558c68bd8c9
+parent 3e9cc2ec08ba49cec1b68326ba2d79a5e0400e33
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat May 14 23:57:05 +0300
+
+neofetch: xprop is optional
+
+</content>
+</entry>
+<entry>
 <id>3e9cc2ec08ba49cec1b68326ba2d79a5e0400e33</id>
 <published>2016-05-05T12:06:13Z</published>
 <updated>2016-05-05T12:06:13Z</updated>

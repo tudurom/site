@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Adaugat o a doua functie de evaluare pozitionala - nexus - Bot that plays the Pah-Tum game. Available here for historical purposes. Warning: comments are in Romanian.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="nexus.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>nexus</h1><span class="desc">Bot that plays the Pah-Tum game. Available here for historical purposes. Warning: comments are in Romanian.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/8bf6179e0d4cdfa77ca4b9d7188823832d2d1b6f.html">8bf6179e0d4cdfa77ca4b9d7188823832d2d1b6f</a>
+<b>parent</b> <a href="../commit/a66823191410b94b2a7bbd891ede41918a97f96d.html">a66823191410b94b2a7bbd891ede41918a97f96d</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudor.roman@outlook.com">tudor.roman@outlook.com</a>&gt;
+<b>Date:</b>   Sat Jun 13 00:57:30 +0300
+
+Adaugat o a doua functie de evaluare pozitionala
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">nexus.c</a></td><td> | </td><td class="num">15</td><td><span class="i">++++++++++++++</span><span class="d">-</span></td></tr>
+</table>1 file changed, 14 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/nexus.c.html">nexus.c</a> b/<a href="../file/nexus.c.html">nexus.c</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -17,6 +17,8 @@
+</a> #define PLUS -2
+ #define GOL 0
+ #define STOP_PROGRAM 980000 // Timpul pe care il are programul ca sa gaseasca o mutare
+<a href="#h0-0-3" id="h0-0-3" class="i">+#define MULT_POS_1 100
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+#define MULT_POS_2 100
+</a> 
+ 
+ struct TableStatus { // Structura returnata de getTableStatus()
+<a href="#h0-1" id="h0-1" class="h">@@ -34,6 +36,7 @@ inline int max( int a, int b );
+</a> inline int min( int a, int b );
+ inline int playerWon( int player, int scores[3] ); // Returneaza 1 daca player castiga, -1 daca -player castiga, 0 pt. remiza
+ inline int positionalEval( int lin, int col );
+<a href="#h0-1-3" id="h0-1-3" class="i">+inline int dynamicPositionalEval( int lin, int col, char board[TABLE_WIDTH][TABLE_WIDTH], char player );
+</a> // Functie care returneaza timpul in microsecunde de la 1 ian 1970
+ // sursa: http://algopedia.ro
+ inline long long getTime() {
+<a href="#h0-2" id="h0-2" class="h">@@ -43,6 +46,10 @@ inline long long getTime() {
+</a>   return tv.tv_sec * 1000000LL + tv.tv_usec;
+ }
+ 
+<a href="#h0-2-3" id="h0-2-3" class="i">+inline int isGood(char tile, char player) {
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+  return tile == player || tile == GOL;
+</a><a href="#h0-2-5" id="h0-2-5" class="i">+}
+</a><a href="#h0-2-6" id="h0-2-6" class="i">+
+</a> long long programStart; // Timpul la care programul incepe executia
+ long long plyCounter = 0; // Nr. de semi-mutari procesate. Pt. statistica
+ int thisPlayer; // Jucatorul cu care joaca programul
+<a href="#h0-3" id="h0-3" class="h">@@ -107,7 +114,7 @@ int main() {
+</a>     for ( col = 0; col &lt; TABLE_WIDTH; col++) {
+       if ( board[lin][col] == GOL ) {
+         board[lin][col] = thisPlayer;
+<a href="#h0-3-3" id="h0-3-3" class="d">-        tempScore = -minimax(board, DEPTH, -INFINIT, +INFINIT, -thisPlayer, thisPlayer) * 1000 + positionalEval(lin, col); // Magie
+</a><a href="#h0-3-4" id="h0-3-4" class="i">+        tempScore = (-minimax(board, DEPTH, -INFINIT, +INFINIT, -thisPlayer, thisPlayer) * MULT_POS_1 + positionalEval(lin, col)) * MULT_POS_2 + dynamicPositionalEval(lin, col, board, thisPlayer); // Magie
+</a>         board[lin][col] = GOL;
+         if ( tempScore &gt; score ) {
+           score = tempScore;
+<a href="#h0-4" id="h0-4" class="h">@@ -166,6 +173,12 @@ inline int positionalEval( int lin, int col ) {
+</a>   return newPosScore[lin][col];
+ }
+ 
+<a href="#h0-4-3" id="h0-4-3" class="i">+inline dynamicPositionalEval( int lin, int col, char board[TABLE_WIDTH][TABLE_WIDTH], char player ) {
+</a><a href="#h0-4-4" id="h0-4-4" class="i">+  int sum = 0;
+</a><a href="#h0-4-5" id="h0-4-5" class="i">+  int i;
+</a><a href="#h0-4-6" id="h0-4-6" class="i">+  return sum;
+</a><a href="#h0-4-7" id="h0-4-7" class="i">+}
+</a><a href="#h0-4-8" id="h0-4-8" class="i">+
+</a> void getTableStatus(char board[TABLE_WIDTH][TABLE_WIDTH],
+                                    struct TableStatus* stat ) {
+   int scoreX, scoreO;
+</pre>
+</div>
+</body>
+</html>

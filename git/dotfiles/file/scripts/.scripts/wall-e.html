@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> wall-e (352B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> wall-e (358B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -42,7 +42,7 @@
 # (c) tudurom 2016 - wtfpl
 #
 
-DEFAULT_WALL=&quot;$HOME/wallpapers/venice.jpg&quot;
+DEFAULT_WALL=&quot;$HOME/wallpapers/test_tile7_1.png&quot;
 APRIL_WALL=&quot;$HOME/wallpapers/april_wall.png&quot;
 
 if [ &quot;$(date +&quot;%d/%m&quot;)&quot; = &quot;01/04&quot; ]; then
@@ -52,7 +52,7 @@ elif [ $# -ge 1 ]; then
   test -n &quot;$2&quot; &amp;&amp; option=&quot;$2&quot;
   feh --bg-${option} $1
 else
-  feh --bg-fill $DEFAULT_WALL
+  feh --bg-tile $DEFAULT_WALL
 fi
 
 </pre></td></tr></table>

@@ -15,7 +15,7 @@
 <a href="../../../../log.html">Log</a> | <a href="../../../../files.html">Files</a> | <a href="../../../../refs.html">Refs</a> | <a href="../../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> commons (530B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> commons (491B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -61,16 +61,22 @@
 <a href="#l43" id="l43">43</a>
 <a href="#l44" id="l44">44</a>
 <a href="#l45" id="l45">45</a>
+<a href="#l46" id="l46">46</a>
+<a href="#l47" id="l47">47</a>
+<a href="#l48" id="l48">48</a>
 </pre></td><td><pre>
 # reload sxhkd
 super + Escape
   pkill -USR1 -x sxhkd
 
 super + Return
-  st -g 100x30
+  urxvtc
 
 super + space
-  run_dmenu
+  dmenu_run
+
+super + q
+  showtodo
 
 super + shift + f
   firefox
@@ -79,13 +85,13 @@ super + shift + x
   slock
 
 XF86AudioRaiseVolume
-  amixer sset Master 5%+ unmute
+  mixer vol +5
 
 XF86AudioLowerVolume
-  amixer sset Master 5%- unmute
+  mixer vol -5
 
 XF86AudioMute
-  amixer sset Master toggle
+  mute
 
 XF86MonBrightnessUp
   xbacklight -inc 10%

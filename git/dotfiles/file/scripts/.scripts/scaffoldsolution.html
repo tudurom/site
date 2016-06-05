@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> scaffoldsolution (963B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> scaffoldsolution (986B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -54,21 +54,21 @@
 <a href="#l36" id="l36">36</a>
 <a href="#l37" id="l37">37</a>
 </pre></td><td><pre>
-#! /bin/bash
+#!/usr/bin/env bash
 
-dir=&quot;$HOME/problems&quot;
+dir=&quot;$HOME/usr/work/problems&quot;
 
 if [ $# -lt 1  ]; then
-  printf &quot;Project name? &quot;
-  read proj_name
-  printf &quot;\n&quot;
+    printf &quot;Project name? &quot;
+    read proj_name
+    printf &quot;\n&quot;
 else
-  proj_name=$1
+    proj_name=$1
 fi
 
 dongers=(&quot;┌༼▀̿ Ĺ̯▀̿༽┐&quot; &quot;(つ▀¯▀)つ&quot; &quot;┌(▀Ĺ̯▀)┐&quot; &quot;( ͡° ͜ʖ ͡°)&gt;⌐■-■&quot; &quot;ヽ༼ ຈل͜ຈ༼ ▀̿̿Ĺ̯̿̿▀̿ ̿༽Ɵ͆ل͜Ɵ͆ ༽ﾉ&quot;)
 arr_size=${#dongers[@]}
-random_donger=${dongers[$(shuf -i 0-$((arr_size - 1)) -n 1)]}
+random_donger=${dongers[$(shuffle -n $arr_size -p 1)]}
 project_dir=&quot;${dir}/${proj_name}&quot;
 
 echo &quot;$(tput bold)&quot;
@@ -83,9 +83,9 @@ cat &gt;&quot;${project_dir}/${proj_name}.c&quot; &lt;&lt;EOF
 #include &lt;stdio.h&gt;
 
 int main() {
-  FILE *fin, *fout;
-  printf(&quot;Hello!&quot;);
-  return 0;
+    FILE *fin, *fout;
+    printf(&quot;Hello!&quot;);
+    return 0;
 }
 EOF
 echo &quot;$(tput setaf 2)created ${project_dir}/${proj_name}.c&quot;

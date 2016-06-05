@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>added more utility functions - albumify-next - Next gen albumify, written in Go. Uses mongodb. WIP!
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="albumify-next.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>albumify-next</h1><span class="desc">Next gen albumify, written in Go. Uses mongodb. WIP!
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/albumify-next.git">git://thetudor.ddns.net/albumify-next.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/af6c884f883c83aa6509874eceba864a448e21f4.html">af6c884f883c83aa6509874eceba864a448e21f4</a>
+<b>parent</b> <a href="../commit/a4e3fa4aaa2228d3ab45028c5fc0851d87d28658.html">a4e3fa4aaa2228d3ab45028c5fc0851d87d28658</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Jun  3 18:47:14 +0300
+
+added more utility functions
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">README.md</a></td><td> | </td><td class="num">16</td><td><span class="i">+++++++++++++++</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h1">controllers/albums.go</a></td><td> | </td><td class="num">39</td><td><span class="i">++++++++++++++++++++</span><span class="d">-------------------</span></td></tr>
+<tr><td><a href="#h2">models/album.go</a></td><td> | </td><td class="num">40</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h3">models/image.go</a></td><td> | </td><td class="num">7</td><td><span class="i"></span><span class="d">-------</span></td></tr>
+<tr><td><a href="#h4">nvim.core</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td><a href="#h5">util/db.go</a></td><td> | </td><td class="num">3</td><td><span class="i">+</span><span class="d">--</span></td></tr>
+</table>6 files changed, 76 insertions(+), 29 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -7,4 +7,18 @@
+</a> Albumify lets you create albums like imgur does, with a twist: you decide what
+ image host to use. You can also use different hosts for different images.
+ 
+<a href="#h0-0-3" id="h0-0-3" class="d">-The old version is available at https://tudurom.github.io/albumify
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+### Getting started
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+* Download and build the code
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+    ```bash
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+    go get github.com/gnotclub/albumify-next
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+    ```
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+* Copy `config.json` somewhere
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+* Run the program as
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+    ```bash
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+    albumify-next -config &lt;path to config file&gt;
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+    ```
+</a><b>diff --git a/<a id="h1" href="../file/controllers/albums.go.html">controllers/albums.go</a> b/<a href="../file/controllers/albums.go.html">controllers/albums.go</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -21,7 +21,7 @@ var collection *mgo.Collection
+</a> // Registers the routes for this controller
+ func AlbumRegisterController() {
+ 	subrouter = util.Router.PathPrefix(prefix).Subrouter()
+<a href="#h1-0-3" id="h1-0-3" class="d">-	collection = util.GetDB().C(&quot;albums&quot;)
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+	collection = util.GetDB().C(models.AlbumCollection)
+</a> 
+ 	subrouter.HandleFunc(&quot;/{albumId}&quot;, AlbumShow).Methods(&quot;GET&quot;)
+ 	subrouter.HandleFunc(&quot;/&quot;, AlbumSubmit).Methods(&quot;GET&quot;, &quot;POST&quot;)
+<a href="#h1-1" id="h1-1" class="h">@@ -29,13 +29,14 @@ func AlbumRegisterController() {
+</a> 
+ // Display an Album in JSON form
+ func AlbumShow(w http.ResponseWriter, r *http.Request) {
+<a href="#h1-1-3" id="h1-1-3" class="i">+	w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)
+</a><a href="#h1-1-4" id="h1-1-4" class="i">+
+</a> 	vars := mux.Vars(r)
+ 	albumId := vars[&quot;albumId&quot;]
+ 	documentId := util.UrlDecode(albumId)
+<a href="#h1-1-8" id="h1-1-8" class="d">-	result := models.Album{}
+</a><a href="#h1-1-9" id="h1-1-9" class="d">-	err := collection.Find(bson.M{&quot;_id&quot;: documentId}).One(&amp;result)
+</a><a href="#h1-1-10" id="h1-1-10" class="i">+	err, result := models.GetAlbum(bson.M{&quot;_id&quot;: documentId})
+</a> 	if err != nil {
+<a href="#h1-1-12" id="h1-1-12" class="d">-		http.Error(w, &quot;not found&quot;, http.StatusNotFound)
+</a><a href="#h1-1-13" id="h1-1-13" class="i">+		http.Error(w, &quot;404 page not found&quot;, http.StatusNotFound)
+</a> 	} else {
+ 		json.NewEncoder(w).Encode(result)
+ 	}
+<a href="#h1-2" id="h1-2" class="h">@@ -43,26 +44,26 @@ func AlbumShow(w http.ResponseWriter, r *http.Request) {
+</a> 
+ // Register a new album based on the JSON passed in the request
+ func AlbumSubmit(w http.ResponseWriter, r *http.Request) {
+<a href="#h1-2-3" id="h1-2-3" class="d">-	var album, prevAlbum models.Album
+</a><a href="#h1-2-4" id="h1-2-4" class="i">+	w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)
+</a><a href="#h1-2-5" id="h1-2-5" class="i">+
+</a><a href="#h1-2-6" id="h1-2-6" class="i">+	var album models.Album
+</a> 	decoder := json.NewDecoder(r.Body)
+ 	err := decoder.Decode(&amp;album)
+ 	// TODO: validation
+ 	if err != nil {
+<a href="#h1-2-11" id="h1-2-11" class="d">-		http.Error(w, &quot;bad request&quot;, http.StatusBadRequest)
+</a><a href="#h1-2-12" id="h1-2-12" class="d">-		util.Logger.Printf(&quot;Bad Request in album submission: %s&quot;, err)
+</a><a href="#h1-2-13" id="h1-2-13" class="d">-	}
+</a><a href="#h1-2-14" id="h1-2-14" class="d">-	// Get the last album registered
+</a><a href="#h1-2-15" id="h1-2-15" class="d">-	err = collection.Find(bson.M{}).Sort(&quot;-_id&quot;).One(&amp;prevAlbum)
+</a><a href="#h1-2-16" id="h1-2-16" class="d">-	if err != nil {
+</a><a href="#h1-2-17" id="h1-2-17" class="d">-		http.Error(w, &quot;internal server error&quot;, http.StatusInternalServerError)
+</a><a href="#h1-2-18" id="h1-2-18" class="d">-		util.Logger.Printf(&quot;Couldn&apos;t get last album in collection: %s&quot;, err)
+</a><a href="#h1-2-19" id="h1-2-19" class="i">+		http.Error(w, &quot;400 bad request&quot;, http.StatusBadRequest)
+</a><a href="#h1-2-20" id="h1-2-20" class="i">+		var s []byte
+</a><a href="#h1-2-21" id="h1-2-21" class="i">+		r.Body.Read(s)
+</a><a href="#h1-2-22" id="h1-2-22" class="i">+		util.Logger.Printf(&quot;%s Bad Request in album submission: %s&quot;, err)
+</a><a href="#h1-2-23" id="h1-2-23" class="i">+		return
+</a> 	}
+<a href="#h1-2-25" id="h1-2-25" class="d">-	// Increment new album&apos;s id
+</a><a href="#h1-2-26" id="h1-2-26" class="d">-	album.Id = prevAlbum.Id + 1
+</a><a href="#h1-2-27" id="h1-2-27" class="d">-	err = collection.Insert(album)
+</a><a href="#h1-2-28" id="h1-2-28" class="i">+	err = models.PutAlbum(&amp;album)
+</a> 	if err != nil {
+<a href="#h1-2-30" id="h1-2-30" class="d">-		http.Error(w, &quot;internal server error&quot;, http.StatusInternalServerError)
+</a><a href="#h1-2-31" id="h1-2-31" class="d">-		util.Logger.Printf(&quot;Couldn&apos;t insert album in collection: %s&quot;, err)
+</a><a href="#h1-2-32" id="h1-2-32" class="i">+		http.Error(w, &quot;500 internal server error&quot;, http.StatusInternalServerError)
+</a><a href="#h1-2-33" id="h1-2-33" class="i">+		util.Logger.Printf(&quot;Error while trying to insert album into collection: %s&quot;, err)
+</a> 	}
+<a href="#h1-2-35" id="h1-2-35" class="d">-	fmt.Fprintf(w, &quot;{\&quot;code\&quot;: \&quot;%s\&quot;}&quot;, util.UrlEncode(album.Id))
+</a><a href="#h1-2-36" id="h1-2-36" class="i">+	outData, _ := json.Marshal(
+</a><a href="#h1-2-37" id="h1-2-37" class="i">+		map[string]interface{}{&quot;code&quot;: util.UrlEncode(album.Id)},
+</a><a href="#h1-2-38" id="h1-2-38" class="i">+	)
+</a><a href="#h1-2-39" id="h1-2-39" class="i">+	fmt.Fprintf(w, &quot;%s&quot;, outData)
+</a> }
+<b>diff --git a/<a id="h2" href="../file/models/album.go.html">models/album.go</a> b/<a href="../file/models/album.go.html">models/album.go</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -1,5 +1,19 @@
+</a> package models
+ 
+<a href="#h2-0-2" id="h2-0-2" class="i">+import (
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+	&quot;github.com/gnotclub/albumify-next/util&quot;
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+	&quot;gopkg.in/mgo.v2&quot;
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+	&quot;gopkg.in/mgo.v2/bson&quot;
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+)
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+var AlbumCollection string = &quot;albums&quot;
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+type Image struct {
+</a><a href="#h2-0-11" id="h2-0-11" class="i">+	Title       string `bson:&quot;title&quot; json:&quot;title&quot;`
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+	Description string `bson:&quot;description&quot; json:&quot;description&quot;`
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+	Link        string `bson:&quot;link&quot; json:&quot;link&quot;`
+</a><a href="#h2-0-14" id="h2-0-14" class="i">+}
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+
+</a> // An album contains images and metadata
+ type Album struct {
+ 	Id          int64    `bson:&quot;_id&quot; json:&quot;_id&quot;`
+<a href="#h2-1" id="h2-1" class="h">@@ -7,3 +21,29 @@ type Album struct {
+</a> 	Description string   `bson:&quot;description&quot; json:&quot;description&quot;`
+ 	Images      []*Image `bson:&quot;images&quot; json:&quot;images&quot;`
+ }
+<a href="#h2-1-3" id="h2-1-3" class="i">+
+</a><a href="#h2-1-4" id="h2-1-4" class="i">+func GetAlbum(query bson.M) (error, Album) {
+</a><a href="#h2-1-5" id="h2-1-5" class="i">+	var result Album
+</a><a href="#h2-1-6" id="h2-1-6" class="i">+	var c *mgo.Collection = util.GetDB().C(AlbumCollection)
+</a><a href="#h2-1-7" id="h2-1-7" class="i">+	err := c.Find(query).One(&amp;result)
+</a><a href="#h2-1-8" id="h2-1-8" class="i">+
+</a><a href="#h2-1-9" id="h2-1-9" class="i">+	return err, result
+</a><a href="#h2-1-10" id="h2-1-10" class="i">+}
+</a><a href="#h2-1-11" id="h2-1-11" class="i">+
+</a><a href="#h2-1-12" id="h2-1-12" class="i">+func PutAlbum(album *Album) error {
+</a><a href="#h2-1-13" id="h2-1-13" class="i">+	var prevAlbum Album
+</a><a href="#h2-1-14" id="h2-1-14" class="i">+	var c *mgo.Collection = util.GetDB().C(AlbumCollection)
+</a><a href="#h2-1-15" id="h2-1-15" class="i">+
+</a><a href="#h2-1-16" id="h2-1-16" class="i">+	err := c.Find(bson.M{}).Sort(&quot;-_id&quot;).One(&amp;prevAlbum)
+</a><a href="#h2-1-17" id="h2-1-17" class="i">+	if err != nil {
+</a><a href="#h2-1-18" id="h2-1-18" class="i">+		return err
+</a><a href="#h2-1-19" id="h2-1-19" class="i">+	}
+</a><a href="#h2-1-20" id="h2-1-20" class="i">+
+</a><a href="#h2-1-21" id="h2-1-21" class="i">+	(*album).Id = prevAlbum.Id + 1
+</a><a href="#h2-1-22" id="h2-1-22" class="i">+	err = c.Insert(*album)
+</a><a href="#h2-1-23" id="h2-1-23" class="i">+	if err != nil {
+</a><a href="#h2-1-24" id="h2-1-24" class="i">+		return err
+</a><a href="#h2-1-25" id="h2-1-25" class="i">+	}
+</a><a href="#h2-1-26" id="h2-1-26" class="i">+
+</a><a href="#h2-1-27" id="h2-1-27" class="i">+	return nil
+</a><a href="#h2-1-28" id="h2-1-28" class="i">+}
+</a><b>diff --git a/<a id="h3" href="../file/models/image.go.html">models/image.go</a> b/<a href="../file/models/image.go.html">models/image.go</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -1,7 +0,0 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="d">-package models
+</a><a href="#h3-0-1" id="h3-0-1" class="d">-
+</a><a href="#h3-0-2" id="h3-0-2" class="d">-type Image struct {
+</a><a href="#h3-0-3" id="h3-0-3" class="d">-	Title       string `bson:&quot;title&quot; json:&quot;title&quot;`
+</a><a href="#h3-0-4" id="h3-0-4" class="d">-	Description string `bson:&quot;description&quot; json:&quot;description&quot;`
+</a><a href="#h3-0-5" id="h3-0-5" class="d">-	Link        string `bson:&quot;link&quot; json:&quot;link&quot;`
+</a><a href="#h3-0-6" id="h3-0-6" class="d">-}
+</a><b>diff --git a/<a id="h4" href="../file/nvim.core.html">nvim.core</a> b/<a href="../file/nvim.core.html">nvim.core</a></b>
+Binary files differ.
+<b>diff --git a/<a id="h5" href="../file/util/db.go.html">util/db.go</a> b/<a href="../file/util/db.go.html">util/db.go</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -12,12 +12,11 @@ func GetDBSession() {
+</a> 	if err != nil {
+ 		Logger.Fatalf(&quot;Error while openning database connection: %s&quot;, err)
+ 	}
+<a href="#h5-0-3" id="h5-0-3" class="d">-	Logger.Printf(&quot;Database connection to %s openned.&quot;, Config.DatabaseAddress)
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+	Logger.Printf(&quot;Database connection to %s openned. Databse name: %s&quot;, Config.DatabaseAddress, Config.DatabaseName)
+</a> 	DBSession = session
+ }
+ 
+ // Returns the database we&apos;re operating on
+ func GetDB() *mgo.Database {
+<a href="#h5-0-10" id="h5-0-10" class="d">-	Logger.Printf(&quot;Got database %s&quot;, Config.DatabaseName)
+</a> 	return DBSession.DB(Config.DatabaseName)
+ }
+</pre>
+</div>
+</body>
+</html>

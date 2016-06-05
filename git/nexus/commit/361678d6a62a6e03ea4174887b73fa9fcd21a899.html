@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Adaugat un nou scor pozitional, care calculeaza nr. de patratele unde se poate extinde, dintr-o pozitie. - nexus - Bot that plays the Pah-Tum game. Available here for historical purposes. Warning: comments are in Romanian.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="nexus.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>nexus</h1><span class="desc">Bot that plays the Pah-Tum game. Available here for historical purposes. Warning: comments are in Romanian.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/361678d6a62a6e03ea4174887b73fa9fcd21a899.html">361678d6a62a6e03ea4174887b73fa9fcd21a899</a>
+<b>parent</b> <a href="../commit/9e2a6207e9ee838c270455736028f7e318f17c06.html">9e2a6207e9ee838c270455736028f7e318f17c06</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:tudor.roman@outlook.com">tudor.roman@outlook.com</a>&gt;
+<b>Date:</b>   Mon Jun 15 20:34:43 +0300
+
+Adaugat un nou scor pozitional, care calculeaza nr. de patratele unde se
+poate extinde, dintr-o pozitie.
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">nexus.c</a></td><td> | </td><td class="num">82</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">-----------------------</span></td></tr>
+</table>1 file changed, 58 insertions(+), 24 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/nexus.c.html">nexus.c</a> b/<a href="../file/nexus.c.html">nexus.c</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -34,6 +34,8 @@ inline int max( int a, int b );
+</a> inline int min( int a, int b );
+ inline int playerWon( int player, int scores[3] ); // Returneaza 1 daca player castiga, -1 daca -player castiga, 0 pt. remiza
+ inline int positionalEval( int lin, int col ); // Returneaza un scor in functie de pozitia mutarii
+<a href="#h0-0-3" id="h0-0-3" class="i">+inline int positionalEval2( int lin, int col, char player );
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+void rebuildPositionalEval2Scores( char board[TABLE_WIDTH][TABLE_WIDTH] );
+</a> // Functie care returneaza timpul in microsecunde de la 1 ian 1970
+ // sursa: http://algopedia.ro
+ inline long long getTime() {
+<a href="#h0-1" id="h0-1" class="h">@@ -58,6 +60,7 @@ int newPosScore[TABLE_WIDTH][TABLE_WIDTH] = {
+</a>   {1, 4, 5, 6, 5, 4, 1},
+   {0, 1, 2, 3, 2, 1, 0}
+ };
+<a href="#h0-1-3" id="h0-1-3" class="i">+int newPosScore2[3][TABLE_WIDTH][TABLE_WIDTH];
+</a> 
+ int main() {
+   FILE *fin, *fout;
+<a href="#h0-2" id="h0-2" class="h">@@ -101,13 +104,14 @@ int main() {
+</a>   getTableStatus(board, &amp;status);
+   thisPlayer = status.currentPlayer;
+   moveLine = moveCol = -1; // Nu mutam nicaieri, inca
+<a href="#h0-2-3" id="h0-2-3" class="d">-
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+  rebuildPositionalEval2Scores(board);
+</a>   score = -INFINIT;
+   for ( lin = 0; lin &lt; TABLE_WIDTH; lin++ ) { // Luam toate mutarile la rand
+     for ( col = 0; col &lt; TABLE_WIDTH; col++) {
+       if ( board[lin][col] == GOL ) {
+         board[lin][col] = thisPlayer;
+<a href="#h0-2-10" id="h0-2-10" class="d">-        tempScore = -minimax(board, DEPTH, -INFINIT, +INFINIT, -thisPlayer, thisPlayer) * 1000 + positionalEval(lin, col); // Magie
+</a><a href="#h0-2-11" id="h0-2-11" class="i">+        tempScore = -minimax(board, DEPTH, -INFINIT, +INFINIT, -thisPlayer, thisPlayer) * 100  // Scorul material +
+</a><a href="#h0-2-12" id="h0-2-12" class="i">+                    + positionalEval2(lin, col, -thisPlayer);                                 // Potential de extindere al adversarului
+</a>         board[lin][col] = GOL;
+         if ( tempScore &gt; score ) {
+           score = tempScore;
+<a href="#h0-3" id="h0-3" class="h">@@ -153,19 +157,46 @@ inline int min( int a, int b ) {
+</a>     return b;
+ }
+ 
+<a href="#h0-3-3" id="h0-3-3" class="d">-inline int playerWon( int player, int board[3] ) {
+</a><a href="#h0-3-4" id="h0-3-4" class="d">-  if(board[player + 1] &gt; board[-player + 1])
+</a><a href="#h0-3-5" id="h0-3-5" class="d">-    return 1;
+</a><a href="#h0-3-6" id="h0-3-6" class="d">-  else if(board[-player + 1] &gt; board[player + 1])
+</a><a href="#h0-3-7" id="h0-3-7" class="d">-    return -1;
+</a><a href="#h0-3-8" id="h0-3-8" class="d">-  else
+</a><a href="#h0-3-9" id="h0-3-9" class="d">-    return 0;
+</a><a href="#h0-3-10" id="h0-3-10" class="i">+void rebuildPositionalEval2Scores( char board[TABLE_WIDTH][TABLE_WIDTH] ) {
+</a><a href="#h0-3-11" id="h0-3-11" class="i">+  int pozitiv, lin, col, i, j, player, sum;
+</a><a href="#h0-3-12" id="h0-3-12" class="i">+
+</a><a href="#h0-3-13" id="h0-3-13" class="i">+  for (pozitiv = 0; pozitiv &lt;= 1; pozitiv++) {
+</a><a href="#h0-3-14" id="h0-3-14" class="i">+    for (lin = 0; lin &lt; TABLE_WIDTH; lin++) {
+</a><a href="#h0-3-15" id="h0-3-15" class="i">+      for (col = 0; col &lt; TABLE_WIDTH; col++) {
+</a><a href="#h0-3-16" id="h0-3-16" class="i">+        if (board[lin][col] == GOL) {
+</a><a href="#h0-3-17" id="h0-3-17" class="i">+          player = (pozitiv == 0 ? X : O);
+</a><a href="#h0-3-18" id="h0-3-18" class="i">+          sum = 0;
+</a><a href="#h0-3-19" id="h0-3-19" class="i">+          i = lin;
+</a><a href="#h0-3-20" id="h0-3-20" class="i">+          while (i &gt; 0 &amp;&amp; (board[i - 1][col] == GOL || board[i - 1][col] == player))
+</a><a href="#h0-3-21" id="h0-3-21" class="i">+            i--;
+</a><a href="#h0-3-22" id="h0-3-22" class="i">+          sum += lin - i;
+</a><a href="#h0-3-23" id="h0-3-23" class="i">+          i = lin;
+</a><a href="#h0-3-24" id="h0-3-24" class="i">+          while (i &lt; TABLE_WIDTH - 1 &amp;&amp; (board[i + 1][col] == GOL || board[i + 1][col] == player))
+</a><a href="#h0-3-25" id="h0-3-25" class="i">+            i++;
+</a><a href="#h0-3-26" id="h0-3-26" class="i">+          sum += i - lin;
+</a><a href="#h0-3-27" id="h0-3-27" class="i">+          j = col;
+</a><a href="#h0-3-28" id="h0-3-28" class="i">+          while (j &gt; 0 &amp;&amp; (board[lin][j - 1] == GOL || board[lin][j - 1] == player))
+</a><a href="#h0-3-29" id="h0-3-29" class="i">+            j--;
+</a><a href="#h0-3-30" id="h0-3-30" class="i">+          sum += col - j;
+</a><a href="#h0-3-31" id="h0-3-31" class="i">+          j = col;
+</a><a href="#h0-3-32" id="h0-3-32" class="i">+          while (j &lt; TABLE_WIDTH - 1 &amp;&amp; (board[lin][j + 1] == GOL || board[lin][j + 1] == player))
+</a><a href="#h0-3-33" id="h0-3-33" class="i">+            j++;
+</a><a href="#h0-3-34" id="h0-3-34" class="i">+          sum += j - col;
+</a><a href="#h0-3-35" id="h0-3-35" class="i">+          newPosScore2[player + 1][lin][col] = sum;
+</a><a href="#h0-3-36" id="h0-3-36" class="i">+        }
+</a><a href="#h0-3-37" id="h0-3-37" class="i">+      }
+</a><a href="#h0-3-38" id="h0-3-38" class="i">+    }
+</a><a href="#h0-3-39" id="h0-3-39" class="i">+  }
+</a> }
+ 
+ inline int positionalEval( int lin, int col ) {
+   return newPosScore[lin][col];
+ }
+ 
+<a href="#h0-3-46" id="h0-3-46" class="i">+inline int positionalEval2( int lin, int col, char player ) {
+</a><a href="#h0-3-47" id="h0-3-47" class="i">+  return newPosScore2[player + 1][lin][col];
+</a><a href="#h0-3-48" id="h0-3-48" class="i">+}
+</a><a href="#h0-3-49" id="h0-3-49" class="i">+
+</a> void getTableStatus(char board[TABLE_WIDTH][TABLE_WIDTH],
+                                    struct TableStatus* stat ) {
+   int scoreX, scoreO;
+<a href="#h0-4" id="h0-4" class="h">@@ -241,31 +272,34 @@ void getTableStatus(char board[TABLE_WIDTH][TABLE_WIDTH],
+</a> // Negamax cu alpha-beta
+ // http://algopedia.ro/wiki/index.php/Note_de_curs,_clasele_9-10,_22_mai_2014#Alpha-beta
+ int minimax(char board[TABLE_WIDTH][TABLE_WIDTH], char depth, int alpha, int beta, char player, char computerPlayer) {
+<a href="#h0-4-3" id="h0-4-3" class="d">-  int rc = 0;
+</a>   plyCounter++;
+<a href="#h0-4-5" id="h0-4-5" class="i">+  int rc;
+</a><a href="#h0-4-6" id="h0-4-6" class="i">+  int lin, col;
+</a><a href="#h0-4-7" id="h0-4-7" class="i">+  int val;
+</a>   struct TableStatus status;
+   getTableStatus(board, &amp;status);
+<a href="#h0-4-10" id="h0-4-10" class="d">-  if( depth == 0 || status.freeTiles == 0 || getTime() - programStart &gt; STOP_PROGRAM ) {
+</a><a href="#h0-4-11" id="h0-4-11" class="i">+
+</a><a href="#h0-4-12" id="h0-4-12" class="i">+  if (depth == 0 || status.freeTiles == 0 || getTime() - programStart &gt; STOP_PROGRAM) {
+</a>     rc = status.scores[player + 1] - status.scores[-player + 1];
+<a href="#h0-4-14" id="h0-4-14" class="i">+    //printf(&quot;%d\t&quot;, rc);
+</a>     return rc;
+   }
+<a href="#h0-4-17" id="h0-4-17" class="d">-  int scor = -INFINIT;
+</a><a href="#h0-4-18" id="h0-4-18" class="d">-  int lin = 0, col;
+</a><a href="#h0-4-19" id="h0-4-19" class="i">+
+</a><a href="#h0-4-20" id="h0-4-20" class="i">+  lin = 0;
+</a>   while (lin &lt; TABLE_WIDTH &amp;&amp; alpha &lt; beta) {
+     col = 0;
+     while (col &lt; TABLE_WIDTH &amp;&amp; alpha &lt; beta) {
+<a href="#h0-4-24" id="h0-4-24" class="d">-        if ( board[lin][col] == GOL ) {
+</a><a href="#h0-4-25" id="h0-4-25" class="d">-            board[lin][col] = player;
+</a><a href="#h0-4-26" id="h0-4-26" class="d">-            int val = -minimax(board, depth - 1, -beta, -alpha, -player, computerPlayer);
+</a><a href="#h0-4-27" id="h0-4-27" class="d">-            scor = max(scor, val);
+</a><a href="#h0-4-28" id="h0-4-28" class="d">-            alpha = max(alpha, val);
+</a><a href="#h0-4-29" id="h0-4-29" class="d">-            board[lin][col] = GOL;
+</a><a href="#h0-4-30" id="h0-4-30" class="d">-        }
+</a><a href="#h0-4-31" id="h0-4-31" class="d">-        col++;
+</a><a href="#h0-4-32" id="h0-4-32" class="i">+      if (board[lin][col] == GOL) {
+</a><a href="#h0-4-33" id="h0-4-33" class="i">+        board[lin][col] = player;
+</a><a href="#h0-4-34" id="h0-4-34" class="i">+        val = -minimax(board, depth - 1, -beta, -alpha, -player, computerPlayer);
+</a><a href="#h0-4-35" id="h0-4-35" class="i">+        alpha = max(alpha, val);
+</a><a href="#h0-4-36" id="h0-4-36" class="i">+        board[lin][col] = GOL;
+</a><a href="#h0-4-37" id="h0-4-37" class="i">+      }
+</a><a href="#h0-4-38" id="h0-4-38" class="i">+      col++;
+</a>     }
+<a href="#h0-4-40" id="h0-4-40" class="d">-    if(alpha &lt; beta)
+</a><a href="#h0-4-41" id="h0-4-41" class="d">-      lin++;
+</a><a href="#h0-4-42" id="h0-4-42" class="i">+    lin++;
+</a>   }
+<a href="#h0-4-44" id="h0-4-44" class="d">-  rc = scor;
+</a><a href="#h0-4-45" id="h0-4-45" class="i">+
+</a><a href="#h0-4-46" id="h0-4-46" class="i">+  rc = min(alpha, beta);
+</a>   return rc;
+ }
+</pre>
+</div>
+</body>
+</html>

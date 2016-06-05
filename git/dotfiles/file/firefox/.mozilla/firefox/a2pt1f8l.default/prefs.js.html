@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>prefs.js - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../../../../../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../../../../../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../../../../../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../../../../../"><img src="../../../../../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../../../../../log.html">Log</a> | <a href="../../../../../files.html">Files</a> | <a href="../../../../../refs.html">Refs</a> | <a href="../../../../../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<p> prefs.js (13290B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<a href="#l1" id="l1">1</a>
+<a href="#l2" id="l2">2</a>
+<a href="#l3" id="l3">3</a>
+<a href="#l4" id="l4">4</a>
+<a href="#l5" id="l5">5</a>
+<a href="#l6" id="l6">6</a>
+<a href="#l7" id="l7">7</a>
+<a href="#l8" id="l8">8</a>
+<a href="#l9" id="l9">9</a>
+<a href="#l10" id="l10">10</a>
+<a href="#l11" id="l11">11</a>
+<a href="#l12" id="l12">12</a>
+<a href="#l13" id="l13">13</a>
+<a href="#l14" id="l14">14</a>
+<a href="#l15" id="l15">15</a>
+<a href="#l16" id="l16">16</a>
+<a href="#l17" id="l17">17</a>
+<a href="#l18" id="l18">18</a>
+<a href="#l19" id="l19">19</a>
+<a href="#l20" id="l20">20</a>
+<a href="#l21" id="l21">21</a>
+<a href="#l22" id="l22">22</a>
+<a href="#l23" id="l23">23</a>
+<a href="#l24" id="l24">24</a>
+<a href="#l25" id="l25">25</a>
+<a href="#l26" id="l26">26</a>
+<a href="#l27" id="l27">27</a>
+<a href="#l28" id="l28">28</a>
+<a href="#l29" id="l29">29</a>
+<a href="#l30" id="l30">30</a>
+<a href="#l31" id="l31">31</a>
+<a href="#l32" id="l32">32</a>
+<a href="#l33" id="l33">33</a>
+<a href="#l34" id="l34">34</a>
+<a href="#l35" id="l35">35</a>
+<a href="#l36" id="l36">36</a>
+<a href="#l37" id="l37">37</a>
+<a href="#l38" id="l38">38</a>
+<a href="#l39" id="l39">39</a>
+<a href="#l40" id="l40">40</a>
+<a href="#l41" id="l41">41</a>
+<a href="#l42" id="l42">42</a>
+<a href="#l43" id="l43">43</a>
+<a href="#l44" id="l44">44</a>
+<a href="#l45" id="l45">45</a>
+<a href="#l46" id="l46">46</a>
+<a href="#l47" id="l47">47</a>
+<a href="#l48" id="l48">48</a>
+<a href="#l49" id="l49">49</a>
+<a href="#l50" id="l50">50</a>
+<a href="#l51" id="l51">51</a>
+<a href="#l52" id="l52">52</a>
+<a href="#l53" id="l53">53</a>
+<a href="#l54" id="l54">54</a>
+<a href="#l55" id="l55">55</a>
+<a href="#l56" id="l56">56</a>
+<a href="#l57" id="l57">57</a>
+<a href="#l58" id="l58">58</a>
+<a href="#l59" id="l59">59</a>
+<a href="#l60" id="l60">60</a>
+<a href="#l61" id="l61">61</a>
+<a href="#l62" id="l62">62</a>
+<a href="#l63" id="l63">63</a>
+<a href="#l64" id="l64">64</a>
+<a href="#l65" id="l65">65</a>
+<a href="#l66" id="l66">66</a>
+<a href="#l67" id="l67">67</a>
+<a href="#l68" id="l68">68</a>
+<a href="#l69" id="l69">69</a>
+<a href="#l70" id="l70">70</a>
+<a href="#l71" id="l71">71</a>
+<a href="#l72" id="l72">72</a>
+<a href="#l73" id="l73">73</a>
+<a href="#l74" id="l74">74</a>
+<a href="#l75" id="l75">75</a>
+<a href="#l76" id="l76">76</a>
+<a href="#l77" id="l77">77</a>
+<a href="#l78" id="l78">78</a>
+<a href="#l79" id="l79">79</a>
+<a href="#l80" id="l80">80</a>
+<a href="#l81" id="l81">81</a>
+<a href="#l82" id="l82">82</a>
+<a href="#l83" id="l83">83</a>
+<a href="#l84" id="l84">84</a>
+<a href="#l85" id="l85">85</a>
+<a href="#l86" id="l86">86</a>
+<a href="#l87" id="l87">87</a>
+<a href="#l88" id="l88">88</a>
+<a href="#l89" id="l89">89</a>
+<a href="#l90" id="l90">90</a>
+<a href="#l91" id="l91">91</a>
+<a href="#l92" id="l92">92</a>
+<a href="#l93" id="l93">93</a>
+<a href="#l94" id="l94">94</a>
+<a href="#l95" id="l95">95</a>
+<a href="#l96" id="l96">96</a>
+<a href="#l97" id="l97">97</a>
+<a href="#l98" id="l98">98</a>
+<a href="#l99" id="l99">99</a>
+<a href="#l100" id="l100">100</a>
+<a href="#l101" id="l101">101</a>
+<a href="#l102" id="l102">102</a>
+<a href="#l103" id="l103">103</a>
+<a href="#l104" id="l104">104</a>
+<a href="#l105" id="l105">105</a>
+<a href="#l106" id="l106">106</a>
+<a href="#l107" id="l107">107</a>
+<a href="#l108" id="l108">108</a>
+<a href="#l109" id="l109">109</a>
+<a href="#l110" id="l110">110</a>
+<a href="#l111" id="l111">111</a>
+<a href="#l112" id="l112">112</a>
+<a href="#l113" id="l113">113</a>
+<a href="#l114" id="l114">114</a>
+<a href="#l115" id="l115">115</a>
+<a href="#l116" id="l116">116</a>
+<a href="#l117" id="l117">117</a>
+<a href="#l118" id="l118">118</a>
+<a href="#l119" id="l119">119</a>
+<a href="#l120" id="l120">120</a>
+<a href="#l121" id="l121">121</a>
+<a href="#l122" id="l122">122</a>
+<a href="#l123" id="l123">123</a>
+<a href="#l124" id="l124">124</a>
+<a href="#l125" id="l125">125</a>
+<a href="#l126" id="l126">126</a>
+<a href="#l127" id="l127">127</a>
+<a href="#l128" id="l128">128</a>
+<a href="#l129" id="l129">129</a>
+<a href="#l130" id="l130">130</a>
+<a href="#l131" id="l131">131</a>
+<a href="#l132" id="l132">132</a>
+<a href="#l133" id="l133">133</a>
+<a href="#l134" id="l134">134</a>
+<a href="#l135" id="l135">135</a>
+<a href="#l136" id="l136">136</a>
+<a href="#l137" id="l137">137</a>
+<a href="#l138" id="l138">138</a>
+<a href="#l139" id="l139">139</a>
+<a href="#l140" id="l140">140</a>
+<a href="#l141" id="l141">141</a>
+</pre></td><td><pre>
+# Mozilla User Preferences
+
+/* Do not edit this file.
+ *
+ * If you make changes to this file while the application is running,
+ * the changes will be overwritten when the application exits.
+ *
+ * To make a manual change to preferences, you can visit the URL about:config
+ */
+
+user_pref(&quot;accessibility.typeaheadfind.autostart&quot;, false);
+user_pref(&quot;app.update.lastUpdateTime.addon-background-update-timer&quot;, 1463667948);
+user_pref(&quot;app.update.lastUpdateTime.blocklist-background-update-timer&quot;, 1463668068);
+user_pref(&quot;app.update.lastUpdateTime.browser-cleanup-thumbnails&quot;, 1463674319);
+user_pref(&quot;app.update.lastUpdateTime.experiments-update-timer&quot;, 1463667828);
+user_pref(&quot;app.update.lastUpdateTime.search-engine-update-timer&quot;, 1463675658);
+user_pref(&quot;app.update.lastUpdateTime.xpi-signature-verification&quot;, 1463668188);
+user_pref(&quot;beacon.enabled&quot;, false);
+user_pref(&quot;browser.bookmarks.restore_default_bookmarks&quot;, false);
+user_pref(&quot;browser.cache.disk.capacity&quot;, 358400);
+user_pref(&quot;browser.cache.disk.filesystem_reported&quot;, 1);
+user_pref(&quot;browser.cache.disk.smart_size.first_run&quot;, false);
+user_pref(&quot;browser.cache.frecency_experiment&quot;, 1);
+user_pref(&quot;browser.download.importedFromSqlite&quot;, true);
+user_pref(&quot;browser.download.panel.shown&quot;, true);
+user_pref(&quot;browser.laterrun.bookkeeping.profileCreationTime&quot;, 1463578356);
+user_pref(&quot;browser.laterrun.bookkeeping.sessionCount&quot;, 20);
+user_pref(&quot;browser.laterrun.enabled&quot;, true);
+user_pref(&quot;browser.link.open_newwindow.restriction&quot;, 0);
+user_pref(&quot;browser.migration.version&quot;, 36);
+user_pref(&quot;browser.newtabpage.enhanced&quot;, true);
+user_pref(&quot;browser.newtabpage.storageVersion&quot;, 1);
+user_pref(&quot;browser.pagethumbnails.storage_version&quot;, 3);
+user_pref(&quot;browser.places.smartBookmarksVersion&quot;, 7);
+user_pref(&quot;browser.reader.detectedFirstArticle&quot;, true);
+user_pref(&quot;browser.safebrowsing.provider.google.lastupdatetime&quot;, &quot;1463674205697&quot;);
+user_pref(&quot;browser.safebrowsing.provider.google.nextupdatetime&quot;, &quot;1463675962697&quot;);
+user_pref(&quot;browser.safebrowsing.provider.mozilla.lastupdatetime&quot;, &quot;1463674206633&quot;);
+user_pref(&quot;browser.safebrowsing.provider.mozilla.nextupdatetime&quot;, &quot;1463677806633&quot;);
+user_pref(&quot;browser.search.countryCode&quot;, &quot;RO&quot;);
+user_pref(&quot;browser.search.region&quot;, &quot;RO&quot;);
+user_pref(&quot;browser.sessionstore.upgradeBackup.latestBuildID&quot;, &quot;20160512094236&quot;);
+user_pref(&quot;browser.shell.mostRecentDateSetAsDefault&quot;, &quot;1463674202&quot;);
+user_pref(&quot;browser.slowStartup.averageTime&quot;, 2851);
+user_pref(&quot;browser.slowStartup.samples&quot;, 1);
+user_pref(&quot;browser.startup.homepage_override.buildID&quot;, &quot;20160512094236&quot;);
+user_pref(&quot;browser.startup.homepage_override.mstone&quot;, &quot;46.0.1&quot;);
+user_pref(&quot;browser.syncPromoViewsLeftMap&quot;, &quot;{\&quot;passwords\&quot;:3}&quot;);
+user_pref(&quot;browser.uiCustomization.state&quot;, &quot;{\&quot;placements\&quot;:{\&quot;PanelUI-contents\&quot;:[\&quot;edit-controls\&quot;,\&quot;zoom-controls\&quot;,\&quot;new-window-button\&quot;,\&quot;privatebrowsing-button\&quot;,\&quot;save-page-button\&quot;,\&quot;print-button\&quot;,\&quot;history-panelmenu\&quot;,\&quot;fullscreen-button\&quot;,\&quot;find-button\&quot;,\&quot;preferences-button\&quot;,\&quot;add-ons-button\&quot;,\&quot;developer-button\&quot;,\&quot;sync-button\&quot;],\&quot;liberator-statusline\&quot;:[\&quot;liberator-mode-toolbar\&quot;,\&quot;liberator-message-toolbar\&quot;,\&quot;liberator-status\&quot;],\&quot;addon-bar\&quot;:[\&quot;addonbar-closebutton\&quot;,\&quot;status-bar\&quot;],\&quot;PersonalToolbar\&quot;:[\&quot;personal-bookmarks\&quot;],\&quot;nav-bar\&quot;:[\&quot;urlbar-container\&quot;,\&quot;search-container\&quot;,\&quot;bookmarks-menu-button\&quot;,\&quot;downloads-button\&quot;,\&quot;home-button\&quot;,\&quot;loop-button\&quot;,\&quot;pocket-button\&quot;,\&quot;ublock0-button\&quot;],\&quot;TabsToolbar\&quot;:[\&quot;tabbrowser-tabs\&quot;,\&quot;new-tab-button\&quot;,\&quot;alltabs-button\&quot;],\&quot;toolbar-menubar\&quot;:[\&quot;menubar-items\&quot;]},\&quot;seen\&quot;:[\&quot;loop-button\&quot;,\&quot;pocket-button\&quot;,\&quot;ublock0-button\&quot;],\&quot;dirtyAreaCache\&quot;:[\&quot;PersonalToolbar\&quot;,\&quot;nav-bar\&quot;,\&quot;PanelUI-contents\&quot;,\&quot;addon-bar\&quot;,\&quot;TabsToolbar\&quot;,\&quot;toolbar-menubar\&quot;,\&quot;liberator-statusline\&quot;],\&quot;currentVersion\&quot;:6,\&quot;newElementCount\&quot;:0}&quot;);
+user_pref(&quot;datareporting.policy.dataSubmissionPolicyAcceptedVersion&quot;, 2);
+user_pref(&quot;datareporting.policy.dataSubmissionPolicyNotifiedTime&quot;, &quot;1463578442885&quot;);
+user_pref(&quot;datareporting.sessions.current.activeTicks&quot;, 181);
+user_pref(&quot;datareporting.sessions.current.clean&quot;, true);
+user_pref(&quot;datareporting.sessions.current.firstPaint&quot;, 3768);
+user_pref(&quot;datareporting.sessions.current.main&quot;, 359);
+user_pref(&quot;datareporting.sessions.current.sessionRestored&quot;, 4054);
+user_pref(&quot;datareporting.sessions.current.startTime&quot;, &quot;1463674198046&quot;);
+user_pref(&quot;datareporting.sessions.current.totalTime&quot;, 1623);
+user_pref(&quot;datareporting.sessions.currentIndex&quot;, 19);
+user_pref(&quot;datareporting.sessions.previous.0&quot;, &quot;{\&quot;s\&quot;:1463578355707,\&quot;a\&quot;:4,\&quot;t\&quot;:20,\&quot;c\&quot;:true,\&quot;m\&quot;:61,\&quot;fp\&quot;:1760,\&quot;sr\&quot;:1693}&quot;);
+user_pref(&quot;datareporting.sessions.previous.1&quot;, &quot;{\&quot;s\&quot;:1463578431297,\&quot;a\&quot;:3,\&quot;t\&quot;:22,\&quot;c\&quot;:false,\&quot;m\&quot;:140,\&quot;fp\&quot;:1779,\&quot;sr\&quot;:1594}&quot;);
+user_pref(&quot;datareporting.sessions.previous.10&quot;, &quot;{\&quot;s\&quot;:1463585089644,\&quot;a\&quot;:18,\&quot;t\&quot;:205,\&quot;c\&quot;:true,\&quot;m\&quot;:143,\&quot;fp\&quot;:3163,\&quot;sr\&quot;:3204}&quot;);
+user_pref(&quot;datareporting.sessions.previous.11&quot;, &quot;{\&quot;s\&quot;:1463585409507,\&quot;a\&quot;:3,\&quot;t\&quot;:17,\&quot;c\&quot;:false,\&quot;m\&quot;:60,\&quot;fp\&quot;:2929,\&quot;sr\&quot;:2963}&quot;);
+user_pref(&quot;datareporting.sessions.previous.12&quot;, &quot;{\&quot;s\&quot;:1463585713148,\&quot;a\&quot;:16,\&quot;t\&quot;:183,\&quot;c\&quot;:true,\&quot;m\&quot;:483,\&quot;fp\&quot;:3908,\&quot;sr\&quot;:4176}&quot;);
+user_pref(&quot;datareporting.sessions.previous.13&quot;, &quot;{\&quot;s\&quot;:1463585937157,\&quot;a\&quot;:2,\&quot;t\&quot;:9,\&quot;c\&quot;:true,\&quot;m\&quot;:148,\&quot;fp\&quot;:3019,\&quot;sr\&quot;:3051}&quot;);
+user_pref(&quot;datareporting.sessions.previous.14&quot;, &quot;{\&quot;s\&quot;:1463650337354,\&quot;a\&quot;:229,\&quot;t\&quot;:4982,\&quot;c\&quot;:true,\&quot;m\&quot;:412,\&quot;fp\&quot;:3657,\&quot;sr\&quot;:3696}&quot;);
+user_pref(&quot;datareporting.sessions.previous.15&quot;, &quot;{\&quot;s\&quot;:1463655371883,\&quot;a\&quot;:97,\&quot;t\&quot;:816,\&quot;c\&quot;:true,\&quot;m\&quot;:178,\&quot;fp\&quot;:3073,\&quot;sr\&quot;:3110}&quot;);
+user_pref(&quot;datareporting.sessions.previous.16&quot;, &quot;{\&quot;s\&quot;:1463667586586,\&quot;a\&quot;:89,\&quot;t\&quot;:984,\&quot;c\&quot;:true,\&quot;m\&quot;:435,\&quot;fp\&quot;:3894,\&quot;sr\&quot;:3928}&quot;);
+user_pref(&quot;datareporting.sessions.previous.17&quot;, &quot;{\&quot;s\&quot;:1463668706629,\&quot;a\&quot;:12,\&quot;t\&quot;:255,\&quot;c\&quot;:true,\&quot;m\&quot;:159,\&quot;fp\&quot;:3204,\&quot;sr\&quot;:3239}&quot;);
+user_pref(&quot;datareporting.sessions.previous.18&quot;, &quot;{\&quot;s\&quot;:1463668964660,\&quot;a\&quot;:38,\&quot;t\&quot;:245,\&quot;c\&quot;:false,\&quot;m\&quot;:61,\&quot;fp\&quot;:3034,\&quot;sr\&quot;:3069}&quot;);
+user_pref(&quot;datareporting.sessions.previous.2&quot;, &quot;{\&quot;s\&quot;:1463579738315,\&quot;a\&quot;:21,\&quot;t\&quot;:824,\&quot;c\&quot;:true,\&quot;m\&quot;:470,\&quot;fp\&quot;:2300,\&quot;sr\&quot;:2464}&quot;);
+user_pref(&quot;datareporting.sessions.previous.3&quot;, &quot;{\&quot;s\&quot;:1463580563075,\&quot;a\&quot;:5,\&quot;t\&quot;:29,\&quot;c\&quot;:false,\&quot;m\&quot;:65,\&quot;fp\&quot;:3663,\&quot;sr\&quot;:3545}&quot;);
+user_pref(&quot;datareporting.sessions.previous.4&quot;, &quot;{\&quot;s\&quot;:1463581164338,\&quot;a\&quot;:2,\&quot;t\&quot;:13,\&quot;c\&quot;:false,\&quot;m\&quot;:62,\&quot;fp\&quot;:3592,\&quot;sr\&quot;:3542}&quot;);
+user_pref(&quot;datareporting.sessions.previous.5&quot;, &quot;{\&quot;s\&quot;:1463582569196,\&quot;a\&quot;:28,\&quot;t\&quot;:371,\&quot;c\&quot;:true,\&quot;m\&quot;:399,\&quot;fp\&quot;:3951,\&quot;sr\&quot;:4213}&quot;);
+user_pref(&quot;datareporting.sessions.previous.6&quot;, &quot;{\&quot;s\&quot;:1463582941265,\&quot;a\&quot;:2,\&quot;t\&quot;:9,\&quot;c\&quot;:true,\&quot;m\&quot;:76,\&quot;fp\&quot;:3477,\&quot;sr\&quot;:3526}&quot;);
+user_pref(&quot;datareporting.sessions.previous.7&quot;, &quot;{\&quot;s\&quot;:1463582981768,\&quot;a\&quot;:21,\&quot;t\&quot;:642,\&quot;c\&quot;:true,\&quot;m\&quot;:129,\&quot;fp\&quot;:3069,\&quot;sr\&quot;:3114}&quot;);
+user_pref(&quot;datareporting.sessions.previous.8&quot;, &quot;{\&quot;s\&quot;:1463583639246,\&quot;a\&quot;:6,\&quot;t\&quot;:28,\&quot;c\&quot;:false,\&quot;m\&quot;:128,\&quot;fp\&quot;:3095,\&quot;sr\&quot;:3134}&quot;);
+user_pref(&quot;datareporting.sessions.previous.9&quot;, &quot;{\&quot;s\&quot;:1463584506524,\&quot;a\&quot;:12,\&quot;t\&quot;:209,\&quot;c\&quot;:true,\&quot;m\&quot;:445,\&quot;fp\&quot;:3864,\&quot;sr\&quot;:4116}&quot;);
+user_pref(&quot;devtools.telemetry.tools.opened.version&quot;, &quot;{\&quot;DEVTOOLS_TOOLBOX_OPENED_PER_USER_FLAG\&quot;:\&quot;46.0.1\&quot;,\&quot;DEVTOOLS_OS_ENUMERATED_PER_USER\&quot;:\&quot;46.0.1\&quot;,\&quot;DEVTOOLS_OS_IS_64_BITS_PER_USER\&quot;:\&quot;46.0.1\&quot;,\&quot;DEVTOOLS_SCREEN_RESOLUTION_ENUMERATED_PER_USER\&quot;:\&quot;46.0.1\&quot;,\&quot;DEVTOOLS_WEBCONSOLE_OPENED_PER_USER_FLAG\&quot;:\&quot;46.0.1\&quot;,\&quot;DEVTOOLS_INSPECTOR_OPENED_PER_USER_FLAG\&quot;:\&quot;46.0.1\&quot;,\&quot;DEVTOOLS_RULEVIEW_OPENED_PER_USER_FLAG\&quot;:\&quot;46.0.1\&quot;,\&quot;DEVTOOLS_FONTINSPECTOR_OPENED_PER_USER_FLAG\&quot;:\&quot;46.0.1\&quot;,\&quot;DEVTOOLS_COMPUTEDVIEW_OPENED_PER_USER_FLAG\&quot;:\&quot;46.0.1\&quot;}&quot;);
+user_pref(&quot;devtools.toolbox.selectedTool&quot;, &quot;inspector&quot;);
+user_pref(&quot;devtools.toolsidebar-width.inspector&quot;, 0);
+user_pref(&quot;dom.apps.reset-permissions&quot;, true);
+user_pref(&quot;dom.mozApps.used&quot;, true);
+user_pref(&quot;dom.popup_allowed_events&quot;, &quot;change click dblclick mouseup notificationclick reset submit touchend keypress&quot;);
+user_pref(&quot;e10s.rollout.cohort&quot;, &quot;unsupportedChannel&quot;);
+user_pref(&quot;experiments.activeExperiment&quot;, false);
+user_pref(&quot;extensions.blocklist.pingCountTotal&quot;, 3);
+user_pref(&quot;extensions.blocklist.pingCountVersion&quot;, 3);
+user_pref(&quot;extensions.bootstrappedAddons&quot;, &quot;{\&quot;uBlock0@raymondhill.net\&quot;:{\&quot;version\&quot;:\&quot;1.7.0\&quot;,\&quot;type\&quot;:\&quot;extension\&quot;,\&quot;descriptor\&quot;:\&quot;/home/tudurom/.mozilla/firefox/a2pt1f8l.default/extensions/uBlock0@raymondhill.net.xpi\&quot;,\&quot;multiprocessCompatible\&quot;:true,\&quot;runInSafeMode\&quot;:false},\&quot;e10srollout@mozilla.org\&quot;:{\&quot;version\&quot;:\&quot;1.0\&quot;,\&quot;type\&quot;:\&quot;extension\&quot;,\&quot;descriptor\&quot;:\&quot;/usr/local/lib/firefox/browser/features/e10srollout@mozilla.org.xpi\&quot;,\&quot;multiprocessCompatible\&quot;:false,\&quot;runInSafeMode\&quot;:true},\&quot;firefox@getpocket.com\&quot;:{\&quot;version\&quot;:\&quot;1.0\&quot;,\&quot;type\&quot;:\&quot;extension\&quot;,\&quot;descriptor\&quot;:\&quot;/usr/local/lib/firefox/browser/features/firefox@getpocket.com.xpi\&quot;,\&quot;multiprocessCompatible\&quot;:false,\&quot;runInSafeMode\&quot;:true},\&quot;loop@mozilla.org\&quot;:{\&quot;version\&quot;:\&quot;1.2.6\&quot;,\&quot;type\&quot;:\&quot;extension\&quot;,\&quot;descriptor\&quot;:\&quot;/usr/local/lib/firefox/browser/features/loop@mozilla.org.xpi\&quot;,\&quot;multiprocessCompatible\&quot;:false,\&quot;runInSafeMode\&quot;:true}}&quot;);
+user_pref(&quot;extensions.databaseSchema&quot;, 17);
+user_pref(&quot;extensions.e10sBlockedByAddons&quot;, true);
+user_pref(&quot;extensions.enabledAddons&quot;, &quot;vimperator%40mozdev.org:3.13.1,%7B972ce4c6-7e08-4474-a285-3208198ce6fd%7D:46.0.1&quot;);
+user_pref(&quot;extensions.getAddons.cache.lastUpdate&quot;, 1463667949);
+user_pref(&quot;extensions.getAddons.databaseSchema&quot;, 5);
+user_pref(&quot;extensions.hotfix.lastVersion&quot;, &quot;20160106.01&quot;);
+user_pref(&quot;extensions.lastAppVersion&quot;, &quot;46.0.1&quot;);
+user_pref(&quot;extensions.lastPlatformVersion&quot;, &quot;46.0.1&quot;);
+user_pref(&quot;extensions.liberator.privacy.cpd.commandLine&quot;, false);
+user_pref(&quot;extensions.liberator.privacy.cpd.macros&quot;, false);
+user_pref(&quot;extensions.liberator.privacy.cpd.marks&quot;, false);
+user_pref(&quot;extensions.liberator.saved.accessibility.typeaheadfind&quot;, false);
+user_pref(&quot;extensions.liberator.saved.accessibility.typeaheadfind.autostart&quot;, false);
+user_pref(&quot;extensions.liberator.saved.browser.link.open_newwindow&quot;, 3);
+user_pref(&quot;extensions.liberator.saved.browser.link.open_newwindow.restriction&quot;, 0);
+user_pref(&quot;extensions.pendingOperations&quot;, false);
+user_pref(&quot;extensions.systemAddonSet&quot;, &quot;{\&quot;schema\&quot;:1,\&quot;addons\&quot;:{}}&quot;);
+user_pref(&quot;extensions.ublock0.cloudStorage.myFiltersPane&quot;, &quot;&quot;);
+user_pref(&quot;extensions.ublock0.cloudStorage.myRulesPane&quot;, &quot;&quot;);
+user_pref(&quot;extensions.ublock0.cloudStorage.tpFiltersPane&quot;, &quot;&quot;);
+user_pref(&quot;extensions.ublock0.cloudStorage.whitelistPane&quot;, &quot;&quot;);
+user_pref(&quot;extensions.ui.dictionary.hidden&quot;, true);
+user_pref(&quot;extensions.ui.experiment.hidden&quot;, true);
+user_pref(&quot;extensions.ui.lastCategory&quot;, &quot;addons://search/vimperatorublock&quot;);
+user_pref(&quot;extensions.ui.locale.hidden&quot;, true);
+user_pref(&quot;extensions.vimperator.firsttime&quot;, false);
+user_pref(&quot;extensions.xpiState&quot;, &quot;{\&quot;app-profile\&quot;:{\&quot;uBlock0@raymondhill.net\&quot;:{\&quot;d\&quot;:\&quot;/home/tudurom/.mozilla/firefox/a2pt1f8l.default/extensions/uBlock0@raymondhill.net.xpi\&quot;,\&quot;e\&quot;:true,\&quot;v\&quot;:\&quot;1.7.0\&quot;,\&quot;st\&quot;:1463580550000},\&quot;vimperator@mozdev.org\&quot;:{\&quot;d\&quot;:\&quot;/home/tudurom/.mozilla/firefox/a2pt1f8l.default/extensions/vimperator@mozdev.org.xpi\&quot;,\&quot;e\&quot;:true,\&quot;v\&quot;:\&quot;3.13.1\&quot;,\&quot;st\&quot;:1463580563000}},\&quot;app-system-defaults\&quot;:{\&quot;e10srollout@mozilla.org\&quot;:{\&quot;d\&quot;:\&quot;/usr/local/lib/firefox/browser/features/e10srollout@mozilla.org.xpi\&quot;,\&quot;e\&quot;:true,\&quot;v\&quot;:\&quot;1.0\&quot;,\&quot;st\&quot;:1463051789000},\&quot;firefox@getpocket.com\&quot;:{\&quot;d\&quot;:\&quot;/usr/local/lib/firefox/browser/features/firefox@getpocket.com.xpi\&quot;,\&quot;e\&quot;:true,\&quot;v\&quot;:\&quot;1.0\&quot;,\&quot;st\&quot;:1463051789000},\&quot;loop@mozilla.org\&quot;:{\&quot;d\&quot;:\&quot;/usr/local/lib/firefox/browser/features/loop@mozilla.org.xpi\&quot;,\&quot;e\&quot;:true,\&quot;v\&quot;:\&quot;1.2.6\&quot;,\&quot;st\&quot;:1463051789000}},\&quot;app-global\&quot;:{\&quot;{972ce4c6-7e08-4474-a285-3208198ce6fd}\&quot;:{\&quot;d\&quot;:\&quot;/usr/local/lib/firefox/browser/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}.xpi\&quot;,\&quot;e\&quot;:true,\&quot;v\&quot;:\&quot;46.0.1\&quot;,\&quot;st\&quot;:1463051789000}}}&quot;);
+user_pref(&quot;font.internaluseonly.changed&quot;, false);
+user_pref(&quot;gecko.buildID&quot;, &quot;20160512094236&quot;);
+user_pref(&quot;gecko.mstone&quot;, &quot;46.0.1&quot;);
+user_pref(&quot;idle.lastDailyNotification&quot;, 1463669395);
+user_pref(&quot;media.gmp-manager.buildID&quot;, &quot;20160512094236&quot;);
+user_pref(&quot;media.gmp-manager.lastCheck&quot;, 1463667650);
+user_pref(&quot;network.cookie.prefsMigrated&quot;, true);
+user_pref(&quot;network.http.speculative-parallel-limit&quot;, 0);
+user_pref(&quot;network.predictor.cleaned-up&quot;, true);
+user_pref(&quot;network.prefetch-next&quot;, false);
+user_pref(&quot;pdfjs.migrationVersion&quot;, 2);
+user_pref(&quot;pdfjs.previousHandler.alwaysAskBeforeHandling&quot;, true);
+user_pref(&quot;places.history.expiration.transient_current_max_pages&quot;, 104858);
+user_pref(&quot;plugin.disable_full_page_plugin_for_types&quot;, &quot;application/pdf&quot;);
+user_pref(&quot;privacy.sanitize.migrateClearSavedPwdsOnExit&quot;, true);
+user_pref(&quot;services.sync.prefs.sync.extensions.ublock0.cloudStorage.myFiltersPane&quot;, true);
+user_pref(&quot;services.sync.prefs.sync.extensions.ublock0.cloudStorage.myRulesPane&quot;, true);
+user_pref(&quot;services.sync.prefs.sync.extensions.ublock0.cloudStorage.tpFiltersPane&quot;, true);
+user_pref(&quot;services.sync.prefs.sync.extensions.ublock0.cloudStorage.whitelistPane&quot;, true);
+user_pref(&quot;signon.importedFromSqlite&quot;, true);
+user_pref(&quot;storage.vacuum.last.index&quot;, 0);
+user_pref(&quot;toolkit.startup.last_success&quot;, 1463674198);
+user_pref(&quot;toolkit.telemetry.cachedClientID&quot;, &quot;c5c89a7d-0732-44de-b868-45765340f477&quot;);
+user_pref(&quot;toolkit.telemetry.previousBuildID&quot;, &quot;20160512094236&quot;);
+user_pref(&quot;toolkit.telemetry.reportingpolicy.firstRun&quot;, false);
+</pre></td></tr></table>
+</div>
+</body>
+</html>

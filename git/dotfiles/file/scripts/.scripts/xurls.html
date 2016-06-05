@@ -15,22 +15,14 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> xurls (162B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> xurls (54B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
-<a href="#l4" id="l4">4</a>
-<a href="#l5" id="l5">5</a>
-<a href="#l6" id="l6">6</a>
-<a href="#l7" id="l7">7</a>
 </pre></td><td><pre>
 #!/bin/sh
 
-protocols=&apos;[a-zA-Z]+://&apos;
-hostchars=&apos;[-a-zA-Z0-9._+]+&apos;
-pathchars=&apos;[-a-zA-Z0-9._+#=?&amp;:;%/!~()]+&apos;
-
-grep -aPo &quot;${protocols}${hostchars}${pathchars}&quot; | tac
+grep -Eo &apos;(http|https)://[^/&quot;]+&apos; | tail -r
 </pre></td></tr></table>
 </div>
 </body>

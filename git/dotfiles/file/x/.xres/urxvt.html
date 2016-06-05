@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> urxvt (530B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> urxvt (469B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -33,26 +33,22 @@
 <a href="#l15" id="l15">15</a>
 <a href="#l16" id="l16">16</a>
 <a href="#l17" id="l17">17</a>
-<a href="#l18" id="l18">18</a>
-<a href="#l19" id="l19">19</a>
 </pre></td><td><pre>
-*.font: -*-lemon-medium-*-*-*-10-*-*-*-*-*-*-*
+*.font: -*-gohufont-medium-*-*-*-14-*-*-*-*-*-*-*
 ! No bold font
 URxvt.boldFont:
-URxvt.scrollBar: false
+*.scrollBar: false
 URxvt.cursorBlink: true
-URxvt.cursorUnderline: false
+URxvt.cursorUnderline: true
 URxvt.internalBorder: 20
-URxvt.geometry: 100x30
+!URxvt.geometry: 100x30
 
-! Clipboard copy/paste with C-Shift-c and C-Shift-p
-URxvt.iso14755: false
-URxvt.iso14755_52: false
-URxvt.perl-ext-common: default,matcher
-URxvt.url-launcher: /usr/bin/firefox
-URxvt.matcher.button: 1
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.perl-ext-common: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/env xdg-open
+URxvt.url-select.underline: false
+!URxvt.url-launcher: /usr/local/bin/firefox
+!URxvt.matcher.button: 1
 
 ! vim: set ft=xdefaults :
 </pre></td></tr></table>

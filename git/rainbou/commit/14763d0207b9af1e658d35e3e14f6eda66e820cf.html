@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>woody - rainbou - Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="rainbou.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>rainbou</h1><span class="desc">Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/14763d0207b9af1e658d35e3e14f6eda66e820cf.html">14763d0207b9af1e658d35e3e14f6eda66e820cf</a>
+<b>parent</b> <a href="../commit/8a9670e002b5e89397eb640559b2fc83833a652b.html">8a9670e002b5e89397eb640559b2fc83833a652b</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat Mar 26 13:20:47 +0200
+
+woody
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">colors/woody</a></td><td> | </td><td class="num">27</td><td><span class="i">+++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h1">rainbou</a></td><td> | </td><td class="num">3</td><td><span class="i">++</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h2">templates/st_light</a></td><td> | </td><td class="num">43</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table>3 files changed, 72 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/colors/woody.html">colors/woody</a> b/<a href="../file/colors/woody.html">colors/woody</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -0,0 +1,27 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+$COLOR_FG$ #3f3a3c
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+$COLOR_BG$ #d2bbad
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+$COLOR_CR$ #3f3a3c
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+$COLOR_0$ #3f3a3c
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+$COLOR_8$ #8e7b71
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+$COLOR_1$ #784848
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+$COLOR_9$ #883e3e
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+$COLOR_2$ #657848
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+$COLOR_10$ #5e873e
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+$COLOR_3$ #787848
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+$COLOR_11$ #87873e
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+$COLOR_4$ #486078
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+$COLOR_12$ #3e5e87
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+$COLOR_5$ #784878
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+$COLOR_13$ #873e87
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+
+</a><a href="#h0-0-22" id="h0-0-22" class="i">+$COLOR_6$ #487979
+</a><a href="#h0-0-23" id="h0-0-23" class="i">+$COLOR_14$ #3e8787
+</a><a href="#h0-0-24" id="h0-0-24" class="i">+
+</a><a href="#h0-0-25" id="h0-0-25" class="i">+$COLOR_7$ #d2bbad
+</a><a href="#h0-0-26" id="h0-0-26" class="i">+$COLOR_15$ #d2bbad
+</a><b>diff --git a/<a id="h1" href="../file/rainbou.html">rainbou</a> b/<a href="../file/rainbou.html">rainbou</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -25,7 +25,8 @@ main() {
+</a>   cp &quot;$template_file&quot; &quot;$output_file&quot;
+ 
+   # This script is so flexible it supports any color sequences that start in &apos;$COLOR&apos; and end in &apos;$&apos;
+<a href="#h1-0-3" id="h1-0-3" class="d">-  grep &apos;\$COLOR_[0-9a-zA-Z]*\$&apos; &quot;$scheme_file&quot; | while read -r line; do
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+  grep &apos;\$COLOR_[0-9a-zA-Z]*\$&apos; &quot;$scheme_file&quot; | \
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+  while read -r line; do
+</a>     raw_color=&quot;$(echo &quot;$line&quot; | cut -d&apos; &apos; -f1)&quot;
+     color_value=&quot;$(echo &quot;$line&quot; | cut -d&apos; &apos; -f2)&quot;
+     # Put the color
+<b>diff --git a/<a id="h2" href="../file/templates/st_light.html">templates/st_light</a> b/<a href="../file/templates/st_light.html">templates/st_light</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1,43 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+static const char *colorname[] = {
+</a><a href="#h2-0-1" id="h2-0-1" class="i">+  /* 8 normal colors */
+</a><a href="#h2-0-2" id="h2-0-2" class="i">+  &quot;$COLOR_0$&quot;,
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+  &quot;$COLOR_1$&quot;,
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+  &quot;$COLOR_2$&quot;,
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+  &quot;$COLOR_3$&quot;,
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+  &quot;$COLOR_4$&quot;,
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+  &quot;$COLOR_5$&quot;,
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+  &quot;$COLOR_6$&quot;,
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+  &quot;$COLOR_7$&quot;,
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+  &quot;$COLOR_8$&quot;,
+</a><a href="#h2-0-11" id="h2-0-11" class="i">+
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+  /* 8 brightcolors */
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+  &quot;$COLOR_9$&quot;,
+</a><a href="#h2-0-14" id="h2-0-14" class="i">+  &quot;$COLOR_10$&quot;,
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+  &quot;$COLOR_11$&quot;,
+</a><a href="#h2-0-16" id="h2-0-16" class="i">+  &quot;$COLOR_12$&quot;,
+</a><a href="#h2-0-17" id="h2-0-17" class="i">+  &quot;$COLOR_13$&quot;,
+</a><a href="#h2-0-18" id="h2-0-18" class="i">+  &quot;$COLOR_14$&quot;,
+</a><a href="#h2-0-19" id="h2-0-19" class="i">+  &quot;$COLOR_15$&quot;,
+</a><a href="#h2-0-20" id="h2-0-20" class="i">+  &quot;$COLOR_16$&quot;,
+</a><a href="#h2-0-21" id="h2-0-21" class="i">+
+</a><a href="#h2-0-22" id="h2-0-22" class="i">+  [255] = 0,
+</a><a href="#h2-0-23" id="h2-0-23" class="i">+
+</a><a href="#h2-0-24" id="h2-0-24" class="i">+  /* background and foreground colors */
+</a><a href="#h2-0-25" id="h2-0-25" class="i">+  [256] = &quot;$COLOR_BG$&quot;,
+</a><a href="#h2-0-26" id="h2-0-26" class="i">+  [257] = &quot;$COLOR_FG$&quot;
+</a><a href="#h2-0-27" id="h2-0-27" class="i">+};
+</a><a href="#h2-0-28" id="h2-0-28" class="i">+
+</a><a href="#h2-0-29" id="h2-0-29" class="i">+/* Default colors for foreground, background and cursor */
+</a><a href="#h2-0-30" id="h2-0-30" class="i">+static unsigned int defaultfg = 0;
+</a><a href="#h2-0-31" id="h2-0-31" class="i">+static unsigned int defaultbg = 7;
+</a><a href="#h2-0-32" id="h2-0-32" class="i">+static unsigned int defaultcs = 0;
+</a><a href="#h2-0-33" id="h2-0-33" class="i">+
+</a><a href="#h2-0-34" id="h2-0-34" class="i">+/*
+</a><a href="#h2-0-35" id="h2-0-35" class="i">+ * Colors used, when the specific fg == defaultfg. So in reverse mode this
+</a><a href="#h2-0-36" id="h2-0-36" class="i">+ * will reverse too. Another logic would only make the simple feature too
+</a><a href="#h2-0-37" id="h2-0-37" class="i">+ * complex.
+</a><a href="#h2-0-38" id="h2-0-38" class="i">+ */
+</a><a href="#h2-0-39" id="h2-0-39" class="i">+static unsigned int defaultitalic = 11;
+</a><a href="#h2-0-40" id="h2-0-40" class="i">+static unsigned int defaultunderline = 0;
+</a><a href="#h2-0-41" id="h2-0-41" class="i">+
+</a><a href="#h2-0-42" id="h2-0-42" class="i">+// vim: set ft=c :
+</a></pre>
+</div>
+</body>
+</html>

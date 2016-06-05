@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>albumify-next, branch HEAD</title>
+<subtitle>Next gen albumify, written in Go. Uses mongodb. WIP!
+</subtitle>
+<entry>
+<id>d013c837065ebf39fdb5a35c30b639d868f0a6e5</id>
+<published>2016-06-04T20:03:55Z</published>
+<updated>2016-06-04T20:03:55Z</updated>
+<title type="text">fix usage in readme</title>
+<link rel="alternate" type="text/html" href="commit/d013c837065ebf39fdb5a35c30b639d868f0a6e5.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit d013c837065ebf39fdb5a35c30b639d868f0a6e5
+parent 9d207ca0e38b73e731d7bcebf098e1bcee4a5484
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Jun  4 23:03:55 +0300
+
+fix usage in readme
+
+</content>
+</entry>
+<entry>
+<id>9d207ca0e38b73e731d7bcebf098e1bcee4a5484</id>
+<published>2016-06-04T20:00:59Z</published>
+<updated>2016-06-04T20:00:59Z</updated>
+<title type="text">client part draft</title>
+<link rel="alternate" type="text/html" href="commit/9d207ca0e38b73e731d7bcebf098e1bcee4a5484.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 9d207ca0e38b73e731d7bcebf098e1bcee4a5484
+parent 4e4255dd9785a0e39180bffe2f76e0f03d39c08b
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Jun  4 23:00:59 +0300
+
+client part draft
+
+</content>
+</entry>
+<entry>
+<id>4e4255dd9785a0e39180bffe2f76e0f03d39c08b</id>
+<published>2016-06-03T20:20:46Z</published>
+<updated>2016-06-03T20:20:46Z</updated>
+<title type="text">enable CORS</title>
+<link rel="alternate" type="text/html" href="commit/4e4255dd9785a0e39180bffe2f76e0f03d39c08b.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 4e4255dd9785a0e39180bffe2f76e0f03d39c08b
+parent 951274969cb8dd9667f0109b5293c93644799874
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 23:20:46 +0300
+
+enable CORS
+
+</content>
+</entry>
+<entry>
+<id>951274969cb8dd9667f0109b5293c93644799874</id>
+<published>2016-06-03T15:58:32Z</published>
+<updated>2016-06-03T15:58:32Z</updated>
+<title type="text">sorry for the core file</title>
+<link rel="alternate" type="text/html" href="commit/951274969cb8dd9667f0109b5293c93644799874.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 951274969cb8dd9667f0109b5293c93644799874
+parent f1a50566458e78e93f206573ba99350cb186d435
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 18:58:32 +0300
+
+sorry for the core file
+
+</content>
+</entry>
+<entry>
+<id>f1a50566458e78e93f206573ba99350cb186d435</id>
+<published>2016-06-03T15:56:49Z</published>
+<updated>2016-06-03T15:56:49Z</updated>
+<title type="text">update: readme</title>
+<link rel="alternate" type="text/html" href="commit/f1a50566458e78e93f206573ba99350cb186d435.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit f1a50566458e78e93f206573ba99350cb186d435
+parent 505160e8f4fac96b1d6880da212ceec7644c1ee1
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 18:56:49 +0300
+
+update: readme
+
+</content>
+</entry>
+<entry>
+<id>505160e8f4fac96b1d6880da212ceec7644c1ee1</id>
+<published>2016-06-03T15:55:18Z</published>
+<updated>2016-06-03T15:55:18Z</updated>
+<title type="text">added more verbose output when submiting albums</title>
+<link rel="alternate" type="text/html" href="commit/505160e8f4fac96b1d6880da212ceec7644c1ee1.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 505160e8f4fac96b1d6880da212ceec7644c1ee1
+parent af6c884f883c83aa6509874eceba864a448e21f4
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 18:55:18 +0300
+
+added more verbose output when submiting albums
+
+</content>
+</entry>
+<entry>
+<id>af6c884f883c83aa6509874eceba864a448e21f4</id>
+<published>2016-06-03T15:47:14Z</published>
+<updated>2016-06-03T15:47:14Z</updated>
+<title type="text">added more utility functions</title>
+<link rel="alternate" type="text/html" href="commit/af6c884f883c83aa6509874eceba864a448e21f4.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit af6c884f883c83aa6509874eceba864a448e21f4
+parent a4e3fa4aaa2228d3ab45028c5fc0851d87d28658
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 18:47:14 +0300
+
+added more utility functions
+
+</content>
+</entry>
+<entry>
+<id>a4e3fa4aaa2228d3ab45028c5fc0851d87d28658</id>
+<published>2016-06-03T11:59:27Z</published>
+<updated>2016-06-03T11:59:27Z</updated>
+<title type="text">added documentation</title>
+<link rel="alternate" type="text/html" href="commit/a4e3fa4aaa2228d3ab45028c5fc0851d87d28658.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit a4e3fa4aaa2228d3ab45028c5fc0851d87d28658
+parent 1e004f18f90c925348dab55c71f0398e5753d713
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 14:59:27 +0300
+
+added documentation
+
+</content>
+</entry>
+<entry>
+<id>1e004f18f90c925348dab55c71f0398e5753d713</id>
+<published>2016-06-03T11:44:24Z</published>
+<updated>2016-06-03T11:44:24Z</updated>
+<title type="text">added the ability to submit albums</title>
+<link rel="alternate" type="text/html" href="commit/1e004f18f90c925348dab55c71f0398e5753d713.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 1e004f18f90c925348dab55c71f0398e5753d713
+parent 1b67b9dc835d2bcb37e6fbc00fdf77d5d4f8d170
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 14:44:24 +0300
+
+added the ability to submit albums
+
+</content>
+</entry>
+<entry>
+<id>1b67b9dc835d2bcb37e6fbc00fdf77d5d4f8d170</id>
+<published>2016-06-03T10:04:16Z</published>
+<updated>2016-06-03T10:04:16Z</updated>
+<title type="text">added config file and go fmt&apos;d sourcecode</title>
+<link rel="alternate" type="text/html" href="commit/1b67b9dc835d2bcb37e6fbc00fdf77d5d4f8d170.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 1b67b9dc835d2bcb37e6fbc00fdf77d5d4f8d170
+parent 8ee196e220236369d24334d0409ca79991467178
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 13:04:16 +0300
+
+added config file and go fmt&apos;d sourcecode
+
+</content>
+</entry>
+<entry>
+<id>8ee196e220236369d24334d0409ca79991467178</id>
+<published>2016-06-03T08:34:30Z</published>
+<updated>2016-06-03T08:34:30Z</updated>
+<title type="text">new package names</title>
+<link rel="alternate" type="text/html" href="commit/8ee196e220236369d24334d0409ca79991467178.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 8ee196e220236369d24334d0409ca79991467178
+parent f2dceb21e0d81bd6adba5d6b51a8ac28ccbae0bf
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 11:34:30 +0300
+
+new package names
+
+</content>
+</entry>
+<entry>
+<id>f2dceb21e0d81bd6adba5d6b51a8ac28ccbae0bf</id>
+<published>2016-06-03T07:40:14Z</published>
+<updated>2016-06-03T07:40:14Z</updated>
+<title type="text">added notice in the readme</title>
+<link rel="alternate" type="text/html" href="commit/f2dceb21e0d81bd6adba5d6b51a8ac28ccbae0bf.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit f2dceb21e0d81bd6adba5d6b51a8ac28ccbae0bf
+parent 2831de6d07448db629e7f5835466c26901a0284c
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 10:40:14 +0300
+
+added notice in the readme
+
+</content>
+</entry>
+<entry>
+<id>2831de6d07448db629e7f5835466c26901a0284c</id>
+<published>2016-06-03T07:35:46Z</published>
+<updated>2016-06-03T07:35:46Z</updated>
+<title type="text">api endpoint</title>
+<link rel="alternate" type="text/html" href="commit/2831de6d07448db629e7f5835466c26901a0284c.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 2831de6d07448db629e7f5835466c26901a0284c
+parent 5290c9698db6fc7acd8d58aa16c245cd5d8bc372
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 10:35:46 +0300
+
+api endpoint
+
+</content>
+</entry>
+<entry>
+<id>5290c9698db6fc7acd8d58aa16c245cd5d8bc372</id>
+<published>2016-05-22T20:00:52Z</published>
+<updated>2016-05-22T20:00:52Z</updated>
+<title type="text">LICENSE</title>
+<link rel="alternate" type="text/html" href="commit/5290c9698db6fc7acd8d58aa16c245cd5d8bc372.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 5290c9698db6fc7acd8d58aa16c245cd5d8bc372
+parent f79e616c7af99a6d3ee3de3844335885f846c16d
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun May 22 23:00:52 +0300
+
+LICENSE
+
+</content>
+</entry>
+<entry>
+<id>f79e616c7af99a6d3ee3de3844335885f846c16d</id>
+<published>2016-05-22T19:58:10Z</published>
+<updated>2016-05-22T19:58:10Z</updated>
+<title type="text">README</title>
+<link rel="alternate" type="text/html" href="commit/f79e616c7af99a6d3ee3de3844335885f846c16d.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit f79e616c7af99a6d3ee3de3844335885f846c16d
+parent 2a4f70a564122df4561576574041f0127dc35ecf
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun May 22 22:58:10 +0300
+
+README
+
+</content>
+</entry>
+<entry>
+<id>2a4f70a564122df4561576574041f0127dc35ecf</id>
+<published>2016-05-22T19:42:02Z</published>
+<updated>2016-05-22T19:42:02Z</updated>
+<title type="text">init</title>
+<link rel="alternate" type="text/html" href="commit/2a4f70a564122df4561576574041f0127dc35ecf.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 2a4f70a564122df4561576574041f0127dc35ecf
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun May 22 22:42:02 +0300
+
+init
+
+</content>
+</entry>
+</feed>
