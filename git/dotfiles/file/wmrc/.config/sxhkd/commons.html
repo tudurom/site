@@ -15,7 +15,7 @@
 <a href="../../../../log.html">Log</a> | <a href="../../../../files.html">Files</a> | <a href="../../../../refs.html">Refs</a> | <a href="../../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> commons (491B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> commons (553B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -70,7 +70,7 @@ super + Escape
   pkill -USR1 -x sxhkd
 
 super + Return
-  urxvtc
+  urxvt
 
 super + space
   dmenu_run
@@ -79,19 +79,19 @@ super + q
   showtodo
 
 super + shift + f
-  firefox
+  chromium
 
 super + shift + x
   slock
 
 XF86AudioRaiseVolume
-  mixer vol +5
+  amixer -q sset Master 5%+ unmute
 
 XF86AudioLowerVolume
-  mixer vol -5
+  amixer -q sset Master 5%- unmute
 
 XF86AudioMute
-  mute
+  amixer -q sset Master mute
 
 XF86MonBrightnessUp
   xbacklight -inc 10%

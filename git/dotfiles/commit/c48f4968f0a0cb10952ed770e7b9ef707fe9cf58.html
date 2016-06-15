@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>now using urxvt - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/c48f4968f0a0cb10952ed770e7b9ef707fe9cf58.html">c48f4968f0a0cb10952ed770e7b9ef707fe9cf58</a>
+<b>parent</b> <a href="../commit/49a2e4ef589b5acc4ad92e207da384dd094ad11e.html">49a2e4ef589b5acc4ad92e207da384dd094ad11e</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Jun  5 22:01:46 +0300
+
+now using urxvt
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">nvim/.config/nvim/colors/shblah.vim</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h1">nvim/.config/nvim/init.vim</a></td><td> | </td><td class="num">9</td><td><span class="i">+</span><span class="d">--------</span></td></tr>
+<tr><td><a href="#h2">shell/.crosssh.sh</a></td><td> | </td><td class="num">4</td><td><span class="i">++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h3">shell/.mkshrc</a></td><td> | </td><td class="num">13</td><td><span class="i">++++++++</span><span class="d">-----</span></td></tr>
+<tr><td><a href="#h4">st</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h5">wmrc/.config/sxhkd/commons</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h6">x/.xinitrc</a></td><td> | </td><td class="num">1</td><td><span class="i"></span><span class="d">-</span></td></tr>
+</table>7 files changed, 17 insertions(+), 18 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/nvim/.config/nvim/colors/shblah.vim.html">nvim/.config/nvim/colors/shblah.vim</a> b/<a href="../file/nvim/.config/nvim/colors/shblah.vim.html">nvim/.config/nvim/colors/shblah.vim</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -17,7 +17,7 @@ let g:colors_name=&quot;shblah_orig&quot;
+</a> 
+ &quot; Actual colours and styles.
+ highlight ColorColumn  term=NONE cterm=NONE ctermfg=NONE ctermbg=0
+<a href="#h0-0-3" id="h0-0-3" class="d">-highlight Comment      term=NONE cterm=NONE ctermfg=8    ctermbg=NONE
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+highlight Comment      term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+</a> highlight Constant     term=NONE cterm=NONE ctermfg=6    ctermbg=NONE
+ highlight Cursor       term=NONE cterm=bold ctermfg=3    ctermbg=NONE
+ highlight CursorLine   term=NONE cterm=NONE ctermfg=NONE ctermbg=0
+<a href="#h0-1" id="h0-1" class="h">@@ -50,7 +50,7 @@ highlight Todo         term=NONE cterm=bold ctermfg=7    ctermbg=1
+</a> highlight Type         term=NONE cterm=bold ctermfg=4    ctermbg=NONE
+ highlight Underlined   term=underline cterm=underline ctermfg=NONE   ctermbg=NONE
+ highlight VertSplit    term=NONE cterm=bold ctermfg=0    ctermbg=NONE
+<a href="#h0-1-3" id="h0-1-3" class="d">-highlight Visual       term=NONE cterm=NONE ctermfg=0    ctermbg=8
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+highlight Visual       term=NONE cterm=reverse,bold ctermfg=0    ctermbg=NONE
+</a> highlight WarningMsg   term=NONE cterm=bold ctermfg=3    ctermbg=NONE
+ 
+ &quot; General highlighting group links.
+<b>diff --git a/<a id="h1" href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a> b/<a href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -19,7 +19,7 @@ Plug &apos;ntpeters/vim-better-whitespace&apos;
+</a> if has(&quot;python3&quot;)
+     Plug &apos;Shougo/deoplete.nvim&apos;
+     if executable(&apos;clang&apos;)
+<a href="#h1-0-3" id="h1-0-3" class="d">-        Plug &apos;zchee/deoplete-clang&apos;
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+        Plug &apos;Rip-Rip/clang_complete&apos;
+</a>     endif
+     if executable(&apos;go&apos;)
+         Plug &apos;zchee/deoplete-go&apos;, { &apos;do&apos;: &apos;make&apos;}
+<a href="#h1-1" id="h1-1" class="h">@@ -167,13 +167,6 @@ map &lt;Leader&gt;l &lt;C-w&gt;l
+</a> &quot; Completion {{{
+ 
+ let g:deoplete#enable_at_startup = 1
+<a href="#h1-1-3" id="h1-1-3" class="d">-&quot; C/C++ things
+</a><a href="#h1-1-4" id="h1-1-4" class="d">-let g:deoplete#sources#clang#libclang_path = &apos;/usr/local/llvm37/lib/libclang.so&apos;
+</a><a href="#h1-1-5" id="h1-1-5" class="d">-let g:deoplete#sources#clang#clang_header = &apos;/usr/local/llvm37/include/clang/&apos;
+</a><a href="#h1-1-6" id="h1-1-6" class="d">-&quot; C or C++ standard version
+</a><a href="#h1-1-7" id="h1-1-7" class="d">-let g:deoplete#sources#clang#std#c = &apos;c11&apos;
+</a><a href="#h1-1-8" id="h1-1-8" class="d">-&quot; or c++
+</a><a href="#h1-1-9" id="h1-1-9" class="d">-let g:deoplete#sources#clang#std#cpp = &apos;c++11&apos;
+</a> 
+ &quot; Stolen from shougo {{{
+ imap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt;
+<b>diff --git a/<a id="h2" href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a> b/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -73,3 +73,7 @@ push() {
+</a>         git push $line $branch
+     done
+ }
+<a href="#h2-0-3" id="h2-0-3" class="i">+
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+radio() {
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+    mpv http://radio.2f30.org:8000/live.mp3
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+}
+</a><b>diff --git a/<a id="h3" href="../file/shell/.mkshrc.html">shell/.mkshrc</a> b/<a href="../file/shell/.mkshrc.html">shell/.mkshrc</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -14,15 +14,18 @@ set -o bgnice
+</a> alias rename=&quot;/usr/bin/rename&quot;
+ 
+ prompt () {
+<a href="#h3-0-3" id="h3-0-3" class="d">-    echo -n &quot;\033]0;$last\007&quot;
+</a><a href="#h3-0-4" id="h3-0-4" class="d">-    _ERR=$?
+</a>     exit_color=6
+<a href="#h3-0-6" id="h3-0-6" class="i">+    b=&quot;$(tput bold)&quot;
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+    l=&quot;$(echo -n $b; tput setaf 0)&quot;
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+    z=&quot;$(tput sgr0)&quot;
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+    e=&quot;$(tput setaf $exit_color)&quot;
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+    _ERR=$?
+</a>     if [ $_ERR -ne 0 ]; then
+         exit_color=1
+     fi
+<a href="#h3-0-14" id="h3-0-14" class="d">-    dir=&quot;$(tput setaf 8)$(pwd | sed -e &quot;s/\/usr\/home\/$USER/~/&quot; | sed -e &quot;s/\/home\/$USER/~/&quot;)&quot;
+</a><a href="#h3-0-15" id="h3-0-15" class="d">-    arrow=&quot;$(tput setaf $exit_color)───&quot;
+</a><a href="#h3-0-16" id="h3-0-16" class="d">-    echo -n &quot;${dir}\n${arrow}$(tput sgr0) &quot;
+</a><a href="#h3-0-17" id="h3-0-17" class="i">+    dir=&quot;${l}$(pwd | sed -e &quot;s/\/usr\/home\/$USER/~/&quot; | sed -e &quot;s/\/home\/$USER/~/&quot;)&quot;
+</a><a href="#h3-0-18" id="h3-0-18" class="i">+    arrow=&quot;${e}───&quot;
+</a><a href="#h3-0-19" id="h3-0-19" class="i">+    echo -n &quot;${dir}\n${arrow}${z} &quot;
+</a> }
+ 
+ PS1=&apos;$(prompt)&apos;
+<b>diff --git a/<a id="h4" href="../file/st.html">st</a> b/<a href="../file/st.html">st</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -1 +1 @@
+</a><a href="#h4-0-0" id="h4-0-0" class="d">-Subproject commit d39d139b88542e340cd24b9da8657626072bbfb6
+</a><a href="#h4-0-1" id="h4-0-1" class="i">+Subproject commit 91ba2c457783420fc6aa8dbb5224472a488d314b
+</a><b>diff --git a/<a id="h5" href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a> b/<a href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -3,7 +3,7 @@ super + Escape
+</a>   pkill -USR1 -x sxhkd
+ 
+ super + Return
+<a href="#h5-0-3" id="h5-0-3" class="d">-  urxvtc
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+  urxvtcd
+</a> 
+ super + space
+   dmenu_run
+<b>diff --git a/<a id="h6" href="../file/x/.xinitrc.html">x/.xinitrc</a> b/<a href="../file/x/.xinitrc.html">x/.xinitrc</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -70,7 +70,6 @@ wall-e &amp;
+</a> 
+ # }}}
+ 
+<a href="#h6-0-3" id="h6-0-3" class="d">-urxvtd &amp;
+</a> statusbar &amp;
+ sxhkd -c ~/.config/sxhkd/sxhkdrc_cwm ~/.config/sxhkd/commons &amp;
+ exec cwm
+</pre>
+</div>
+</body>
+</html>

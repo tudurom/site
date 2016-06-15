@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> notifyd (1027B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> notifyd (1046B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -62,11 +62,11 @@
 # (c) tudurom 2016 - wtfpl
 #
 
-NOTIFY_FIFO_PATH=${NOTIFY_FIFO_PATH:-/tmp/notifyd.fifo}
-NOTIFY_COUNTER_PATH=${NOTIFY_COUNTER_PATH:-/tmp/notifyd.cnt}
+NOTIFY_FIFO_PATH=${NOTIFY_FIFO_PATH:-$HOME/tmp/notifyd.fifo}
+NOTIFY_COUNTER_PATH=${NOTIFY_COUNTER_PATH:-$HOME/tmp/notifyd.cnt}
 
 # create fifo
-test -p /tmp/notifyd.fifo || mkfifo /tmp/notifyd.fifo
+test -p $NOTIFY_FIFO_PATH || mkfifo $NOTIFY_FIFO_PATH
 
 # display vars
 DISPLAY_X=&quot;$(dattr -x `ppd`)&quot;
@@ -81,8 +81,8 @@ NOTIFY_Y=&quot;$(( DISPLAY_Y + DISPLAY_H - NOTIFY_H - GENERAL_GAP ))&quot;
 
 n=0
 echo &quot;$n&quot; &gt; &quot;$NOTIFY_COUNTER_PATH&quot;
-
-while IFS= read -r message &lt; &quot;$NOTIFY_FIFO_PATH&quot;; do
+tail -f &quot;$NOTIFY_FIFO_PATH&quot; | \
+while IFS= read -r message; do
   # increment counter
   n=&quot;$(cat &quot;$NOTIFY_COUNTER_PATH&quot;)&quot;
   n=&quot;$(( n + 1 ))&quot;

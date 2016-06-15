@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>nexus, branch HEAD</title>
-<subtitle>Bot that plays the Pah-Tum game. Available here for historical purposes. Warning: comments are in Romanian.
+<subtitle>Bot that plays the Pah-Tum game. Available here for historical purposes.
 </subtitle>
 <entry>
 <id>bd464d290f37dac18b489b41c9a72dfacdad01db</id>

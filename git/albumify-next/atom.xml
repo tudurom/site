@@ -4,6 +4,23 @@
 <subtitle>Next gen albumify, written in Go. Uses mongodb. WIP!
 </subtitle>
 <entry>
+<id>09ad7a20a3ef6d3907c8f22bb3a9eaf29b8a4661</id>
+<published>2016-06-04T20:50:44Z</published>
+<updated>2016-06-04T20:50:44Z</updated>
+<title type="text">changed license to ISC and added TODO</title>
+<link rel="alternate" type="text/html" href="commit/09ad7a20a3ef6d3907c8f22bb3a9eaf29b8a4661.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 09ad7a20a3ef6d3907c8f22bb3a9eaf29b8a4661
+parent d013c837065ebf39fdb5a35c30b639d868f0a6e5
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Jun  4 23:50:44 +0300
+
+changed license to ISC and added TODO
+
+</content>
+</entry>
+<entry>
 <id>d013c837065ebf39fdb5a35c30b639d868f0a6e5</id>
 <published>2016-06-04T20:03:55Z</published>
 <updated>2016-06-04T20:03:55Z</updated>

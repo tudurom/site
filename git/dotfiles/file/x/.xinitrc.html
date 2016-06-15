@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> .xinitrc (1374B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> .xinitrc (1302B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -90,8 +90,6 @@
 <a href="#l72" id="l72">72</a>
 <a href="#l73" id="l73">73</a>
 <a href="#l74" id="l74">74</a>
-<a href="#l75" id="l75">75</a>
-<a href="#l76" id="l76">76</a>
 </pre></td><td><pre>
 #!/bin/sh
 
@@ -151,8 +149,8 @@ screenlayout
 # unclutter -b
 
 # Music!
-if ! pidof musicpd; then
-  musicpd &amp;
+if ! pidof mpd; then
+  mpd &amp;
 fi
 # Set cursor from X to pointer
 xsetroot -cursor_name left_ptr &amp;
@@ -165,10 +163,8 @@ wall-e &amp;
 
 # }}}
 
-urxvtd &amp;
 statusbar &amp;
-sxhkd -c ~/.config/sxhkd/sxhkdrc_cwm ~/.config/sxhkd/commons &amp;
-exec cwm
+exec startwm cwm
 </pre></td></tr></table>
 </div>
 </body>

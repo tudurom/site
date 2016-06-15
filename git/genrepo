@@ -13,6 +13,10 @@ cp /srv/http/git/style.css /srv/http/git/${REPO_NAME}
 cp /srv/http/git/logo.png /srv/http/git/${REPO_NAME}
 
 cd /srv/http/git
-stagit-index /srv/git/*.git > index.html
+list=""
+for repo in /srv/git/*.git; do
+    [ -f "$repo/git-daemon-export-ok" ] && list="$repo $list"
+done
+stagit-index $list > index.html
 
 echo "Done."

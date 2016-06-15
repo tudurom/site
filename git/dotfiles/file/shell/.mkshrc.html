@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> .mkshrc (954B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> .mkshrc (1029B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -59,6 +59,12 @@
 <a href="#l41" id="l41">41</a>
 <a href="#l42" id="l42">42</a>
 <a href="#l43" id="l43">43</a>
+<a href="#l44" id="l44">44</a>
+<a href="#l45" id="l45">45</a>
+<a href="#l46" id="l46">46</a>
+<a href="#l47" id="l47">47</a>
+<a href="#l48" id="l48">48</a>
+<a href="#l49" id="l49">49</a>
 </pre></td><td><pre>
 # ┏┳┓╻┏ ┏━┓╻ ╻
 # ┃┃┃┣┻┓┗━┓┣━┫
@@ -66,7 +72,9 @@
 # by tudurom
 # not sucking since forever
 
-source ~/.crosssh.sh
+for dot in $HOME/.shell.d/*; do
+    . $dot
+done
 
 HISTFILE=&quot;$HOME/.mksh_history&quot;
 typeset ret_code
@@ -76,15 +84,19 @@ set -o bgnice
 alias rename=&quot;/usr/bin/rename&quot;
 
 prompt () {
-    echo -n &quot;\033]0;$last\007&quot;
-    _ERR=$?
     exit_color=6
+    b=&quot;$(tput bold)&quot;
+    l=&quot;$(echo -n $b; tput setaf 0)&quot;
+    z=&quot;$(tput sgr0)&quot;
+    e=&quot;$(tput setaf $exit_color)&quot;
+    _ERR=$?
     if [ $_ERR -ne 0 ]; then
         exit_color=1
     fi
-    dir=&quot;$(tput setaf 8)$(pwd | sed -e &quot;s/\/usr\/home\/$USER/~/&quot; | sed -e &quot;s/\/home\/$USER/~/&quot;)&quot;
-    arrow=&quot;$(tput setaf $exit_color)───&quot;
-    echo -n &quot;${dir}\n${arrow}$(tput sgr0) &quot;
+    dir=&quot;${l}$(pwd | sed -e &quot;s/\/usr\/home\/$USER/~/&quot; | sed -e &quot;s/\/home\/$USER/~/&quot;)&quot;
+    arrow=&quot;${e}───&quot;
+    echo &quot;${dir}&quot;
+    echo &quot;${arrow}${z} &quot;
 }
 
 PS1=&apos;$(prompt)&apos;

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>vim completion - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/27b0aa9e63c540d5699d6050ae6072f4d3ee6d11.html">27b0aa9e63c540d5699d6050ae6072f4d3ee6d11</a>
+<b>parent</b> <a href="../commit/59c1fd1f3c30981063bc79cd402bb158a88d513b.html">59c1fd1f3c30981063bc79cd402bb158a88d513b</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Jun 10 14:35:09 +0300
+
+vim completion
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">nvim/.config/nvim/init.vim</a></td><td> | </td><td class="num">22</td><td><span class="i">++++++++++</span><span class="d">------------</span></td></tr>
+<tr><td><a href="#h1">scripts/.scripts/todo</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h2">scripts/.scripts/wall-e</a></td><td> | </td><td class="num">3</td><td><span class="i">+</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h3">wallpapers/wallpapers/rad.png</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td><a href="#h4">wallpapers/wallpapers/xero_said_this_one_is_rad.png</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+</table>5 files changed, 12 insertions(+), 15 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a> b/<a href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -15,16 +15,12 @@ call plug#begin(&apos;~/.config/nvim/bundle&apos;)
+</a> Plug &apos;ntpeters/vim-better-whitespace&apos;
+ 
+ &quot; Simple tab completion
+<a href="#h0-0-3" id="h0-0-3" class="d">-&quot; neovim-python is required
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-if has(&quot;python3&quot;)
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-    Plug &apos;Shougo/deoplete.nvim&apos;
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-    if executable(&apos;clang&apos;)
+</a><a href="#h0-0-7" id="h0-0-7" class="d">-        Plug &apos;Rip-Rip/clang_complete&apos;
+</a><a href="#h0-0-8" id="h0-0-8" class="d">-    endif
+</a><a href="#h0-0-9" id="h0-0-9" class="d">-    if executable(&apos;go&apos;)
+</a><a href="#h0-0-10" id="h0-0-10" class="d">-        Plug &apos;zchee/deoplete-go&apos;, { &apos;do&apos;: &apos;make&apos;}
+</a><a href="#h0-0-11" id="h0-0-11" class="d">-        Plug &apos;fatih/vim-go&apos;
+</a><a href="#h0-0-12" id="h0-0-12" class="d">-    endif
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+Plug &apos;ajh17/vimcompletesme&apos;
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+if executable(&apos;clang&apos;)
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+    Plug &apos;Rip-Rip/clang_complete&apos;
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+endif
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+if executable(&apos;go&apos;)
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+    Plug &apos;fatih/vim-go&apos;
+</a> endif
+ 
+ &quot; Syntax checking
+<a href="#h0-1" id="h0-1" class="h">@@ -145,7 +141,7 @@ filetype plugin indent on
+</a> augroup Filetypes
+     au!
+ 
+<a href="#h0-1-3" id="h0-1-3" class="d">-    au BufRead,BufNewFile *.md setlocal textwidth=80 spell spelllang=en_us
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+    au BufRead,BufNewFile *.md setlocal textwidth=80 spell spelllang=en_us let b:vcm_tab_complete = &apos;dict&apos;
+</a> 
+ augroup end
+ 
+<a href="#h0-2" id="h0-2" class="h">@@ -166,7 +162,9 @@ map &lt;Leader&gt;l &lt;C-w&gt;l
+</a> 
+ &quot; Completion {{{
+ 
+<a href="#h0-2-3" id="h0-2-3" class="d">-let g:deoplete#enable_at_startup = 1
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+filetype plugin on
+</a><a href="#h0-2-5" id="h0-2-5" class="i">+set omnifunc=syntaxcomplete#Complete
+</a><a href="#h0-2-6" id="h0-2-6" class="i">+let b:vcm_tab_complete = &apos;omni&apos;
+</a> 
+ &quot; Stolen from shougo {{{
+ imap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt;
+<b>diff --git a/<a id="h1" href="../file/scripts/.scripts/todo.html">scripts/.scripts/todo</a> b/<a href="../file/scripts/.scripts/todo.html">scripts/.scripts/todo</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -9,7 +9,7 @@ file=&quot;$HOME/.todo&quot;
+</a> if [ -z $1 ] ; then
+   echo &quot;┌──────[ todo ]──[ version 0.0.2 ]─────── ─ ─&quot;
+   echo &quot;│ usage: todo &lt;options&gt;&quot;
+<a href="#h1-0-3" id="h1-0-3" class="d">-  echo &quot;│ author: xero, arc and tudurom&quot;
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+  echo &quot;│ authors: xero, arc and tudurom&quot;
+</a>   echo &quot;├────────────────[ options ]&quot;───────────── ─ ─
+   echo &quot;│ -s          display the todo list&quot;
+   echo &quot;│ -a &lt;string&gt; add a todo item&quot;
+<b>diff --git a/<a id="h2" href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a> b/<a href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -10,8 +10,7 @@ APRIL_WALL=&quot;$HOME/wallpapers/april_wall.png&quot;
+</a> if [ &quot;$(date +&quot;%d/%m&quot;)&quot; = &quot;01/04&quot; ]; then
+   feh -fill &quot;$APRIL_WALL&quot;
+ elif [ $# -ge 1 ]; then
+<a href="#h2-0-3" id="h2-0-3" class="d">-  option=&quot;fill&quot;
+</a><a href="#h2-0-4" id="h2-0-4" class="d">-  test -n &quot;$2&quot; &amp;&amp; option=&quot;$2&quot;
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+  option=&quot;${2:-fill}&quot;
+</a>   feh --bg-${option} $1
+ else
+   feh --bg-tile $DEFAULT_WALL
+<b>diff --git a/<a id="h3" href="../file/wallpapers/wallpapers/rad.png.html">wallpapers/wallpapers/rad.png</a> b/<a href="../file/wallpapers/wallpapers/rad.png.html">wallpapers/wallpapers/rad.png</a></b>
+Binary files differ.
+<b>diff --git a/<a id="h4" href="../file/wallpapers/wallpapers/xero_said_this_one_is_rad.png.html">wallpapers/wallpapers/xero_said_this_one_is_rad.png</a> b/<a href="../file/wallpapers/wallpapers/xero_said_this_one_is_rad.png.html">wallpapers/wallpapers/xero_said_this_one_is_rad.png</a></b>
+Binary files differ.
+</pre>
+</div>
+</body>
+</html>

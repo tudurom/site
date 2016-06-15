@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> mpd.conf (458B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> mpd.conf (526B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -33,6 +33,9 @@
 <a href="#l15" id="l15">15</a>
 <a href="#l16" id="l16">16</a>
 <a href="#l17" id="l17">17</a>
+<a href="#l18" id="l18">18</a>
+<a href="#l19" id="l19">19</a>
+<a href="#l20" id="l20">20</a>
 </pre></td><td><pre>
 music_directory    &quot;/home/tudurom/usr/music&quot;
 playlist_directory &quot;/home/tudurom/.mpd/playlists&quot;
@@ -42,9 +45,12 @@ pid_file           &quot;/home/tudurom/.mpd/mpd.pid&quot;
 state_file         &quot;/home/tudurom/.mpd/mpdstate&quot;
 gapless_mp3_playback &quot;yes&quot;
 audio_output {
-  type &quot;oss&quot;
-  name &quot;OSS Device&quot;
-  mixer_control &quot;vol&quot;
+    type &quot;alsa&quot;
+    name &quot;MPD alsa&quot;
+    device &quot;hw:0,0&quot;
+    auto_resample &quot;no&quot;
+    auto_format &quot;no&quot;
+    auto_channels &quot;no&quot;
 }
 audio_output {
   type &quot;fifo&quot;

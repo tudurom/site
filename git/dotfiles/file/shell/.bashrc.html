@@ -15,10 +15,14 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> .bashrc (14B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> .bashrc (53B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
+<a href="#l2" id="l2">2</a>
+<a href="#l3" id="l3">3</a>
 </pre></td><td><pre>
-. .crosssh.sh
+for dot in $HOME/.shell.d/*; do
+    source $dot
+done
 </pre></td></tr></table>
 </div>
 </body>

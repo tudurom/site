@@ -79,7 +79,7 @@
 
 BW=${BW:-3}                    # border width
 ACTIVE=${ACTIVE:-0x$(xrq &apos;*.color6&apos; | cut -d&apos;#&apos; -f2)}     # active border color
-INACTIVE=${INACTIVE:-0x$(xrq &apos;*.color6&apos; | cut -d&apos;#&apos; -f2)} # inactive border color
+INACTIVE=${INACTIVE:-0x$(xrq &apos;*.color8&apos; | cut -d&apos;#&apos; -f2)} # inactive border color
 
 # get current window id
 CUR=$(pfw)

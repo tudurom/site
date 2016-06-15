@@ -4,6 +4,91 @@
 <subtitle>Simple color scheme file generator written in sh.
 </subtitle>
 <entry>
+<id>067ccb45f5ba6b2c4ee2dd6301ab894f0a061e77</id>
+<published>2016-06-06T12:18:44Z</published>
+<updated>2016-06-06T12:18:44Z</updated>
+<title type="text">added custom styles dir</title>
+<link rel="alternate" type="text/html" href="commit/067ccb45f5ba6b2c4ee2dd6301ab894f0a061e77.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 067ccb45f5ba6b2c4ee2dd6301ab894f0a061e77
+parent 04b9b65175d72798708f81c543220873aa04564b
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Jun  6 15:18:44 +0300
+
+added custom styles dir
+
+</content>
+</entry>
+<entry>
+<id>04b9b65175d72798708f81c543220873aa04564b</id>
+<published>2016-06-06T12:12:12Z</published>
+<updated>2016-06-06T12:12:12Z</updated>
+<title type="text">update firefox template</title>
+<link rel="alternate" type="text/html" href="commit/04b9b65175d72798708f81c543220873aa04564b.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 04b9b65175d72798708f81c543220873aa04564b
+parent fe5c900e34fa5183df6c85afd222e63f1ff6e01f
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Jun  6 15:12:12 +0300
+
+update firefox template
+
+</content>
+</entry>
+<entry>
+<id>fe5c900e34fa5183df6c85afd222e63f1ff6e01f</id>
+<published>2016-06-03T07:07:19Z</published>
+<updated>2016-06-03T07:07:19Z</updated>
+<title type="text">no magenta for thunderstorm</title>
+<link rel="alternate" type="text/html" href="commit/fe5c900e34fa5183df6c85afd222e63f1ff6e01f.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit fe5c900e34fa5183df6c85afd222e63f1ff6e01f
+parent 216820fbc47251f84b1da12acb2d834ed6deee65
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 10:07:19 +0300
+
+no magenta for thunderstorm
+
+</content>
+</entry>
+<entry>
+<id>216820fbc47251f84b1da12acb2d834ed6deee65</id>
+<published>2016-06-03T06:55:32Z</published>
+<updated>2016-06-03T06:55:32Z</updated>
+<title type="text">ignore generated files</title>
+<link rel="alternate" type="text/html" href="commit/216820fbc47251f84b1da12acb2d834ed6deee65.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 216820fbc47251f84b1da12acb2d834ed6deee65
+parent 4786163b15057a848f052ebfc1fda4332acab8cc
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 09:55:32 +0300
+
+ignore generated files
+
+</content>
+</entry>
+<entry>
+<id>4786163b15057a848f052ebfc1fda4332acab8cc</id>
+<published>2016-06-03T06:54:01Z</published>
+<updated>2016-06-03T06:54:01Z</updated>
+<title type="text">magenta for thunderstorm</title>
+<link rel="alternate" type="text/html" href="commit/4786163b15057a848f052ebfc1fda4332acab8cc.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 4786163b15057a848f052ebfc1fda4332acab8cc
+parent 008390fd44d6f02b3f7cd595285ab5370b3e7fcf
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 09:54:01 +0300
+
+magenta for thunderstorm
+
+</content>
+</entry>
+<entry>
 <id>008390fd44d6f02b3f7cd595285ab5370b3e7fcf</id>
 <published>2016-06-03T06:45:17Z</published>
 <updated>2016-06-03T06:45:17Z</updated>

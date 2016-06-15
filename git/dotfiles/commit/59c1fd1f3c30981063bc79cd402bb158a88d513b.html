@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>clean shell dir - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/59c1fd1f3c30981063bc79cd402bb158a88d513b.html">59c1fd1f3c30981063bc79cd402bb158a88d513b</a>
+<b>parent</b> <a href="../commit/2b794832e6e750e12b2c9bec143883a4958410a1.html">2b794832e6e750e12b2c9bec143883a4958410a1</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Thu Jun  9 21:49:47 +0300
+
+clean shell dir
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">shell/.bashrc</a></td><td> | </td><td class="num">4</td><td><span class="i">+++</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h1">shell/.crosssh.sh</a></td><td> | </td><td class="num">79</td><td><span class="i"></span><span class="d">-------------------------------------------------------------------------------</span></td></tr>
+<tr><td><a href="#h2">shell/.mkshrc</a></td><td> | </td><td class="num">4</td><td><span class="i">+++</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h3">shell/.shell.d/alias.sh</a></td><td> | </td><td class="num">44</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h4">shell/.shell.d/export.sh</a></td><td> | </td><td class="num">26</td><td><span class="i">++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table>5 files changed, 76 insertions(+), 81 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/shell/.bashrc.html">shell/.bashrc</a> b/<a href="../file/shell/.bashrc.html">shell/.bashrc</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1 +1,3 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="d">-. .crosssh.sh
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+for dot in $HOME/.shell.d/*; do
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+    source $dot
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+done
+</a><b>diff --git a/<a id="h1" href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a> b/<a href="../file/shell/.crosssh.sh.html">shell/.crosssh.sh</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -1,79 +0,0 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="d">-# ┏━╸┏━┓┏━┓┏━┓┏━┓┏━┓╻ ╻
+</a><a href="#h1-0-1" id="h1-0-1" class="d">-# ┃  ┣┳┛┃ ┃┗━┓┗━┓┗━┓┣━┫
+</a><a href="#h1-0-2" id="h1-0-2" class="d">-# ┗━╸╹┗╸┗━┛┗━┛┗━┛┗━┛╹ ╹
+</a><a href="#h1-0-3" id="h1-0-3" class="d">-# by tudurom
+</a><a href="#h1-0-4" id="h1-0-4" class="d">-# bits shared between different shells (bash, mksh, zsh)
+</a><a href="#h1-0-5" id="h1-0-5" class="d">-
+</a><a href="#h1-0-6" id="h1-0-6" class="d">-export EDITOR=nvim
+</a><a href="#h1-0-7" id="h1-0-7" class="d">-export VISUAL=nvim
+</a><a href="#h1-0-8" id="h1-0-8" class="d">-
+</a><a href="#h1-0-9" id="h1-0-9" class="d">-# Golang specific variables
+</a><a href="#h1-0-10" id="h1-0-10" class="d">-if [ -d /usr/local/go ]; then
+</a><a href="#h1-0-11" id="h1-0-11" class="d">-    export GOPATH=$HOME/gopath
+</a><a href="#h1-0-12" id="h1-0-12" class="d">-    export GOROOT=/usr/local/go
+</a><a href="#h1-0-13" id="h1-0-13" class="d">-    export PATH=&quot;$GOROOT/bin:$PATH&quot;
+</a><a href="#h1-0-14" id="h1-0-14" class="d">-    export PATH=&quot;$GOPATH/bin:$PATH&quot;
+</a><a href="#h1-0-15" id="h1-0-15" class="d">-fi
+</a><a href="#h1-0-16" id="h1-0-16" class="d">-
+</a><a href="#h1-0-17" id="h1-0-17" class="d">-# Ruby
+</a><a href="#h1-0-18" id="h1-0-18" class="d">-if [ -f /usr/local/bin/ruby ]; then
+</a><a href="#h1-0-19" id="h1-0-19" class="d">-    export PATH=$HOME/.node/bin:$PATH
+</a><a href="#h1-0-20" id="h1-0-20" class="d">-    ruby_ver=&quot;$(ls -1 $HOME/.gem/ruby | sort -nr | head -n 1)&quot;
+</a><a href="#h1-0-21" id="h1-0-21" class="d">-    export PATH=$HOME/.gem/ruby/$ruby_ver/bin:$PATH
+</a><a href="#h1-0-22" id="h1-0-22" class="d">-fi
+</a><a href="#h1-0-23" id="h1-0-23" class="d">-
+</a><a href="#h1-0-24" id="h1-0-24" class="d">-# Source local scripts
+</a><a href="#h1-0-25" id="h1-0-25" class="d">-export PATH=&quot;$HOME/bin/clint:$HOME/bin:$PATH&quot;
+</a><a href="#h1-0-26" id="h1-0-26" class="d">-
+</a><a href="#h1-0-27" id="h1-0-27" class="d">-# god&apos;s own os
+</a><a href="#h1-0-28" id="h1-0-28" class="d">-export PATH=&quot;$PATH:/usr/local/plan9/bin&quot;
+</a><a href="#h1-0-29" id="h1-0-29" class="d">-
+</a><a href="#h1-0-30" id="h1-0-30" class="d">-# Python packages
+</a><a href="#h1-0-31" id="h1-0-31" class="d">-export PATH=&quot;$PATH:$HOME/.local/bin&quot;
+</a><a href="#h1-0-32" id="h1-0-32" class="d">-
+</a><a href="#h1-0-33" id="h1-0-33" class="d">-# Aliases aka hacks
+</a><a href="#h1-0-34" id="h1-0-34" class="d">-alias :q=exit
+</a><a href="#h1-0-35" id="h1-0-35" class="d">-alias irb=pry
+</a><a href="#h1-0-36" id="h1-0-36" class="d">-alias ccat=pygmentize
+</a><a href="#h1-0-37" id="h1-0-37" class="d">-alias problemhelper=&quot;time problemhelper&quot;
+</a><a href="#h1-0-38" id="h1-0-38" class="d">-alias ph=problemhelper
+</a><a href="#h1-0-39" id="h1-0-39" class="d">-alias tls=&quot;tmux ls&quot;
+</a><a href="#h1-0-40" id="h1-0-40" class="d">-alias tswitch=&quot;tmux switch -t&quot;
+</a><a href="#h1-0-41" id="h1-0-41" class="d">-alias tkill=&quot;tmux kill-session -t&quot;
+</a><a href="#h1-0-42" id="h1-0-42" class="d">-alias rm=&quot;rm -I&quot;
+</a><a href="#h1-0-43" id="h1-0-43" class="d">-alias clip=&quot;xclip -selection clipboard&quot;
+</a><a href="#h1-0-44" id="h1-0-44" class="d">-alias poweroff=&quot;sudo poweroff&quot;
+</a><a href="#h1-0-45" id="h1-0-45" class="d">-alias reboot=&quot;sudo reboot&quot;
+</a><a href="#h1-0-46" id="h1-0-46" class="d">-test &quot;$(uname)&quot; = &quot;FreeBSD&quot; &amp;&amp; alias tput=&quot;/usr/local/bin/tput&quot;
+</a><a href="#h1-0-47" id="h1-0-47" class="d">-export LESS=&apos;-F -g -i -M -R -S -w -X -z-4&apos;
+</a><a href="#h1-0-48" id="h1-0-48" class="d">-
+</a><a href="#h1-0-49" id="h1-0-49" class="d">-testnet() {
+</a><a href="#h1-0-50" id="h1-0-50" class="d">-    ping duckduckgo.com
+</a><a href="#h1-0-51" id="h1-0-51" class="d">-}
+</a><a href="#h1-0-52" id="h1-0-52" class="d">-
+</a><a href="#h1-0-53" id="h1-0-53" class="d">-ghclone() {
+</a><a href="#h1-0-54" id="h1-0-54" class="d">-    git clone https://github.com/${1}.git ${2}
+</a><a href="#h1-0-55" id="h1-0-55" class="d">-}
+</a><a href="#h1-0-56" id="h1-0-56" class="d">-
+</a><a href="#h1-0-57" id="h1-0-57" class="d">-transfer() {
+</a><a href="#h1-0-58" id="h1-0-58" class="d">-    local tmpfile=&quot;$(mktemp -t tranferXXX)&quot;
+</a><a href="#h1-0-59" id="h1-0-59" class="d">-    curl --progress-bar --upload-file $1 &quot;https://transfer.sh/$(basename $1)&quot; &gt;&gt; $tmpfile
+</a><a href="#h1-0-60" id="h1-0-60" class="d">-    cat $tmpfile
+</a><a href="#h1-0-61" id="h1-0-61" class="d">-    rm -rf $tmpfile
+</a><a href="#h1-0-62" id="h1-0-62" class="d">-    unset tmpfile
+</a><a href="#h1-0-63" id="h1-0-63" class="d">-}
+</a><a href="#h1-0-64" id="h1-0-64" class="d">-
+</a><a href="#h1-0-65" id="h1-0-65" class="d">-pi() {
+</a><a href="#h1-0-66" id="h1-0-66" class="d">-    ssh tudoo $1
+</a><a href="#h1-0-67" id="h1-0-67" class="d">-}
+</a><a href="#h1-0-68" id="h1-0-68" class="d">-
+</a><a href="#h1-0-69" id="h1-0-69" class="d">-push() {
+</a><a href="#h1-0-70" id="h1-0-70" class="d">-    local branch=&quot;${1:-master}&quot;
+</a><a href="#h1-0-71" id="h1-0-71" class="d">-    git remote | while read -r line; do
+</a><a href="#h1-0-72" id="h1-0-72" class="d">-        git push $line $branch
+</a><a href="#h1-0-73" id="h1-0-73" class="d">-    done
+</a><a href="#h1-0-74" id="h1-0-74" class="d">-}
+</a><a href="#h1-0-75" id="h1-0-75" class="d">-
+</a><a href="#h1-0-76" id="h1-0-76" class="d">-radio() {
+</a><a href="#h1-0-77" id="h1-0-77" class="d">-    mpv http://radio.2f30.org:8000/live.mp3
+</a><a href="#h1-0-78" id="h1-0-78" class="d">-}
+</a><b>diff --git a/<a id="h2" href="../file/shell/.mkshrc.html">shell/.mkshrc</a> b/<a href="../file/shell/.mkshrc.html">shell/.mkshrc</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -4,7 +4,9 @@
+</a> # by tudurom
+ # not sucking since forever
+ 
+<a href="#h2-0-3" id="h2-0-3" class="d">-. ~/.crosssh.sh
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+for dot in $HOME/.shell.d/*; do
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+    . $dot
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+done
+</a> 
+ HISTFILE=&quot;$HOME/.mksh_history&quot;
+ typeset ret_code
+<b>diff --git a/<a id="h3" href="../file/shell/.shell.d/alias.sh.html">shell/.shell.d/alias.sh</a> b/<a href="../file/shell/.shell.d/alias.sh.html">shell/.shell.d/alias.sh</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -0,0 +1,44 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="i">+alias :q=exit
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+alias irb=pry
+</a><a href="#h3-0-2" id="h3-0-2" class="i">+alias ccat=pygmentize
+</a><a href="#h3-0-3" id="h3-0-3" class="i">+alias problemhelper=&quot;time problemhelper&quot;
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+alias ph=problemhelper
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+alias tls=&quot;tmux ls&quot;
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+alias tswitch=&quot;tmux switch -t&quot;
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+alias tkill=&quot;tmux kill-session -t&quot;
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+alias rm=&quot;rm -I&quot;
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+alias clip=&quot;xclip -selection clipboard&quot;
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+alias poweroff=&quot;sudo poweroff&quot;
+</a><a href="#h3-0-11" id="h3-0-11" class="i">+alias reboot=&quot;sudo reboot&quot;
+</a><a href="#h3-0-12" id="h3-0-12" class="i">+test &quot;$(uname)&quot; = &quot;FreeBSD&quot; &amp;&amp; alias tput=&quot;/usr/local/bin/tput&quot;
+</a><a href="#h3-0-13" id="h3-0-13" class="i">+
+</a><a href="#h3-0-14" id="h3-0-14" class="i">+testnet() {
+</a><a href="#h3-0-15" id="h3-0-15" class="i">+    ping duckduckgo.com
+</a><a href="#h3-0-16" id="h3-0-16" class="i">+}
+</a><a href="#h3-0-17" id="h3-0-17" class="i">+
+</a><a href="#h3-0-18" id="h3-0-18" class="i">+ghclone() {
+</a><a href="#h3-0-19" id="h3-0-19" class="i">+    git clone https://github.com/${1}.git ${2}
+</a><a href="#h3-0-20" id="h3-0-20" class="i">+}
+</a><a href="#h3-0-21" id="h3-0-21" class="i">+
+</a><a href="#h3-0-22" id="h3-0-22" class="i">+transfer() {
+</a><a href="#h3-0-23" id="h3-0-23" class="i">+    local tmpfile=&quot;$(mktemp -t tranferXXX)&quot;
+</a><a href="#h3-0-24" id="h3-0-24" class="i">+    curl --progress-bar --upload-file $1 &quot;https://transfer.sh/$(basename $1)&quot; &gt;&gt; $tmpfile
+</a><a href="#h3-0-25" id="h3-0-25" class="i">+    cat $tmpfile
+</a><a href="#h3-0-26" id="h3-0-26" class="i">+    rm -rf $tmpfile
+</a><a href="#h3-0-27" id="h3-0-27" class="i">+    unset tmpfile
+</a><a href="#h3-0-28" id="h3-0-28" class="i">+}
+</a><a href="#h3-0-29" id="h3-0-29" class="i">+
+</a><a href="#h3-0-30" id="h3-0-30" class="i">+pi() {
+</a><a href="#h3-0-31" id="h3-0-31" class="i">+    ssh tudoo $1
+</a><a href="#h3-0-32" id="h3-0-32" class="i">+}
+</a><a href="#h3-0-33" id="h3-0-33" class="i">+
+</a><a href="#h3-0-34" id="h3-0-34" class="i">+push() {
+</a><a href="#h3-0-35" id="h3-0-35" class="i">+    local branch=&quot;${1:-master}&quot;
+</a><a href="#h3-0-36" id="h3-0-36" class="i">+    git remote | while read -r line; do
+</a><a href="#h3-0-37" id="h3-0-37" class="i">+        git push $line $branch
+</a><a href="#h3-0-38" id="h3-0-38" class="i">+    done
+</a><a href="#h3-0-39" id="h3-0-39" class="i">+}
+</a><a href="#h3-0-40" id="h3-0-40" class="i">+
+</a><a href="#h3-0-41" id="h3-0-41" class="i">+radio() {
+</a><a href="#h3-0-42" id="h3-0-42" class="i">+    mpv http://radio.2f30.org:8000/live.mp3
+</a><a href="#h3-0-43" id="h3-0-43" class="i">+}
+</a><b>diff --git a/<a id="h4" href="../file/shell/.shell.d/export.sh.html">shell/.shell.d/export.sh</a> b/<a href="../file/shell/.shell.d/export.sh.html">shell/.shell.d/export.sh</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -0,0 +1,26 @@
+</a><a href="#h4-0-0" id="h4-0-0" class="i">+export EDITOR=nvim
+</a><a href="#h4-0-1" id="h4-0-1" class="i">+export VISUAL=nvim
+</a><a href="#h4-0-2" id="h4-0-2" class="i">+
+</a><a href="#h4-0-3" id="h4-0-3" class="i">+# Golang specific variables
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+if [ -d /usr/local/go ]; then
+</a><a href="#h4-0-5" id="h4-0-5" class="i">+    export GOPATH=$HOME/gopath
+</a><a href="#h4-0-6" id="h4-0-6" class="i">+    export GOROOT=/usr/local/go
+</a><a href="#h4-0-7" id="h4-0-7" class="i">+    export PATH=&quot;$GOROOT/bin:$PATH&quot;
+</a><a href="#h4-0-8" id="h4-0-8" class="i">+    export PATH=&quot;$GOPATH/bin:$PATH&quot;
+</a><a href="#h4-0-9" id="h4-0-9" class="i">+fi
+</a><a href="#h4-0-10" id="h4-0-10" class="i">+
+</a><a href="#h4-0-11" id="h4-0-11" class="i">+# Ruby
+</a><a href="#h4-0-12" id="h4-0-12" class="i">+if [ -f /usr/local/bin/ruby ]; then
+</a><a href="#h4-0-13" id="h4-0-13" class="i">+    export PATH=$HOME/.node/bin:$PATH
+</a><a href="#h4-0-14" id="h4-0-14" class="i">+    ruby_ver=&quot;$(ls -1 $HOME/.gem/ruby | sort -nr | head -n 1)&quot;
+</a><a href="#h4-0-15" id="h4-0-15" class="i">+    export PATH=$HOME/.gem/ruby/$ruby_ver/bin:$PATH
+</a><a href="#h4-0-16" id="h4-0-16" class="i">+fi
+</a><a href="#h4-0-17" id="h4-0-17" class="i">+
+</a><a href="#h4-0-18" id="h4-0-18" class="i">+# Source local scripts
+</a><a href="#h4-0-19" id="h4-0-19" class="i">+export PATH=&quot;$HOME/bin/clint:$HOME/bin:$PATH&quot;
+</a><a href="#h4-0-20" id="h4-0-20" class="i">+
+</a><a href="#h4-0-21" id="h4-0-21" class="i">+# Python packages
+</a><a href="#h4-0-22" id="h4-0-22" class="i">+export PATH=&quot;$PATH:$HOME/.local/bin&quot;
+</a><a href="#h4-0-23" id="h4-0-23" class="i">+
+</a><a href="#h4-0-24" id="h4-0-24" class="i">+# I totally forgot what all those flags do
+</a><a href="#h4-0-25" id="h4-0-25" class="i">+export LESS=&apos;-F -g -i -M -R -S -w -X -z-4&apos;
+</a></pre>
+</div>
+</body>
+</html>

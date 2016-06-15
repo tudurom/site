@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>misc - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/2b794832e6e750e12b2c9bec143883a4958410a1.html">2b794832e6e750e12b2c9bec143883a4958410a1</a>
+<b>parent</b> <a href="../commit/c48f4968f0a0cb10952ed770e7b9ef707fe9cf58.html">c48f4968f0a0cb10952ed770e7b9ef707fe9cf58</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Wed Jun  8 14:48:04 +0300
+
+misc
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">shell/.mkshrc</a></td><td> | </td><td class="num">5</td><td><span class="i">+++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h1">wmrc/.scripts/focusw</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h2">wmrc/.scripts/groupbar</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h3">wmrc/.scripts/startwm</a></td><td> | </td><td class="num">17</td><td><span class="i">+++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h4">wmrc/.scripts/startwmutils</a></td><td> | </td><td class="num">10</td><td><span class="i"></span><span class="d">----------</span></td></tr>
+<tr><td><a href="#h5">x/.xinitrc</a></td><td> | </td><td class="num">3</td><td><span class="i">+</span><span class="d">--</span></td></tr>
+</table>6 files changed, 23 insertions(+), 16 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/shell/.mkshrc.html">shell/.mkshrc</a> b/<a href="../file/shell/.mkshrc.html">shell/.mkshrc</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -4,7 +4,7 @@
+</a> # by tudurom
+ # not sucking since forever
+ 
+<a href="#h0-0-3" id="h0-0-3" class="d">-source ~/.crosssh.sh
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+. ~/.crosssh.sh
+</a> 
+ HISTFILE=&quot;$HOME/.mksh_history&quot;
+ typeset ret_code
+<a href="#h0-1" id="h0-1" class="h">@@ -25,7 +25,8 @@ prompt () {
+</a>     fi
+     dir=&quot;${l}$(pwd | sed -e &quot;s/\/usr\/home\/$USER/~/&quot; | sed -e &quot;s/\/home\/$USER/~/&quot;)&quot;
+     arrow=&quot;${e}───&quot;
+<a href="#h0-1-3" id="h0-1-3" class="d">-    echo -n &quot;${dir}\n${arrow}${z} &quot;
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+    echo &quot;${dir}&quot;
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+    echo &quot;${arrow}${z} &quot;
+</a> }
+ 
+ PS1=&apos;$(prompt)&apos;
+<b>diff --git a/<a id="h1" href="../file/wmrc/.scripts/focusw.html">wmrc/.scripts/focusw</a> b/<a href="../file/wmrc/.scripts/focusw.html">wmrc/.scripts/focusw</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -6,7 +6,7 @@
+</a> 
+ BW=${BW:-3}                    # border width
+ ACTIVE=${ACTIVE:-0x$(xrq &apos;*.color6&apos; | cut -d&apos;#&apos; -f2)}     # active border color
+<a href="#h1-0-3" id="h1-0-3" class="d">-INACTIVE=${INACTIVE:-0x$(xrq &apos;*.color6&apos; | cut -d&apos;#&apos; -f2)} # inactive border color
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+INACTIVE=${INACTIVE:-0x$(xrq &apos;*.color8&apos; | cut -d&apos;#&apos; -f2)} # inactive border color
+</a> 
+ # get current window id
+ CUR=$(pfw)
+<b>diff --git a/<a id="h2" href="../file/wmrc/.scripts/groupbar.html">wmrc/.scripts/groupbar</a> b/<a href="../file/wmrc/.scripts/groupbar.html">wmrc/.scripts/groupbar</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -19,7 +19,7 @@ BAR_FG=&quot;$(xrq &apos;*.foreground&apos;)&quot;
+</a> BAR_UN=&quot;$(xrq &apos;*.color9&apos;)&quot;
+ BAR_FONT=&quot;$PANEL_FONT&quot;
+ BAR_ICON_FONT=&quot;-*-siji-*-*-*-*-10-*-*-*-*-*-*-*&quot;
+<a href="#h2-0-3" id="h2-0-3" class="d">-BAR_OPT=&quot;-d -f $BAR_FONT -f $BAR_ICON_FONT -g ${BAR_W}x${BAR_H}+${BAR_X}+${BAR_Y} -B $BAR_BG -F $BAR_FG -u 2 -a 30 -r $BW -R `xrq *.color8`&quot;
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+BAR_OPT=&quot;-d -b -f $BAR_FONT -f $BAR_ICON_FONT -g ${BAR_W}x${BAR_H}+${BAR_X}+${BAR_Y} -B $BAR_BG -F $BAR_FG -u 2 -a 30 -r $BW -R `xrq *.color8`&quot;
+</a> 
+ FIFO_PATH=&quot;/tmp/groups.fifo&quot;
+ test -e &quot;$FIFO_PATH&quot; &amp;&amp; rm &quot;$FIFO_PATH&quot;
+<b>diff --git a/<a id="h3" href="../file/wmrc/.scripts/startwm.html">wmrc/.scripts/startwm</a> b/<a href="../file/wmrc/.scripts/startwm.html">wmrc/.scripts/startwm</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -0,0 +1,17 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="i">+#
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+# Starts the environment
+</a><a href="#h3-0-2" id="h3-0-2" class="i">+# (c) tudurom 2016 - wtfpl
+</a><a href="#h3-0-3" id="h3-0-3" class="i">+#
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+wm=&quot;$1&quot;
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+sxhkd -c ~/.config/sxhkd/sxhkdrc_${wm} ~/.config/sxhkd/commons &amp;
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+case &quot;$1&quot; in
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+    &quot;wmutils&quot;)
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+        wew | wewhandle &amp;
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+        xwait
+</a><a href="#h3-0-11" id="h3-0-11" class="i">+        ;;
+</a><a href="#h3-0-12" id="h3-0-12" class="i">+    *)
+</a><a href="#h3-0-13" id="h3-0-13" class="i">+        $1
+</a><a href="#h3-0-14" id="h3-0-14" class="i">+esac
+</a><a href="#h3-0-15" id="h3-0-15" class="i">+
+</a><a href="#h3-0-16" id="h3-0-16" class="i">+# vim: set ft=sh :
+</a><b>diff --git a/<a id="h4" href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a> b/<a href="../file/wmrc/.scripts/startwmutils.html">wmrc/.scripts/startwmutils</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -1,10 +0,0 @@
+</a><a href="#h4-0-0" id="h4-0-0" class="d">-#
+</a><a href="#h4-0-1" id="h4-0-1" class="d">-# Starts the environment
+</a><a href="#h4-0-2" id="h4-0-2" class="d">-# (c) tudurom 2016 - wtfpl
+</a><a href="#h4-0-3" id="h4-0-3" class="d">-#
+</a><a href="#h4-0-4" id="h4-0-4" class="d">-
+</a><a href="#h4-0-5" id="h4-0-5" class="d">-wew | wewhandle &amp;
+</a><a href="#h4-0-6" id="h4-0-6" class="d">-groupbar &amp;
+</a><a href="#h4-0-7" id="h4-0-7" class="d">-xwait
+</a><a href="#h4-0-8" id="h4-0-8" class="d">-
+</a><a href="#h4-0-9" id="h4-0-9" class="d">-# vim: set ft=sh :
+</a><b>diff --git a/<a id="h5" href="../file/x/.xinitrc.html">x/.xinitrc</a> b/<a href="../file/x/.xinitrc.html">x/.xinitrc</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -71,5 +71,4 @@ wall-e &amp;
+</a> # }}}
+ 
+ statusbar &amp;
+<a href="#h5-0-3" id="h5-0-3" class="d">-sxhkd -c ~/.config/sxhkd/sxhkdrc_cwm ~/.config/sxhkd/commons &amp;
+</a><a href="#h5-0-4" id="h5-0-4" class="d">-exec cwm
+</a><a href="#h5-0-5" id="h5-0-5" class="i">+exec startwm cwm
+</a></pre>
+</div>
+</body>
+</html>

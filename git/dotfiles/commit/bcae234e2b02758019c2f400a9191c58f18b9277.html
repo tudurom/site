@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>back on linux! - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/bcae234e2b02758019c2f400a9191c58f18b9277.html">bcae234e2b02758019c2f400a9191c58f18b9277</a>
+<b>parent</b> <a href="../commit/57f9014a8a050097605e0929614e9b36adc2c931.html">57f9014a8a050097605e0929614e9b36adc2c931</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Jun 10 22:00:12 +0300
+
+back on linux!
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">gtk/.config/gtk-3.0/settings.ini</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h1">mpd/.mpd/mpd.conf</a></td><td> | </td><td class="num">9</td><td><span class="i">++++++</span><span class="d">---</span></td></tr>
+<tr><td><a href="#h2">wmrc/.config/sxhkd/commons</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h3">wmrc/.scripts/statusbar</a></td><td> | </td><td class="num">16</td><td><span class="i">++++++++</span><span class="d">--------</span></td></tr>
+<tr><td><a href="#h4">x/.xinitrc</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h5">xmodmap/.xmodmaprc</a></td><td> | </td><td class="num">13</td><td><span class="i">+++++++</span><span class="d">------</span></td></tr>
+</table>6 files changed, 25 insertions(+), 21 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/gtk/.config/gtk-3.0/settings.ini.html">gtk/.config/gtk-3.0/settings.ini</a> b/<a href="../file/gtk/.config/gtk-3.0/settings.ini.html">gtk/.config/gtk-3.0/settings.ini</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,5 +1,5 @@
+</a> [Settings]
+<a href="#h0-0-1" id="h0-0-1" class="d">-gtk-theme-name=oomox-cloudy
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+gtk-theme-name=cloudy-gtk
+</a> gtk-icon-theme-name=Adwaita
+ gtk-font-name=Share 13
+ gtk-cursor-theme-name=HumanAzul
+<b>diff --git a/<a id="h1" href="../file/mpd/.mpd/mpd.conf.html">mpd/.mpd/mpd.conf</a> b/<a href="../file/mpd/.mpd/mpd.conf.html">mpd/.mpd/mpd.conf</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -6,9 +6,12 @@ pid_file           &quot;/home/tudurom/.mpd/mpd.pid&quot;
+</a> state_file         &quot;/home/tudurom/.mpd/mpdstate&quot;
+ gapless_mp3_playback &quot;yes&quot;
+ audio_output {
+<a href="#h1-0-3" id="h1-0-3" class="d">-  type &quot;oss&quot;
+</a><a href="#h1-0-4" id="h1-0-4" class="d">-  name &quot;OSS Device&quot;
+</a><a href="#h1-0-5" id="h1-0-5" class="d">-  mixer_control &quot;vol&quot;
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+    type &quot;alsa&quot;
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+    name &quot;MPD alsa&quot;
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+    device &quot;hw:0,0&quot;
+</a><a href="#h1-0-9" id="h1-0-9" class="i">+    auto_resample &quot;no&quot;
+</a><a href="#h1-0-10" id="h1-0-10" class="i">+    auto_format &quot;no&quot;
+</a><a href="#h1-0-11" id="h1-0-11" class="i">+    auto_channels &quot;no&quot;
+</a> }
+ audio_output {
+   type &quot;fifo&quot;
+<b>diff --git a/<a id="h2" href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a> b/<a href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -3,7 +3,7 @@ super + Escape
+</a>   pkill -USR1 -x sxhkd
+ 
+ super + Return
+<a href="#h2-0-3" id="h2-0-3" class="d">-  urxvtcd
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+  urxvt
+</a> 
+ super + space
+   dmenu_run
+<b>diff --git a/<a id="h3" href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a> b/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -107,14 +107,14 @@ is_int() {
+</a> 
+   # Battery status
+   while true; do
+<a href="#h3-0-3" id="h3-0-3" class="d">-    batt_status=&quot;$(apm -b)&quot;
+</a><a href="#h3-0-4" id="h3-0-4" class="d">-    batt_percentage=&quot;$(apm -l)&quot;
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+    batt_status=&quot;$(cat /sys/class/power_supply/BAT0/status)&quot;
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+    batt_percentage=&quot;$(cat /sys/class/power_supply/BAT0/capacity)&quot;
+</a>     # Icons
+<a href="#h3-0-8" id="h3-0-8" class="d">-    if [ &quot;$batt_status&quot; -eq 3 ]; then
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+    if [ &quot;$batt_status&quot; = &quot;Charging&quot; ]; then
+</a>       BATT_ICON=&quot;&quot;
+<a href="#h3-0-11" id="h3-0-11" class="d">-    elif [ &quot;$batt_status&quot; -eq 0 ]; then
+</a><a href="#h3-0-12" id="h3-0-12" class="i">+    elif [ &quot;$batt_percentage&quot; -gt 50 ]; then
+</a>       BATT_ICON=&quot;&quot;
+<a href="#h3-0-14" id="h3-0-14" class="d">-    elif [ &quot;$batt_status&quot; -eq 1 ]; then
+</a><a href="#h3-0-15" id="h3-0-15" class="i">+    elif [ &quot;$batt_percentage&quot; -gt 30 ]; then
+</a>       BATT_ICON=&quot;&quot;
+     else
+       BATT_ICON=&quot;&quot;
+<a href="#h3-1" id="h3-1" class="h">@@ -125,9 +125,9 @@ is_int() {
+</a> 
+   # Volume
+   while true; do
+<a href="#h3-1-3" id="h3-1-3" class="d">-    pcm=$(mixer -S pcm | cut -d&apos;:&apos; -f2)
+</a><a href="#h3-1-4" id="h3-1-4" class="d">-    volume=$(mixer -S vol | cut -d&apos;:&apos; -f2)
+</a><a href="#h3-1-5" id="h3-1-5" class="d">-    if [ &quot;$pcm&quot; -gt 0 ]; then
+</a><a href="#h3-1-6" id="h3-1-6" class="i">+    mute=$(amixer get Master | sed -n 5p | cut -d&apos; &apos; -f8)
+</a><a href="#h3-1-7" id="h3-1-7" class="i">+    volume=$(amixer get Master | sed -n 5p | cut -d&apos; &apos; -f5)
+</a><a href="#h3-1-8" id="h3-1-8" class="i">+    if [ &quot;$mute&quot; = &quot;[on]&quot; ]; then
+</a>       if [ $volume -ge 50 ]; then
+         vicon=
+       else
+<b>diff --git a/<a id="h4" href="../file/x/.xinitrc.html">x/.xinitrc</a> b/<a href="../file/x/.xinitrc.html">x/.xinitrc</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -56,8 +56,8 @@ screenlayout
+</a> # unclutter -b
+ 
+ # Music!
+<a href="#h4-0-3" id="h4-0-3" class="d">-if ! pidof musicpd; then
+</a><a href="#h4-0-4" id="h4-0-4" class="d">-  musicpd &amp;
+</a><a href="#h4-0-5" id="h4-0-5" class="i">+if ! pidof mpd; then
+</a><a href="#h4-0-6" id="h4-0-6" class="i">+  mpd &amp;
+</a> fi
+ # Set cursor from X to pointer
+ xsetroot -cursor_name left_ptr &amp;
+<b>diff --git a/<a id="h5" href="../file/xmodmap/.xmodmaprc.html">xmodmap/.xmodmaprc</a> b/<a href="../file/xmodmap/.xmodmaprc.html">xmodmap/.xmodmaprc</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -6,9 +6,10 @@ remove Shift = Caps_Lock
+</a> ! make caps esc
+ keysym Caps_Lock = Escape
+ 
+<a href="#h5-0-3" id="h5-0-3" class="d">-keycode 92 = XF86AudioPlay
+</a><a href="#h5-0-4" id="h5-0-4" class="d">-keycode 170 = XF86AudioStop
+</a><a href="#h5-0-5" id="h5-0-5" class="d">-keycode 184 = XF86AudioPrev
+</a><a href="#h5-0-6" id="h5-0-6" class="d">-keycode 189 = XF86AudioMute
+</a><a href="#h5-0-7" id="h5-0-7" class="d">-keycode 207 = XF86AudioRaiseVolume
+</a><a href="#h5-0-8" id="h5-0-8" class="d">-keycode 190 = XF86AudioLowerVolume
+</a><a href="#h5-0-9" id="h5-0-9" class="i">+! FreeBSD hackery
+</a><a href="#h5-0-10" id="h5-0-10" class="i">+! keycode 92 = XF86AudioPlay
+</a><a href="#h5-0-11" id="h5-0-11" class="i">+! keycode 170 = XF86AudioStop
+</a><a href="#h5-0-12" id="h5-0-12" class="i">+! keycode 184 = XF86AudioPrev
+</a><a href="#h5-0-13" id="h5-0-13" class="i">+! keycode 189 = XF86AudioMute
+</a><a href="#h5-0-14" id="h5-0-14" class="i">+! keycode 207 = XF86AudioRaiseVolume
+</a><a href="#h5-0-15" id="h5-0-15" class="i">+! keycode 190 = XF86AudioLowerVolume
+</a></pre>
+</div>
+</body>
+</html>

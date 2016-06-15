@@ -4,6 +4,176 @@
 <subtitle>Small loan of configuration files.
 </subtitle>
 <entry>
+<id>11ca0d6a23770b8629885763fbdaecd1def6de6d</id>
+<published>2016-06-15T15:25:55Z</published>
+<updated>2016-06-15T15:25:55Z</updated>
+<title type="text">added submodules</title>
+<link rel="alternate" type="text/html" href="commit/11ca0d6a23770b8629885763fbdaecd1def6de6d.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 11ca0d6a23770b8629885763fbdaecd1def6de6d
+parent 21dc3b8e0caab1a289b664f284b473289289e30d
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Jun 15 18:25:55 +0300
+
+added submodules
+
+</content>
+</entry>
+<entry>
+<id>21dc3b8e0caab1a289b664f284b473289289e30d</id>
+<published>2016-06-15T14:46:55Z</published>
+<updated>2016-06-15T14:46:55Z</updated>
+<title type="text">sloop</title>
+<link rel="alternate" type="text/html" href="commit/21dc3b8e0caab1a289b664f284b473289289e30d.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 21dc3b8e0caab1a289b664f284b473289289e30d
+parent d6e642f47044ade25054f1dd5f838b56d0ff7cd3
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Jun 15 17:46:55 +0300
+
+sloop
+
+</content>
+</entry>
+<entry>
+<id>d6e642f47044ade25054f1dd5f838b56d0ff7cd3</id>
+<published>2016-06-11T21:28:49Z</published>
+<updated>2016-06-11T21:28:49Z</updated>
+<title type="text">misc linux fixes</title>
+<link rel="alternate" type="text/html" href="commit/d6e642f47044ade25054f1dd5f838b56d0ff7cd3.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit d6e642f47044ade25054f1dd5f838b56d0ff7cd3
+parent 56a90546086201d5f9e77daf0beb7e1792716575
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun Jun 12 00:28:49 +0300
+
+misc linux fixes
+
+</content>
+</entry>
+<entry>
+<id>56a90546086201d5f9e77daf0beb7e1792716575</id>
+<published>2016-06-10T19:24:27Z</published>
+<updated>2016-06-10T19:24:27Z</updated>
+<title type="text">fixes part 2</title>
+<link rel="alternate" type="text/html" href="commit/56a90546086201d5f9e77daf0beb7e1792716575.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 56a90546086201d5f9e77daf0beb7e1792716575
+parent bcae234e2b02758019c2f400a9191c58f18b9277
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun 10 22:24:27 +0300
+
+fixes part 2
+
+</content>
+</entry>
+<entry>
+<id>bcae234e2b02758019c2f400a9191c58f18b9277</id>
+<published>2016-06-10T19:00:12Z</published>
+<updated>2016-06-10T19:00:12Z</updated>
+<title type="text">back on linux!</title>
+<link rel="alternate" type="text/html" href="commit/bcae234e2b02758019c2f400a9191c58f18b9277.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit bcae234e2b02758019c2f400a9191c58f18b9277
+parent 57f9014a8a050097605e0929614e9b36adc2c931
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun 10 22:00:12 +0300
+
+back on linux!
+
+</content>
+</entry>
+<entry>
+<id>57f9014a8a050097605e0929614e9b36adc2c931</id>
+<published>2016-06-10T12:07:08Z</published>
+<updated>2016-06-10T12:07:08Z</updated>
+<title type="text">vim: cleanup</title>
+<link rel="alternate" type="text/html" href="commit/57f9014a8a050097605e0929614e9b36adc2c931.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 57f9014a8a050097605e0929614e9b36adc2c931
+parent 27b0aa9e63c540d5699d6050ae6072f4d3ee6d11
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun 10 15:07:08 +0300
+
+vim: cleanup
+
+</content>
+</entry>
+<entry>
+<id>27b0aa9e63c540d5699d6050ae6072f4d3ee6d11</id>
+<published>2016-06-10T11:35:09Z</published>
+<updated>2016-06-10T11:35:09Z</updated>
+<title type="text">vim completion</title>
+<link rel="alternate" type="text/html" href="commit/27b0aa9e63c540d5699d6050ae6072f4d3ee6d11.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 27b0aa9e63c540d5699d6050ae6072f4d3ee6d11
+parent 59c1fd1f3c30981063bc79cd402bb158a88d513b
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun 10 14:35:09 +0300
+
+vim completion
+
+</content>
+</entry>
+<entry>
+<id>59c1fd1f3c30981063bc79cd402bb158a88d513b</id>
+<published>2016-06-09T18:49:47Z</published>
+<updated>2016-06-09T18:49:47Z</updated>
+<title type="text">clean shell dir</title>
+<link rel="alternate" type="text/html" href="commit/59c1fd1f3c30981063bc79cd402bb158a88d513b.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 59c1fd1f3c30981063bc79cd402bb158a88d513b
+parent 2b794832e6e750e12b2c9bec143883a4958410a1
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Jun  9 21:49:47 +0300
+
+clean shell dir
+
+</content>
+</entry>
+<entry>
+<id>2b794832e6e750e12b2c9bec143883a4958410a1</id>
+<published>2016-06-08T11:48:04Z</published>
+<updated>2016-06-08T11:48:04Z</updated>
+<title type="text">misc</title>
+<link rel="alternate" type="text/html" href="commit/2b794832e6e750e12b2c9bec143883a4958410a1.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 2b794832e6e750e12b2c9bec143883a4958410a1
+parent c48f4968f0a0cb10952ed770e7b9ef707fe9cf58
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Jun  8 14:48:04 +0300
+
+misc
+
+</content>
+</entry>
+<entry>
+<id>c48f4968f0a0cb10952ed770e7b9ef707fe9cf58</id>
+<published>2016-06-05T19:01:46Z</published>
+<updated>2016-06-05T19:01:46Z</updated>
+<title type="text">now using urxvt</title>
+<link rel="alternate" type="text/html" href="commit/c48f4968f0a0cb10952ed770e7b9ef707fe9cf58.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit c48f4968f0a0cb10952ed770e7b9ef707fe9cf58
+parent 49a2e4ef589b5acc4ad92e207da384dd094ad11e
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun Jun  5 22:01:46 +0300
+
+now using urxvt
+
+</content>
+</entry>
+<entry>
 <id>49a2e4ef589b5acc4ad92e207da384dd094ad11e</id>
 <published>2016-06-04T10:31:51Z</published>
 <updated>2016-06-04T10:31:51Z</updated>
@@ -1535,176 +1705,6 @@ Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
 Date:   Wed Mar 30 19:43:35 +0300
 
 metis
-
-</content>
-</entry>
-<entry>
-<id>44ec8ee7d3ed2062fc5ece1a8e25e70b5df93432</id>
-<published>2016-03-30T14:52:06Z</published>
-<updated>2016-03-30T14:52:06Z</updated>
-<title type="text">thingz</title>
-<link rel="alternate" type="text/html" href="commit/44ec8ee7d3ed2062fc5ece1a8e25e70b5df93432.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit 44ec8ee7d3ed2062fc5ece1a8e25e70b5df93432
-parent 9e9a54b8be809289e44f4379bfc93a774a3eaed0
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Wed Mar 30 17:52:06 +0300
-
-thingz
-
-</content>
-</entry>
-<entry>
-<id>9e9a54b8be809289e44f4379bfc93a774a3eaed0</id>
-<published>2016-03-28T16:00:28Z</published>
-<updated>2016-03-28T16:00:28Z</updated>
-<title type="text">CCCLLLLEEEEAAAANNNUUPP!</title>
-<link rel="alternate" type="text/html" href="commit/9e9a54b8be809289e44f4379bfc93a774a3eaed0.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit 9e9a54b8be809289e44f4379bfc93a774a3eaed0
-parent c2e996e143192ca8de4f2cd239c9b825ef471609
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Mon Mar 28 19:00:28 +0300
-
-CCCLLLLEEEEAAAANNNUUPP!
-
-</content>
-</entry>
-<entry>
-<id>c2e996e143192ca8de4f2cd239c9b825ef471609</id>
-<published>2016-03-28T14:57:34Z</published>
-<updated>2016-03-28T14:57:34Z</updated>
-<title type="text">raspbbery pi ssh shortcut</title>
-<link rel="alternate" type="text/html" href="commit/c2e996e143192ca8de4f2cd239c9b825ef471609.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit c2e996e143192ca8de4f2cd239c9b825ef471609
-parent 013eff703a4d2510ea3880b8855e3993f75532d5
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Mon Mar 28 17:57:34 +0300
-
-raspbbery pi ssh shortcut
-
-</content>
-</entry>
-<entry>
-<id>013eff703a4d2510ea3880b8855e3993f75532d5</id>
-<published>2016-03-28T12:16:22Z</published>
-<updated>2016-03-28T12:16:22Z</updated>
-<title type="text">THUNDERSTORM!</title>
-<link rel="alternate" type="text/html" href="commit/013eff703a4d2510ea3880b8855e3993f75532d5.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit 013eff703a4d2510ea3880b8855e3993f75532d5
-parent 66098e75bdf41377dc87f915cd8ed62e1beda09a
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Mon Mar 28 15:16:22 +0300
-
-THUNDERSTORM!
-
-</content>
-</entry>
-<entry>
-<id>66098e75bdf41377dc87f915cd8ed62e1beda09a</id>
-<published>2016-03-28T11:39:12Z</published>
-<updated>2016-03-28T11:39:12Z</updated>
-<title type="text">rm</title>
-<link rel="alternate" type="text/html" href="commit/66098e75bdf41377dc87f915cd8ed62e1beda09a.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit 66098e75bdf41377dc87f915cd8ed62e1beda09a
-parent 9493bbaa35a8ed055bfac67a91ac5fdab0165fd0
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Mon Mar 28 14:39:12 +0300
-
-rm
-
-</content>
-</entry>
-<entry>
-<id>9493bbaa35a8ed055bfac67a91ac5fdab0165fd0</id>
-<published>2016-03-26T12:23:37Z</published>
-<updated>2016-03-26T12:23:37Z</updated>
-<title type="text">revert changes</title>
-<link rel="alternate" type="text/html" href="commit/9493bbaa35a8ed055bfac67a91ac5fdab0165fd0.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit 9493bbaa35a8ed055bfac67a91ac5fdab0165fd0
-parent d95b0e52d968775877f1327d5830b05bdbbf4347
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Sat Mar 26 14:23:37 +0200
-
-revert changes
-
-</content>
-</entry>
-<entry>
-<id>d95b0e52d968775877f1327d5830b05bdbbf4347</id>
-<published>2016-03-25T20:21:29Z</published>
-<updated>2016-03-25T20:21:29Z</updated>
-<title type="text">#nixerschallenge</title>
-<link rel="alternate" type="text/html" href="commit/d95b0e52d968775877f1327d5830b05bdbbf4347.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit d95b0e52d968775877f1327d5830b05bdbbf4347
-parent 5c6610690f46375d36f3a8a3d51f237dabd22c7d
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Fri Mar 25 22:21:29 +0200
-
-#nixerschallenge
-
-</content>
-</entry>
-<entry>
-<id>5c6610690f46375d36f3a8a3d51f237dabd22c7d</id>
-<published>2016-03-23T18:29:09Z</published>
-<updated>2016-03-23T18:29:09Z</updated>
-<title type="text">Quirk</title>
-<link rel="alternate" type="text/html" href="commit/5c6610690f46375d36f3a8a3d51f237dabd22c7d.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit 5c6610690f46375d36f3a8a3d51f237dabd22c7d
-parent 075e9a3dc57d59593e58057ccef43be8cabe02e1
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Wed Mar 23 20:29:09 +0200
-
-Quirk
-
-</content>
-</entry>
-<entry>
-<id>075e9a3dc57d59593e58057ccef43be8cabe02e1</id>
-<published>2016-03-23T17:41:04Z</published>
-<updated>2016-03-23T17:41:04Z</updated>
-<title type="text">Added timer script</title>
-<link rel="alternate" type="text/html" href="commit/075e9a3dc57d59593e58057ccef43be8cabe02e1.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit 075e9a3dc57d59593e58057ccef43be8cabe02e1
-parent 299ee0b01e9ae14bc9e4bda557b45df9e00dbf7a
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Wed Mar 23 19:41:04 +0200
-
-Added timer script
-
-</content>
-</entry>
-<entry>
-<id>299ee0b01e9ae14bc9e4bda557b45df9e00dbf7a</id>
-<published>2016-03-23T13:03:25Z</published>
-<updated>2016-03-23T13:03:25Z</updated>
-<title type="text">Make st bigger</title>
-<link rel="alternate" type="text/html" href="commit/299ee0b01e9ae14bc9e4bda557b45df9e00dbf7a.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit 299ee0b01e9ae14bc9e4bda557b45df9e00dbf7a
-parent a3b3c1a579ddd365c22cfe836add6c33170c2dcf
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Wed Mar 23 15:03:25 +0200
-
-Make st bigger
 
 </content>
 </entry>
