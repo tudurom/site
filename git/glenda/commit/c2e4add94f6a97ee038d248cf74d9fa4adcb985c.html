@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>alpha-beta! - glenda - Program that plays the Flood Wars game for a contest.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="glenda.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>glenda</h1><span class="desc">Program that plays the Flood Wars game for a contest.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/glenda.git">git://thetudor.ddns.net/glenda.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/c2e4add94f6a97ee038d248cf74d9fa4adcb985c.html">c2e4add94f6a97ee038d248cf74d9fa4adcb985c</a>
+<b>parent</b> <a href="../commit/f6415fe5f0496dc65bd145e40fcc65342e95605c.html">f6415fe5f0496dc65bd145e40fcc65342e95605c</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Tue Jun 14 16:06:43 +0300
+
+alpha-beta!
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">Makefile</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h1">glenda.c</a></td><td> | </td><td class="num">95</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++</span><span class="d">--------------------------------------</span></td></tr>
+</table>2 files changed, 51 insertions(+), 48 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/Makefile.html">Makefile</a> b/<a href="../file/Makefile.html">Makefile</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="d">-CFLAGS=-Wall -O2 -DD=1
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+CFLAGS=-Wall -O2 #-DD=1
+</a> NAME = glenda
+ FILE = glenda.c
+ 
+<a href="#h0-1" id="h0-1" class="h">@@ -6,4 +6,4 @@ glenda: $(FILE)
+</a> 	$(CC) -o $(NAME) $(FILE) $(CFLAGS)
+ 
+ clean:
+<a href="#h0-1-3" id="h0-1-3" class="d">-	rm $(NAME) $(NAME).old
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+	rm $(NAME)
+</a><b>diff --git a/<a id="h1" href="../file/glenda.c.html">glenda.c</a> b/<a href="../file/glenda.c.html">glenda.c</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -46,7 +46,7 @@ http://glenda.cat-v.org/
+</a> 
+ #define COLORS 5
+ 
+<a href="#h1-0-3" id="h1-0-3" class="d">-#define DEPTH 5
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+#define DEPTH 8
+</a> 
+ #define S -1
+ #define J +1
+<a href="#h1-1" id="h1-1" class="h">@@ -73,6 +73,7 @@ int board_lines, board_cols;
+</a> unsigned char colors[COLORS] = {&apos;@&apos;, &apos;#&apos;, &apos;+&apos;, &apos;.&apos;, &apos;*&apos;};
+ 
+ short fill_counter = 0;
+<a href="#h1-1-3" id="h1-1-3" class="i">+char (*fill_board)[MAX_COL + 2];
+</a> 
+ unsigned char positional_color;
+ char positional_corner;
+<a href="#h1-2" id="h1-2" class="h">@@ -99,32 +100,35 @@ inline void get_corner(char current_player, unsigned char *lin, unsigned char *c
+</a> /* }}} */
+ 
+ /* Initialize fill variables {{{ */
+<a href="#h1-2-3" id="h1-2-3" class="d">-inline void prepare_fill() {
+</a><a href="#h1-2-4" id="h1-2-4" class="i">+inline void prepare_fill(char (*myboard)[MAX_COL + 2]) {
+</a>     fill_counter = 0;
+<a href="#h1-2-6" id="h1-2-6" class="i">+    fill_board = myboard;
+</a> }
+ 
+<a href="#h1-2-9" id="h1-2-9" class="d">-inline void prepare_positional(unsigned char color, char corner) {
+</a><a href="#h1-2-10" id="h1-2-10" class="i">+inline void prepare_positional(char (*myboard)[MAX_COL + 2], unsigned char color, char corner) {
+</a><a href="#h1-2-11" id="h1-2-11" class="i">+    fill_counter = 0;
+</a>     positional_color = color;
+     positional_corner = corner;
+     limit_v = 0;
+     limit_h = 0;
+     dist_min = INFINITY;
+<a href="#h1-2-17" id="h1-2-17" class="i">+    fill_board = myboard;
+</a> }
+ /* }}} */
+ 
+ /* Replace and fill at specified coordinates {{{ */
+ /* Stores the amount of filled squares in fill_counter */
+<a href="#h1-2-23" id="h1-2-23" class="d">-void fill(char (*myboard)[MAX_COL + 2], unsigned char lin, unsigned char col, unsigned char color_old, unsigned char color_new) {
+</a><a href="#h1-2-24" id="h1-2-24" class="d">-    myboard[lin + 1][col + 1] = color_new;
+</a><a href="#h1-2-25" id="h1-2-25" class="i">+void fill(unsigned char lin, unsigned char col, unsigned char color_old, unsigned char color_new) {
+</a><a href="#h1-2-26" id="h1-2-26" class="i">+    fill_board[lin + 1][col + 1] = color_new;
+</a>     fill_counter++;
+<a href="#h1-2-28" id="h1-2-28" class="d">-    if (myboard[1 + lin - 1][1 + col] == color_old)
+</a><a href="#h1-2-29" id="h1-2-29" class="d">-        fill(myboard, lin - 1, col, color_old, color_new);
+</a><a href="#h1-2-30" id="h1-2-30" class="d">-    if (myboard[1 + lin + 1][1 + col] == color_old)
+</a><a href="#h1-2-31" id="h1-2-31" class="d">-        fill(myboard, lin + 1, col, color_old, color_new);
+</a><a href="#h1-2-32" id="h1-2-32" class="d">-    if (myboard[1 + lin][1 + col - 1] == color_old)
+</a><a href="#h1-2-33" id="h1-2-33" class="d">-        fill(myboard, lin, col - 1, color_old, color_new);
+</a><a href="#h1-2-34" id="h1-2-34" class="d">-    if (myboard[1 + lin][1 + col + 1] == color_old)
+</a><a href="#h1-2-35" id="h1-2-35" class="d">-        fill(myboard, lin, col + 1, color_old, color_new);
+</a><a href="#h1-2-36" id="h1-2-36" class="i">+    if (fill_board[1 + lin - 1][1 + col] == color_old)
+</a><a href="#h1-2-37" id="h1-2-37" class="i">+        fill(lin - 1, col, color_old, color_new);
+</a><a href="#h1-2-38" id="h1-2-38" class="i">+    if (fill_board[1 + lin + 1][1 + col] == color_old)
+</a><a href="#h1-2-39" id="h1-2-39" class="i">+        fill(lin + 1, col, color_old, color_new);
+</a><a href="#h1-2-40" id="h1-2-40" class="i">+    if (fill_board[1 + lin][1 + col - 1] == color_old)
+</a><a href="#h1-2-41" id="h1-2-41" class="i">+        fill(lin, col - 1, color_old, color_new);
+</a><a href="#h1-2-42" id="h1-2-42" class="i">+    if (fill_board[1 + lin][1 + col + 1] == color_old)
+</a><a href="#h1-2-43" id="h1-2-43" class="i">+        fill(lin, col + 1, color_old, color_new);
+</a> }
+ /* }}} */
+ 
+<a href="#h1-3" id="h1-3" class="h">@@ -136,19 +140,20 @@ inline short get_material_score(char (*myboard)[MAX_COL + 2], unsigned char lin,
+</a>     memcpy(score_board, myboard, sizeof(score_board));
+ 
+     /* Fill with infinity */
+<a href="#h1-3-3" id="h1-3-3" class="d">-    prepare_fill();
+</a><a href="#h1-3-4" id="h1-3-4" class="d">-    fill(score_board, lin, col, score_board[lin + 1][col + 1], INFINITY);
+</a><a href="#h1-3-5" id="h1-3-5" class="i">+    prepare_fill(myboard);
+</a><a href="#h1-3-6" id="h1-3-6" class="i">+    fill(lin, col, score_board[lin + 1][col + 1], INFINITY);
+</a> 
+     return fill_counter;
+ }
+ /* }}} */
+ 
+ /* Get positional score {{{ */
+<a href="#h1-3-13" id="h1-3-13" class="d">-void get_positional_score(char (*myboard)[MAX_COL + 2], unsigned char lin, unsigned char col) {
+</a><a href="#h1-3-14" id="h1-3-14" class="i">+void get_positional_score(unsigned char lin, unsigned char col) {
+</a>     unsigned char op_x, op_y;
+     char v, h;
+     /* don&apos;t go back */
+<a href="#h1-3-18" id="h1-3-18" class="d">-    myboard[lin + 1][col + 1] = INFINITY;
+</a><a href="#h1-3-19" id="h1-3-19" class="i">+    fill_counter++;
+</a><a href="#h1-3-20" id="h1-3-20" class="i">+    fill_board[lin + 1][col + 1] = INFINITY;
+</a> 
+     /* v is the vertical limit, h is the horizontal limit */
+     if (positional_corner == J) {
+<a href="#h1-4" id="h1-4" class="h">@@ -172,14 +177,14 @@ void get_positional_score(char (*myboard)[MAX_COL + 2], unsigned char lin, unsig
+</a>     if (abs(lin - op_y) + abs(col - op_x) &lt; dist_min)
+         dist_min = abs(lin - op_y) + abs(col - op_x);
+ 
+<a href="#h1-4-3" id="h1-4-3" class="d">-    if (myboard[1 + lin - 1][1 + col] == positional_color)
+</a><a href="#h1-4-4" id="h1-4-4" class="d">-        get_positional_score(myboard, lin - 1, col);
+</a><a href="#h1-4-5" id="h1-4-5" class="d">-    if (myboard[1 + lin + 1][1 + col] == positional_color)
+</a><a href="#h1-4-6" id="h1-4-6" class="d">-        get_positional_score(myboard, lin + 1, col);
+</a><a href="#h1-4-7" id="h1-4-7" class="d">-    if (myboard[1 + lin][1 + col - 1] == positional_color)
+</a><a href="#h1-4-8" id="h1-4-8" class="d">-        get_positional_score(myboard, lin, col - 1);
+</a><a href="#h1-4-9" id="h1-4-9" class="d">-    if (myboard[1 + lin][1 + col + 1] == positional_color)
+</a><a href="#h1-4-10" id="h1-4-10" class="d">-        get_positional_score(myboard, lin, col + 1);
+</a><a href="#h1-4-11" id="h1-4-11" class="i">+    if (fill_board[1 + lin - 1][1 + col] == positional_color)
+</a><a href="#h1-4-12" id="h1-4-12" class="i">+        get_positional_score(lin - 1, col);
+</a><a href="#h1-4-13" id="h1-4-13" class="i">+    if (fill_board[1 + lin + 1][1 + col] == positional_color)
+</a><a href="#h1-4-14" id="h1-4-14" class="i">+        get_positional_score(lin + 1, col);
+</a><a href="#h1-4-15" id="h1-4-15" class="i">+    if (fill_board[1 + lin][1 + col - 1] == positional_color)
+</a><a href="#h1-4-16" id="h1-4-16" class="i">+        get_positional_score(lin, col - 1);
+</a><a href="#h1-4-17" id="h1-4-17" class="i">+    if (fill_board[1 + lin][1 + col + 1] == positional_color)
+</a><a href="#h1-4-18" id="h1-4-18" class="i">+        get_positional_score(lin, col + 1);
+</a> }
+ /* }}} */
+ 
+<a href="#h1-5" id="h1-5" class="h">@@ -232,12 +237,12 @@ inline unsigned char color_to_char(unsigned char color_char) {
+</a> /* }}} */
+ 
+ /* Minimax {{{ */
+<a href="#h1-5-3" id="h1-5-3" class="d">-int minimax(char (*myboard)[MAX_COL + 2], unsigned char depth, char player) {
+</a><a href="#h1-5-4" id="h1-5-4" class="i">+int minimax(char (*myboard)[MAX_COL + 2], unsigned char depth, char player, int alpha, int beta) {
+</a>     char copy_board[MAX_LIN + 2][MAX_COL + 2];
+     unsigned char me_lin, me_col, op_lin, op_col;
+     unsigned char me, op;
+     unsigned char color;
+<a href="#h1-5-9" id="h1-5-9" class="d">-    int score;
+</a><a href="#h1-5-10" id="h1-5-10" class="i">+    int score, val;
+</a> 
+     memcpy(copy_board, myboard, sizeof(copy_board));
+ 
+<a href="#h1-6" id="h1-6" class="h">@@ -246,14 +251,7 @@ int minimax(char (*myboard)[MAX_COL + 2], unsigned char depth, char player) {
+</a> 
+     /* calculate score for the above table in the tree */
+     if (depth == 0) {
+<a href="#h1-6-3" id="h1-6-3" class="d">-        score = MATERIAL_WEIGHT * (get_material_score(copy_board, me_lin, me_col) - get_material_score(copy_board, op_lin, op_col));
+</a><a href="#h1-6-4" id="h1-6-4" class="d">-        /*
+</a><a href="#h1-6-5" id="h1-6-5" class="d">-        prepare_positional(copy_board[me_lin + 1][me_col + 1], player);
+</a><a href="#h1-6-6" id="h1-6-6" class="d">-        get_positional_score(copy_board, me_lin, me_col);
+</a><a href="#h1-6-7" id="h1-6-7" class="d">-        score += AREA_WEIGHT * (limit_v + 1) * (limit_h + 1);
+</a><a href="#h1-6-8" id="h1-6-8" class="d">-        score += DIST_WEIGHT * dist_min;
+</a><a href="#h1-6-9" id="h1-6-9" class="d">-        score /= (MATERIAL_WEIGHT + AREA_WEIGHT + DIST_WEIGHT) / 3;
+</a><a href="#h1-6-10" id="h1-6-10" class="d">-        */
+</a><a href="#h1-6-11" id="h1-6-11" class="i">+        score = get_material_score(copy_board, me_lin, me_col) - get_material_score(copy_board, op_lin, op_col);
+</a> 
+         return score;
+     }
+<a href="#h1-7" id="h1-7" class="h">@@ -261,13 +259,17 @@ int minimax(char (*myboard)[MAX_COL + 2], unsigned char depth, char player) {
+</a>     me = myboard[me_lin + 1][me_col + 1];
+     op = myboard[op_lin + 1][op_col + 1];
+     score = -INT_INFINITY;
+<a href="#h1-7-3" id="h1-7-3" class="d">-    for (color = 0; color &lt; COLORS; color++) {
+</a><a href="#h1-7-4" id="h1-7-4" class="i">+    color = 0;
+</a><a href="#h1-7-5" id="h1-7-5" class="i">+    while (alpha &lt; beta &amp;&amp; color &lt; COLORS) {
+</a>         memcpy(copy_board, myboard, sizeof(copy_board));
+         if (color != me &amp;&amp; color != op) {
+<a href="#h1-7-8" id="h1-7-8" class="d">-            prepare_fill();
+</a><a href="#h1-7-9" id="h1-7-9" class="d">-            fill(copy_board, me_lin, me_col, copy_board[me_lin + 1][me_col + 1], color);
+</a><a href="#h1-7-10" id="h1-7-10" class="d">-            score = max(score, -minimax(copy_board, depth - 1, -player));
+</a><a href="#h1-7-11" id="h1-7-11" class="i">+            prepare_fill(copy_board);
+</a><a href="#h1-7-12" id="h1-7-12" class="i">+            fill(me_lin, me_col, copy_board[me_lin + 1][me_col + 1], color);
+</a><a href="#h1-7-13" id="h1-7-13" class="i">+            val = -minimax(copy_board, depth - 1, -player, -beta, -alpha);
+</a><a href="#h1-7-14" id="h1-7-14" class="i">+            score = max(score, val);
+</a><a href="#h1-7-15" id="h1-7-15" class="i">+            alpha = max(alpha, val);
+</a>         }
+<a href="#h1-7-17" id="h1-7-17" class="i">+        color++;
+</a>     }
+ 
+     return score;
+<a href="#h1-8" id="h1-8" class="h">@@ -328,26 +330,27 @@ int main() { /* {{{ */
+</a>         memcpy(alt_board, board, sizeof(alt_board));
+         if (color != me &amp;&amp; color != op) {
+             /* Do the move */
+<a href="#h1-8-3" id="h1-8-3" class="d">-            prepare_fill();
+</a><a href="#h1-8-4" id="h1-8-4" class="d">-            fill(alt_board, me_lin, me_col, alt_board[me_lin + 1][me_col + 1], color);
+</a><a href="#h1-8-5" id="h1-8-5" class="d">-            //fillcnt = get_material_score(alt_board, me_lin, me_col);
+</a><a href="#h1-8-6" id="h1-8-6" class="d">-            cnt = -minimax(alt_board, DEPTH, -current_player);
+</a><a href="#h1-8-7" id="h1-8-7" class="i">+            prepare_fill(alt_board);
+</a><a href="#h1-8-8" id="h1-8-8" class="i">+            fill(me_lin, me_col, alt_board[me_lin + 1][me_col + 1], color);
+</a><a href="#h1-8-9" id="h1-8-9" class="i">+            fillcnt = get_material_score(alt_board, me_lin, me_col);
+</a><a href="#h1-8-10" id="h1-8-10" class="i">+            cnt = -minimax(alt_board, DEPTH, -current_player, -INT_INFINITY, +INT_INFINITY);
+</a>             debug(&quot;[%c] minimax returned %d\n&quot;, color_to_char(color), cnt);
+             debug(&quot;[%c] filled %d squares\n&quot;, color_to_char(color), fillcnt);
+             if (cnt &gt; maxcnt) {
+                 maxcnt = cnt;
+                 move = color;
+                 maxfillcnt = fillcnt;
+<a href="#h1-8-17" id="h1-8-17" class="d">-            } /*else if (cnt == maxcnt &amp;&amp; fillcnt &gt; maxfillcnt) {
+</a><a href="#h1-8-18" id="h1-8-18" class="i">+            } else if (cnt == maxcnt &amp;&amp; fillcnt &gt; maxfillcnt) {
+</a>                 maxfillcnt = fillcnt;
+                 move = color;
+<a href="#h1-8-21" id="h1-8-21" class="d">-            }*/
+</a><a href="#h1-8-22" id="h1-8-22" class="i">+            }
+</a>             debug(&quot;\n&quot;);
+         }
+     }
+     crash(move != COLORS);
+     /* Do the move */
+<a href="#h1-8-28" id="h1-8-28" class="d">-    fill(board, me_lin, me_col, board[me_lin + 1][me_col + 1], move);
+</a><a href="#h1-8-29" id="h1-8-29" class="i">+    prepare_fill(board);
+</a><a href="#h1-8-30" id="h1-8-30" class="i">+    fill(me_lin, me_col, board[me_lin + 1][me_col + 1], move);
+</a>     /* Output the name of the opponent */
+     if (current_player == S)
+         fputc(&apos;J&apos;, stdout);
+</pre>
+</div>
+</body>
+</html>

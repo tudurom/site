@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>added distance function and cute glenda ascii art - glenda - Program that plays the Flood Wars game for a contest.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="glenda.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>glenda</h1><span class="desc">Program that plays the Flood Wars game for a contest.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/glenda.git">git://thetudor.ddns.net/glenda.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/51e80a30dee908c1dfd5221d2d7c210115f6874c.html">51e80a30dee908c1dfd5221d2d7c210115f6874c</a>
+<b>parent</b> <a href="../commit/9eb5da84c16cdbad1239bc43e5ff0d00f42af24a.html">9eb5da84c16cdbad1239bc43e5ff0d00f42af24a</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat Jun 11 15:33:43 +0300
+
+added distance function and cute glenda ascii art
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">glenda.c</a></td><td> | </td><td class="num">74</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">--------</span></td></tr>
+</table>1 file changed, 66 insertions(+), 8 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/glenda.c.html">glenda.c</a> b/<a href="../file/glenda.c.html">glenda.c</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -3,6 +3,25 @@
+</a>    Nume concurent : Tudor Roman
+    E-mail         : romantudorel@gmail.com
+ */
+<a href="#h0-0-3" id="h0-0-3" class="i">+/*
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+      __
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+     (  \
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+ __   \  &apos;\
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+(  &quot;-_ \ .-&apos;----._
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+ &apos;-_  &quot;v&quot;         &quot;-
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+    &quot;Y&apos;             &quot;.
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+     |                |
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+     |        o     o |
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+     |          .&lt;&gt;.  |
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+      \         &quot;Ll&quot;  |
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+       |             .&apos;
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+       |             |
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+       (             /
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+      /&apos;\         . \
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+      &quot;--^--.__,\_)-&apos;
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+http://glenda.cat-v.org/
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+*/
+</a> 
+ #ifdef D
+ #include &lt;assert.h&gt;
+<a href="#h0-1" id="h0-1" class="h">@@ -29,6 +48,10 @@
+</a> #define S -1
+ #define J +1
+ 
+<a href="#h0-1-3" id="h0-1-3" class="i">+#define MATERIAL_WEIGHT 10
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+#define AREA_WEIGHT 6
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+#define DIST_WEIGHT 5
+</a><a href="#h0-1-6" id="h0-1-6" class="i">+
+</a> #define DIRECTIONS 4
+ 
+ #define BORDER SCHAR_MIN
+<a href="#h0-2" id="h0-2" class="h">@@ -46,6 +69,8 @@ short fill_counter = 0;
+</a> 
+ char limit_v, limit_h;
+ 
+<a href="#h0-2-3" id="h0-2-3" class="i">+char dist_min;
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+
+</a> char current_player;
+ /* }}} */
+ 
+<a href="#h0-3" id="h0-3" class="h">@@ -71,6 +96,10 @@ inline void prepare_fill() {
+</a> inline void prepare_limits() {
+     limit_v = limit_h = -INFINITY;
+ }
+<a href="#h0-3-3" id="h0-3-3" class="i">+
+</a><a href="#h0-3-4" id="h0-3-4" class="i">+inline void prepare_dist() {
+</a><a href="#h0-3-5" id="h0-3-5" class="i">+    dist_min = INFINITY;
+</a><a href="#h0-3-6" id="h0-3-6" class="i">+}
+</a> /* }}} */
+ 
+ /* Replace and fill at specified coordinates {{{ */
+<a href="#h0-4" id="h0-4" class="h">@@ -105,10 +134,10 @@ inline short get_material_score(char (*myboard)[MAX_COL + 2], unsigned char lin,
+</a> /* }}} */
+ 
+ /* Get vertical and horizontal limits of the territory {{{ */
+<a href="#h0-4-3" id="h0-4-3" class="d">-void get_limits(char (*myboard)[MAX_COL + 2], unsigned char lin, unsigned char col, unsigned char color, char direction) {
+</a><a href="#h0-4-4" id="h0-4-4" class="i">+void get_limits(char (*myboard)[MAX_COL + 2], unsigned char lin, unsigned char col, unsigned char color, char corner) {
+</a>     char v, h;
+     myboard[lin + 1][col + 1] = INFINITY;
+<a href="#h0-4-7" id="h0-4-7" class="d">-    if (direction == J) {
+</a><a href="#h0-4-8" id="h0-4-8" class="i">+    if (corner == J) {
+</a>         v = board_lines - 1 - lin;
+         h = col;
+     } else {
+<a href="#h0-5" id="h0-5" class="h">@@ -120,13 +149,37 @@ void get_limits(char (*myboard)[MAX_COL + 2], unsigned char lin, unsigned char c
+</a>     if (h &gt; limit_h)
+         limit_h = h;
+     if (myboard[1 + lin - 1][1 + col] == color)
+<a href="#h0-5-3" id="h0-5-3" class="d">-        get_limits(myboard, lin - 1, col, color, direction);
+</a><a href="#h0-5-4" id="h0-5-4" class="i">+        get_limits(myboard, lin - 1, col, color, corner);
+</a>     if (myboard[1 + lin + 1][1 + col] == color)
+<a href="#h0-5-6" id="h0-5-6" class="d">-        get_limits(myboard, lin + 1, col, color, direction);
+</a><a href="#h0-5-7" id="h0-5-7" class="i">+        get_limits(myboard, lin + 1, col, color, corner);
+</a>     if (myboard[1 + lin][1 + col - 1] == color)
+<a href="#h0-5-9" id="h0-5-9" class="d">-        get_limits(myboard, lin, col - 1, color, direction);
+</a><a href="#h0-5-10" id="h0-5-10" class="i">+        get_limits(myboard, lin, col - 1, color, corner);
+</a>     if (myboard[1 + lin][1 + col + 1] == color)
+<a href="#h0-5-12" id="h0-5-12" class="d">-        get_limits(myboard, lin, col + 1, color, direction);
+</a><a href="#h0-5-13" id="h0-5-13" class="i">+        get_limits(myboard, lin, col + 1, color, corner);
+</a><a href="#h0-5-14" id="h0-5-14" class="i">+}
+</a><a href="#h0-5-15" id="h0-5-15" class="i">+/* }}} */
+</a><a href="#h0-5-16" id="h0-5-16" class="i">+
+</a><a href="#h0-5-17" id="h0-5-17" class="i">+/* Get vertical and horizontal limits of the territory {{{ */
+</a><a href="#h0-5-18" id="h0-5-18" class="i">+void get_dist(char (*myboard)[MAX_COL + 2], unsigned char lin, unsigned char col, unsigned char color, char corner) {
+</a><a href="#h0-5-19" id="h0-5-19" class="i">+    unsigned char my_x, op_y;
+</a><a href="#h0-5-20" id="h0-5-20" class="i">+    myboard[lin + 1][col + 1] = INFINITY;
+</a><a href="#h0-5-21" id="h0-5-21" class="i">+    my_x = col;
+</a><a href="#h0-5-22" id="h0-5-22" class="i">+    if (corner == J) {
+</a><a href="#h0-5-23" id="h0-5-23" class="i">+        op_y = 0;
+</a><a href="#h0-5-24" id="h0-5-24" class="i">+    } else {
+</a><a href="#h0-5-25" id="h0-5-25" class="i">+        op_y = board_lines - 1;
+</a><a href="#h0-5-26" id="h0-5-26" class="i">+    }
+</a><a href="#h0-5-27" id="h0-5-27" class="i">+
+</a><a href="#h0-5-28" id="h0-5-28" class="i">+    if (op_y + my_x &lt; dist_min)
+</a><a href="#h0-5-29" id="h0-5-29" class="i">+        dist_min = op_y + my_x;
+</a><a href="#h0-5-30" id="h0-5-30" class="i">+    if (myboard[1 + lin - 1][1 + col] == color)
+</a><a href="#h0-5-31" id="h0-5-31" class="i">+        get_dist(myboard, lin - 1, col, color, corner);
+</a><a href="#h0-5-32" id="h0-5-32" class="i">+    if (myboard[1 + lin + 1][1 + col] == color)
+</a><a href="#h0-5-33" id="h0-5-33" class="i">+        get_dist(myboard, lin + 1, col, color, corner);
+</a><a href="#h0-5-34" id="h0-5-34" class="i">+    if (myboard[1 + lin][1 + col - 1] == color)
+</a><a href="#h0-5-35" id="h0-5-35" class="i">+        get_dist(myboard, lin, col - 1, color, corner);
+</a><a href="#h0-5-36" id="h0-5-36" class="i">+    if (myboard[1 + lin][1 + col + 1] == color)
+</a><a href="#h0-5-37" id="h0-5-37" class="i">+        get_dist(myboard, lin, col + 1, color, corner);
+</a> }
+ /* }}} */
+ 
+<a href="#h0-6" id="h0-6" class="h">@@ -255,12 +308,17 @@ int main() { /* {{{ */
+</a>             /* Do the move */
+             prepare_fill();
+             fill(alt_board, me_lin, me_col, alt_board[me_lin + 1][me_col + 1], color);
+<a href="#h0-6-3" id="h0-6-3" class="d">-            cnt = 10000 * get_material_score(alt_board, me_lin, me_col);
+</a><a href="#h0-6-4" id="h0-6-4" class="i">+            cnt = MATERIAL_WEIGHT * get_material_score(alt_board, me_lin, me_col);
+</a>             memcpy(alt_board, board, sizeof(alt_board));
+             prepare_limits();
+             get_limits(alt_board, me_lin, me_col, alt_board[me_lin + 1][me_col + 1], current_player);
+             /* Calculate score */
+<a href="#h0-6-9" id="h0-6-9" class="d">-            cnt += limit_v * limit_h;
+</a><a href="#h0-6-10" id="h0-6-10" class="i">+            cnt += AREA_WEIGHT * limit_v * limit_h;
+</a><a href="#h0-6-11" id="h0-6-11" class="i">+            memcpy(alt_board, board, sizeof(alt_board));
+</a><a href="#h0-6-12" id="h0-6-12" class="i">+            prepare_dist();
+</a><a href="#h0-6-13" id="h0-6-13" class="i">+            get_dist(alt_board, me_lin, me_col, alt_board[me_lin + 1][me_col + 1], current_player);
+</a><a href="#h0-6-14" id="h0-6-14" class="i">+            cnt += DIST_WEIGHT * dist_min;
+</a><a href="#h0-6-15" id="h0-6-15" class="i">+            cnt /= (MATERIAL_WEIGHT + AREA_WEIGHT + DIST_WEIGHT) / 3;
+</a>             if (cnt &gt; maxcnt) {
+                 maxcnt = cnt;
+                 maxcolor = color;
+</pre>
+</div>
+</body>
+</html>

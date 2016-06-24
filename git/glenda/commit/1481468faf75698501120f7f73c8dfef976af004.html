@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>add rewrite - glenda - Program that plays the Flood Wars game for a contest.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="glenda.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>glenda</h1><span class="desc">Program that plays the Flood Wars game for a contest.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/glenda.git">git://thetudor.ddns.net/glenda.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/1481468faf75698501120f7f73c8dfef976af004.html">1481468faf75698501120f7f73c8dfef976af004</a>
+<b>parent</b> <a href="../commit/d539e5a0aa554dd99793d4a15385b82f57d1d3b6.html">d539e5a0aa554dd99793d4a15385b82f57d1d3b6</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat Jun 11 13:37:00 +0300
+
+add rewrite
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">Makefile</a></td><td> | </td><td class="num">8</td><td><span class="i">++++++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h1">exec</a></td><td> | </td><td class="num">3</td><td><span class="i">+++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h2">glenda.c</a></td><td> | </td><td class="num">245</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h3">tests/self.sh</a></td><td> | </td><td class="num">4</td><td><span class="i">+++</span><span class="d">-</span></td></tr>
+</table>4 files changed, 257 insertions(+), 3 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/Makefile.html">Makefile</a> b/<a href="../file/Makefile.html">Makefile</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,9 +1,13 @@
+</a> CFLAGS=-Wall -O2 -DD=1
+ NAME = glenda
+ OLD_FILE = glenda.old.c
+<a href="#h0-0-3" id="h0-0-3" class="i">+FILE = glenda.c
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+glenda: $(FILE)
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+	$(CC) -o $(NAME) $(FILE) $(CFLAGS)
+</a> 
+ old: $(OLD_FILE)
+<a href="#h0-0-9" id="h0-0-9" class="d">-	$(CC) -o $(NAME) $(OLD_FILE) $(CFLAGS)
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+	$(CC) -o $(NAME).old $(OLD_FILE) $(CFLAGS)
+</a> 
+ clean:
+<a href="#h0-0-13" id="h0-0-13" class="d">-	rm $(NAME)
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+	rm $(NAME) $(NAME).old
+</a><b>diff --git a/<a id="h1" href="../file/exec.html">exec</a> b/<a href="../file/exec.html">exec</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="i">+#!/bin/sh
+</a><a href="#h1-0-1" id="h1-0-1" class="i">+
+</a><a href="#h1-0-2" id="h1-0-2" class="i">+time -p sh -c &quot;cat glenda.in | ./glenda 1&gt; glenda.out&quot;
+</a><b>diff --git a/<a id="h2" href="../file/glenda.c.html">glenda.c</a> b/<a href="../file/glenda.c.html">glenda.c</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1,245 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+/*
+</a><a href="#h2-0-1" id="h2-0-1" class="i">+   Nume program   : glenda.c
+</a><a href="#h2-0-2" id="h2-0-2" class="i">+   Nume concurent : Tudor Roman
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+   E-mail         : romantudorel@gmail.com
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+   */
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+#ifdef D
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+#include &lt;assert.h&gt;
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+#endif
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+#include &lt;limits.h&gt;
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+#include &lt;stdio.h&gt;
+</a><a href="#h2-0-11" id="h2-0-11" class="i">+#include &lt;stdlib.h&gt;
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+#include &lt;string.h&gt;
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+
+</a><a href="#h2-0-14" id="h2-0-14" class="i">+/* Constants {{{ */
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+#ifdef D
+</a><a href="#h2-0-16" id="h2-0-16" class="i">+#define debug(...) fprintf(stderr, __VA_ARGS__)
+</a><a href="#h2-0-17" id="h2-0-17" class="i">+#define crash(...) assert(__VA_ARGS__)
+</a><a href="#h2-0-18" id="h2-0-18" class="i">+#else
+</a><a href="#h2-0-19" id="h2-0-19" class="i">+#define debug(...)
+</a><a href="#h2-0-20" id="h2-0-20" class="i">+#define crash(...)
+</a><a href="#h2-0-21" id="h2-0-21" class="i">+#endif
+</a><a href="#h2-0-22" id="h2-0-22" class="i">+
+</a><a href="#h2-0-23" id="h2-0-23" class="i">+#define MAX_LIN 50
+</a><a href="#h2-0-24" id="h2-0-24" class="i">+#define MAX_COL 50
+</a><a href="#h2-0-25" id="h2-0-25" class="i">+
+</a><a href="#h2-0-26" id="h2-0-26" class="i">+#define COLORS 5
+</a><a href="#h2-0-27" id="h2-0-27" class="i">+
+</a><a href="#h2-0-28" id="h2-0-28" class="i">+#define S -1
+</a><a href="#h2-0-29" id="h2-0-29" class="i">+#define J +1
+</a><a href="#h2-0-30" id="h2-0-30" class="i">+
+</a><a href="#h2-0-31" id="h2-0-31" class="i">+#define DIRECTIONS 4
+</a><a href="#h2-0-32" id="h2-0-32" class="i">+
+</a><a href="#h2-0-33" id="h2-0-33" class="i">+#define BORDER SCHAR_MIN
+</a><a href="#h2-0-34" id="h2-0-34" class="i">+#define INFINITY (SCHAR_MAX - 1)
+</a><a href="#h2-0-35" id="h2-0-35" class="i">+/* }}} */
+</a><a href="#h2-0-36" id="h2-0-36" class="i">+
+</a><a href="#h2-0-37" id="h2-0-37" class="i">+/* Globals {{{ */
+</a><a href="#h2-0-38" id="h2-0-38" class="i">+char board[MAX_LIN + 2][MAX_COL + 2];
+</a><a href="#h2-0-39" id="h2-0-39" class="i">+char alt_board[MAX_LIN + 2][MAX_COL + 2];
+</a><a href="#h2-0-40" id="h2-0-40" class="i">+int board_lines, board_cols;
+</a><a href="#h2-0-41" id="h2-0-41" class="i">+
+</a><a href="#h2-0-42" id="h2-0-42" class="i">+unsigned char colors[COLORS] = {&apos;@&apos;, &apos;#&apos;, &apos;+&apos;, &apos;.&apos;, &apos;*&apos;};
+</a><a href="#h2-0-43" id="h2-0-43" class="i">+
+</a><a href="#h2-0-44" id="h2-0-44" class="i">+short fill_counter = 0;
+</a><a href="#h2-0-45" id="h2-0-45" class="i">+
+</a><a href="#h2-0-46" id="h2-0-46" class="i">+unsigned short current_player;
+</a><a href="#h2-0-47" id="h2-0-47" class="i">+/* }}} */
+</a><a href="#h2-0-48" id="h2-0-48" class="i">+
+</a><a href="#h2-0-49" id="h2-0-49" class="i">+/* Functions {{{ */
+</a><a href="#h2-0-50" id="h2-0-50" class="i">+/* Return a player&apos;s corner position {{{ */
+</a><a href="#h2-0-51" id="h2-0-51" class="i">+/* S is up (&quot;sus&quot;), J is down (&quot;jos&quot;) */
+</a><a href="#h2-0-52" id="h2-0-52" class="i">+inline void get_corner(char current_player, unsigned char *lin, unsigned char *col) {
+</a><a href="#h2-0-53" id="h2-0-53" class="i">+    if (current_player == S) {
+</a><a href="#h2-0-54" id="h2-0-54" class="i">+        *lin = 0;
+</a><a href="#h2-0-55" id="h2-0-55" class="i">+        *col = board_cols - 1;
+</a><a href="#h2-0-56" id="h2-0-56" class="i">+    } else {
+</a><a href="#h2-0-57" id="h2-0-57" class="i">+        *lin = board_lines - 1;
+</a><a href="#h2-0-58" id="h2-0-58" class="i">+        *col = 0;
+</a><a href="#h2-0-59" id="h2-0-59" class="i">+    }
+</a><a href="#h2-0-60" id="h2-0-60" class="i">+}
+</a><a href="#h2-0-61" id="h2-0-61" class="i">+/* }}} */
+</a><a href="#h2-0-62" id="h2-0-62" class="i">+
+</a><a href="#h2-0-63" id="h2-0-63" class="i">+/* Replace and fill at specified coordinates {{{ */
+</a><a href="#h2-0-64" id="h2-0-64" class="i">+/* Stores the amount of filled squares in fill_counter */
+</a><a href="#h2-0-65" id="h2-0-65" class="i">+void fill(char (*myboard)[MAX_COL + 2], unsigned char lin, unsigned char col, unsigned char color_old, unsigned char color_new) {
+</a><a href="#h2-0-66" id="h2-0-66" class="i">+    myboard[lin + 1][col + 1] = color_new;
+</a><a href="#h2-0-67" id="h2-0-67" class="i">+    fill_counter++;
+</a><a href="#h2-0-68" id="h2-0-68" class="i">+    if (myboard[1 + lin - 1][1 + col] == color_old)
+</a><a href="#h2-0-69" id="h2-0-69" class="i">+        fill(myboard, lin - 1, col, color_old, color_new);
+</a><a href="#h2-0-70" id="h2-0-70" class="i">+    if (myboard[1 + lin + 1][1 + col] == color_old)
+</a><a href="#h2-0-71" id="h2-0-71" class="i">+        fill(myboard, lin + 1, col, color_old, color_new);
+</a><a href="#h2-0-72" id="h2-0-72" class="i">+    if (myboard[1 + lin][1 + col - 1] == color_old)
+</a><a href="#h2-0-73" id="h2-0-73" class="i">+        fill(myboard, lin, col - 1, color_old, color_new);
+</a><a href="#h2-0-74" id="h2-0-74" class="i">+    if (myboard[1 + lin][1 + col + 1] == color_old)
+</a><a href="#h2-0-75" id="h2-0-75" class="i">+        fill(myboard, lin, col + 1, color_old, color_new);
+</a><a href="#h2-0-76" id="h2-0-76" class="i">+}
+</a><a href="#h2-0-77" id="h2-0-77" class="i">+/* }}} */
+</a><a href="#h2-0-78" id="h2-0-78" class="i">+
+</a><a href="#h2-0-79" id="h2-0-79" class="i">+/* Return the number of squares a player has {{{ */
+</a><a href="#h2-0-80" id="h2-0-80" class="i">+inline short get_material_score(char (*myboard)[MAX_COL + 2], unsigned char lin, unsigned char col) {
+</a><a href="#h2-0-81" id="h2-0-81" class="i">+    char score_board[MAX_LIN + 2][MAX_COL + 2];
+</a><a href="#h2-0-82" id="h2-0-82" class="i">+
+</a><a href="#h2-0-83" id="h2-0-83" class="i">+    /* Copy to temp board */
+</a><a href="#h2-0-84" id="h2-0-84" class="i">+    memcpy(score_board, myboard, sizeof(score_board));
+</a><a href="#h2-0-85" id="h2-0-85" class="i">+
+</a><a href="#h2-0-86" id="h2-0-86" class="i">+    fill_counter = 0;
+</a><a href="#h2-0-87" id="h2-0-87" class="i">+    /* Fill with infinity */
+</a><a href="#h2-0-88" id="h2-0-88" class="i">+    fill(score_board, lin, col, score_board[lin + 1][col + 1], INFINITY);
+</a><a href="#h2-0-89" id="h2-0-89" class="i">+
+</a><a href="#h2-0-90" id="h2-0-90" class="i">+    return fill_counter;
+</a><a href="#h2-0-91" id="h2-0-91" class="i">+}
+</a><a href="#h2-0-92" id="h2-0-92" class="i">+/* }}} */
+</a><a href="#h2-0-93" id="h2-0-93" class="i">+
+</a><a href="#h2-0-94" id="h2-0-94" class="i">+/* Return 1 if the game is over (only two colors on the board) {{{ */
+</a><a href="#h2-0-95" id="h2-0-95" class="i">+inline unsigned char is_game_over(char (*myboard)[MAX_COL + 2]) {
+</a><a href="#h2-0-96" id="h2-0-96" class="i">+    short fv[MAX_COL + 1];
+</a><a href="#h2-0-97" id="h2-0-97" class="i">+    int i, j, n_col;
+</a><a href="#h2-0-98" id="h2-0-98" class="i">+
+</a><a href="#h2-0-99" id="h2-0-99" class="i">+    n_col = 0;
+</a><a href="#h2-0-100" id="h2-0-100" class="i">+    i = 0;
+</a><a href="#h2-0-101" id="h2-0-101" class="i">+    while (n_col &lt;= 2 &amp;&amp; i &lt; board_lines) {
+</a><a href="#h2-0-102" id="h2-0-102" class="i">+        j = 0;
+</a><a href="#h2-0-103" id="h2-0-103" class="i">+        while (n_col &lt;= 2 &amp;&amp; j &lt; board_cols) {
+</a><a href="#h2-0-104" id="h2-0-104" class="i">+            fv[myboard[i + 1][j + 1]]++;
+</a><a href="#h2-0-105" id="h2-0-105" class="i">+            /* if it is the first time we find this color, add to the counter */
+</a><a href="#h2-0-106" id="h2-0-106" class="i">+            if (fv[myboard[i + 1][j + 1]] == 1)
+</a><a href="#h2-0-107" id="h2-0-107" class="i">+                n_col++;
+</a><a href="#h2-0-108" id="h2-0-108" class="i">+            j++;
+</a><a href="#h2-0-109" id="h2-0-109" class="i">+        }
+</a><a href="#h2-0-110" id="h2-0-110" class="i">+        i++;
+</a><a href="#h2-0-111" id="h2-0-111" class="i">+    }
+</a><a href="#h2-0-112" id="h2-0-112" class="i">+
+</a><a href="#h2-0-113" id="h2-0-113" class="i">+    /* i have a color, he has a color */
+</a><a href="#h2-0-114" id="h2-0-114" class="i">+    return n_col == 2;
+</a><a href="#h2-0-115" id="h2-0-115" class="i">+}
+</a><a href="#h2-0-116" id="h2-0-116" class="i">+/* }}} */
+</a><a href="#h2-0-117" id="h2-0-117" class="i">+
+</a><a href="#h2-0-118" id="h2-0-118" class="i">+/* Make a border around the board {{{ */
+</a><a href="#h2-0-119" id="h2-0-119" class="i">+inline void init_board(char (*myboard)[MAX_COL + 2]) {
+</a><a href="#h2-0-120" id="h2-0-120" class="i">+    int i, j;
+</a><a href="#h2-0-121" id="h2-0-121" class="i">+    /* magic value */
+</a><a href="#h2-0-122" id="h2-0-122" class="i">+    int init = BORDER;
+</a><a href="#h2-0-123" id="h2-0-123" class="i">+    debug(&quot;initializing board with %d\n&quot;, -init);
+</a><a href="#h2-0-124" id="h2-0-124" class="i">+    for (i = 0; i &lt;= 1; i++)
+</a><a href="#h2-0-125" id="h2-0-125" class="i">+        for (j = 0; j &lt; board_cols + 2; j++)
+</a><a href="#h2-0-126" id="h2-0-126" class="i">+            myboard[i * (board_lines + 2 - 1)][j] = -init;
+</a><a href="#h2-0-127" id="h2-0-127" class="i">+
+</a><a href="#h2-0-128" id="h2-0-128" class="i">+    for (j = 0; j &lt;= 1; j++)
+</a><a href="#h2-0-129" id="h2-0-129" class="i">+        for (i = 0; i &lt; board_lines + 2; i++)
+</a><a href="#h2-0-130" id="h2-0-130" class="i">+            myboard[i][j * (board_cols + 2 - 1)] = -init;
+</a><a href="#h2-0-131" id="h2-0-131" class="i">+}
+</a><a href="#h2-0-132" id="h2-0-132" class="i">+/* }}} */
+</a><a href="#h2-0-133" id="h2-0-133" class="i">+
+</a><a href="#h2-0-134" id="h2-0-134" class="i">+/* Utils {{{ */
+</a><a href="#h2-0-135" id="h2-0-135" class="i">+inline unsigned char char_to_color(unsigned char char_color) {
+</a><a href="#h2-0-136" id="h2-0-136" class="i">+    switch (char_color) {
+</a><a href="#h2-0-137" id="h2-0-137" class="i">+        case &apos;@&apos;: return 0;
+</a><a href="#h2-0-138" id="h2-0-138" class="i">+        case &apos;#&apos;: return 1;
+</a><a href="#h2-0-139" id="h2-0-139" class="i">+        case &apos;+&apos;: return 2;
+</a><a href="#h2-0-140" id="h2-0-140" class="i">+        case &apos;.&apos;: return 3;
+</a><a href="#h2-0-141" id="h2-0-141" class="i">+        case &apos;*&apos;: return 4;
+</a><a href="#h2-0-142" id="h2-0-142" class="i">+    }
+</a><a href="#h2-0-143" id="h2-0-143" class="i">+
+</a><a href="#h2-0-144" id="h2-0-144" class="i">+    /* if returned nothing yet, crash */
+</a><a href="#h2-0-145" id="h2-0-145" class="i">+    debug(&quot;attempt to convert char %c to color\n&quot;, char_color);
+</a><a href="#h2-0-146" id="h2-0-146" class="i">+    crash(1 == 0);
+</a><a href="#h2-0-147" id="h2-0-147" class="i">+    return INFINITY;
+</a><a href="#h2-0-148" id="h2-0-148" class="i">+}
+</a><a href="#h2-0-149" id="h2-0-149" class="i">+
+</a><a href="#h2-0-150" id="h2-0-150" class="i">+inline unsigned char color_to_char(unsigned char color_char) {
+</a><a href="#h2-0-151" id="h2-0-151" class="i">+    switch (color_char) {
+</a><a href="#h2-0-152" id="h2-0-152" class="i">+        case 0: return &apos;@&apos;;
+</a><a href="#h2-0-153" id="h2-0-153" class="i">+        case 1: return &apos;#&apos;;
+</a><a href="#h2-0-154" id="h2-0-154" class="i">+        case 2: return &apos;+&apos;;
+</a><a href="#h2-0-155" id="h2-0-155" class="i">+        case 3: return &apos;.&apos;;
+</a><a href="#h2-0-156" id="h2-0-156" class="i">+        case 4: return &apos;*&apos;;
+</a><a href="#h2-0-157" id="h2-0-157" class="i">+    }
+</a><a href="#h2-0-158" id="h2-0-158" class="i">+
+</a><a href="#h2-0-159" id="h2-0-159" class="i">+    /* same as above */
+</a><a href="#h2-0-160" id="h2-0-160" class="i">+    crash(1 == 0);
+</a><a href="#h2-0-161" id="h2-0-161" class="i">+    return -INFINITY;
+</a><a href="#h2-0-162" id="h2-0-162" class="i">+}
+</a><a href="#h2-0-163" id="h2-0-163" class="i">+/* }}} */
+</a><a href="#h2-0-164" id="h2-0-164" class="i">+
+</a><a href="#h2-0-165" id="h2-0-165" class="i">+/* }}} */
+</a><a href="#h2-0-166" id="h2-0-166" class="i">+
+</a><a href="#h2-0-167" id="h2-0-167" class="i">+int main() { /* {{{ */
+</a><a href="#h2-0-168" id="h2-0-168" class="i">+    int lin, col;
+</a><a href="#h2-0-169" id="h2-0-169" class="i">+    unsigned char me, op;
+</a><a href="#h2-0-170" id="h2-0-170" class="i">+    unsigned char me_lin, me_col, op_lin, op_col;
+</a><a href="#h2-0-171" id="h2-0-171" class="i">+    char c;
+</a><a href="#h2-0-172" id="h2-0-172" class="i">+    unsigned char color;
+</a><a href="#h2-0-173" id="h2-0-173" class="i">+    short cnt, maxcnt;
+</a><a href="#h2-0-174" id="h2-0-174" class="i">+    unsigned char maxcolor;
+</a><a href="#h2-0-175" id="h2-0-175" class="i">+
+</a><a href="#h2-0-176" id="h2-0-176" class="i">+    current_player = fgetc(stdin);
+</a><a href="#h2-0-177" id="h2-0-177" class="i">+    /* eat \n */
+</a><a href="#h2-0-178" id="h2-0-178" class="i">+    fgetc(stdin);
+</a><a href="#h2-0-179" id="h2-0-179" class="i">+    if (current_player == &apos;S&apos;)
+</a><a href="#h2-0-180" id="h2-0-180" class="i">+        current_player = S;
+</a><a href="#h2-0-181" id="h2-0-181" class="i">+    else
+</a><a href="#h2-0-182" id="h2-0-182" class="i">+        current_player = J;
+</a><a href="#h2-0-183" id="h2-0-183" class="i">+
+</a><a href="#h2-0-184" id="h2-0-184" class="i">+    /* Read the board */
+</a><a href="#h2-0-185" id="h2-0-185" class="i">+    c = fgetc(stdin);
+</a><a href="#h2-0-186" id="h2-0-186" class="i">+    lin = col = 0;
+</a><a href="#h2-0-187" id="h2-0-187" class="i">+    while (c != EOF) {
+</a><a href="#h2-0-188" id="h2-0-188" class="i">+        if (c == &apos;\n&apos;) {
+</a><a href="#h2-0-189" id="h2-0-189" class="i">+            board_cols = col;
+</a><a href="#h2-0-190" id="h2-0-190" class="i">+            lin++;
+</a><a href="#h2-0-191" id="h2-0-191" class="i">+            col = 0;
+</a><a href="#h2-0-192" id="h2-0-192" class="i">+        } else {
+</a><a href="#h2-0-193" id="h2-0-193" class="i">+            board[lin + 1][col + 1] = char_to_color(c);
+</a><a href="#h2-0-194" id="h2-0-194" class="i">+            col++;
+</a><a href="#h2-0-195" id="h2-0-195" class="i">+        }
+</a><a href="#h2-0-196" id="h2-0-196" class="i">+        c = fgetc(stdin);
+</a><a href="#h2-0-197" id="h2-0-197" class="i">+    }
+</a><a href="#h2-0-198" id="h2-0-198" class="i">+    board_lines = lin;
+</a><a href="#h2-0-199" id="h2-0-199" class="i">+    init_board(board);
+</a><a href="#h2-0-200" id="h2-0-200" class="i">+    debug(&quot;board is %d lines %d cols wide\n&quot;, board_lines, board_cols);
+</a><a href="#h2-0-201" id="h2-0-201" class="i">+
+</a><a href="#h2-0-202" id="h2-0-202" class="i">+    get_corner(current_player, &amp;me_lin, &amp;me_col);
+</a><a href="#h2-0-203" id="h2-0-203" class="i">+    get_corner(-current_player, &amp;op_lin, &amp;op_col);
+</a><a href="#h2-0-204" id="h2-0-204" class="i">+    me = board[me_lin + 1][me_col + 1];
+</a><a href="#h2-0-205" id="h2-0-205" class="i">+    op = board[op_lin + 1][op_col + 1];
+</a><a href="#h2-0-206" id="h2-0-206" class="i">+    debug(&quot;i&apos;m %c/%d (%d, %d) and he is %c/%d (%d, %d)\n&quot;, color_to_char(me), current_player, me_lin, me_col, color_to_char(op), -current_player, op_lin, op_col);
+</a><a href="#h2-0-207" id="h2-0-207" class="i">+
+</a><a href="#h2-0-208" id="h2-0-208" class="i">+    maxcnt = -INFINITY;
+</a><a href="#h2-0-209" id="h2-0-209" class="i">+    maxcolor = COLORS;
+</a><a href="#h2-0-210" id="h2-0-210" class="i">+    /* Try all the colors */
+</a><a href="#h2-0-211" id="h2-0-211" class="i">+    for (color = 0; color &lt; COLORS; color++) {
+</a><a href="#h2-0-212" id="h2-0-212" class="i">+        /* We can&apos;t move with opponent&apos;s color or with ours */
+</a><a href="#h2-0-213" id="h2-0-213" class="i">+        if (color != me &amp;&amp; color != op) {
+</a><a href="#h2-0-214" id="h2-0-214" class="i">+            /* Clone the board for biological experiments */
+</a><a href="#h2-0-215" id="h2-0-215" class="i">+            memcpy(alt_board, board, sizeof(alt_board));
+</a><a href="#h2-0-216" id="h2-0-216" class="i">+            /* Do the move */
+</a><a href="#h2-0-217" id="h2-0-217" class="i">+            fill(alt_board, me_lin, me_col, alt_board[me_lin + 1][me_col + 1], color);
+</a><a href="#h2-0-218" id="h2-0-218" class="i">+            /* Calculate score */
+</a><a href="#h2-0-219" id="h2-0-219" class="i">+            cnt = get_material_score(alt_board, me_lin, me_col);
+</a><a href="#h2-0-220" id="h2-0-220" class="i">+            if (cnt &gt; maxcnt) {
+</a><a href="#h2-0-221" id="h2-0-221" class="i">+                maxcnt = cnt;
+</a><a href="#h2-0-222" id="h2-0-222" class="i">+                maxcolor = color;
+</a><a href="#h2-0-223" id="h2-0-223" class="i">+            }
+</a><a href="#h2-0-224" id="h2-0-224" class="i">+        }
+</a><a href="#h2-0-225" id="h2-0-225" class="i">+    }
+</a><a href="#h2-0-226" id="h2-0-226" class="i">+    crash(maxcolor != COLORS);
+</a><a href="#h2-0-227" id="h2-0-227" class="i">+    /* Do the move */
+</a><a href="#h2-0-228" id="h2-0-228" class="i">+    fill(board, me_lin, me_col, board[me_lin + 1][me_col + 1], maxcolor);
+</a><a href="#h2-0-229" id="h2-0-229" class="i">+    /* Output the name of the opponent */
+</a><a href="#h2-0-230" id="h2-0-230" class="i">+    if (current_player == S)
+</a><a href="#h2-0-231" id="h2-0-231" class="i">+        fputc(&apos;J&apos;, stdout);
+</a><a href="#h2-0-232" id="h2-0-232" class="i">+    else
+</a><a href="#h2-0-233" id="h2-0-233" class="i">+        fputc(&apos;S&apos;, stdout);
+</a><a href="#h2-0-234" id="h2-0-234" class="i">+    fputc(&apos;\n&apos;, stdout);
+</a><a href="#h2-0-235" id="h2-0-235" class="i">+    /* Output board */
+</a><a href="#h2-0-236" id="h2-0-236" class="i">+    for (lin = 0; lin &lt; board_lines; lin++) {
+</a><a href="#h2-0-237" id="h2-0-237" class="i">+        for (col = 0; col &lt; board_cols; col++) {
+</a><a href="#h2-0-238" id="h2-0-238" class="i">+            fputc(color_to_char(board[lin + 1][col + 1]), stdout);
+</a><a href="#h2-0-239" id="h2-0-239" class="i">+        }
+</a><a href="#h2-0-240" id="h2-0-240" class="i">+        fputc(&apos;\n&apos;, stdout);
+</a><a href="#h2-0-241" id="h2-0-241" class="i">+    }
+</a><a href="#h2-0-242" id="h2-0-242" class="i">+    return 0;
+</a><a href="#h2-0-243" id="h2-0-243" class="i">+}
+</a><a href="#h2-0-244" id="h2-0-244" class="i">+/* }}} */
+</a><b>diff --git a/<a id="h3" href="../file/tests/self.sh.html">tests/self.sh</a> b/<a href="../file/tests/self.sh.html">tests/self.sh</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -2,10 +2,12 @@
+</a> 
+ OUTPUT_DIR=&quot;$(dirname $0)&quot;
+ LOG_FILE=&quot;${LOG_FILE:-&quot;self.log&quot;}&quot;
+<a href="#h3-0-3" id="h3-0-3" class="i">+IN=&quot;glenda.in&quot;
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+OUT=&quot;glenda.out&quot;
+</a> 
+ rm &quot;${OUTPUT_DIR}/${LOG_FILE}&quot;
+ while :; do
+<a href="#h3-0-8" id="h3-0-8" class="d">-    &quot;$PWD/glenda&quot; 2&gt; /dev/null
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+    cat &quot;$IN&quot; | &quot;$PWD/glenda&quot; 1&gt; &quot;$OUT&quot;
+</a>     cat glenda.out | tee glenda.in | tee -a &quot;${OUTPUT_DIR}/${LOG_FILE}&quot;
+     sleep 1
+ done
+</pre>
+</div>
+</body>
+</html>

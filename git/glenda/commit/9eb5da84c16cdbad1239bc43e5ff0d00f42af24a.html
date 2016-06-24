@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>added get_limits - glenda - Program that plays the Flood Wars game for a contest.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="glenda.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>glenda</h1><span class="desc">Program that plays the Flood Wars game for a contest.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/glenda.git">git://thetudor.ddns.net/glenda.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/9eb5da84c16cdbad1239bc43e5ff0d00f42af24a.html">9eb5da84c16cdbad1239bc43e5ff0d00f42af24a</a>
+<b>parent</b> <a href="../commit/1481468faf75698501120f7f73c8dfef976af004.html">1481468faf75698501120f7f73c8dfef976af004</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat Jun 11 15:08:17 +0300
+
+added get_limits
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">glenda.c</a></td><td> | </td><td class="num">55</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">------</span></td></tr>
+</table>1 file changed, 49 insertions(+), 6 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/glenda.c.html">glenda.c</a> b/<a href="../file/glenda.c.html">glenda.c</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -2,7 +2,7 @@
+</a>    Nume program   : glenda.c
+    Nume concurent : Tudor Roman
+    E-mail         : romantudorel@gmail.com
+<a href="#h0-0-3" id="h0-0-3" class="d">-   */
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+*/
+</a> 
+ #ifdef D
+ #include &lt;assert.h&gt;
+<a href="#h0-1" id="h0-1" class="h">@@ -44,7 +44,9 @@ unsigned char colors[COLORS] = {&apos;@&apos;, &apos;#&apos;, &apos;+&apos;, &apos;.&apos;, &apos;*&apos;};
+</a> 
+ short fill_counter = 0;
+ 
+<a href="#h0-1-3" id="h0-1-3" class="d">-unsigned short current_player;
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+char limit_v, limit_h;
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+
+</a><a href="#h0-1-6" id="h0-1-6" class="i">+char current_player;
+</a> /* }}} */
+ 
+ /* Functions {{{ */
+<a href="#h0-2" id="h0-2" class="h">@@ -61,6 +63,16 @@ inline void get_corner(char current_player, unsigned char *lin, unsigned char *c
+</a> }
+ /* }}} */
+ 
+<a href="#h0-2-3" id="h0-2-3" class="i">+/* Initialize fill variables {{{ */
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+inline void prepare_fill() {
+</a><a href="#h0-2-5" id="h0-2-5" class="i">+    fill_counter = 0;
+</a><a href="#h0-2-6" id="h0-2-6" class="i">+}
+</a><a href="#h0-2-7" id="h0-2-7" class="i">+
+</a><a href="#h0-2-8" id="h0-2-8" class="i">+inline void prepare_limits() {
+</a><a href="#h0-2-9" id="h0-2-9" class="i">+    limit_v = limit_h = -INFINITY;
+</a><a href="#h0-2-10" id="h0-2-10" class="i">+}
+</a><a href="#h0-2-11" id="h0-2-11" class="i">+/* }}} */
+</a><a href="#h0-2-12" id="h0-2-12" class="i">+
+</a> /* Replace and fill at specified coordinates {{{ */
+ /* Stores the amount of filled squares in fill_counter */
+ void fill(char (*myboard)[MAX_COL + 2], unsigned char lin, unsigned char col, unsigned char color_old, unsigned char color_new) {
+<a href="#h0-3" id="h0-3" class="h">@@ -84,14 +96,40 @@ inline short get_material_score(char (*myboard)[MAX_COL + 2], unsigned char lin,
+</a>     /* Copy to temp board */
+     memcpy(score_board, myboard, sizeof(score_board));
+ 
+<a href="#h0-3-3" id="h0-3-3" class="d">-    fill_counter = 0;
+</a>     /* Fill with infinity */
+<a href="#h0-3-5" id="h0-3-5" class="i">+    prepare_fill();
+</a>     fill(score_board, lin, col, score_board[lin + 1][col + 1], INFINITY);
+ 
+     return fill_counter;
+ }
+ /* }}} */
+ 
+<a href="#h0-3-12" id="h0-3-12" class="i">+/* Get vertical and horizontal limits of the territory {{{ */
+</a><a href="#h0-3-13" id="h0-3-13" class="i">+void get_limits(char (*myboard)[MAX_COL + 2], unsigned char lin, unsigned char col, unsigned char color, char direction) {
+</a><a href="#h0-3-14" id="h0-3-14" class="i">+    char v, h;
+</a><a href="#h0-3-15" id="h0-3-15" class="i">+    myboard[lin + 1][col + 1] = INFINITY;
+</a><a href="#h0-3-16" id="h0-3-16" class="i">+    if (direction == J) {
+</a><a href="#h0-3-17" id="h0-3-17" class="i">+        v = board_lines - 1 - lin;
+</a><a href="#h0-3-18" id="h0-3-18" class="i">+        h = col;
+</a><a href="#h0-3-19" id="h0-3-19" class="i">+    } else {
+</a><a href="#h0-3-20" id="h0-3-20" class="i">+        v = lin;
+</a><a href="#h0-3-21" id="h0-3-21" class="i">+        h = board_cols - 1 - col;
+</a><a href="#h0-3-22" id="h0-3-22" class="i">+    }
+</a><a href="#h0-3-23" id="h0-3-23" class="i">+    if (v &gt; limit_v)
+</a><a href="#h0-3-24" id="h0-3-24" class="i">+        limit_v = v;
+</a><a href="#h0-3-25" id="h0-3-25" class="i">+    if (h &gt; limit_h)
+</a><a href="#h0-3-26" id="h0-3-26" class="i">+        limit_h = h;
+</a><a href="#h0-3-27" id="h0-3-27" class="i">+    if (myboard[1 + lin - 1][1 + col] == color)
+</a><a href="#h0-3-28" id="h0-3-28" class="i">+        get_limits(myboard, lin - 1, col, color, direction);
+</a><a href="#h0-3-29" id="h0-3-29" class="i">+    if (myboard[1 + lin + 1][1 + col] == color)
+</a><a href="#h0-3-30" id="h0-3-30" class="i">+        get_limits(myboard, lin + 1, col, color, direction);
+</a><a href="#h0-3-31" id="h0-3-31" class="i">+    if (myboard[1 + lin][1 + col - 1] == color)
+</a><a href="#h0-3-32" id="h0-3-32" class="i">+        get_limits(myboard, lin, col - 1, color, direction);
+</a><a href="#h0-3-33" id="h0-3-33" class="i">+    if (myboard[1 + lin][1 + col + 1] == color)
+</a><a href="#h0-3-34" id="h0-3-34" class="i">+        get_limits(myboard, lin, col + 1, color, direction);
+</a><a href="#h0-3-35" id="h0-3-35" class="i">+}
+</a><a href="#h0-3-36" id="h0-3-36" class="i">+/* }}} */
+</a><a href="#h0-3-37" id="h0-3-37" class="i">+
+</a> /* Return 1 if the game is over (only two colors on the board) {{{ */
+ inline unsigned char is_game_over(char (*myboard)[MAX_COL + 2]) {
+     short fv[MAX_COL + 1];
+<a href="#h0-4" id="h0-4" class="h">@@ -171,7 +209,7 @@ int main() { /* {{{ */
+</a>     unsigned char me_lin, me_col, op_lin, op_col;
+     char c;
+     unsigned char color;
+<a href="#h0-4-3" id="h0-4-3" class="d">-    short cnt, maxcnt;
+</a><a href="#h0-4-4" id="h0-4-4" class="i">+    int cnt, maxcnt;
+</a>     unsigned char maxcolor;
+ 
+     current_player = fgetc(stdin);
+<a href="#h0-5" id="h0-5" class="h">@@ -215,9 +253,14 @@ int main() { /* {{{ */
+</a>             /* Clone the board for biological experiments */
+             memcpy(alt_board, board, sizeof(alt_board));
+             /* Do the move */
+<a href="#h0-5-3" id="h0-5-3" class="i">+            prepare_fill();
+</a>             fill(alt_board, me_lin, me_col, alt_board[me_lin + 1][me_col + 1], color);
+<a href="#h0-5-5" id="h0-5-5" class="i">+            cnt = 10000 * get_material_score(alt_board, me_lin, me_col);
+</a><a href="#h0-5-6" id="h0-5-6" class="i">+            memcpy(alt_board, board, sizeof(alt_board));
+</a><a href="#h0-5-7" id="h0-5-7" class="i">+            prepare_limits();
+</a><a href="#h0-5-8" id="h0-5-8" class="i">+            get_limits(alt_board, me_lin, me_col, alt_board[me_lin + 1][me_col + 1], current_player);
+</a>             /* Calculate score */
+<a href="#h0-5-10" id="h0-5-10" class="d">-            cnt = get_material_score(alt_board, me_lin, me_col);
+</a><a href="#h0-5-11" id="h0-5-11" class="i">+            cnt += limit_v * limit_h;
+</a>             if (cnt &gt; maxcnt) {
+                 maxcnt = cnt;
+                 maxcolor = color;
+<a href="#h0-6" id="h0-6" class="h">@@ -230,7 +273,7 @@ int main() { /* {{{ */
+</a>     /* Output the name of the opponent */
+     if (current_player == S)
+         fputc(&apos;J&apos;, stdout);
+<a href="#h0-6-3" id="h0-6-3" class="d">-    else
+</a><a href="#h0-6-4" id="h0-6-4" class="i">+    else if (current_player == J)
+</a>         fputc(&apos;S&apos;, stdout);
+     fputc(&apos;\n&apos;, stdout);
+     /* Output board */
+</pre>
+</div>
+</body>
+</html>

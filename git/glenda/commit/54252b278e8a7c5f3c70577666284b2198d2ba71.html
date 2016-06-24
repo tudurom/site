@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>WIP - glenda - Program that plays the Flood Wars game for a contest.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="glenda.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>glenda</h1><span class="desc">Program that plays the Flood Wars game for a contest.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/glenda.git">git://thetudor.ddns.net/glenda.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/54252b278e8a7c5f3c70577666284b2198d2ba71.html">54252b278e8a7c5f3c70577666284b2198d2ba71</a>
+<b>parent</b> <a href="../commit/c4c0c2b86f738074d141ba91c5dc753dc2c424e5.html">c4c0c2b86f738074d141ba91c5dc753dc2c424e5</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Jun 12 22:02:10 +0300
+
+WIP
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">glenda.c</a></td><td> | </td><td class="num">48</td><td><span class="i">++++++++++++++++++++++++++++++++</span><span class="d">----------------</span></td></tr>
+</table>1 file changed, 32 insertions(+), 16 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/glenda.c.html">glenda.c</a> b/<a href="../file/glenda.c.html">glenda.c</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -46,7 +46,7 @@ http://glenda.cat-v.org/
+</a> 
+ #define COLORS 5
+ 
+<a href="#h0-0-3" id="h0-0-3" class="d">-#define DEPTH 6
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+#define DEPTH 2
+</a> 
+ #define S -1
+ #define J +1
+<a href="#h0-1" id="h0-1" class="h">@@ -62,6 +62,7 @@ http://glenda.cat-v.org/
+</a> #define INT_INFINITY (INT_MAX - 1)
+ 
+ #define max(a, b) (a &gt; b ? a : b)
+<a href="#h0-1-3" id="h0-1-3" class="i">+#define min(a, b) (a &lt; b ? a : b)
+</a> /* }}} */
+ 
+ /* Globals {{{ */
+<a href="#h0-2" id="h0-2" class="h">@@ -252,7 +253,7 @@ inline unsigned char color_to_char(unsigned char color_char) {
+</a> /* }}} */
+ 
+ /* Minimax {{{ */
+<a href="#h0-2-3" id="h0-2-3" class="d">-int minimax(char (*myboard)[MAX_COL + 2], unsigned char depth, char player) {
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+int minimax(char (*myboard)[MAX_COL + 2], unsigned char depth, char maximizing_player) {
+</a>     char copy_board[MAX_LIN + 2][MAX_COL + 2];
+     unsigned char me_lin, me_col, op_lin, op_col;
+     unsigned char me, op;
+<a href="#h0-3" id="h0-3" class="h">@@ -261,28 +262,42 @@ int minimax(char (*myboard)[MAX_COL + 2], unsigned char depth, char player) {
+</a> 
+     memcpy(copy_board, myboard, sizeof(copy_board));
+ 
+<a href="#h0-3-3" id="h0-3-3" class="d">-    get_corner(player, &amp;me_lin, &amp;me_col);
+</a><a href="#h0-3-4" id="h0-3-4" class="d">-    get_corner(-player, &amp;op_lin, &amp;op_col);
+</a><a href="#h0-3-5" id="h0-3-5" class="i">+    get_corner(current_player, &amp;me_lin, &amp;me_col);
+</a><a href="#h0-3-6" id="h0-3-6" class="i">+    get_corner(-current_player, &amp;op_lin, &amp;op_col);
+</a> 
+     /* calculate score for the above table in the tree */
+     if (depth == 0 || is_game_over(myboard)) {
+<a href="#h0-3-10" id="h0-3-10" class="d">-        score = MATERIAL_WEIGHT * get_material_score(copy_board, op_lin, op_col);
+</a><a href="#h0-3-11" id="h0-3-11" class="d">-        prepare_positional(copy_board[op_lin + 1][op_col + 1], -player);
+</a><a href="#h0-3-12" id="h0-3-12" class="d">-        get_positional_score(copy_board, op_lin, op_col);
+</a><a href="#h0-3-13" id="h0-3-13" class="i">+        score = MATERIAL_WEIGHT * get_material_score(copy_board, me_lin, me_col);
+</a><a href="#h0-3-14" id="h0-3-14" class="i">+        prepare_positional(copy_board[me_lin + 1][me_col + 1], current_player);
+</a><a href="#h0-3-15" id="h0-3-15" class="i">+        get_positional_score(copy_board, me_lin, me_col);
+</a>         score += AREA_WEIGHT * (limit_v + 1) * (limit_h + 1);
+         score += DIST_WEIGHT * dist_min;
+         score /= (MATERIAL_WEIGHT + AREA_WEIGHT + DIST_WEIGHT) / 3;
+ 
+         return score;
+     }
+<a href="#h0-3-22" id="h0-3-22" class="d">-    score = -INT_INFINITY;
+</a><a href="#h0-3-23" id="h0-3-23" class="d">-    me = copy_board[me_lin + 1][me_col + 1];
+</a><a href="#h0-3-24" id="h0-3-24" class="d">-    op = copy_board[op_lin + 1][op_col + 1];
+</a><a href="#h0-3-25" id="h0-3-25" class="d">-    for (color = 0; color &lt; COLORS; color++) {
+</a><a href="#h0-3-26" id="h0-3-26" class="d">-        if (color != me &amp;&amp; color != op) {
+</a><a href="#h0-3-27" id="h0-3-27" class="d">-            prepare_fill();
+</a><a href="#h0-3-28" id="h0-3-28" class="d">-            fill(copy_board, me_lin, me_col, copy_board[me_lin + 1][me_col + 1], color);
+</a><a href="#h0-3-29" id="h0-3-29" class="d">-            score = max(score, -minimax(copy_board, depth - 1, -player));
+</a><a href="#h0-3-30" id="h0-3-30" class="i">+
+</a><a href="#h0-3-31" id="h0-3-31" class="i">+    me = myboard[me_lin][me_col];
+</a><a href="#h0-3-32" id="h0-3-32" class="i">+    op = myboard[op_lin][op_col];
+</a><a href="#h0-3-33" id="h0-3-33" class="i">+    if (maximizing_player) {
+</a><a href="#h0-3-34" id="h0-3-34" class="i">+        score = -INT_INFINITY;
+</a><a href="#h0-3-35" id="h0-3-35" class="i">+        for (color = 0; color &lt; COLORS; color++) {
+</a><a href="#h0-3-36" id="h0-3-36" class="i">+            if (color != me &amp;&amp; color != op) {
+</a><a href="#h0-3-37" id="h0-3-37" class="i">+                memcpy(copy_board, myboard, sizeof(copy_board));
+</a><a href="#h0-3-38" id="h0-3-38" class="i">+                prepare_fill();
+</a><a href="#h0-3-39" id="h0-3-39" class="i">+                fill(copy_board, me_lin, me_col, copy_board[me_lin][me_col], color);
+</a><a href="#h0-3-40" id="h0-3-40" class="i">+                score = max(score, minimax(copy_board, depth - 1, !maximizing_player));
+</a><a href="#h0-3-41" id="h0-3-41" class="i">+            }
+</a><a href="#h0-3-42" id="h0-3-42" class="i">+        }
+</a><a href="#h0-3-43" id="h0-3-43" class="i">+    } else {
+</a><a href="#h0-3-44" id="h0-3-44" class="i">+        score = INT_INFINITY;
+</a><a href="#h0-3-45" id="h0-3-45" class="i">+        for (color = 0; color &lt; COLORS; color++) {
+</a><a href="#h0-3-46" id="h0-3-46" class="i">+            if (color != me &amp;&amp; color != op) {
+</a><a href="#h0-3-47" id="h0-3-47" class="i">+                memcpy(copy_board, myboard, sizeof(copy_board));
+</a><a href="#h0-3-48" id="h0-3-48" class="i">+                prepare_fill();
+</a><a href="#h0-3-49" id="h0-3-49" class="i">+                fill(copy_board, op_lin, op_col, copy_board[op_lin][op_col], color);
+</a><a href="#h0-3-50" id="h0-3-50" class="i">+                score = min(score, minimax(copy_board, depth - 1, !maximizing_player));
+</a><a href="#h0-3-51" id="h0-3-51" class="i">+            }
+</a>         }
+     }
+ 
+<a href="#h0-4" id="h0-4" class="h">@@ -344,7 +359,8 @@ int main() { /* {{{ */
+</a>             /* Do the move */
+             prepare_fill();
+             fill(alt_board, me_lin, me_col, alt_board[me_lin + 1][me_col + 1], color);
+<a href="#h0-4-3" id="h0-4-3" class="d">-            cnt = minimax(alt_board, DEPTH, -current_player);
+</a><a href="#h0-4-4" id="h0-4-4" class="i">+            cnt = minimax(alt_board, DEPTH, current_player);
+</a><a href="#h0-4-5" id="h0-4-5" class="i">+            debug(&quot;[%c] minimax returned %d&quot;, color_to_char(color), cnt);
+</a>             //cnt = MATERIAL_WEIGHT * get_material_score(alt_board, me_lin, me_col);
+             //prepare_positional(alt_board[me_lin + 1][me_col + 1], current_player);
+             //get_positional_score(alt_board, me_lin, me_col);
+</pre>
+</div>
+</body>
+</html>

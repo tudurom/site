@@ -4,6 +4,40 @@
 <subtitle>Small loan of configuration files.
 </subtitle>
 <entry>
+<id>787ae18febf79ee214fcea05a7a3911c5bcf2b09</id>
+<published>2016-06-20T19:33:37Z</published>
+<updated>2016-06-20T19:33:37Z</updated>
+<title type="text">hack</title>
+<link rel="alternate" type="text/html" href="commit/787ae18febf79ee214fcea05a7a3911c5bcf2b09.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 787ae18febf79ee214fcea05a7a3911c5bcf2b09
+parent c9f9a7cb3e4560ab437991a7ce9dc81ed44cd200
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Jun 20 22:33:37 +0300
+
+hack
+
+</content>
+</entry>
+<entry>
+<id>c9f9a7cb3e4560ab437991a7ce9dc81ed44cd200</id>
+<published>2016-06-15T15:38:33Z</published>
+<updated>2016-06-15T15:38:35Z</updated>
+<title type="text">add shell prompt to its own file</title>
+<link rel="alternate" type="text/html" href="commit/c9f9a7cb3e4560ab437991a7ce9dc81ed44cd200.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit c9f9a7cb3e4560ab437991a7ce9dc81ed44cd200
+parent 11ca0d6a23770b8629885763fbdaecd1def6de6d
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Jun 15 18:38:33 +0300
+
+add shell prompt to its own file
+
+</content>
+</entry>
+<entry>
 <id>11ca0d6a23770b8629885763fbdaecd1def6de6d</id>
 <published>2016-06-15T15:25:55Z</published>
 <updated>2016-06-15T15:25:55Z</updated>
@@ -1671,40 +1705,6 @@ Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
 Date:   Sat Apr  2 12:10:41 +0300
 
 we crux now
-
-</content>
-</entry>
-<entry>
-<id>23ca600bcbd5d531479265021539476323c5724e</id>
-<published>2016-03-30T17:54:09Z</published>
-<updated>2016-03-30T17:54:09Z</updated>
-<title type="text">st</title>
-<link rel="alternate" type="text/html" href="commit/23ca600bcbd5d531479265021539476323c5724e.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit 23ca600bcbd5d531479265021539476323c5724e
-parent 4207d7b1b48529dbeafe2d961676bcf3da888742
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Wed Mar 30 20:54:09 +0300
-
-st
-
-</content>
-</entry>
-<entry>
-<id>4207d7b1b48529dbeafe2d961676bcf3da888742</id>
-<published>2016-03-30T16:43:35Z</published>
-<updated>2016-03-30T16:43:35Z</updated>
-<title type="text">metis</title>
-<link rel="alternate" type="text/html" href="commit/4207d7b1b48529dbeafe2d961676bcf3da888742.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit 4207d7b1b48529dbeafe2d961676bcf3da888742
-parent 44ec8ee7d3ed2062fc5ece1a8e25e70b5df93432
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Wed Mar 30 19:43:35 +0300
-
-metis
 
 </content>
 </entry>
