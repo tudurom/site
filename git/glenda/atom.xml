@@ -4,6 +4,23 @@
 <subtitle>Program that plays the Flood Wars game for a contest.
 </subtitle>
 <entry>
+<id>5c8513aa0a66a6055f4618bff5a27a8ff9314680</id>
+<published>2016-06-24T19:46:16Z</published>
+<updated>2016-06-24T19:46:16Z</updated>
+<title type="text">update readme</title>
+<link rel="alternate" type="text/html" href="commit/5c8513aa0a66a6055f4618bff5a27a8ff9314680.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 5c8513aa0a66a6055f4618bff5a27a8ff9314680
+parent 8683d4b70c24f0dd7dfa996895edb1ba1e5281ab
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun 24 22:46:16 +0300
+
+update readme
+
+</content>
+</entry>
+<entry>
 <id>8683d4b70c24f0dd7dfa996895edb1ba1e5281ab</id>
 <published>2016-06-15T17:49:29Z</published>
 <updated>2016-06-15T17:49:29Z</updated>

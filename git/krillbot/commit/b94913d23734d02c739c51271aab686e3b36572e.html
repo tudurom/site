@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>added /me - krillbot - Stupid telegram bot.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="krillbot.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>krillbot</h1><span class="desc">Stupid telegram bot.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/krillbot.git">git://thetudor.ddns.net/krillbot.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/b94913d23734d02c739c51271aab686e3b36572e.html">b94913d23734d02c739c51271aab686e3b36572e</a>
+<b>parent</b> <a href="../commit/f15b4f9de52180aca18c57cb3a2f9cbbdddc1086.html">f15b4f9de52180aca18c57cb3a2f9cbbdddc1086</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Wed Jun 29 12:18:22 +0300
+
+added /me
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">commands.go</a></td><td> | </td><td class="num">8</td><td><span class="i">++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h1">main.go</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+</table>2 files changed, 9 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/commands.go.html">commands.go</a> b/<a href="../file/commands.go.html">commands.go</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -81,3 +81,11 @@ func commandLenny(u tgbotapi.Update, b *tgbotapi.BotAPI) {
+</a> func commandFlip(u tgbotapi.Update, b *tgbotapi.BotAPI) {
+ 	b.Send(tgbotapi.NewMessage(u.Message.Chat.ID, &quot;(╯°□°）╯︵ ┻━┻&quot;))
+ }
+<a href="#h0-0-3" id="h0-0-3" class="i">+
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+func commandMe(u tgbotapi.Update, b *tgbotapi.BotAPI) {
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+	firstName := u.Message.From.FirstName
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+	action := u.Message.CommandArguments()
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+	str := firstName + &quot; &quot; + action
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+	b.Send(tgbotapi.NewMessage(u.Message.Chat.ID, str))
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+}
+</a><b>diff --git a/<a id="h1" href="../file/main.go.html">main.go</a> b/<a href="../file/main.go.html">main.go</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -34,6 +34,7 @@ func initCommands() {
+</a> 	Commands[&quot;bleach&quot;] = commandBleach
+ 	Commands[&quot;lenny&quot;] = commandLenny
+ 	Commands[&quot;flip&quot;] = commandFlip
+<a href="#h1-0-3" id="h1-0-3" class="i">+	Commands[&quot;me&quot;] = commandMe
+</a> }
+ 
+ func initTrigger() {
+</pre>
+</div>
+</body>
+</html>
