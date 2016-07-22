@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> wall-e (334B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> wall-e (381B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -34,23 +34,25 @@
 <a href="#l16" id="l16">16</a>
 <a href="#l17" id="l17">17</a>
 <a href="#l18" id="l18">18</a>
+<a href="#l19" id="l19">19</a>
 </pre></td><td><pre>
-#! /bin/sh -x
+#! /bin/sh
 #
 # Set wallpaper
 # (c) tudurom 2016 - wtfpl
 #
 
-DEFAULT_WALL=&quot;$HOME/wallpapers/test_tile7_1.png&quot;
+DEFAULT_WALL=&quot;${WALL_DIR}/${WALL}&quot;
+DEFAULT_WALL_TYPE=&quot;${WALL_TYPE-TYPE:-tile}&quot;
 APRIL_WALL=&quot;$HOME/wallpapers/april_wall.png&quot;
 
 if [ &quot;$(date +&quot;%d/%m&quot;)&quot; = &quot;01/04&quot; ]; then
-  feh -fill &quot;$APRIL_WALL&quot;
+  feh --bg-fill &quot;$APRIL_WALL&quot;
 elif [ $# -ge 1 ]; then
   option=&quot;${2:-fill}&quot;
   feh --bg-${option} $1
 else
-  feh --bg-tile $DEFAULT_WALL
+  feh --bg-${DEFAULT_WALL_TYPE} $DEFAULT_WALL
 fi
 
 </pre></td></tr></table>

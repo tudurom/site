@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> alias.sh (914B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> alias.sh (1132B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -61,6 +61,22 @@
 <a href="#l43" id="l43">43</a>
 <a href="#l44" id="l44">44</a>
 <a href="#l45" id="l45">45</a>
+<a href="#l46" id="l46">46</a>
+<a href="#l47" id="l47">47</a>
+<a href="#l48" id="l48">48</a>
+<a href="#l49" id="l49">49</a>
+<a href="#l50" id="l50">50</a>
+<a href="#l51" id="l51">51</a>
+<a href="#l52" id="l52">52</a>
+<a href="#l53" id="l53">53</a>
+<a href="#l54" id="l54">54</a>
+<a href="#l55" id="l55">55</a>
+<a href="#l56" id="l56">56</a>
+<a href="#l57" id="l57">57</a>
+<a href="#l58" id="l58">58</a>
+<a href="#l59" id="l59">59</a>
+<a href="#l60" id="l60">60</a>
+<a href="#l61" id="l61">61</a>
 </pre></td><td><pre>
 alias :q=exit
 alias irb=pry
@@ -106,6 +122,22 @@ push() {
 
 radio() {
     mpv http://radio.2f30.org:8000/live.mp3
+}
+
+trinitas() {
+    mpv http://live.radiotrinitas.ro:8003
+}
+
+les() {
+    test -d &quot;$1&quot; &amp;&amp; ls -al &quot;$1&quot; || less &quot;$1&quot;
+}
+
+x0st() {
+    curl -F&quot;file=@${1}&quot; https://0x0.st
+}
+
+mtp() {
+    sudo simple-mtpfs /mnt -o allow_other
 }
 </pre></td></tr></table>
 </div>

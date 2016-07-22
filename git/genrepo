@@ -7,10 +7,13 @@ REPO_NAME="$(echo "$REPO" | cut -d'.' -f1)"
 test -d "/srv/http/git/${REPO_NAME}" || mkdir "/srv/http/git/${REPO_NAME}"
 
 cd /srv/http/git/${REPO_NAME}
-stagit /srv/git/${REPO}
+if [ -f "/srv/git/${REPO}/git-daemon-export-ok" ]; then
+    stagit /srv/git/${REPO}
 
-cp /srv/http/git/style.css /srv/http/git/${REPO_NAME}
-cp /srv/http/git/logo.png /srv/http/git/${REPO_NAME}
+    cp /srv/http/git/style.css /srv/http/git/${REPO_NAME}
+    cp /srv/http/git/logo.png /srv/http/git/${REPO_NAME}
+    ln -sf /srv/http/git/${REPO_NAME}/log.html /srv/http/git/${REPO_NAME}/index.html
+fi
 
 cd /srv/http/git
 list=""

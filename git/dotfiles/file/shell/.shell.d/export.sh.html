@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> export.sh (699B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> export.sh (852B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -47,10 +47,18 @@
 <a href="#l29" id="l29">29</a>
 <a href="#l30" id="l30">30</a>
 <a href="#l31" id="l31">31</a>
+<a href="#l32" id="l32">32</a>
+<a href="#l33" id="l33">33</a>
+<a href="#l34" id="l34">34</a>
+<a href="#l35" id="l35">35</a>
+<a href="#l36" id="l36">36</a>
+<a href="#l37" id="l37">37</a>
 </pre></td><td><pre>
 export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=less
+export BROWSER=firefox
+export LS_COLORS=&apos;&apos;
 
 # Golang specific variables
 if [ -f /usr/bin/go ]; then
@@ -70,6 +78,10 @@ fi
 if [ -f /usr/bin/node ]; then
     export PATH=&quot;$PATH:$HOME/.node/bin&quot;
 fi
+
+# Android
+export PATH=&quot;$PATH:$HOME/usr/android/android-studio/bin&quot;
+export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 
 # Source local scripts
 export PATH=&quot;$PATH:$HOME/bin/clint:$HOME/bin&quot;

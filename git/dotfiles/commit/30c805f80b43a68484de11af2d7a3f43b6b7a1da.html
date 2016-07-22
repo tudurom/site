@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>misc - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/30c805f80b43a68484de11af2d7a3f43b6b7a1da.html">30c805f80b43a68484de11af2d7a3f43b6b7a1da</a>
+<b>parent</b> <a href="../commit/bedc4b2027fb59f295442e734d478c491044bfa8.html">bedc4b2027fb59f295442e734d478c491044bfa8</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat Jul 16 19:55:36 +0300
+
+misc
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">bspwm/.config/bspwm/bspwmrc</a></td><td> | </td><td class="num">7</td><td><span class="i">+++++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h1">compton/.compton.conf</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h2">cwm/.cwmrc</a></td><td> | </td><td class="num">27</td><td><span class="i">++++++++++</span><span class="d">-----------------</span></td></tr>
+<tr><td><a href="#h3">firefox/userChrome.css</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h4">nvim/.config/nvim/.init.vim-rplugin~</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h5">nvim/.config/nvim/init.vim</a></td><td> | </td><td class="num">27</td><td><span class="i">++++++++++++++++++++++++</span><span class="d">---</span></td></tr>
+<tr><td><a href="#h6">scripts/.scripts/todo</a></td><td> | </td><td class="num">60</td><td><span class="i"></span><span class="d">------------------------------------------------------------</span></td></tr>
+<tr><td><a href="#h7">shell/.profile</a></td><td> | </td><td class="num">2</td><td><span class="i">++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h8">shell/.shell.d/alias.sh</a></td><td> | </td><td class="num">8</td><td><span class="i">++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h9">shell/.shell.d/export.sh</a></td><td> | </td><td class="num">6</td><td><span class="i">++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h10">shell/.shell.d/prompt.sh</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h11">vimperator/.vimperator/colors/moonbow.vimp</a></td><td> | </td><td class="num">26</td><td><span class="i">+++++++++++++</span><span class="d">-------------</span></td></tr>
+<tr><td><a href="#h12">vimperator/.vimperatorrc</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h13">wallpapers/wallpapers/test_tile7_3.png</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td><a href="#h14">wmrc/.config/sxhkd/commons</a></td><td> | </td><td class="num">11</td><td><span class="i">++++++++++</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h15">wmrc/.scripts/minbar</a></td><td> | </td><td class="num">214</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h16">wmrc/.scripts/panelsrc</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h17">wmrc/.scripts/statusbar</a></td><td> | </td><td class="num">249</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++</span><span class="d">-------------------------------------</span></td></tr>
+<tr><td><a href="#h18">wmrc/.scripts/wmrc</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h19">x/.Xresources</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h20">x/.xinitrc</a></td><td> | </td><td class="num">48</td><td><span class="i">+++++++++++</span><span class="d">-------------------------------------</span></td></tr>
+<tr><td><a href="#h21">x/.xres/colors/diner</a></td><td> | </td><td class="num">40</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h22">x/.xres/colors/fendr</a></td><td> | </td><td class="num">38</td><td><span class="i"></span><span class="d">--------------------------------------</span></td></tr>
+<tr><td><a href="#h23">x/.xres/colors/moonbow</a></td><td> | </td><td class="num">4</td><td><span class="i">+++</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h24">x/.xres/colors/nvy</a></td><td> | </td><td class="num">40</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h25">x/.xres/colors/woody</a></td><td> | </td><td class="num">7</td><td><span class="i">++</span><span class="d">-----</span></td></tr>
+<tr><td><a href="#h26">x/.xres/urxvt</a></td><td> | </td><td class="num">3</td><td><span class="i">++</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h27">x/.xres/xft</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+</table>28 files changed, 536 insertions(+), 305 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/bspwm/.config/bspwm/bspwmrc.html">bspwm/.config/bspwm/bspwmrc</a> b/<a href="../file/bspwm/.config/bspwm/bspwmrc.html">bspwm/.config/bspwm/bspwmrc</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,7 +1,7 @@
+</a> #!/bin/sh
+ 
+<a href="#h0-0-2" id="h0-0-2" class="d">-bspc config border_width         $BW
+</a><a href="#h0-0-3" id="h0-0-3" class="d">-bspc config window_gap           $GENERAL_GAP
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+bspc config border_width          $BW
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+bspc config window_gap            $GENERAL_GAP
+</a> 
+ bspc config split_ratio           0.5
+ bspc config borderless_monocle    true
+<a href="#h0-1" id="h0-1" class="h">@@ -20,4 +20,7 @@ for monitor in $(bspc query -M); do
+</a> done
+ 
+ bspc rule -a chromium  desktop=^2
+<a href="#h0-1-3" id="h0-1-3" class="i">+bspc rule -a Firefox   desktop=^2
+</a> bspc rule -a mpv       state=floating
+<a href="#h0-1-5" id="h0-1-5" class="i">+
+</a><a href="#h0-1-6" id="h0-1-6" class="i">+wmname LG3D
+</a><b>diff --git a/<a id="h1" href="../file/compton/.compton.conf.html">compton/.compton.conf</a> b/<a href="../file/compton/.compton.conf.html">compton/.compton.conf</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -25,7 +25,7 @@ shadow-exclude = [
+</a> #menu-opacity = 0.8;
+ #inactive-opacity = 0.8;
+ # active-opacity = 0.8;
+<a href="#h1-0-3" id="h1-0-3" class="d">-frame-opacity = 0.8;
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+#frame-opacity = 0.8;
+</a> #inactive-opacity-override = false;
+ #alpha-step = 0.06;
+ # inactive-dim = 0.2;
+<b>diff --git a/<a id="h2" href="../file/cwm/.cwmrc.html">cwm/.cwmrc</a> b/<a href="../file/cwm/.cwmrc.html">cwm/.cwmrc</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -12,23 +12,16 @@ borderwidth 3
+</a> moveamount 10
+ 
+ # colors
+<a href="#h2-0-3" id="h2-0-3" class="d">-
+</a><a href="#h2-0-4" id="h2-0-4" class="d">-# color 6
+</a><a href="#h2-0-5" id="h2-0-5" class="d">-color activeborder   &apos;#60867f&apos;
+</a><a href="#h2-0-6" id="h2-0-6" class="d">-# color 8
+</a><a href="#h2-0-7" id="h2-0-7" class="d">-color inactiveborder &apos;#4c5356&apos;
+</a><a href="#h2-0-8" id="h2-0-8" class="d">-# color 7
+</a><a href="#h2-0-9" id="h2-0-9" class="d">-color font           &apos;#c4c4b5&apos;
+</a><a href="#h2-0-10" id="h2-0-10" class="d">-# color 0
+</a><a href="#h2-0-11" id="h2-0-11" class="d">-color menubg         &apos;#2b3135&apos;
+</a><a href="#h2-0-12" id="h2-0-12" class="d">-# color 7
+</a><a href="#h2-0-13" id="h2-0-13" class="d">-color menufg         &apos;#c4c4b5&apos;
+</a><a href="#h2-0-14" id="h2-0-14" class="d">-# color 1
+</a><a href="#h2-0-15" id="h2-0-15" class="d">-color groupborder    &apos;#a66959&apos;
+</a><a href="#h2-0-16" id="h2-0-16" class="d">-# color 3
+</a><a href="#h2-0-17" id="h2-0-17" class="d">-color ungroupborder  &apos;#ac8d6e&apos;
+</a><a href="#h2-0-18" id="h2-0-18" class="d">-# color meh
+</a><a href="#h2-0-19" id="h2-0-19" class="d">-color urgencyborder  &apos;#ef9a89&apos;
+</a><a href="#h2-0-20" id="h2-0-20" class="i">+# moonbow by inami
+</a><a href="#h2-0-21" id="h2-0-21" class="i">+# drop this into your .cwmrc
+</a><a href="#h2-0-22" id="h2-0-22" class="i">+
+</a><a href="#h2-0-23" id="h2-0-23" class="i">+color activeborder   &apos;#3c5a5d&apos;
+</a><a href="#h2-0-24" id="h2-0-24" class="i">+color inactiveborder &apos;#374650&apos;
+</a><a href="#h2-0-25" id="h2-0-25" class="i">+color font           &apos;#7b8695&apos;
+</a><a href="#h2-0-26" id="h2-0-26" class="i">+color menubg         &apos;#1b2227&apos;
+</a><a href="#h2-0-27" id="h2-0-27" class="i">+color menufg         &apos;#7b8695&apos;
+</a><a href="#h2-0-28" id="h2-0-28" class="i">+color groupborder    &apos;#785561&apos;
+</a><a href="#h2-0-29" id="h2-0-29" class="i">+color ungroupborder  &apos;#7e735a&apos;
+</a> 
+ # autogroups
+ autogroup 2 Firefox
+<b>diff --git a/<a id="h3" href="../file/firefox/userChrome.css.html">firefox/userChrome.css</a> b/<a href="../file/firefox/userChrome.css.html">firefox/userChrome.css</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -18,8 +18,8 @@
+</a> 
+ :root {
+     /* TAB VARIABLES */
+<a href="#h3-0-3" id="h3-0-3" class="d">-    --bg-light: #2b3135; --bg-dark: #2b3135;
+</a><a href="#h3-0-4" id="h3-0-4" class="d">-    --fg-light: #a66959; --fg-dark: #60867f;
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+    --bg-light: #1b2227; --bg-dark: #1b2227;
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+    --fg-light: #8a6270; --fg-dark: #3c5a5d;
+</a>     --tab-triangle-correction: -1px;
+     --tab-height: 28px; --tab-icon-size: 12px; --tab-strip-margin: -12px; --tab-overlap: -5px;
+     --tab-fonts: &quot;gohufont&quot;,monospace,&quot;Dejavu Sans&quot;; --tab-font-size: 7pt;
+<b>diff --git a/<a id="h4" href="../file/nvim/.config/nvim/.init.vim-rplugin~.html">nvim/.config/nvim/.init.vim-rplugin~</a> b/<a href="../file/nvim/.config/nvim/.init.vim-rplugin~.html">nvim/.config/nvim/.init.vim-rplugin~</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -1,5 +1,5 @@
+</a> &quot; python3 plugins
+<a href="#h4-0-1" id="h4-0-1" class="d">-call remote#host#RegisterPlugin(&apos;python3&apos;, &apos;/usr/home/tudurom/.config/nvim/bundle/deoplete.nvim/rplugin/python3/deoplete&apos;, [
+</a><a href="#h4-0-2" id="h4-0-2" class="i">+call remote#host#RegisterPlugin(&apos;python3&apos;, &apos;/home/tudurom/.config/nvim/bundle/deoplete.nvim/rplugin/python3/deoplete&apos;, [
+</a>       \ {&apos;sync&apos;: v:true, &apos;name&apos;: &apos;_deoplete&apos;, &apos;type&apos;: &apos;function&apos;, &apos;opts&apos;: {}},
+      \ ])
+ 
+<b>diff --git a/<a id="h5" href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a> b/<a href="../file/nvim/.config/nvim/init.vim.html">nvim/.config/nvim/init.vim</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -15,7 +15,12 @@ call plug#begin(&apos;~/.config/nvim/bundle&apos;)
+</a> Plug &apos;ntpeters/vim-better-whitespace&apos;
+ 
+ &quot; Simple tab completion
+<a href="#h5-0-3" id="h5-0-3" class="d">-Plug &apos;ajh17/vimcompletesme&apos;
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+&quot;Plug &apos;ajh17/vimcompletesme&apos;
+</a><a href="#h5-0-5" id="h5-0-5" class="i">+function! DoRemote(arg)
+</a><a href="#h5-0-6" id="h5-0-6" class="i">+  UpdateRemotePlugins
+</a><a href="#h5-0-7" id="h5-0-7" class="i">+endfunction
+</a><a href="#h5-0-8" id="h5-0-8" class="i">+Plug &apos;Shougo/deoplete.nvim&apos;, { &apos;do&apos;: function(&apos;DoRemote&apos;) }
+</a><a href="#h5-0-9" id="h5-0-9" class="i">+Plug &apos;zchee/deoplete-go&apos;
+</a> if executable(&apos;clang&apos;)
+     Plug &apos;Rip-Rip/clang_complete&apos;
+ endif
+<a href="#h5-1" id="h5-1" class="h">@@ -163,8 +168,24 @@ map &lt;Leader&gt;l &lt;C-w&gt;l
+</a> &quot; Completion {{{
+ 
+ filetype plugin on
+<a href="#h5-1-3" id="h5-1-3" class="d">-set omnifunc=syntaxcomplete#Complete
+</a><a href="#h5-1-4" id="h5-1-4" class="d">-let b:vcm_tab_complete = &apos;omni&apos;
+</a><a href="#h5-1-5" id="h5-1-5" class="i">+&quot;set omnifunc=syntaxcomplete#Complete
+</a><a href="#h5-1-6" id="h5-1-6" class="i">+&quot;let b:vcm_tab_complete = &apos;omni&apos;
+</a><a href="#h5-1-7" id="h5-1-7" class="i">+let g:deoplete#enable_at_startup = 1
+</a><a href="#h5-1-8" id="h5-1-8" class="i">+function! s:is_whitespace() &quot;{{{
+</a><a href="#h5-1-9" id="h5-1-9" class="i">+	let col = col(&apos;.&apos;) - 1
+</a><a href="#h5-1-10" id="h5-1-10" class="i">+	return ! col || getline(&apos;.&apos;)[col - 1] =~? &apos;\s&apos;
+</a><a href="#h5-1-11" id="h5-1-11" class="i">+endfunction &quot;}}}
+</a><a href="#h5-1-12" id="h5-1-12" class="i">+&quot; &lt;Tab&gt; completion:
+</a><a href="#h5-1-13" id="h5-1-13" class="i">+&quot; 1. If popup menu is visible, select and insert next item
+</a><a href="#h5-1-14" id="h5-1-14" class="i">+&quot; 2. Otherwise, if preceding chars are whitespace, insert tab char
+</a><a href="#h5-1-15" id="h5-1-15" class="i">+&quot; 3. Otherwise, start manual autocomplete
+</a><a href="#h5-1-16" id="h5-1-16" class="i">+imap &lt;silent&gt;&lt;expr&gt;&lt;Tab&gt; pumvisible() ? &quot;\&lt;C-n&gt;&quot;
+</a><a href="#h5-1-17" id="h5-1-17" class="i">+	\ : (&lt;SID&gt;is_whitespace() ? &quot;\&lt;Tab&gt;&quot;
+</a><a href="#h5-1-18" id="h5-1-18" class="i">+	\ : deoplete#mappings#manual_complete())
+</a><a href="#h5-1-19" id="h5-1-19" class="i">+
+</a><a href="#h5-1-20" id="h5-1-20" class="i">+smap &lt;silent&gt;&lt;expr&gt;&lt;Tab&gt; pumvisible() ? &quot;\&lt;C-n&gt;&quot;
+</a><a href="#h5-1-21" id="h5-1-21" class="i">+	\ : (&lt;SID&gt;is_whitespace() ? &quot;\&lt;Tab&gt;&quot;
+</a><a href="#h5-1-22" id="h5-1-22" class="i">+\ : deoplete#mappings#manual_complete())
+</a> &quot;}}}
+ 
+ &quot; Golang {{{
+<b>diff --git a/<a id="h6" href="../file/scripts/.scripts/todo.html">scripts/.scripts/todo</a> b/<a href="../file/scripts/.scripts/todo.html">scripts/.scripts/todo</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -1,60 +0,0 @@
+</a><a href="#h6-0-0" id="h6-0-0" class="d">-#!/bin/sh
+</a><a href="#h6-0-1" id="h6-0-1" class="d">-#
+</a><a href="#h6-0-2" id="h6-0-2" class="d">-# todo - simple todo script
+</a><a href="#h6-0-3" id="h6-0-3" class="d">-# mod of xero&apos;s by arc
+</a><a href="#h6-0-4" id="h6-0-4" class="d">-# modified even more by tudurom
+</a><a href="#h6-0-5" id="h6-0-5" class="d">-#
+</a><a href="#h6-0-6" id="h6-0-6" class="d">-
+</a><a href="#h6-0-7" id="h6-0-7" class="d">-file=&quot;$HOME/.todo&quot;
+</a><a href="#h6-0-8" id="h6-0-8" class="d">-if [ -z $1 ] ; then
+</a><a href="#h6-0-9" id="h6-0-9" class="d">-  echo &quot;┌──────[ todo ]──[ version 0.0.2 ]─────── ─ ─&quot;
+</a><a href="#h6-0-10" id="h6-0-10" class="d">-  echo &quot;│ usage: todo &lt;options&gt;&quot;
+</a><a href="#h6-0-11" id="h6-0-11" class="d">-  echo &quot;│ authors: xero, arc and tudurom&quot;
+</a><a href="#h6-0-12" id="h6-0-12" class="d">-  echo &quot;├────────────────[ options ]&quot;───────────── ─ ─
+</a><a href="#h6-0-13" id="h6-0-13" class="d">-  echo &quot;│ -s          display the todo list&quot;
+</a><a href="#h6-0-14" id="h6-0-14" class="d">-  echo &quot;│ -a &lt;string&gt; add a todo item&quot;
+</a><a href="#h6-0-15" id="h6-0-15" class="d">-  echo &quot;│ -d &lt;number&gt; delete a todo item&quot;
+</a><a href="#h6-0-16" id="h6-0-16" class="d">-  echo &quot;└──────────────────────────────────────── ─ ─&quot;
+</a><a href="#h6-0-17" id="h6-0-17" class="d">-elif [ &quot;$1&quot; = &apos;-s&apos; ]; then
+</a><a href="#h6-0-18" id="h6-0-18" class="d">-  while true;
+</a><a href="#h6-0-19" id="h6-0-19" class="d">-  do
+</a><a href="#h6-0-20" id="h6-0-20" class="d">-    clear
+</a><a href="#h6-0-21" id="h6-0-21" class="d">-    tput setaf 2
+</a><a href="#h6-0-22" id="h6-0-22" class="d">-    echo &quot;&quot;
+</a><a href="#h6-0-23" id="h6-0-23" class="d">-    echo &quot;     ██                 ██&quot;
+</a><a href="#h6-0-24" id="h6-0-24" class="d">-    echo &quot;    ░██                ░██&quot;
+</a><a href="#h6-0-25" id="h6-0-25" class="d">-    echo &quot;   ██████  ██████   ██████  ██████&quot;
+</a><a href="#h6-0-26" id="h6-0-26" class="d">-    echo &quot;  ░░░██  ░██░░░░██░██░░░██░██   ░██&quot;
+</a><a href="#h6-0-27" id="h6-0-27" class="d">-    echo &quot;    ░██  ░██   ░██░██  ░██░██   ░██&quot;
+</a><a href="#h6-0-28" id="h6-0-28" class="d">-    echo &quot;    ░░██ ░░██████ ░░██████░░██████&quot;
+</a><a href="#h6-0-29" id="h6-0-29" class="d">-    echo &quot;     ░░   ░░░░░░   ░░░░░░  ░░░░░░&quot;
+</a><a href="#h6-0-30" id="h6-0-30" class="d">-    echo &quot;&quot;
+</a><a href="#h6-0-31" id="h6-0-31" class="d">-    tput bold
+</a><a href="#h6-0-32" id="h6-0-32" class="d">-    tput setaf 0
+</a><a href="#h6-0-33" id="h6-0-33" class="d">-    echo &quot;     _ __ __________________ __ _&quot;
+</a><a href="#h6-0-34" id="h6-0-34" class="d">-    echo &quot;&quot;
+</a><a href="#h6-0-35" id="h6-0-35" class="d">-    tput sgr0
+</a><a href="#h6-0-36" id="h6-0-36" class="d">-    nl -b a $file
+</a><a href="#h6-0-37" id="h6-0-37" class="d">-    sleep 4
+</a><a href="#h6-0-38" id="h6-0-38" class="d">-  done
+</a><a href="#h6-0-39" id="h6-0-39" class="d">-elif [ &quot;$1&quot; = &apos;-d&apos; ]; then
+</a><a href="#h6-0-40" id="h6-0-40" class="d">-  if [ -z &quot;$2&quot; ]; then
+</a><a href="#h6-0-41" id="h6-0-41" class="d">-    echo &quot;missing option&quot;
+</a><a href="#h6-0-42" id="h6-0-42" class="d">-    echo &quot;pass an item number to delete&quot;
+</a><a href="#h6-0-43" id="h6-0-43" class="d">-  else
+</a><a href="#h6-0-44" id="h6-0-44" class="d">-      new=&quot;$(sed &quot;${2}d&quot; $file)&quot;
+</a><a href="#h6-0-45" id="h6-0-45" class="d">-      echo &quot;$new&quot; | tee &quot;$file&quot;
+</a><a href="#h6-0-46" id="h6-0-46" class="d">-      unset new
+</a><a href="#h6-0-47" id="h6-0-47" class="d">-  fi
+</a><a href="#h6-0-48" id="h6-0-48" class="d">-elif [ &quot;$1&quot; = &apos;-a&apos; ]; then
+</a><a href="#h6-0-49" id="h6-0-49" class="d">-  shift
+</a><a href="#h6-0-50" id="h6-0-50" class="d">-  if [ -z &quot;$@&quot; ]; then
+</a><a href="#h6-0-51" id="h6-0-51" class="d">-    echo &quot;missing option&quot;
+</a><a href="#h6-0-52" id="h6-0-52" class="d">-    echo &quot;pass an item to add&quot;
+</a><a href="#h6-0-53" id="h6-0-53" class="d">-  else
+</a><a href="#h6-0-54" id="h6-0-54" class="d">-    echo &quot;$@&quot; &gt;&gt; $file
+</a><a href="#h6-0-55" id="h6-0-55" class="d">-  fi
+</a><a href="#h6-0-56" id="h6-0-56" class="d">-else
+</a><a href="#h6-0-57" id="h6-0-57" class="d">-  echo &quot;unknown option&quot;
+</a><a href="#h6-0-58" id="h6-0-58" class="d">-  echo &quot;call &apos;todo --help&apos; for more info&quot;
+</a><a href="#h6-0-59" id="h6-0-59" class="d">-fi
+</a><b>diff --git a/<a id="h7" href="../file/shell/.profile.html">shell/.profile</a> b/<a href="../file/shell/.profile.html">shell/.profile</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -9,3 +9,5 @@ export GOROOT=&quot;/usr/lib/go&quot;
+</a> test -f $HOME/.scripts/wmrc &amp;&amp; . $HOME/.scripts/wmrc
+ test -f $HOME/.scripts/panelsrc &amp;&amp; . $HOME/.scripts/panelsrc
+ test -f $HOME/.scripts/iconsrc &amp;&amp; . $HOME/.scripts/iconsrc
+<a href="#h7-0-3" id="h7-0-3" class="i">+
+</a><a href="#h7-0-4" id="h7-0-4" class="i">+. $HOME/.shell.d/export.sh
+</a><b>diff --git a/<a id="h8" href="../file/shell/.shell.d/alias.sh.html">shell/.shell.d/alias.sh</a> b/<a href="../file/shell/.shell.d/alias.sh.html">shell/.shell.d/alias.sh</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -47,3 +47,11 @@ radio() {
+</a> trinitas() {
+     mpv http://live.radiotrinitas.ro:8003
+ }
+<a href="#h8-0-3" id="h8-0-3" class="i">+
+</a><a href="#h8-0-4" id="h8-0-4" class="i">+les() {
+</a><a href="#h8-0-5" id="h8-0-5" class="i">+    test -d &quot;$1&quot; &amp;&amp; ls -al &quot;$1&quot; || less &quot;$1&quot;
+</a><a href="#h8-0-6" id="h8-0-6" class="i">+}
+</a><a href="#h8-0-7" id="h8-0-7" class="i">+
+</a><a href="#h8-0-8" id="h8-0-8" class="i">+x0st() {
+</a><a href="#h8-0-9" id="h8-0-9" class="i">+    curl -F&quot;file=@${1}&quot; https://0x0.st
+</a><a href="#h8-0-10" id="h8-0-10" class="i">+}
+</a><b>diff --git a/<a id="h9" href="../file/shell/.shell.d/export.sh.html">shell/.shell.d/export.sh</a> b/<a href="../file/shell/.shell.d/export.sh.html">shell/.shell.d/export.sh</a></b>
+<a href="#h9-0" id="h9-0" class="h">@@ -1,6 +1,8 @@
+</a> export EDITOR=nvim
+ export VISUAL=nvim
+ export PAGER=less
+<a href="#h9-0-3" id="h9-0-3" class="i">+export BROWSER=firefox
+</a><a href="#h9-0-4" id="h9-0-4" class="i">+export LS_COLORS=&apos;&apos;
+</a> 
+ # Golang specific variables
+ if [ -f /usr/bin/go ]; then
+<a href="#h9-1" id="h9-1" class="h">@@ -21,6 +23,10 @@ if [ -f /usr/bin/node ]; then
+</a>     export PATH=&quot;$PATH:$HOME/.node/bin&quot;
+ fi
+ 
+<a href="#h9-1-3" id="h9-1-3" class="i">+# Android
+</a><a href="#h9-1-4" id="h9-1-4" class="i">+export PATH=&quot;$PATH:$HOME/usr/android/android-studio/bin&quot;
+</a><a href="#h9-1-5" id="h9-1-5" class="i">+export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
+</a><a href="#h9-1-6" id="h9-1-6" class="i">+
+</a> # Source local scripts
+ export PATH=&quot;$PATH:$HOME/bin/clint:$HOME/bin&quot;
+ 
+<b>diff --git a/<a id="h10" href="../file/shell/.shell.d/prompt.sh.html">shell/.shell.d/prompt.sh</a> b/<a href="../file/shell/.shell.d/prompt.sh.html">shell/.shell.d/prompt.sh</a></b>
+<a href="#h10-0" id="h10-0" class="h">@@ -1,13 +1,13 @@
+</a> prompt () {
+<a href="#h10-0-1" id="h10-0-1" class="i">+    _ERR=$?
+</a>     exit_color=6
+     b=&quot;$(tput bold)&quot;
+     l=&quot;$(echo -n $b; tput setaf 0)&quot;
+     z=&quot;$(tput sgr0)&quot;
+<a href="#h10-0-6" id="h10-0-6" class="d">-    e=&quot;$(tput setaf $exit_color)&quot;
+</a><a href="#h10-0-7" id="h10-0-7" class="d">-    _ERR=$?
+</a>     if [ $_ERR -ne 0 ]; then
+         exit_color=1
+     fi
+<a href="#h10-0-11" id="h10-0-11" class="i">+    e=&quot;$(tput setaf $exit_color)&quot;
+</a>     dir=&quot;${l}$(pwd | sed -e &quot;s/\/usr\/home\/$USER/~/&quot; | sed -e &quot;s/\/home\/$USER/~/&quot;)&quot;
+     arrow=&quot;${e}───&quot;
+     echo &quot;${dir}&quot;
+<b>diff --git a/<a id="h11" href="../file/vimperator/.vimperator/colors/moonbow.vimp.html">vimperator/.vimperator/colors/moonbow.vimp</a> b/<a href="../file/vimperator/.vimperator/colors/moonbow.vimp.html">vimperator/.vimperator/colors/moonbow.vimp</a></b>
+<a href="#h11-0" id="h11-0" class="h">@@ -5,23 +5,23 @@
+</a> &quot; ==Ocean_Colorscheme_Settings==
+ 
+ &quot;StatusLine settings
+<a href="#h11-0-3" id="h11-0-3" class="d">-hi StatusLine           color: #7b8695; background: #1b2227; font-size: 7pt; font: &quot;GohuFont&quot;;
+</a><a href="#h11-0-4" id="h11-0-4" class="d">-&quot; hi StatusLineBroken     color: #7b8695; background: #afafff; font-size: 7pt; font: &quot;GohuFont&quot;;
+</a><a href="#h11-0-5" id="h11-0-5" class="d">-&quot; hi StatusLineSecure     color: #7b8695; background: #afffaf; font-size: 7pt; font: &quot;GohuFont&quot;;
+</a><a href="#h11-0-6" id="h11-0-6" class="i">+hi StatusLine           color: #7b8695; background: #1b2227; font-size: 8pt; font: monospace;
+</a><a href="#h11-0-7" id="h11-0-7" class="i">+&quot; hi StatusLineBroken     color: #7b8695; background: #afafff; font-size: 8pt; font: monospace;
+</a><a href="#h11-0-8" id="h11-0-8" class="i">+&quot; hi StatusLineSecure     color: #7b8695; background: #afffaf; font-size: 8pt; font: monospace;
+</a> 
+ &quot;CmdLine settings excluding Gradient
+ hi Normal               color: #7b8695; background: #1b2227;
+<a href="#h11-0-12" id="h11-0-12" class="d">-hi CmdLine              background:#1b2227; color: #7b8695; font-family: &quot;GohuFont&quot;; font-size: 7pt;
+</a><a href="#h11-0-13" id="h11-0-13" class="d">-hi CompDesc             color: #c6c6c6; width: 50%; font-family: &quot;GohuFont&quot;; font-size: 7pt;
+</a><a href="#h11-0-14" id="h11-0-14" class="i">+hi CmdLine              background:#1b2227; color: #7b8695; font-family: monospace; font-size: 8pt;
+</a><a href="#h11-0-15" id="h11-0-15" class="i">+hi CompDesc             color: #c6c6c6; width: 50%; font-family: monospace; font-size: 8pt;
+</a> hi CompIcon             width: 16px; min-width: 16px; display: inline-block; margin-right: .5ex;
+<a href="#h11-0-17" id="h11-0-17" class="d">-hi CompItem[selected]   background: #1b2227; color: #8a6270; font-family: &quot;GohuFont&quot;;
+</a><a href="#h11-0-18" id="h11-0-18" class="i">+hi CompItem[selected]   background: #1b2227; color: #8a6270; font-family: monospace;
+</a> &quot; hi CompLess             text-align: center; height: 0; line-height: .5ex; padding-top: 1ex;
+ &quot; hi CompMore             text-align: center; height: .5ex; line-height: .5ex; margin-bottom: -.5ex;
+<a href="#h11-0-21" id="h11-0-21" class="d">-hi CompMsg              font-family: &quot;GohuFont&quot;; font-style: &quot;GohuFont&quot;; margin-left: 16px; font-size: 7pt;
+</a><a href="#h11-0-22" id="h11-0-22" class="d">-hi CompResult           width: 45%; overflow: hidden;font-size: 7pt; font-family: &quot;GohuFont&quot;; font-weight: normal;
+</a><a href="#h11-0-23" id="h11-0-23" class="d">-hi CompTitle            color: #7b8695; background: #1b2227; font-weight: bold; font-family: &quot;GohuFont&quot;; font-size: 7pt;
+</a><a href="#h11-0-24" id="h11-0-24" class="d">-hi CompTitle&gt;*          padding: 0 .5ex; font-family: &quot;GohuFont&quot;; font-size: 7pt;
+</a><a href="#h11-0-25" id="h11-0-25" class="d">-hi Filter               font-weight: bold;color: #7b8695; font-family: &quot;GohuFont&quot;; font-size: 7pt;
+</a><a href="#h11-0-26" id="h11-0-26" class="i">+hi CompMsg              font-family: monospace; font-style: monospace; margin-left: 16px; font-size: 8pt;
+</a><a href="#h11-0-27" id="h11-0-27" class="i">+hi CompResult           width: 45%; overflow: hidden;font-size: 8pt; font-family: monospace; font-weight: normal;
+</a><a href="#h11-0-28" id="h11-0-28" class="i">+hi CompTitle            color: #7b8695; background: #1b2227; font-weight: bold; font-family: monospace; font-size: 8pt;
+</a><a href="#h11-0-29" id="h11-0-29" class="i">+hi CompTitle&gt;*          padding: 0 .5ex; font-family: monospace; font-size: 8pt;
+</a><a href="#h11-0-30" id="h11-0-30" class="i">+hi Filter               font-weight: bold;color: #7b8695; font-family: monospace; font-size: 8pt;
+</a> 
+ &quot;When using tab complete in CmdLine, line separating Title from function and description
+ &quot; hi Gradient             height: 1px; margin-bottom: -1px; margin-top: -1px;
+<a href="#h11-1" id="h11-1" class="h">@@ -36,8 +36,8 @@ hi ErrorMsg             color: #2b303b; background: #bf616a; font-weight: bold;
+</a> 
+ 
+ &quot;Hint section
+<a href="#h11-1-3" id="h11-1-3" class="d">-&quot;hi Hint                 font-family: &quot;GohuFont&quot;; font-size: 10px; font-weight: bold; color: #f6e9e9; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding 0px 1px 0px 1px;
+</a><a href="#h11-1-4" id="h11-1-4" class="d">-hi Hint               	font-family: &quot;GohuFont&quot;; font-size: 12px; font-weight: bold; color: #bf616a; background-color: #2b303b; border: solid 1px #65737e;
+</a><a href="#h11-1-5" id="h11-1-5" class="i">+&quot;hi Hint                 font-family: monospace; font-size: 10px; font-weight: bold; color: #f6e9e9; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding 0px 1px 0px 1px;
+</a><a href="#h11-1-6" id="h11-1-6" class="i">+hi Hint               	font-family: monospace; font-size: 12px; font-weight: bold; color: #bf616a; background-color: #2b303b; border: solid 1px #65737e;
+</a> hi Hint::after          content: attr(number);
+ hi HintActive           background: #8fa1b3; color: #94a1b3;
+ hi HintElem             background-color: #2b303b; color: #a3be8c;
+<b>diff --git a/<a id="h12" href="../file/vimperator/.vimperatorrc.html">vimperator/.vimperatorrc</a> b/<a href="../file/vimperator/.vimperatorrc.html">vimperator/.vimperatorrc</a></b>
+<a href="#h12-0" id="h12-0" class="h">@@ -1,3 +1,3 @@
+</a><a href="#h12-0-0" id="h12-0-0" class="d">-colo designr
+</a><a href="#h12-0-1" id="h12-0-1" class="i">+colo moonbow
+</a> 
+ &quot; vim: set ft=vim:
+<b>diff --git a/<a id="h13" href="../file/wallpapers/wallpapers/test_tile7_3.png.html">wallpapers/wallpapers/test_tile7_3.png</a> b/<a href="../file/wallpapers/wallpapers/test_tile7_3.png.html">wallpapers/wallpapers/test_tile7_3.png</a></b>
+Binary files differ.
+<b>diff --git a/<a id="h14" href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a> b/<a href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a></b>
+<a href="#h14-0" id="h14-0" class="h">@@ -12,11 +12,20 @@ super + q
+</a>   showtodo
+ 
+ super + shift + f
+<a href="#h14-0-3" id="h14-0-3" class="d">-  chromium
+</a><a href="#h14-0-4" id="h14-0-4" class="i">+  $BROWSER
+</a> 
+ super + shift + x
+   slock
+ 
+<a href="#h14-0-9" id="h14-0-9" class="i">+super + F1
+</a><a href="#h14-0-10" id="h14-0-10" class="i">+  echo &quot;over&quot; &gt; /tmp/minbar.cmd
+</a><a href="#h14-0-11" id="h14-0-11" class="i">+
+</a><a href="#h14-0-12" id="h14-0-12" class="i">+super + F2
+</a><a href="#h14-0-13" id="h14-0-13" class="i">+  echo &quot;music&quot; &gt; /tmp/minbar.cmd
+</a><a href="#h14-0-14" id="h14-0-14" class="i">+
+</a><a href="#h14-0-15" id="h14-0-15" class="i">+super + F3
+</a><a href="#h14-0-16" id="h14-0-16" class="i">+  echo &quot;awesome&quot; &gt; /tmp/minbar.cmd
+</a><a href="#h14-0-17" id="h14-0-17" class="i">+
+</a> XF86AudioRaiseVolume
+   amixer -q sset Master 5%+ unmute
+ 
+<b>diff --git a/<a id="h15" href="../file/wmrc/.scripts/minbar.html">wmrc/.scripts/minbar</a> b/<a href="../file/wmrc/.scripts/minbar.html">wmrc/.scripts/minbar</a></b>
+<a href="#h15-0" id="h15-0" class="h">@@ -0,0 +1,214 @@
+</a><a href="#h15-0-0" id="h15-0-0" class="i">+#!/bin/sh
+</a><a href="#h15-0-1" id="h15-0-1" class="i">+#
+</a><a href="#h15-0-2" id="h15-0-2" class="i">+# Simple status bar. Really.
+</a><a href="#h15-0-3" id="h15-0-3" class="i">+# (c) tudurom 2016 - wtfpl
+</a><a href="#h15-0-4" id="h15-0-4" class="i">+#
+</a><a href="#h15-0-5" id="h15-0-5" class="i">+
+</a><a href="#h15-0-6" id="h15-0-6" class="i">+# Commands:
+</a><a href="#h15-0-7" id="h15-0-7" class="i">+# over - overview, print date and occasionally the battery level, time until full {dis,}charge etc.
+</a><a href="#h15-0-8" id="h15-0-8" class="i">+# awesome - print binary clock using braille characters (requires brclock installed)
+</a><a href="#h15-0-9" id="h15-0-9" class="i">+# music - now playing tune
+</a><a href="#h15-0-10" id="h15-0-10" class="i">+# notif - print notification
+</a><a href="#h15-0-11" id="h15-0-11" class="i">+
+</a><a href="#h15-0-12" id="h15-0-12" class="i">+# Setup {{{
+</a><a href="#h15-0-13" id="h15-0-13" class="i">+# file to receive commands from
+</a><a href="#h15-0-14" id="h15-0-14" class="i">+COMMAND_FILE=&quot;/tmp/minbar.cmd&quot;
+</a><a href="#h15-0-15" id="h15-0-15" class="i">+test -f &quot;$COMMAND_FILE&quot; &amp;&amp; rm &quot;$COMMAND_FILE&quot;
+</a><a href="#h15-0-16" id="h15-0-16" class="i">+# over is the default mode
+</a><a href="#h15-0-17" id="h15-0-17" class="i">+echo &quot;over&quot; &gt; &quot;$COMMAND_FILE&quot;
+</a><a href="#h15-0-18" id="h15-0-18" class="i">+
+</a><a href="#h15-0-19" id="h15-0-19" class="i">+# Color definitions
+</a><a href="#h15-0-20" id="h15-0-20" class="i">+C0=&quot;$(xrq &apos;*color0&apos;)&quot;
+</a><a href="#h15-0-21" id="h15-0-21" class="i">+C1=&quot;$(xrq &apos;*color1&apos;)&quot;
+</a><a href="#h15-0-22" id="h15-0-22" class="i">+C2=&quot;$(xrq &apos;*color2&apos;)&quot;
+</a><a href="#h15-0-23" id="h15-0-23" class="i">+C3=&quot;$(xrq &apos;*color3&apos;)&quot;
+</a><a href="#h15-0-24" id="h15-0-24" class="i">+C4=&quot;$(xrq &apos;*color4&apos;)&quot;
+</a><a href="#h15-0-25" id="h15-0-25" class="i">+C5=&quot;$(xrq &apos;*color5&apos;)&quot;
+</a><a href="#h15-0-26" id="h15-0-26" class="i">+C6=&quot;$(xrq &apos;*color6&apos;)&quot;
+</a><a href="#h15-0-27" id="h15-0-27" class="i">+C7=&quot;$(xrq &apos;*color7&apos;)&quot;
+</a><a href="#h15-0-28" id="h15-0-28" class="i">+C8=&quot;$(xrq &apos;*color8&apos;)&quot;
+</a><a href="#h15-0-29" id="h15-0-29" class="i">+C9=&quot;$(xrq &apos;*color9&apos;)&quot;
+</a><a href="#h15-0-30" id="h15-0-30" class="i">+C10=&quot;$(xrq &apos;*color10&apos;)&quot;
+</a><a href="#h15-0-31" id="h15-0-31" class="i">+C11=&quot;$(xrq &apos;*color11&apos;)&quot;
+</a><a href="#h15-0-32" id="h15-0-32" class="i">+C12=&quot;$(xrq &apos;*color12&apos;)&quot;
+</a><a href="#h15-0-33" id="h15-0-33" class="i">+C13=&quot;$(xrq &apos;*color13&apos;)&quot;
+</a><a href="#h15-0-34" id="h15-0-34" class="i">+C14=&quot;$(xrq &apos;*color14&apos;)&quot;
+</a><a href="#h15-0-35" id="h15-0-35" class="i">+C15=&quot;$(xrq &apos;*color15&apos;)&quot;
+</a><a href="#h15-0-36" id="h15-0-36" class="i">+CFG=&quot;$(xrq &apos;*foreground&apos;)&quot;
+</a><a href="#h15-0-37" id="h15-0-37" class="i">+CBG=&quot;$(xrq &apos;*.background&apos;)&quot;
+</a><a href="#h15-0-38" id="h15-0-38" class="i">+
+</a><a href="#h15-0-39" id="h15-0-39" class="i">+# actual colors for the foreground and background of the bar
+</a><a href="#h15-0-40" id="h15-0-40" class="i">+CB=&quot;$CBG&quot;
+</a><a href="#h15-0-41" id="h15-0-41" class="i">+CF=&quot;$C6&quot;
+</a><a href="#h15-0-42" id="h15-0-42" class="i">+
+</a><a href="#h15-0-43" id="h15-0-43" class="i">+PD_X=&quot;$(dattr -x `ppd`)&quot;
+</a><a href="#h15-0-44" id="h15-0-44" class="i">+PD_Y=&quot;$(dattr -y `ppd`)&quot;
+</a><a href="#h15-0-45" id="h15-0-45" class="i">+PD_WIDTH=&quot;$(dattr -w `ppd`)&quot;
+</a><a href="#h15-0-46" id="h15-0-46" class="i">+PD_HEIGHT=&quot;$(dattr -h `ppd`)&quot;
+</a><a href="#h15-0-47" id="h15-0-47" class="i">+
+</a><a href="#h15-0-48" id="h15-0-48" class="i">+BAR_X=&quot;$(( PD_X + GENERAL_GAP ))&quot;
+</a><a href="#h15-0-49" id="h15-0-49" class="i">+BAR_Y=&quot;$(( PD_Y + GENERAL_GAP ))&quot;
+</a><a href="#h15-0-50" id="h15-0-50" class="i">+BAR_WIDTH=&quot;300&quot;
+</a><a href="#h15-0-51" id="h15-0-51" class="i">+BAR_HEIGHT=&quot;$PANEL_STATUS_HEIGHT&quot;
+</a><a href="#h15-0-52" id="h15-0-52" class="i">+
+</a><a href="#h15-0-53" id="h15-0-53" class="i">+SEP_SMALL=&quot;        &quot;
+</a><a href="#h15-0-54" id="h15-0-54" class="i">+SEP_BIG=&quot;            &quot;
+</a><a href="#h15-0-55" id="h15-0-55" class="i">+
+</a><a href="#h15-0-56" id="h15-0-56" class="i">+# Bar options
+</a><a href="#h15-0-57" id="h15-0-57" class="i">+BAR_OPTS=&quot;&quot;
+</a><a href="#h15-0-58" id="h15-0-58" class="i">+# Make it wmutils compatible
+</a><a href="#h15-0-59" id="h15-0-59" class="i">+BAR_OPTS=&quot;${BAR_OPTS} -d&quot;
+</a><a href="#h15-0-60" id="h15-0-60" class="i">+# Add borders
+</a><a href="#h15-0-61" id="h15-0-61" class="i">+BAR_OPTS=&quot;${BAR_OPTS} -R $C8 -r $BW&quot;
+</a><a href="#h15-0-62" id="h15-0-62" class="i">+# Position it
+</a><a href="#h15-0-63" id="h15-0-63" class="i">+BAR_OPTS=&quot;${BAR_OPTS} -g ${BAR_WIDTH}x${BAR_HEIGHT}+${BAR_X}+${BAR_Y}&quot;
+</a><a href="#h15-0-64" id="h15-0-64" class="i">+# Colors
+</a><a href="#h15-0-65" id="h15-0-65" class="i">+BAR_OPTS=&quot;${BAR_OPTS} -B ${CB} -F ${CF}&quot;
+</a><a href="#h15-0-66" id="h15-0-66" class="i">+# Underline width
+</a><a href="#h15-0-67" id="h15-0-67" class="i">+BAR_OPTS=&quot;${BAR_OPTS} -u 3&quot;
+</a><a href="#h15-0-68" id="h15-0-68" class="i">+# Fonts
+</a><a href="#h15-0-69" id="h15-0-69" class="i">+BAR_OPTS=&quot;${BAR_OPTS} -f ${PANEL_FONT} -f ${PANEL_ICON_FONT} -f -*-metis-normal-*-*-*-11-*-*-*-*-*-*-* -o -1&quot;
+</a><a href="#h15-0-70" id="h15-0-70" class="i">+
+</a><a href="#h15-0-71" id="h15-0-71" class="i">+# Seconds to sleep
+</a><a href="#h15-0-72" id="h15-0-72" class="i">+SLEEP_TIME=&quot;1&quot;
+</a><a href="#h15-0-73" id="h15-0-73" class="i">+
+</a><a href="#h15-0-74" id="h15-0-74" class="i">+SKROLL_CHARS=60
+</a><a href="#h15-0-75" id="h15-0-75" class="i">+
+</a><a href="#h15-0-76" id="h15-0-76" class="i">+# }}}
+</a><a href="#h15-0-77" id="h15-0-77" class="i">+
+</a><a href="#h15-0-78" id="h15-0-78" class="i">+# Icons {{{
+</a><a href="#h15-0-79" id="h15-0-79" class="i">+CLOCK_ICON=&quot;&quot;
+</a><a href="#h15-0-80" id="h15-0-80" class="i">+DATE_ICON=&quot;&quot;
+</a><a href="#h15-0-81" id="h15-0-81" class="i">+# }}}
+</a><a href="#h15-0-82" id="h15-0-82" class="i">+
+</a><a href="#h15-0-83" id="h15-0-83" class="i">+# Functions {{{
+</a><a href="#h15-0-84" id="h15-0-84" class="i">+
+</a><a href="#h15-0-85" id="h15-0-85" class="i">+# Print icon
+</a><a href="#h15-0-86" id="h15-0-86" class="i">+i() {
+</a><a href="#h15-0-87" id="h15-0-87" class="i">+    echo &quot;%{F$C9}${1}%{F-}&quot;
+</a><a href="#h15-0-88" id="h15-0-88" class="i">+}
+</a><a href="#h15-0-89" id="h15-0-89" class="i">+
+</a><a href="#h15-0-90" id="h15-0-90" class="i">+get_time() {
+</a><a href="#h15-0-91" id="h15-0-91" class="i">+    local format=&quot;%H:%M&quot;
+</a><a href="#h15-0-92" id="h15-0-92" class="i">+    test &quot;$(date +&quot;%d %m&quot;)&quot; = &quot;01 04&quot; &amp;&amp; format=&apos;%s&apos;
+</a><a href="#h15-0-93" id="h15-0-93" class="i">+    local out=&quot;$(date +&quot;$format&quot; | sed &apos;s/ //&apos;)&quot;
+</a><a href="#h15-0-94" id="h15-0-94" class="i">+
+</a><a href="#h15-0-95" id="h15-0-95" class="i">+    echo &quot;$out&quot;
+</a><a href="#h15-0-96" id="h15-0-96" class="i">+}
+</a><a href="#h15-0-97" id="h15-0-97" class="i">+
+</a><a href="#h15-0-98" id="h15-0-98" class="i">+get_braille_time() {
+</a><a href="#h15-0-99" id="h15-0-99" class="i">+    echo &quot;$(brclock | tr &apos;\n&apos; &apos; &apos; | sed &apos;s/ //g&apos;)&quot;
+</a><a href="#h15-0-100" id="h15-0-100" class="i">+}
+</a><a href="#h15-0-101" id="h15-0-101" class="i">+
+</a><a href="#h15-0-102" id="h15-0-102" class="i">+get_date() {
+</a><a href="#h15-0-103" id="h15-0-103" class="i">+    local out=&quot;$(date &apos;+%a, %B %d&apos; | tr [:upper:] [:lower:])&quot;
+</a><a href="#h15-0-104" id="h15-0-104" class="i">+
+</a><a href="#h15-0-105" id="h15-0-105" class="i">+    echo &quot;$out&quot;
+</a><a href="#h15-0-106" id="h15-0-106" class="i">+}
+</a><a href="#h15-0-107" id="h15-0-107" class="i">+
+</a><a href="#h15-0-108" id="h15-0-108" class="i">+get_battery() {
+</a><a href="#h15-0-109" id="h15-0-109" class="i">+    for bat in /sys/class/power_supply/BAT*; do
+</a><a href="#h15-0-110" id="h15-0-110" class="i">+        cat &quot;${bat}/capacity&quot;
+</a><a href="#h15-0-111" id="h15-0-111" class="i">+        break
+</a><a href="#h15-0-112" id="h15-0-112" class="i">+    done
+</a><a href="#h15-0-113" id="h15-0-113" class="i">+}
+</a><a href="#h15-0-114" id="h15-0-114" class="i">+
+</a><a href="#h15-0-115" id="h15-0-115" class="i">+get_battery_icon() {
+</a><a href="#h15-0-116" id="h15-0-116" class="i">+    local status=&quot;&quot;
+</a><a href="#h15-0-117" id="h15-0-117" class="i">+    local perc=&quot;&quot;
+</a><a href="#h15-0-118" id="h15-0-118" class="i">+    for bat in /sys/class/power_supply/BAT*; do
+</a><a href="#h15-0-119" id="h15-0-119" class="i">+        status=&quot;$(cat &quot;$bat/status&quot;)&quot;
+</a><a href="#h15-0-120" id="h15-0-120" class="i">+        perc=&quot;$(cat &quot;$bat/capacity&quot;)&quot;
+</a><a href="#h15-0-121" id="h15-0-121" class="i">+        break
+</a><a href="#h15-0-122" id="h15-0-122" class="i">+    done
+</a><a href="#h15-0-123" id="h15-0-123" class="i">+
+</a><a href="#h15-0-124" id="h15-0-124" class="i">+    local ico=&quot;&quot;
+</a><a href="#h15-0-125" id="h15-0-125" class="i">+    if [ &quot;$status&quot; = &quot;Charging&quot; ]; then
+</a><a href="#h15-0-126" id="h15-0-126" class="i">+        ico=&quot;&quot;
+</a><a href="#h15-0-127" id="h15-0-127" class="i">+    elif [ &quot;$status&quot; = &quot;Full&quot; ] || [ &quot;$status&quot; = &quot;Unknown&quot; ]; then
+</a><a href="#h15-0-128" id="h15-0-128" class="i">+        ico=&quot;&quot;
+</a><a href="#h15-0-129" id="h15-0-129" class="i">+    elif [ &quot;$perc&quot; -gt 60 ]; then
+</a><a href="#h15-0-130" id="h15-0-130" class="i">+        ico=&quot;&quot;
+</a><a href="#h15-0-131" id="h15-0-131" class="i">+    elif [ &quot;$perc&quot; -gt 30 ]; then
+</a><a href="#h15-0-132" id="h15-0-132" class="i">+        ico=&quot;&quot;
+</a><a href="#h15-0-133" id="h15-0-133" class="i">+    else
+</a><a href="#h15-0-134" id="h15-0-134" class="i">+        ico=&quot;&quot;
+</a><a href="#h15-0-135" id="h15-0-135" class="i">+    fi
+</a><a href="#h15-0-136" id="h15-0-136" class="i">+
+</a><a href="#h15-0-137" id="h15-0-137" class="i">+    echo &quot;$ico&quot;
+</a><a href="#h15-0-138" id="h15-0-138" class="i">+}
+</a><a href="#h15-0-139" id="h15-0-139" class="i">+
+</a><a href="#h15-0-140" id="h15-0-140" class="i">+get_music() {
+</a><a href="#h15-0-141" id="h15-0-141" class="i">+    local song=&quot;$(mpc current -f &quot;[[%artist%|%album%] - %title%]|%file%&quot;)&quot;
+</a><a href="#h15-0-142" id="h15-0-142" class="i">+
+</a><a href="#h15-0-143" id="h15-0-143" class="i">+    echo &quot;$song&quot;
+</a><a href="#h15-0-144" id="h15-0-144" class="i">+}
+</a><a href="#h15-0-145" id="h15-0-145" class="i">+
+</a><a href="#h15-0-146" id="h15-0-146" class="i">+get_music_icon() {
+</a><a href="#h15-0-147" id="h15-0-147" class="i">+    local status=&quot;$(mpc status | sed -n 2p | cut -d&apos; &apos; -f 1)&quot;
+</a><a href="#h15-0-148" id="h15-0-148" class="i">+    local ico=&quot;&quot;
+</a><a href="#h15-0-149" id="h15-0-149" class="i">+    if [ &quot;$status&quot; = &quot;[playing]&quot; ]; then
+</a><a href="#h15-0-150" id="h15-0-150" class="i">+        ico=&quot;&quot;
+</a><a href="#h15-0-151" id="h15-0-151" class="i">+    elif [ &quot;$status&quot; = &quot;[paused]&quot; ]; then
+</a><a href="#h15-0-152" id="h15-0-152" class="i">+        ico=&quot;&quot;
+</a><a href="#h15-0-153" id="h15-0-153" class="i">+    else
+</a><a href="#h15-0-154" id="h15-0-154" class="i">+        ico=&quot;&quot;
+</a><a href="#h15-0-155" id="h15-0-155" class="i">+    fi
+</a><a href="#h15-0-156" id="h15-0-156" class="i">+
+</a><a href="#h15-0-157" id="h15-0-157" class="i">+    echo &quot;$ico&quot;
+</a><a href="#h15-0-158" id="h15-0-158" class="i">+}
+</a><a href="#h15-0-159" id="h15-0-159" class="i">+# }}}
+</a><a href="#h15-0-160" id="h15-0-160" class="i">+
+</a><a href="#h15-0-161" id="h15-0-161" class="i">+# Listen for notifications {{{
+</a><a href="#h15-0-162" id="h15-0-162" class="i">+NOTIFY_FIFO_PATH=&quot;${NOTIFY_FIFO_PATH:-$HOME/tmp/notifyd.fifo}&quot;
+</a><a href="#h15-0-163" id="h15-0-163" class="i">+test -p &quot;$NOTIFY_FIFO_PATH&quot; || mkfifo &quot;$NOTIFY_FIFO_PATH&quot;
+</a><a href="#h15-0-164" id="h15-0-164" class="i">+tail -f &quot;$NOTIFY_FIFO_PATH&quot; |\
+</a><a href="#h15-0-165" id="h15-0-165" class="i">+while IFS= read -r message; do
+</a><a href="#h15-0-166" id="h15-0-166" class="i">+    echo &quot;notif\n${message}&quot; &gt; &quot;$COMMAND_FILE&quot;
+</a><a href="#h15-0-167" id="h15-0-167" class="i">+done &amp;
+</a><a href="#h15-0-168" id="h15-0-168" class="i">+# }}}
+</a><a href="#h15-0-169" id="h15-0-169" class="i">+
+</a><a href="#h15-0-170" id="h15-0-170" class="i">+# Main loop {{{
+</a><a href="#h15-0-171" id="h15-0-171" class="i">+while :; do
+</a><a href="#h15-0-172" id="h15-0-172" class="i">+    # The command is on the first line
+</a><a href="#h15-0-173" id="h15-0-173" class="i">+    # Arguments on the second
+</a><a href="#h15-0-174" id="h15-0-174" class="i">+    mode=&quot;$(head -n 1 &quot;$COMMAND_FILE&quot;)&quot;
+</a><a href="#h15-0-175" id="h15-0-175" class="i">+    arg=&quot;$(sed -n &apos;2{p;q}&apos; &quot;$COMMAND_FILE&quot;)&quot;
+</a><a href="#h15-0-176" id="h15-0-176" class="i">+
+</a><a href="#h15-0-177" id="h15-0-177" class="i">+    out=&quot;&quot;
+</a><a href="#h15-0-178" id="h15-0-178" class="i">+    case $mode in
+</a><a href="#h15-0-179" id="h15-0-179" class="i">+        over)
+</a><a href="#h15-0-180" id="h15-0-180" class="i">+            out=&quot;%{c}$(i $CLOCK_ICON) $(get_time)${SEP_SMALL}$(i $DATE_ICON) $(get_date)${SEP_SMALL}$(i $(get_battery_icon)) $(get_battery)&quot;
+</a><a href="#h15-0-181" id="h15-0-181" class="i">+            echo &quot;$out&quot;
+</a><a href="#h15-0-182" id="h15-0-182" class="i">+            ;;
+</a><a href="#h15-0-183" id="h15-0-183" class="i">+        music)
+</a><a href="#h15-0-184" id="h15-0-184" class="i">+            ico=&quot;$(i $(get_music_icon))&quot;
+</a><a href="#h15-0-185" id="h15-0-185" class="i">+            song=&quot;$(get_music)&quot;
+</a><a href="#h15-0-186" id="h15-0-186" class="i">+            prev_song=&quot;$song&quot;
+</a><a href="#h15-0-187" id="h15-0-187" class="i">+            # If the song&apos;s name is too long, skroll it
+</a><a href="#h15-0-188" id="h15-0-188" class="i">+            if [ &quot;$(get_music | wc -m)&quot; -gt &quot;$(( SKROLL_CHARS - 3 ))&quot; ]; then
+</a><a href="#h15-0-189" id="h15-0-189" class="i">+                echo &quot;$song&quot; | skroll -r -n &quot;$(( SKROLL_CHARS - 3 ))&quot; | while IFS=&apos;&apos; read -r line; do
+</a><a href="#h15-0-190" id="h15-0-190" class="i">+                    ico=&quot;$(i $(get_music_icon))&quot;
+</a><a href="#h15-0-191" id="h15-0-191" class="i">+                    song=&quot;$(get_music)&quot;
+</a><a href="#h15-0-192" id="h15-0-192" class="i">+                    # If the song changed, stop skrolling
+</a><a href="#h15-0-193" id="h15-0-193" class="i">+                    test &quot;$song&quot; != &quot;$prev_song&quot; &amp;&amp; break
+</a><a href="#h15-0-194" id="h15-0-194" class="i">+                    echo &quot; ${ico} ${line}&quot;
+</a><a href="#h15-0-195" id="h15-0-195" class="i">+                done
+</a><a href="#h15-0-196" id="h15-0-196" class="i">+            else
+</a><a href="#h15-0-197" id="h15-0-197" class="i">+                echo &quot;%{c}$(i $(get_music_icon)) $(get_music)&quot;
+</a><a href="#h15-0-198" id="h15-0-198" class="i">+            fi
+</a><a href="#h15-0-199" id="h15-0-199" class="i">+            ;;
+</a><a href="#h15-0-200" id="h15-0-200" class="i">+        notif)
+</a><a href="#h15-0-201" id="h15-0-201" class="i">+            echo &quot;$arg&quot; | skroll -r -n $SKROLL_CHARS
+</a><a href="#h15-0-202" id="h15-0-202" class="i">+            echo &quot;over&quot; &gt; &quot;$COMMAND_FILE&quot;
+</a><a href="#h15-0-203" id="h15-0-203" class="i">+            ;;
+</a><a href="#h15-0-204" id="h15-0-204" class="i">+        awesome)
+</a><a href="#h15-0-205" id="h15-0-205" class="i">+            out=&quot;%{c}$(i $CLOCK_ICON) $(get_braille_time)&quot;
+</a><a href="#h15-0-206" id="h15-0-206" class="i">+            echo &quot;$out&quot;
+</a><a href="#h15-0-207" id="h15-0-207" class="i">+            ;;
+</a><a href="#h15-0-208" id="h15-0-208" class="i">+    esac
+</a><a href="#h15-0-209" id="h15-0-209" class="i">+
+</a><a href="#h15-0-210" id="h15-0-210" class="i">+    sleep &quot;$SLEEP_TIME&quot;
+</a><a href="#h15-0-211" id="h15-0-211" class="i">+done | lemonbar $BAR_OPTS
+</a><a href="#h15-0-212" id="h15-0-212" class="i">+# }}}
+</a><a href="#h15-0-213" id="h15-0-213" class="i">+
+</a><b>diff --git a/<a id="h16" href="../file/wmrc/.scripts/panelsrc.html">wmrc/.scripts/panelsrc</a> b/<a href="../file/wmrc/.scripts/panelsrc.html">wmrc/.scripts/panelsrc</a></b>
+<a href="#h16-0" id="h16-0" class="h">@@ -2,7 +2,7 @@
+</a> # (c) tudurom 2016 - wtfpl
+ 
+ #export PANEL_FONT=&quot;-*-erusfont-medium-*-*-*-11-*-*-*-*-*-*-*&quot;
+<a href="#h16-0-3" id="h16-0-3" class="d">-export PANEL_FONT=&quot;-*-tangerine-medium-*-*-*-10-*-*-*-*-*-*-*&quot;
+</a><a href="#h16-0-4" id="h16-0-4" class="i">+export PANEL_FONT=&quot;-benis-lemon-*-*-*-*-10-*-*-*-*-*-*-*&quot;
+</a> export PANEL_ICON_FONT=&quot;-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*&quot;
+ 
+ export PANEL_STATUS_HEIGHT=&quot;30&quot;
+<b>diff --git a/<a id="h17" href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a> b/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a></b>
+<a href="#h17-0" id="h17-0" class="h">@@ -6,168 +6,187 @@
+</a> 
+ test -z &quot;$DISPLAY&quot; &amp;&amp; echo &quot;statusbar needs a working X environment&quot; &amp;&amp; exit 1
+ 
+<a href="#h17-0-3" id="h17-0-3" class="i">+
+</a> is_int() {
+<a href="#h17-0-5" id="h17-0-5" class="d">-  case $1 in
+</a><a href="#h17-0-6" id="h17-0-6" class="d">-    &apos;&apos;|*[!0-9]*) return 1 ;;
+</a><a href="#h17-0-7" id="h17-0-7" class="d">-    *) return 0 ;;
+</a><a href="#h17-0-8" id="h17-0-8" class="d">-  esac
+</a><a href="#h17-0-9" id="h17-0-9" class="i">+    case $1 in
+</a><a href="#h17-0-10" id="h17-0-10" class="i">+        &apos;&apos;|*[!0-9]*) return 1 ;;
+</a><a href="#h17-0-11" id="h17-0-11" class="i">+        *) return 0 ;;
+</a><a href="#h17-0-12" id="h17-0-12" class="i">+    esac
+</a> }
+ 
+ # Setup {{{
+ 
+<a href="#h17-0-17" id="h17-0-17" class="d">-  # Create fifo
+</a><a href="#h17-0-18" id="h17-0-18" class="d">-  FIFO_PATH=/tmp/status.fifo
+</a><a href="#h17-0-19" id="h17-0-19" class="d">-  test -e &quot;$FIFO_PATH&quot; &amp;&amp; rm &quot;$FIFO_PATH&quot;
+</a><a href="#h17-0-20" id="h17-0-20" class="d">-  mkfifo &quot;$FIFO_PATH&quot;
+</a><a href="#h17-0-21" id="h17-0-21" class="d">-
+</a><a href="#h17-0-22" id="h17-0-22" class="d">-  # Color definitions
+</a><a href="#h17-0-23" id="h17-0-23" class="d">-  C0=&quot;$(xrq &apos;*color0&apos;)&quot;
+</a><a href="#h17-0-24" id="h17-0-24" class="d">-  C1=&quot;$(xrq &apos;*color1&apos;)&quot;
+</a><a href="#h17-0-25" id="h17-0-25" class="d">-  C2=&quot;$(xrq &apos;*color2&apos;)&quot;
+</a><a href="#h17-0-26" id="h17-0-26" class="d">-  C3=&quot;$(xrq &apos;*color3&apos;)&quot;
+</a><a href="#h17-0-27" id="h17-0-27" class="d">-  C4=&quot;$(xrq &apos;*color4&apos;)&quot;
+</a><a href="#h17-0-28" id="h17-0-28" class="d">-  C5=&quot;$(xrq &apos;*color5&apos;)&quot;
+</a><a href="#h17-0-29" id="h17-0-29" class="d">-  C6=&quot;$(xrq &apos;*color6&apos;)&quot;
+</a><a href="#h17-0-30" id="h17-0-30" class="d">-  C7=&quot;$(xrq &apos;*color7&apos;)&quot;
+</a><a href="#h17-0-31" id="h17-0-31" class="d">-  C8=&quot;$(xrq &apos;*color8&apos;)&quot;
+</a><a href="#h17-0-32" id="h17-0-32" class="d">-  C9=&quot;$(xrq &apos;*color9&apos;)&quot;
+</a><a href="#h17-0-33" id="h17-0-33" class="d">-  C10=&quot;$(xrq &apos;*color10&apos;)&quot;
+</a><a href="#h17-0-34" id="h17-0-34" class="d">-  C11=&quot;$(xrq &apos;*color11&apos;)&quot;
+</a><a href="#h17-0-35" id="h17-0-35" class="d">-  C12=&quot;$(xrq &apos;*color12&apos;)&quot;
+</a><a href="#h17-0-36" id="h17-0-36" class="d">-  C13=&quot;$(xrq &apos;*color13&apos;)&quot;
+</a><a href="#h17-0-37" id="h17-0-37" class="d">-  C14=&quot;$(xrq &apos;*color14&apos;)&quot;
+</a><a href="#h17-0-38" id="h17-0-38" class="d">-  C15=&quot;$(xrq &apos;*color15&apos;)&quot;
+</a><a href="#h17-0-39" id="h17-0-39" class="d">-  #CF=&quot;$(xrq &apos;*foreground&apos;)&quot;
+</a><a href="#h17-0-40" id="h17-0-40" class="d">-  CF=&quot;$C6&quot;
+</a><a href="#h17-0-41" id="h17-0-41" class="d">-  CB=&quot;$(xrq &apos;*.background&apos;)&quot;
+</a><a href="#h17-0-42" id="h17-0-42" class="d">-  #CB=&quot;#1d2a30&quot;
+</a><a href="#h17-0-43" id="h17-0-43" class="d">-
+</a><a href="#h17-0-44" id="h17-0-44" class="d">-  PD_X=&quot;$(dattr -x $(ppd))&quot;
+</a><a href="#h17-0-45" id="h17-0-45" class="d">-  PD_Y=&quot;$(dattr -y $(ppd))&quot;
+</a><a href="#h17-0-46" id="h17-0-46" class="d">-  PD_WIDTH=&quot;$(dattr -w $(ppd))&quot;
+</a><a href="#h17-0-47" id="h17-0-47" class="d">-  PD_HEIGHT=&quot;$(dattr -h $(ppd))&quot;
+</a><a href="#h17-0-48" id="h17-0-48" class="d">-
+</a><a href="#h17-0-49" id="h17-0-49" class="d">-  BAR_WIDTH=$(echo &quot;$(dattr -w `ppd`)*0.5&quot; | bc | cut -d&apos;.&apos; -f1)
+</a><a href="#h17-0-50" id="h17-0-50" class="d">-  BAR_HEIGHT=&quot;$PANEL_STATUS_HEIGHT&quot;
+</a><a href="#h17-0-51" id="h17-0-51" class="d">-  BAR_X=&quot;$(echo &quot;($(dattr -w `ppd`) - $BAR_WIDTH) / 2&quot; | bc)&quot;
+</a><a href="#h17-0-52" id="h17-0-52" class="d">-  BAR_Y=&quot;$GENERAL_GAP&quot;
+</a><a href="#h17-0-53" id="h17-0-53" class="d">-  # BAR_WIDTH=&quot;$(dattr -w `ppd`)&quot;
+</a><a href="#h17-0-54" id="h17-0-54" class="d">-  # BAR_HEIGHT=&quot;$PANEL_STATUS_HEIGHT&quot;
+</a><a href="#h17-0-55" id="h17-0-55" class="d">-  # BAR_X=&quot;0&quot;
+</a><a href="#h17-0-56" id="h17-0-56" class="d">-  # BAR_Y=&quot;0&quot;
+</a><a href="#h17-0-57" id="h17-0-57" class="d">-
+</a><a href="#h17-0-58" id="h17-0-58" class="d">-  SEP_SMALL=&quot;        &quot;
+</a><a href="#h17-0-59" id="h17-0-59" class="d">-  SEP_BIG=&quot;            &quot;
+</a><a href="#h17-0-60" id="h17-0-60" class="d">-
+</a><a href="#h17-0-61" id="h17-0-61" class="d">-  # Number of groups
+</a><a href="#h17-0-62" id="h17-0-62" class="d">-  GNUMBER=6
+</a><a href="#h17-0-63" id="h17-0-63" class="d">-
+</a><a href="#h17-0-64" id="h17-0-64" class="d">-  # Bar options
+</a><a href="#h17-0-65" id="h17-0-65" class="d">-  BAR_OPTS=&quot;&quot;
+</a><a href="#h17-0-66" id="h17-0-66" class="d">-  # Because wmutils
+</a><a href="#h17-0-67" id="h17-0-67" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -d&quot;
+</a><a href="#h17-0-68" id="h17-0-68" class="d">-  # Borders
+</a><a href="#h17-0-69" id="h17-0-69" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -R $C8 -r 3&quot;
+</a><a href="#h17-0-70" id="h17-0-70" class="d">-  # Gonna position it centered and respect the gaps
+</a><a href="#h17-0-71" id="h17-0-71" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -g ${BAR_WIDTH}x${BAR_HEIGHT}+${BAR_X}+${BAR_Y}&quot;
+</a><a href="#h17-0-72" id="h17-0-72" class="d">-  # Colors
+</a><a href="#h17-0-73" id="h17-0-73" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -B ${CB} -F ${CF}&quot;
+</a><a href="#h17-0-74" id="h17-0-74" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -u 2&quot;
+</a><a href="#h17-0-75" id="h17-0-75" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -f ${PANEL_FONT} -f ${PANEL_ICON_FONT}&quot;
+</a><a href="#h17-0-76" id="h17-0-76" class="i">+# Create command file
+</a><a href="#h17-0-77" id="h17-0-77" class="i">+COMMAND_FILE=&quot;/tmp/status.cmd&quot;
+</a><a href="#h17-0-78" id="h17-0-78" class="i">+test -f &quot;$COMMAND_FILE&quot; &amp;&amp; rm &quot;$COMMAND_FILE&quot;
+</a><a href="#h17-0-79" id="h17-0-79" class="i">+echo &quot;over&quot; &gt; &quot;$COMMAND_FILE&quot;
+</a><a href="#h17-0-80" id="h17-0-80" class="i">+
+</a><a href="#h17-0-81" id="h17-0-81" class="i">+# Create fifo
+</a><a href="#h17-0-82" id="h17-0-82" class="i">+FIFO_PATH=/tmp/status.fifo
+</a><a href="#h17-0-83" id="h17-0-83" class="i">+test -e &quot;$FIFO_PATH&quot; &amp;&amp; rm &quot;$FIFO_PATH&quot;
+</a><a href="#h17-0-84" id="h17-0-84" class="i">+mkfifo &quot;$FIFO_PATH&quot;
+</a><a href="#h17-0-85" id="h17-0-85" class="i">+
+</a><a href="#h17-0-86" id="h17-0-86" class="i">+# Color definitions
+</a><a href="#h17-0-87" id="h17-0-87" class="i">+C0=&quot;$(xrq &apos;*color0&apos;)&quot;
+</a><a href="#h17-0-88" id="h17-0-88" class="i">+C1=&quot;$(xrq &apos;*color1&apos;)&quot;
+</a><a href="#h17-0-89" id="h17-0-89" class="i">+C2=&quot;$(xrq &apos;*color2&apos;)&quot;
+</a><a href="#h17-0-90" id="h17-0-90" class="i">+C3=&quot;$(xrq &apos;*color3&apos;)&quot;
+</a><a href="#h17-0-91" id="h17-0-91" class="i">+C4=&quot;$(xrq &apos;*color4&apos;)&quot;
+</a><a href="#h17-0-92" id="h17-0-92" class="i">+C5=&quot;$(xrq &apos;*color5&apos;)&quot;
+</a><a href="#h17-0-93" id="h17-0-93" class="i">+C6=&quot;$(xrq &apos;*color6&apos;)&quot;
+</a><a href="#h17-0-94" id="h17-0-94" class="i">+C7=&quot;$(xrq &apos;*color7&apos;)&quot;
+</a><a href="#h17-0-95" id="h17-0-95" class="i">+C8=&quot;$(xrq &apos;*color8&apos;)&quot;
+</a><a href="#h17-0-96" id="h17-0-96" class="i">+C9=&quot;$(xrq &apos;*color9&apos;)&quot;
+</a><a href="#h17-0-97" id="h17-0-97" class="i">+C10=&quot;$(xrq &apos;*color10&apos;)&quot;
+</a><a href="#h17-0-98" id="h17-0-98" class="i">+C11=&quot;$(xrq &apos;*color11&apos;)&quot;
+</a><a href="#h17-0-99" id="h17-0-99" class="i">+C12=&quot;$(xrq &apos;*color12&apos;)&quot;
+</a><a href="#h17-0-100" id="h17-0-100" class="i">+C13=&quot;$(xrq &apos;*color13&apos;)&quot;
+</a><a href="#h17-0-101" id="h17-0-101" class="i">+C14=&quot;$(xrq &apos;*color14&apos;)&quot;
+</a><a href="#h17-0-102" id="h17-0-102" class="i">+C15=&quot;$(xrq &apos;*color15&apos;)&quot;
+</a><a href="#h17-0-103" id="h17-0-103" class="i">+#CF=&quot;$(xrq &apos;*foreground&apos;)&quot;
+</a><a href="#h17-0-104" id="h17-0-104" class="i">+CF=&quot;$C6&quot;
+</a><a href="#h17-0-105" id="h17-0-105" class="i">+CB=&quot;$(xrq &apos;*.background&apos;)&quot;
+</a><a href="#h17-0-106" id="h17-0-106" class="i">+#CB=&quot;#1d2a30&quot;
+</a><a href="#h17-0-107" id="h17-0-107" class="i">+
+</a><a href="#h17-0-108" id="h17-0-108" class="i">+PD_X=&quot;$(dattr -x $(ppd))&quot;
+</a><a href="#h17-0-109" id="h17-0-109" class="i">+PD_Y=&quot;$(dattr -y $(ppd))&quot;
+</a><a href="#h17-0-110" id="h17-0-110" class="i">+PD_WIDTH=&quot;$(dattr -w $(ppd))&quot;
+</a><a href="#h17-0-111" id="h17-0-111" class="i">+PD_HEIGHT=&quot;$(dattr -h $(ppd))&quot;
+</a><a href="#h17-0-112" id="h17-0-112" class="i">+
+</a><a href="#h17-0-113" id="h17-0-113" class="i">+BAR_WIDTH=$(echo &quot;$(dattr -w `ppd`)*0.5&quot; | bc | cut -d&apos;.&apos; -f1)
+</a><a href="#h17-0-114" id="h17-0-114" class="i">+BAR_HEIGHT=&quot;$PANEL_STATUS_HEIGHT&quot;
+</a><a href="#h17-0-115" id="h17-0-115" class="i">+BAR_X=&quot;$(echo &quot;($(dattr -w `ppd`) - $BAR_WIDTH) / 2&quot; | bc)&quot;
+</a><a href="#h17-0-116" id="h17-0-116" class="i">+BAR_Y=&quot;$GENERAL_GAP&quot;
+</a><a href="#h17-0-117" id="h17-0-117" class="i">+# BAR_WIDTH=&quot;$(dattr -w `ppd`)&quot;
+</a><a href="#h17-0-118" id="h17-0-118" class="i">+# BAR_HEIGHT=&quot;$PANEL_STATUS_HEIGHT&quot;
+</a><a href="#h17-0-119" id="h17-0-119" class="i">+# BAR_X=&quot;0&quot;
+</a><a href="#h17-0-120" id="h17-0-120" class="i">+# BAR_Y=&quot;0&quot;
+</a><a href="#h17-0-121" id="h17-0-121" class="i">+
+</a><a href="#h17-0-122" id="h17-0-122" class="i">+SEP_SMALL=&quot;        &quot;
+</a><a href="#h17-0-123" id="h17-0-123" class="i">+SEP_BIG=&quot;            &quot;
+</a><a href="#h17-0-124" id="h17-0-124" class="i">+
+</a><a href="#h17-0-125" id="h17-0-125" class="i">+# Number of groups
+</a><a href="#h17-0-126" id="h17-0-126" class="i">+GNUMBER=6
+</a><a href="#h17-0-127" id="h17-0-127" class="i">+
+</a><a href="#h17-0-128" id="h17-0-128" class="i">+# Bar options
+</a><a href="#h17-0-129" id="h17-0-129" class="i">+BAR_OPTS=&quot;&quot;
+</a><a href="#h17-0-130" id="h17-0-130" class="i">+# Because wmutils
+</a><a href="#h17-0-131" id="h17-0-131" class="i">+BAR_OPTS=&quot;${BAR_OPTS} -d&quot;
+</a><a href="#h17-0-132" id="h17-0-132" class="i">+# Borders
+</a><a href="#h17-0-133" id="h17-0-133" class="i">+BAR_OPTS=&quot;${BAR_OPTS} -R $C8 -r 3&quot;
+</a><a href="#h17-0-134" id="h17-0-134" class="i">+# Gonna position it centered and respect the gaps
+</a><a href="#h17-0-135" id="h17-0-135" class="i">+BAR_OPTS=&quot;${BAR_OPTS} -g ${BAR_WIDTH}x${BAR_HEIGHT}+${BAR_X}+${BAR_Y}&quot;
+</a><a href="#h17-0-136" id="h17-0-136" class="i">+# Colors
+</a><a href="#h17-0-137" id="h17-0-137" class="i">+BAR_OPTS=&quot;${BAR_OPTS} -B ${CB} -F ${CF}&quot;
+</a><a href="#h17-0-138" id="h17-0-138" class="i">+BAR_OPTS=&quot;${BAR_OPTS} -u 3&quot;
+</a><a href="#h17-0-139" id="h17-0-139" class="i">+BAR_OPTS=&quot;${BAR_OPTS} -f ${PANEL_FONT} -f ${PANEL_ICON_FONT}&quot;
+</a> 
+ # }}}
+ 
+ # Gather info {{{
+ 
+<a href="#h17-0-145" id="h17-0-145" class="d">-  # Current time
+</a><a href="#h17-0-146" id="h17-0-146" class="d">-  time_format=&apos;%a %d %B %H:%M&apos;
+</a><a href="#h17-0-147" id="h17-0-147" class="d">-  # If it&apos;s first of April, show the Epoch time
+</a><a href="#h17-0-148" id="h17-0-148" class="d">-  test &quot;$(date +&quot;%d %m&quot;)&quot; = &quot;01 04&quot; &amp;&amp; time_format=&apos;%s&apos;
+</a><a href="#h17-0-149" id="h17-0-149" class="d">-  while true; do
+</a><a href="#h17-0-150" id="h17-0-150" class="i">+# Current time
+</a><a href="#h17-0-151" id="h17-0-151" class="i">+time_format=&apos;%a %d %B %H:%M&apos;
+</a><a href="#h17-0-152" id="h17-0-152" class="i">+# If it&apos;s first of April, show the Epoch time
+</a><a href="#h17-0-153" id="h17-0-153" class="i">+test &quot;$(date +&quot;%d %m&quot;)&quot; = &quot;01 04&quot; &amp;&amp; time_format=&apos;%s&apos;
+</a><a href="#h17-0-154" id="h17-0-154" class="i">+while true; do
+</a>     echo &quot;T%{F$C14}%{F-} $(date +&quot;$time_format&quot;)&quot;
+     sleep 10
+<a href="#h17-0-157" id="h17-0-157" class="d">-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a><a href="#h17-0-158" id="h17-0-158" class="i">+done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a> 
+<a href="#h17-0-160" id="h17-0-160" class="d">-  # Music
+</a><a href="#h17-0-161" id="h17-0-161" class="d">-  while true; do
+</a><a href="#h17-0-162" id="h17-0-162" class="i">+# Music
+</a><a href="#h17-0-163" id="h17-0-163" class="i">+while true; do
+</a>     if [ $(mpc status | wc -l) -eq 3 ]; then
+<a href="#h17-0-165" id="h17-0-165" class="d">-      last_title=&quot;$(mpc status | head -n 1)&quot;
+</a><a href="#h17-0-166" id="h17-0-166" class="i">+        last_title=&quot;$(mpc status | head -n 1)&quot;
+</a>     elif [ $(mpc status | wc -l) -eq 0 ]; then
+<a href="#h17-0-168" id="h17-0-168" class="d">-      last_title=&quot;-&quot;
+</a><a href="#h17-0-169" id="h17-0-169" class="i">+        last_title=&quot;-&quot;
+</a>     fi
+ 
+     if [ -n &quot;$(mpc status | grep pause)&quot; ]; then
+<a href="#h17-0-173" id="h17-0-173" class="d">-      icon=&quot;&quot;
+</a><a href="#h17-0-174" id="h17-0-174" class="i">+        icon=&quot;&quot;
+</a>     elif [ -n &quot;$(mpc status | grep playing)&quot; ]; then
+<a href="#h17-0-176" id="h17-0-176" class="d">-      icon=&quot;&quot;
+</a><a href="#h17-0-177" id="h17-0-177" class="i">+        icon=&quot;&quot;
+</a>     else
+<a href="#h17-0-179" id="h17-0-179" class="d">-      icon=&quot;&quot;
+</a><a href="#h17-0-180" id="h17-0-180" class="i">+        icon=&quot;&quot;
+</a>     fi
+     echo &quot;M%{A1:mpc toggle:}%{F$C9}${icon}%{F-} ${last_title}%{A}&quot;
+<a href="#h17-0-183" id="h17-0-183" class="i">+    echo &quot;MI${icon}&quot;
+</a><a href="#h17-0-184" id="h17-0-184" class="i">+    echo &quot;MS${last_title}&quot;
+</a>     sleep 1
+<a href="#h17-0-186" id="h17-0-186" class="d">-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a><a href="#h17-0-187" id="h17-0-187" class="i">+done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a> 
+<a href="#h17-0-189" id="h17-0-189" class="d">-  # Battery status
+</a><a href="#h17-0-190" id="h17-0-190" class="d">-  while true; do
+</a><a href="#h17-0-191" id="h17-0-191" class="i">+# Battery status
+</a><a href="#h17-0-192" id="h17-0-192" class="i">+while true; do
+</a>     batt_status=&quot;$(cat /sys/class/power_supply/BAT0/status)&quot;
+     batt_percentage=&quot;$(cat /sys/class/power_supply/BAT0/capacity)&quot;
+     # Icons
+     if [ &quot;$batt_status&quot; = &quot;Charging&quot; ]; then
+<a href="#h17-0-197" id="h17-0-197" class="d">-      BATT_ICON=&quot;&quot;
+</a><a href="#h17-0-198" id="h17-0-198" class="i">+        BATT_ICON=&quot;&quot;
+</a>     elif [ &quot;$batt_percentage&quot; -gt 50 ]; then
+<a href="#h17-0-200" id="h17-0-200" class="d">-      BATT_ICON=&quot;&quot;
+</a><a href="#h17-0-201" id="h17-0-201" class="i">+        BATT_ICON=&quot;&quot;
+</a>     elif [ &quot;$batt_percentage&quot; -gt 30 ]; then
+<a href="#h17-0-203" id="h17-0-203" class="d">-      BATT_ICON=&quot;&quot;
+</a><a href="#h17-0-204" id="h17-0-204" class="i">+        BATT_ICON=&quot;&quot;
+</a>     else
+<a href="#h17-0-206" id="h17-0-206" class="d">-      BATT_ICON=&quot;&quot;
+</a><a href="#h17-0-207" id="h17-0-207" class="i">+        BATT_ICON=&quot;&quot;
+</a>     fi
+     echo &quot;B%{F$C13}${BATT_ICON}%{F-} ${batt_percentage}&quot;
+     sleep 10
+<a href="#h17-0-211" id="h17-0-211" class="d">-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a><a href="#h17-0-212" id="h17-0-212" class="i">+done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a> 
+<a href="#h17-0-214" id="h17-0-214" class="d">-  # Volume
+</a><a href="#h17-0-215" id="h17-0-215" class="d">-  while true; do
+</a><a href="#h17-0-216" id="h17-0-216" class="i">+# Volume
+</a><a href="#h17-0-217" id="h17-0-217" class="i">+while true; do
+</a>     mute=$(amixer get Master | sed -n 5p | cut -d&apos; &apos; -f8)
+     volume=$(amixer get Master | sed -n 5p | cut -d&apos; &apos; -f5)
+     if [ &quot;$mute&quot; = &quot;[on]&quot; ]; then
+<a href="#h17-0-221" id="h17-0-221" class="d">-      if [ $volume -ge 50 ]; then
+</a><a href="#h17-0-222" id="h17-0-222" class="d">-        vicon=
+</a><a href="#h17-0-223" id="h17-0-223" class="d">-      else
+</a><a href="#h17-0-224" id="h17-0-224" class="d">-        vicon=
+</a><a href="#h17-0-225" id="h17-0-225" class="d">-      fi
+</a><a href="#h17-0-226" id="h17-0-226" class="i">+        if [ $volume -ge 50 ]; then
+</a><a href="#h17-0-227" id="h17-0-227" class="i">+            vicon=
+</a><a href="#h17-0-228" id="h17-0-228" class="i">+        else
+</a><a href="#h17-0-229" id="h17-0-229" class="i">+            vicon=
+</a><a href="#h17-0-230" id="h17-0-230" class="i">+        fi
+</a>     else
+<a href="#h17-0-232" id="h17-0-232" class="d">-      vicon=
+</a><a href="#h17-0-233" id="h17-0-233" class="i">+        vicon=
+</a>     fi
+     echo &quot;V%{A3:mute:}%{A4:mixer vol +5:}%{A5:mixer vol -5:}%{F$C12}$vicon%{F-} $volume%{A}%{A}%{A}&quot;
+     sleep 0.5
+<a href="#h17-0-237" id="h17-0-237" class="d">-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a><a href="#h17-0-238" id="h17-0-238" class="i">+done &gt; &quot;$FIFO_PATH&quot; &amp;
+</a> 
+ # }}}
+ 
+ # Process the data and show it {{{
+ 
+<a href="#h17-0-244" id="h17-0-244" class="d">-  cat &quot;$FIFO_PATH&quot; | \
+</a><a href="#h17-0-245" id="h17-0-245" class="d">-  while read -r line; do
+</a><a href="#h17-0-246" id="h17-0-246" class="d">-    case $line in
+</a><a href="#h17-0-247" id="h17-0-247" class="d">-      # Time
+</a><a href="#h17-0-248" id="h17-0-248" class="d">-      T*)
+</a><a href="#h17-0-249" id="h17-0-249" class="d">-        time=&quot;${line#?}&quot;
+</a><a href="#h17-0-250" id="h17-0-250" class="d">-        ;;
+</a><a href="#h17-0-251" id="h17-0-251" class="d">-      M*)
+</a><a href="#h17-0-252" id="h17-0-252" class="d">-        music=&quot;${line#?}&quot;
+</a><a href="#h17-0-253" id="h17-0-253" class="d">-        ;;
+</a><a href="#h17-0-254" id="h17-0-254" class="d">-      B*)
+</a><a href="#h17-0-255" id="h17-0-255" class="d">-        batt=&quot;${line#?}&quot;
+</a><a href="#h17-0-256" id="h17-0-256" class="d">-        ;;
+</a><a href="#h17-0-257" id="h17-0-257" class="d">-      V*)
+</a><a href="#h17-0-258" id="h17-0-258" class="d">-        vol=&quot;${line#?}&quot;
+</a><a href="#h17-0-259" id="h17-0-259" class="d">-        ;;
+</a><a href="#h17-0-260" id="h17-0-260" class="d">-      esac
+</a><a href="#h17-0-261" id="h17-0-261" class="d">-    # Show time!
+</a><a href="#h17-0-262" id="h17-0-262" class="d">-    echo &quot;%{c}${SEP_BIG}${music}${SEP_SMALL}${vol}${SEP_SMALL}${batt}${SEP_SMALL}${time}${SEP_BIG}&quot;
+</a><a href="#h17-0-263" id="h17-0-263" class="d">-  done |\
+</a><a href="#h17-0-264" id="h17-0-264" class="d">-  lemonbar $BAR_OPTS | sh
+</a><a href="#h17-0-265" id="h17-0-265" class="i">+cat &quot;$FIFO_PATH&quot; | while read -r line; do
+</a><a href="#h17-0-266" id="h17-0-266" class="i">+        case $line in
+</a><a href="#h17-0-267" id="h17-0-267" class="i">+            T*)
+</a><a href="#h17-0-268" id="h17-0-268" class="i">+                time=&quot;${line#?}&quot;
+</a><a href="#h17-0-269" id="h17-0-269" class="i">+                ;;
+</a><a href="#h17-0-270" id="h17-0-270" class="i">+            MI*)
+</a><a href="#h17-0-271" id="h17-0-271" class="i">+                music_icon=&quot;${line#??}&quot;
+</a><a href="#h17-0-272" id="h17-0-272" class="i">+                ;;
+</a><a href="#h17-0-273" id="h17-0-273" class="i">+            MS*)
+</a><a href="#h17-0-274" id="h17-0-274" class="i">+                song=&quot;${line#??}&quot;
+</a><a href="#h17-0-275" id="h17-0-275" class="i">+                ;;
+</a><a href="#h17-0-276" id="h17-0-276" class="i">+            M*)
+</a><a href="#h17-0-277" id="h17-0-277" class="i">+                music=&quot;${line#?}&quot;
+</a><a href="#h17-0-278" id="h17-0-278" class="i">+                ;;
+</a><a href="#h17-0-279" id="h17-0-279" class="i">+            B*)
+</a><a href="#h17-0-280" id="h17-0-280" class="i">+                batt=&quot;${line#?}&quot;
+</a><a href="#h17-0-281" id="h17-0-281" class="i">+                ;;
+</a><a href="#h17-0-282" id="h17-0-282" class="i">+            V*)
+</a><a href="#h17-0-283" id="h17-0-283" class="i">+                vol=&quot;${line#?}&quot;
+</a><a href="#h17-0-284" id="h17-0-284" class="i">+                ;;
+</a><a href="#h17-0-285" id="h17-0-285" class="i">+        esac
+</a><a href="#h17-0-286" id="h17-0-286" class="i">+        # Show time!
+</a><a href="#h17-0-287" id="h17-0-287" class="i">+        comm=&quot;$(cat &quot;$COMMAND_FILE&quot;)&quot;
+</a><a href="#h17-0-288" id="h17-0-288" class="i">+        case &quot;$comm&quot; in
+</a><a href="#h17-0-289" id="h17-0-289" class="i">+            over)
+</a><a href="#h17-0-290" id="h17-0-290" class="i">+                echo &quot;%{c}${SEP_BIG}${music}${SEP_SMALL}${vol}${SEP_SMALL}${batt}${SEP_SMALL}${time}${SEP_BIG}&quot;
+</a><a href="#h17-0-291" id="h17-0-291" class="i">+                ;;
+</a><a href="#h17-0-292" id="h17-0-292" class="i">+            music)
+</a><a href="#h17-0-293" id="h17-0-293" class="i">+                echo &quot;%{c}%{F$C9}${music_icon}%{F-} %{U$C1}%{+u}${song}%{-u}%{U-}&quot;
+</a><a href="#h17-0-294" id="h17-0-294" class="i">+                ;;
+</a><a href="#h17-0-295" id="h17-0-295" class="i">+        esac
+</a><a href="#h17-0-296" id="h17-0-296" class="i">+done |\
+</a><a href="#h17-0-297" id="h17-0-297" class="i">+lemonbar $BAR_OPTS
+</a> # }}}
+ 
+ wait
+<a href="#h17-0-301" id="h17-0-301" class="d">-
+</a><b>diff --git a/<a id="h18" href="../file/wmrc/.scripts/wmrc.html">wmrc/.scripts/wmrc</a> b/<a href="../file/wmrc/.scripts/wmrc.html">wmrc/.scripts/wmrc</a></b>
+<a href="#h18-0" id="h18-0" class="h">@@ -13,7 +13,7 @@ export POPUP_DURATION=5
+</a> export GROOT=/tmp/groaw
+ export GNUMBER=6
+ export WALL_DIR=$HOME/wallpapers
+<a href="#h18-0-3" id="h18-0-3" class="d">-export WALL=trees.jpg
+</a><a href="#h18-0-4" id="h18-0-4" class="d">-export WALL_TYPE=fill
+</a><a href="#h18-0-5" id="h18-0-5" class="i">+export WALL=test_tile7_3.png
+</a><a href="#h18-0-6" id="h18-0-6" class="i">+export WALL_TYPE=tile
+</a> 
+ # vim: set ft=sh :
+<b>diff --git a/<a id="h19" href="../file/x/.Xresources.html">x/.Xresources</a> b/<a href="../file/x/.Xresources.html">x/.Xresources</a></b>
+<a href="#h19-0" id="h19-0" class="h">@@ -5,6 +5,6 @@
+</a> ! managed like they are supposed to be
+ 
+ #include &quot;.xres/xft&quot;
+<a href="#h19-0-3" id="h19-0-3" class="d">-#include &quot;.xres/colors/fendr&quot;
+</a><a href="#h19-0-4" id="h19-0-4" class="i">+#include &quot;.xres/colors/moonbow&quot;
+</a> #include &quot;.xres/urxvt&quot;
+ #include &quot;.xres/misc&quot;
+<b>diff --git a/<a id="h20" href="../file/x/.xinitrc.html">x/.xinitrc</a> b/<a href="../file/x/.xinitrc.html">x/.xinitrc</a></b>
+<a href="#h20-0" id="h20-0" class="h">@@ -6,54 +6,26 @@
+</a> # by tudurom
+ # no login manager since forever
+ 
+<a href="#h20-0-3" id="h20-0-3" class="d">-# Strange things from the default .xinitrc {{{
+</a><a href="#h20-0-4" id="h20-0-4" class="d">-userresources=$HOME/.Xresources
+</a><a href="#h20-0-5" id="h20-0-5" class="d">-usermodmap=$HOME/.Xmodmap
+</a><a href="#h20-0-6" id="h20-0-6" class="d">-sysresources=/etc/X11/xinit/.Xresources
+</a><a href="#h20-0-7" id="h20-0-7" class="d">-sysmodmap=/etc/X11/xinit/.Xmodmap
+</a><a href="#h20-0-8" id="h20-0-8" class="i">+# Load X resources
+</a><a href="#h20-0-9" id="h20-0-9" class="i">+xrdb $HOME/.Xresources
+</a> 
+<a href="#h20-0-11" id="h20-0-11" class="d">-# merge in defaults and keymaps
+</a><a href="#h20-0-12" id="h20-0-12" class="d">-
+</a><a href="#h20-0-13" id="h20-0-13" class="d">-if [ -f $sysresources ]; then
+</a><a href="#h20-0-14" id="h20-0-14" class="d">-    xrdb -merge $sysresources
+</a><a href="#h20-0-15" id="h20-0-15" class="d">-fi
+</a><a href="#h20-0-16" id="h20-0-16" class="d">-
+</a><a href="#h20-0-17" id="h20-0-17" class="d">-if [ -f $sysmodmap ]; then
+</a><a href="#h20-0-18" id="h20-0-18" class="d">-    xmodmap $sysmodmap
+</a><a href="#h20-0-19" id="h20-0-19" class="d">-fi
+</a><a href="#h20-0-20" id="h20-0-20" class="d">-
+</a><a href="#h20-0-21" id="h20-0-21" class="d">-if [ -f &quot;$userresources&quot; ]; then
+</a><a href="#h20-0-22" id="h20-0-22" class="d">-    xrdb -merge &quot;$userresources&quot;
+</a><a href="#h20-0-23" id="h20-0-23" class="d">-fi
+</a><a href="#h20-0-24" id="h20-0-24" class="d">-
+</a><a href="#h20-0-25" id="h20-0-25" class="d">-if [ -f &quot;$usermodmap&quot; ]; then
+</a><a href="#h20-0-26" id="h20-0-26" class="d">-    xmodmap &quot;$usermodmap&quot;
+</a><a href="#h20-0-27" id="h20-0-27" class="d">-fi
+</a><a href="#h20-0-28" id="h20-0-28" class="d">-
+</a><a href="#h20-0-29" id="h20-0-29" class="d">-# start some nice programs
+</a><a href="#h20-0-30" id="h20-0-30" class="d">-
+</a><a href="#h20-0-31" id="h20-0-31" class="d">-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+</a><a href="#h20-0-32" id="h20-0-32" class="d">- for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+</a><a href="#h20-0-33" id="h20-0-33" class="d">-  [ -x &quot;$f&quot; ] &amp;&amp; . &quot;$f&quot;
+</a><a href="#h20-0-34" id="h20-0-34" class="d">- done
+</a><a href="#h20-0-35" id="h20-0-35" class="d">- unset f
+</a><a href="#h20-0-36" id="h20-0-36" class="d">-fi
+</a><a href="#h20-0-37" id="h20-0-37" class="d">-# }}}
+</a><a href="#h20-0-38" id="h20-0-38" class="i">+# Load .profile (contains settings)
+</a><a href="#h20-0-39" id="h20-0-39" class="i">+. $HOME/.profile
+</a> 
+ # Load fonts
+ xset +fp ~/.fonts
+ xset fp rehash
+ 
+<a href="#h20-0-45" id="h20-0-45" class="d">-# Start nice programs {{{
+</a><a href="#h20-0-46" id="h20-0-46" class="i">+# Start nice programs
+</a> 
+<a href="#h20-0-48" id="h20-0-48" class="d">-xmodmap ~/.xmodmaprc
+</a><a href="#h20-0-49" id="h20-0-49" class="i">+xmodmap $HOME/.xmodmaprc
+</a> # URxvt clipboard magic
+ autocutsel -selection clipboard -fork
+ 
+ # Multi monitor
+ screenlayout
+ # Github: airblader/unclutter-xfixes
+<a href="#h20-0-56" id="h20-0-56" class="d">-# unclutter -b
+</a><a href="#h20-0-57" id="h20-0-57" class="i">+unclutter -b
+</a> 
+ # Music!
+ if ! pidof mpd; then
+<a href="#h20-1" id="h20-1" class="h">@@ -68,7 +40,9 @@ compton -b
+</a> # Wallpaper
+ wall-e &amp;
+ 
+<a href="#h20-1-3" id="h20-1-3" class="d">-# }}}
+</a><a href="#h20-1-4" id="h20-1-4" class="i">+# Java fix
+</a><a href="#h20-1-5" id="h20-1-5" class="i">+wmname LG3D
+</a> 
+<a href="#h20-1-7" id="h20-1-7" class="d">-statusbar &amp;
+</a><a href="#h20-1-8" id="h20-1-8" class="i">+# Start the thing
+</a><a href="#h20-1-9" id="h20-1-9" class="i">+minbar &amp;
+</a> exec startwm bspwm
+<b>diff --git a/<a id="h21" href="../file/x/.xres/colors/diner.html">x/.xres/colors/diner</a> b/<a href="../file/x/.xres/colors/diner.html">x/.xres/colors/diner</a></b>
+<a href="#h21-0" id="h21-0" class="h">@@ -0,0 +1,40 @@
+</a><a href="#h21-0-0" id="h21-0-0" class="i">+! diner by dkeg
+</a><a href="#h21-0-1" id="h21-0-1" class="i">+
+</a><a href="#h21-0-2" id="h21-0-2" class="i">+! special
+</a><a href="#h21-0-3" id="h21-0-3" class="i">+*.foreground:   #aba599
+</a><a href="#h21-0-4" id="h21-0-4" class="i">+*.background:   #3f4a4b
+</a><a href="#h21-0-5" id="h21-0-5" class="i">+*.cursorColor:  #aba599
+</a><a href="#h21-0-6" id="h21-0-6" class="i">+
+</a><a href="#h21-0-7" id="h21-0-7" class="i">+! black
+</a><a href="#h21-0-8" id="h21-0-8" class="i">+*.color0:       #414d4e
+</a><a href="#h21-0-9" id="h21-0-9" class="i">+*.color8:       #626f71
+</a><a href="#h21-0-10" id="h21-0-10" class="i">+
+</a><a href="#h21-0-11" id="h21-0-11" class="i">+! red
+</a><a href="#h21-0-12" id="h21-0-12" class="i">+*.color1:       #9c7f5d
+</a><a href="#h21-0-13" id="h21-0-13" class="i">+*.color9:       #9c7f5d
+</a><a href="#h21-0-14" id="h21-0-14" class="i">+
+</a><a href="#h21-0-15" id="h21-0-15" class="i">+! green
+</a><a href="#h21-0-16" id="h21-0-16" class="i">+*.color2:       #8e958f
+</a><a href="#h21-0-17" id="h21-0-17" class="i">+*.color10:      #8e958f
+</a><a href="#h21-0-18" id="h21-0-18" class="i">+
+</a><a href="#h21-0-19" id="h21-0-19" class="i">+! yellow
+</a><a href="#h21-0-20" id="h21-0-20" class="i">+*.color3:       #b8af97
+</a><a href="#h21-0-21" id="h21-0-21" class="i">+*.color11:      #b8af97
+</a><a href="#h21-0-22" id="h21-0-22" class="i">+
+</a><a href="#h21-0-23" id="h21-0-23" class="i">+! blue
+</a><a href="#h21-0-24" id="h21-0-24" class="i">+*.color4:       #828882
+</a><a href="#h21-0-25" id="h21-0-25" class="i">+*.color12:      #828882
+</a><a href="#h21-0-26" id="h21-0-26" class="i">+
+</a><a href="#h21-0-27" id="h21-0-27" class="i">+! magenta (or orange)
+</a><a href="#h21-0-28" id="h21-0-28" class="i">+*.color5:       #bb9a7f
+</a><a href="#h21-0-29" id="h21-0-29" class="i">+*.color13:      #bb9a7f
+</a><a href="#h21-0-30" id="h21-0-30" class="i">+
+</a><a href="#h21-0-31" id="h21-0-31" class="i">+! cyan
+</a><a href="#h21-0-32" id="h21-0-32" class="i">+*.color6:       #9daba2
+</a><a href="#h21-0-33" id="h21-0-33" class="i">+*.color14:      #9daba2
+</a><a href="#h21-0-34" id="h21-0-34" class="i">+
+</a><a href="#h21-0-35" id="h21-0-35" class="i">+! white
+</a><a href="#h21-0-36" id="h21-0-36" class="i">+*.color7:       #aba599
+</a><a href="#h21-0-37" id="h21-0-37" class="i">+*.color15:      #aba599
+</a><a href="#h21-0-38" id="h21-0-38" class="i">+
+</a><a href="#h21-0-39" id="h21-0-39" class="i">+! vim: set ft=xdefaults :
+</a><b>diff --git a/<a id="h22" href="../file/x/.xres/colors/fendr.html">x/.xres/colors/fendr</a> b/<a href="../file/x/.xres/colors/fendr.html">x/.xres/colors/fendr</a></b>
+<a href="#h22-0" id="h22-0" class="h">@@ -1,38 +0,0 @@
+</a><a href="#h22-0-0" id="h22-0-0" class="d">-! special
+</a><a href="#h22-0-1" id="h22-0-1" class="d">-*.foreground:   #c1c5bd
+</a><a href="#h22-0-2" id="h22-0-2" class="d">-*.background:   #262c1b
+</a><a href="#h22-0-3" id="h22-0-3" class="d">-*.cursorColor:  #c1c5bd
+</a><a href="#h22-0-4" id="h22-0-4" class="d">-
+</a><a href="#h22-0-5" id="h22-0-5" class="d">-! black
+</a><a href="#h22-0-6" id="h22-0-6" class="d">-*.color0:       #2b321e
+</a><a href="#h22-0-7" id="h22-0-7" class="d">-*.color8:       #474c3e
+</a><a href="#h22-0-8" id="h22-0-8" class="d">-
+</a><a href="#h22-0-9" id="h22-0-9" class="d">-! red
+</a><a href="#h22-0-10" id="h22-0-10" class="d">-*.color1:       #7f5545
+</a><a href="#h22-0-11" id="h22-0-11" class="d">-*.color9:       #7f5545
+</a><a href="#h22-0-12" id="h22-0-12" class="d">-
+</a><a href="#h22-0-13" id="h22-0-13" class="d">-! green
+</a><a href="#h22-0-14" id="h22-0-14" class="d">-*.color2:       #677c54
+</a><a href="#h22-0-15" id="h22-0-15" class="d">-*.color10:      #677c54
+</a><a href="#h22-0-16" id="h22-0-16" class="d">-
+</a><a href="#h22-0-17" id="h22-0-17" class="d">-! yellow
+</a><a href="#h22-0-18" id="h22-0-18" class="d">-*.color3:       #bba772
+</a><a href="#h22-0-19" id="h22-0-19" class="d">-*.color11:      #bba772
+</a><a href="#h22-0-20" id="h22-0-20" class="d">-
+</a><a href="#h22-0-21" id="h22-0-21" class="d">-! blue
+</a><a href="#h22-0-22" id="h22-0-22" class="d">-*.color4:       #6e6a5b
+</a><a href="#h22-0-23" id="h22-0-23" class="d">-*.color12:      #6e6a5b
+</a><a href="#h22-0-24" id="h22-0-24" class="d">-
+</a><a href="#h22-0-25" id="h22-0-25" class="d">-! magenta (or orange)
+</a><a href="#h22-0-26" id="h22-0-26" class="d">-*.color5:       #92887e
+</a><a href="#h22-0-27" id="h22-0-27" class="d">-*.color13:      #92887e
+</a><a href="#h22-0-28" id="h22-0-28" class="d">-
+</a><a href="#h22-0-29" id="h22-0-29" class="d">-! cyan
+</a><a href="#h22-0-30" id="h22-0-30" class="d">-*.color6:       #7c7562
+</a><a href="#h22-0-31" id="h22-0-31" class="d">-*.color14:      #7c7562
+</a><a href="#h22-0-32" id="h22-0-32" class="d">-
+</a><a href="#h22-0-33" id="h22-0-33" class="d">-! white
+</a><a href="#h22-0-34" id="h22-0-34" class="d">-*.color7:       #cccdbd
+</a><a href="#h22-0-35" id="h22-0-35" class="d">-*.color15:      #cccdbd
+</a><a href="#h22-0-36" id="h22-0-36" class="d">-
+</a><a href="#h22-0-37" id="h22-0-37" class="d">-! vim: set ft=xdefaults :
+</a><b>diff --git a/<a id="h23" href="../file/x/.xres/colors/moonbow.html">x/.xres/colors/moonbow</a> b/<a href="../file/x/.xres/colors/moonbow.html">x/.xres/colors/moonbow</a></b>
+<a href="#h23-0" id="h23-0" class="h">@@ -1,3 +1,5 @@
+</a><a href="#h23-0-0" id="h23-0-0" class="i">+! moonbow by inami
+</a><a href="#h23-0-1" id="h23-0-1" class="i">+
+</a> ! special
+ *.foreground:   #7b8695
+ *.background:   #1b2227
+<a href="#h23-1" id="h23-1" class="h">@@ -23,7 +25,7 @@
+</a> *.color4:       #424a64
+ *.color12:      #626c94
+ 
+<a href="#h23-1-3" id="h23-1-3" class="d">-! orange
+</a><a href="#h23-1-4" id="h23-1-4" class="i">+! magenta (or orange)
+</a> *.color5:       #4d3e4c
+ *.color13:      #665064
+ 
+<b>diff --git a/<a id="h24" href="../file/x/.xres/colors/nvy.html">x/.xres/colors/nvy</a> b/<a href="../file/x/.xres/colors/nvy.html">x/.xres/colors/nvy</a></b>
+<a href="#h24-0" id="h24-0" class="h">@@ -0,0 +1,40 @@
+</a><a href="#h24-0-0" id="h24-0-0" class="i">+! Navy and Ivory by hal
+</a><a href="#h24-0-1" id="h24-0-1" class="i">+
+</a><a href="#h24-0-2" id="h24-0-2" class="i">+! special
+</a><a href="#h24-0-3" id="h24-0-3" class="i">+*.foreground:   #e8dfd6
+</a><a href="#h24-0-4" id="h24-0-4" class="i">+*.background:   #021b21
+</a><a href="#h24-0-5" id="h24-0-5" class="i">+*.cursorColor:  #2e3340
+</a><a href="#h24-0-6" id="h24-0-6" class="i">+
+</a><a href="#h24-0-7" id="h24-0-7" class="i">+! black
+</a><a href="#h24-0-8" id="h24-0-8" class="i">+*.color0:       #032c36
+</a><a href="#h24-0-9" id="h24-0-9" class="i">+*.color8:       #065f73
+</a><a href="#h24-0-10" id="h24-0-10" class="i">+
+</a><a href="#h24-0-11" id="h24-0-11" class="i">+! red
+</a><a href="#h24-0-12" id="h24-0-12" class="i">+*.color1:       #c2454e
+</a><a href="#h24-0-13" id="h24-0-13" class="i">+*.color9:       #ef5847
+</a><a href="#h24-0-14" id="h24-0-14" class="i">+
+</a><a href="#h24-0-15" id="h24-0-15" class="i">+! green
+</a><a href="#h24-0-16" id="h24-0-16" class="i">+*.color2:       #7cbf9e
+</a><a href="#h24-0-17" id="h24-0-17" class="i">+*.color10:      #a2d9b1
+</a><a href="#h24-0-18" id="h24-0-18" class="i">+
+</a><a href="#h24-0-19" id="h24-0-19" class="i">+! yellow
+</a><a href="#h24-0-20" id="h24-0-20" class="i">+*.color3:       #8a7a63
+</a><a href="#h24-0-21" id="h24-0-21" class="i">+*.color11:      #beb090
+</a><a href="#h24-0-22" id="h24-0-22" class="i">+
+</a><a href="#h24-0-23" id="h24-0-23" class="i">+! blue
+</a><a href="#h24-0-24" id="h24-0-24" class="i">+*.color4:       #2e3340
+</a><a href="#h24-0-25" id="h24-0-25" class="i">+*.color12:      #61778d
+</a><a href="#h24-0-26" id="h24-0-26" class="i">+
+</a><a href="#h24-0-27" id="h24-0-27" class="i">+! magenta (or orange)
+</a><a href="#h24-0-28" id="h24-0-28" class="i">+*.color5:       #ff5879
+</a><a href="#h24-0-29" id="h24-0-29" class="i">+*.color13:      #ff99a1
+</a><a href="#h24-0-30" id="h24-0-30" class="i">+
+</a><a href="#h24-0-31" id="h24-0-31" class="i">+! cyan
+</a><a href="#h24-0-32" id="h24-0-32" class="i">+*.color6:       #44b5b1
+</a><a href="#h24-0-33" id="h24-0-33" class="i">+*.color14:      #9ed9d8
+</a><a href="#h24-0-34" id="h24-0-34" class="i">+
+</a><a href="#h24-0-35" id="h24-0-35" class="i">+! white
+</a><a href="#h24-0-36" id="h24-0-36" class="i">+*.color7:       #f2f1b9
+</a><a href="#h24-0-37" id="h24-0-37" class="i">+*.color15:      #f6f6c9
+</a><a href="#h24-0-38" id="h24-0-38" class="i">+
+</a><a href="#h24-0-39" id="h24-0-39" class="i">+! vim: set ft=xdefaults :
+</a><b>diff --git a/<a id="h25" href="../file/x/.xres/colors/woody.html">x/.xres/colors/woody</a> b/<a href="../file/x/.xres/colors/woody.html">x/.xres/colors/woody</a></b>
+<a href="#h25-0" id="h25-0" class="h">@@ -1,7 +1,4 @@
+</a><a href="#h25-0-0" id="h25-0-0" class="d">-# ╻ ╻┏━┓┏━┓╺┳┓╻ ╻
+</a><a href="#h25-0-1" id="h25-0-1" class="d">-# ┃╻┃┃ ┃┃ ┃ ┃┃┗┳┛
+</a><a href="#h25-0-2" id="h25-0-2" class="d">-# ┗┻┛┗━┛┗━┛╺┻┛ ╹
+</a><a href="#h25-0-3" id="h25-0-3" class="d">-# brownish light theme by tudurom
+</a><a href="#h25-0-4" id="h25-0-4" class="i">+! woody by tudurom
+</a> 
+ ! special
+ *.foreground:   #3f3a3c
+<a href="#h25-1" id="h25-1" class="h">@@ -28,7 +25,7 @@
+</a> *.color4:       #486078
+ *.color12:      #3e5e87
+ 
+<a href="#h25-1-3" id="h25-1-3" class="d">-! orange
+</a><a href="#h25-1-4" id="h25-1-4" class="i">+! magenta (or orange)
+</a> *.color5:       #784878
+ *.color13:      #873e87
+ 
+<b>diff --git a/<a id="h26" href="../file/x/.xres/urxvt.html">x/.xres/urxvt</a> b/<a href="../file/x/.xres/urxvt.html">x/.xres/urxvt</a></b>
+<a href="#h26-0" id="h26-0" class="h">@@ -1,4 +1,5 @@
+</a><a href="#h26-0-0" id="h26-0-0" class="d">-*.font: -*-gohufont-medium-*-*-*-14-*-*-*-*-*-*-*, xft:Symbola
+</a><a href="#h26-0-1" id="h26-0-1" class="i">+*.font: -*-gohufont-medium-*-*-*-14-*-*-*-*-*-*-*
+</a><a href="#h26-0-2" id="h26-0-2" class="i">+URxvt.letterSpace: 0
+</a> ! No bold font
+ URxvt.boldFont:
+ *.scrollBar: false
+<b>diff --git a/<a id="h27" href="../file/x/.xres/xft.html">x/.xres/xft</a> b/<a href="../file/x/.xres/xft.html">x/.xres/xft</a></b>
+<a href="#h27-0" id="h27-0" class="h">@@ -1,6 +1,6 @@
+</a> Xft.antialias: 1
+ Xft.autohint: 0
+<a href="#h27-0-2" id="h27-0-2" class="d">-Xft.dpi: 92
+</a><a href="#h27-0-3" id="h27-0-3" class="i">+Xft.dpi: 96
+</a> Xft.hinting: 1
+ Xft.hintstyle: hintfull
+ Xft.lcdfilter: lcddefault
+</pre>
+</div>
+</body>
+</html>
