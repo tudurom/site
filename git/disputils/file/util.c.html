@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> util.c (1933B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> util.c (4807B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -123,6 +123,111 @@
 <a href="#l105" id="l105">105</a>
 <a href="#l106" id="l106">106</a>
 <a href="#l107" id="l107">107</a>
+<a href="#l108" id="l108">108</a>
+<a href="#l109" id="l109">109</a>
+<a href="#l110" id="l110">110</a>
+<a href="#l111" id="l111">111</a>
+<a href="#l112" id="l112">112</a>
+<a href="#l113" id="l113">113</a>
+<a href="#l114" id="l114">114</a>
+<a href="#l115" id="l115">115</a>
+<a href="#l116" id="l116">116</a>
+<a href="#l117" id="l117">117</a>
+<a href="#l118" id="l118">118</a>
+<a href="#l119" id="l119">119</a>
+<a href="#l120" id="l120">120</a>
+<a href="#l121" id="l121">121</a>
+<a href="#l122" id="l122">122</a>
+<a href="#l123" id="l123">123</a>
+<a href="#l124" id="l124">124</a>
+<a href="#l125" id="l125">125</a>
+<a href="#l126" id="l126">126</a>
+<a href="#l127" id="l127">127</a>
+<a href="#l128" id="l128">128</a>
+<a href="#l129" id="l129">129</a>
+<a href="#l130" id="l130">130</a>
+<a href="#l131" id="l131">131</a>
+<a href="#l132" id="l132">132</a>
+<a href="#l133" id="l133">133</a>
+<a href="#l134" id="l134">134</a>
+<a href="#l135" id="l135">135</a>
+<a href="#l136" id="l136">136</a>
+<a href="#l137" id="l137">137</a>
+<a href="#l138" id="l138">138</a>
+<a href="#l139" id="l139">139</a>
+<a href="#l140" id="l140">140</a>
+<a href="#l141" id="l141">141</a>
+<a href="#l142" id="l142">142</a>
+<a href="#l143" id="l143">143</a>
+<a href="#l144" id="l144">144</a>
+<a href="#l145" id="l145">145</a>
+<a href="#l146" id="l146">146</a>
+<a href="#l147" id="l147">147</a>
+<a href="#l148" id="l148">148</a>
+<a href="#l149" id="l149">149</a>
+<a href="#l150" id="l150">150</a>
+<a href="#l151" id="l151">151</a>
+<a href="#l152" id="l152">152</a>
+<a href="#l153" id="l153">153</a>
+<a href="#l154" id="l154">154</a>
+<a href="#l155" id="l155">155</a>
+<a href="#l156" id="l156">156</a>
+<a href="#l157" id="l157">157</a>
+<a href="#l158" id="l158">158</a>
+<a href="#l159" id="l159">159</a>
+<a href="#l160" id="l160">160</a>
+<a href="#l161" id="l161">161</a>
+<a href="#l162" id="l162">162</a>
+<a href="#l163" id="l163">163</a>
+<a href="#l164" id="l164">164</a>
+<a href="#l165" id="l165">165</a>
+<a href="#l166" id="l166">166</a>
+<a href="#l167" id="l167">167</a>
+<a href="#l168" id="l168">168</a>
+<a href="#l169" id="l169">169</a>
+<a href="#l170" id="l170">170</a>
+<a href="#l171" id="l171">171</a>
+<a href="#l172" id="l172">172</a>
+<a href="#l173" id="l173">173</a>
+<a href="#l174" id="l174">174</a>
+<a href="#l175" id="l175">175</a>
+<a href="#l176" id="l176">176</a>
+<a href="#l177" id="l177">177</a>
+<a href="#l178" id="l178">178</a>
+<a href="#l179" id="l179">179</a>
+<a href="#l180" id="l180">180</a>
+<a href="#l181" id="l181">181</a>
+<a href="#l182" id="l182">182</a>
+<a href="#l183" id="l183">183</a>
+<a href="#l184" id="l184">184</a>
+<a href="#l185" id="l185">185</a>
+<a href="#l186" id="l186">186</a>
+<a href="#l187" id="l187">187</a>
+<a href="#l188" id="l188">188</a>
+<a href="#l189" id="l189">189</a>
+<a href="#l190" id="l190">190</a>
+<a href="#l191" id="l191">191</a>
+<a href="#l192" id="l192">192</a>
+<a href="#l193" id="l193">193</a>
+<a href="#l194" id="l194">194</a>
+<a href="#l195" id="l195">195</a>
+<a href="#l196" id="l196">196</a>
+<a href="#l197" id="l197">197</a>
+<a href="#l198" id="l198">198</a>
+<a href="#l199" id="l199">199</a>
+<a href="#l200" id="l200">200</a>
+<a href="#l201" id="l201">201</a>
+<a href="#l202" id="l202">202</a>
+<a href="#l203" id="l203">203</a>
+<a href="#l204" id="l204">204</a>
+<a href="#l205" id="l205">205</a>
+<a href="#l206" id="l206">206</a>
+<a href="#l207" id="l207">207</a>
+<a href="#l208" id="l208">208</a>
+<a href="#l209" id="l209">209</a>
+<a href="#l210" id="l210">210</a>
+<a href="#l211" id="l211">211</a>
+<a href="#l212" id="l212">212</a>
 </pre></td><td><pre>
 /*
  * disputils util.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt; ix
@@ -135,6 +240,10 @@
 
 #include &quot;util.h&quot;
 
+/*
+ * Initialize connection to X server.
+ */
+
 void
 init_xcb(xcb_connection_t ** con)
 {
@@ -143,12 +252,20 @@ init_xcb(xcb_connection_t ** con)
 		errx(1, &quot;unable connect to the X server&quot;);
 }
 
+/*
+ * Disconnect from the X server.
+ */
+
 void
 kill_xcb(xcb_connection_t ** con)
 {
 	if (*con)
 		xcb_disconnect(*con);
 }
+
+/*
+ * Get the current X screen.
+ */
 
 void
 get_screen(xcb_connection_t * con, xcb_screen_t ** scr)
@@ -158,78 +275,171 @@ get_screen(xcb_connection_t * con, xcb_screen_t ** scr)
 		errx(1, &quot;unable to retrieve screen informations&quot;);
 }
 
+/*
+ * Get a list of outputs provided by a provider.
+ */
+
 int
-exists(xcb_connection_t * con, xcb_window_t w)
+get_outputs(xcb_connection_t * conn, xcb_randr_provider_t provider, xcb_randr_output_t ** os)
 {
-	xcb_get_window_attributes_cookie_t c;
-	xcb_get_window_attributes_reply_t *r;
+	xcb_randr_get_provider_info_cookie_t pic;
+	pic = xcb_randr_get_provider_info(conn, provider, 0);
 
-	c = xcb_get_window_attributes(con, w);
-	r = xcb_get_window_attributes_reply(con, c, NULL);
+	xcb_randr_get_provider_info_reply_t *pir;
+	pir = xcb_randr_get_provider_info_reply(conn, pic, NULL);
+	if (!pir)
+		errx(1, &quot;Could not aquire the array of outputs.&quot;);
 
-	if (r == NULL)
-		return 0;
-
-	free(r);
-	return 1;
+	*os = xcb_randr_get_provider_info_outputs(pir);
+	return xcb_randr_get_provider_info_outputs_length(pir);
 }
 
+/*
+ * Get an array or providers shown by xrandr.
+ */
+
 int
-mapped(xcb_connection_t * con, xcb_window_t w)
+get_providers(xcb_connection_t * conn, xcb_screen_t * scrn, xcb_randr_provider_t ** ps)
 {
-	int 		ms;
-	xcb_get_window_attributes_cookie_t c;
-	xcb_get_window_attributes_reply_t *r;
+	xcb_randr_get_providers_cookie_t pc;
+	pc = xcb_randr_get_providers(conn, scrn-&gt;root);
 
-	c = xcb_get_window_attributes(con, w);
-	r = xcb_get_window_attributes_reply(con, c, NULL);
+	xcb_randr_get_providers_reply_t *pr;
+	pr = xcb_randr_get_providers_reply(conn, pc, NULL);
+	if (!pr)
+		errx(1, &quot;Could not aquire the array of providers.&quot;);
 
-	if (r == NULL)
-		return 0;
+	*ps = xcb_randr_get_providers_providers(pr);
 
-	ms = r-&gt;map_state;
-
-	free(r);
-	return ms == XCB_MAP_STATE_VIEWABLE;
+	return xcb_randr_get_providers_providers_length(pr);
 }
 
-int
-ignore(xcb_connection_t * con, xcb_window_t w)
+/*
+ * Get info about an output.
+ */
+
+xcb_randr_get_output_info_reply_t *
+get_output_info(xcb_connection_t * conn, xcb_randr_output_t output)
 {
-	int 		or;
-	xcb_get_window_attributes_cookie_t c;
-	xcb_get_window_attributes_reply_t *r;
+	xcb_randr_get_output_info_cookie_t oic;
 
-	c = xcb_get_window_attributes(con, w);
-	r = xcb_get_window_attributes_reply(con, c, NULL);
+	oic = xcb_randr_get_output_info(conn, output, 0);
+	xcb_randr_get_output_info_reply_t *output_info_reply;
 
-	if (r == NULL)
-		return 0;
+	output_info_reply = xcb_randr_get_output_info_reply(conn, oic, NULL);
+	if (!output_info_reply)
+		errx(1, &quot;Could not get output info.&quot;);
 
-	or = r-&gt;override_redirect;
-
-	free(r);
-	return or;
+	return output_info_reply;
 }
 
-int
-get_windows(xcb_connection_t * con, xcb_window_t w, xcb_window_t ** l)
+/*
+ * Get an output&apos;s name.
+ */
+
+uint8_t        *
+get_output_name(xcb_connection_t * conn, xcb_randr_output_t output)
 {
-	int 		childnum = 0;
-	xcb_query_tree_cookie_t c;
-	xcb_query_tree_reply_t *r;
+	xcb_randr_get_output_info_reply_t *r;
 
-	c = xcb_query_tree(con, w);
-	r = xcb_query_tree_reply(con, c, NULL);
-	if (r == NULL)
-		errx(1, &quot;0x%08x: no such window&quot;, w);
+	r = get_output_info(conn, output);
+	uint8_t *name = xcb_randr_get_output_info_name(r);
+    uint8_t *ret  = malloc(sizeof(uint8_t) * xcb_randr_get_output_info_name_length(r));
+    int i;
+    for (i = 0; i &lt; xcb_randr_get_output_info_name_length(r); i++) {
+        ret[i] = name[i];
+    }
+	return ret;
+}
 
-	*l = xcb_query_tree_children(r);
+/*
+ * Return 0 if output is connected and in use.
+ */
 
-	childnum = r-&gt;children_len;
-	free(r);
+int
+get_output_connection(xcb_connection_t * conn, xcb_randr_output_t output)
+{
+	xcb_randr_get_output_info_reply_t *r;
+	r = get_output_info(conn, output);
+	return r-&gt;connection;
+}
 
-	return childnum;
+/*
+ * Get an output&apos;s crtc info.
+ * width, height, x, y etc.
+ */
+
+xcb_randr_get_crtc_info_reply_t *
+get_output_crtc_info(xcb_connection_t * conn, xcb_randr_crtc_t crtc)
+{
+	xcb_randr_get_crtc_info_cookie_t cic;
+
+	cic = xcb_randr_get_crtc_info(conn, crtc, 0);
+
+	xcb_randr_get_crtc_info_reply_t *crtc_info_reply;
+	crtc_info_reply = xcb_randr_get_crtc_info_reply(conn, cic, NULL);
+
+	return crtc_info_reply;
+}
+
+/*
+ * Get the id of the currently focused window.
+ */
+
+xcb_window_t
+get_focused_window(xcb_connection_t * conn)
+{
+	xcb_window_t 	win = 0;
+	xcb_get_input_focus_cookie_t input_focus_cookie;
+	xcb_get_input_focus_reply_t *input_focus_reply;
+
+	input_focus_cookie = xcb_get_input_focus(conn);
+	input_focus_reply = xcb_get_input_focus_reply(conn, input_focus_cookie, NULL);
+	if (!input_focus_reply)
+		errx(1, &quot;Cannot get focused window.&quot;);
+	win = input_focus_reply-&gt;focus;
+	free(input_focus_reply);
+	return win;
+}
+
+/*
+ * Get a window&apos;s geometry.
+ * width, height, x, y etc.
+ */
+
+xcb_get_geometry_reply_t *
+get_window_geometry(xcb_connection_t * conn, xcb_window_t window)
+{
+	xcb_get_geometry_cookie_t get_geometry_cookie;
+	xcb_get_geometry_reply_t *get_geometry_reply;
+
+	get_geometry_cookie = xcb_get_geometry(conn, window);
+	get_geometry_reply = xcb_get_geometry_reply(conn, get_geometry_cookie, NULL);
+
+	if (!get_geometry_reply)
+		errx(1, &quot;0x%08x: no such window&quot;, window);
+	return get_geometry_reply;
+}
+
+/*
+ * Get primary output (primary display).
+ */
+
+xcb_randr_get_output_primary_reply_t *
+get_primary_output(xcb_connection_t * conn)
+{
+	xcb_screen_t   *scrn;
+	xcb_window_t 	root;
+	xcb_randr_get_output_primary_cookie_t c;
+	xcb_randr_get_output_primary_reply_t *primary_output;
+
+	get_screen(conn, &amp;scrn);
+	root = scrn-&gt;root;
+
+	c = xcb_randr_get_output_primary(conn, root);
+	primary_output = xcb_randr_get_output_primary_reply(conn, c, NULL);
+
+	return primary_output;
 }
 </pre></td></tr></table>
 </div>

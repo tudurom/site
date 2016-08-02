@@ -4,6 +4,40 @@
 <subtitle>Utilities for getting information about connected displays.
 </subtitle>
 <entry>
+<id>3808ca9e2b20f659886074972ca3912fc6d90760</id>
+<published>2016-08-02T09:13:05Z</published>
+<updated>2016-08-02T09:13:05Z</updated>
+<title type="text">install to /usr/local by default</title>
+<link rel="alternate" type="text/html" href="commit/3808ca9e2b20f659886074972ca3912fc6d90760.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 3808ca9e2b20f659886074972ca3912fc6d90760
+parent 7bb0537920e091c9a091f63672e57a992268711b
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Aug  2 12:13:05 +0300
+
+install to /usr/local by default
+
+</content>
+</entry>
+<entry>
+<id>7bb0537920e091c9a091f63672e57a992268711b</id>
+<published>2016-08-02T09:06:23Z</published>
+<updated>2016-08-02T09:06:23Z</updated>
+<title type="text">cleaned up indentation, comments and man pages</title>
+<link rel="alternate" type="text/html" href="commit/7bb0537920e091c9a091f63672e57a992268711b.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 7bb0537920e091c9a091f63672e57a992268711b
+parent 857d868922d67703cbfbf7856092a8381f306ca2
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Aug  2 12:06:23 +0300
+
+cleaned up indentation, comments and man pages
+
+</content>
+</entry>
+<entry>
 <id>857d868922d67703cbfbf7856092a8381f306ca2</id>
 <published>2016-05-03T10:39:45Z</published>
 <updated>2016-05-03T10:39:45Z</updated>

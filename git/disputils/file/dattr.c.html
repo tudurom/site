@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> dattr.c (2008B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> dattr.c (1969B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -116,7 +116,6 @@
 <a href="#l98" id="l98">98</a>
 <a href="#l99" id="l99">99</a>
 <a href="#l100" id="l100">100</a>
-<a href="#l101" id="l101">101</a>
 </pre></td><td><pre>
 /*
  * disputils dattr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt; ix
@@ -129,7 +128,6 @@
 #include &lt;string.h&gt;
 #include &lt;unistd.h&gt;
 
-#include &quot;randr.h&quot;
 #include &quot;util.h&quot;
 
 xcb_connection_t *conn;
@@ -153,7 +151,7 @@ main(int argc, char *argv[])
 	xcb_randr_get_output_info_reply_t *output_info = NULL;
 	xcb_randr_crtc_t screen_crtc;
 	xcb_randr_get_crtc_info_reply_t *screen_crtc_info = NULL;
-	char           *output_name;
+	char *output_name;
 
 	if (argc != 3)
 		usage(argv[0]);
@@ -163,15 +161,15 @@ main(int argc, char *argv[])
 	get_screen(conn, &amp;scrn);
 
 	xcb_randr_provider_t *providers;
-	int 		p_len = get_providers(conn, scrn, &amp;providers);
+	int p_len = get_providers(conn, scrn, &amp;providers);
 
 	/* get the id of the output */
-	int 		i = 0;
+	int i = 0;
 	while (i &lt; p_len &amp;&amp; output == -1) {
 		xcb_randr_output_t *os;
-		int 		o_len = get_outputs(conn, providers[i], &amp;os);
+		int o_len = get_outputs(conn, providers[i], &amp;os);
 
-		int 		j = 0;
+		int j = 0;
 		while (j &lt; o_len &amp;&amp; output == -1) {
 			if (strcmp(output_name, (const char *)get_output_name(conn, os[j])) == 0)
 				output = os[j];
@@ -194,7 +192,7 @@ main(int argc, char *argv[])
 		errx(1, &quot;Output not in use&quot;);
 
 	/* print info */
-	int 		ch;
+	int ch;
 	while ((ch = getopt(argc, argv, &quot;whxy:&quot;)) != -1) {
 		switch (ch) {
 		case &apos;w&apos;:

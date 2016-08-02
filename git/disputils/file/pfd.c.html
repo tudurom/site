@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> pfd.c (2279B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> pfd.c (2241B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -116,7 +116,6 @@
 <a href="#l98" id="l98">98</a>
 <a href="#l99" id="l99">99</a>
 <a href="#l100" id="l100">100</a>
-<a href="#l101" id="l101">101</a>
 </pre></td><td><pre>
 /*
  * disputils pfd.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt; ix
@@ -128,7 +127,6 @@
 #include &lt;stdlib.h&gt;
 #include &lt;unistd.h&gt;
 
-#include &quot;randr.h&quot;
 #include &quot;util.h&quot;
 
 xcb_connection_t *conn;
@@ -148,21 +146,21 @@ main(int argc, char *argv[])
 	if (pledge(&quot;stdio rpath unix&quot;, NULL) == -1)
 		err(1, &quot;pledge&quot;);
 #endif
-	xcb_window_t 	f_window;
+	xcb_window_t f_window;
 	xcb_get_geometry_reply_t *window_geometry = NULL;
 
-	uint16_t 	window_x;
-	uint16_t 	window_y;
+	uint16_t window_x;
+	uint16_t window_y;
 
 	xcb_randr_get_output_info_reply_t *output_info = NULL;
 	xcb_randr_get_crtc_info_reply_t *output_crtc_info = NULL;
 	xcb_randr_output_t output;
-	const char     *output_name = NULL;
+	const char *output_name = NULL;
 
-	uint16_t 	output_w;
-	uint16_t 	output_h;
-	uint16_t 	output_x;
-	uint16_t 	output_y;
+	uint16_t output_w;
+	uint16_t output_h;
+	uint16_t output_x;
+	uint16_t output_y;
 
 	if (argc &gt; 1)
 		usage(argv[0]);
@@ -177,14 +175,14 @@ main(int argc, char *argv[])
 
 	/* Iterate through outputs */
 	xcb_randr_provider_t *providers;
-	int 		p_len = get_providers(conn, scrn, &amp;providers);
+	int	p_len = get_providers(conn, scrn, &amp;providers);
 
-	int 		i = 0;
+	int	i = 0;
 	while (i &lt; p_len &amp;&amp; output_name == &apos;\0&apos;) {
 		xcb_randr_output_t *os;
-		int 		o_len = get_outputs(conn, providers[i], &amp;os);
+		int o_len = get_outputs(conn, providers[i], &amp;os);
 
-		int 		j = 0;
+		int j = 0;
 		while (j &lt; o_len &amp;&amp; output_name == &apos;\0&apos;) {
 			output = os[j];
 			if (get_output_connection(conn, output) == 0) {

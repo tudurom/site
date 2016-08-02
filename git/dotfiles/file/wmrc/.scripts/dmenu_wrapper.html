@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>startwm - dotfiles - Small loan of configuration files.
+<title>dmenu_wrapper - dotfiles - Small loan of configuration files.
 </title>
 <link rel="icon" type="image/png" href="../../../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../../../atom.xml" />
@@ -15,42 +15,14 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> startwm (260B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> dmenu_wrapper (121B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
-<a href="#l4" id="l4">4</a>
-<a href="#l5" id="l5">5</a>
-<a href="#l6" id="l6">6</a>
-<a href="#l7" id="l7">7</a>
-<a href="#l8" id="l8">8</a>
-<a href="#l9" id="l9">9</a>
-<a href="#l10" id="l10">10</a>
-<a href="#l11" id="l11">11</a>
-<a href="#l12" id="l12">12</a>
-<a href="#l13" id="l13">13</a>
-<a href="#l14" id="l14">14</a>
-<a href="#l15" id="l15">15</a>
-<a href="#l16" id="l16">16</a>
-<a href="#l17" id="l17">17</a>
 </pre></td><td><pre>
-#
-# Starts the environment
-# (c) tudurom 2016 - wtfpl
-#
-set -x
-wm=&quot;$1&quot;
-sxhkd -c ~/.config/sxhkd/sxhkdrc_${wm} ~/.config/sxhkd/commons &amp;
-case &quot;$wm&quot; in
-    &quot;wmutils&quot;)
-        wew | wewhandle &amp;
-        xwait
-        ;;
-    *)
-        $wm
-esac
+#!/bin/sh
 
-# vim: set ft=sh :
+dmenu_run -nb `xrq &apos;*.background&apos;` -nf `xrq &apos;*.foreground&apos;` -sb `xrq &apos;*.foreground&apos;` -sf `xrq &apos;*.background&apos;`
 </pre></td></tr></table>
 </div>
 </body>

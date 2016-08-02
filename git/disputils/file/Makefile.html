@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> Makefile (660B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> Makefile (570B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -54,13 +54,10 @@
 <a href="#l36" id="l36">36</a>
 <a href="#l37" id="l37">37</a>
 <a href="#l38" id="l38">38</a>
-<a href="#l39" id="l39">39</a>
-<a href="#l40" id="l40">40</a>
-<a href="#l41" id="l41">41</a>
 </pre></td><td><pre>
 include config.mk
 
-HDR = util.h randr.h
+HDR = util.h
 SRC = lsd.c dattr.c pfd.c ppd.c
 
 OBJ = $(SRC:.c=.o)
@@ -72,14 +69,11 @@ all: binutils
 
 binutils: $(BIN)
 
-manpages:
-	cd man; $(MAKE) $(MFLAGS)
-
-$(OBJ): $(HDR) util.o randr.o
+$(OBJ): $(HDR) util.o
 
 .o:
 	@echo &quot;LD $@&quot;
-	@$(LD) $&lt; -o $@ $(LDFLAGS) util.o randr.o
+	@$(LD) $&lt; -o $@ $(LDFLAGS) util.o
 
 .c.o:
 	@echo &quot;CC $&lt;&quot;
@@ -88,17 +82,17 @@ $(OBJ): $(HDR) util.o randr.o
 install: $(BIN)
 	mkdir -p $(DESTDIR)$(PREFIX)/bin/
 	cp -f $(BIN) $(DESTDIR)$(PREFIX)/bin/
-	cd man; $(MAKE) $(MFLAGS) install
+	cd man; $(MAKE) install
 
 uninstall:
 	@echo &quot;uninstalling binaries&quot;
 	@for util in $(BIN); do \
 		rm -f $(DESTDIR)$(PREFIX)/bin/$$util; \
 	done
-	cd man; $(MAKE) $(MFLAGS) uninstall
+	cd man; $(MAKE) uninstall
 
 clean:
-	rm -f $(OBJ) $(BIN) util.o randr.o
+	rm -f $(OBJ) $(BIN) util.o
 </pre></td></tr></table>
 </div>
 </body>

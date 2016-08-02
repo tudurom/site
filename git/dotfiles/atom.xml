@@ -4,6 +4,23 @@
 <subtitle>Small loan of configuration files.
 </subtitle>
 <entry>
+<id>9a96fbeeea0fb862ca9dd005ccefd7473a462085</id>
+<published>2016-08-01T20:24:35Z</published>
+<updated>2016-08-01T20:24:35Z</updated>
+<title type="text">misc</title>
+<link rel="alternate" type="text/html" href="commit/9a96fbeeea0fb862ca9dd005ccefd7473a462085.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 9a96fbeeea0fb862ca9dd005ccefd7473a462085
+parent ed12a0567b987090892d41d45137eeb31a91756a
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Aug  1 23:24:35 +0300
+
+misc
+
+</content>
+</entry>
+<entry>
 <id>ed12a0567b987090892d41d45137eeb31a91756a</id>
 <published>2016-07-20T12:57:18Z</published>
 <updated>2016-07-20T12:57:18Z</updated>
@@ -1688,23 +1705,6 @@ Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
 Date:   Mon Apr  4 17:26:48 +0300
 
 ahem
-
-</content>
-</entry>
-<entry>
-<id>07bec204830bd9b1d17760b5add105f93bd8dd28</id>
-<published>2016-04-04T11:33:58Z</published>
-<updated>2016-04-04T11:33:58Z</updated>
-<title type="text">meh</title>
-<link rel="alternate" type="text/html" href="commit/07bec204830bd9b1d17760b5add105f93bd8dd28.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit 07bec204830bd9b1d17760b5add105f93bd8dd28
-parent b6e3097a07894c24617e81769517b8679ebd0976
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Mon Apr  4 14:33:58 +0300
-
-meh
 
 </content>
 </entry>
