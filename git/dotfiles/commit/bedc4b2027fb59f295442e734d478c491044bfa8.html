@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>trying this wm called bspwm - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/bedc4b2027fb59f295442e734d478c491044bfa8.html">bedc4b2027fb59f295442e734d478c491044bfa8</a>
+<b>parent</b> <a href="../commit/787ae18febf79ee214fcea05a7a3911c5bcf2b09.html">787ae18febf79ee214fcea05a7a3911c5bcf2b09</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Tue Jul  5 10:24:54 +0300
+
+trying this wm called bspwm
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">bspwm/.config/bspwm/bspwmrc</a></td><td> | </td><td class="num">47</td><td><span class="i">++++++++++++++++++</span><span class="d">-----------------------------</span></td></tr>
+<tr><td><a href="#h1">bspwm/.config/sxhkd/sxhkdrc_bspwm</a></td><td> | </td><td class="num">128</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">------------------------------</span></td></tr>
+<tr><td><a href="#h2">bspwm/.scripts/panel</a></td><td> | </td><td class="num">84</td><td><span class="i"></span><span class="d">-------------------------------------------------------------------------------</span></td></tr>
+<tr><td><a href="#h3">bspwm/.scripts/panel_bar</a></td><td> | </td><td class="num">87</td><td><span class="i"></span><span class="d">-------------------------------------------------------------------------------</span></td></tr>
+<tr><td><a href="#h4">bspwm/.scripts/panel_colors</a></td><td> | </td><td class="num">7</td><td><span class="i"></span><span class="d">-------</span></td></tr>
+<tr><td><a href="#h5">bspwm/.scripts/panel_config</a></td><td> | </td><td class="num">21</td><td><span class="i"></span><span class="d">---------------------</span></td></tr>
+<tr><td><a href="#h6">bspwm/.scripts/panel_icons</a></td><td> | </td><td class="num">29</td><td><span class="i"></span><span class="d">-----------------------------</span></td></tr>
+<tr><td><a href="#h7">cwm/.cwmrc</a></td><td> | </td><td class="num">23</td><td><span class="i">++++++++++++++++</span><span class="d">-------</span></td></tr>
+<tr><td><a href="#h8">firefox/userChrome.css</a></td><td> | </td><td class="num">177</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++</span><span class="d">-------------------------------------</span></td></tr>
+<tr><td><a href="#h9">scripts/.scripts/wall-e</a></td><td> | </td><td class="num">9</td><td><span class="i">+++++</span><span class="d">----</span></td></tr>
+<tr><td><a href="#h10">shell/.shell.d/alias.sh</a></td><td> | </td><td class="num">4</td><td><span class="i">++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h11">vimperator/.vimperator/colors/designr.vimp</a></td><td> | </td><td class="num">69</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h12">vimperator/.vimperatorrc</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h13">wallpapers/wallpapers/blur/trees.jpg</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td><a href="#h14">wallpapers/wallpapers/makeblur.sh</a></td><td> | </td><td class="num">3</td><td><span class="i">+++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h15">wallpapers/wallpapers/test_tile7_2.png</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td><a href="#h16">wmrc/.scripts/blur</a></td><td> | </td><td class="num">18</td><td><span class="i">++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h17">wmrc/.scripts/statusbar</a></td><td> | </td><td class="num">4</td><td><span class="i">+++</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h18">wmrc/.scripts/wmrc</a></td><td> | </td><td class="num">3</td><td><span class="i">+++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h19">x/.Xresources</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h20">x/.xinitrc</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h21">x/.xres/colors/fendr</a></td><td> | </td><td class="num">38</td><td><span class="i">++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table>22 files changed, 355 insertions(+), 402 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/bspwm/.config/bspwm/bspwmrc.html">bspwm/.config/bspwm/bspwmrc</a> b/<a href="../file/bspwm/.config/bspwm/bspwmrc.html">bspwm/.config/bspwm/bspwmrc</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,34 +1,23 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="d">-#! /bin/sh
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+#!/bin/sh
+</a> 
+<a href="#h0-0-3" id="h0-0-3" class="d">-sxhkd -c &quot;$HOME/.config/sxhkd/sxhkdrc-bspwm&quot; &amp;
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+bspc config border_width         $BW
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+bspc config window_gap           $GENERAL_GAP
+</a> 
+<a href="#h0-0-7" id="h0-0-7" class="d">-if [ -e &quot;$BSPWM_STATE&quot; ]; then
+</a><a href="#h0-0-8" id="h0-0-8" class="d">-  bspc wm -l &quot;$BSPWM_STATE&quot;
+</a><a href="#h0-0-9" id="h0-0-9" class="d">-  rm &quot;$BSPWM_STATE&quot;
+</a><a href="#h0-0-10" id="h0-0-10" class="d">-fi
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+bspc config split_ratio           0.5
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+bspc config borderless_monocle    true
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+bspc config gapless_monocle       true
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+bspc config focus_by_distance     true
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+bspc config history_aware_focus   true
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+bspc config top_padding           $(( 2 * $BW + $GENERAL_GAP + $PANEL_STATUS_HEIGHT ))
+</a> 
+<a href="#h0-0-18" id="h0-0-18" class="d">-bspc config window_gap          $GENERAL_GAP
+</a><a href="#h0-0-19" id="h0-0-19" class="d">-bspc config border_width        2
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+bspc config normal_border_color   $(xrq &apos;*.color8&apos;)
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+bspc config active_border_color   $(xrq &apos;*.color8&apos;)
+</a><a href="#h0-0-22" id="h0-0-22" class="i">+bspc config focused_border_color  $(xrq &apos;*.color6&apos;)
+</a><a href="#h0-0-23" id="h0-0-23" class="i">+bspc config presel_feedback_color $(xrq &apos;*.color3&apos;)
+</a> 
+<a href="#h0-0-25" id="h0-0-25" class="d">-bspc config split_ratio         0.50
+</a><a href="#h0-0-26" id="h0-0-26" class="d">-bspc config borderless_monocle  false
+</a><a href="#h0-0-27" id="h0-0-27" class="d">-bspc config gapless_monocle     false
+</a><a href="#h0-0-28" id="h0-0-28" class="d">-bspc config focus_by_distance   true
+</a><a href="#h0-0-29" id="h0-0-29" class="i">+for monitor in $(bspc query -M); do
+</a><a href="#h0-0-30" id="h0-0-30" class="i">+    bspc monitor $monitor -d A B C D
+</a><a href="#h0-0-31" id="h0-0-31" class="i">+done
+</a> 
+<a href="#h0-0-33" id="h0-0-33" class="d">-bspc config normal_border_color &quot;#273941&quot;
+</a><a href="#h0-0-34" id="h0-0-34" class="d">-#bspc config focused_border_color &quot;#71c2af&quot;
+</a><a href="#h0-0-35" id="h0-0-35" class="d">-bspc config focused_border_color &quot;$(bspc config normal_border_color)&quot;
+</a><a href="#h0-0-36" id="h0-0-36" class="d">-bspc config active_border_color &quot;$(bspc config normal_border_color)&quot;
+</a><a href="#h0-0-37" id="h0-0-37" class="d">-
+</a><a href="#h0-0-38" id="h0-0-38" class="d">-
+</a><a href="#h0-0-39" id="h0-0-39" class="d">-if [ $(bspc query -M | wc -l) -eq 2 ]; then
+</a><a href="#h0-0-40" id="h0-0-40" class="d">-  bspc monitor LVDS-1 -d 4 5 6
+</a><a href="#h0-0-41" id="h0-0-41" class="d">-  bspc monitor $(bspc query -M | grep -v &quot;LVDS-1&quot; | head -n 1) -d 1 2 3
+</a><a href="#h0-0-42" id="h0-0-42" class="d">-else
+</a><a href="#h0-0-43" id="h0-0-43" class="d">-  bspc monitor -d 1 2 3 4 5 6
+</a><a href="#h0-0-44" id="h0-0-44" class="d">-fi
+</a><a href="#h0-0-45" id="h0-0-45" class="d">-
+</a><a href="#h0-0-46" id="h0-0-46" class="d">-compton -b
+</a><a href="#h0-0-47" id="h0-0-47" class="d">-statusbar &amp;
+</a><a href="#h0-0-48" id="h0-0-48" class="d">-bspc config -m &quot;$(ppd)&quot; top_padding $(( PANEL_STATUS_HEIGHT + GENERAL_GAP ))
+</a><a href="#h0-0-49" id="h0-0-49" class="d">-wall-e &amp;
+</a><a href="#h0-0-50" id="h0-0-50" class="i">+bspc rule -a chromium  desktop=^2
+</a><a href="#h0-0-51" id="h0-0-51" class="i">+bspc rule -a mpv       state=floating
+</a><b>diff --git a/<a id="h1" href="../file/bspwm/.config/sxhkd/sxhkdrc_bspwm.html">bspwm/.config/sxhkd/sxhkdrc_bspwm</a> b/<a href="../file/bspwm/.config/sxhkd/sxhkdrc_bspwm.html">bspwm/.config/sxhkd/sxhkdrc_bspwm</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -1,64 +1,94 @@
+</a> #
+<a href="#h1-0-1" id="h1-0-1" class="d">-## bspwm hotkeys
+</a><a href="#h1-0-2" id="h1-0-2" class="i">+# wm independent hotkeys
+</a> #
+ 
+<a href="#h1-0-5" id="h1-0-5" class="d">-# Quit bspwm and kill the panel
+</a><a href="#h1-0-6" id="h1-0-6" class="d">-super + alt + Escape
+</a><a href="#h1-0-7" id="h1-0-7" class="d">-#~/.scripts/exitbspwm
+</a><a href="#h1-0-8" id="h1-0-8" class="d">-  pkill panel; bspc quit 1
+</a><a href="#h1-0-9" id="h1-0-9" class="d">-super + alt + shift + Escape
+</a><a href="#h1-0-10" id="h1-0-10" class="d">-  pkill panel; bspc wm -d &gt; &quot;$BSPWM_STATE&quot;; bspc quit
+</a><a href="#h1-0-11" id="h1-0-11" class="d">-# Close the focused window
+</a><a href="#h1-0-12" id="h1-0-12" class="d">-super + w
+</a><a href="#h1-0-13" id="h1-0-13" class="d">-	bspc node -c
+</a><a href="#h1-0-14" id="h1-0-14" class="d">-
+</a><a href="#h1-0-15" id="h1-0-15" class="d">-# Toggle monocle layout
+</a><a href="#h1-0-16" id="h1-0-16" class="d">-super + n
+</a><a href="#h1-0-17" id="h1-0-17" class="d">-	bspc desktop -l next
+</a><a href="#h1-0-18" id="h1-0-18" class="i">+# terminal emulator
+</a><a href="#h1-0-19" id="h1-0-19" class="i">+super + Return
+</a><a href="#h1-0-20" id="h1-0-20" class="i">+	urxvt
+</a> 
+<a href="#h1-0-22" id="h1-0-22" class="d">-# Change selected window&apos;s mode into tiled, pseudo-tiled, floating or fullscreen
+</a><a href="#h1-0-23" id="h1-0-23" class="d">-super + {t,p,s,f}
+</a><a href="#h1-0-24" id="h1-0-24" class="d">-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+</a><a href="#h1-0-25" id="h1-0-25" class="i">+# program launcher
+</a><a href="#h1-0-26" id="h1-0-26" class="i">+super + space
+</a><a href="#h1-0-27" id="h1-0-27" class="i">+	dmenu_run
+</a> 
+<a href="#h1-0-29" id="h1-0-29" class="d">-# Focus the last window/desktop
+</a><a href="#h1-0-30" id="h1-0-30" class="d">-super + {grave,Tab}
+</a><a href="#h1-0-31" id="h1-0-31" class="d">-	bspc {node,desktop} -f last
+</a><a href="#h1-0-32" id="h1-0-32" class="i">+# make sxhkd reload its configuration files:
+</a><a href="#h1-0-33" id="h1-0-33" class="i">+super + Escape
+</a><a href="#h1-0-34" id="h1-0-34" class="i">+	pkill -USR1 -x sxhkd
+</a> 
+<a href="#h1-0-36" id="h1-0-36" class="d">-# Swap the focused window with the last window
+</a><a href="#h1-0-37" id="h1-0-37" class="d">-super + apostrophe
+</a><a href="#h1-0-38" id="h1-0-38" class="d">-	bspc node -s last
+</a><a href="#h1-0-39" id="h1-0-39" class="i">+#
+</a><a href="#h1-0-40" id="h1-0-40" class="i">+# bspwm hotkeys
+</a><a href="#h1-0-41" id="h1-0-41" class="i">+#
+</a> 
+<a href="#h1-0-43" id="h1-0-43" class="d">-# Focus the next older/newer window
+</a><a href="#h1-0-44" id="h1-0-44" class="d">-super + {o,i}
+</a><a href="#h1-0-45" id="h1-0-45" class="d">-	bspc control --record-history off; \
+</a><a href="#h1-0-46" id="h1-0-46" class="d">-	bspc node {older,newer} -f; \
+</a><a href="#h1-0-47" id="h1-0-47" class="d">-	bspc control --record-history on
+</a><a href="#h1-0-48" id="h1-0-48" class="i">+# quit bspwm normally
+</a><a href="#h1-0-49" id="h1-0-49" class="i">+super + alt + Escape
+</a><a href="#h1-0-50" id="h1-0-50" class="i">+	bspc quit
+</a><a href="#h1-0-51" id="h1-0-51" class="i">+
+</a><a href="#h1-0-52" id="h1-0-52" class="i">+# close and kill
+</a><a href="#h1-0-53" id="h1-0-53" class="i">+super + {_,shift + }w
+</a><a href="#h1-0-54" id="h1-0-54" class="i">+	bspc node -{c,k}
+</a> 
+<a href="#h1-0-56" id="h1-0-56" class="i">+# alternate between the tiled and monocle layout
+</a><a href="#h1-0-57" id="h1-0-57" class="i">+super + m
+</a><a href="#h1-0-58" id="h1-0-58" class="i">+	bspc desktop -l next
+</a> 
+<a href="#h1-0-60" id="h1-0-60" class="i">+# if the current node is automatic, send it to the last manual, otherwise pull the last leaf
+</a> super + y
+<a href="#h1-0-62" id="h1-0-62" class="d">-	bspc node -n last.!automatic
+</a><a href="#h1-0-63" id="h1-0-63" class="i">+	bspc query -N -n focused.automatic &amp;&amp; bspc node -n last.!automatic || bspc node last.leaf -n focused
+</a> 
+<a href="#h1-0-65" id="h1-0-65" class="d">-super + m
+</a><a href="#h1-0-66" id="h1-0-66" class="d">-	bspc node -s biggest
+</a><a href="#h1-0-67" id="h1-0-67" class="i">+#
+</a><a href="#h1-0-68" id="h1-0-68" class="i">+# state/flags
+</a><a href="#h1-0-69" id="h1-0-69" class="i">+#
+</a><a href="#h1-0-70" id="h1-0-70" class="i">+
+</a><a href="#h1-0-71" id="h1-0-71" class="i">+# set the window state
+</a><a href="#h1-0-72" id="h1-0-72" class="i">+super + {t,shift + t,s,f}
+</a><a href="#h1-0-73" id="h1-0-73" class="i">+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+</a> 
+<a href="#h1-0-75" id="h1-0-75" class="i">+# set the node flags
+</a><a href="#h1-0-76" id="h1-0-76" class="i">+super + ctrl + {x,y,z}
+</a><a href="#h1-0-77" id="h1-0-77" class="i">+	bspc node -g {locked,sticky,private}
+</a> 
+<a href="#h1-0-79" id="h1-0-79" class="d">-super + {_,shift + }{h,j,k,l}
+</a><a href="#h1-0-80" id="h1-0-80" class="d">-	bspc node -{f,s} {west,south,north,east}
+</a><a href="#h1-0-81" id="h1-0-81" class="i">+#
+</a><a href="#h1-0-82" id="h1-0-82" class="i">+# focus/swap
+</a><a href="#h1-0-83" id="h1-0-83" class="i">+#
+</a> 
+<a href="#h1-0-85" id="h1-0-85" class="d">-super + {_,shift + }c
+</a><a href="#h1-0-86" id="h1-0-86" class="d">-	bspc node -f {next,prev}
+</a><a href="#h1-0-87" id="h1-0-87" class="i">+# focus the node in the given direction
+</a><a href="#h1-0-88" id="h1-0-88" class="i">+alt + {h,j,k,l}
+</a><a href="#h1-0-89" id="h1-0-89" class="i">+    bspc node -f {west,south,north,east}
+</a> 
+<a href="#h1-0-91" id="h1-0-91" class="d">-super + {comma,period}
+</a><a href="#h1-0-92" id="h1-0-92" class="d">-	bspc desktop -C {backward,forward}
+</a><a href="#h1-0-93" id="h1-0-93" class="i">+# focus the node in the given direction
+</a><a href="#h1-0-94" id="h1-0-94" class="i">+super + shift + {h,j,k,l}
+</a><a href="#h1-0-95" id="h1-0-95" class="i">+	bspc node -s {west,south,north,east}
+</a> 
+<a href="#h1-0-97" id="h1-0-97" class="i">+# focus the node for the given path jump
+</a><a href="#h1-0-98" id="h1-0-98" class="i">+super + {p,b,comma,period}
+</a><a href="#h1-0-99" id="h1-0-99" class="i">+	bspc node -f @{parent,brother,first,second}
+</a><a href="#h1-0-100" id="h1-0-100" class="i">+
+</a><a href="#h1-0-101" id="h1-0-101" class="i">+# focus the next/previous node
+</a><a href="#h1-0-102" id="h1-0-102" class="i">+alt + {_,shift + }Tab
+</a><a href="#h1-0-103" id="h1-0-103" class="i">+	bspc node -f {next,prev}
+</a><a href="#h1-0-104" id="h1-0-104" class="i">+
+</a><a href="#h1-0-105" id="h1-0-105" class="i">+# focus the next/previous desktop
+</a> super + bracket{left,right}
+ 	bspc desktop -f {prev,next}
+ 
+<a href="#h1-0-109" id="h1-0-109" class="i">+# focus or send to the given desktop
+</a><a href="#h1-0-110" id="h1-0-110" class="i">+super + {_,shift + }{1-5,0}
+</a><a href="#h1-0-111" id="h1-0-111" class="i">+	bspc {desktop -f,node -d} &apos;^{1-9,10}&apos;
+</a><a href="#h1-0-112" id="h1-0-112" class="i">+
+</a><a href="#h1-0-113" id="h1-0-113" class="i">+#
+</a><a href="#h1-0-114" id="h1-0-114" class="i">+# preselect
+</a><a href="#h1-0-115" id="h1-0-115" class="i">+#
+</a><a href="#h1-0-116" id="h1-0-116" class="i">+
+</a><a href="#h1-0-117" id="h1-0-117" class="i">+# preselect the direction
+</a> super + ctrl + {h,j,k,l}
+ 	bspc node -p {west,south,north,east}
+ 
+<a href="#h1-0-121" id="h1-0-121" class="d">-super + ctrl + {_,shift + }space
+</a><a href="#h1-0-122" id="h1-0-122" class="d">-	bspc {node -p cancel,desktop -c}
+</a><a href="#h1-0-123" id="h1-0-123" class="i">+# cancel the preselection for the focused node
+</a><a href="#h1-0-124" id="h1-0-124" class="i">+super + ctrl + space
+</a><a href="#h1-0-125" id="h1-0-125" class="i">+	bspc node -p cancel
+</a><a href="#h1-0-126" id="h1-0-126" class="i">+
+</a><a href="#h1-0-127" id="h1-0-127" class="i">+#
+</a><a href="#h1-0-128" id="h1-0-128" class="i">+# resize tiled/floating
+</a><a href="#h1-0-129" id="h1-0-129" class="i">+#
+</a> 
+ # expand the tiled space in the given direction
+ super + alt + {h,j,k,l}
+<a href="#h1-1" id="h1-1" class="h">@@ -68,24 +98,26 @@ super + alt + {h,j,k,l}
+</a> super + alt + shift + {h,j,k,l}
+ 	bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
+ 
+<a href="#h1-1-3" id="h1-1-3" class="d">-super + ctrl + {1-9}
+</a><a href="#h1-1-4" id="h1-1-4" class="d">-	bspc node -r 0.{1-9}
+</a><a href="#h1-1-5" id="h1-1-5" class="d">-
+</a><a href="#h1-1-6" id="h1-1-6" class="i">+# move a floating window
+</a> super + {Left,Down,Up,Right}
+<a href="#h1-1-8" id="h1-1-8" class="d">-	xdo move {-x -20,-y +20,-y -20,-x +20}
+</a><a href="#h1-1-9" id="h1-1-9" class="i">+	wmv {-20 0,0 20,0 -20,20 0} $(pfw)
+</a> 
+<a href="#h1-1-11" id="h1-1-11" class="d">-super + {_,shift + }{1-9,0}
+</a><a href="#h1-1-12" id="h1-1-12" class="d">-	bspc {desktop -f,node -d} &apos;^{1-9,10}&apos;
+</a><a href="#h1-1-13" id="h1-1-13" class="i">+# move a floating window fast
+</a><a href="#h1-1-14" id="h1-1-14" class="i">+super + shift + {Left,Down,Up,Right}
+</a><a href="#h1-1-15" id="h1-1-15" class="i">+	wmv {-50 0,0 50,0 -50,50 0} $(pfw)
+</a> 
+<a href="#h1-1-17" id="h1-1-17" class="d">-super + shift + s
+</a><a href="#h1-1-18" id="h1-1-18" class="d">-  bspc node -g sticky
+</a><a href="#h1-1-19" id="h1-1-19" class="i">+#
+</a><a href="#h1-1-20" id="h1-1-20" class="i">+# pointer focus/move/resize
+</a><a href="#h1-1-21" id="h1-1-21" class="i">+#
+</a> 
+<a href="#h1-1-23" id="h1-1-23" class="i">+# focus
+</a> ~button1
+ 	bspc pointer -g focus
+ 
+<a href="#h1-1-27" id="h1-1-27" class="i">+# start move/resize
+</a> super + button{1-3}
+ 	; bspc pointer -g {move,resize_side,resize_corner}
+ 
+<a href="#h1-1-31" id="h1-1-31" class="i">+# end move/resize
+</a> super + @button{1-3}
+ 	bspc pointer -u
+<a href="#h1-1-34" id="h1-1-34" class="d">-
+</a><b>diff --git a/<a id="h2" href="../file/bspwm/.scripts/panel.html">bspwm/.scripts/panel</a> b/<a href="../file/bspwm/.scripts/panel.html">bspwm/.scripts/panel</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -1,84 +0,0 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="d">-#! /bin/bash
+</a><a href="#h2-0-1" id="h2-0-1" class="d">-
+</a><a href="#h2-0-2" id="h2-0-2" class="d">-. panel_config
+</a><a href="#h2-0-3" id="h2-0-3" class="d">-. panel_icons
+</a><a href="#h2-0-4" id="h2-0-4" class="d">-
+</a><a href="#h2-0-5" id="h2-0-5" class="d">-#EPOCH=1
+</a><a href="#h2-0-6" id="h2-0-6" class="d">-
+</a><a href="#h2-0-7" id="h2-0-7" class="d">-if [ $(pgrep -cx panel) -gt 1 ] ; then
+</a><a href="#h2-0-8" id="h2-0-8" class="d">-	printf &quot;%s\n&quot; &quot;The panel is already running.&quot; &gt;&amp;2
+</a><a href="#h2-0-9" id="h2-0-9" class="d">-exit 1
+</a><a href="#h2-0-10" id="h2-0-10" class="d">-fi
+</a><a href="#h2-0-11" id="h2-0-11" class="d">-
+</a><a href="#h2-0-12" id="h2-0-12" class="d">-trap &apos;trap - TERM; kill 0&apos; INT TERM QUIT EXIT
+</a><a href="#h2-0-13" id="h2-0-13" class="d">-
+</a><a href="#h2-0-14" id="h2-0-14" class="d">-[ -e &quot;$PANEL_FIFO&quot; ] &amp;&amp; rm &quot;$PANEL_FIFO&quot;
+</a><a href="#h2-0-15" id="h2-0-15" class="d">-mkfifo &quot;$PANEL_FIFO&quot;
+</a><a href="#h2-0-16" id="h2-0-16" class="d">-
+</a><a href="#h2-0-17" id="h2-0-17" class="d">-bspc config -m &quot;$(xrandr | grep primary | cut -d&apos; &apos; -f1)&quot; top_padding $(expr $PANEL_HEIGHT + $top_pad)
+</a><a href="#h2-0-18" id="h2-0-18" class="d">-bspc subscribe &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h2-0-19" id="h2-0-19" class="d">-xtitle -sf &apos;T%s&apos; &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h2-0-20" id="h2-0-20" class="d">-if [ $EPOCH -eq 1 ]; then
+</a><a href="#h2-0-21" id="h2-0-21" class="d">-  clock_format=&apos;%s&apos;
+</a><a href="#h2-0-22" id="h2-0-22" class="d">-else
+</a><a href="#h2-0-23" id="h2-0-23" class="d">-  clock_format=&apos;%a %d %B %H:%M&apos;
+</a><a href="#h2-0-24" id="h2-0-24" class="d">-fi
+</a><a href="#h2-0-25" id="h2-0-25" class="d">-
+</a><a href="#h2-0-26" id="h2-0-26" class="d">-# Clock
+</a><a href="#h2-0-27" id="h2-0-27" class="d">-while true; do
+</a><a href="#h2-0-28" id="h2-0-28" class="d">-  echo &quot;S$(date +&quot;$clock_format&quot;)&quot;
+</a><a href="#h2-0-29" id="h2-0-29" class="d">-  sleep 10
+</a><a href="#h2-0-30" id="h2-0-30" class="d">-done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h2-0-31" id="h2-0-31" class="d">-
+</a><a href="#h2-0-32" id="h2-0-32" class="d">-# Volume
+</a><a href="#h2-0-33" id="h2-0-33" class="d">-while true; do
+</a><a href="#h2-0-34" id="h2-0-34" class="d">-  # Not quering pulse because it uses a hell lot of CPU
+</a><a href="#h2-0-35" id="h2-0-35" class="d">-  state=$(amixer get Master | grep &apos;Mono: Playback&apos; | grep &apos;\[on]&apos;)
+</a><a href="#h2-0-36" id="h2-0-36" class="d">-  volume=$(amixer -D pulse get Master | grep &apos;Front Left: Playback&apos; | grep -o &apos;...%&apos; | sed &apos;s/\[//&apos; | sed &apos;s/%//&apos; | sed &apos;s/ //&apos;)
+</a><a href="#h2-0-37" id="h2-0-37" class="d">-  if [ $state ]; then
+</a><a href="#h2-0-38" id="h2-0-38" class="d">-    if [ $volume -ge 50 ]; then
+</a><a href="#h2-0-39" id="h2-0-39" class="d">-      vicon=$ICON_VOLUME
+</a><a href="#h2-0-40" id="h2-0-40" class="d">-    elif [ $volume -gt 0 ] &amp;&amp; [ $volume -lt 50 ]; then
+</a><a href="#h2-0-41" id="h2-0-41" class="d">-      vicon=$ICON_VOLUME_LOW
+</a><a href="#h2-0-42" id="h2-0-42" class="d">-    else
+</a><a href="#h2-0-43" id="h2-0-43" class="d">-      vicon=$ICON_VOLUME_LOW
+</a><a href="#h2-0-44" id="h2-0-44" class="d">-    fi
+</a><a href="#h2-0-45" id="h2-0-45" class="d">-  else
+</a><a href="#h2-0-46" id="h2-0-46" class="d">-    vicon=$ICON_MUTE
+</a><a href="#h2-0-47" id="h2-0-47" class="d">-  fi
+</a><a href="#h2-0-48" id="h2-0-48" class="d">-  echo -e &quot;V$(icon $vicon) $volume&quot;
+</a><a href="#h2-0-49" id="h2-0-49" class="d">-  sleep $REFRESH_VOLUME
+</a><a href="#h2-0-50" id="h2-0-50" class="d">-done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h2-0-51" id="h2-0-51" class="d">-
+</a><a href="#h2-0-52" id="h2-0-52" class="d">-# Player status
+</a><a href="#h2-0-53" id="h2-0-53" class="d">-last_title=&quot;-&quot;
+</a><a href="#h2-0-54" id="h2-0-54" class="d">-while true; do
+</a><a href="#h2-0-55" id="h2-0-55" class="d">-  if [[ $(mpc status | wc -l) -eq 3 ]]; then
+</a><a href="#h2-0-56" id="h2-0-56" class="d">-    last_title=$(mpc status | head -n 1) # In case the music is stopped
+</a><a href="#h2-0-57" id="h2-0-57" class="d">-  elif [[ $(mpc status | wc -l) -eq 0 ]]; then
+</a><a href="#h2-0-58" id="h2-0-58" class="d">-    last_title=&quot;-&quot;
+</a><a href="#h2-0-59" id="h2-0-59" class="d">-  fi
+</a><a href="#h2-0-60" id="h2-0-60" class="d">-
+</a><a href="#h2-0-61" id="h2-0-61" class="d">-  if [[ -n $(mpc status | grep paused) ]]; then
+</a><a href="#h2-0-62" id="h2-0-62" class="d">-    icon=&quot;$ICON_PAUSE&quot;
+</a><a href="#h2-0-63" id="h2-0-63" class="d">-  elif [[ -n $(mpc status | grep playing) ]]; then
+</a><a href="#h2-0-64" id="h2-0-64" class="d">-    icon=&quot;$ICON_PLAY&quot;
+</a><a href="#h2-0-65" id="h2-0-65" class="d">-  else
+</a><a href="#h2-0-66" id="h2-0-66" class="d">-    icon=&quot;$ICON_STOP&quot;
+</a><a href="#h2-0-67" id="h2-0-67" class="d">-  fi
+</a><a href="#h2-0-68" id="h2-0-68" class="d">-  echo -e &quot;PS$(icon $icon) $last_title&quot;
+</a><a href="#h2-0-69" id="h2-0-69" class="d">-  sleep $REFRESH_MUSIC
+</a><a href="#h2-0-70" id="h2-0-70" class="d">-done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h2-0-71" id="h2-0-71" class="d">-
+</a><a href="#h2-0-72" id="h2-0-72" class="d">-# Battery percentage and time until full charge/discharge
+</a><a href="#h2-0-73" id="h2-0-73" class="d">-while true; do
+</a><a href="#h2-0-74" id="h2-0-74" class="d">-  batt_status=&quot;$(battery $ICON_BATTERY_CHARGING $ICON_BATTERY_FULL $ICON_BATTERY_HALF $ICON_BATTERY_EMPTY 2 $COLOR_ICON)&quot;
+</a><a href="#h2-0-75" id="h2-0-75" class="d">-  echo &quot;B$batt_status&quot;
+</a><a href="#h2-0-76" id="h2-0-76" class="d">-  sleep $REFRESH_BATTERY
+</a><a href="#h2-0-77" id="h2-0-77" class="d">-done &gt; &quot;$PANEL_FIFO&quot; &amp;
+</a><a href="#h2-0-78" id="h2-0-78" class="d">-
+</a><a href="#h2-0-79" id="h2-0-79" class="d">-. panel_colors
+</a><a href="#h2-0-80" id="h2-0-80" class="d">-
+</a><a href="#h2-0-81" id="h2-0-81" class="d">-cat &quot;$PANEL_FIFO&quot; | panel_bar | lemonbar -d -n &quot;$PANEL_WM_NAME&quot; -g &quot;$BAR_GEOMETRY&quot; -f &quot;$PANEL_FONT_FAMILY&quot; -f &quot;$PANEL_ICON_FONT_FAMILY&quot; -F &quot;$COLOR_FOREGROUND&quot; -B &quot;$COLOR_BACKGROUND&quot; -U &quot;$COLOR_UNDERLINE&quot; -a 30 -u 2| bash &amp;
+</a><a href="#h2-0-82" id="h2-0-82" class="d">-
+</a><a href="#h2-0-83" id="h2-0-83" class="d">-wait
+</a><b>diff --git a/<a id="h3" href="../file/bspwm/.scripts/panel_bar.html">bspwm/.scripts/panel_bar</a> b/<a href="../file/bspwm/.scripts/panel_bar.html">bspwm/.scripts/panel_bar</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -1,87 +0,0 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="d">-#! /bin/sh
+</a><a href="#h3-0-1" id="h3-0-1" class="d">-
+</a><a href="#h3-0-2" id="h3-0-2" class="d">-. panel_icons
+</a><a href="#h3-0-3" id="h3-0-3" class="d">-
+</a><a href="#h3-0-4" id="h3-0-4" class="d">-num_mon=$(bspc query -M | wc -l)
+</a><a href="#h3-0-5" id="h3-0-5" class="d">-
+</a><a href="#h3-0-6" id="h3-0-6" class="d">-separator=&quot;%{F$COLOR_SEPARATOR}|%{F-}&quot;
+</a><a href="#h3-0-7" id="h3-0-7" class="d">-
+</a><a href="#h3-0-8" id="h3-0-8" class="d">-while read -r line ; do
+</a><a href="#h3-0-9" id="h3-0-9" class="d">-  case $line in
+</a><a href="#h3-0-10" id="h3-0-10" class="d">-    PS*)
+</a><a href="#h3-0-11" id="h3-0-11" class="d">-      playing=&quot;%{A1:mpc toggle:}%{A2:urxvt -e /usr/bin/cava &amp;:}%{A3:mpc stop:}%{A4:mpc next:}%{A5:mpc prev:}${line#??}%{A}%{A}%{A}%{A}%{A}&quot;
+</a><a href="#h3-0-12" id="h3-0-12" class="d">-      ;;
+</a><a href="#h3-0-13" id="h3-0-13" class="d">-    S*)
+</a><a href="#h3-0-14" id="h3-0-14" class="d">-      # clock output
+</a><a href="#h3-0-15" id="h3-0-15" class="d">-      time=&quot; ${line#?}&quot;
+</a><a href="#h3-0-16" id="h3-0-16" class="d">-      ;;
+</a><a href="#h3-0-17" id="h3-0-17" class="d">-    T*)
+</a><a href="#h3-0-18" id="h3-0-18" class="d">-      # xtitle output
+</a><a href="#h3-0-19" id="h3-0-19" class="d">-      title=&quot; %{T2}%{F$COLOR_TITLE}${line#?}%{F-}%{T-}&quot;
+</a><a href="#h3-0-20" id="h3-0-20" class="d">-      ;;
+</a><a href="#h3-0-21" id="h3-0-21" class="d">-    B*)
+</a><a href="#h3-0-22" id="h3-0-22" class="d">-      # battery output
+</a><a href="#h3-0-23" id="h3-0-23" class="d">-      battery=&quot; ${line#?}&quot;
+</a><a href="#h3-0-24" id="h3-0-24" class="d">-      ;;
+</a><a href="#h3-0-25" id="h3-0-25" class="d">-    V*)
+</a><a href="#h3-0-26" id="h3-0-26" class="d">-      # volume
+</a><a href="#h3-0-27" id="h3-0-27" class="d">-      volume=&quot;%{A3:amixer sset Master toggle:}%{A4:amixer sset Master 5%+:}%{A5:amixer sset Master 5%-:}${line#?}%{A}%{A}%{A}&quot;
+</a><a href="#h3-0-28" id="h3-0-28" class="d">-      ;;
+</a><a href="#h3-0-29" id="h3-0-29" class="d">-    W*)
+</a><a href="#h3-0-30" id="h3-0-30" class="d">-      # bspwm internal state
+</a><a href="#h3-0-31" id="h3-0-31" class="d">-      wm_infos=&quot;&quot;
+</a><a href="#h3-0-32" id="h3-0-32" class="d">-      IFS=&apos;:&apos;
+</a><a href="#h3-0-33" id="h3-0-33" class="d">-      set -- ${line#?}
+</a><a href="#h3-0-34" id="h3-0-34" class="d">-      while [ $# -gt 0 ] ; do
+</a><a href="#h3-0-35" id="h3-0-35" class="d">-        item=$1
+</a><a href="#h3-0-36" id="h3-0-36" class="d">-        name=&quot;${item#?}&quot;
+</a><a href="#h3-0-37" id="h3-0-37" class="d">-        #name=&quot;$(icon $ICON_CLOCK)&quot;
+</a><a href="#h3-0-38" id="h3-0-38" class="d">-        name=&quot;%{A:bspc desktop -f $name:} ${name} %{A}&quot;
+</a><a href="#h3-0-39" id="h3-0-39" class="d">-        case $item in
+</a><a href="#h3-0-40" id="h3-0-40" class="d">-          #M*)
+</a><a href="#h3-0-41" id="h3-0-41" class="d">-          # # active monitor
+</a><a href="#h3-0-42" id="h3-0-42" class="d">-          # if [ $num_mon -gt 1 ] ; then
+</a><a href="#h3-0-43" id="h3-0-43" class="d">-          #   wm_infos=&quot;$wm_infos %{F$COLOR_ACTIVE_MONITOR_FG}%{B$COLOR_ACTIVE_MONITOR_BG} ${name} %{B-}%{F-}  &quot;
+</a><a href="#h3-0-44" id="h3-0-44" class="d">-          # fi
+</a><a href="#h3-0-45" id="h3-0-45" class="d">-          # ;;
+</a><a href="#h3-0-46" id="h3-0-46" class="d">-          #m*)
+</a><a href="#h3-0-47" id="h3-0-47" class="d">-          # # inactive monitor
+</a><a href="#h3-0-48" id="h3-0-48" class="d">-          # if [ $num_mon -gt 1 ] ; then
+</a><a href="#h3-0-49" id="h3-0-49" class="d">-          #   wm_infos=&quot;$wm_infos %{F$COLOR_INACTIVE_MONITOR_FG}%{B$COLOR_INACTIVE_MONITOR_BG} ${name} %{B-}%{F-}  &quot;
+</a><a href="#h3-0-50" id="h3-0-50" class="d">-          # fi
+</a><a href="#h3-0-51" id="h3-0-51" class="d">-          # ;;
+</a><a href="#h3-0-52" id="h3-0-52" class="d">-          O*)
+</a><a href="#h3-0-53" id="h3-0-53" class="d">-            # focused occupied desktop
+</a><a href="#h3-0-54" id="h3-0-54" class="d">-            wm_infos=&quot;$wm_infos%{+u}${name}%{-u}&quot;
+</a><a href="#h3-0-55" id="h3-0-55" class="d">-            ;;
+</a><a href="#h3-0-56" id="h3-0-56" class="d">-          F*)
+</a><a href="#h3-0-57" id="h3-0-57" class="d">-            # focused free desktop
+</a><a href="#h3-0-58" id="h3-0-58" class="d">-            wm_infos=&quot;$wm_infos%{+u}${name}%{-u}&quot;
+</a><a href="#h3-0-59" id="h3-0-59" class="d">-            ;;
+</a><a href="#h3-0-60" id="h3-0-60" class="d">-          U*)
+</a><a href="#h3-0-61" id="h3-0-61" class="d">-            # focused urgent desktop
+</a><a href="#h3-0-62" id="h3-0-62" class="d">-            wm_infos=&quot;$wm_infos%{B$COLOR_URGENT}%{+u}${name}%{-u}%{B-}&quot;
+</a><a href="#h3-0-63" id="h3-0-63" class="d">-            ;;
+</a><a href="#h3-0-64" id="h3-0-64" class="d">-          o*)
+</a><a href="#h3-0-65" id="h3-0-65" class="d">-            # occupied desktop
+</a><a href="#h3-0-66" id="h3-0-66" class="d">-            wm_infos=&quot;$wm_infos${name}&quot;
+</a><a href="#h3-0-67" id="h3-0-67" class="d">-            ;;
+</a><a href="#h3-0-68" id="h3-0-68" class="d">-          f*)
+</a><a href="#h3-0-69" id="h3-0-69" class="d">-            # free desktop
+</a><a href="#h3-0-70" id="h3-0-70" class="d">-            wm_infos=&quot;$wm_infos${name}&quot;
+</a><a href="#h3-0-71" id="h3-0-71" class="d">-            ;;
+</a><a href="#h3-0-72" id="h3-0-72" class="d">-          u*)
+</a><a href="#h3-0-73" id="h3-0-73" class="d">-            # urgent desktop
+</a><a href="#h3-0-74" id="h3-0-74" class="d">-            wm_infos=&quot;$wm_infos%{B$COLOR_URGENT}${name}%{B-}&quot;
+</a><a href="#h3-0-75" id="h3-0-75" class="d">-            ;;
+</a><a href="#h3-0-76" id="h3-0-76" class="d">-          #L*)
+</a><a href="#h3-0-77" id="h3-0-77" class="d">-          # # layout
+</a><a href="#h3-0-78" id="h3-0-78" class="d">-          # wm_infos=&quot;$wm_infos  %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${name} %{B-}%{F-}&quot;
+</a><a href="#h3-0-79" id="h3-0-79" class="d">-          # ;;
+</a><a href="#h3-0-80" id="h3-0-80" class="d">-        esac
+</a><a href="#h3-0-81" id="h3-0-81" class="d">-        shift
+</a><a href="#h3-0-82" id="h3-0-82" class="d">-      done
+</a><a href="#h3-0-83" id="h3-0-83" class="d">-      ;;
+</a><a href="#h3-0-84" id="h3-0-84" class="d">-  esac
+</a><a href="#h3-0-85" id="h3-0-85" class="d">-  echo -e &quot;%{l}${wm_infos} $separator ${title}%{r}${battery} $separator ${volume} $separator $(icon $ICON_CLOCK)${time} $separator ${playing} &quot;
+</a><a href="#h3-0-86" id="h3-0-86" class="d">-done
+</a><b>diff --git a/<a id="h4" href="../file/bspwm/.scripts/panel_colors.html">bspwm/.scripts/panel_colors</a> b/<a href="../file/bspwm/.scripts/panel_colors.html">bspwm/.scripts/panel_colors</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -1,7 +0,0 @@
+</a><a href="#h4-0-0" id="h4-0-0" class="d">-COLOR_BACKGROUND=#1d2a30
+</a><a href="#h4-0-1" id="h4-0-1" class="d">-COLOR_FOREGROUND=#71c2af
+</a><a href="#h4-0-2" id="h4-0-2" class="d">-COLOR_UNDERLINE=#c27171
+</a><a href="#h4-0-3" id="h4-0-3" class="d">-COLOR_SEPARATOR=#65737e
+</a><a href="#h4-0-4" id="h4-0-4" class="d">-COLOR_TITLE=#c0c5ce
+</a><a href="#h4-0-5" id="h4-0-5" class="d">-COLOR_URGENT=#c27171
+</a><a href="#h4-0-6" id="h4-0-6" class="d">-COLOR_ICON=$COLOR_UNDERLINE
+</a><b>diff --git a/<a id="h5" href="../file/bspwm/.scripts/panel_config.html">bspwm/.scripts/panel_config</a> b/<a href="../file/bspwm/.scripts/panel_config.html">bspwm/.scripts/panel_config</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -1,21 +0,0 @@
+</a><a href="#h5-0-0" id="h5-0-0" class="d">-#! /bin/bash
+</a><a href="#h5-0-1" id="h5-0-1" class="d">-
+</a><a href="#h5-0-2" id="h5-0-2" class="d">-PANEL_FIFO=/tmp/pamel-fifo
+</a><a href="#h5-0-3" id="h5-0-3" class="d">-PANEL_HEIGHT=30
+</a><a href="#h5-0-4" id="h5-0-4" class="d">-PANEL_WM_NAME=&quot;lemonbar&quot;
+</a><a href="#h5-0-5" id="h5-0-5" class="d">-PANEL_FONT_FAMILY=-*-erusfont-medium-*-*-*-11-*-*-*-*-*-*-*
+</a><a href="#h5-0-6" id="h5-0-6" class="d">-PANEL_ICON_FONT_FAMILY=-*-siji-medium-*-*-*-10-*-*-*-*-*-*-*
+</a><a href="#h5-0-7" id="h5-0-7" class="d">-REFRESH_VOLUME=0.5
+</a><a href="#h5-0-8" id="h5-0-8" class="d">-REFRESH_MUSIC=1
+</a><a href="#h5-0-9" id="h5-0-9" class="d">-REFRESH_BATTERY=10
+</a><a href="#h5-0-10" id="h5-0-10" class="d">-
+</a><a href="#h5-0-11" id="h5-0-11" class="d">-#num_mon=$(bspc query -M | wc -l)
+</a><a href="#h5-0-12" id="h5-0-12" class="d">-num_mon=$(xrandr | grep &quot; connected&quot; | wc -l)
+</a><a href="#h5-0-13" id="h5-0-13" class="d">-max_res=$(xrandr | grep &quot;primary&quot; | awk -F&apos;[ +]&apos; &apos;{print $4}&apos;)
+</a><a href="#h5-0-14" id="h5-0-14" class="d">-IFS=x; read -a sizes &lt;&lt;&lt;&quot;$max_res&quot;
+</a><a href="#h5-0-15" id="h5-0-15" class="d">-top_pad=$(bspc config window_gap)
+</a><a href="#h5-0-16" id="h5-0-16" class="d">-side_pad=$(bspc config window_gap)
+</a><a href="#h5-0-17" id="h5-0-17" class="d">-monitor_pad=$(xrandr | grep &quot;primary&quot; | awk -F&apos;+&apos; &apos;{print $2}&apos;)
+</a><a href="#h5-0-18" id="h5-0-18" class="d">-IFS=x; read -a sizes &lt;&lt;&lt;&quot;$max_res&quot;
+</a><a href="#h5-0-19" id="h5-0-19" class="d">-rwidth=$(expr ${sizes[0]} - 2 \* $side_pad)
+</a><a href="#h5-0-20" id="h5-0-20" class="d">-BAR_GEOMETRY=&quot;${rwidth}x${PANEL_HEIGHT}+$(($side_pad + $monitor_pad))+${top_pad}&quot;
+</a><b>diff --git a/<a id="h6" href="../file/bspwm/.scripts/panel_icons.html">bspwm/.scripts/panel_icons</a> b/<a href="../file/bspwm/.scripts/panel_icons.html">bspwm/.scripts/panel_icons</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -1,29 +0,0 @@
+</a><a href="#h6-0-0" id="h6-0-0" class="d">-. panel_colors
+</a><a href="#h6-0-1" id="h6-0-1" class="d">-
+</a><a href="#h6-0-2" id="h6-0-2" class="d">-function icon()
+</a><a href="#h6-0-3" id="h6-0-3" class="d">-{
+</a><a href="#h6-0-4" id="h6-0-4" class="d">-  echo &quot;%{F$COLOR_ICON}%{T2}$(printf $1)%{T-}%{F-}&quot;
+</a><a href="#h6-0-5" id="h6-0-5" class="d">-}
+</a><a href="#h6-0-6" id="h6-0-6" class="d">-
+</a><a href="#h6-0-7" id="h6-0-7" class="d">-#ICON_VOLUME=&quot;\u00ed&quot;
+</a><a href="#h6-0-8" id="h6-0-8" class="d">-#ICON_CLOCK=&quot;\u00c9&quot;
+</a><a href="#h6-0-9" id="h6-0-9" class="d">-#ICON_LEFT=&quot;\u00ab&quot;
+</a><a href="#h6-0-10" id="h6-0-10" class="d">-#ICON_PLAY=&quot;\u00e6&quot;
+</a><a href="#h6-0-11" id="h6-0-11" class="d">-#ICON_PAUSE=&quot;\u00e7&quot;
+</a><a href="#h6-0-12" id="h6-0-12" class="d">-#ICON_STOP=&quot;\u00e5&quot;
+</a><a href="#h6-0-13" id="h6-0-13" class="d">-#ICON_BATTERY=&quot;\u00f0&quot;
+</a><a href="#h6-0-14" id="h6-0-14" class="d">-
+</a><a href="#h6-0-15" id="h6-0-15" class="d">-ICON_VOLUME=&quot;\ue050&quot;
+</a><a href="#h6-0-16" id="h6-0-16" class="d">-ICON_VOLUME_LOW=&quot;\ue04e&quot;
+</a><a href="#h6-0-17" id="h6-0-17" class="d">-ICON_MUTE=&quot;\ue04f&quot;
+</a><a href="#h6-0-18" id="h6-0-18" class="d">-ICON_CLOCK=&quot;\ue015&quot;
+</a><a href="#h6-0-19" id="h6-0-19" class="d">-ICON_LEFT=&quot;\u00ab&quot;
+</a><a href="#h6-0-20" id="h6-0-20" class="d">-ICON_PLAY=&quot;\ue058&quot;
+</a><a href="#h6-0-21" id="h6-0-21" class="d">-ICON_PAUSE=&quot;\ue059&quot;
+</a><a href="#h6-0-22" id="h6-0-22" class="d">-ICON_STOP=&quot;\ue057&quot;
+</a><a href="#h6-0-23" id="h6-0-23" class="d">-ICON_BATTERY=&quot;\ue238&quot;
+</a><a href="#h6-0-24" id="h6-0-24" class="d">-ICON_BATTERY_CHARGING=&quot;\ue200&quot;
+</a><a href="#h6-0-25" id="h6-0-25" class="d">-ICON_BATTERY_FULL=&quot;\ue1ff&quot;
+</a><a href="#h6-0-26" id="h6-0-26" class="d">-ICON_BATTERY_HALF=&quot;\ue1fe&quot;
+</a><a href="#h6-0-27" id="h6-0-27" class="d">-ICON_BATTERY_EMPTY=&quot;\ue1fd&quot;
+</a><a href="#h6-0-28" id="h6-0-28" class="d">-ICON_CIRCLE=&quot;\ue190&quot;
+</a><b>diff --git a/<a id="h7" href="../file/cwm/.cwmrc.html">cwm/.cwmrc</a> b/<a href="../file/cwm/.cwmrc.html">cwm/.cwmrc</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -12,13 +12,22 @@ borderwidth 3
+</a> moveamount 10
+ 
+ # colors
+<a href="#h7-0-3" id="h7-0-3" class="d">-color activeborder   &apos;#63a69b&apos;
+</a><a href="#h7-0-4" id="h7-0-4" class="d">-color inactiveborder &apos;#456472&apos;
+</a><a href="#h7-0-5" id="h7-0-5" class="d">-color font           &apos;#c0c5ce&apos;
+</a><a href="#h7-0-6" id="h7-0-6" class="d">-color menubg         &apos;#1d2a30&apos;
+</a><a href="#h7-0-7" id="h7-0-7" class="d">-color menufg         &apos;#c0c5ce&apos;
+</a><a href="#h7-0-8" id="h7-0-8" class="d">-color groupborder    &apos;#a66363&apos;
+</a><a href="#h7-0-9" id="h7-0-9" class="d">-color ungroupborder  &apos;#a6a663&apos;
+</a><a href="#h7-0-10" id="h7-0-10" class="i">+
+</a><a href="#h7-0-11" id="h7-0-11" class="i">+# color 6
+</a><a href="#h7-0-12" id="h7-0-12" class="i">+color activeborder   &apos;#60867f&apos;
+</a><a href="#h7-0-13" id="h7-0-13" class="i">+# color 8
+</a><a href="#h7-0-14" id="h7-0-14" class="i">+color inactiveborder &apos;#4c5356&apos;
+</a><a href="#h7-0-15" id="h7-0-15" class="i">+# color 7
+</a><a href="#h7-0-16" id="h7-0-16" class="i">+color font           &apos;#c4c4b5&apos;
+</a><a href="#h7-0-17" id="h7-0-17" class="i">+# color 0
+</a><a href="#h7-0-18" id="h7-0-18" class="i">+color menubg         &apos;#2b3135&apos;
+</a><a href="#h7-0-19" id="h7-0-19" class="i">+# color 7
+</a><a href="#h7-0-20" id="h7-0-20" class="i">+color menufg         &apos;#c4c4b5&apos;
+</a><a href="#h7-0-21" id="h7-0-21" class="i">+# color 1
+</a><a href="#h7-0-22" id="h7-0-22" class="i">+color groupborder    &apos;#a66959&apos;
+</a><a href="#h7-0-23" id="h7-0-23" class="i">+# color 3
+</a><a href="#h7-0-24" id="h7-0-24" class="i">+color ungroupborder  &apos;#ac8d6e&apos;
+</a><a href="#h7-0-25" id="h7-0-25" class="i">+# color meh
+</a> color urgencyborder  &apos;#ef9a89&apos;
+ 
+ # autogroups
+<b>diff --git a/<a id="h8" href="../file/firefox/userChrome.css.html">firefox/userChrome.css</a> b/<a href="../file/firefox/userChrome.css.html">firefox/userChrome.css</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -3,46 +3,37 @@
+</a> /*
+     Author: Twily
+     Description: Minimal flat styled tabs for Australis
+<a href="#h8-0-3" id="h8-0-3" class="d">-    Compitability: Firefox Nightly v31.0a1 - v32.0a1 (Australis)
+</a><a href="#h8-0-4" id="h8-0-4" class="d">-       CSS Variables were introduced to Firefox in v29.0a1
+</a><a href="#h8-0-5" id="h8-0-5" class="i">+    Compatibility: -- Firefox 43.0.4 --
+</a>     Website: http://twily.info/
+ 
+ 
+<a href="#h8-0-9" id="h8-0-9" class="d">-    Note: To enable the urlbar; search this css for:
+</a><a href="#h8-0-10" id="h8-0-10" class="d">-       &quot;make the url-bar visible&quot; and &quot;adjust margin-top to&quot;
+</a><a href="#h8-0-11" id="h8-0-11" class="i">+    Useful search tags within this css:
+</a><a href="#h8-0-12" id="h8-0-12" class="i">+    &quot;url-bar visible&quot;, &quot;bottom margin&quot;, &quot;attach url-bar&quot;, &quot;newtab button&quot;, &quot;back/forward&quot;, &quot;enable scrollbar&quot;
+</a><a href="#h8-0-13" id="h8-0-13" class="i">+
+</a><a href="#h8-0-14" id="h8-0-14" class="i">+
+</a><a href="#h8-0-15" id="h8-0-15" class="i">+    To enable bitmap fonts in Firefox 44+; open &quot;about:config&quot; and set the following preference to &quot;false&quot;:
+</a><a href="#h8-0-16" id="h8-0-16" class="i">+    &quot;gfx.font_rendering.fontconfig.fontlist.enabled&quot;
+</a> */
+ 
+ 
+ :root {
+     /* TAB VARIABLES */
+<a href="#h8-0-22" id="h8-0-22" class="d">-    /*--bg-light: #524C59; --bg-dark: #282333;*/
+</a><a href="#h8-0-23" id="h8-0-23" class="d">-    /*--fg-light: #D6CCDC; --fg-dark: #AAA5AD;*/
+</a><a href="#h8-0-24" id="h8-0-24" class="d">-    /*--bg-light: #273941; */
+</a><a href="#h8-0-25" id="h8-0-25" class="d">-    --bg-light: #1d2a30;
+</a><a href="#h8-0-26" id="h8-0-26" class="d">-    --bg-dark: #1d2a30;
+</a><a href="#h8-0-27" id="h8-0-27" class="d">-    --fg-light: #c27171;
+</a><a href="#h8-0-28" id="h8-0-28" class="d">-    --fg-dark: #71c2af;
+</a><a href="#h8-0-29" id="h8-0-29" class="i">+    --bg-light: #2b3135; --bg-dark: #2b3135;
+</a><a href="#h8-0-30" id="h8-0-30" class="i">+    --fg-light: #a66959; --fg-dark: #60867f;
+</a>     --tab-triangle-correction: -1px;
+<a href="#h8-0-32" id="h8-0-32" class="d">-    --tab-height: 28px; --tab-icon-size: 10px; --tab-strip-margin: -11px; --tab-overlap: -5px;
+</a><a href="#h8-0-33" id="h8-0-33" class="d">-    --tab-fonts: &quot;Gohufont&quot;, monospace,&quot;Dejavu Sans&quot;; --tab-font-size: 7pt;
+</a><a href="#h8-0-34" id="h8-0-34" class="i">+    --tab-height: 28px; --tab-icon-size: 12px; --tab-strip-margin: -12px; --tab-overlap: -5px;
+</a><a href="#h8-0-35" id="h8-0-35" class="i">+    --tab-fonts: &quot;gohufont&quot;,monospace,&quot;Dejavu Sans&quot;; --tab-font-size: 7pt;
+</a>     --tab-text-align: center; /* left | center | right */
+<a href="#h8-0-37" id="h8-0-37" class="d">-    --tab-triangle: block; /* block | none */
+</a><a href="#h8-0-38" id="h8-0-38" class="i">+    --tab-triangle: block;  /* block | none */
+</a> 
+     /* URL VARIABLES */
+<a href="#h8-0-41" id="h8-0-41" class="d">-    --url-background: var(--bg-light); --url-color: var(--fg-light);
+</a><a href="#h8-0-42" id="h8-0-42" class="d">-    --url-height: 18px; --url-right-margin: 5px;
+</a><a href="#h8-0-43" id="h8-0-43" class="d">-    --url-fonts: &quot;Gohufont&quot;,monospace,&quot;Dejavu Sans&quot;; --url-font-size: 7pt;
+</a><a href="#h8-0-44" id="h8-0-44" class="i">+    --url-background: var(--bg-light); --url-color: var(--fg-dark);
+</a><a href="#h8-0-45" id="h8-0-45" class="i">+    --url-height: 18px; --url-right-margin: 6px;
+</a><a href="#h8-0-46" id="h8-0-46" class="i">+    --url-fonts: &quot;gohufont&quot;,monospace,&quot;Dejavu Sans&quot;; --url-font-size: 7pt;
+</a>     --url-text-align: center; /* left | center | right */
+     --url-position: absolute; /* absolute == top (under tabs) || fixed == bottom of browser */
+<a href="#h8-0-49" id="h8-0-49" class="d">-
+</a><a href="#h8-0-50" id="h8-0-50" class="d">-    margin-bottom: 0 /* var(--url-height) */ !important;
+</a> }
+ 
+<a href="#h8-0-53" id="h8-0-53" class="d">-#content browser {
+</a><a href="#h8-0-54" id="h8-0-54" class="d">- margin-right: -14px !important;
+</a><a href="#h8-0-55" id="h8-0-55" class="d">- overflow-y: scroll;
+</a><a href="#h8-0-56" id="h8-0-56" class="d">- overflow-x: hidden;
+</a><a href="#h8-0-57" id="h8-0-57" class="d">-}
+</a> 
+ @-moz-document url(chrome://browser/content/browser.xul) {
+     /* URL-BAR */
+<a href="#h8-1" id="h8-1" class="h">@@ -50,57 +41,72 @@
+</a>     #PanelUI-button, #bookmarks-menu-button, #downloads-button, #home-button, #stylish-toolbar-button, #abp-toolbarbutton,
+     #notification-popup-box, #new-tab-button, #private-browsing-indicator, #search-container, #nav-bar-overflow-button,
+     .tabs-newtab-button, .tab-close-button, .tab-close, .tab-throbber, .tab-background-start, .tab-background-end,
+<a href="#h8-1-3" id="h8-1-3" class="d">-    #window-controls /*, #alltabs-button, #tabview-button, .tab-icon-image */, .tab-icon-image:not([pinned]) { display: none !important; }
+</a><a href="#h8-1-4" id="h8-1-4" class="i">+    #pocket-button, #loop-button, #social-share-button, #window-controls
+</a><a href="#h8-1-5" id="h8-1-5" class="i">+    /*#alltabs-button, #tabview-button, .tab-icon-image*/, .tab-icon-image:not([pinned]) { display: none !important; }
+</a> 
+<a href="#h8-1-7" id="h8-1-7" class="d">-    /* --- Uncomment the section below to enable the Back/Forward buttons [EXPERIMENTAL] (Requires url-bar) --- */
+</a><a href="#h8-1-8" id="h8-1-8" class="d">-    /*
+</a><a href="#h8-1-9" id="h8-1-9" class="d">-    #back-button, #forward-button { display: block !important; }
+</a><a href="#h8-1-10" id="h8-1-10" class="d">-    #back-button::before, #forward-button::before {
+</a><a href="#h8-1-11" id="h8-1-11" class="d">-        display: inline-block !important; position: absolute !important;
+</a><a href="#h8-1-12" id="h8-1-12" class="d">-        width: var(--url-height) !important; height: var(--url-height) !important; top: 0 !important;
+</a><a href="#h8-1-13" id="h8-1-13" class="d">-        text-align: center !important; line-height: var(--url-height) !important;
+</a><a href="#h8-1-14" id="h8-1-14" class="d">-    }
+</a><a href="#h8-1-15" id="h8-1-15" class="d">-    #back-button::before { content: &quot;&lt;&quot; !important; left: 0 !important; }
+</a><a href="#h8-1-16" id="h8-1-16" class="d">-    #forward-button::before { content: &quot;&gt;&quot; !important; left: calc(var(--url-height) + 8px) !important; }
+</a><a href="#h8-1-17" id="h8-1-17" class="d">-    /**/
+</a><a href="#h8-1-18" id="h8-1-18" class="i">+    * { box-sizing: border-box !important; }
+</a> 
+<a href="#h8-1-20" id="h8-1-20" class="d">-    /* --- Uncomment the section below to enable the New Tab Button [EXPERIMENTAL] --- */
+</a><a href="#h8-1-21" id="h8-1-21" class="i">+    /* --- Comment out the section below to remove the newtab button --- */
+</a>     /**/
+     .tabs-newtab-button { display: block !important; background: transparent !important; margin: 0 8px 0 0 !important; width: 24px !important; }
+<a href="#h8-1-24" id="h8-1-24" class="d">-    .tabs-newtab-button::before { content: &quot;+&quot; !important; font-family: Gohufont;}
+</a><a href="#h8-1-25" id="h8-1-25" class="i">+    .tabs-newtab-button::before { content: &quot;+&quot; !important; }
+</a>     /**/
+ 
+     .tab-drop-indicator { margin-bottom: 0 !important; }
+ 
+<a href="#h8-1-30" id="h8-1-30" class="i">+
+</a><a href="#h8-1-31" id="h8-1-31" class="i">+    /*#browser { margin-bottom: var(--url-height) !important; }/**/ /* Uncomment to enable bottom margin */
+</a><a href="#h8-1-32" id="h8-1-32" class="i">+
+</a><a href="#h8-1-33" id="h8-1-33" class="i">+    #navigator-toolbox { background: var(--url-background) !important; }
+</a><a href="#h8-1-34" id="h8-1-34" class="i">+    #navigator-toolbox * { clip: auto !important; clip-path: none !important; }
+</a><a href="#h8-1-35" id="h8-1-35" class="i">+
+</a>     #nav-bar {
+         position: var(--url-position) !important; bottom: 0 !important;
+         width: 100% !important; height: var(--url-height) !important;
+<a href="#h8-1-39" id="h8-1-39" class="d">-        min-height: var(--url-height) !important; max-height: var(--url-height) !important;
+</a><a href="#h8-1-40" id="h8-1-40" class="d">-        margin: 0 0 0 0 !important;
+</a><a href="#h8-1-41" id="h8-1-41" class="i">+        margin: 0 !important; background: transparent !important;
+</a> 
+<a href="#h8-1-43" id="h8-1-43" class="d">-        /* --- Uncomment the section below to attach the url-bar to the tab-bar [EXPERIMENTAL] (Require a line in &quot;#TabsToolbar&quot; below) --- */
+</a><a href="#h8-1-44" id="h8-1-44" class="i">+        /* --- Uncomment section below to attach url-bar to the tab-bar [EXPERIMENTAL] (Require a line in &quot;#TabsToolbar&quot; below) --- */
+</a>         /*
+         position: fixed !important; top: 0 !important; left: 0 !important;
+         width: 315px !important; max-width: 315px !important;
+         z-index: 100 !important;
+         /**/
+     }
+<a href="#h8-1-51" id="h8-1-51" class="d">-       #nav-bar-customization-target { width: 100% !important; }
+</a><a href="#h8-1-52" id="h8-1-52" class="d">-          #urlbar-wrapper {
+</a><a href="#h8-1-53" id="h8-1-53" class="d">-              width: 100% !important; margin-top: -0px !important; /* --- adjust margin-top to ~ -5px if you experience gap --- */
+</a><a href="#h8-1-54" id="h8-1-54" class="d">-              position: absolute !important; top: 0 !important; left: 0 !important;
+</a><a href="#h8-1-55" id="h8-1-55" class="d">-              border-bottom: 0px solid var(--bg-light) !important;
+</a><a href="#h8-1-56" id="h8-1-56" class="d">-          }
+</a><a href="#h8-1-57" id="h8-1-57" class="d">-             #urlbar {
+</a><a href="#h8-1-58" id="h8-1-58" class="d">-                 border: none !important; border-radius: 0 !important;
+</a><a href="#h8-1-59" id="h8-1-59" class="d">-                 margin: 0 0 0 0 !important; padding: 0 2px 0 2px !important;
+</a><a href="#h8-1-60" id="h8-1-60" class="d">-                 width: calc(100% + var(--url-right-margin)) !important;
+</a><a href="#h8-1-61" id="h8-1-61" class="d">-                 height: var(--url-height) !important; min-height: var(--url-height) !important;
+</a><a href="#h8-1-62" id="h8-1-62" class="d">-                 background: var(--url-background) !important; color: var(--url-color) !important;
+</a><a href="#h8-1-63" id="h8-1-63" class="d">-                 font-family: var(--url-fonts) !important; font-size: var(--url-font-size) !important;
+</a><a href="#h8-1-64" id="h8-1-64" class="d">-                 text-align: var(--url-text-align) !important;
+</a><a href="#h8-1-65" id="h8-1-65" class="d">-             }
+</a><a href="#h8-1-66" id="h8-1-66" class="d">-             /*#urlbar * { -moz-appearance: none !important; }*/
+</a><a href="#h8-1-67" id="h8-1-67" class="i">+        #nav-bar-customization-target, #urlbar-container, #urlbar {
+</a><a href="#h8-1-68" id="h8-1-68" class="i">+            margin: 0 !important; padding: 0 !important;
+</a><a href="#h8-1-69" id="h8-1-69" class="i">+            width: 100% !important; height: 100% !important;
+</a><a href="#h8-1-70" id="h8-1-70" class="i">+            border-radius: 0 !important;
+</a><a href="#h8-1-71" id="h8-1-71" class="i">+        }
+</a><a href="#h8-1-72" id="h8-1-72" class="i">+            #nav-bar-customization-target {
+</a><a href="#h8-1-73" id="h8-1-73" class="i">+                position: absolute !important; top: -1px !important; left: 0 !important; height: calc(100% - 1px) !important; /* (bottom margin - height switch +/-) */
+</a><a href="#h8-1-74" id="h8-1-74" class="i">+            }
+</a><a href="#h8-1-75" id="h8-1-75" class="i">+                #urlbar {
+</a><a href="#h8-1-76" id="h8-1-76" class="i">+                    border: none !important; padding: 0 2px 0 8px !important;
+</a><a href="#h8-1-77" id="h8-1-77" class="i">+                    background: var(--url-background) !important; color: var(--url-color) !important;
+</a><a href="#h8-1-78" id="h8-1-78" class="i">+                    font-family: var(--url-fonts) !important; font-size: var(--url-font-size) !important;
+</a><a href="#h8-1-79" id="h8-1-79" class="i">+                    text-align: var(--url-text-align) !important;
+</a><a href="#h8-1-80" id="h8-1-80" class="i">+                    height: 100% !important;
+</a><a href="#h8-1-81" id="h8-1-81" class="i">+                }
+</a><a href="#h8-1-82" id="h8-1-82" class="i">+                /*#urlbar * { -moz-appearance: none !important; }*/
+</a><a href="#h8-1-83" id="h8-1-83" class="i">+
+</a><a href="#h8-1-84" id="h8-1-84" class="i">+                .urlbar-textbox-container .urlbar-input-box .textbox-input {
+</a><a href="#h8-1-85" id="h8-1-85" class="i">+                    height: var(--url-height) !important;
+</a><a href="#h8-1-86" id="h8-1-86" class="i">+                }
+</a><a href="#h8-1-87" id="h8-1-87" class="i">+
+</a><a href="#h8-1-88" id="h8-1-88" class="i">+
+</a><a href="#h8-1-89" id="h8-1-89" class="i">+    /* --- Uncomment the section below to enable the back/forward buttons [EXPERIMENTAL] (Requires url-bar) --- */
+</a><a href="#h8-1-90" id="h8-1-90" class="i">+    /*
+</a><a href="#h8-1-91" id="h8-1-91" class="i">+    #back-button, #forward-button { display: block !important; }
+</a><a href="#h8-1-92" id="h8-1-92" class="i">+    #back-button::before, #forward-button::before {
+</a><a href="#h8-1-93" id="h8-1-93" class="i">+        display: inline-block !important; position: absolute !important;
+</a><a href="#h8-1-94" id="h8-1-94" class="i">+        width: var(--url-height) !important; height: var(--url-height) !important; top: 0 !important;
+</a><a href="#h8-1-95" id="h8-1-95" class="i">+        text-align: center !important; line-height: var(--url-height) !important;
+</a><a href="#h8-1-96" id="h8-1-96" class="i">+    }
+</a><a href="#h8-1-97" id="h8-1-97" class="i">+    #back-button::before { content: &quot;&lt;&quot; !important; left: 0 !important; }
+</a><a href="#h8-1-98" id="h8-1-98" class="i">+    #forward-button::before { content: &quot;&gt;&quot; !important; left: calc(var(--url-height) + 8px) !important; }
+</a><a href="#h8-1-99" id="h8-1-99" class="i">+    #urlbar { padding-left: calc((var(--url-height) * 2) + 8px) !important; }
+</a><a href="#h8-1-100" id="h8-1-100" class="i">+    /**/
+</a><a href="#h8-1-101" id="h8-1-101" class="i">+
+</a> 
+     /* --- Comment out the section below to make the url-bar visible --- */
+     /**/
+<a href="#h8-2" id="h8-2" class="h">@@ -112,7 +118,7 @@
+</a>     /**/
+ 
+     /* TABS */
+<a href="#h8-2-3" id="h8-2-3" class="d">-    .tabbrowser-tab[fadein]:not([pinned]) { min-width: 50px !important; max-width: /*180px*/ 100% !important; }
+</a><a href="#h8-2-4" id="h8-2-4" class="i">+    .tabbrowser-tab[fadein]:not([pinned]) { min-width: 100px !important; max-width: /*180px*/ 100% !important; }
+</a>     tab {
+         font-family: var(--tab-fonts) !important;
+         height: var(--tab-height) !important; min-height: var(--tab-height) !important;
+<a href="#h8-3" id="h8-3" class="h">@@ -120,13 +126,13 @@
+</a>         font-size: var(--tab-font-size); text-shadow: none !important; text-align: var(--tab-text-align) !important;
+     }
+ 
+<a href="#h8-3-3" id="h8-3-3" class="d">-    .tabbrowser-tab label { padding: 0 14px 0 14px !important; }
+</a><a href="#h8-3-4" id="h8-3-4" class="i">+    .tabbrowser-tab label { padding: 0 22px 0 22px !important; }
+</a> 
+<a href="#h8-3-6" id="h8-3-6" class="d">-    #tabbrowser-tabs .tabbrowser-tab[pinned]            { width: 38px !important; }
+</a><a href="#h8-3-7" id="h8-3-7" class="i">+    #tabbrowser-tabs .tabbrowser-tab[pinned]            { width: 48px !important; }
+</a>     #tabbrowser-tabs .tabbrowser-tab[pinned] label      { display: none !important; }
+ 
+     #tabbrowser-tabs .tabbrowser-tab .tab-icon-image {
+<a href="#h8-3-11" id="h8-3-11" class="d">-        margin: 0 -10px 0 14px !important;
+</a><a href="#h8-3-12" id="h8-3-12" class="i">+        margin: 0 -10px 0 16px !important;
+</a>         width: var(--tab-icon-size) !important;
+         height: var(--tab-icon-size) !important;
+     }
+<a href="#h8-4" id="h8-4" class="h">@@ -137,10 +143,16 @@
+</a>         -moz-appearance: none !important;
+     }
+ 
+<a href="#h8-4-3" id="h8-4-3" class="i">+    #alltabs-button { margin-left: -10px !important; }
+</a><a href="#h8-4-4" id="h8-4-4" class="i">+
+</a>     #tabbrowser-tabs .tabbrowser-tab[pinned] .tab-stack { height: var(--tab-height) !important; width: 100% !important; }
+<a href="#h8-4-6" id="h8-4-6" class="d">-    #tabbrowser-tabs .tabbrowser-arrowscrollbox .box-inherit.scrollbox-innerbox { max-height: var(--tab-height) !important; }
+</a><a href="#h8-4-7" id="h8-4-7" class="i">+    #tabbrowser-tabs .tabbrowser-arrowscrollbox, #tabbrowser-tabs .tabbrowser-arrowscrollbox .box-inherit.scrollbox-innerbox {
+</a><a href="#h8-4-8" id="h8-4-8" class="i">+        max-height: var(--tab-height) !important;
+</a><a href="#h8-4-9" id="h8-4-9" class="i">+    }
+</a>     .scrollbutton-up, .scrollbutton-down { border: none !important; }
+ 
+<a href="#h8-4-12" id="h8-4-12" class="i">+    #tabbrowser-tabs[overflow]:not([positionpinnedtabs]) { -moz-padding-start: 20px !important; }
+</a><a href="#h8-4-13" id="h8-4-13" class="i">+
+</a>     .tabbrowser-tab[selected=&quot;true&quot;] .tab-stack {
+         background: var(--bg-light) !important; color: var(--fg-light) !important;
+         border-radius: 0px !important; position: relative !important;
+<a href="#h8-5" id="h8-5" class="h">@@ -152,7 +164,7 @@
+</a>         width: 0 !important; height: 0 !important;
+         border: none !important; z-index: 2 !important;
+ 
+<a href="#h8-5-3" id="h8-5-3" class="d">-        /**/
+</a><a href="#h8-5-4" id="h8-5-4" class="i">+        /*
+</a>         border-left: calc(var(--tab-height)/2) solid var(--bg-dark) !important;
+         border-top: calc((var(--tab-height)/2) - var(--tab-triangle-correction)) solid var(--bg-light) !important;
+         border-bottom: calc((var(--tab-height)/2) + var(--tab-triangle-correction)) solid var(--bg-light) !important;
+<a href="#h8-6" id="h8-6" class="h">@@ -167,7 +179,7 @@
+</a>         width: 0 !important; height: 0 !important;
+         border: none !important; z-index: 2 !important;
+ 
+<a href="#h8-6-3" id="h8-6-3" class="d">-        /**/
+</a><a href="#h8-6-4" id="h8-6-4" class="i">+        /*
+</a>         border-right: calc(var(--tab-height)/2) solid var(--bg-dark) !important;
+         border-top: calc((var(--tab-height)/2) - var(--tab-triangle-correction)) solid var(--bg-light) !important;
+         border-bottom: calc((var(--tab-height)/2) + var(--tab-triangle-correction)) solid var(--bg-light) !important;
+<a href="#h8-7" id="h8-7" class="h">@@ -183,8 +195,8 @@
+</a>         margin: 0 var(--tab-strip-margin) !important;
+         background: var(--bg-dark) !important;
+ 
+<a href="#h8-7-3" id="h8-7-3" class="d">-        /* --- Uncomment the line below to attach the url-bar to the tab-bar [EXPERIMENTAL] (Require a line in &quot;#nav-bar&quot; above) --- */
+</a><a href="#h8-7-4" id="h8-7-4" class="d">-        /*margin-left: 150px !important;/**/
+</a><a href="#h8-7-5" id="h8-7-5" class="i">+        /* --- Uncomment section below to attach url-bar to the tab-bar [EXPERIMENTAL] (Require a line in &quot;#nav-bar&quot; above) --- */
+</a><a href="#h8-7-6" id="h8-7-6" class="i">+        /*margin-left: 147px !important;/**/
+</a>     }
+     #TabsToolbar::after { display: none !important; }
+     .tabbrowser-tab::before, .tabbrowser-tab::after { background: none !important; opacity: 1 !important; visibility: visible !important; }
+<a href="#h8-8" id="h8-8" class="h">@@ -197,10 +209,10 @@
+</a>     /* MENUS */
+     menuitem + menuseparator, menu + menuseparator/*, .menu-iconic-left*/ { display: none !important; }
+     /*menuitem &gt; label { margin-left: var(--tab-height) !important; }*/
+<a href="#h8-8-3" id="h8-8-3" class="d">-    menubar, menubutton, menulist, menu, menuitem {
+</a><a href="#h8-8-4" id="h8-8-4" class="i">+    /*menubar, menubutton, menulist, menu, menuitem {
+</a>         font-family: var(--tab-fonts) !important; font-size: var(--tab-font-size);
+         height: var(--tab-height) !important;
+<a href="#h8-8-7" id="h8-8-7" class="d">-    }
+</a><a href="#h8-8-8" id="h8-8-8" class="i">+    }*/
+</a> 
+     /* HIDE ORANGE MENU BUTTON */
+     #appmenu-toolbar-button, #appmenu-button-container { display: none !important; }
+<a href="#h8-9" id="h8-9" class="h">@@ -220,7 +232,7 @@
+</a>         -moz-image-region: rect(0, 0, 0, 0) !important;
+     }
+ 
+<a href="#h8-9-3" id="h8-9-3" class="d">-    #liberator-completions { background: var(--bg-dark) !important; }
+</a><a href="#h8-9-4" id="h8-9-4" class="i">+    #liberator-completions, #liberator-bottombar-deck { background: var(--bg-dark) !important; }
+</a> 
+     /* Tabgroup margin top fix */
+     #tab-view-deck #tab-view { margin: 24px 12px 12px 12px !important; }
+<a href="#h8-10" id="h8-10" class="h">@@ -266,26 +278,29 @@
+</a>     /* SCROLLBAR */
+     scrollbar[orient=&quot;vertical&quot;], scrollbar thumb[orient=&quot;vertical&quot;],
+     scrollbar[orient=&quot;horizontal&quot;], scrollbar thumb[orient=&quot;horizontal&quot;] {
+<a href="#h8-10-3" id="h8-10-3" class="d">-        display: none !important; /* none = hide || block = show */
+</a><a href="#h8-10-4" id="h8-10-4" class="i">+        display: none !important; /* block | none (enable scrollbar) */
+</a>     }
+ 
+     /*
+<a href="#h8-10-8" id="h8-10-8" class="i">+       Uncomment section below to apply style
+</a><a href="#h8-10-9" id="h8-10-9" class="i">+
+</a><a href="#h8-10-10" id="h8-10-10" class="i">+       (width/height is controlled by the margin)
+</a><a href="#h8-10-11" id="h8-10-11" class="i">+    */
+</a><a href="#h8-10-12" id="h8-10-12" class="i">+    /*
+</a>     scrollbar &gt; slider { -moz-appearance: none !important; }
+ 
+<a href="#h8-10-15" id="h8-10-15" class="d">-    scrollbar[orient=&quot;vertical&quot;] { margin: -3px -7px -3px -3px !important; }
+</a><a href="#h8-10-16" id="h8-10-16" class="d">-    scrollbar[orient=&apos;vertical&apos;] &gt; slider { background: #282333 !important; max-width: 5px !important; }
+</a><a href="#h8-10-17" id="h8-10-17" class="i">+    scrollbar[orient=&quot;vertical&quot;] { margin: 0 -10px 0 0 !important; }
+</a><a href="#h8-10-18" id="h8-10-18" class="i">+    scrollbar[orient=&apos;vertical&apos;] &gt; slider { background: #282333 !important; max-width: 100% !important; }
+</a>     scrollbar[orient=&apos;vertical&apos;] &gt; slider &gt; thumb {
+         -moz-appearance: none !important;
+<a href="#h8-10-21" id="h8-10-21" class="d">-        background: #524C59 !important; border: 0 !important;
+</a><a href="#h8-10-22" id="h8-10-22" class="d">-        width: 5px !important; max-width: 5px !important;
+</a><a href="#h8-10-23" id="h8-10-23" class="i">+        background: #524C59 !important; border: 0 !important; width: 100% !important;
+</a>     }
+ 
+<a href="#h8-10-26" id="h8-10-26" class="d">-    scrollbar[orient=&quot;horizontal&quot;] { margin: -3px -3px -7px -3px !important; }
+</a><a href="#h8-10-27" id="h8-10-27" class="d">-    scrollbar[orient=&apos;horizontal&apos;] &gt; slider { background: #282333 !important; max-height: 5px !important; }
+</a><a href="#h8-10-28" id="h8-10-28" class="i">+    scrollbar[orient=&quot;horizontal&quot;] { margin: 0 0 -10px 0 !important; }
+</a><a href="#h8-10-29" id="h8-10-29" class="i">+    scrollbar[orient=&apos;horizontal&apos;] &gt; slider { background: #282333 !important; max-height: 100% !important; }
+</a>     scrollbar[orient=&apos;horizontal&apos;] &gt; slider &gt; thumb {
+         -moz-appearance: none !important;
+<a href="#h8-10-32" id="h8-10-32" class="d">-        background: #524C59 !important; border: 0 !important;
+</a><a href="#h8-10-33" id="h8-10-33" class="d">-        height: 5px !important; max-height: 5px !important;
+</a><a href="#h8-10-34" id="h8-10-34" class="i">+        background: #524C59 !important; border: 0 !important; height: 100% !important;
+</a>     }
+ 
+     scrollbar &gt; scrollbarbutton { -moz-appearance: none !important; border: none !important; background: none !important; }
+<a href="#h8-11" id="h8-11" class="h">@@ -296,7 +311,7 @@
+</a> 
+ 
+ /* background color around/behind pictures opened in firefox (require html namespace on top) */
+<a href="#h8-11-3" id="h8-11-3" class="d">-@-moz-document regexp(&quot;(https?://|file:///)(.*)\\.(jpeg|jpg|gif|png|apng|svg|bmp|webm|webp)&quot;) {
+</a><a href="#h8-11-4" id="h8-11-4" class="i">+@-moz-document regexp(&quot;(https?://|file:///)(.*)\.(jpeg|jpg|gif|png|apng|svg|bmp|webm|webp)&quot;) {
+</a>     body { background: var(--bg-light) !important; }
+     img.decoded { background-color: transparent !important; }
+ }
+<a href="#h8-12" id="h8-12" class="h">@@ -322,8 +337,6 @@ tabbrowser tabpanels, #appcontent &gt; #content { background: var(--bg-light) !impo
+</a> /* Set dark text in light textareas */
+ /*
+ @-moz-document regexp(&quot;https?://(?!(localhost|twily.info|.*.4chan.org|.*.youtube.com)).*&quot;) {
+<a href="#h8-12-3" id="h8-12-3" class="d">-    input, textarea { color: #222628 !important; -moz-appearance: none !important; }
+</a><a href="#h8-12-4" id="h8-12-4" class="i">+    input, textarea { color: #282333 !important; -moz-appearance: none !important; }
+</a> }
+ /**/
+<a href="#h8-12-7" id="h8-12-7" class="d">-
+</a><a href="#h8-12-8" id="h8-12-8" class="d">-/* vim: set ft=css : */
+</a><b>diff --git a/<a id="h9" href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a> b/<a href="../file/scripts/.scripts/wall-e.html">scripts/.scripts/wall-e</a></b>
+<a href="#h9-0" id="h9-0" class="h">@@ -1,18 +1,19 @@
+</a><a href="#h9-0-0" id="h9-0-0" class="d">-#! /bin/sh -x
+</a><a href="#h9-0-1" id="h9-0-1" class="i">+#! /bin/sh
+</a> #
+ # Set wallpaper
+ # (c) tudurom 2016 - wtfpl
+ #
+ 
+<a href="#h9-0-7" id="h9-0-7" class="d">-DEFAULT_WALL=&quot;$HOME/wallpapers/test_tile7_1.png&quot;
+</a><a href="#h9-0-8" id="h9-0-8" class="i">+DEFAULT_WALL=&quot;${WALL_DIR}/${WALL}&quot;
+</a><a href="#h9-0-9" id="h9-0-9" class="i">+DEFAULT_WALL_TYPE=&quot;${WALL_TYPE-TYPE:-tile}&quot;
+</a> APRIL_WALL=&quot;$HOME/wallpapers/april_wall.png&quot;
+ 
+ if [ &quot;$(date +&quot;%d/%m&quot;)&quot; = &quot;01/04&quot; ]; then
+<a href="#h9-0-13" id="h9-0-13" class="d">-  feh -fill &quot;$APRIL_WALL&quot;
+</a><a href="#h9-0-14" id="h9-0-14" class="i">+  feh --bg-fill &quot;$APRIL_WALL&quot;
+</a> elif [ $# -ge 1 ]; then
+   option=&quot;${2:-fill}&quot;
+   feh --bg-${option} $1
+ else
+<a href="#h9-0-19" id="h9-0-19" class="d">-  feh --bg-tile $DEFAULT_WALL
+</a><a href="#h9-0-20" id="h9-0-20" class="i">+  feh --bg-${DEFAULT_WALL_TYPE} $DEFAULT_WALL
+</a> fi
+ 
+<b>diff --git a/<a id="h10" href="../file/shell/.shell.d/alias.sh.html">shell/.shell.d/alias.sh</a> b/<a href="../file/shell/.shell.d/alias.sh.html">shell/.shell.d/alias.sh</a></b>
+<a href="#h10-0" id="h10-0" class="h">@@ -43,3 +43,7 @@ push() {
+</a> radio() {
+     mpv http://radio.2f30.org:8000/live.mp3
+ }
+<a href="#h10-0-3" id="h10-0-3" class="i">+
+</a><a href="#h10-0-4" id="h10-0-4" class="i">+trinitas() {
+</a><a href="#h10-0-5" id="h10-0-5" class="i">+    mpv http://live.radiotrinitas.ro:8003
+</a><a href="#h10-0-6" id="h10-0-6" class="i">+}
+</a><b>diff --git a/<a id="h11" href="../file/vimperator/.vimperator/colors/designr.vimp.html">vimperator/.vimperator/colors/designr.vimp</a> b/<a href="../file/vimperator/.vimperator/colors/designr.vimp.html">vimperator/.vimperator/colors/designr.vimp</a></b>
+<a href="#h11-0" id="h11-0" class="h">@@ -0,0 +1,69 @@
+</a><a href="#h11-0-0" id="h11-0-0" class="i">+&quot; ==Vimperator_Color_Scheme==
+</a><a href="#h11-0-1" id="h11-0-1" class="i">+&quot; name: Base16 Ocean dark
+</a><a href="#h11-0-2" id="h11-0-2" class="i">+&quot; url: http://code.google.com/p/vimperator-labs/issues/detail?id=280&amp;q=label%3Aproject-vimperator%20label%3Atype-colorscheme&amp;colspec=ID%20Summary%20Project%20Type%20Status%20Priority%20Stars%20Owner
+</a><a href="#h11-0-3" id="h11-0-3" class="i">+&quot; modified by tudurom for the rainbou config generator
+</a><a href="#h11-0-4" id="h11-0-4" class="i">+&quot; ==Ocean_Colorscheme_Settings==
+</a><a href="#h11-0-5" id="h11-0-5" class="i">+
+</a><a href="#h11-0-6" id="h11-0-6" class="i">+&quot;StatusLine settings
+</a><a href="#h11-0-7" id="h11-0-7" class="i">+hi StatusLine           color: #c4c4b5; background: #20292d; font-size: 8pt; font: monospace;
+</a><a href="#h11-0-8" id="h11-0-8" class="i">+&quot; hi StatusLineBroken     color: #c4c4b5; background: #afafff; font-size: 8pt; font: monospace;
+</a><a href="#h11-0-9" id="h11-0-9" class="i">+&quot; hi StatusLineSecure     color: #c4c4b5; background: #afffaf; font-size: 8pt; font: monospace;
+</a><a href="#h11-0-10" id="h11-0-10" class="i">+
+</a><a href="#h11-0-11" id="h11-0-11" class="i">+&quot;CmdLine settings excluding Gradient
+</a><a href="#h11-0-12" id="h11-0-12" class="i">+hi Normal               color: #c4c4b5; background: #20292d;
+</a><a href="#h11-0-13" id="h11-0-13" class="i">+hi CmdLine              background:#20292d; color: #c4c4b5; font-family: monospace; font-size: 8pt;
+</a><a href="#h11-0-14" id="h11-0-14" class="i">+hi CompDesc             color: #c6c6c6; width: 50%; font-family: monospace; font-size: 8pt;
+</a><a href="#h11-0-15" id="h11-0-15" class="i">+hi CompIcon             width: 16px; min-width: 16px; display: inline-block; margin-right: .5ex;
+</a><a href="#h11-0-16" id="h11-0-16" class="i">+hi CompItem[selected]   background: #20292d; color: #a66959; font-family: monospace;
+</a><a href="#h11-0-17" id="h11-0-17" class="i">+&quot; hi CompLess             text-align: center; height: 0; line-height: .5ex; padding-top: 1ex;
+</a><a href="#h11-0-18" id="h11-0-18" class="i">+&quot; hi CompMore             text-align: center; height: .5ex; line-height: .5ex; margin-bottom: -.5ex;
+</a><a href="#h11-0-19" id="h11-0-19" class="i">+hi CompMsg              font-family: monospace; font-style: monospace; margin-left: 16px; font-size: 8pt;
+</a><a href="#h11-0-20" id="h11-0-20" class="i">+hi CompResult           width: 45%; overflow: hidden;font-size: 8pt; font-family: monospace; font-weight: normal;
+</a><a href="#h11-0-21" id="h11-0-21" class="i">+hi CompTitle            color: #c4c4b5; background: #20292d; font-weight: bold; font-family: monospace; font-size: 8pt;
+</a><a href="#h11-0-22" id="h11-0-22" class="i">+hi CompTitle&gt;*          padding: 0 .5ex; font-family: monospace; font-size: 8pt;
+</a><a href="#h11-0-23" id="h11-0-23" class="i">+hi Filter               font-weight: bold;color: #c4c4b5; font-family: monospace; font-size: 8pt;
+</a><a href="#h11-0-24" id="h11-0-24" class="i">+
+</a><a href="#h11-0-25" id="h11-0-25" class="i">+&quot;When using tab complete in CmdLine, line separating Title from function and description
+</a><a href="#h11-0-26" id="h11-0-26" class="i">+&quot; hi Gradient             height: 1px; margin-bottom: -1px; margin-top: -1px;
+</a><a href="#h11-0-27" id="h11-0-27" class="i">+&quot; hi GradientLeft         background-color: #00bbff;
+</a><a href="#h11-0-28" id="h11-0-28" class="i">+&quot; hi GradientRight        background-color: #2b303b;
+</a><a href="#h11-0-29" id="h11-0-29" class="i">+
+</a><a href="#h11-0-30" id="h11-0-30" class="i">+&quot;Used with ]f and [f
+</a><a href="#h11-0-31" id="h11-0-31" class="i">+hi FrameIndicator       background-color: #2b303b; opacity: 0.5; z-index: 999; position: fixed; top: 0; bottom: 0; left: 0; right: 0;
+</a><a href="#h11-0-32" id="h11-0-32" class="i">+
+</a><a href="#h11-0-33" id="h11-0-33" class="i">+hi Bell                 border: 0 none; background-color: #2b303b;
+</a><a href="#h11-0-34" id="h11-0-34" class="i">+hi ErrorMsg             color: #2b303b; background: #bf616a; font-weight: bold;
+</a><a href="#h11-0-35" id="h11-0-35" class="i">+
+</a><a href="#h11-0-36" id="h11-0-36" class="i">+
+</a><a href="#h11-0-37" id="h11-0-37" class="i">+&quot;Hint section
+</a><a href="#h11-0-38" id="h11-0-38" class="i">+&quot;hi Hint                 font-family: monospace; font-size: 10px; font-weight: bold; color: #f6e9e9; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding 0px 1px 0px 1px;
+</a><a href="#h11-0-39" id="h11-0-39" class="i">+hi Hint               	font-family: monospace; font-size: 12px; font-weight: bold; color: #bf616a; background-color: #2b303b; border: solid 1px #65737e;
+</a><a href="#h11-0-40" id="h11-0-40" class="i">+hi Hint::after          content: attr(number);
+</a><a href="#h11-0-41" id="h11-0-41" class="i">+hi HintActive           background: #8fa1b3; color: #c4c4b5;
+</a><a href="#h11-0-42" id="h11-0-42" class="i">+hi HintElem             background-color: #2b303b; color: #a3be8c;
+</a><a href="#h11-0-43" id="h11-0-43" class="i">+hi HintImage            opacity: .5;
+</a><a href="#h11-0-44" id="h11-0-44" class="i">+
+</a><a href="#h11-0-45" id="h11-0-45" class="i">+&quot;Other important stuff
+</a><a href="#h11-0-46" id="h11-0-46" class="i">+hi InfoMsg              color: #c4c4b5; background: #2b303b;
+</a><a href="#h11-0-47" id="h11-0-47" class="i">+hi Message              white-space: normal; min-width: 100%; padding-left: 2em; text-indent: -2em; display: block;
+</a><a href="#h11-0-48" id="h11-0-48" class="i">+hi WarningMsg           color: red; background: #2b303b;
+</a><a href="#h11-0-49" id="h11-0-49" class="i">+hi ModeMsg              color: #c4c4b5; background: #2b303b; &quot;CmdLine when Not in Use
+</a><a href="#h11-0-50" id="h11-0-50" class="i">+hi MoreMsg              color: #c4c4b5; background: #2b303b;
+</a><a href="#h11-0-51" id="h11-0-51" class="i">+hi NonText              color: lightblue; min-height: 16px; padding-left: 2px;
+</a><a href="#h11-0-52" id="h11-0-52" class="i">+hi Question             color: #c4c4b5; background: #2b303b; font-weight: bold;
+</a><a href="#h11-0-53" id="h11-0-53" class="i">+&quot;hi Search               font-size: inherit; padding: 0; color: #2b303b; background-color: c0c5ce; padding: 0;
+</a><a href="#h11-0-54" id="h11-0-54" class="i">+hi Function             color: lightgreen; background: #2b303b;
+</a><a href="#h11-0-55" id="h11-0-55" class="i">+hi Number               color: tan; background: #2b303b
+</a><a href="#h11-0-56" id="h11-0-56" class="i">+hi String               color: #2b303b; background: #c4c4b5;
+</a><a href="#h11-0-57" id="h11-0-57" class="i">+hi Tag                  color: #2b303b; background: #c4c4b5;
+</a><a href="#h11-0-58" id="h11-0-58" class="i">+hi Title                color: #2b303b; background: #c4c4b5; font-weight: bold;
+</a><a href="#h11-0-59" id="h11-0-59" class="i">+hi URL                  text-decoration: none; color: lightblue; background: inherit;
+</a><a href="#h11-0-60" id="h11-0-60" class="i">+hi URL:hover            text-decoration: underline; cursor: pointer;
+</a><a href="#h11-0-61" id="h11-0-61" class="i">+hi LineNr               color: #c4c4b5; background: #2b303b;
+</a><a href="#h11-0-62" id="h11-0-62" class="i">+
+</a><a href="#h11-0-63" id="h11-0-63" class="i">+&quot;style -name statusbar chrome://* &lt;&lt;EOM
+</a><a href="#h11-0-64" id="h11-0-64" class="i">+&quot;#status-bar statusbarpanel { padding: 0 1px !important; }
+</a><a href="#h11-0-65" id="h11-0-65" class="i">+&quot;statusbarpanel &gt; * { margin: 0 !important; padding: 0 2px 0 0 !important; }
+</a><a href="#h11-0-66" id="h11-0-66" class="i">+&quot;EOM
+</a><a href="#h11-0-67" id="h11-0-67" class="i">+
+</a><a href="#h11-0-68" id="h11-0-68" class="i">+&quot;For other descriptions of each item, please see ``Styling&apos;&apos; section included with Vimperator
+</a><b>diff --git a/<a id="h12" href="../file/vimperator/.vimperatorrc.html">vimperator/.vimperatorrc</a> b/<a href="../file/vimperator/.vimperatorrc.html">vimperator/.vimperatorrc</a></b>
+<a href="#h12-0" id="h12-0" class="h">@@ -1,3 +1,3 @@
+</a><a href="#h12-0-0" id="h12-0-0" class="d">-colo thunder
+</a><a href="#h12-0-1" id="h12-0-1" class="i">+colo designr
+</a> 
+ &quot; vim: set ft=vim:
+<b>diff --git a/<a id="h13" href="../file/wallpapers/wallpapers/blur/trees.jpg.html">wallpapers/wallpapers/blur/trees.jpg</a> b/<a href="../file/wallpapers/wallpapers/blur/trees.jpg.html">wallpapers/wallpapers/blur/trees.jpg</a></b>
+Binary files differ.
+<b>diff --git a/<a id="h14" href="../file/wallpapers/wallpapers/makeblur.sh.html">wallpapers/wallpapers/makeblur.sh</a> b/<a href="../file/wallpapers/wallpapers/makeblur.sh.html">wallpapers/wallpapers/makeblur.sh</a></b>
+<a href="#h14-0" id="h14-0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h14-0-0" id="h14-0-0" class="i">+#!/bin/sh
+</a><a href="#h14-0-1" id="h14-0-1" class="i">+
+</a><a href="#h14-0-2" id="h14-0-2" class="i">+convert &quot;$1&quot; -blur 0x10 blur/&quot;$1&quot;
+</a><b>diff --git a/<a id="h15" href="../file/wallpapers/wallpapers/test_tile7_2.png.html">wallpapers/wallpapers/test_tile7_2.png</a> b/<a href="../file/wallpapers/wallpapers/test_tile7_2.png.html">wallpapers/wallpapers/test_tile7_2.png</a></b>
+Binary files differ.
+<b>diff --git a/<a id="h16" href="../file/wmrc/.scripts/blur.html">wmrc/.scripts/blur</a> b/<a href="../file/wmrc/.scripts/blur.html">wmrc/.scripts/blur</a></b>
+<a href="#h16-0" id="h16-0" class="h">@@ -0,0 +1,18 @@
+</a><a href="#h16-0-0" id="h16-0-0" class="i">+#! /bin/sh
+</a><a href="#h16-0-1" id="h16-0-1" class="i">+#
+</a><a href="#h16-0-2" id="h16-0-2" class="i">+# blur wallpaper if there are windows on the screen
+</a><a href="#h16-0-3" id="h16-0-3" class="i">+# (c) tudurom 2016 - wtfpl
+</a><a href="#h16-0-4" id="h16-0-4" class="i">+#
+</a><a href="#h16-0-5" id="h16-0-5" class="i">+
+</a><a href="#h16-0-6" id="h16-0-6" class="i">+wew |\
+</a><a href="#h16-0-7" id="h16-0-7" class="i">+while IFS=: read -r ev wid; do
+</a><a href="#h16-0-8" id="h16-0-8" class="i">+    case $ev in
+</a><a href="#h16-0-9" id="h16-0-9" class="i">+        16|18|19)
+</a><a href="#h16-0-10" id="h16-0-10" class="i">+            if [ &quot;$(lsw | wc -l)&quot; -eq 0 ]; then
+</a><a href="#h16-0-11" id="h16-0-11" class="i">+                wall-e
+</a><a href="#h16-0-12" id="h16-0-12" class="i">+            else
+</a><a href="#h16-0-13" id="h16-0-13" class="i">+                wall-e &quot;${WALL_DIR}/blur/${WALL}&quot;
+</a><a href="#h16-0-14" id="h16-0-14" class="i">+            fi
+</a><a href="#h16-0-15" id="h16-0-15" class="i">+            ;;
+</a><a href="#h16-0-16" id="h16-0-16" class="i">+    esac
+</a><a href="#h16-0-17" id="h16-0-17" class="i">+done
+</a><b>diff --git a/<a id="h17" href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a> b/<a href="../file/wmrc/.scripts/statusbar.html">wmrc/.scripts/statusbar</a></b>
+<a href="#h17-0" id="h17-0" class="h">@@ -65,7 +65,9 @@ is_int() {
+</a>   # Bar options
+   BAR_OPTS=&quot;&quot;
+   # Because wmutils
+<a href="#h17-0-3" id="h17-0-3" class="d">-  BAR_OPTS=&quot;${BAR_OPTS} -d -R $C8 -r 3&quot;
+</a><a href="#h17-0-4" id="h17-0-4" class="i">+  BAR_OPTS=&quot;${BAR_OPTS} -d&quot;
+</a><a href="#h17-0-5" id="h17-0-5" class="i">+  # Borders
+</a><a href="#h17-0-6" id="h17-0-6" class="i">+  BAR_OPTS=&quot;${BAR_OPTS} -R $C8 -r 3&quot;
+</a>   # Gonna position it centered and respect the gaps
+   BAR_OPTS=&quot;${BAR_OPTS} -g ${BAR_WIDTH}x${BAR_HEIGHT}+${BAR_X}+${BAR_Y}&quot;
+   # Colors
+<b>diff --git a/<a id="h18" href="../file/wmrc/.scripts/wmrc.html">wmrc/.scripts/wmrc</a> b/<a href="../file/wmrc/.scripts/wmrc.html">wmrc/.scripts/wmrc</a></b>
+<a href="#h18-0" id="h18-0" class="h">@@ -12,5 +12,8 @@ export POPUP_FONT=Metis
+</a> export POPUP_DURATION=5
+ export GROOT=/tmp/groaw
+ export GNUMBER=6
+<a href="#h18-0-3" id="h18-0-3" class="i">+export WALL_DIR=$HOME/wallpapers
+</a><a href="#h18-0-4" id="h18-0-4" class="i">+export WALL=trees.jpg
+</a><a href="#h18-0-5" id="h18-0-5" class="i">+export WALL_TYPE=fill
+</a> 
+ # vim: set ft=sh :
+<b>diff --git a/<a id="h19" href="../file/x/.Xresources.html">x/.Xresources</a> b/<a href="../file/x/.Xresources.html">x/.Xresources</a></b>
+<a href="#h19-0" id="h19-0" class="h">@@ -5,6 +5,6 @@
+</a> ! managed like they are supposed to be
+ 
+ #include &quot;.xres/xft&quot;
+<a href="#h19-0-3" id="h19-0-3" class="d">-#include &quot;.xres/colors/thunder&quot;
+</a><a href="#h19-0-4" id="h19-0-4" class="i">+#include &quot;.xres/colors/fendr&quot;
+</a> #include &quot;.xres/urxvt&quot;
+ #include &quot;.xres/misc&quot;
+<b>diff --git a/<a id="h20" href="../file/x/.xinitrc.html">x/.xinitrc</a> b/<a href="../file/x/.xinitrc.html">x/.xinitrc</a></b>
+<a href="#h20-0" id="h20-0" class="h">@@ -71,4 +71,4 @@ wall-e &amp;
+</a> # }}}
+ 
+ statusbar &amp;
+<a href="#h20-0-3" id="h20-0-3" class="d">-exec startwm cwm
+</a><a href="#h20-0-4" id="h20-0-4" class="i">+exec startwm bspwm
+</a><b>diff --git a/<a id="h21" href="../file/x/.xres/colors/fendr.html">x/.xres/colors/fendr</a> b/<a href="../file/x/.xres/colors/fendr.html">x/.xres/colors/fendr</a></b>
+<a href="#h21-0" id="h21-0" class="h">@@ -0,0 +1,38 @@
+</a><a href="#h21-0-0" id="h21-0-0" class="i">+! special
+</a><a href="#h21-0-1" id="h21-0-1" class="i">+*.foreground:   #c1c5bd
+</a><a href="#h21-0-2" id="h21-0-2" class="i">+*.background:   #262c1b
+</a><a href="#h21-0-3" id="h21-0-3" class="i">+*.cursorColor:  #c1c5bd
+</a><a href="#h21-0-4" id="h21-0-4" class="i">+
+</a><a href="#h21-0-5" id="h21-0-5" class="i">+! black
+</a><a href="#h21-0-6" id="h21-0-6" class="i">+*.color0:       #2b321e
+</a><a href="#h21-0-7" id="h21-0-7" class="i">+*.color8:       #474c3e
+</a><a href="#h21-0-8" id="h21-0-8" class="i">+
+</a><a href="#h21-0-9" id="h21-0-9" class="i">+! red
+</a><a href="#h21-0-10" id="h21-0-10" class="i">+*.color1:       #7f5545
+</a><a href="#h21-0-11" id="h21-0-11" class="i">+*.color9:       #7f5545
+</a><a href="#h21-0-12" id="h21-0-12" class="i">+
+</a><a href="#h21-0-13" id="h21-0-13" class="i">+! green
+</a><a href="#h21-0-14" id="h21-0-14" class="i">+*.color2:       #677c54
+</a><a href="#h21-0-15" id="h21-0-15" class="i">+*.color10:      #677c54
+</a><a href="#h21-0-16" id="h21-0-16" class="i">+
+</a><a href="#h21-0-17" id="h21-0-17" class="i">+! yellow
+</a><a href="#h21-0-18" id="h21-0-18" class="i">+*.color3:       #bba772
+</a><a href="#h21-0-19" id="h21-0-19" class="i">+*.color11:      #bba772
+</a><a href="#h21-0-20" id="h21-0-20" class="i">+
+</a><a href="#h21-0-21" id="h21-0-21" class="i">+! blue
+</a><a href="#h21-0-22" id="h21-0-22" class="i">+*.color4:       #6e6a5b
+</a><a href="#h21-0-23" id="h21-0-23" class="i">+*.color12:      #6e6a5b
+</a><a href="#h21-0-24" id="h21-0-24" class="i">+
+</a><a href="#h21-0-25" id="h21-0-25" class="i">+! magenta (or orange)
+</a><a href="#h21-0-26" id="h21-0-26" class="i">+*.color5:       #92887e
+</a><a href="#h21-0-27" id="h21-0-27" class="i">+*.color13:      #92887e
+</a><a href="#h21-0-28" id="h21-0-28" class="i">+
+</a><a href="#h21-0-29" id="h21-0-29" class="i">+! cyan
+</a><a href="#h21-0-30" id="h21-0-30" class="i">+*.color6:       #7c7562
+</a><a href="#h21-0-31" id="h21-0-31" class="i">+*.color14:      #7c7562
+</a><a href="#h21-0-32" id="h21-0-32" class="i">+
+</a><a href="#h21-0-33" id="h21-0-33" class="i">+! white
+</a><a href="#h21-0-34" id="h21-0-34" class="i">+*.color7:       #cccdbd
+</a><a href="#h21-0-35" id="h21-0-35" class="i">+*.color15:      #cccdbd
+</a><a href="#h21-0-36" id="h21-0-36" class="i">+
+</a><a href="#h21-0-37" id="h21-0-37" class="i">+! vim: set ft=xdefaults :
+</a></pre>
+</div>
+</body>
+</html>

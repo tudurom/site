@@ -15,7 +15,7 @@
 <a href="../../../../log.html">Log</a> | <a href="../../../../files.html">Files</a> | <a href="../../../../refs.html">Refs</a> | <a href="../../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> commons (553B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> commons (729B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -64,6 +64,15 @@
 <a href="#l46" id="l46">46</a>
 <a href="#l47" id="l47">47</a>
 <a href="#l48" id="l48">48</a>
+<a href="#l49" id="l49">49</a>
+<a href="#l50" id="l50">50</a>
+<a href="#l51" id="l51">51</a>
+<a href="#l52" id="l52">52</a>
+<a href="#l53" id="l53">53</a>
+<a href="#l54" id="l54">54</a>
+<a href="#l55" id="l55">55</a>
+<a href="#l56" id="l56">56</a>
+<a href="#l57" id="l57">57</a>
 </pre></td><td><pre>
 # reload sxhkd
 super + Escape
@@ -73,25 +82,34 @@ super + Return
   urxvt
 
 super + space
-  dmenu_run
+  dmenu_wrapper
 
 super + q
   showtodo
 
 super + shift + f
-  chromium
+  $BROWSER
 
 super + shift + x
   slock
 
+super + F1
+  echo &quot;over&quot; &gt; /tmp/minbar.cmd
+
+super + F2
+  echo &quot;music&quot; &gt; /tmp/minbar.cmd
+
+super + F3
+  echo &quot;awesome&quot; &gt; /tmp/minbar.cmd
+
 XF86AudioRaiseVolume
-  amixer -q sset Master 5%+ unmute
+  echo `vol i` `vol +` &gt; &quot;$NOTIFY_FIFO_PATH&quot;
 
 XF86AudioLowerVolume
-  amixer -q sset Master 5%- unmute
+  echo `vol i` `vol -` &gt; &quot;$NOTIFY_FIFO_PATH&quot;
 
 XF86AudioMute
-  amixer -q sset Master mute
+  echo `vol i` `vol m` &gt; &quot;$NOTIFY_FIFO_PATH&quot;
 
 XF86MonBrightnessUp
   xbacklight -inc 10%

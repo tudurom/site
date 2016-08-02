@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> lsd.c (1509B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> lsd.c (1484B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -82,7 +82,6 @@
 <a href="#l64" id="l64">64</a>
 <a href="#l65" id="l65">65</a>
 <a href="#l66" id="l66">66</a>
-<a href="#l67" id="l67">67</a>
 </pre></td><td><pre>
 /*
  * disputils lsd.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt; ix
@@ -93,11 +92,10 @@
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;unistd.h&gt;
-#include &quot;randr.h&quot;
 #include &quot;util.h&quot;
 
 xcb_connection_t *conn;
-xcb_screen_t   *scrn;
+xcb_screen_t *scrn;
 
 void
 usage(char *name)
@@ -130,11 +128,11 @@ main(int argc, char *argv[])
 	get_screen(conn, &amp;scrn);
 
 	xcb_randr_provider_t *providers;
-	int 		p_len = get_providers(conn, scrn, &amp;providers);
+	int p_len = get_providers(conn, scrn, &amp;providers);
 
 	for (int i = 0; i &lt; p_len; ++i) {
 		xcb_randr_output_t *os;
-		int 		o_len = get_outputs(conn, providers[i], &amp;os);
+		int o_len = get_outputs(conn, providers[i], &amp;os);
 
 		/* Print screens from providers */
 		for (int j = 0; j &lt; o_len; ++j) {

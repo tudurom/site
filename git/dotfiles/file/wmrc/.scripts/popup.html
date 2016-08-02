@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> popup (506B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> popup (495B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -58,16 +58,16 @@ BAR_W=&quot;$3&quot;
 BAR_H=&quot;$4&quot;
 MESSAGE=&quot;$5&quot;
 
-BAR_BG=`xrq &apos;*.background&apos;`
+BAR_BG=&quot;$PANEL_BG_COLOR&quot;
 BAR_FG=`xrq &apos;*.color14&apos;`
 BAR_FONT=&quot;$PANEL_FONT&quot;
+BAR_ICON_FONT=&quot;$PANEL_ICON_FONT&quot;
 
-bar_opts=&quot;-g ${BAR_W}x${BAR_H}+${BAR_X}+${BAR_Y} -B${BAR_BG} -F${BAR_FG} -f ${BAR_FONT} -d -r $BW -R `xrq *.color6`&quot;
+bar_opts=&quot;-g ${BAR_W}x${BAR_H}+${BAR_X}+${BAR_Y} -B${BAR_BG} -F${BAR_FG} -f ${BAR_FONT} -f ${BAR_ICON_FONT} -d -r $BW -R `xrq *.color8`&quot;
 
 (
-tx_len=&quot;35&quot;
-echo &quot;$MESSAGE&quot; | skroll -r -l -n $tx_len &amp;
-sleep &quot;$POPUP_DURATION&quot; &amp;&amp; kill $!
+echo &quot;%{c}$MESSAGE&quot;
+sleep 1.5
 ) | lemonbar ${bar_opts}
 </pre></td></tr></table>
 </div>

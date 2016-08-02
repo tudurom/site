@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> statusbar (3896B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> statusbar (4482B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -187,6 +187,27 @@
 <a href="#l169" id="l169">169</a>
 <a href="#l170" id="l170">170</a>
 <a href="#l171" id="l171">171</a>
+<a href="#l172" id="l172">172</a>
+<a href="#l173" id="l173">173</a>
+<a href="#l174" id="l174">174</a>
+<a href="#l175" id="l175">175</a>
+<a href="#l176" id="l176">176</a>
+<a href="#l177" id="l177">177</a>
+<a href="#l178" id="l178">178</a>
+<a href="#l179" id="l179">179</a>
+<a href="#l180" id="l180">180</a>
+<a href="#l181" id="l181">181</a>
+<a href="#l182" id="l182">182</a>
+<a href="#l183" id="l183">183</a>
+<a href="#l184" id="l184">184</a>
+<a href="#l185" id="l185">185</a>
+<a href="#l186" id="l186">186</a>
+<a href="#l187" id="l187">187</a>
+<a href="#l188" id="l188">188</a>
+<a href="#l189" id="l189">189</a>
+<a href="#l190" id="l190">190</a>
+<a href="#l191" id="l191">191</a>
+<a href="#l192" id="l192">192</a>
 </pre></td><td><pre>
 #!/bin/sh
 #
@@ -196,169 +217,190 @@
 
 test -z &quot;$DISPLAY&quot; &amp;&amp; echo &quot;statusbar needs a working X environment&quot; &amp;&amp; exit 1
 
+
 is_int() {
-  case $1 in
-    &apos;&apos;|*[!0-9]*) return 1 ;;
-    *) return 0 ;;
-  esac
+    case $1 in
+        &apos;&apos;|*[!0-9]*) return 1 ;;
+        *) return 0 ;;
+    esac
 }
 
 # Setup {{{
 
-  # Create fifo
-  FIFO_PATH=/tmp/status.fifo
-  test -e &quot;$FIFO_PATH&quot; &amp;&amp; rm &quot;$FIFO_PATH&quot;
-  mkfifo &quot;$FIFO_PATH&quot;
+# Create command file
+COMMAND_FILE=&quot;/tmp/status.cmd&quot;
+test -f &quot;$COMMAND_FILE&quot; &amp;&amp; rm &quot;$COMMAND_FILE&quot;
+echo &quot;over&quot; &gt; &quot;$COMMAND_FILE&quot;
 
-  # Color definitions
-  C0=&quot;$(xrq &apos;*color0&apos;)&quot;
-  C1=&quot;$(xrq &apos;*color1&apos;)&quot;
-  C2=&quot;$(xrq &apos;*color2&apos;)&quot;
-  C3=&quot;$(xrq &apos;*color3&apos;)&quot;
-  C4=&quot;$(xrq &apos;*color4&apos;)&quot;
-  C5=&quot;$(xrq &apos;*color5&apos;)&quot;
-  C6=&quot;$(xrq &apos;*color6&apos;)&quot;
-  C7=&quot;$(xrq &apos;*color7&apos;)&quot;
-  C8=&quot;$(xrq &apos;*color8&apos;)&quot;
-  C9=&quot;$(xrq &apos;*color9&apos;)&quot;
-  C10=&quot;$(xrq &apos;*color10&apos;)&quot;
-  C11=&quot;$(xrq &apos;*color11&apos;)&quot;
-  C12=&quot;$(xrq &apos;*color12&apos;)&quot;
-  C13=&quot;$(xrq &apos;*color13&apos;)&quot;
-  C14=&quot;$(xrq &apos;*color14&apos;)&quot;
-  C15=&quot;$(xrq &apos;*color15&apos;)&quot;
-  #CF=&quot;$(xrq &apos;*foreground&apos;)&quot;
-  CF=&quot;$C6&quot;
-  CB=&quot;$(xrq &apos;*.background&apos;)&quot;
-  #CB=&quot;#1d2a30&quot;
+# Create fifo
+FIFO_PATH=/tmp/status.fifo
+test -e &quot;$FIFO_PATH&quot; &amp;&amp; rm &quot;$FIFO_PATH&quot;
+mkfifo &quot;$FIFO_PATH&quot;
 
-  PD_X=&quot;$(dattr -x $(ppd))&quot;
-  PD_Y=&quot;$(dattr -y $(ppd))&quot;
-  PD_WIDTH=&quot;$(dattr -w $(ppd))&quot;
-  PD_HEIGHT=&quot;$(dattr -h $(ppd))&quot;
+# Color definitions
+C0=&quot;$(xrq &apos;*color0&apos;)&quot;
+C1=&quot;$(xrq &apos;*color1&apos;)&quot;
+C2=&quot;$(xrq &apos;*color2&apos;)&quot;
+C3=&quot;$(xrq &apos;*color3&apos;)&quot;
+C4=&quot;$(xrq &apos;*color4&apos;)&quot;
+C5=&quot;$(xrq &apos;*color5&apos;)&quot;
+C6=&quot;$(xrq &apos;*color6&apos;)&quot;
+C7=&quot;$(xrq &apos;*color7&apos;)&quot;
+C8=&quot;$(xrq &apos;*color8&apos;)&quot;
+C9=&quot;$(xrq &apos;*color9&apos;)&quot;
+C10=&quot;$(xrq &apos;*color10&apos;)&quot;
+C11=&quot;$(xrq &apos;*color11&apos;)&quot;
+C12=&quot;$(xrq &apos;*color12&apos;)&quot;
+C13=&quot;$(xrq &apos;*color13&apos;)&quot;
+C14=&quot;$(xrq &apos;*color14&apos;)&quot;
+C15=&quot;$(xrq &apos;*color15&apos;)&quot;
+#CF=&quot;$(xrq &apos;*foreground&apos;)&quot;
+CF=&quot;$C6&quot;
+CB=&quot;$(xrq &apos;*.background&apos;)&quot;
+#CB=&quot;#1d2a30&quot;
 
-  BAR_WIDTH=$(echo &quot;$(dattr -w `ppd`)*0.5&quot; | bc | cut -d&apos;.&apos; -f1)
-  BAR_HEIGHT=&quot;$PANEL_STATUS_HEIGHT&quot;
-  BAR_X=&quot;$(echo &quot;($(dattr -w `ppd`) - $BAR_WIDTH) / 2&quot; | bc)&quot;
-  BAR_Y=&quot;$GENERAL_GAP&quot;
-  # BAR_WIDTH=&quot;$(dattr -w `ppd`)&quot;
-  # BAR_HEIGHT=&quot;$PANEL_STATUS_HEIGHT&quot;
-  # BAR_X=&quot;0&quot;
-  # BAR_Y=&quot;0&quot;
+PD_X=&quot;$(dattr -x $(ppd))&quot;
+PD_Y=&quot;$(dattr -y $(ppd))&quot;
+PD_WIDTH=&quot;$(dattr -w $(ppd))&quot;
+PD_HEIGHT=&quot;$(dattr -h $(ppd))&quot;
 
-  SEP_SMALL=&quot;        &quot;
-  SEP_BIG=&quot;            &quot;
+BAR_WIDTH=$(echo &quot;$(dattr -w `ppd`)*0.5&quot; | bc | cut -d&apos;.&apos; -f1)
+BAR_HEIGHT=&quot;$PANEL_STATUS_HEIGHT&quot;
+BAR_X=&quot;$(echo &quot;($(dattr -w `ppd`) - $BAR_WIDTH) / 2&quot; | bc)&quot;
+BAR_Y=&quot;$GENERAL_GAP&quot;
+# BAR_WIDTH=&quot;$(dattr -w `ppd`)&quot;
+# BAR_HEIGHT=&quot;$PANEL_STATUS_HEIGHT&quot;
+# BAR_X=&quot;0&quot;
+# BAR_Y=&quot;0&quot;
 
-  # Number of groups
-  GNUMBER=6
+SEP_SMALL=&quot;        &quot;
+SEP_BIG=&quot;            &quot;
 
-  # Bar options
-  BAR_OPTS=&quot;&quot;
-  # Because wmutils
-  BAR_OPTS=&quot;${BAR_OPTS} -d -R $C8 -r 3&quot;
-  # Gonna position it centered and respect the gaps
-  BAR_OPTS=&quot;${BAR_OPTS} -g ${BAR_WIDTH}x${BAR_HEIGHT}+${BAR_X}+${BAR_Y}&quot;
-  # Colors
-  BAR_OPTS=&quot;${BAR_OPTS} -B ${CB} -F ${CF}&quot;
-  BAR_OPTS=&quot;${BAR_OPTS} -u 2&quot;
-  BAR_OPTS=&quot;${BAR_OPTS} -f ${PANEL_FONT} -f ${PANEL_ICON_FONT}&quot;
+# Number of groups
+GNUMBER=6
+
+# Bar options
+BAR_OPTS=&quot;&quot;
+# Because wmutils
+BAR_OPTS=&quot;${BAR_OPTS} -d&quot;
+# Borders
+BAR_OPTS=&quot;${BAR_OPTS} -R $C8 -r 3&quot;
+# Gonna position it centered and respect the gaps
+BAR_OPTS=&quot;${BAR_OPTS} -g ${BAR_WIDTH}x${BAR_HEIGHT}+${BAR_X}+${BAR_Y}&quot;
+# Colors
+BAR_OPTS=&quot;${BAR_OPTS} -B ${CB} -F ${CF}&quot;
+BAR_OPTS=&quot;${BAR_OPTS} -u 3&quot;
+BAR_OPTS=&quot;${BAR_OPTS} -f ${PANEL_FONT} -f ${PANEL_ICON_FONT}&quot;
 
 # }}}
 
 # Gather info {{{
 
-  # Current time
-  time_format=&apos;%a %d %B %H:%M&apos;
-  # If it&apos;s first of April, show the Epoch time
-  test &quot;$(date +&quot;%d %m&quot;)&quot; = &quot;01 04&quot; &amp;&amp; time_format=&apos;%s&apos;
-  while true; do
+# Current time
+time_format=&apos;%a %d %B %H:%M&apos;
+# If it&apos;s first of April, show the Epoch time
+test &quot;$(date +&quot;%d %m&quot;)&quot; = &quot;01 04&quot; &amp;&amp; time_format=&apos;%s&apos;
+while true; do
     echo &quot;T%{F$C14}%{F-} $(date +&quot;$time_format&quot;)&quot;
     sleep 10
-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+done &gt; &quot;$FIFO_PATH&quot; &amp;
 
-  # Music
-  while true; do
+# Music
+while true; do
     if [ $(mpc status | wc -l) -eq 3 ]; then
-      last_title=&quot;$(mpc status | head -n 1)&quot;
+        last_title=&quot;$(mpc status | head -n 1)&quot;
     elif [ $(mpc status | wc -l) -eq 0 ]; then
-      last_title=&quot;-&quot;
+        last_title=&quot;-&quot;
     fi
 
     if [ -n &quot;$(mpc status | grep pause)&quot; ]; then
-      icon=&quot;&quot;
+        icon=&quot;&quot;
     elif [ -n &quot;$(mpc status | grep playing)&quot; ]; then
-      icon=&quot;&quot;
+        icon=&quot;&quot;
     else
-      icon=&quot;&quot;
+        icon=&quot;&quot;
     fi
     echo &quot;M%{A1:mpc toggle:}%{F$C9}${icon}%{F-} ${last_title}%{A}&quot;
+    echo &quot;MI${icon}&quot;
+    echo &quot;MS${last_title}&quot;
     sleep 1
-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+done &gt; &quot;$FIFO_PATH&quot; &amp;
 
-  # Battery status
-  while true; do
+# Battery status
+while true; do
     batt_status=&quot;$(cat /sys/class/power_supply/BAT0/status)&quot;
     batt_percentage=&quot;$(cat /sys/class/power_supply/BAT0/capacity)&quot;
     # Icons
     if [ &quot;$batt_status&quot; = &quot;Charging&quot; ]; then
-      BATT_ICON=&quot;&quot;
+        BATT_ICON=&quot;&quot;
     elif [ &quot;$batt_percentage&quot; -gt 50 ]; then
-      BATT_ICON=&quot;&quot;
+        BATT_ICON=&quot;&quot;
     elif [ &quot;$batt_percentage&quot; -gt 30 ]; then
-      BATT_ICON=&quot;&quot;
+        BATT_ICON=&quot;&quot;
     else
-      BATT_ICON=&quot;&quot;
+        BATT_ICON=&quot;&quot;
     fi
     echo &quot;B%{F$C13}${BATT_ICON}%{F-} ${batt_percentage}&quot;
     sleep 10
-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+done &gt; &quot;$FIFO_PATH&quot; &amp;
 
-  # Volume
-  while true; do
+# Volume
+while true; do
     mute=$(amixer get Master | sed -n 5p | cut -d&apos; &apos; -f8)
     volume=$(amixer get Master | sed -n 5p | cut -d&apos; &apos; -f5)
     if [ &quot;$mute&quot; = &quot;[on]&quot; ]; then
-      if [ $volume -ge 50 ]; then
-        vicon=
-      else
-        vicon=
-      fi
+        if [ $volume -ge 50 ]; then
+            vicon=
+        else
+            vicon=
+        fi
     else
-      vicon=
+        vicon=
     fi
     echo &quot;V%{A3:mute:}%{A4:mixer vol +5:}%{A5:mixer vol -5:}%{F$C12}$vicon%{F-} $volume%{A}%{A}%{A}&quot;
     sleep 0.5
-  done &gt; &quot;$FIFO_PATH&quot; &amp;
+done &gt; &quot;$FIFO_PATH&quot; &amp;
 
 # }}}
 
 # Process the data and show it {{{
 
-  cat &quot;$FIFO_PATH&quot; | \
-  while read -r line; do
-    case $line in
-      # Time
-      T*)
-        time=&quot;${line#?}&quot;
-        ;;
-      M*)
-        music=&quot;${line#?}&quot;
-        ;;
-      B*)
-        batt=&quot;${line#?}&quot;
-        ;;
-      V*)
-        vol=&quot;${line#?}&quot;
-        ;;
-      esac
-    # Show time!
-    echo &quot;%{c}${SEP_BIG}${music}${SEP_SMALL}${vol}${SEP_SMALL}${batt}${SEP_SMALL}${time}${SEP_BIG}&quot;
-  done |\
-  lemonbar $BAR_OPTS | sh
+cat &quot;$FIFO_PATH&quot; | while read -r line; do
+        case $line in
+            T*)
+                time=&quot;${line#?}&quot;
+                ;;
+            MI*)
+                music_icon=&quot;${line#??}&quot;
+                ;;
+            MS*)
+                song=&quot;${line#??}&quot;
+                ;;
+            M*)
+                music=&quot;${line#?}&quot;
+                ;;
+            B*)
+                batt=&quot;${line#?}&quot;
+                ;;
+            V*)
+                vol=&quot;${line#?}&quot;
+                ;;
+        esac
+        # Show time!
+        comm=&quot;$(cat &quot;$COMMAND_FILE&quot;)&quot;
+        case &quot;$comm&quot; in
+            over)
+                echo &quot;%{c}${SEP_BIG}${music}${SEP_SMALL}${vol}${SEP_SMALL}${batt}${SEP_SMALL}${time}${SEP_BIG}&quot;
+                ;;
+            music)
+                echo &quot;%{c}%{F$C9}${music_icon}%{F-} %{U$C1}%{+u}${song}%{-u}%{U-}&quot;
+                ;;
+        esac
+done |\
+lemonbar $BAR_OPTS
 # }}}
 
 wait
-
 </pre></td></tr></table>
 </div>
 </body>

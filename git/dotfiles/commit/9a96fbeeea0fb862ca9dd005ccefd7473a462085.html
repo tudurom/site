@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>misc - dotfiles - Small loan of configuration files.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>dotfiles</h1><span class="desc">Small loan of configuration files.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/dotfiles.git">git://thetudor.ddns.net/dotfiles.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/9a96fbeeea0fb862ca9dd005ccefd7473a462085.html">9a96fbeeea0fb862ca9dd005ccefd7473a462085</a>
+<b>parent</b> <a href="../commit/ed12a0567b987090892d41d45137eeb31a91756a.html">ed12a0567b987090892d41d45137eeb31a91756a</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Mon Aug  1 23:24:35 +0300
+
+misc
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">bspwm/.config/sxhkd/sxhkdrc_bspwm</a></td><td> | </td><td class="num">4</td><td><span class="i"></span><span class="d">----</span></td></tr>
+<tr><td><a href="#h1">ncmpcpp/.ncmpcpp/bindings</a></td><td> | </td><td class="num">539</td><td><span class="i"></span><span class="d">-------------------------------------------------------------------------------</span></td></tr>
+<tr><td><a href="#h2">ncmpcpp/.ncmpcpp/error.log</a></td><td> | </td><td class="num">2</td><td><span class="i"></span><span class="d">--</span></td></tr>
+<tr><td><a href="#h3">ncmpcpp/.ncmpcpp/error.log</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td><a href="#h4">wmrc/.config/sxhkd/commons</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h5">wmrc/.scripts/dmenu_wrapper</a></td><td> | </td><td class="num">3</td><td><span class="i">+++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h6">wmrc/.scripts/startwm</a></td><td> | </td><td class="num">6</td><td><span class="i">+++</span><span class="d">---</span></td></tr>
+<tr><td><a href="#h7">x/.xinitrc</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td><a href="#h8">x/.xres/urxvt</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+</table>9 files changed, 9 insertions(+), 550 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/bspwm/.config/sxhkd/sxhkdrc_bspwm.html">bspwm/.config/sxhkd/sxhkdrc_bspwm</a> b/<a href="../file/bspwm/.config/sxhkd/sxhkdrc_bspwm.html">bspwm/.config/sxhkd/sxhkdrc_bspwm</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -6,10 +6,6 @@
+</a> super + Return
+ 	urxvt
+ 
+<a href="#h0-0-3" id="h0-0-3" class="d">-# program launcher
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-super + space
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-	dmenu_run
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-
+</a> # make sxhkd reload its configuration files:
+ super + Escape
+ 	pkill -USR1 -x sxhkd
+<b>diff --git a/<a id="h1" href="../file/ncmpcpp/.ncmpcpp/bindings.html">ncmpcpp/.ncmpcpp/bindings</a> b/<a href="../file/ncmpcpp/.ncmpcpp/bindings.html">ncmpcpp/.ncmpcpp/bindings</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -1,539 +0,0 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="d">-##########################################################
+</a><a href="#h1-0-1" id="h1-0-1" class="d">-## this is example bindings configuration file, copy it ##
+</a><a href="#h1-0-2" id="h1-0-2" class="d">-## to ~/.ncmpcpp/bindings and set up your preferences   ##
+</a><a href="#h1-0-3" id="h1-0-3" class="d">-##########################################################
+</a><a href="#h1-0-4" id="h1-0-4" class="d">-##
+</a><a href="#h1-0-5" id="h1-0-5" class="d">-##### General rules #####
+</a><a href="#h1-0-6" id="h1-0-6" class="d">-##
+</a><a href="#h1-0-7" id="h1-0-7" class="d">-## 1) Because each action has runtime checks whether it&apos;s
+</a><a href="#h1-0-8" id="h1-0-8" class="d">-##    ok to run it, a few actions can be bound to one key.
+</a><a href="#h1-0-9" id="h1-0-9" class="d">-##    Actions will be bound in order given in configuration
+</a><a href="#h1-0-10" id="h1-0-10" class="d">-##    file. When a key is pressed, first action in order
+</a><a href="#h1-0-11" id="h1-0-11" class="d">-##    will test itself whether it&apos;s possible to run it. If
+</a><a href="#h1-0-12" id="h1-0-12" class="d">-##    test succeeds, action is executed and other actions
+</a><a href="#h1-0-13" id="h1-0-13" class="d">-##    bound to this key are ignored. If it doesn&apos;t, next
+</a><a href="#h1-0-14" id="h1-0-14" class="d">-##    action in order tests itself etc.
+</a><a href="#h1-0-15" id="h1-0-15" class="d">-##
+</a><a href="#h1-0-16" id="h1-0-16" class="d">-## 2) It&apos;s possible to bind more that one action at once
+</a><a href="#h1-0-17" id="h1-0-17" class="d">-##    to a key. It can be done using the following syntax:
+</a><a href="#h1-0-18" id="h1-0-18" class="d">-##
+</a><a href="#h1-0-19" id="h1-0-19" class="d">-##    def_key &quot;key&quot;
+</a><a href="#h1-0-20" id="h1-0-20" class="d">-##      action1
+</a><a href="#h1-0-21" id="h1-0-21" class="d">-##      action2
+</a><a href="#h1-0-22" id="h1-0-22" class="d">-##      ...
+</a><a href="#h1-0-23" id="h1-0-23" class="d">-##
+</a><a href="#h1-0-24" id="h1-0-24" class="d">-##    This creates a chain of actions. When such chain is
+</a><a href="#h1-0-25" id="h1-0-25" class="d">-##    executed, each action in chain is run until the end of
+</a><a href="#h1-0-26" id="h1-0-26" class="d">-##    chain is reached or one of its actions fails to execute
+</a><a href="#h1-0-27" id="h1-0-27" class="d">-##    due to its requirements not being met. If multiple actions
+</a><a href="#h1-0-28" id="h1-0-28" class="d">-##    and/or chains are bound to the same key, they will be
+</a><a href="#h1-0-29" id="h1-0-29" class="d">-##    consecutively run until one of them gets fully executed.
+</a><a href="#h1-0-30" id="h1-0-30" class="d">-##
+</a><a href="#h1-0-31" id="h1-0-31" class="d">-## 3) When ncmpcpp starts, bindings configuration file is
+</a><a href="#h1-0-32" id="h1-0-32" class="d">-##    parsed and then ncmpcpp provides &quot;missing pieces&quot;
+</a><a href="#h1-0-33" id="h1-0-33" class="d">-##    of default keybindings. If you want to disable some
+</a><a href="#h1-0-34" id="h1-0-34" class="d">-##    bindings, there is a special action called &apos;dummy&apos;
+</a><a href="#h1-0-35" id="h1-0-35" class="d">-##    for that purpose. Eg. if you want to disable ability
+</a><a href="#h1-0-36" id="h1-0-36" class="d">-##    to crop playlists, you need to put the following
+</a><a href="#h1-0-37" id="h1-0-37" class="d">-##    into configuration file:
+</a><a href="#h1-0-38" id="h1-0-38" class="d">-##
+</a><a href="#h1-0-39" id="h1-0-39" class="d">-##    def_key &quot;C&quot;
+</a><a href="#h1-0-40" id="h1-0-40" class="d">-##      dummy
+</a><a href="#h1-0-41" id="h1-0-41" class="d">-##
+</a><a href="#h1-0-42" id="h1-0-42" class="d">-##    After that ncmpcpp will not bind any default action
+</a><a href="#h1-0-43" id="h1-0-43" class="d">-##    to this key.
+</a><a href="#h1-0-44" id="h1-0-44" class="d">-##
+</a><a href="#h1-0-45" id="h1-0-45" class="d">-## 4) To let you write simple macros, the following special
+</a><a href="#h1-0-46" id="h1-0-46" class="d">-##    actions are provided:
+</a><a href="#h1-0-47" id="h1-0-47" class="d">-##
+</a><a href="#h1-0-48" id="h1-0-48" class="d">-##    - push_character &quot;character&quot; - pushes given special
+</a><a href="#h1-0-49" id="h1-0-49" class="d">-##      character into input queue, so it will be immediately
+</a><a href="#h1-0-50" id="h1-0-50" class="d">-##      picked by ncmpcpp upon next call to readKey function.
+</a><a href="#h1-0-51" id="h1-0-51" class="d">-##      Accepted values: mouse, up, down, page_up, page_down,
+</a><a href="#h1-0-52" id="h1-0-52" class="d">-##      home, end, space, enter, insert, delete, left, right,
+</a><a href="#h1-0-53" id="h1-0-53" class="d">-##      tab, ctrl-a, ctrl-b, ..., ctrl-z, ctrl-[, ctrl-\\,
+</a><a href="#h1-0-54" id="h1-0-54" class="d">-##      ctrl-], ctrl-^, ctrl-_, f1, f2, ..., f12, backspace.
+</a><a href="#h1-0-55" id="h1-0-55" class="d">-##      In addition, most of these names can be prefixed with
+</a><a href="#h1-0-56" id="h1-0-56" class="d">-##      alt-/ctrl-/shift- to be recognized with the appropriate
+</a><a href="#h1-0-57" id="h1-0-57" class="d">-##      modifier key(s).
+</a><a href="#h1-0-58" id="h1-0-58" class="d">-##
+</a><a href="#h1-0-59" id="h1-0-59" class="d">-##    - push_characters &quot;string&quot; - pushes given string into
+</a><a href="#h1-0-60" id="h1-0-60" class="d">-##      input queue.
+</a><a href="#h1-0-61" id="h1-0-61" class="d">-##
+</a><a href="#h1-0-62" id="h1-0-62" class="d">-##    - require_runnable &quot;action&quot; - checks whether given action
+</a><a href="#h1-0-63" id="h1-0-63" class="d">-##      is runnable and fails if it isn&apos;t. This is especially
+</a><a href="#h1-0-64" id="h1-0-64" class="d">-##      useful when mixed with previous two functions. Consider
+</a><a href="#h1-0-65" id="h1-0-65" class="d">-##      the following macro definition:
+</a><a href="#h1-0-66" id="h1-0-66" class="d">-##
+</a><a href="#h1-0-67" id="h1-0-67" class="d">-##      def_key &quot;key&quot;
+</a><a href="#h1-0-68" id="h1-0-68" class="d">-##        push_characters &quot;custom_filter&quot;
+</a><a href="#h1-0-69" id="h1-0-69" class="d">-##        apply_filter
+</a><a href="#h1-0-70" id="h1-0-70" class="d">-##
+</a><a href="#h1-0-71" id="h1-0-71" class="d">-##      If apply_filter can&apos;t be currently run, we end up with
+</a><a href="#h1-0-72" id="h1-0-72" class="d">-##      sequence of characters in input queue which will be
+</a><a href="#h1-0-73" id="h1-0-73" class="d">-##      treated just as we typed them. This may lead to unexpected
+</a><a href="#h1-0-74" id="h1-0-74" class="d">-##      results (in this case &apos;c&apos; will most likely clear current
+</a><a href="#h1-0-75" id="h1-0-75" class="d">-##      playlist, &apos;u&apos; will trigger database update, &apos;s&apos; will stop
+</a><a href="#h1-0-76" id="h1-0-76" class="d">-##      playback etc.). To prevent such thing from happening, we
+</a><a href="#h1-0-77" id="h1-0-77" class="d">-##      need to change above definition to this one:
+</a><a href="#h1-0-78" id="h1-0-78" class="d">-##
+</a><a href="#h1-0-79" id="h1-0-79" class="d">-##      def_key &quot;key&quot;
+</a><a href="#h1-0-80" id="h1-0-80" class="d">-##        require_runnable &quot;apply_filter&quot;
+</a><a href="#h1-0-81" id="h1-0-81" class="d">-##        push_characters &quot;custom_filter&quot;
+</a><a href="#h1-0-82" id="h1-0-82" class="d">-##        apply_filter
+</a><a href="#h1-0-83" id="h1-0-83" class="d">-##
+</a><a href="#h1-0-84" id="h1-0-84" class="d">-##      Here, first we test whether apply_filter can be actually run
+</a><a href="#h1-0-85" id="h1-0-85" class="d">-##      before we stuff characters into input queue, so if condition
+</a><a href="#h1-0-86" id="h1-0-86" class="d">-##      is not met, whole chain is aborted and we&apos;re fine.
+</a><a href="#h1-0-87" id="h1-0-87" class="d">-##
+</a><a href="#h1-0-88" id="h1-0-88" class="d">-##    - require_screen &quot;screen&quot; - checks whether given screen is
+</a><a href="#h1-0-89" id="h1-0-89" class="d">-##      currently active. accepted values: browser, clock, help,
+</a><a href="#h1-0-90" id="h1-0-90" class="d">-##      media_library, outputs, playlist, playlist_editor,
+</a><a href="#h1-0-91" id="h1-0-91" class="d">-##      search_engine, tag_editor, visualizer, last_fm, lyrics,
+</a><a href="#h1-0-92" id="h1-0-92" class="d">-##      selected_items_adder, server_info, song_info,
+</a><a href="#h1-0-93" id="h1-0-93" class="d">-##      sort_playlist_dialog, tiny_tag_editor.
+</a><a href="#h1-0-94" id="h1-0-94" class="d">-##
+</a><a href="#h1-0-95" id="h1-0-95" class="d">-##    - run_external_command &quot;command&quot; - runs given command using
+</a><a href="#h1-0-96" id="h1-0-96" class="d">-##      system() function.
+</a><a href="#h1-0-97" id="h1-0-97" class="d">-##
+</a><a href="#h1-0-98" id="h1-0-98" class="d">-## 5) In addition to binding to a key, you can also bind actions
+</a><a href="#h1-0-99" id="h1-0-99" class="d">-##    or chains of actions to a command. If it comes to commands,
+</a><a href="#h1-0-100" id="h1-0-100" class="d">-##    syntax is very similar to defining keys. Here goes example
+</a><a href="#h1-0-101" id="h1-0-101" class="d">-##    definition of a command:
+</a><a href="#h1-0-102" id="h1-0-102" class="d">-##
+</a><a href="#h1-0-103" id="h1-0-103" class="d">-##      def_command &quot;quit&quot; [deferred]
+</a><a href="#h1-0-104" id="h1-0-104" class="d">-##        stop
+</a><a href="#h1-0-105" id="h1-0-105" class="d">-##        quit
+</a><a href="#h1-0-106" id="h1-0-106" class="d">-##
+</a><a href="#h1-0-107" id="h1-0-107" class="d">-##    If you execute the above command (which can be done by
+</a><a href="#h1-0-108" id="h1-0-108" class="d">-##    invoking action execute_command, typing &apos;quit&apos; and pressing
+</a><a href="#h1-0-109" id="h1-0-109" class="d">-##    enter), ncmpcpp will stop the player and then quit. Note the
+</a><a href="#h1-0-110" id="h1-0-110" class="d">-##    presence of word &apos;deferred&apos; enclosed in square brackets. It
+</a><a href="#h1-0-111" id="h1-0-111" class="d">-##    tells ncmpcpp to wait for confirmation (ie. pressing enter)
+</a><a href="#h1-0-112" id="h1-0-112" class="d">-##    after you typed quit. Instead of &apos;deferred&apos;, &apos;immediate&apos;
+</a><a href="#h1-0-113" id="h1-0-113" class="d">-##    could be used. Then ncmpcpp will not wait for confirmation
+</a><a href="#h1-0-114" id="h1-0-114" class="d">-##    (enter) and will execute the command the moment it sees it.
+</a><a href="#h1-0-115" id="h1-0-115" class="d">-##
+</a><a href="#h1-0-116" id="h1-0-116" class="d">-##    Note: while command chains are executed, internal environment
+</a><a href="#h1-0-117" id="h1-0-117" class="d">-##    update (which includes current window refresh and mpd status
+</a><a href="#h1-0-118" id="h1-0-118" class="d">-##    update) is not performed for performance reasons. However, it
+</a><a href="#h1-0-119" id="h1-0-119" class="d">-##    may be desirable to do so in some situration. Therefore it&apos;s
+</a><a href="#h1-0-120" id="h1-0-120" class="d">-##    possible to invoke by hand by performing &apos;update enviroment&apos;
+</a><a href="#h1-0-121" id="h1-0-121" class="d">-##    action.
+</a><a href="#h1-0-122" id="h1-0-122" class="d">-##
+</a><a href="#h1-0-123" id="h1-0-123" class="d">-## Note: There is a difference between:
+</a><a href="#h1-0-124" id="h1-0-124" class="d">-##
+</a><a href="#h1-0-125" id="h1-0-125" class="d">-##         def_key &quot;key&quot;
+</a><a href="#h1-0-126" id="h1-0-126" class="d">-##           action1
+</a><a href="#h1-0-127" id="h1-0-127" class="d">-##
+</a><a href="#h1-0-128" id="h1-0-128" class="d">-##         def_key &quot;key&quot;
+</a><a href="#h1-0-129" id="h1-0-129" class="d">-##           action2
+</a><a href="#h1-0-130" id="h1-0-130" class="d">-##
+</a><a href="#h1-0-131" id="h1-0-131" class="d">-##       and
+</a><a href="#h1-0-132" id="h1-0-132" class="d">-##
+</a><a href="#h1-0-133" id="h1-0-133" class="d">-##         def_key &quot;key&quot;
+</a><a href="#h1-0-134" id="h1-0-134" class="d">-##           action1
+</a><a href="#h1-0-135" id="h1-0-135" class="d">-##           action2
+</a><a href="#h1-0-136" id="h1-0-136" class="d">-##
+</a><a href="#h1-0-137" id="h1-0-137" class="d">-##      First one binds two single actions to the same key whilst
+</a><a href="#h1-0-138" id="h1-0-138" class="d">-##      second one defines a chain of actions. The behavior of
+</a><a href="#h1-0-139" id="h1-0-139" class="d">-##      these two is different and is described in (1) and (2).
+</a><a href="#h1-0-140" id="h1-0-140" class="d">-##
+</a><a href="#h1-0-141" id="h1-0-141" class="d">-## Note: Function def_key accepts non-ascii characters.
+</a><a href="#h1-0-142" id="h1-0-142" class="d">-##
+</a><a href="#h1-0-143" id="h1-0-143" class="d">-##### List of unbound actions #####
+</a><a href="#h1-0-144" id="h1-0-144" class="d">-##
+</a><a href="#h1-0-145" id="h1-0-145" class="d">-## The following actions are not bound to any key/command:
+</a><a href="#h1-0-146" id="h1-0-146" class="d">-##
+</a><a href="#h1-0-147" id="h1-0-147" class="d">-##  - set_volume
+</a><a href="#h1-0-148" id="h1-0-148" class="d">-##
+</a><a href="#h1-0-149" id="h1-0-149" class="d">-#
+</a><a href="#h1-0-150" id="h1-0-150" class="d">-#def_key &quot;mouse&quot;
+</a><a href="#h1-0-151" id="h1-0-151" class="d">-#  mouse_event
+</a><a href="#h1-0-152" id="h1-0-152" class="d">-#
+</a><a href="#h1-0-153" id="h1-0-153" class="d">-def_key &quot;k&quot;
+</a><a href="#h1-0-154" id="h1-0-154" class="d">-  scroll_up
+</a><a href="#h1-0-155" id="h1-0-155" class="d">-#
+</a><a href="#h1-0-156" id="h1-0-156" class="d">-#def_key &quot;shift-up&quot;
+</a><a href="#h1-0-157" id="h1-0-157" class="d">-#  select_item
+</a><a href="#h1-0-158" id="h1-0-158" class="d">-#  scroll_up
+</a><a href="#h1-0-159" id="h1-0-159" class="d">-#
+</a><a href="#h1-0-160" id="h1-0-160" class="d">-def_key &quot;j&quot;
+</a><a href="#h1-0-161" id="h1-0-161" class="d">-  scroll_down
+</a><a href="#h1-0-162" id="h1-0-162" class="d">-#
+</a><a href="#h1-0-163" id="h1-0-163" class="d">-#def_key &quot;shift-down&quot;
+</a><a href="#h1-0-164" id="h1-0-164" class="d">-#  select_item
+</a><a href="#h1-0-165" id="h1-0-165" class="d">-#  scroll_down
+</a><a href="#h1-0-166" id="h1-0-166" class="d">-#
+</a><a href="#h1-0-167" id="h1-0-167" class="d">-#def_key &quot;[&quot;
+</a><a href="#h1-0-168" id="h1-0-168" class="d">-#  scroll_up_album
+</a><a href="#h1-0-169" id="h1-0-169" class="d">-#
+</a><a href="#h1-0-170" id="h1-0-170" class="d">-#def_key &quot;]&quot;
+</a><a href="#h1-0-171" id="h1-0-171" class="d">-#  scroll_down_album
+</a><a href="#h1-0-172" id="h1-0-172" class="d">-#
+</a><a href="#h1-0-173" id="h1-0-173" class="d">-#def_key &quot;{&quot;
+</a><a href="#h1-0-174" id="h1-0-174" class="d">-#  scroll_up_artist
+</a><a href="#h1-0-175" id="h1-0-175" class="d">-#
+</a><a href="#h1-0-176" id="h1-0-176" class="d">-#def_key &quot;}&quot;
+</a><a href="#h1-0-177" id="h1-0-177" class="d">-#  scroll_down_artist
+</a><a href="#h1-0-178" id="h1-0-178" class="d">-#
+</a><a href="#h1-0-179" id="h1-0-179" class="d">-#def_key &quot;page_up&quot;
+</a><a href="#h1-0-180" id="h1-0-180" class="d">-#  page_up
+</a><a href="#h1-0-181" id="h1-0-181" class="d">-#
+</a><a href="#h1-0-182" id="h1-0-182" class="d">-#def_key &quot;page_down&quot;
+</a><a href="#h1-0-183" id="h1-0-183" class="d">-#  page_down
+</a><a href="#h1-0-184" id="h1-0-184" class="d">-#
+</a><a href="#h1-0-185" id="h1-0-185" class="d">-#def_key &quot;home&quot;
+</a><a href="#h1-0-186" id="h1-0-186" class="d">-#  move_home
+</a><a href="#h1-0-187" id="h1-0-187" class="d">-#
+</a><a href="#h1-0-188" id="h1-0-188" class="d">-#def_key &quot;end&quot;
+</a><a href="#h1-0-189" id="h1-0-189" class="d">-#  move_end
+</a><a href="#h1-0-190" id="h1-0-190" class="d">-#
+</a><a href="#h1-0-191" id="h1-0-191" class="d">-#def_key &quot;insert&quot;
+</a><a href="#h1-0-192" id="h1-0-192" class="d">-#  select_item
+</a><a href="#h1-0-193" id="h1-0-193" class="d">-#
+</a><a href="#h1-0-194" id="h1-0-194" class="d">-#def_key &quot;enter&quot;
+</a><a href="#h1-0-195" id="h1-0-195" class="d">-#  enter_directory
+</a><a href="#h1-0-196" id="h1-0-196" class="d">-#
+</a><a href="#h1-0-197" id="h1-0-197" class="d">-#def_key &quot;enter&quot;
+</a><a href="#h1-0-198" id="h1-0-198" class="d">-#  toggle_output
+</a><a href="#h1-0-199" id="h1-0-199" class="d">-#
+</a><a href="#h1-0-200" id="h1-0-200" class="d">-#def_key &quot;enter&quot;
+</a><a href="#h1-0-201" id="h1-0-201" class="d">-#  run_action
+</a><a href="#h1-0-202" id="h1-0-202" class="d">-#
+</a><a href="#h1-0-203" id="h1-0-203" class="d">-#def_key &quot;enter&quot;
+</a><a href="#h1-0-204" id="h1-0-204" class="d">-#  play_item
+</a><a href="#h1-0-205" id="h1-0-205" class="d">-#
+</a><a href="#h1-0-206" id="h1-0-206" class="d">-#def_key &quot;space&quot;
+</a><a href="#h1-0-207" id="h1-0-207" class="d">-#  add_item_to_playlist
+</a><a href="#h1-0-208" id="h1-0-208" class="d">-#
+</a><a href="#h1-0-209" id="h1-0-209" class="d">-#def_key &quot;space&quot;
+</a><a href="#h1-0-210" id="h1-0-210" class="d">-#  toggle_lyrics_update_on_song_change
+</a><a href="#h1-0-211" id="h1-0-211" class="d">-#
+</a><a href="#h1-0-212" id="h1-0-212" class="d">-#def_key &quot;space&quot;
+</a><a href="#h1-0-213" id="h1-0-213" class="d">-#  toggle_visualization_type
+</a><a href="#h1-0-214" id="h1-0-214" class="d">-#
+</a><a href="#h1-0-215" id="h1-0-215" class="d">-#def_key &quot;delete&quot;
+</a><a href="#h1-0-216" id="h1-0-216" class="d">-#  delete_playlist_items
+</a><a href="#h1-0-217" id="h1-0-217" class="d">-#
+</a><a href="#h1-0-218" id="h1-0-218" class="d">-#def_key &quot;delete&quot;
+</a><a href="#h1-0-219" id="h1-0-219" class="d">-#  delete_browser_items
+</a><a href="#h1-0-220" id="h1-0-220" class="d">-#
+</a><a href="#h1-0-221" id="h1-0-221" class="d">-#def_key &quot;delete&quot;
+</a><a href="#h1-0-222" id="h1-0-222" class="d">-#  delete_stored_playlist
+</a><a href="#h1-0-223" id="h1-0-223" class="d">-#
+</a><a href="#h1-0-224" id="h1-0-224" class="d">-#def_key &quot;right&quot;
+</a><a href="#h1-0-225" id="h1-0-225" class="d">-#  next_column
+</a><a href="#h1-0-226" id="h1-0-226" class="d">-#
+</a><a href="#h1-0-227" id="h1-0-227" class="d">-#def_key &quot;right&quot;
+</a><a href="#h1-0-228" id="h1-0-228" class="d">-#  slave_screen
+</a><a href="#h1-0-229" id="h1-0-229" class="d">-#
+</a><a href="#h1-0-230" id="h1-0-230" class="d">-#def_key &quot;right&quot;
+</a><a href="#h1-0-231" id="h1-0-231" class="d">-#  volume_up
+</a><a href="#h1-0-232" id="h1-0-232" class="d">-#
+</a><a href="#h1-0-233" id="h1-0-233" class="d">-#def_key &quot;+&quot;
+</a><a href="#h1-0-234" id="h1-0-234" class="d">-#  volume_up
+</a><a href="#h1-0-235" id="h1-0-235" class="d">-#
+</a><a href="#h1-0-236" id="h1-0-236" class="d">-#def_key &quot;left&quot;
+</a><a href="#h1-0-237" id="h1-0-237" class="d">-#  previous_column
+</a><a href="#h1-0-238" id="h1-0-238" class="d">-#
+</a><a href="#h1-0-239" id="h1-0-239" class="d">-#def_key &quot;left&quot;
+</a><a href="#h1-0-240" id="h1-0-240" class="d">-#  master_screen
+</a><a href="#h1-0-241" id="h1-0-241" class="d">-#
+</a><a href="#h1-0-242" id="h1-0-242" class="d">-#def_key &quot;left&quot;
+</a><a href="#h1-0-243" id="h1-0-243" class="d">-#  volume_down
+</a><a href="#h1-0-244" id="h1-0-244" class="d">-#
+</a><a href="#h1-0-245" id="h1-0-245" class="d">-#def_key &quot;-&quot;
+</a><a href="#h1-0-246" id="h1-0-246" class="d">-#  volume_down
+</a><a href="#h1-0-247" id="h1-0-247" class="d">-#
+</a><a href="#h1-0-248" id="h1-0-248" class="d">-#def_key &quot;:&quot;
+</a><a href="#h1-0-249" id="h1-0-249" class="d">-#  execute_command
+</a><a href="#h1-0-250" id="h1-0-250" class="d">-#
+</a><a href="#h1-0-251" id="h1-0-251" class="d">-#def_key &quot;tab&quot;
+</a><a href="#h1-0-252" id="h1-0-252" class="d">-#  next_screen
+</a><a href="#h1-0-253" id="h1-0-253" class="d">-#
+</a><a href="#h1-0-254" id="h1-0-254" class="d">-#def_key &quot;shift-tab&quot;
+</a><a href="#h1-0-255" id="h1-0-255" class="d">-#  previous_screen
+</a><a href="#h1-0-256" id="h1-0-256" class="d">-#
+</a><a href="#h1-0-257" id="h1-0-257" class="d">-#def_key &quot;f1&quot;
+</a><a href="#h1-0-258" id="h1-0-258" class="d">-#  show_help
+</a><a href="#h1-0-259" id="h1-0-259" class="d">-#
+</a><a href="#h1-0-260" id="h1-0-260" class="d">-#def_key &quot;1&quot;
+</a><a href="#h1-0-261" id="h1-0-261" class="d">-#  show_playlist
+</a><a href="#h1-0-262" id="h1-0-262" class="d">-#
+</a><a href="#h1-0-263" id="h1-0-263" class="d">-#def_key &quot;2&quot;
+</a><a href="#h1-0-264" id="h1-0-264" class="d">-#  show_browser
+</a><a href="#h1-0-265" id="h1-0-265" class="d">-#
+</a><a href="#h1-0-266" id="h1-0-266" class="d">-#def_key &quot;2&quot;
+</a><a href="#h1-0-267" id="h1-0-267" class="d">-#  change_browse_mode
+</a><a href="#h1-0-268" id="h1-0-268" class="d">-#
+</a><a href="#h1-0-269" id="h1-0-269" class="d">-#def_key &quot;3&quot;
+</a><a href="#h1-0-270" id="h1-0-270" class="d">-#  show_search_engine
+</a><a href="#h1-0-271" id="h1-0-271" class="d">-#
+</a><a href="#h1-0-272" id="h1-0-272" class="d">-#def_key &quot;3&quot;
+</a><a href="#h1-0-273" id="h1-0-273" class="d">-#  reset_search_engine
+</a><a href="#h1-0-274" id="h1-0-274" class="d">-#
+</a><a href="#h1-0-275" id="h1-0-275" class="d">-#def_key &quot;4&quot;
+</a><a href="#h1-0-276" id="h1-0-276" class="d">-#  show_media_library
+</a><a href="#h1-0-277" id="h1-0-277" class="d">-#
+</a><a href="#h1-0-278" id="h1-0-278" class="d">-#def_key &quot;4&quot;
+</a><a href="#h1-0-279" id="h1-0-279" class="d">-#  toggle_media_library_columns_mode
+</a><a href="#h1-0-280" id="h1-0-280" class="d">-#
+</a><a href="#h1-0-281" id="h1-0-281" class="d">-#def_key &quot;5&quot;
+</a><a href="#h1-0-282" id="h1-0-282" class="d">-#  show_playlist_editor
+</a><a href="#h1-0-283" id="h1-0-283" class="d">-#
+</a><a href="#h1-0-284" id="h1-0-284" class="d">-#def_key &quot;6&quot;
+</a><a href="#h1-0-285" id="h1-0-285" class="d">-#  show_tag_editor
+</a><a href="#h1-0-286" id="h1-0-286" class="d">-#
+</a><a href="#h1-0-287" id="h1-0-287" class="d">-#def_key &quot;7&quot;
+</a><a href="#h1-0-288" id="h1-0-288" class="d">-#  show_outputs
+</a><a href="#h1-0-289" id="h1-0-289" class="d">-#
+</a><a href="#h1-0-290" id="h1-0-290" class="d">-#def_key &quot;8&quot;
+</a><a href="#h1-0-291" id="h1-0-291" class="d">-#  show_visualizer
+</a><a href="#h1-0-292" id="h1-0-292" class="d">-#
+</a><a href="#h1-0-293" id="h1-0-293" class="d">-#def_key &quot;=&quot;
+</a><a href="#h1-0-294" id="h1-0-294" class="d">-#  show_clock
+</a><a href="#h1-0-295" id="h1-0-295" class="d">-#
+</a><a href="#h1-0-296" id="h1-0-296" class="d">-#def_key &quot;@&quot;
+</a><a href="#h1-0-297" id="h1-0-297" class="d">-#  show_server_info
+</a><a href="#h1-0-298" id="h1-0-298" class="d">-#
+</a><a href="#h1-0-299" id="h1-0-299" class="d">-#def_key &quot;s&quot;
+</a><a href="#h1-0-300" id="h1-0-300" class="d">-#  stop
+</a><a href="#h1-0-301" id="h1-0-301" class="d">-#
+</a><a href="#h1-0-302" id="h1-0-302" class="d">-#def_key &quot;p&quot;
+</a><a href="#h1-0-303" id="h1-0-303" class="d">-#  pause
+</a><a href="#h1-0-304" id="h1-0-304" class="d">-#
+</a><a href="#h1-0-305" id="h1-0-305" class="d">-#def_key &quot;&gt;&quot;
+</a><a href="#h1-0-306" id="h1-0-306" class="d">-#  next
+</a><a href="#h1-0-307" id="h1-0-307" class="d">-#
+</a><a href="#h1-0-308" id="h1-0-308" class="d">-#def_key &quot;&lt;&quot;
+</a><a href="#h1-0-309" id="h1-0-309" class="d">-#  previous
+</a><a href="#h1-0-310" id="h1-0-310" class="d">-#
+</a><a href="#h1-0-311" id="h1-0-311" class="d">-#def_key &quot;ctrl-h&quot;
+</a><a href="#h1-0-312" id="h1-0-312" class="d">-#  jump_to_parent_directory
+</a><a href="#h1-0-313" id="h1-0-313" class="d">-#
+</a><a href="#h1-0-314" id="h1-0-314" class="d">-#def_key &quot;ctrl-h&quot;
+</a><a href="#h1-0-315" id="h1-0-315" class="d">-#  replay_song
+</a><a href="#h1-0-316" id="h1-0-316" class="d">-#
+</a><a href="#h1-0-317" id="h1-0-317" class="d">-#def_key &quot;backspace&quot;
+</a><a href="#h1-0-318" id="h1-0-318" class="d">-#  jump_to_parent_directory
+</a><a href="#h1-0-319" id="h1-0-319" class="d">-#
+</a><a href="#h1-0-320" id="h1-0-320" class="d">-#def_key &quot;backspace&quot;
+</a><a href="#h1-0-321" id="h1-0-321" class="d">-#  replay_song
+</a><a href="#h1-0-322" id="h1-0-322" class="d">-#
+</a><a href="#h1-0-323" id="h1-0-323" class="d">-#def_key &quot;f&quot;
+</a><a href="#h1-0-324" id="h1-0-324" class="d">-#  seek_forward
+</a><a href="#h1-0-325" id="h1-0-325" class="d">-#
+</a><a href="#h1-0-326" id="h1-0-326" class="d">-#def_key &quot;b&quot;
+</a><a href="#h1-0-327" id="h1-0-327" class="d">-#  seek_backward
+</a><a href="#h1-0-328" id="h1-0-328" class="d">-#
+</a><a href="#h1-0-329" id="h1-0-329" class="d">-#def_key &quot;r&quot;
+</a><a href="#h1-0-330" id="h1-0-330" class="d">-#  toggle_repeat
+</a><a href="#h1-0-331" id="h1-0-331" class="d">-#
+</a><a href="#h1-0-332" id="h1-0-332" class="d">-#def_key &quot;z&quot;
+</a><a href="#h1-0-333" id="h1-0-333" class="d">-#  toggle_random
+</a><a href="#h1-0-334" id="h1-0-334" class="d">-#
+</a><a href="#h1-0-335" id="h1-0-335" class="d">-#def_key &quot;y&quot;
+</a><a href="#h1-0-336" id="h1-0-336" class="d">-#  save_tag_changes
+</a><a href="#h1-0-337" id="h1-0-337" class="d">-#
+</a><a href="#h1-0-338" id="h1-0-338" class="d">-#def_key &quot;y&quot;
+</a><a href="#h1-0-339" id="h1-0-339" class="d">-#  start_searching
+</a><a href="#h1-0-340" id="h1-0-340" class="d">-#
+</a><a href="#h1-0-341" id="h1-0-341" class="d">-#def_key &quot;y&quot;
+</a><a href="#h1-0-342" id="h1-0-342" class="d">-#  toggle_single
+</a><a href="#h1-0-343" id="h1-0-343" class="d">-#
+</a><a href="#h1-0-344" id="h1-0-344" class="d">-#def_key &quot;R&quot;
+</a><a href="#h1-0-345" id="h1-0-345" class="d">-#  toggle_consume
+</a><a href="#h1-0-346" id="h1-0-346" class="d">-#
+</a><a href="#h1-0-347" id="h1-0-347" class="d">-#def_key &quot;Y&quot;
+</a><a href="#h1-0-348" id="h1-0-348" class="d">-#  toggle_replay_gain_mode
+</a><a href="#h1-0-349" id="h1-0-349" class="d">-#
+</a><a href="#h1-0-350" id="h1-0-350" class="d">-#def_key &quot;T&quot;
+</a><a href="#h1-0-351" id="h1-0-351" class="d">-#  toggle_add_mode
+</a><a href="#h1-0-352" id="h1-0-352" class="d">-#
+</a><a href="#h1-0-353" id="h1-0-353" class="d">-#def_key &quot;|&quot;
+</a><a href="#h1-0-354" id="h1-0-354" class="d">-#  toggle_mouse
+</a><a href="#h1-0-355" id="h1-0-355" class="d">-#
+</a><a href="#h1-0-356" id="h1-0-356" class="d">-#def_key &quot;#&quot;
+</a><a href="#h1-0-357" id="h1-0-357" class="d">-#  toggle_bitrate_visibility
+</a><a href="#h1-0-358" id="h1-0-358" class="d">-#
+</a><a href="#h1-0-359" id="h1-0-359" class="d">-#def_key &quot;Z&quot;
+</a><a href="#h1-0-360" id="h1-0-360" class="d">-#  shuffle
+</a><a href="#h1-0-361" id="h1-0-361" class="d">-#
+</a><a href="#h1-0-362" id="h1-0-362" class="d">-#def_key &quot;x&quot;
+</a><a href="#h1-0-363" id="h1-0-363" class="d">-#  toggle_crossfade
+</a><a href="#h1-0-364" id="h1-0-364" class="d">-#
+</a><a href="#h1-0-365" id="h1-0-365" class="d">-#def_key &quot;X&quot;
+</a><a href="#h1-0-366" id="h1-0-366" class="d">-#  set_crossfade
+</a><a href="#h1-0-367" id="h1-0-367" class="d">-#
+</a><a href="#h1-0-368" id="h1-0-368" class="d">-#def_key &quot;u&quot;
+</a><a href="#h1-0-369" id="h1-0-369" class="d">-#  update_database
+</a><a href="#h1-0-370" id="h1-0-370" class="d">-#
+</a><a href="#h1-0-371" id="h1-0-371" class="d">-#def_key &quot;ctrl-s&quot;
+</a><a href="#h1-0-372" id="h1-0-372" class="d">-#  sort_playlist
+</a><a href="#h1-0-373" id="h1-0-373" class="d">-#
+</a><a href="#h1-0-374" id="h1-0-374" class="d">-#def_key &quot;ctrl-s&quot;
+</a><a href="#h1-0-375" id="h1-0-375" class="d">-#  toggle_browser_sort_mode
+</a><a href="#h1-0-376" id="h1-0-376" class="d">-#
+</a><a href="#h1-0-377" id="h1-0-377" class="d">-#def_key &quot;ctrl-s&quot;
+</a><a href="#h1-0-378" id="h1-0-378" class="d">-#  toggle_media_library_sort_mode
+</a><a href="#h1-0-379" id="h1-0-379" class="d">-#
+</a><a href="#h1-0-380" id="h1-0-380" class="d">-#def_key &quot;ctrl-r&quot;
+</a><a href="#h1-0-381" id="h1-0-381" class="d">-#  reverse_playlist
+</a><a href="#h1-0-382" id="h1-0-382" class="d">-#
+</a><a href="#h1-0-383" id="h1-0-383" class="d">-#def_key &quot;ctrl-_&quot;
+</a><a href="#h1-0-384" id="h1-0-384" class="d">-#  select_found_items
+</a><a href="#h1-0-385" id="h1-0-385" class="d">-#
+</a><a href="#h1-0-386" id="h1-0-386" class="d">-#def_key &quot;/&quot;
+</a><a href="#h1-0-387" id="h1-0-387" class="d">-#  find
+</a><a href="#h1-0-388" id="h1-0-388" class="d">-#
+</a><a href="#h1-0-389" id="h1-0-389" class="d">-#def_key &quot;/&quot;
+</a><a href="#h1-0-390" id="h1-0-390" class="d">-#  find_item_forward
+</a><a href="#h1-0-391" id="h1-0-391" class="d">-#
+</a><a href="#h1-0-392" id="h1-0-392" class="d">-#def_key &quot;?&quot;
+</a><a href="#h1-0-393" id="h1-0-393" class="d">-#  find
+</a><a href="#h1-0-394" id="h1-0-394" class="d">-#
+</a><a href="#h1-0-395" id="h1-0-395" class="d">-#def_key &quot;?&quot;
+</a><a href="#h1-0-396" id="h1-0-396" class="d">-#  find_item_backward
+</a><a href="#h1-0-397" id="h1-0-397" class="d">-#
+</a><a href="#h1-0-398" id="h1-0-398" class="d">-#def_key &quot;.&quot;
+</a><a href="#h1-0-399" id="h1-0-399" class="d">-#  next_found_item
+</a><a href="#h1-0-400" id="h1-0-400" class="d">-#
+</a><a href="#h1-0-401" id="h1-0-401" class="d">-#def_key &quot;,&quot;
+</a><a href="#h1-0-402" id="h1-0-402" class="d">-#  previous_found_item
+</a><a href="#h1-0-403" id="h1-0-403" class="d">-#
+</a><a href="#h1-0-404" id="h1-0-404" class="d">-#def_key &quot;w&quot;
+</a><a href="#h1-0-405" id="h1-0-405" class="d">-#  toggle_find_mode
+</a><a href="#h1-0-406" id="h1-0-406" class="d">-#
+</a><a href="#h1-0-407" id="h1-0-407" class="d">-#def_key &quot;e&quot;
+</a><a href="#h1-0-408" id="h1-0-408" class="d">-#  edit_song
+</a><a href="#h1-0-409" id="h1-0-409" class="d">-#
+</a><a href="#h1-0-410" id="h1-0-410" class="d">-#def_key &quot;e&quot;
+</a><a href="#h1-0-411" id="h1-0-411" class="d">-#  edit_library_tag
+</a><a href="#h1-0-412" id="h1-0-412" class="d">-#
+</a><a href="#h1-0-413" id="h1-0-413" class="d">-#def_key &quot;e&quot;
+</a><a href="#h1-0-414" id="h1-0-414" class="d">-#  edit_library_album
+</a><a href="#h1-0-415" id="h1-0-415" class="d">-#
+</a><a href="#h1-0-416" id="h1-0-416" class="d">-#def_key &quot;e&quot;
+</a><a href="#h1-0-417" id="h1-0-417" class="d">-#  edit_directory_name
+</a><a href="#h1-0-418" id="h1-0-418" class="d">-#
+</a><a href="#h1-0-419" id="h1-0-419" class="d">-#def_key &quot;e&quot;
+</a><a href="#h1-0-420" id="h1-0-420" class="d">-#  edit_playlist_name
+</a><a href="#h1-0-421" id="h1-0-421" class="d">-#
+</a><a href="#h1-0-422" id="h1-0-422" class="d">-#def_key &quot;e&quot;
+</a><a href="#h1-0-423" id="h1-0-423" class="d">-#  edit_lyrics
+</a><a href="#h1-0-424" id="h1-0-424" class="d">-#
+</a><a href="#h1-0-425" id="h1-0-425" class="d">-#def_key &quot;i&quot;
+</a><a href="#h1-0-426" id="h1-0-426" class="d">-#  show_song_info
+</a><a href="#h1-0-427" id="h1-0-427" class="d">-#
+</a><a href="#h1-0-428" id="h1-0-428" class="d">-#def_key &quot;I&quot;
+</a><a href="#h1-0-429" id="h1-0-429" class="d">-#  show_artist_info
+</a><a href="#h1-0-430" id="h1-0-430" class="d">-#
+</a><a href="#h1-0-431" id="h1-0-431" class="d">-#def_key &quot;g&quot;
+</a><a href="#h1-0-432" id="h1-0-432" class="d">-#  jump_to_position_in_song
+</a><a href="#h1-0-433" id="h1-0-433" class="d">-#
+</a><a href="#h1-0-434" id="h1-0-434" class="d">-#def_key &quot;l&quot;
+</a><a href="#h1-0-435" id="h1-0-435" class="d">-#  show_lyrics
+</a><a href="#h1-0-436" id="h1-0-436" class="d">-#
+</a><a href="#h1-0-437" id="h1-0-437" class="d">-#def_key &quot;ctrl-v&quot;
+</a><a href="#h1-0-438" id="h1-0-438" class="d">-#  select_range
+</a><a href="#h1-0-439" id="h1-0-439" class="d">-#
+</a><a href="#h1-0-440" id="h1-0-440" class="d">-#def_key &quot;v&quot;
+</a><a href="#h1-0-441" id="h1-0-441" class="d">-#  reverse_selection
+</a><a href="#h1-0-442" id="h1-0-442" class="d">-#
+</a><a href="#h1-0-443" id="h1-0-443" class="d">-#def_key &quot;V&quot;
+</a><a href="#h1-0-444" id="h1-0-444" class="d">-#  remove_selection
+</a><a href="#h1-0-445" id="h1-0-445" class="d">-#
+</a><a href="#h1-0-446" id="h1-0-446" class="d">-#def_key &quot;B&quot;
+</a><a href="#h1-0-447" id="h1-0-447" class="d">-#  select_album
+</a><a href="#h1-0-448" id="h1-0-448" class="d">-#
+</a><a href="#h1-0-449" id="h1-0-449" class="d">-#def_key &quot;a&quot;
+</a><a href="#h1-0-450" id="h1-0-450" class="d">-#  add_selected_items
+</a><a href="#h1-0-451" id="h1-0-451" class="d">-#
+</a><a href="#h1-0-452" id="h1-0-452" class="d">-#def_key &quot;c&quot;
+</a><a href="#h1-0-453" id="h1-0-453" class="d">-#  clear_playlist
+</a><a href="#h1-0-454" id="h1-0-454" class="d">-#
+</a><a href="#h1-0-455" id="h1-0-455" class="d">-#def_key &quot;c&quot;
+</a><a href="#h1-0-456" id="h1-0-456" class="d">-#  clear_main_playlist
+</a><a href="#h1-0-457" id="h1-0-457" class="d">-#
+</a><a href="#h1-0-458" id="h1-0-458" class="d">-#def_key &quot;C&quot;
+</a><a href="#h1-0-459" id="h1-0-459" class="d">-#  crop_playlist
+</a><a href="#h1-0-460" id="h1-0-460" class="d">-#
+</a><a href="#h1-0-461" id="h1-0-461" class="d">-#def_key &quot;C&quot;
+</a><a href="#h1-0-462" id="h1-0-462" class="d">-#  crop_main_playlist
+</a><a href="#h1-0-463" id="h1-0-463" class="d">-#
+</a><a href="#h1-0-464" id="h1-0-464" class="d">-#def_key &quot;m&quot;
+</a><a href="#h1-0-465" id="h1-0-465" class="d">-#  move_sort_order_up
+</a><a href="#h1-0-466" id="h1-0-466" class="d">-#
+</a><a href="#h1-0-467" id="h1-0-467" class="d">-#def_key &quot;m&quot;
+</a><a href="#h1-0-468" id="h1-0-468" class="d">-#  move_selected_items_up
+</a><a href="#h1-0-469" id="h1-0-469" class="d">-#
+</a><a href="#h1-0-470" id="h1-0-470" class="d">-#def_key &quot;m&quot;
+</a><a href="#h1-0-471" id="h1-0-471" class="d">-#  set_visualizer_sample_multiplier
+</a><a href="#h1-0-472" id="h1-0-472" class="d">-#
+</a><a href="#h1-0-473" id="h1-0-473" class="d">-#def_key &quot;n&quot;
+</a><a href="#h1-0-474" id="h1-0-474" class="d">-#  move_sort_order_down
+</a><a href="#h1-0-475" id="h1-0-475" class="d">-#
+</a><a href="#h1-0-476" id="h1-0-476" class="d">-#def_key &quot;n&quot;
+</a><a href="#h1-0-477" id="h1-0-477" class="d">-#  move_selected_items_down
+</a><a href="#h1-0-478" id="h1-0-478" class="d">-#
+</a><a href="#h1-0-479" id="h1-0-479" class="d">-#def_key &quot;M&quot;
+</a><a href="#h1-0-480" id="h1-0-480" class="d">-#  move_selected_items_to
+</a><a href="#h1-0-481" id="h1-0-481" class="d">-#
+</a><a href="#h1-0-482" id="h1-0-482" class="d">-#def_key &quot;A&quot;
+</a><a href="#h1-0-483" id="h1-0-483" class="d">-#  add
+</a><a href="#h1-0-484" id="h1-0-484" class="d">-#
+</a><a href="#h1-0-485" id="h1-0-485" class="d">-#def_key &quot;S&quot;
+</a><a href="#h1-0-486" id="h1-0-486" class="d">-#  save_playlist
+</a><a href="#h1-0-487" id="h1-0-487" class="d">-#
+</a><a href="#h1-0-488" id="h1-0-488" class="d">-#def_key &quot;o&quot;
+</a><a href="#h1-0-489" id="h1-0-489" class="d">-#  jump_to_playing_song
+</a><a href="#h1-0-490" id="h1-0-490" class="d">-#
+</a><a href="#h1-0-491" id="h1-0-491" class="d">-#def_key &quot;G&quot;
+</a><a href="#h1-0-492" id="h1-0-492" class="d">-#  jump_to_browser
+</a><a href="#h1-0-493" id="h1-0-493" class="d">-#
+</a><a href="#h1-0-494" id="h1-0-494" class="d">-#def_key &quot;G&quot;
+</a><a href="#h1-0-495" id="h1-0-495" class="d">-#  jump_to_playlist_editor
+</a><a href="#h1-0-496" id="h1-0-496" class="d">-#
+</a><a href="#h1-0-497" id="h1-0-497" class="d">-#def_key &quot;~&quot;
+</a><a href="#h1-0-498" id="h1-0-498" class="d">-#  jump_to_media_library
+</a><a href="#h1-0-499" id="h1-0-499" class="d">-#
+</a><a href="#h1-0-500" id="h1-0-500" class="d">-#def_key &quot;E&quot;
+</a><a href="#h1-0-501" id="h1-0-501" class="d">-#  jump_to_tag_editor
+</a><a href="#h1-0-502" id="h1-0-502" class="d">-#
+</a><a href="#h1-0-503" id="h1-0-503" class="d">-#def_key &quot;U&quot;
+</a><a href="#h1-0-504" id="h1-0-504" class="d">-#  toggle_playing_song_centering
+</a><a href="#h1-0-505" id="h1-0-505" class="d">-#
+</a><a href="#h1-0-506" id="h1-0-506" class="d">-#def_key &quot;P&quot;
+</a><a href="#h1-0-507" id="h1-0-507" class="d">-#  toggle_display_mode
+</a><a href="#h1-0-508" id="h1-0-508" class="d">-#
+</a><a href="#h1-0-509" id="h1-0-509" class="d">-#def_key &quot;\\&quot;
+</a><a href="#h1-0-510" id="h1-0-510" class="d">-#  toggle_interface
+</a><a href="#h1-0-511" id="h1-0-511" class="d">-#
+</a><a href="#h1-0-512" id="h1-0-512" class="d">-#def_key &quot;!&quot;
+</a><a href="#h1-0-513" id="h1-0-513" class="d">-#  toggle_separators_between_albums
+</a><a href="#h1-0-514" id="h1-0-514" class="d">-#
+</a><a href="#h1-0-515" id="h1-0-515" class="d">-#def_key &quot;L&quot;
+</a><a href="#h1-0-516" id="h1-0-516" class="d">-#  toggle_lyrics_fetcher
+</a><a href="#h1-0-517" id="h1-0-517" class="d">-#
+</a><a href="#h1-0-518" id="h1-0-518" class="d">-#def_key &quot;F&quot;
+</a><a href="#h1-0-519" id="h1-0-519" class="d">-#  toggle_fetching_lyrics_in_background
+</a><a href="#h1-0-520" id="h1-0-520" class="d">-#
+</a><a href="#h1-0-521" id="h1-0-521" class="d">-#def_key &quot;ctrl-l&quot;
+</a><a href="#h1-0-522" id="h1-0-522" class="d">-#  toggle_screen_lock
+</a><a href="#h1-0-523" id="h1-0-523" class="d">-#
+</a><a href="#h1-0-524" id="h1-0-524" class="d">-#def_key &quot;`&quot;
+</a><a href="#h1-0-525" id="h1-0-525" class="d">-#  toggle_library_tag_type
+</a><a href="#h1-0-526" id="h1-0-526" class="d">-#
+</a><a href="#h1-0-527" id="h1-0-527" class="d">-#def_key &quot;`&quot;
+</a><a href="#h1-0-528" id="h1-0-528" class="d">-#  refetch_lyrics
+</a><a href="#h1-0-529" id="h1-0-529" class="d">-#
+</a><a href="#h1-0-530" id="h1-0-530" class="d">-#def_key &quot;`&quot;
+</a><a href="#h1-0-531" id="h1-0-531" class="d">-#  add_random_items
+</a><a href="#h1-0-532" id="h1-0-532" class="d">-#
+</a><a href="#h1-0-533" id="h1-0-533" class="d">-#def_key &quot;ctrl-p&quot;
+</a><a href="#h1-0-534" id="h1-0-534" class="d">-#  set_selected_items_priority
+</a><a href="#h1-0-535" id="h1-0-535" class="d">-#
+</a><a href="#h1-0-536" id="h1-0-536" class="d">-#def_key &quot;q&quot;
+</a><a href="#h1-0-537" id="h1-0-537" class="d">-#  quit
+</a><a href="#h1-0-538" id="h1-0-538" class="d">-#
+</a><b>diff --git a/<a id="h2" href="../file/ncmpcpp/.ncmpcpp/error.log.html">ncmpcpp/.ncmpcpp/error.log</a> b/<a href="../file/ncmpcpp/.ncmpcpp/error.log.html">ncmpcpp/.ncmpcpp/error.log</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -1 +0,0 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="d">-/home/tudurom/.homesick/repos/dotfiles/home/.ncmpcpp/error.log</a><a href="#h2-0-1" id="h2-0-1" class="d">-
+\ No newline at end of file
+</a><b>diff --git a/<a id="h3" href="../file/ncmpcpp/.ncmpcpp/error.log.html">ncmpcpp/.ncmpcpp/error.log</a> b/<a href="../file/ncmpcpp/.ncmpcpp/error.log.html">ncmpcpp/.ncmpcpp/error.log</a></b>
+<b>diff --git a/<a id="h4" href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a> b/<a href="../file/wmrc/.config/sxhkd/commons.html">wmrc/.config/sxhkd/commons</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -6,7 +6,7 @@ super + Return
+</a>   urxvt
+ 
+ super + space
+<a href="#h4-0-3" id="h4-0-3" class="d">-  dmenu_run
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+  dmenu_wrapper
+</a> 
+ super + q
+   showtodo
+<b>diff --git a/<a id="h5" href="../file/wmrc/.scripts/dmenu_wrapper.html">wmrc/.scripts/dmenu_wrapper</a> b/<a href="../file/wmrc/.scripts/dmenu_wrapper.html">wmrc/.scripts/dmenu_wrapper</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -0,0 +1,3 @@
+</a><a href="#h5-0-0" id="h5-0-0" class="i">+#!/bin/sh
+</a><a href="#h5-0-1" id="h5-0-1" class="i">+
+</a><a href="#h5-0-2" id="h5-0-2" class="i">+dmenu_run -nb `xrq &apos;*.background&apos;` -nf `xrq &apos;*.foreground&apos;` -sb `xrq &apos;*.foreground&apos;` -sf `xrq &apos;*.background&apos;`
+</a><b>diff --git a/<a id="h6" href="../file/wmrc/.scripts/startwm.html">wmrc/.scripts/startwm</a> b/<a href="../file/wmrc/.scripts/startwm.html">wmrc/.scripts/startwm</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -2,16 +2,16 @@
+</a> # Starts the environment
+ # (c) tudurom 2016 - wtfpl
+ #
+<a href="#h6-0-3" id="h6-0-3" class="i">+set -x
+</a> wm=&quot;$1&quot;
+<a href="#h6-0-5" id="h6-0-5" class="d">-
+</a> sxhkd -c ~/.config/sxhkd/sxhkdrc_${wm} ~/.config/sxhkd/commons &amp;
+<a href="#h6-0-7" id="h6-0-7" class="d">-case &quot;$1&quot; in
+</a><a href="#h6-0-8" id="h6-0-8" class="i">+case &quot;$wm&quot; in
+</a>     &quot;wmutils&quot;)
+         wew | wewhandle &amp;
+         xwait
+         ;;
+     *)
+<a href="#h6-0-14" id="h6-0-14" class="d">-        $1
+</a><a href="#h6-0-15" id="h6-0-15" class="i">+        $wm
+</a> esac
+ 
+ # vim: set ft=sh :
+<b>diff --git a/<a id="h7" href="../file/x/.xinitrc.html">x/.xinitrc</a> b/<a href="../file/x/.xinitrc.html">x/.xinitrc</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -48,4 +48,5 @@ minbar &amp;
+</a> for s in $HOME/bin/notifyd-*; do
+     $s &amp;
+ done
+<a href="#h7-0-3" id="h7-0-3" class="i">+
+</a> exec startwm bspwm
+<b>diff --git a/<a id="h8" href="../file/x/.xres/urxvt.html">x/.xres/urxvt</a> b/<a href="../file/x/.xres/urxvt.html">x/.xres/urxvt</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -1,4 +1,4 @@
+</a><a href="#h8-0-0" id="h8-0-0" class="d">-*.font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-*-*
+</a><a href="#h8-0-1" id="h8-0-1" class="i">+*.font: -*-gohufont-medium-*-*-*-14-*-*-*-*-*-*-*
+</a> URxvt.letterSpace: 0
+ ! No bold font
+ URxvt.boldFont:
+</pre>
+</div>
+</body>
+</html>

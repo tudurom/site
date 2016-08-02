@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> startwm (252B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> startwm (260B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -38,16 +38,16 @@
 # Starts the environment
 # (c) tudurom 2016 - wtfpl
 #
+set -x
 wm=&quot;$1&quot;
-
 sxhkd -c ~/.config/sxhkd/sxhkdrc_${wm} ~/.config/sxhkd/commons &amp;
-case &quot;$1&quot; in
+case &quot;$wm&quot; in
     &quot;wmutils&quot;)
         wew | wewhandle &amp;
         xwait
         ;;
     *)
-        $1
+        $wm
 esac
 
 # vim: set ft=sh :

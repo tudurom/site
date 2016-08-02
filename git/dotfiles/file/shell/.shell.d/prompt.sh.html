@@ -37,15 +37,15 @@
 <a href="#l19" id="l19">19</a>
 </pre></td><td><pre>
 prompt () {
+    _ERR=$?
     exit_color=6
     b=&quot;$(tput bold)&quot;
     l=&quot;$(echo -n $b; tput setaf 0)&quot;
     z=&quot;$(tput sgr0)&quot;
-    e=&quot;$(tput setaf $exit_color)&quot;
-    _ERR=$?
     if [ $_ERR -ne 0 ]; then
         exit_color=1
     fi
+    e=&quot;$(tput setaf $exit_color)&quot;
     dir=&quot;${l}$(pwd | sed -e &quot;s/\/usr\/home\/$USER/~/&quot; | sed -e &quot;s/\/home\/$USER/~/&quot;)&quot;
     arrow=&quot;${e}───&quot;
     echo &quot;${dir}&quot;
