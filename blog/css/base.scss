@@ -70,3 +70,9 @@ hr {
     border: none;
     border-top: 2px solid $border-color;
 }
+img + em {
+    display: block;
+    font-style: italic;
+    margin: auto;
+    text-align: center;
+}

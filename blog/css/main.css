@@ -121,6 +121,12 @@ hr {
   border: none;
   border-top: 2px solid #ddd; }
 
+img + em {
+  display: block;
+  font-style: italic;
+  margin: auto;
+  text-align: center; }
+
 main {
   max-width: 48rem;
   margin: 0 auto 3rem;
