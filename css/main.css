@@ -58,13 +58,15 @@ a {
     text-decoration: none;
 }
 
-a:link {
+a:link, a:visited {
     color: #6385a6;
 }
 
+/*
 a:visited {
     color: #456472;
 }
+*/
 
 code {
     font-family: "Roboto Mono", monospace;
