@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>rainbou-legacy, branch HEAD</title>
+<subtitle>Simple color scheme file generator written in sh.
+</subtitle>
+<entry>
+<id>067ccb45f5ba6b2c4ee2dd6301ab894f0a061e77</id>
+<published>2016-06-06T12:18:44Z</published>
+<updated>2016-06-06T12:18:44Z</updated>
+<title type="text">added custom styles dir</title>
+<link rel="alternate" type="text/html" href="commit/067ccb45f5ba6b2c4ee2dd6301ab894f0a061e77.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 067ccb45f5ba6b2c4ee2dd6301ab894f0a061e77
+parent 04b9b65175d72798708f81c543220873aa04564b
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Jun  6 15:18:44 +0300
+
+added custom styles dir
+
+</content>
+</entry>
+<entry>
+<id>04b9b65175d72798708f81c543220873aa04564b</id>
+<published>2016-06-06T12:12:12Z</published>
+<updated>2016-06-06T12:12:12Z</updated>
+<title type="text">update firefox template</title>
+<link rel="alternate" type="text/html" href="commit/04b9b65175d72798708f81c543220873aa04564b.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 04b9b65175d72798708f81c543220873aa04564b
+parent fe5c900e34fa5183df6c85afd222e63f1ff6e01f
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Jun  6 15:12:12 +0300
+
+update firefox template
+
+</content>
+</entry>
+<entry>
+<id>fe5c900e34fa5183df6c85afd222e63f1ff6e01f</id>
+<published>2016-06-03T07:07:19Z</published>
+<updated>2016-06-03T07:07:19Z</updated>
+<title type="text">no magenta for thunderstorm</title>
+<link rel="alternate" type="text/html" href="commit/fe5c900e34fa5183df6c85afd222e63f1ff6e01f.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit fe5c900e34fa5183df6c85afd222e63f1ff6e01f
+parent 216820fbc47251f84b1da12acb2d834ed6deee65
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 10:07:19 +0300
+
+no magenta for thunderstorm
+
+</content>
+</entry>
+<entry>
+<id>216820fbc47251f84b1da12acb2d834ed6deee65</id>
+<published>2016-06-03T06:55:32Z</published>
+<updated>2016-06-03T06:55:32Z</updated>
+<title type="text">ignore generated files</title>
+<link rel="alternate" type="text/html" href="commit/216820fbc47251f84b1da12acb2d834ed6deee65.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 216820fbc47251f84b1da12acb2d834ed6deee65
+parent 4786163b15057a848f052ebfc1fda4332acab8cc
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 09:55:32 +0300
+
+ignore generated files
+
+</content>
+</entry>
+<entry>
+<id>4786163b15057a848f052ebfc1fda4332acab8cc</id>
+<published>2016-06-03T06:54:01Z</published>
+<updated>2016-06-03T06:54:01Z</updated>
+<title type="text">magenta for thunderstorm</title>
+<link rel="alternate" type="text/html" href="commit/4786163b15057a848f052ebfc1fda4332acab8cc.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 4786163b15057a848f052ebfc1fda4332acab8cc
+parent 008390fd44d6f02b3f7cd595285ab5370b3e7fcf
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 09:54:01 +0300
+
+magenta for thunderstorm
+
+</content>
+</entry>
+<entry>
+<id>008390fd44d6f02b3f7cd595285ab5370b3e7fcf</id>
+<published>2016-06-03T06:45:17Z</published>
+<updated>2016-06-03T06:45:17Z</updated>
+<title type="text">fix thunderstorm</title>
+<link rel="alternate" type="text/html" href="commit/008390fd44d6f02b3f7cd595285ab5370b3e7fcf.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 008390fd44d6f02b3f7cd595285ab5370b3e7fcf
+parent dd1d30ee6851e41aba0537b68704773a99185e06
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Jun  3 09:45:17 +0300
+
+fix thunderstorm
+
+</content>
+</entry>
+<entry>
+<id>dd1d30ee6851e41aba0537b68704773a99185e06</id>
+<published>2016-05-29T17:20:16Z</published>
+<updated>2016-05-29T17:20:16Z</updated>
+<title type="text">Merge pull request #1 from justinbloomfield/master</title>
+<link rel="alternate" type="text/html" href="commit/dd1d30ee6851e41aba0537b68704773a99185e06.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit dd1d30ee6851e41aba0537b68704773a99185e06
+parent 81f3baf68ff903c142df4df4618a0b118c7270cf
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun May 29 20:20:16 +0300
+
+Merge pull request #1 from justinbloomfield/master
+
+TTY support
+</content>
+</entry>
+<entry>
+<id>81f3baf68ff903c142df4df4618a0b118c7270cf</id>
+<published>2016-05-21T19:49:56Z</published>
+<updated>2016-05-21T19:49:56Z</updated>
+<title type="text">firefox: default to monospace</title>
+<link rel="alternate" type="text/html" href="commit/81f3baf68ff903c142df4df4618a0b118c7270cf.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 81f3baf68ff903c142df4df4618a0b118c7270cf
+parent a6bb28ed55ae2b976d55f995cf1e24a9c7c88a5e
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat May 21 22:49:56 +0300
+
+firefox: default to monospace
+
+</content>
+</entry>
+<entry>
+<id>a6bb28ed55ae2b976d55f995cf1e24a9c7c88a5e</id>
+<published>2016-05-19T17:12:48Z</published>
+<updated>2016-05-19T17:12:48Z</updated>
+<title type="text">restructure</title>
+<link rel="alternate" type="text/html" href="commit/a6bb28ed55ae2b976d55f995cf1e24a9c7c88a5e.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit a6bb28ed55ae2b976d55f995cf1e24a9c7c88a5e
+parent 8fec1a6d8d7d2518306585ea054591f6acc0c767
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu May 19 20:12:48 +0300
+
+restructure
+
+</content>
+</entry>
+<entry>
+<id>8fec1a6d8d7d2518306585ea054591f6acc0c767</id>
+<published>2016-05-06T20:24:35Z</published>
+<updated>2016-05-06T20:24:35Z</updated>
+<title type="text">respect fg/bg colors</title>
+<link rel="alternate" type="text/html" href="commit/8fec1a6d8d7d2518306585ea054591f6acc0c767.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 8fec1a6d8d7d2518306585ea054591f6acc0c767
+parent f7e36f085de1f99b2bbf3ec84253903c408fafe2
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri May  6 23:24:35 +0300
+
+respect fg/bg colors
+
+</content>
+</entry>
+<entry>
+<id>f7e36f085de1f99b2bbf3ec84253903c408fafe2</id>
+<published>2016-04-17T19:19:44Z</published>
+<updated>2016-04-17T19:19:44Z</updated>
+<title type="text">add templates and colors</title>
+<link rel="alternate" type="text/html" href="commit/f7e36f085de1f99b2bbf3ec84253903c408fafe2.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit f7e36f085de1f99b2bbf3ec84253903c408fafe2
+parent 743f4d0886667039ea53e508ec2b42662cca8705
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun Apr 17 22:19:44 +0300
+
+add templates and colors
+
+</content>
+</entry>
+<entry>
+<id>743f4d0886667039ea53e508ec2b42662cca8705</id>
+<published>2016-03-28T12:14:21Z</published>
+<updated>2016-03-28T12:14:21Z</updated>
+<title type="text">new color (draft)</title>
+<link rel="alternate" type="text/html" href="commit/743f4d0886667039ea53e508ec2b42662cca8705.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 743f4d0886667039ea53e508ec2b42662cca8705
+parent 14763d0207b9af1e658d35e3e14f6eda66e820cf
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Mar 28 15:14:21 +0300
+
+new color (draft)
+
+</content>
+</entry>
+<entry>
+<id>14763d0207b9af1e658d35e3e14f6eda66e820cf</id>
+<published>2016-03-26T11:20:47Z</published>
+<updated>2016-03-26T11:20:47Z</updated>
+<title type="text">woody</title>
+<link rel="alternate" type="text/html" href="commit/14763d0207b9af1e658d35e3e14f6eda66e820cf.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 14763d0207b9af1e658d35e3e14f6eda66e820cf
+parent 8a9670e002b5e89397eb640559b2fc83833a652b
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Mar 26 13:20:47 +0200
+
+woody
+
+</content>
+</entry>
+<entry>
+<id>8a9670e002b5e89397eb640559b2fc83833a652b</id>
+<published>2016-03-25T17:25:21Z</published>
+<updated>2016-03-25T17:25:21Z</updated>
+<title type="text">oops</title>
+<link rel="alternate" type="text/html" href="commit/8a9670e002b5e89397eb640559b2fc83833a652b.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 8a9670e002b5e89397eb640559b2fc83833a652b
+parent 3fd11e27eb701942b9512d98770cf73fd37f3a62
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Mar 25 19:25:21 +0200
+
+oops
+
+</content>
+</entry>
+<entry>
+<id>3fd11e27eb701942b9512d98770cf73fd37f3a62</id>
+<published>2016-03-25T17:24:48Z</published>
+<updated>2016-03-25T17:24:48Z</updated>
+<title type="text">readme</title>
+<link rel="alternate" type="text/html" href="commit/3fd11e27eb701942b9512d98770cf73fd37f3a62.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 3fd11e27eb701942b9512d98770cf73fd37f3a62
+parent 539e8dcc5bd5657840b55195209c2be66c9f9bfd
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Mar 25 19:24:48 +0200
+
+readme
+
+</content>
+</entry>
+<entry>
+<id>539e8dcc5bd5657840b55195209c2be66c9f9bfd</id>
+<published>2016-03-25T17:20:22Z</published>
+<updated>2016-03-25T17:20:22Z</updated>
+<title type="text">init</title>
+<link rel="alternate" type="text/html" href="commit/539e8dcc5bd5657840b55195209c2be66c9f9bfd.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 539e8dcc5bd5657840b55195209c2be66c9f9bfd
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Mar 25 19:20:22 +0200
+
+init
+
+</content>
+</entry>
+</feed>

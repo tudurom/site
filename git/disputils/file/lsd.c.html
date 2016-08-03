@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> lsd.c (1484B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> lsd.c (1624B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -82,6 +82,12 @@
 <a href="#l64" id="l64">64</a>
 <a href="#l65" id="l65">65</a>
 <a href="#l66" id="l66">66</a>
+<a href="#l67" id="l67">67</a>
+<a href="#l68" id="l68">68</a>
+<a href="#l69" id="l69">69</a>
+<a href="#l70" id="l70">70</a>
+<a href="#l71" id="l71">71</a>
+<a href="#l72" id="l72">72</a>
 </pre></td><td><pre>
 /*
  * disputils lsd.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt; ix
@@ -92,20 +98,26 @@
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;unistd.h&gt;
+
 #include &quot;util.h&quot;
 
-xcb_connection_t *conn;
-xcb_screen_t *scrn;
+static xcb_connection_t *conn;
+static xcb_screen_t *scrn;
 
-void
+static void usage(char *);
+static void print_output(xcb_connection_t *, xcb_randr_output_t,
+        xcb_randr_get_output_info_reply_t *);
+
+static void
 usage(char *name)
 {
-	printf(&quot;usage: %s \n&quot;, name);
-	exit(0);
+	fprintf(stderr, &quot;usage: %s \n&quot;, name);
+	exit(1);
 }
 
-void
-print_output(xcb_connection_t * conn, xcb_randr_output_t output, xcb_randr_get_output_info_reply_t * output_info)
+static void
+print_output(xcb_connection_t * conn, xcb_randr_output_t output,
+        xcb_randr_get_output_info_reply_t * output_info)
 {
 	if (get_output_connection(conn, output) == 0) {
 		printf(&quot;%s&quot;, get_output_name(conn, output));
@@ -141,7 +153,7 @@ main(int argc, char *argv[])
 			/* Print screen only if in use */
 			if (output_crtc_info != NULL) {
                 print_output(conn, os[j], output_info);
-				//print_output(conn, os[j], output_info);
+
 				if (j &lt; o_len - 1)
 					fputc(&apos;\n&apos;, stdout);
 			}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>small changes in code style - disputils - Utilities for getting information about connected displays.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="disputils.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>disputils</h1><span class="desc">Utilities for getting information about connected displays.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/disputils.git">git://thetudor.ddns.net/disputils.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/bb56f65ee7e9cddb45e924fd066aa1fbbe188e30.html">bb56f65ee7e9cddb45e924fd066aa1fbbe188e30</a>
+<b>parent</b> <a href="../commit/3808ca9e2b20f659886074972ca3912fc6d90760.html">3808ca9e2b20f659886074972ca3912fc6d90760</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Wed Aug  3 13:33:49 +0300
+
+small changes in code style
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">LICENSE</a></td><td> | </td><td class="num">3</td><td><span class="i">++</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h1">dattr.c</a></td><td> | </td><td class="num">16</td><td><span class="i">+++++++++</span><span class="d">-------</span></td></tr>
+<tr><td><a href="#h2">lsd.c</a></td><td> | </td><td class="num">22</td><td><span class="i">++++++++++++++</span><span class="d">--------</span></td></tr>
+<tr><td><a href="#h3">pfd.c</a></td><td> | </td><td class="num">12</td><td><span class="i">+++++++</span><span class="d">-----</span></td></tr>
+<tr><td><a href="#h4">ppd.c</a></td><td> | </td><td class="num">12</td><td><span class="i">+++++++</span><span class="d">-----</span></td></tr>
+</table>5 files changed, 39 insertions(+), 26 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/LICENSE.html">LICENSE</a> b/<a href="../file/LICENSE.html">LICENSE</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,4 +1,5 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="d">-Copyright (c) 2016, ix/tudurom
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+Copyright (c) 2016, ix      &lt;arcetera at openmailbox dot org&gt;
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+                    tudurom &lt;xenogenesis at openmailbox dot org&gt;
+</a> All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+<b>diff --git a/<a id="h1" href="../file/dattr.c.html">dattr.c</a> b/<a href="../file/dattr.c.html">dattr.c</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -11,14 +11,16 @@
+</a> 
+ #include &quot;util.h&quot;
+ 
+<a href="#h1-0-3" id="h1-0-3" class="d">-xcb_connection_t *conn;
+</a><a href="#h1-0-4" id="h1-0-4" class="d">-xcb_screen_t   *scrn;
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+static xcb_connection_t *conn;
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+static xcb_screen_t *scrn;
+</a> 
+<a href="#h1-0-8" id="h1-0-8" class="d">-void
+</a><a href="#h1-0-9" id="h1-0-9" class="i">+static void usage(char *);
+</a><a href="#h1-0-10" id="h1-0-10" class="i">+
+</a><a href="#h1-0-11" id="h1-0-11" class="i">+static void
+</a> usage(char *name)
+ {
+<a href="#h1-0-14" id="h1-0-14" class="d">-	printf(&quot;usage: %s [-whxy] &lt;display_id&gt; \n&quot;, name);
+</a><a href="#h1-0-15" id="h1-0-15" class="d">-	exit(0);
+</a><a href="#h1-0-16" id="h1-0-16" class="i">+	fprintf(stderr, &quot;usage: %s [-whxy] &lt;display_id&gt; \n&quot;, name);
+</a><a href="#h1-0-17" id="h1-0-17" class="i">+	exit(1);
+</a> }
+ 
+ int
+<a href="#h1-1" id="h1-1" class="h">@@ -29,9 +31,9 @@ main(int argc, char *argv[])
+</a> 		err(1, &quot;pledge&quot;);
+ #endif
+ 	xcb_randr_output_t output = -1;
+<a href="#h1-1-3" id="h1-1-3" class="d">-	xcb_randr_get_output_info_reply_t *output_info = NULL;
+</a><a href="#h1-1-4" id="h1-1-4" class="i">+	xcb_randr_get_output_info_reply_t *output_info;
+</a> 	xcb_randr_crtc_t screen_crtc;
+<a href="#h1-1-6" id="h1-1-6" class="d">-	xcb_randr_get_crtc_info_reply_t *screen_crtc_info = NULL;
+</a><a href="#h1-1-7" id="h1-1-7" class="i">+	xcb_randr_get_crtc_info_reply_t *screen_crtc_info;
+</a> 	char *output_name;
+ 
+ 	if (argc != 3)
+<b>diff --git a/<a id="h2" href="../file/lsd.c.html">lsd.c</a> b/<a href="../file/lsd.c.html">lsd.c</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -7,20 +7,26 @@
+</a> #include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+ #include &lt;unistd.h&gt;
+<a href="#h2-0-3" id="h2-0-3" class="i">+
+</a> #include &quot;util.h&quot;
+ 
+<a href="#h2-0-6" id="h2-0-6" class="d">-xcb_connection_t *conn;
+</a><a href="#h2-0-7" id="h2-0-7" class="d">-xcb_screen_t *scrn;
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+static xcb_connection_t *conn;
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+static xcb_screen_t *scrn;
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+
+</a><a href="#h2-0-11" id="h2-0-11" class="i">+static void usage(char *);
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+static void print_output(xcb_connection_t *, xcb_randr_output_t,
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+        xcb_randr_get_output_info_reply_t *);
+</a> 
+<a href="#h2-0-15" id="h2-0-15" class="d">-void
+</a><a href="#h2-0-16" id="h2-0-16" class="i">+static void
+</a> usage(char *name)
+ {
+<a href="#h2-0-19" id="h2-0-19" class="d">-	printf(&quot;usage: %s \n&quot;, name);
+</a><a href="#h2-0-20" id="h2-0-20" class="d">-	exit(0);
+</a><a href="#h2-0-21" id="h2-0-21" class="i">+	fprintf(stderr, &quot;usage: %s \n&quot;, name);
+</a><a href="#h2-0-22" id="h2-0-22" class="i">+	exit(1);
+</a> }
+ 
+<a href="#h2-0-25" id="h2-0-25" class="d">-void
+</a><a href="#h2-0-26" id="h2-0-26" class="d">-print_output(xcb_connection_t * conn, xcb_randr_output_t output, xcb_randr_get_output_info_reply_t * output_info)
+</a><a href="#h2-0-27" id="h2-0-27" class="i">+static void
+</a><a href="#h2-0-28" id="h2-0-28" class="i">+print_output(xcb_connection_t * conn, xcb_randr_output_t output,
+</a><a href="#h2-0-29" id="h2-0-29" class="i">+        xcb_randr_get_output_info_reply_t * output_info)
+</a> {
+ 	if (get_output_connection(conn, output) == 0) {
+ 		printf(&quot;%s&quot;, get_output_name(conn, output));
+<a href="#h2-1" id="h2-1" class="h">@@ -56,7 +62,7 @@ main(int argc, char *argv[])
+</a> 			/* Print screen only if in use */
+ 			if (output_crtc_info != NULL) {
+                 print_output(conn, os[j], output_info);
+<a href="#h2-1-3" id="h2-1-3" class="d">-				//print_output(conn, os[j], output_info);
+</a><a href="#h2-1-4" id="h2-1-4" class="i">+
+</a> 				if (j &lt; o_len - 1)
+ 					fputc(&apos;\n&apos;, stdout);
+ 			}
+<b>diff --git a/<a id="h3" href="../file/pfd.c.html">pfd.c</a> b/<a href="../file/pfd.c.html">pfd.c</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -10,14 +10,16 @@
+</a> 
+ #include &quot;util.h&quot;
+ 
+<a href="#h3-0-3" id="h3-0-3" class="d">-xcb_connection_t *conn;
+</a><a href="#h3-0-4" id="h3-0-4" class="d">-xcb_screen_t   *scrn;
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+static xcb_connection_t *conn;
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+static xcb_screen_t *scrn;
+</a> 
+<a href="#h3-0-8" id="h3-0-8" class="d">-void
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+static void usage(char *);
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+
+</a><a href="#h3-0-11" id="h3-0-11" class="i">+static void
+</a> usage(char *name)
+ {
+<a href="#h3-0-14" id="h3-0-14" class="d">-	printf(&quot;usage: %s \n&quot;, name);
+</a><a href="#h3-0-15" id="h3-0-15" class="d">-	exit(0);
+</a><a href="#h3-0-16" id="h3-0-16" class="i">+	fprintf(stderr, &quot;usage: %s \n&quot;, name);
+</a><a href="#h3-0-17" id="h3-0-17" class="i">+	exit(1);
+</a> }
+ 
+ int
+<b>diff --git a/<a id="h4" href="../file/ppd.c.html">ppd.c</a> b/<a href="../file/ppd.c.html">ppd.c</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -10,14 +10,16 @@
+</a> 
+ #include &quot;util.h&quot;
+ 
+<a href="#h4-0-3" id="h4-0-3" class="d">-xcb_connection_t *conn;
+</a><a href="#h4-0-4" id="h4-0-4" class="d">-xcb_screen_t *scrn;
+</a><a href="#h4-0-5" id="h4-0-5" class="i">+static xcb_connection_t *conn;
+</a><a href="#h4-0-6" id="h4-0-6" class="i">+static xcb_screen_t *scrn;
+</a> 
+<a href="#h4-0-8" id="h4-0-8" class="d">-void
+</a><a href="#h4-0-9" id="h4-0-9" class="i">+static void usage(char *);
+</a><a href="#h4-0-10" id="h4-0-10" class="i">+
+</a><a href="#h4-0-11" id="h4-0-11" class="i">+static void
+</a> usage(char *name)
+ {
+<a href="#h4-0-14" id="h4-0-14" class="d">-	printf(&quot;usage: %s \n&quot;, name);
+</a><a href="#h4-0-15" id="h4-0-15" class="d">-	exit(0);
+</a><a href="#h4-0-16" id="h4-0-16" class="i">+	fprintf(stderr, &quot;usage: %s \n&quot;, name);
+</a><a href="#h4-0-17" id="h4-0-17" class="i">+	exit(1);
+</a> }
+ 
+ int
+</pre>
+</div>
+</body>
+</html>

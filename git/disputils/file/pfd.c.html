@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> pfd.c (2241B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> pfd.c (2297B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -116,6 +116,8 @@
 <a href="#l98" id="l98">98</a>
 <a href="#l99" id="l99">99</a>
 <a href="#l100" id="l100">100</a>
+<a href="#l101" id="l101">101</a>
+<a href="#l102" id="l102">102</a>
 </pre></td><td><pre>
 /*
  * disputils pfd.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt; ix
@@ -129,14 +131,16 @@
 
 #include &quot;util.h&quot;
 
-xcb_connection_t *conn;
-xcb_screen_t   *scrn;
+static xcb_connection_t *conn;
+static xcb_screen_t *scrn;
 
-void
+static void usage(char *);
+
+static void
 usage(char *name)
 {
-	printf(&quot;usage: %s \n&quot;, name);
-	exit(0);
+	fprintf(stderr, &quot;usage: %s \n&quot;, name);
+	exit(1);
 }
 
 int

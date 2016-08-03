@@ -4,6 +4,40 @@
 <subtitle>Utilities for getting information about connected displays.
 </subtitle>
 <entry>
+<id>3846a6f9721848cd8095dbb54d9e9503431e58a9</id>
+<published>2016-08-03T10:35:01Z</published>
+<updated>2016-08-03T10:35:01Z</updated>
+<title type="text">include license title :^)</title>
+<link rel="alternate" type="text/html" href="commit/3846a6f9721848cd8095dbb54d9e9503431e58a9.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 3846a6f9721848cd8095dbb54d9e9503431e58a9
+parent bb56f65ee7e9cddb45e924fd066aa1fbbe188e30
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Aug  3 13:35:01 +0300
+
+include license title :^)
+
+</content>
+</entry>
+<entry>
+<id>bb56f65ee7e9cddb45e924fd066aa1fbbe188e30</id>
+<published>2016-08-03T10:33:49Z</published>
+<updated>2016-08-03T10:33:49Z</updated>
+<title type="text">small changes in code style</title>
+<link rel="alternate" type="text/html" href="commit/bb56f65ee7e9cddb45e924fd066aa1fbbe188e30.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit bb56f65ee7e9cddb45e924fd066aa1fbbe188e30
+parent 3808ca9e2b20f659886074972ca3912fc6d90760
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Aug  3 13:33:49 +0300
+
+small changes in code style
+
+</content>
+</entry>
+<entry>
 <id>3808ca9e2b20f659886074972ca3912fc6d90760</id>
 <published>2016-08-02T09:13:05Z</published>
 <updated>2016-08-02T09:13:05Z</updated>

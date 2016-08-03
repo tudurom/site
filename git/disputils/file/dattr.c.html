@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/README.html">README</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> dattr.c (1969B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> dattr.c (2011B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -116,6 +116,8 @@
 <a href="#l98" id="l98">98</a>
 <a href="#l99" id="l99">99</a>
 <a href="#l100" id="l100">100</a>
+<a href="#l101" id="l101">101</a>
+<a href="#l102" id="l102">102</a>
 </pre></td><td><pre>
 /*
  * disputils dattr.c 04/15/2016 tudurom &lt;xenogenesis@openmailbox.org&gt; ix
@@ -130,14 +132,16 @@
 
 #include &quot;util.h&quot;
 
-xcb_connection_t *conn;
-xcb_screen_t   *scrn;
+static xcb_connection_t *conn;
+static xcb_screen_t *scrn;
 
-void
+static void usage(char *);
+
+static void
 usage(char *name)
 {
-	printf(&quot;usage: %s [-whxy] &lt;display_id&gt; \n&quot;, name);
-	exit(0);
+	fprintf(stderr, &quot;usage: %s [-whxy] &lt;display_id&gt; \n&quot;, name);
+	exit(1);
 }
 
 int
@@ -148,9 +152,9 @@ main(int argc, char *argv[])
 		err(1, &quot;pledge&quot;);
 #endif
 	xcb_randr_output_t output = -1;
-	xcb_randr_get_output_info_reply_t *output_info = NULL;
+	xcb_randr_get_output_info_reply_t *output_info;
 	xcb_randr_crtc_t screen_crtc;
-	xcb_randr_get_crtc_info_reply_t *screen_crtc_info = NULL;
+	xcb_randr_get_crtc_info_reply_t *screen_crtc_info;
 	char *output_name;
 
 	if (argc != 3)

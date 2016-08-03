@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>update firefox template - rainbou-legacy - Simple color scheme file generator written in sh.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="rainbou-legacy.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>rainbou-legacy</h1><span class="desc">Simple color scheme file generator written in sh.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/rainbou.git">git://thetudor.ddns.net/rainbou.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/04b9b65175d72798708f81c543220873aa04564b.html">04b9b65175d72798708f81c543220873aa04564b</a>
+<b>parent</b> <a href="../commit/fe5c900e34fa5183df6c85afd222e63f1ff6e01f.html">fe5c900e34fa5183df6c85afd222e63f1ff6e01f</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Mon Jun  6 15:12:12 +0300
+
+update firefox template
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">templates/firefox</a></td><td> | </td><td class="num">175</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++</span><span class="d">-------------------------------------</span></td></tr>
+</table>1 file changed, 94 insertions(+), 81 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/templates/firefox.html">templates/firefox</a> b/<a href="../file/templates/firefox.html">templates/firefox</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -3,46 +3,37 @@
+</a> /*
+     Author: Twily
+     Description: Minimal flat styled tabs for Australis
+<a href="#h0-0-3" id="h0-0-3" class="d">-    Compitability: Firefox Nightly v31.0a1 - v32.0a1 (Australis)
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-       CSS Variables were introduced to Firefox in v29.0a1
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+    Compatibility: -- Firefox 43.0.4 --
+</a>     Website: http://twily.info/
+ 
+ 
+<a href="#h0-0-9" id="h0-0-9" class="d">-    Note: To enable the urlbar; search this css for:
+</a><a href="#h0-0-10" id="h0-0-10" class="d">-       &quot;make the url-bar visible&quot; and &quot;adjust margin-top to&quot;
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+    Useful search tags within this css:
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+    &quot;url-bar visible&quot;, &quot;bottom margin&quot;, &quot;attach url-bar&quot;, &quot;newtab button&quot;, &quot;back/forward&quot;, &quot;enable scrollbar&quot;
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+    To enable bitmap fonts in Firefox 44+; open &quot;about:config&quot; and set the following preference to &quot;false&quot;:
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+    &quot;gfx.font_rendering.fontconfig.fontlist.enabled&quot;
+</a> */
+ 
+ 
+ :root {
+     /* TAB VARIABLES */
+<a href="#h0-0-22" id="h0-0-22" class="d">-    /*--bg-light: #524C59; --bg-dark: #282333;*/
+</a><a href="#h0-0-23" id="h0-0-23" class="d">-    /*--fg-light: #D6CCDC; --fg-dark: #AAA5AD;*/
+</a><a href="#h0-0-24" id="h0-0-24" class="d">-    /*--bg-light: #273941; */
+</a><a href="#h0-0-25" id="h0-0-25" class="d">-    --bg-light: $COLOR_BG$;
+</a><a href="#h0-0-26" id="h0-0-26" class="d">-    --bg-dark: $COLOR_BG$;
+</a><a href="#h0-0-27" id="h0-0-27" class="d">-    --fg-light: $COLOR_9$;
+</a><a href="#h0-0-28" id="h0-0-28" class="d">-    --fg-dark: $COLOR_14$;
+</a><a href="#h0-0-29" id="h0-0-29" class="i">+    --bg-light: $COLOR_0$; --bg-dark: $COLOR_0$;
+</a><a href="#h0-0-30" id="h0-0-30" class="i">+    --fg-light: $COLOR_9$; --fg-dark: $COLOR_6$;
+</a>     --tab-triangle-correction: -1px;
+<a href="#h0-0-32" id="h0-0-32" class="d">-    --tab-height: 28px; --tab-icon-size: 10px; --tab-strip-margin: -11px; --tab-overlap: -5px;
+</a><a href="#h0-0-33" id="h0-0-33" class="d">-    --tab-fonts: &quot;M+ 1m&quot;, monospace,&quot;Dejavu Sans&quot;; --tab-font-size: 10pt;
+</a><a href="#h0-0-34" id="h0-0-34" class="i">+    --tab-height: 28px; --tab-icon-size: 12px; --tab-strip-margin: -12px; --tab-overlap: -5px;
+</a><a href="#h0-0-35" id="h0-0-35" class="i">+    --tab-fonts: &quot;gohufont&quot;,monospace,&quot;Dejavu Sans&quot;; --tab-font-size: 7pt;
+</a>     --tab-text-align: center; /* left | center | right */
+<a href="#h0-0-37" id="h0-0-37" class="d">-    --tab-triangle: block; /* block | none */
+</a><a href="#h0-0-38" id="h0-0-38" class="i">+    --tab-triangle: block;  /* block | none */
+</a> 
+     /* URL VARIABLES */
+<a href="#h0-0-41" id="h0-0-41" class="d">-    --url-background: var(--bg-light); --url-color: var(--fg-light);
+</a><a href="#h0-0-42" id="h0-0-42" class="d">-    --url-height: 18px; --url-right-margin: 5px;
+</a><a href="#h0-0-43" id="h0-0-43" class="d">-    --url-fonts: &quot;M+ 1m&quot;,monospace,&quot;Dejavu Sans&quot;; --url-font-size: 7pt;
+</a><a href="#h0-0-44" id="h0-0-44" class="i">+    --url-background: var(--bg-light); --url-color: var(--fg-dark);
+</a><a href="#h0-0-45" id="h0-0-45" class="i">+    --url-height: 18px; --url-right-margin: 6px;
+</a><a href="#h0-0-46" id="h0-0-46" class="i">+    --url-fonts: &quot;gohufont&quot;,monospace,&quot;Dejavu Sans&quot;; --url-font-size: 7pt;
+</a>     --url-text-align: center; /* left | center | right */
+     --url-position: absolute; /* absolute == top (under tabs) || fixed == bottom of browser */
+<a href="#h0-0-49" id="h0-0-49" class="d">-
+</a><a href="#h0-0-50" id="h0-0-50" class="d">-    margin-bottom: 0 /* var(--url-height) */ !important;
+</a> }
+ 
+<a href="#h0-0-53" id="h0-0-53" class="d">-#content browser {
+</a><a href="#h0-0-54" id="h0-0-54" class="d">- margin-right: -14px !important;
+</a><a href="#h0-0-55" id="h0-0-55" class="d">- overflow-y: scroll;
+</a><a href="#h0-0-56" id="h0-0-56" class="d">- overflow-x: hidden;
+</a><a href="#h0-0-57" id="h0-0-57" class="d">-}
+</a> 
+ @-moz-document url(chrome://browser/content/browser.xul) {
+     /* URL-BAR */
+<a href="#h0-1" id="h0-1" class="h">@@ -50,57 +41,72 @@
+</a>     #PanelUI-button, #bookmarks-menu-button, #downloads-button, #home-button, #stylish-toolbar-button, #abp-toolbarbutton,
+     #notification-popup-box, #new-tab-button, #private-browsing-indicator, #search-container, #nav-bar-overflow-button,
+     .tabs-newtab-button, .tab-close-button, .tab-close, .tab-throbber, .tab-background-start, .tab-background-end,
+<a href="#h0-1-3" id="h0-1-3" class="d">-    #window-controls /*, #alltabs-button, #tabview-button, .tab-icon-image */, .tab-icon-image:not([pinned]) { display: none !important; }
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+    #pocket-button, #loop-button, #social-share-button, #window-controls
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+    /*#alltabs-button, #tabview-button, .tab-icon-image*/, .tab-icon-image:not([pinned]) { display: none !important; }
+</a> 
+<a href="#h0-1-7" id="h0-1-7" class="d">-    /* --- Uncomment the section below to enable the Back/Forward buttons [EXPERIMENTAL] (Requires url-bar) --- */
+</a><a href="#h0-1-8" id="h0-1-8" class="d">-    /*
+</a><a href="#h0-1-9" id="h0-1-9" class="d">-    #back-button, #forward-button { display: block !important; }
+</a><a href="#h0-1-10" id="h0-1-10" class="d">-    #back-button::before, #forward-button::before {
+</a><a href="#h0-1-11" id="h0-1-11" class="d">-        display: inline-block !important; position: absolute !important;
+</a><a href="#h0-1-12" id="h0-1-12" class="d">-        width: var(--url-height) !important; height: var(--url-height) !important; top: 0 !important;
+</a><a href="#h0-1-13" id="h0-1-13" class="d">-        text-align: center !important; line-height: var(--url-height) !important;
+</a><a href="#h0-1-14" id="h0-1-14" class="d">-    }
+</a><a href="#h0-1-15" id="h0-1-15" class="d">-    #back-button::before { content: &quot;&lt;&quot; !important; left: 0 !important; }
+</a><a href="#h0-1-16" id="h0-1-16" class="d">-    #forward-button::before { content: &quot;&gt;&quot; !important; left: calc(var(--url-height) + 8px) !important; }
+</a><a href="#h0-1-17" id="h0-1-17" class="d">-    /**/
+</a><a href="#h0-1-18" id="h0-1-18" class="i">+    * { box-sizing: border-box !important; }
+</a> 
+<a href="#h0-1-20" id="h0-1-20" class="d">-    /* --- Uncomment the section below to enable the New Tab Button [EXPERIMENTAL] --- */
+</a><a href="#h0-1-21" id="h0-1-21" class="i">+    /* --- Comment out the section below to remove the newtab button --- */
+</a>     /**/
+     .tabs-newtab-button { display: block !important; background: transparent !important; margin: 0 8px 0 0 !important; width: 24px !important; }
+<a href="#h0-1-24" id="h0-1-24" class="d">-    .tabs-newtab-button::before { content: &quot;+&quot; !important; font-family: Hack;}
+</a><a href="#h0-1-25" id="h0-1-25" class="i">+    .tabs-newtab-button::before { content: &quot;+&quot; !important; }
+</a>     /**/
+ 
+     .tab-drop-indicator { margin-bottom: 0 !important; }
+ 
+<a href="#h0-1-30" id="h0-1-30" class="i">+
+</a><a href="#h0-1-31" id="h0-1-31" class="i">+    /*#browser { margin-bottom: var(--url-height) !important; }/**/ /* Uncomment to enable bottom margin */
+</a><a href="#h0-1-32" id="h0-1-32" class="i">+
+</a><a href="#h0-1-33" id="h0-1-33" class="i">+    #navigator-toolbox { background: var(--url-background) !important; }
+</a><a href="#h0-1-34" id="h0-1-34" class="i">+    #navigator-toolbox * { clip: auto !important; clip-path: none !important; }
+</a><a href="#h0-1-35" id="h0-1-35" class="i">+
+</a>     #nav-bar {
+         position: var(--url-position) !important; bottom: 0 !important;
+         width: 100% !important; height: var(--url-height) !important;
+<a href="#h0-1-39" id="h0-1-39" class="d">-        min-height: var(--url-height) !important; max-height: var(--url-height) !important;
+</a><a href="#h0-1-40" id="h0-1-40" class="d">-        margin: 0 0 0 0 !important;
+</a><a href="#h0-1-41" id="h0-1-41" class="i">+        margin: 0 !important; background: transparent !important;
+</a> 
+<a href="#h0-1-43" id="h0-1-43" class="d">-        /* --- Uncomment the section below to attach the url-bar to the tab-bar [EXPERIMENTAL] (Require a line in &quot;#TabsToolbar&quot; below) --- */
+</a><a href="#h0-1-44" id="h0-1-44" class="i">+        /* --- Uncomment section below to attach url-bar to the tab-bar [EXPERIMENTAL] (Require a line in &quot;#TabsToolbar&quot; below) --- */
+</a>         /*
+         position: fixed !important; top: 0 !important; left: 0 !important;
+         width: 315px !important; max-width: 315px !important;
+         z-index: 100 !important;
+         /**/
+     }
+<a href="#h0-1-51" id="h0-1-51" class="d">-       #nav-bar-customization-target { width: 100% !important; }
+</a><a href="#h0-1-52" id="h0-1-52" class="d">-          #urlbar-wrapper {
+</a><a href="#h0-1-53" id="h0-1-53" class="d">-              width: 100% !important; margin-top: -0px !important; /* --- adjust margin-top to ~ -5px if you experience gap --- */
+</a><a href="#h0-1-54" id="h0-1-54" class="d">-              position: absolute !important; top: 0 !important; left: 0 !important;
+</a><a href="#h0-1-55" id="h0-1-55" class="d">-              border-bottom: 0px solid var(--bg-light) !important;
+</a><a href="#h0-1-56" id="h0-1-56" class="d">-          }
+</a><a href="#h0-1-57" id="h0-1-57" class="d">-             #urlbar {
+</a><a href="#h0-1-58" id="h0-1-58" class="d">-                 border: none !important; border-radius: 0 !important;
+</a><a href="#h0-1-59" id="h0-1-59" class="d">-                 margin: 0 0 0 0 !important; padding: 0 2px 0 2px !important;
+</a><a href="#h0-1-60" id="h0-1-60" class="d">-                 width: calc(100% + var(--url-right-margin)) !important;
+</a><a href="#h0-1-61" id="h0-1-61" class="d">-                 height: var(--url-height) !important; min-height: var(--url-height) !important;
+</a><a href="#h0-1-62" id="h0-1-62" class="d">-                 background: var(--url-background) !important; color: var(--url-color) !important;
+</a><a href="#h0-1-63" id="h0-1-63" class="d">-                 font-family: var(--url-fonts) !important; font-size: var(--url-font-size) !important;
+</a><a href="#h0-1-64" id="h0-1-64" class="d">-                 text-align: var(--url-text-align) !important;
+</a><a href="#h0-1-65" id="h0-1-65" class="d">-             }
+</a><a href="#h0-1-66" id="h0-1-66" class="d">-             /*#urlbar * { -moz-appearance: none !important; }*/
+</a><a href="#h0-1-67" id="h0-1-67" class="i">+        #nav-bar-customization-target, #urlbar-container, #urlbar {
+</a><a href="#h0-1-68" id="h0-1-68" class="i">+            margin: 0 !important; padding: 0 !important;
+</a><a href="#h0-1-69" id="h0-1-69" class="i">+            width: 100% !important; height: 100% !important;
+</a><a href="#h0-1-70" id="h0-1-70" class="i">+            border-radius: 0 !important;
+</a><a href="#h0-1-71" id="h0-1-71" class="i">+        }
+</a><a href="#h0-1-72" id="h0-1-72" class="i">+            #nav-bar-customization-target {
+</a><a href="#h0-1-73" id="h0-1-73" class="i">+                position: absolute !important; top: -1px !important; left: 0 !important; height: calc(100% - 1px) !important; /* (bottom margin - height switch +/-) */
+</a><a href="#h0-1-74" id="h0-1-74" class="i">+            }
+</a><a href="#h0-1-75" id="h0-1-75" class="i">+                #urlbar {
+</a><a href="#h0-1-76" id="h0-1-76" class="i">+                    border: none !important; padding: 0 2px 0 8px !important;
+</a><a href="#h0-1-77" id="h0-1-77" class="i">+                    background: var(--url-background) !important; color: var(--url-color) !important;
+</a><a href="#h0-1-78" id="h0-1-78" class="i">+                    font-family: var(--url-fonts) !important; font-size: var(--url-font-size) !important;
+</a><a href="#h0-1-79" id="h0-1-79" class="i">+                    text-align: var(--url-text-align) !important;
+</a><a href="#h0-1-80" id="h0-1-80" class="i">+                    height: 100% !important;
+</a><a href="#h0-1-81" id="h0-1-81" class="i">+                }
+</a><a href="#h0-1-82" id="h0-1-82" class="i">+                /*#urlbar * { -moz-appearance: none !important; }*/
+</a><a href="#h0-1-83" id="h0-1-83" class="i">+
+</a><a href="#h0-1-84" id="h0-1-84" class="i">+                .urlbar-textbox-container .urlbar-input-box .textbox-input {
+</a><a href="#h0-1-85" id="h0-1-85" class="i">+                    height: var(--url-height) !important;
+</a><a href="#h0-1-86" id="h0-1-86" class="i">+                }
+</a><a href="#h0-1-87" id="h0-1-87" class="i">+
+</a><a href="#h0-1-88" id="h0-1-88" class="i">+
+</a><a href="#h0-1-89" id="h0-1-89" class="i">+    /* --- Uncomment the section below to enable the back/forward buttons [EXPERIMENTAL] (Requires url-bar) --- */
+</a><a href="#h0-1-90" id="h0-1-90" class="i">+    /*
+</a><a href="#h0-1-91" id="h0-1-91" class="i">+    #back-button, #forward-button { display: block !important; }
+</a><a href="#h0-1-92" id="h0-1-92" class="i">+    #back-button::before, #forward-button::before {
+</a><a href="#h0-1-93" id="h0-1-93" class="i">+        display: inline-block !important; position: absolute !important;
+</a><a href="#h0-1-94" id="h0-1-94" class="i">+        width: var(--url-height) !important; height: var(--url-height) !important; top: 0 !important;
+</a><a href="#h0-1-95" id="h0-1-95" class="i">+        text-align: center !important; line-height: var(--url-height) !important;
+</a><a href="#h0-1-96" id="h0-1-96" class="i">+    }
+</a><a href="#h0-1-97" id="h0-1-97" class="i">+    #back-button::before { content: &quot;&lt;&quot; !important; left: 0 !important; }
+</a><a href="#h0-1-98" id="h0-1-98" class="i">+    #forward-button::before { content: &quot;&gt;&quot; !important; left: calc(var(--url-height) + 8px) !important; }
+</a><a href="#h0-1-99" id="h0-1-99" class="i">+    #urlbar { padding-left: calc((var(--url-height) * 2) + 8px) !important; }
+</a><a href="#h0-1-100" id="h0-1-100" class="i">+    /**/
+</a><a href="#h0-1-101" id="h0-1-101" class="i">+
+</a> 
+     /* --- Comment out the section below to make the url-bar visible --- */
+     /**/
+<a href="#h0-2" id="h0-2" class="h">@@ -112,7 +118,7 @@
+</a>     /**/
+ 
+     /* TABS */
+<a href="#h0-2-3" id="h0-2-3" class="d">-    .tabbrowser-tab[fadein]:not([pinned]) { min-width: 50px !important; max-width: /*180px*/ 100% !important; }
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+    .tabbrowser-tab[fadein]:not([pinned]) { min-width: 100px !important; max-width: /*180px*/ 100% !important; }
+</a>     tab {
+         font-family: var(--tab-fonts) !important;
+         height: var(--tab-height) !important; min-height: var(--tab-height) !important;
+<a href="#h0-3" id="h0-3" class="h">@@ -120,13 +126,13 @@
+</a>         font-size: var(--tab-font-size); text-shadow: none !important; text-align: var(--tab-text-align) !important;
+     }
+ 
+<a href="#h0-3-3" id="h0-3-3" class="d">-    .tabbrowser-tab label { padding: 0 14px 0 14px !important; }
+</a><a href="#h0-3-4" id="h0-3-4" class="i">+    .tabbrowser-tab label { padding: 0 22px 0 22px !important; }
+</a> 
+<a href="#h0-3-6" id="h0-3-6" class="d">-    #tabbrowser-tabs .tabbrowser-tab[pinned]            { width: 38px !important; }
+</a><a href="#h0-3-7" id="h0-3-7" class="i">+    #tabbrowser-tabs .tabbrowser-tab[pinned]            { width: 48px !important; }
+</a>     #tabbrowser-tabs .tabbrowser-tab[pinned] label      { display: none !important; }
+ 
+     #tabbrowser-tabs .tabbrowser-tab .tab-icon-image {
+<a href="#h0-3-11" id="h0-3-11" class="d">-        margin: 0 -10px 0 14px !important;
+</a><a href="#h0-3-12" id="h0-3-12" class="i">+        margin: 0 -10px 0 16px !important;
+</a>         width: var(--tab-icon-size) !important;
+         height: var(--tab-icon-size) !important;
+     }
+<a href="#h0-4" id="h0-4" class="h">@@ -137,10 +143,16 @@
+</a>         -moz-appearance: none !important;
+     }
+ 
+<a href="#h0-4-3" id="h0-4-3" class="i">+    #alltabs-button { margin-left: -10px !important; }
+</a><a href="#h0-4-4" id="h0-4-4" class="i">+
+</a>     #tabbrowser-tabs .tabbrowser-tab[pinned] .tab-stack { height: var(--tab-height) !important; width: 100% !important; }
+<a href="#h0-4-6" id="h0-4-6" class="d">-    #tabbrowser-tabs .tabbrowser-arrowscrollbox .box-inherit.scrollbox-innerbox { max-height: var(--tab-height) !important; }
+</a><a href="#h0-4-7" id="h0-4-7" class="i">+    #tabbrowser-tabs .tabbrowser-arrowscrollbox, #tabbrowser-tabs .tabbrowser-arrowscrollbox .box-inherit.scrollbox-innerbox {
+</a><a href="#h0-4-8" id="h0-4-8" class="i">+        max-height: var(--tab-height) !important;
+</a><a href="#h0-4-9" id="h0-4-9" class="i">+    }
+</a>     .scrollbutton-up, .scrollbutton-down { border: none !important; }
+ 
+<a href="#h0-4-12" id="h0-4-12" class="i">+    #tabbrowser-tabs[overflow]:not([positionpinnedtabs]) { -moz-padding-start: 20px !important; }
+</a><a href="#h0-4-13" id="h0-4-13" class="i">+
+</a>     .tabbrowser-tab[selected=&quot;true&quot;] .tab-stack {
+         background: var(--bg-light) !important; color: var(--fg-light) !important;
+         border-radius: 0px !important; position: relative !important;
+<a href="#h0-5" id="h0-5" class="h">@@ -152,7 +164,7 @@
+</a>         width: 0 !important; height: 0 !important;
+         border: none !important; z-index: 2 !important;
+ 
+<a href="#h0-5-3" id="h0-5-3" class="d">-        /**/
+</a><a href="#h0-5-4" id="h0-5-4" class="i">+        /*
+</a>         border-left: calc(var(--tab-height)/2) solid var(--bg-dark) !important;
+         border-top: calc((var(--tab-height)/2) - var(--tab-triangle-correction)) solid var(--bg-light) !important;
+         border-bottom: calc((var(--tab-height)/2) + var(--tab-triangle-correction)) solid var(--bg-light) !important;
+<a href="#h0-6" id="h0-6" class="h">@@ -167,7 +179,7 @@
+</a>         width: 0 !important; height: 0 !important;
+         border: none !important; z-index: 2 !important;
+ 
+<a href="#h0-6-3" id="h0-6-3" class="d">-        /**/
+</a><a href="#h0-6-4" id="h0-6-4" class="i">+        /*
+</a>         border-right: calc(var(--tab-height)/2) solid var(--bg-dark) !important;
+         border-top: calc((var(--tab-height)/2) - var(--tab-triangle-correction)) solid var(--bg-light) !important;
+         border-bottom: calc((var(--tab-height)/2) + var(--tab-triangle-correction)) solid var(--bg-light) !important;
+<a href="#h0-7" id="h0-7" class="h">@@ -183,8 +195,8 @@
+</a>         margin: 0 var(--tab-strip-margin) !important;
+         background: var(--bg-dark) !important;
+ 
+<a href="#h0-7-3" id="h0-7-3" class="d">-        /* --- Uncomment the line below to attach the url-bar to the tab-bar [EXPERIMENTAL] (Require a line in &quot;#nav-bar&quot; above) --- */
+</a><a href="#h0-7-4" id="h0-7-4" class="d">-        /*margin-left: 150px !important;/**/
+</a><a href="#h0-7-5" id="h0-7-5" class="i">+        /* --- Uncomment section below to attach url-bar to the tab-bar [EXPERIMENTAL] (Require a line in &quot;#nav-bar&quot; above) --- */
+</a><a href="#h0-7-6" id="h0-7-6" class="i">+        /*margin-left: 147px !important;/**/
+</a>     }
+     #TabsToolbar::after { display: none !important; }
+     .tabbrowser-tab::before, .tabbrowser-tab::after { background: none !important; opacity: 1 !important; visibility: visible !important; }
+<a href="#h0-8" id="h0-8" class="h">@@ -197,10 +209,10 @@
+</a>     /* MENUS */
+     menuitem + menuseparator, menu + menuseparator/*, .menu-iconic-left*/ { display: none !important; }
+     /*menuitem &gt; label { margin-left: var(--tab-height) !important; }*/
+<a href="#h0-8-3" id="h0-8-3" class="d">-    menubar, menubutton, menulist, menu, menuitem {
+</a><a href="#h0-8-4" id="h0-8-4" class="i">+    /*menubar, menubutton, menulist, menu, menuitem {
+</a>         font-family: var(--tab-fonts) !important; font-size: var(--tab-font-size);
+         height: var(--tab-height) !important;
+<a href="#h0-8-7" id="h0-8-7" class="d">-    }
+</a><a href="#h0-8-8" id="h0-8-8" class="i">+    }*/
+</a> 
+     /* HIDE ORANGE MENU BUTTON */
+     #appmenu-toolbar-button, #appmenu-button-container { display: none !important; }
+<a href="#h0-9" id="h0-9" class="h">@@ -220,7 +232,7 @@
+</a>         -moz-image-region: rect(0, 0, 0, 0) !important;
+     }
+ 
+<a href="#h0-9-3" id="h0-9-3" class="d">-    #liberator-completions { background: var(--bg-dark) !important; }
+</a><a href="#h0-9-4" id="h0-9-4" class="i">+    #liberator-completions, #liberator-bottombar-deck { background: var(--bg-dark) !important; }
+</a> 
+     /* Tabgroup margin top fix */
+     #tab-view-deck #tab-view { margin: 24px 12px 12px 12px !important; }
+<a href="#h0-10" id="h0-10" class="h">@@ -266,26 +278,29 @@
+</a>     /* SCROLLBAR */
+     scrollbar[orient=&quot;vertical&quot;], scrollbar thumb[orient=&quot;vertical&quot;],
+     scrollbar[orient=&quot;horizontal&quot;], scrollbar thumb[orient=&quot;horizontal&quot;] {
+<a href="#h0-10-3" id="h0-10-3" class="d">-        display: none !important; /* none = hide || block = show */
+</a><a href="#h0-10-4" id="h0-10-4" class="i">+        display: none !important; /* block | none (enable scrollbar) */
+</a>     }
+ 
+     /*
+<a href="#h0-10-8" id="h0-10-8" class="i">+       Uncomment section below to apply style
+</a><a href="#h0-10-9" id="h0-10-9" class="i">+
+</a><a href="#h0-10-10" id="h0-10-10" class="i">+       (width/height is controlled by the margin)
+</a><a href="#h0-10-11" id="h0-10-11" class="i">+    */
+</a><a href="#h0-10-12" id="h0-10-12" class="i">+    /*
+</a>     scrollbar &gt; slider { -moz-appearance: none !important; }
+ 
+<a href="#h0-10-15" id="h0-10-15" class="d">-    scrollbar[orient=&quot;vertical&quot;] { margin: -3px -7px -3px -3px !important; }
+</a><a href="#h0-10-16" id="h0-10-16" class="d">-    scrollbar[orient=&apos;vertical&apos;] &gt; slider { background: #282333 !important; max-width: 5px !important; }
+</a><a href="#h0-10-17" id="h0-10-17" class="i">+    scrollbar[orient=&quot;vertical&quot;] { margin: 0 -10px 0 0 !important; }
+</a><a href="#h0-10-18" id="h0-10-18" class="i">+    scrollbar[orient=&apos;vertical&apos;] &gt; slider { background: #282333 !important; max-width: 100% !important; }
+</a>     scrollbar[orient=&apos;vertical&apos;] &gt; slider &gt; thumb {
+         -moz-appearance: none !important;
+<a href="#h0-10-21" id="h0-10-21" class="d">-        background: #524C59 !important; border: 0 !important;
+</a><a href="#h0-10-22" id="h0-10-22" class="d">-        width: 5px !important; max-width: 5px !important;
+</a><a href="#h0-10-23" id="h0-10-23" class="i">+        background: #524C59 !important; border: 0 !important; width: 100% !important;
+</a>     }
+ 
+<a href="#h0-10-26" id="h0-10-26" class="d">-    scrollbar[orient=&quot;horizontal&quot;] { margin: -3px -3px -7px -3px !important; }
+</a><a href="#h0-10-27" id="h0-10-27" class="d">-    scrollbar[orient=&apos;horizontal&apos;] &gt; slider { background: #282333 !important; max-height: 5px !important; }
+</a><a href="#h0-10-28" id="h0-10-28" class="i">+    scrollbar[orient=&quot;horizontal&quot;] { margin: 0 0 -10px 0 !important; }
+</a><a href="#h0-10-29" id="h0-10-29" class="i">+    scrollbar[orient=&apos;horizontal&apos;] &gt; slider { background: #282333 !important; max-height: 100% !important; }
+</a>     scrollbar[orient=&apos;horizontal&apos;] &gt; slider &gt; thumb {
+         -moz-appearance: none !important;
+<a href="#h0-10-32" id="h0-10-32" class="d">-        background: #524C59 !important; border: 0 !important;
+</a><a href="#h0-10-33" id="h0-10-33" class="d">-        height: 5px !important; max-height: 5px !important;
+</a><a href="#h0-10-34" id="h0-10-34" class="i">+        background: #524C59 !important; border: 0 !important; height: 100% !important;
+</a>     }
+ 
+     scrollbar &gt; scrollbarbutton { -moz-appearance: none !important; border: none !important; background: none !important; }
+<a href="#h0-11" id="h0-11" class="h">@@ -322,8 +337,6 @@ tabbrowser tabpanels, #appcontent &gt; #content { background: var(--bg-light) !impo
+</a> /* Set dark text in light textareas */
+ /*
+ @-moz-document regexp(&quot;https?://(?!(localhost|twily.info|.*.4chan.org|.*.youtube.com)).*&quot;) {
+<a href="#h0-11-3" id="h0-11-3" class="d">-    input, textarea { color: #222628 !important; -moz-appearance: none !important; }
+</a><a href="#h0-11-4" id="h0-11-4" class="i">+    input, textarea { color: #282333 !important; -moz-appearance: none !important; }
+</a> }
+ /**/
+<a href="#h0-11-7" id="h0-11-7" class="d">-
+</a><a href="#h0-11-8" id="h0-11-8" class="d">-/* vim: set ft=css : */
+</a></pre>
+</div>
+</body>
+</html>
