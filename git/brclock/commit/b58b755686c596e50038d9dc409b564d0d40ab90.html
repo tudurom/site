@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>refactor code - brclock - Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="brclock.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>brclock</h1><span class="desc">Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/b58b755686c596e50038d9dc409b564d0d40ab90.html">b58b755686c596e50038d9dc409b564d0d40ab90</a>
+<b>parent</b> <a href="../commit/b27226506dcc6687342e3163283a02c07db763f7.html">b27226506dcc6687342e3163283a02c07db763f7</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Jul 15 21:46:32 +0300
+
+refactor code
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">brclock.c</a></td><td> | </td><td class="num">9</td><td><span class="i">++++++++</span><span class="d">-</span></td></tr>
+</table>1 file changed, 8 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/brclock.c.html">brclock.c</a> b/<a href="../file/brclock.c.html">brclock.c</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -3,6 +3,7 @@
+</a> #include &lt;string.h&gt;
+ #include &lt;time.h&gt;
+ #include &lt;locale.h&gt;
+<a href="#h0-0-3" id="h0-0-3" class="i">+#include &lt;wchar.h&gt;
+</a> 
+ #define LIN 4
+ #define COL 2
+<a href="#h0-1" id="h0-1" class="h">@@ -11,8 +12,10 @@
+</a> char* toDotArray(char n);
+ wchar_t toBraille(char *m[COL]);
+ 
+<a href="#h0-1-3" id="h0-1-3" class="i">+/* Holds binary representation of hours, minutes and seconds */
+</a> char *mat[3][COL];
+ 
+<a href="#h0-1-6" id="h0-1-6" class="i">+/* Map for braille dots exponents */
+</a> char map[COL][LIN] = {{0, 1, 2, 6},
+                       {3, 4, 5, 7}};
+ 
+<a href="#h0-2" id="h0-2" class="h">@@ -32,11 +35,13 @@ int main() {
+</a>     mat[2][0] = toDotArray(tm.tm_sec / 10);
+     mat[2][1] = toDotArray(tm.tm_sec % 10);
+ 
+<a href="#h0-2-3" id="h0-2-3" class="i">+    /* Print wide chars */
+</a>     setlocale(LC_ALL, &quot;&quot;);
+<a href="#h0-2-5" id="h0-2-5" class="d">-    printf(&quot;%lc\n%lc\n%lc\n&quot;, toBraille(mat[0]), toBraille(mat[1]), toBraille(mat[2]));
+</a><a href="#h0-2-6" id="h0-2-6" class="i">+    wprintf(L&quot;%C\n%C\n%C\n&quot;, toBraille(mat[0]), toBraille(mat[1]), toBraille(mat[2]));
+</a>     return 0;
+ }
+ 
+<a href="#h0-2-10" id="h0-2-10" class="i">+/* Get binary representation of n */
+</a> char* toDotArray(char n) {
+     char *ret = malloc(LIN * sizeof(char));
+     int i = LIN - 1;
+<a href="#h0-3" id="h0-3" class="h">@@ -50,7 +55,9 @@ char* toDotArray(char n) {
+</a>     return ret;
+ }
+ 
+<a href="#h0-3-3" id="h0-3-3" class="i">+/* binary number to braille character */
+</a> wchar_t toBraille(char *m[COL]) {
+<a href="#h0-3-5" id="h0-3-5" class="i">+    /* START is the empty braille character */
+</a>     wchar_t c = START;
+     for (int i = 0; i &lt; COL; i++) {
+         for (int j = 0; j &lt; LIN; j++) {
+</pre>
+</div>
+</body>
+</html>

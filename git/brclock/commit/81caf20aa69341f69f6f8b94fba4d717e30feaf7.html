@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>init - brclock - Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="brclock.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>brclock</h1><span class="desc">Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/81caf20aa69341f69f6f8b94fba4d717e30feaf7.html">81caf20aa69341f69f6f8b94fba4d717e30feaf7</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Jul 15 00:25:50 +0300
+
+init
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">.gitignore</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td><a href="#h1">Makefile</a></td><td> | </td><td class="num">14</td><td><span class="i">++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h2">README.md</a></td><td> | </td><td class="num">5</td><td><span class="i">+++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h3">brclock.c</a></td><td> | </td><td class="num">62</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table>4 files changed, 82 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.gitignore.html">.gitignore</a> b/<a href="../file/.gitignore.html">.gitignore</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -0,0 +1 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+brclock
+</a><b>diff --git a/<a id="h1" href="../file/Makefile.html">Makefile</a> b/<a href="../file/Makefile.html">Makefile</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -0,0 +1,14 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="i">+CFLAGS = -Wall -O2 -std=c99
+</a><a href="#h1-0-1" id="h1-0-1" class="i">+NAME = brclock
+</a><a href="#h1-0-2" id="h1-0-2" class="i">+FILE = brclock.c
+</a><a href="#h1-0-3" id="h1-0-3" class="i">+PREFIX = /usr/local
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+brclock: $(FILE)
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+	$(CC) -o $(NAME) $(FILE) $(CFLAGS)
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+install: brclock
+</a><a href="#h1-0-9" id="h1-0-9" class="i">+	mkdir -p $(DESTDIR)$(PREFIX)/bin/
+</a><a href="#h1-0-10" id="h1-0-10" class="i">+	cp -f $(NAME) $(DESTDIR)$(PREFIX)/bin/
+</a><a href="#h1-0-11" id="h1-0-11" class="i">+
+</a><a href="#h1-0-12" id="h1-0-12" class="i">+clean:
+</a><a href="#h1-0-13" id="h1-0-13" class="i">+	rm $(NAME)
+</a><b>diff --git a/<a id="h2" href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1,5 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+`brclock`
+</a><a href="#h2-0-1" id="h2-0-1" class="i">+=========
+</a><a href="#h2-0-2" id="h2-0-2" class="i">+
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+`brclock` is a binary clock that prints the current time using braille
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+characters. Each component (hour, minute, second) is printed on its own line.
+</a><b>diff --git a/<a id="h3" href="../file/brclock.c.html">brclock.c</a> b/<a href="../file/brclock.c.html">brclock.c</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -0,0 +1,62 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="i">+#include &lt;stdio.h&gt;
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+#include &lt;stdlib.h&gt;
+</a><a href="#h3-0-2" id="h3-0-2" class="i">+#include &lt;string.h&gt;
+</a><a href="#h3-0-3" id="h3-0-3" class="i">+#include &lt;time.h&gt;
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+#include &lt;locale.h&gt;
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+#define LIN 4
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+#define COL 2
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+#define START 0x2800
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+char* toDotArray(char n);
+</a><a href="#h3-0-11" id="h3-0-11" class="i">+wchar_t toBraille(char *m[COL]);
+</a><a href="#h3-0-12" id="h3-0-12" class="i">+
+</a><a href="#h3-0-13" id="h3-0-13" class="i">+char *mat[3][COL];
+</a><a href="#h3-0-14" id="h3-0-14" class="i">+
+</a><a href="#h3-0-15" id="h3-0-15" class="i">+char map[COL][LIN] = {{0, 1, 2, 6},
+</a><a href="#h3-0-16" id="h3-0-16" class="i">+                      {3, 4, 5, 7}};
+</a><a href="#h3-0-17" id="h3-0-17" class="i">+
+</a><a href="#h3-0-18" id="h3-0-18" class="i">+int main() {
+</a><a href="#h3-0-19" id="h3-0-19" class="i">+    time_t t = time(NULL);
+</a><a href="#h3-0-20" id="h3-0-20" class="i">+    struct tm tm = *localtime(&amp;t);
+</a><a href="#h3-0-21" id="h3-0-21" class="i">+
+</a><a href="#h3-0-22" id="h3-0-22" class="i">+    /* Hours */
+</a><a href="#h3-0-23" id="h3-0-23" class="i">+    mat[0][0] = toDotArray(tm.tm_hour / 10);
+</a><a href="#h3-0-24" id="h3-0-24" class="i">+    mat[0][1] = toDotArray(tm.tm_hour % 10);
+</a><a href="#h3-0-25" id="h3-0-25" class="i">+
+</a><a href="#h3-0-26" id="h3-0-26" class="i">+    /* Minutes */
+</a><a href="#h3-0-27" id="h3-0-27" class="i">+    mat[1][0] = toDotArray(tm.tm_min / 10);
+</a><a href="#h3-0-28" id="h3-0-28" class="i">+    mat[1][1] = toDotArray(tm.tm_min % 10);
+</a><a href="#h3-0-29" id="h3-0-29" class="i">+
+</a><a href="#h3-0-30" id="h3-0-30" class="i">+    /* Seconds */
+</a><a href="#h3-0-31" id="h3-0-31" class="i">+    mat[2][0] = toDotArray(tm.tm_sec / 10);
+</a><a href="#h3-0-32" id="h3-0-32" class="i">+    mat[2][1] = toDotArray(tm.tm_sec % 10);
+</a><a href="#h3-0-33" id="h3-0-33" class="i">+
+</a><a href="#h3-0-34" id="h3-0-34" class="i">+    setlocale(LC_ALL, &quot;&quot;);
+</a><a href="#h3-0-35" id="h3-0-35" class="i">+    printf(&quot;%lc\n%lc\n%lc\n&quot;, toBraille(mat[0]), toBraille(mat[1]), toBraille(mat[2]));
+</a><a href="#h3-0-36" id="h3-0-36" class="i">+    return 0;
+</a><a href="#h3-0-37" id="h3-0-37" class="i">+}
+</a><a href="#h3-0-38" id="h3-0-38" class="i">+
+</a><a href="#h3-0-39" id="h3-0-39" class="i">+char* toDotArray(char n) {
+</a><a href="#h3-0-40" id="h3-0-40" class="i">+    char *ret = malloc(LIN * sizeof(char));
+</a><a href="#h3-0-41" id="h3-0-41" class="i">+    int i = LIN - 1;
+</a><a href="#h3-0-42" id="h3-0-42" class="i">+    memset(ret, 0, LIN * sizeof(char));
+</a><a href="#h3-0-43" id="h3-0-43" class="i">+    while (n &gt; 0) {
+</a><a href="#h3-0-44" id="h3-0-44" class="i">+        ret[i] = n % 2;
+</a><a href="#h3-0-45" id="h3-0-45" class="i">+        i--;
+</a><a href="#h3-0-46" id="h3-0-46" class="i">+        n /= 2;
+</a><a href="#h3-0-47" id="h3-0-47" class="i">+    }
+</a><a href="#h3-0-48" id="h3-0-48" class="i">+
+</a><a href="#h3-0-49" id="h3-0-49" class="i">+    return ret;
+</a><a href="#h3-0-50" id="h3-0-50" class="i">+}
+</a><a href="#h3-0-51" id="h3-0-51" class="i">+
+</a><a href="#h3-0-52" id="h3-0-52" class="i">+wchar_t toBraille(char *m[COL]) {
+</a><a href="#h3-0-53" id="h3-0-53" class="i">+    wchar_t c = START;
+</a><a href="#h3-0-54" id="h3-0-54" class="i">+    for (int i = 0; i &lt; COL; i++) {
+</a><a href="#h3-0-55" id="h3-0-55" class="i">+        for (int j = 0; j &lt; LIN; j++) {
+</a><a href="#h3-0-56" id="h3-0-56" class="i">+            c |= m[i][j] * (1 &lt;&lt; map[i][j]);
+</a><a href="#h3-0-57" id="h3-0-57" class="i">+        }
+</a><a href="#h3-0-58" id="h3-0-58" class="i">+    }
+</a><a href="#h3-0-59" id="h3-0-59" class="i">+
+</a><a href="#h3-0-60" id="h3-0-60" class="i">+    return c;
+</a><a href="#h3-0-61" id="h3-0-61" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>added uninstall rule in the makefile - brclock - Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="brclock.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>brclock</h1><span class="desc">Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/5a556454f4c91aaaf79ecb917b0c8fe44bbb2f95.html">5a556454f4c91aaaf79ecb917b0c8fe44bbb2f95</a>
+<b>parent</b> <a href="../commit/b58b755686c596e50038d9dc409b564d0d40ab90.html">b58b755686c596e50038d9dc409b564d0d40ab90</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Jul 15 21:49:15 +0300
+
+added uninstall rule in the makefile
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">Makefile</a></td><td> | </td><td class="num">3</td><td><span class="i">+++</span><span class="d"></span></td></tr>
+</table>1 file changed, 3 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/Makefile.html">Makefile</a> b/<a href="../file/Makefile.html">Makefile</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -10,5 +10,8 @@ install: brclock
+</a> 	mkdir -p $(DESTDIR)$(PREFIX)/bin/
+ 	cp -f $(NAME) $(DESTDIR)$(PREFIX)/bin/
+ 
+<a href="#h0-0-3" id="h0-0-3" class="i">+uninstall:
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+	rm $(DESTDIR)$(PREFIX)/bin/$(NAME)
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+
+</a> clean:
+ 	rm $(NAME)
+</pre>
+</div>
+</body>
+</html>

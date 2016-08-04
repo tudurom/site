@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> alias.sh (1132B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> alias.sh (1473B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -77,6 +77,19 @@
 <a href="#l59" id="l59">59</a>
 <a href="#l60" id="l60">60</a>
 <a href="#l61" id="l61">61</a>
+<a href="#l62" id="l62">62</a>
+<a href="#l63" id="l63">63</a>
+<a href="#l64" id="l64">64</a>
+<a href="#l65" id="l65">65</a>
+<a href="#l66" id="l66">66</a>
+<a href="#l67" id="l67">67</a>
+<a href="#l68" id="l68">68</a>
+<a href="#l69" id="l69">69</a>
+<a href="#l70" id="l70">70</a>
+<a href="#l71" id="l71">71</a>
+<a href="#l72" id="l72">72</a>
+<a href="#l73" id="l73">73</a>
+<a href="#l74" id="l74">74</a>
 </pre></td><td><pre>
 alias :q=exit
 alias irb=pry
@@ -129,7 +142,11 @@ trinitas() {
 }
 
 les() {
-    test -d &quot;$1&quot; &amp;&amp; ls -al &quot;$1&quot; || less &quot;$1&quot;
+    if [ &quot;$#&quot; -gt 0 ]; then
+        test -d &quot;$1&quot; &amp;&amp; ls -al &quot;$1&quot; || less &quot;$1&quot;
+    else
+        ls
+    fi
 }
 
 x0st() {
@@ -138,6 +155,15 @@ x0st() {
 
 mtp() {
     sudo simple-mtpfs /mnt -o allow_other
+}
+
+rec() {
+    tmp=$(mktemp --suffix=.mkv)
+    sleep 1
+    (sleep 0.3; echo &quot;%{F$(xrq &apos;*.color9&apos;)}%{F-} Recording started! Say &apos;cheese&apos;!&quot; &gt; &quot;$NOTIFY_FIFO_PATH&quot;) &amp;
+    ffmpeg -y -f x11grab -s 1920x1080 -i :0.0 -vcodec mpeg4 -qscale 0 -framerate 60 &quot;$tmp&quot;
+    wait
+    echo &quot;$tmp&quot;
 }
 </pre></td></tr></table>
 </div>

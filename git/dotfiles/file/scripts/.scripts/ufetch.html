@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> ufetch (1420B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> ufetch (1297B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -67,23 +67,24 @@
 <a href="#l49" id="l49">49</a>
 <a href="#l50" id="l50">50</a>
 <a href="#l51" id="l51">51</a>
+<a href="#l52" id="l52">52</a>
 </pre></td><td><pre>
 #!/bin/sh
 #
-# ufetch - tiny system info for crux
+# ufetch-void - tiny system info for void
 #
 
 ## INFO
 
 # user is already defined
 HOST=&quot;$(hostname)&quot;
-OS=&quot;$(crux)&quot;
+OS=&quot;Void Linux&quot;
 KERNEL=&quot;$(uname -sr)&quot;
 UPTIME=&quot;$(uptime -p | sed s:&quot;up &quot;::)&quot;
-PACKAGES=&quot;$(pkginfo -i | wc -l)&quot;
+PACKAGES=&quot;$(xbps-query -l | wc -l)&quot;
 # shell is already defined
 if [ -z &quot;$WM&quot; ]; then
-    WM=&quot;$(grep -v &quot;^#&quot; &quot;${HOME}/.xinitrc&quot; | tail -n 1 | cut -d &quot; &quot; -f2)&quot;
+	WM=&quot;$(grep -v &quot;^#&quot; &quot;${HOME}/.xinitrc&quot; | tail -n 1 | cut -d &quot; &quot; -f2)&quot;
 fi
 
 ## DEFINE COLORS
@@ -101,22 +102,23 @@ c7=&quot;$(tput setaf 7)&quot;	# white
 rc=&quot;$(tput sgr0)&quot;	# reset
 
 # you can change these
-lc=&quot;${bc}${c6}&quot;		# labels
-nc=&quot;${bc}${c6}&quot;		# user and hostname
+lc=&quot;${bc}${c2}&quot;		# labels
+nc=&quot;${bc}${c2}&quot;		# user and hostname
 tc=&quot;${bc}${c7}&quot;		# text
-pc=&quot;${c6}&quot;		# penguin
+fc=&quot;${bc}${c2}&quot;		# first color
+sc=&quot;${c2}&quot;		# second color
 
 ## OUTPUT
 
 cat &lt;&lt;EOF
 
-${pc}      ___${rc}     ${nc}${USER}${rc}${tc}@${rc}${nc}${HOST}${rc}
-${pc}     (${rc}${c7}.·${rc} ${pc}|${rc}    ${lc}OS:${rc}       ${tc}${OS}${rc}
-${pc}     (${rc}${c3}&lt;&gt;${rc} ${pc}|${rc}    ${lc}KERNEL:${rc}   ${tc}${KERNEL}${rc}
-${pc}    /${rc} ${c7}__${rc}  ${pc}\\${rc}   ${lc}UPTIME:${rc}   ${tc}${UPTIME}${rc}
-${pc}   (${rc} ${c7}/  \\${rc} ${pc}/|${rc}  ${lc}PACKAGES:${rc} ${tc}${PACKAGES}${rc}
-${c3}  _${pc}/\\${rc} ${c7}__)${rc}${pc}/${rc}${c3}_${rc}${pc})${rc}  ${lc}SHELL:${rc}    ${tc}${SHELL}${rc}
-${c3}  \/${pc}-____${rc}${c3}\/${rc}   ${lc}WM:${rc}       ${tc}${WM}${rc}
+${fc}      _______    ${nc}${USER}${tc}@${nc}${HOST}${rc}
+${sc}   _ ${fc}\______ -   ${lc}OS:        ${tc}${OS}${rc}
+${sc}  | \  ${fc}___  \ |  ${lc}KERNEL:    ${tc}${KERNEL}${rc}
+${sc}  | | ${fc}/   \ | |  ${lc}UPTIME:    ${tc}${UPTIME}${rc}
+${sc}  | | ${fc}\___/ | |  ${lc}PACKAGES:  ${tc}${PACKAGES}${rc}
+${sc}  | \______ ${fc}\_|  ${lc}SHELL:     ${tc}${SHELL}${rc}
+${sc}   -_______\     ${lc}WM:        ${tc}${WM}${rc}
 
 EOF
 </pre></td></tr></table>
