@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>mkl, branch HEAD</title>
+<subtitle>Utility to draw thick lines in the terminal.
+</subtitle>
+<entry>
+<id>62fb96d009e889ecca9ba5cb54cd25a5ae5ae53e</id>
+<published>2016-08-04T11:53:38Z</published>
+<updated>2016-08-04T11:53:38Z</updated>
+<title type="text">init</title>
+<link rel="alternate" type="text/html" href="commit/62fb96d009e889ecca9ba5cb54cd25a5ae5ae53e.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 62fb96d009e889ecca9ba5cb54cd25a5ae5ae53e
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Aug  4 14:53:38 +0300
+
+init
+
+</content>
+</entry>
+</feed>

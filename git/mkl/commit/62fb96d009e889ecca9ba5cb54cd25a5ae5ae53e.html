@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>init - mkl - Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="mkl.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>mkl</h1><span class="desc">Unnamed repository; edit this file &apos;description&apos; to name the repository.
+</span></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/62fb96d009e889ecca9ba5cb54cd25a5ae5ae53e.html">62fb96d009e889ecca9ba5cb54cd25a5ae5ae53e</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Thu Aug  4 14:53:38 +0300
+
+init
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">Makefile</a></td><td> | </td><td class="num">44</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h1">mkl</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td><a href="#h2">mkl.1</a></td><td> | </td><td class="num">49</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h3">mkl.c</a></td><td> | </td><td class="num">103</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table>4 files changed, 196 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/Makefile.html">Makefile</a> b/<a href="../file/Makefile.html">Makefile</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -0,0 +1,44 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+PREFIX:=/usr/local
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+MANPREFIX:=$(PREFIX)/share/man
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+CC      := cc
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+LD      := $(CC)
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+CFLAGS  += -std=c99 -pedantic -Wall
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+LDFLAGS +=
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+BIN = mkl
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+SRC = mkl.c
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+MAN = mkl.1
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+OBJ = $(SRC:.c=.o)
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+.POSIX:
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+all: binutils
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+binutils: $(BIN)
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+.o:
+</a><a href="#h0-0-22" id="h0-0-22" class="i">+	@echo &quot;LD $@&quot;
+</a><a href="#h0-0-23" id="h0-0-23" class="i">+	@$(LD) $&lt; -o $@ $(LDFLAGS)
+</a><a href="#h0-0-24" id="h0-0-24" class="i">+
+</a><a href="#h0-0-25" id="h0-0-25" class="i">+.c.o:
+</a><a href="#h0-0-26" id="h0-0-26" class="i">+	@echo &quot;CC $&lt;&quot;
+</a><a href="#h0-0-27" id="h0-0-27" class="i">+	@$(CC) -c $&lt; -o $@ $(CFLAGS)
+</a><a href="#h0-0-28" id="h0-0-28" class="i">+
+</a><a href="#h0-0-29" id="h0-0-29" class="i">+install: $(BIN) $(MAN)
+</a><a href="#h0-0-30" id="h0-0-30" class="i">+	mkdir -p $(DESTDIR)$(PREFIX)/bin/
+</a><a href="#h0-0-31" id="h0-0-31" class="i">+	cp -f $(BIN) $(DESTDIR)$(PREFIX)/bin/
+</a><a href="#h0-0-32" id="h0-0-32" class="i">+	chmod 755 $(DESTDIR)$(PREFIX)/bin/$(BIN)
+</a><a href="#h0-0-33" id="h0-0-33" class="i">+	mkdir -p $(DESTDIR)$(MANPREFIX)/man1/
+</a><a href="#h0-0-34" id="h0-0-34" class="i">+	cp -f $(MAN) $(DESTDIR)$(MANPREFIX)/man1/
+</a><a href="#h0-0-35" id="h0-0-35" class="i">+	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/$(MAN)
+</a><a href="#h0-0-36" id="h0-0-36" class="i">+
+</a><a href="#h0-0-37" id="h0-0-37" class="i">+
+</a><a href="#h0-0-38" id="h0-0-38" class="i">+uninstall:
+</a><a href="#h0-0-39" id="h0-0-39" class="i">+	rm -f $(DESTDIR)$(PREFIX)/bin/$(BIN)
+</a><a href="#h0-0-40" id="h0-0-40" class="i">+	rm -f $(DESTDIR)$(MANPREFIX)/bin/$(MAN)
+</a><a href="#h0-0-41" id="h0-0-41" class="i">+
+</a><a href="#h0-0-42" id="h0-0-42" class="i">+clean :
+</a><a href="#h0-0-43" id="h0-0-43" class="i">+	rm -f $(OBJ) $(BIN)
+</a><b>diff --git a/<a id="h1" href="../file/mkl.html">mkl</a> b/<a href="../file/mkl.html">mkl</a></b>
+Binary files differ.
+<b>diff --git a/<a id="h2" href="../file/mkl.1.html">mkl.1</a> b/<a href="../file/mkl.1.html">mkl.1</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1,49 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+.Dd $Mdocdate: August 4 2015 $
+</a><a href="#h2-0-1" id="h2-0-1" class="i">+.Dt MKL 1
+</a><a href="#h2-0-2" id="h2-0-2" class="i">+.Os mkl
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+.Sh NAME
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+.Nm mkl
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+.Nd Draws a thick line based on input level
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+.Sh SYNOPSIS
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+.Nm mkb
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+.Ar [perc]
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+.Sh DESCRIPTION
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+The
+</a><a href="#h2-0-11" id="h2-0-11" class="i">+.Nm
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+utility draws a thick line based on the input level given as argument
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+or from stdin using Unicode Block Elements.
+</a><a href="#h2-0-14" id="h2-0-14" class="i">+.Bl -tag -width Ds
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+.It perc
+</a><a href="#h2-0-16" id="h2-0-16" class="i">+A percentage value to be represented as a progress bar. If this argument isn&apos;t provided,
+</a><a href="#h2-0-17" id="h2-0-17" class="i">+.Nm
+</a><a href="#h2-0-18" id="h2-0-18" class="i">+will attempt to read the value from stdin.
+</a><a href="#h2-0-19" id="h2-0-19" class="i">+.El
+</a><a href="#h2-0-20" id="h2-0-20" class="i">+.Sh ENVIRONMENT
+</a><a href="#h2-0-21" id="h2-0-21" class="i">+.Bl -tag -width Ds
+</a><a href="#h2-0-22" id="h2-0-22" class="i">+.It Ev SIZE
+</a><a href="#h2-0-23" id="h2-0-23" class="i">+The number of virtual blocks used to represent the line. A character drawn on
+</a><a href="#h2-0-24" id="h2-0-24" class="i">+the terminal can be divided in 8 virtual blocks. (default: 80 virtual blocks, 10 terminal chars)
+</a><a href="#h2-0-25" id="h2-0-25" class="i">+.It Ev ORIENT
+</a><a href="#h2-0-26" id="h2-0-26" class="i">+A single char representing the style of the line. &apos;|&apos; for a vertical line, &apos;-&apos; for a horizontal
+</a><a href="#h2-0-27" id="h2-0-27" class="i">+line. (default: &apos;|&apos;)
+</a><a href="#h2-0-28" id="h2-0-28" class="i">+.It Ev SPACE
+</a><a href="#h2-0-29" id="h2-0-29" class="i">+The space char used to fill blank blocks in horizontal orientation. (default: &apos; &apos;)
+</a><a href="#h2-0-30" id="h2-0-30" class="i">+.El
+</a><a href="#h2-0-31" id="h2-0-31" class="i">+.Sh EXAMPLES
+</a><a href="#h2-0-32" id="h2-0-32" class="i">+.Dl $ mkl 75
+</a><a href="#h2-0-33" id="h2-0-33" class="i">+.sp
+</a><a href="#h2-0-34" id="h2-0-34" class="i">+.sp
+</a><a href="#h2-0-35" id="h2-0-35" class="i">+.sp
+</a><a href="#h2-0-36" id="h2-0-36" class="i">+.Dl ▄
+</a><a href="#h2-0-37" id="h2-0-37" class="i">+.Dl █
+</a><a href="#h2-0-38" id="h2-0-38" class="i">+.Dl █
+</a><a href="#h2-0-39" id="h2-0-39" class="i">+.Dl █
+</a><a href="#h2-0-40" id="h2-0-40" class="i">+.Dl █
+</a><a href="#h2-0-41" id="h2-0-41" class="i">+.Dl █
+</a><a href="#h2-0-42" id="h2-0-42" class="i">+.Dl █
+</a><a href="#h2-0-43" id="h2-0-43" class="i">+.Dl █
+</a><a href="#h2-0-44" id="h2-0-44" class="i">+.Pp
+</a><a href="#h2-0-45" id="h2-0-45" class="i">+.Dl $ echo 64 | SIZE=160 ORIENT=- SPACE=# mkl
+</a><a href="#h2-0-46" id="h2-0-46" class="i">+.Dl ████████████▊#######
+</a><a href="#h2-0-47" id="h2-0-47" class="i">+.Sh SEE ALSO
+</a><a href="#h2-0-48" id="h2-0-48" class="i">+.Xr environ 7
+</a><b>diff --git a/<a id="h3" href="../file/mkl.c.html">mkl.c</a> b/<a href="../file/mkl.c.html">mkl.c</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -0,0 +1,103 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="i">+#include &lt;stdio.h&gt;
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+#include &lt;stdlib.h&gt;
+</a><a href="#h3-0-2" id="h3-0-2" class="i">+#include &lt;err.h&gt;
+</a><a href="#h3-0-3" id="h3-0-3" class="i">+#include &lt;locale.h&gt;
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+#define SMALLEST_VERTICAL_CHAR L&apos;▁&apos;
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+#define SMALLEST_HORIZONTAL_CHAR L&apos;▏&apos;
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+#define VERTICAL +1
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+#define HORIZONTAL -1
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+#define SIZE_UNITS 8
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+#define DEFAULT_SIZE 10 * SIZE_UNITS
+</a><a href="#h3-0-11" id="h3-0-11" class="i">+#define DEFAULT_ORIENTATION VERTICAL
+</a><a href="#h3-0-12" id="h3-0-12" class="i">+#define DEFAULT_SPACE_CHAR &apos; &apos;
+</a><a href="#h3-0-13" id="h3-0-13" class="i">+
+</a><a href="#h3-0-14" id="h3-0-14" class="i">+static int orientation, size, real_size;
+</a><a href="#h3-0-15" id="h3-0-15" class="i">+static char space_char;
+</a><a href="#h3-0-16" id="h3-0-16" class="i">+
+</a><a href="#h3-0-17" id="h3-0-17" class="i">+static void print_spaces();
+</a><a href="#h3-0-18" id="h3-0-18" class="i">+static void print_middle_block();
+</a><a href="#h3-0-19" id="h3-0-19" class="i">+static void print_blocks();
+</a><a href="#h3-0-20" id="h3-0-20" class="i">+
+</a><a href="#h3-0-21" id="h3-0-21" class="i">+int
+</a><a href="#h3-0-22" id="h3-0-22" class="i">+main(int argc, char **argv)
+</a><a href="#h3-0-23" id="h3-0-23" class="i">+{
+</a><a href="#h3-0-24" id="h3-0-24" class="i">+    int value;
+</a><a href="#h3-0-25" id="h3-0-25" class="i">+
+</a><a href="#h3-0-26" id="h3-0-26" class="i">+    size = getenv(&quot;SIZE&quot;) ? atoi(getenv(&quot;SIZE&quot;)) : DEFAULT_SIZE;
+</a><a href="#h3-0-27" id="h3-0-27" class="i">+    space_char = getenv(&quot;SPACE&quot;) ? getenv(&quot;SPACE&quot;)[0] : DEFAULT_SPACE_CHAR;
+</a><a href="#h3-0-28" id="h3-0-28" class="i">+
+</a><a href="#h3-0-29" id="h3-0-29" class="i">+    if (argc &gt; 1)
+</a><a href="#h3-0-30" id="h3-0-30" class="i">+        value = atoi(argv[1]);
+</a><a href="#h3-0-31" id="h3-0-31" class="i">+    else
+</a><a href="#h3-0-32" id="h3-0-32" class="i">+        scanf(&quot;%d&quot;, &amp;value);
+</a><a href="#h3-0-33" id="h3-0-33" class="i">+
+</a><a href="#h3-0-34" id="h3-0-34" class="i">+    if (getenv(&quot;ORIENT&quot;)) {
+</a><a href="#h3-0-35" id="h3-0-35" class="i">+        if (getenv(&quot;ORIENT&quot;)[0] == &apos;|&apos;)
+</a><a href="#h3-0-36" id="h3-0-36" class="i">+            orientation = VERTICAL;
+</a><a href="#h3-0-37" id="h3-0-37" class="i">+        else if (getenv(&quot;ORIENT&quot;)[0] == &apos;-&apos;)
+</a><a href="#h3-0-38" id="h3-0-38" class="i">+            orientation = HORIZONTAL;
+</a><a href="#h3-0-39" id="h3-0-39" class="i">+        else
+</a><a href="#h3-0-40" id="h3-0-40" class="i">+            errx(1, &quot;incorrect orientation value&quot;);
+</a><a href="#h3-0-41" id="h3-0-41" class="i">+    } else {
+</a><a href="#h3-0-42" id="h3-0-42" class="i">+        orientation = DEFAULT_ORIENTATION;
+</a><a href="#h3-0-43" id="h3-0-43" class="i">+    }
+</a><a href="#h3-0-44" id="h3-0-44" class="i">+
+</a><a href="#h3-0-45" id="h3-0-45" class="i">+    real_size = (value * size) / 100;
+</a><a href="#h3-0-46" id="h3-0-46" class="i">+
+</a><a href="#h3-0-47" id="h3-0-47" class="i">+    setlocale(LC_ALL, &quot;&quot;);
+</a><a href="#h3-0-48" id="h3-0-48" class="i">+    if (orientation == VERTICAL) {
+</a><a href="#h3-0-49" id="h3-0-49" class="i">+        print_spaces();
+</a><a href="#h3-0-50" id="h3-0-50" class="i">+        print_middle_block();
+</a><a href="#h3-0-51" id="h3-0-51" class="i">+        print_blocks();
+</a><a href="#h3-0-52" id="h3-0-52" class="i">+    } else {
+</a><a href="#h3-0-53" id="h3-0-53" class="i">+        print_blocks();
+</a><a href="#h3-0-54" id="h3-0-54" class="i">+        print_middle_block();
+</a><a href="#h3-0-55" id="h3-0-55" class="i">+        print_spaces();
+</a><a href="#h3-0-56" id="h3-0-56" class="i">+    }
+</a><a href="#h3-0-57" id="h3-0-57" class="i">+
+</a><a href="#h3-0-58" id="h3-0-58" class="i">+    return 0;
+</a><a href="#h3-0-59" id="h3-0-59" class="i">+}
+</a><a href="#h3-0-60" id="h3-0-60" class="i">+
+</a><a href="#h3-0-61" id="h3-0-61" class="i">+/*
+</a><a href="#h3-0-62" id="h3-0-62" class="i">+ * Fill empty blocks.
+</a><a href="#h3-0-63" id="h3-0-63" class="i">+ */
+</a><a href="#h3-0-64" id="h3-0-64" class="i">+
+</a><a href="#h3-0-65" id="h3-0-65" class="i">+static void
+</a><a href="#h3-0-66" id="h3-0-66" class="i">+print_spaces()
+</a><a href="#h3-0-67" id="h3-0-67" class="i">+{
+</a><a href="#h3-0-68" id="h3-0-68" class="i">+    for (int i = 0; i &lt; (size - real_size) / SIZE_UNITS; i++) {
+</a><a href="#h3-0-69" id="h3-0-69" class="i">+        if (orientation == VERTICAL)
+</a><a href="#h3-0-70" id="h3-0-70" class="i">+            fputc(&apos;\n&apos;, stdout);
+</a><a href="#h3-0-71" id="h3-0-71" class="i">+        else
+</a><a href="#h3-0-72" id="h3-0-72" class="i">+            fputc(space_char, stdout);
+</a><a href="#h3-0-73" id="h3-0-73" class="i">+    }
+</a><a href="#h3-0-74" id="h3-0-74" class="i">+}
+</a><a href="#h3-0-75" id="h3-0-75" class="i">+
+</a><a href="#h3-0-76" id="h3-0-76" class="i">+/*
+</a><a href="#h3-0-77" id="h3-0-77" class="i">+ * Print the variable-width block.
+</a><a href="#h3-0-78" id="h3-0-78" class="i">+ */
+</a><a href="#h3-0-79" id="h3-0-79" class="i">+
+</a><a href="#h3-0-80" id="h3-0-80" class="i">+static void
+</a><a href="#h3-0-81" id="h3-0-81" class="i">+print_middle_block()
+</a><a href="#h3-0-82" id="h3-0-82" class="i">+{
+</a><a href="#h3-0-83" id="h3-0-83" class="i">+    if (real_size % SIZE_UNITS &gt; 0) {
+</a><a href="#h3-0-84" id="h3-0-84" class="i">+        if (orientation == VERTICAL)
+</a><a href="#h3-0-85" id="h3-0-85" class="i">+            printf(&quot;%lc\n&quot;, SMALLEST_VERTICAL_CHAR + real_size % SIZE_UNITS - 1);
+</a><a href="#h3-0-86" id="h3-0-86" class="i">+        else
+</a><a href="#h3-0-87" id="h3-0-87" class="i">+            printf(&quot;%lc&quot;, SMALLEST_HORIZONTAL_CHAR - real_size % SIZE_UNITS + 1);
+</a><a href="#h3-0-88" id="h3-0-88" class="i">+    }
+</a><a href="#h3-0-89" id="h3-0-89" class="i">+}
+</a><a href="#h3-0-90" id="h3-0-90" class="i">+
+</a><a href="#h3-0-91" id="h3-0-91" class="i">+/*
+</a><a href="#h3-0-92" id="h3-0-92" class="i">+ * Print full-width blocks.
+</a><a href="#h3-0-93" id="h3-0-93" class="i">+ */
+</a><a href="#h3-0-94" id="h3-0-94" class="i">+
+</a><a href="#h3-0-95" id="h3-0-95" class="i">+static void print_blocks()
+</a><a href="#h3-0-96" id="h3-0-96" class="i">+{
+</a><a href="#h3-0-97" id="h3-0-97" class="i">+    for (int i = 0; i &lt; real_size / SIZE_UNITS; i++) {
+</a><a href="#h3-0-98" id="h3-0-98" class="i">+        printf(&quot;%lc&quot;, SMALLEST_VERTICAL_CHAR + SIZE_UNITS - 1);
+</a><a href="#h3-0-99" id="h3-0-99" class="i">+        if (orientation == VERTICAL)
+</a><a href="#h3-0-100" id="h3-0-100" class="i">+            fputc(&apos;\n&apos;, stdout);
+</a><a href="#h3-0-101" id="h3-0-101" class="i">+    }
+</a><a href="#h3-0-102" id="h3-0-102" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>
