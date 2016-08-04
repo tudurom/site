@@ -70,9 +70,17 @@ hr {
     border: none;
     border-top: 2px solid $border-color;
 }
-img + em {
+
+.caption {
     display: block;
     font-style: italic;
     margin: auto;
     text-align: center;
+}
+#back_link {
+    font-size: 0.7em;
+    color: #b0b0b0;
+}
+#back_link:before {
+    content: "<<< ";
 }

@@ -44,4 +44,4 @@ export page_title="$MAIN_PAGE_TITLE"
 # generate css
 cd ../css
 echo "$(tput setaf 8)[ SCSS ]$(tput setaf 10) Generating css$(tput sgr0)"
-scss main.scss > main.css
+scss main.scss --style compressed > main.css
