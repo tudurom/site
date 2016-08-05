@@ -8,12 +8,16 @@ build() {
     case "$ext" in
         # Special cases
         md)
+            local usealt="true"
+            test -f "$PWD/$1/content.html" && rm "$PWD/$1/content.html"
+            mark "$PWD/$1/content.md" > "$PWD/$1/content.html"
+            ;;
 
-        local usemd="true"
-        test -f "$PWD/$1/content.html" && rm "$PWD/$1/content.html"
-        mark "$PWD/$1/content.md" > "$PWD/$1/content.html"
-        ;;
-
+        mup)
+            local usealt="true"
+            test -f "$PWD/$1/content.html" && rm "$PWD/$1/content.html"
+            mortup -u "$PWD/$1/content.mup" > "$PWD/$1/content.html"
+            ;;
     esac
     # Read metadata
     # the metadata file needs to have this form:
@@ -22,7 +26,7 @@ build() {
     export content="$(cat $PWD/$1/content.html)"
     . "$PWD/template.html.sh" > "gen/$(echo "$1" | cut -d. -f1).html"
 
-    test "$usemd" = "true" && rm "$PWD/$1/content.html"
+    test "$usealt" = "true" && rm "$PWD/$1/content.html"
 }
 
 install_page() {

@@ -17,7 +17,15 @@ for article in $(ls -1 | grep -Ev "res|tm"); do
         test -d "../${url}" || mkdir "../${url}"
 
         # calls `mark` to convert markdown to html
-        gen_post="$(mark "${article}/content.md")"
+        ext="$(echo ${article}/content.* | rev | cut -d'.' -f1 | rev)"
+        case "$ext" in
+            md)
+                gen_post="$(mark "${article}/content.md")"
+                ;;
+            mup)
+                gen_post="$(mortup -u "${article}/content.mup")"
+                ;;
+        esac
         export content="$gen_post"
         export page_title="$title │ $MAIN_PAGE_TITLE"
         gen_post="$(. "$PWD/res/post.html")"
