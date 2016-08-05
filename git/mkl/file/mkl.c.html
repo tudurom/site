@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> mkl.c (2225B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> mkl.c (2208B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -118,7 +118,6 @@
 <a href="#l100" id="l100">100</a>
 <a href="#l101" id="l101">101</a>
 <a href="#l102" id="l102">102</a>
-<a href="#l103" id="l103">103</a>
 </pre></td><td><pre>
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
@@ -189,10 +188,9 @@ static void
 print_spaces()
 {
     for (int i = 0; i &lt; (size - real_size) / SIZE_UNITS; i++) {
+        fputc(space_char, stdout);
         if (orientation == VERTICAL)
             fputc(&apos;\n&apos;, stdout);
-        else
-            fputc(space_char, stdout);
     }
 }
 

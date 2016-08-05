@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> mkl.1 (1131B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> mkl.1 (1104B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -79,10 +79,10 @@
 The
 .Nm
 utility draws a thick line based on the input level given as argument
-or from stdin using Unicode Block Elements.
+or from stdin, using Unicode Block Elements.
 .Bl -tag -width Ds
 .It perc
-A percentage value to be represented as a progress bar. If this argument isn&apos;t provided,
+A percentage value to be represented as a thick line. If this argument isn&apos;t provided,
 .Nm
 will attempt to read the value from stdin.
 .El
@@ -95,7 +95,7 @@ the terminal can be divided in 8 virtual blocks. (default: 80 virtual blocks, 10
 A single char representing the style of the line. &apos;|&apos; for a vertical line, &apos;-&apos; for a horizontal
 line. (default: &apos;|&apos;)
 .It Ev SPACE
-The space char used to fill blank blocks in horizontal orientation. (default: &apos; &apos;)
+The space char used to fill blank blocks. (default: &apos; &apos;)
 .El
 .Sh EXAMPLES
 .Dl $ mkl 75
