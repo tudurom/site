@@ -52,7 +52,7 @@ ls -N | grep "\." |\
     install_page "gen/index.html" "../index.html"
     mkdir ../whoami
     install_page "gen/whoami.html" "../whoami/index.html"
-
+   install_page "gen/res.html" "../res/index.html"
     install_page "css/" "../css"
     install_page "js/" "../js"
     install_page "fonts/" "../fonts"

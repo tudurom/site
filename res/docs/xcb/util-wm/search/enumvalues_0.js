@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['xcb_5fewmh_5fclient_5fsource_5ftype_5fnone',['XCB_EWMH_CLIENT_SOURCE_TYPE_NONE',['../group__xcb____ewmh__t.html#ggaf2a03455239c3bd7e59a0f24cc2bea75ab9f493777125eb4f6025703c692dadca',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fclient_5fsource_5ftype_5fnormal',['XCB_EWMH_CLIENT_SOURCE_TYPE_NORMAL',['../group__xcb____ewmh__t.html#ggaf2a03455239c3bd7e59a0f24cc2bea75a11745ee8717002f57c298a0b40d5343e',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fclient_5fsource_5ftype_5fother',['XCB_EWMH_CLIENT_SOURCE_TYPE_OTHER',['../group__xcb____ewmh__t.html#ggaf2a03455239c3bd7e59a0f24cc2bea75a85a8cd405b43fa62127ebff22c7a8e96',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fmoveresize_5fwindow_5fheight',['XCB_EWMH_MOVERESIZE_WINDOW_HEIGHT',['../group__xcb____ewmh__t.html#gga26f5d1fa58bc15f87850393ea3048b69aad87bcb8eb62851d0ac3ac6d547c1c80',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fmoveresize_5fwindow_5fwidth',['XCB_EWMH_MOVERESIZE_WINDOW_WIDTH',['../group__xcb____ewmh__t.html#gga26f5d1fa58bc15f87850393ea3048b69a66e4cab5f11a6dae8b2541c1effaa9a8',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fmoveresize_5fwindow_5fx',['XCB_EWMH_MOVERESIZE_WINDOW_X',['../group__xcb____ewmh__t.html#gga26f5d1fa58bc15f87850393ea3048b69a1773db53e08de9e9f2bcd62063c725ce',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fmoveresize_5fwindow_5fy',['XCB_EWMH_MOVERESIZE_WINDOW_Y',['../group__xcb____ewmh__t.html#gga26f5d1fa58bc15f87850393ea3048b69a3aab03aab6292e53ef289508a977ba62',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fwm_5fbottomleft',['XCB_EWMH_WM_BOTTOMLEFT',['../group__xcb____ewmh__t.html#ggaa9489ec98cc57307b1a376f35cfbd7c7a8861e95d0578f29f94134b4c5c048e65',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fwm_5fbottomright',['XCB_EWMH_WM_BOTTOMRIGHT',['../group__xcb____ewmh__t.html#ggaa9489ec98cc57307b1a376f35cfbd7c7a33d52b9fe38a4f01011f33e8c04da4bc',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fwm_5fmoveresize_5fsize_5fbottom',['XCB_EWMH_WM_MOVERESIZE_SIZE_BOTTOM',['../group__xcb____ewmh__t.html#gga178bac3e0bb851f7514db8bcf8f523cfa7f052c796314a3dea6472ab0bb9dcbe2',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fwm_5fmoveresize_5fsize_5fbottomleft',['XCB_EWMH_WM_MOVERESIZE_SIZE_BOTTOMLEFT',['../group__xcb____ewmh__t.html#gga178bac3e0bb851f7514db8bcf8f523cfa4144a53f79e07422c6f0f68fae77bbff',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fwm_5fmoveresize_5fsize_5fbottomright',['XCB_EWMH_WM_MOVERESIZE_SIZE_BOTTOMRIGHT',['../group__xcb____ewmh__t.html#gga178bac3e0bb851f7514db8bcf8f523cfa6c5dfb43db2dfcfe5122bea79dc5462a',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fwm_5fmoveresize_5fsize_5fleft',['XCB_EWMH_WM_MOVERESIZE_SIZE_LEFT',['../group__xcb____ewmh__t.html#gga178bac3e0bb851f7514db8bcf8f523cfa2569da6249a849d7ad9445b1949940e3',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fwm_5fmoveresize_5fsize_5fright',['XCB_EWMH_WM_MOVERESIZE_SIZE_RIGHT',['../group__xcb____ewmh__t.html#gga178bac3e0bb851f7514db8bcf8f523cfa45231ee69b2bc96e3f0cc4c143c29f9f',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fwm_5fmoveresize_5fsize_5ftop',['XCB_EWMH_WM_MOVERESIZE_SIZE_TOP',['../group__xcb____ewmh__t.html#gga178bac3e0bb851f7514db8bcf8f523cfa8c7ac33c538eff2d562acb123e7f708f',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fwm_5fmoveresize_5fsize_5ftopleft',['XCB_EWMH_WM_MOVERESIZE_SIZE_TOPLEFT',['../group__xcb____ewmh__t.html#gga178bac3e0bb851f7514db8bcf8f523cfa8466cfb5461f01c9becb06e75d834d91',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fwm_5fmoveresize_5fsize_5ftopright',['XCB_EWMH_WM_MOVERESIZE_SIZE_TOPRIGHT',['../group__xcb____ewmh__t.html#gga178bac3e0bb851f7514db8bcf8f523cfab023f98805b9b8f9d5962cd9a231f16b',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fwm_5forientation_5fhorz',['XCB_EWMH_WM_ORIENTATION_HORZ',['../group__xcb____ewmh__t.html#gga75cd02c6ed080fd2f878e2ff8a7be290ab72142408b4832b77eb45923d121b9be',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fwm_5forientation_5fvert',['XCB_EWMH_WM_ORIENTATION_VERT',['../group__xcb____ewmh__t.html#gga75cd02c6ed080fd2f878e2ff8a7be290aeaa487ad4b55419db431079bde42512e',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fwm_5ftopleft',['XCB_EWMH_WM_TOPLEFT',['../group__xcb____ewmh__t.html#ggaa9489ec98cc57307b1a376f35cfbd7c7adbe959fe6fb40ad2bb8933c3c329d994',1,'xcb_ewmh.h']]],
+  ['xcb_5fewmh_5fwm_5ftopright',['XCB_EWMH_WM_TOPRIGHT',['../group__xcb____ewmh__t.html#ggaa9489ec98cc57307b1a376f35cfbd7c7a49f46b21bad79857333b413b130e724d',1,'xcb_ewmh.h']]]
+];
