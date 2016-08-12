@@ -65,7 +65,7 @@ main(int argc, char **argv)
 #!/bin/sh
 
 for i in {0..100}; do
-  echo "$(tput bold)HACKING %${i} HACKING$(tput sgr0)"
+  echo "$(tput bold)HACKING ${i}% HACKING$(tput sgr0)"
 done
 
 echo "BASHISM DONE"

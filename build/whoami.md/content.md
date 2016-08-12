@@ -1,10 +1,10 @@
 tudurom
 -------
 
-Hey, my name is Tudor and I study computer science at the [National College of Computer Science "Tudor Vianu"](https://en.wikipedia.org/wiki/Tudor_Vianu_National_College_of_Computer_Science) in Bucharest, Romania. People often call me "tudu". Online I'm known as "tudurom". My
+Hey, my name is Tudor and I study computer science at the [National College of Computer Science "Tudor Vianu"](https://en.wikipedia.org/wiki/Tudor_Vianu_National_College_of_Computer_Science) in Bucharest, Romania. Online I'm known as "tudurom". My
 passion and hobby is designing and writing computer programs. I like [the UNIX
-philosophy](https://en.wikipedia.org/wiki/Unix_philosophy) and simplicity. I
-learn by trial and error, The Hard Way.
+philosophy](https://en.wikipedia.org/wiki/Unix_philosophy) because of the way it
+encourages programs to cooperate.
 
 This website is a collection of my thoughts and work and I hope people can learn
 from this website. I also have a [blog](/blog).
