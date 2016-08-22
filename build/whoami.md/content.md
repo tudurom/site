@@ -1,4 +1,4 @@
-tudurom
+[tudurom](https://www.youtube.com/watch?v=U5u-X4bocr4)
 -------
 
 Hey, my name is Tudor and I study computer science at the [National College of Computer Science "Tudor Vianu"](https://en.wikipedia.org/wiki/Tudor_Vianu_National_College_of_Computer_Science) in Bucharest, Romania. Online I'm known as "tudurom". My

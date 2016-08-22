@@ -34,6 +34,12 @@ h2 {
     font-weight: bold;
 }
 
+h2 a:link,
+h2 a:visited {
+    font-size: inherit;
+    color: #a66363;
+}
+
 h3 {
     font-family: "Envy Code R";
     font-weight: normal;
