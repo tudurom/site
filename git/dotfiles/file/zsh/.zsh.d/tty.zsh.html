@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>mpd.conf - dotfiles - Small loan of configuration files.
+<title>tty.zsh - dotfiles - Small loan of configuration files.
 </title>
 <link rel="icon" type="image/png" href="../../../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../../../atom.xml" />
@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> mpd.conf (572B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> tty.zsh (446B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -37,30 +37,28 @@
 <a href="#l19" id="l19">19</a>
 <a href="#l20" id="l20">20</a>
 <a href="#l21" id="l21">21</a>
-<a href="#l22" id="l22">22</a>
 </pre></td><td><pre>
-music_directory    &quot;/home/tudurom/usr/music&quot;
-playlist_directory &quot;/home/tudurom/.mpd/playlists&quot;
-db_file            &quot;/home/tudurom/.mpd/mpd.db&quot;
-log_file           &quot;/home/tudurom/.mpd/mpd.log&quot;
-pid_file           &quot;/home/tudurom/.mpd/mpd.pid&quot;
-state_file         &quot;/home/tudurom/.mpd/mpdstate&quot;
-gapless_mp3_playback &quot;yes&quot;
-audio_output {
-    type &quot;alsa&quot;
-    name &quot;MPD alsa&quot;
-    device &quot;hw:0,0&quot;
-    auto_resample &quot;no&quot;
-    auto_format &quot;no&quot;
-    auto_channels &quot;no&quot;
-    format &quot;96000:24:2&quot;
-}
-audio_output {
-  type &quot;fifo&quot;
-  name &quot;vis_feed&quot;
-  path &quot;/tmp/mpd.fifo&quot;
-  format &quot;44100:16:2&quot;
-}
+# throw this in your ~/.(whatever)rc
+
+if [ &quot;$TERM&quot; = &quot;linux&quot; ]; then
+echo -en &quot;\e]P01d2a30&quot;
+echo -en &quot;\e]P1a66363&quot;
+echo -en &quot;\e]P263a690&quot;
+echo -en &quot;\e]P3a6a663&quot;
+echo -en &quot;\e]P46385a6&quot;
+echo -en &quot;\e]P5BF9C86&quot;
+echo -en &quot;\e]P663a69b&quot;
+echo -en &quot;\e]P7c0c5ce&quot;
+echo -en &quot;\e]P8456472&quot;
+echo -en &quot;\e]P9c27171&quot;
+echo -en &quot;\e]PA6dc2a3&quot;
+echo -en &quot;\e]PBbfc271&quot;
+echo -en &quot;\e]PC719bc2&quot;
+echo -en &quot;\e]PDBF9C86&quot;
+echo -en &quot;\e]PE71c2af&quot;
+echo -en &quot;\e]PFeff1f5&quot;
+clear
+fi
 </pre></td></tr></table>
 </div>
 </body>

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>mpd.conf - dotfiles - Small loan of configuration files.
+<title>export.zsh - dotfiles - Small loan of configuration files.
 </title>
 <link rel="icon" type="image/png" href="../../../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../../../atom.xml" />
@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> mpd.conf (572B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> export.zsh (868B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -38,29 +38,61 @@
 <a href="#l20" id="l20">20</a>
 <a href="#l21" id="l21">21</a>
 <a href="#l22" id="l22">22</a>
+<a href="#l23" id="l23">23</a>
+<a href="#l24" id="l24">24</a>
+<a href="#l25" id="l25">25</a>
+<a href="#l26" id="l26">26</a>
+<a href="#l27" id="l27">27</a>
+<a href="#l28" id="l28">28</a>
+<a href="#l29" id="l29">29</a>
+<a href="#l30" id="l30">30</a>
+<a href="#l31" id="l31">31</a>
+<a href="#l32" id="l32">32</a>
+<a href="#l33" id="l33">33</a>
+<a href="#l34" id="l34">34</a>
+<a href="#l35" id="l35">35</a>
+<a href="#l36" id="l36">36</a>
+<a href="#l37" id="l37">37</a>
+<a href="#l38" id="l38">38</a>
 </pre></td><td><pre>
-music_directory    &quot;/home/tudurom/usr/music&quot;
-playlist_directory &quot;/home/tudurom/.mpd/playlists&quot;
-db_file            &quot;/home/tudurom/.mpd/mpd.db&quot;
-log_file           &quot;/home/tudurom/.mpd/mpd.log&quot;
-pid_file           &quot;/home/tudurom/.mpd/mpd.pid&quot;
-state_file         &quot;/home/tudurom/.mpd/mpdstate&quot;
-gapless_mp3_playback &quot;yes&quot;
-audio_output {
-    type &quot;alsa&quot;
-    name &quot;MPD alsa&quot;
-    device &quot;hw:0,0&quot;
-    auto_resample &quot;no&quot;
-    auto_format &quot;no&quot;
-    auto_channels &quot;no&quot;
-    format &quot;96000:24:2&quot;
-}
-audio_output {
-  type &quot;fifo&quot;
-  name &quot;vis_feed&quot;
-  path &quot;/tmp/mpd.fifo&quot;
-  format &quot;44100:16:2&quot;
-}
+export EDITOR=nvim
+export VISUAL=nvim
+export PAGER=less
+export BROWSER=firefox
+export LS_COLORS=&apos;&apos;
+export CC=clang
+
+# Golang specific variables
+if [ -f /usr/bin/go ]; then
+    export GOPATH=$HOME/gopath
+    export GOROOT=/usr/lib/go
+    export PATH=&quot;$PATH:$GOROOT/bin&quot;
+    export PATH=&quot;$PATH:$GOPATH/bin&quot;
+fi
+
+# Ruby
+if [ -f /usr/bin/ruby ]; then
+    ruby_ver=&quot;$(ls -1 $HOME/.gem/ruby | sort -nr | head -n 1)&quot;
+    export PATH=&quot;$PATH:$HOME/.gem/ruby/$ruby_ver/bin&quot;
+fi
+
+# JS
+if [ -f /usr/bin/node ]; then
+    export PATH=&quot;$PATH:$HOME/.node/bin&quot;
+fi
+
+# Android
+export PATH=&quot;$PATH:$HOME/usr/android/android-studio/bin&quot;
+export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
+
+# Source local scripts
+export PATH=&quot;$PATH:$HOME/bin/clint:$HOME/bin&quot;
+
+# Python packages
+export PATH=&quot;$PATH:$HOME/.local/bin&quot;
+
+# I totally forgot what all those flags do
+export LESS=&apos;-F -g -i -M -R -S -w -X -z-4&apos;
 </pre></td></tr></table>
 </div>
 </body>

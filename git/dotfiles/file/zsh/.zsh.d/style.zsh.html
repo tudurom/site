@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>mpd.conf - dotfiles - Small loan of configuration files.
+<title>style.zsh - dotfiles - Small loan of configuration files.
 </title>
 <link rel="icon" type="image/png" href="../../../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../../../atom.xml" />
@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> mpd.conf (572B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> style.zsh (511B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -38,29 +38,31 @@
 <a href="#l20" id="l20">20</a>
 <a href="#l21" id="l21">21</a>
 <a href="#l22" id="l22">22</a>
+<a href="#l23" id="l23">23</a>
 </pre></td><td><pre>
-music_directory    &quot;/home/tudurom/usr/music&quot;
-playlist_directory &quot;/home/tudurom/.mpd/playlists&quot;
-db_file            &quot;/home/tudurom/.mpd/mpd.db&quot;
-log_file           &quot;/home/tudurom/.mpd/mpd.log&quot;
-pid_file           &quot;/home/tudurom/.mpd/mpd.pid&quot;
-state_file         &quot;/home/tudurom/.mpd/mpdstate&quot;
-gapless_mp3_playback &quot;yes&quot;
-audio_output {
-    type &quot;alsa&quot;
-    name &quot;MPD alsa&quot;
-    device &quot;hw:0,0&quot;
-    auto_resample &quot;no&quot;
-    auto_format &quot;no&quot;
-    auto_channels &quot;no&quot;
-    format &quot;96000:24:2&quot;
-}
-audio_output {
-  type &quot;fifo&quot;
-  name &quot;vis_feed&quot;
-  path &quot;/tmp/mpd.fifo&quot;
-  format &quot;44100:16:2&quot;
-}
+setopt prompt_subst
+
+# vi-style keybinds
+bindkey -v
+
+# cd into dir if the command is the name of a dir
+# and the command does not exist
+setopt autocd
+# print error if no match for filename
+setopt nomatch
+# notify about background jobs
+setopt notify
+# enable interactive comments in interactive mode
+setopt interactive_comments
+
+autoload -U colors &amp;&amp; colors
+autoload -U zmv
+
+PROMPT=&apos;$fg_bold[black]$(pwd | sed &quot;s/\/home\/$USER/~/&quot;)
+%{$fg[red]%(? $fg[cyan] )%}─── %f&apos;
+
+setopt extendedglob
+setopt nocaseglob
 </pre></td></tr></table>
 </div>
 </body>

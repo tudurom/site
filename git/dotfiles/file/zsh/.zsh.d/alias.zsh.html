@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Language" content="en" />
-<title>alias.sh - dotfiles - Small loan of configuration files.
+<title>alias.zsh - dotfiles - Small loan of configuration files.
 </title>
 <link rel="icon" type="image/png" href="../../../favicon.png" />
 <link rel="alternate" type="application/atom+xml" title="dotfiles.git Atom Feed" href="../../../atom.xml" />
@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> alias.sh (1452B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> alias.zsh (1471B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -89,6 +89,7 @@
 <a href="#l71" id="l71">71</a>
 <a href="#l72" id="l72">72</a>
 <a href="#l73" id="l73">73</a>
+<a href="#l74" id="l74">74</a>
 </pre></td><td><pre>
 alias :q=exit
 alias irb=pry
@@ -96,6 +97,7 @@ alias ccat=pygmentize
 alias problemhelper=&quot;time problemhelper&quot;
 alias ph=problemhelper
 alias tls=&quot;tmux ls&quot;
+alias ls=&quot;ls -F&quot;
 alias tswitch=&quot;tmux switch -t&quot;
 alias tkill=&quot;tmux kill-session -t&quot;
 alias rm=&quot;rm -I&quot;
@@ -140,7 +142,7 @@ trinitas() {
 }
 
 les() {
-    if [ &quot;$#&quot; -gt 0 ]; then
+    if [[ &quot;$#&quot; -gt 0 ]]; then
         test -d &quot;$1&quot; &amp;&amp; ls -al &quot;$1&quot; || less &quot;$1&quot;
     else
         ls

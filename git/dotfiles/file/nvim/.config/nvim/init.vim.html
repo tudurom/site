@@ -15,7 +15,7 @@
 <a href="../../../../log.html">Log</a> | <a href="../../../../files.html">Files</a> | <a href="../../../../refs.html">Refs</a> | <a href="../../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> init.vim (4612B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> init.vim (3883B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -233,27 +233,6 @@
 <a href="#l215" id="l215">215</a>
 <a href="#l216" id="l216">216</a>
 <a href="#l217" id="l217">217</a>
-<a href="#l218" id="l218">218</a>
-<a href="#l219" id="l219">219</a>
-<a href="#l220" id="l220">220</a>
-<a href="#l221" id="l221">221</a>
-<a href="#l222" id="l222">222</a>
-<a href="#l223" id="l223">223</a>
-<a href="#l224" id="l224">224</a>
-<a href="#l225" id="l225">225</a>
-<a href="#l226" id="l226">226</a>
-<a href="#l227" id="l227">227</a>
-<a href="#l228" id="l228">228</a>
-<a href="#l229" id="l229">229</a>
-<a href="#l230" id="l230">230</a>
-<a href="#l231" id="l231">231</a>
-<a href="#l232" id="l232">232</a>
-<a href="#l233" id="l233">233</a>
-<a href="#l234" id="l234">234</a>
-<a href="#l235" id="l235">235</a>
-<a href="#l236" id="l236">236</a>
-<a href="#l237" id="l237">237</a>
-<a href="#l238" id="l238">238</a>
 </pre></td><td><pre>
 &quot; ╻┏┓╻╻╺┳╸ ╻ ╻╻┏┳┓
 &quot; ┃┃┗┫┃ ┃  ┃┏┛┃┃┃┃
@@ -272,17 +251,15 @@ call plug#begin(&apos;~/.config/nvim/bundle&apos;)
 Plug &apos;ntpeters/vim-better-whitespace&apos;
 
 &quot; Simple tab completion
-&quot;Plug &apos;ajh17/vimcompletesme&apos;
+Plug &apos;ajh17/vimcompletesme&apos;
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
-Plug &apos;Shougo/deoplete.nvim&apos;, { &apos;do&apos;: function(&apos;DoRemote&apos;) }
-Plug &apos;zchee/deoplete-go&apos;
-if executable(&apos;clang&apos;)
-    Plug &apos;Rip-Rip/clang_complete&apos;
-endif
 if executable(&apos;go&apos;)
     Plug &apos;fatih/vim-go&apos;
+endif
+if executable(&apos;clang&apos;)
+    Plug &apos;justmao945/vim-clang&apos;
 endif
 
 &quot; Syntax checking
@@ -419,31 +396,12 @@ map &lt;Leader&gt;h &lt;C-w&gt;h
 map &lt;Leader&gt;j &lt;C-w&gt;j
 map &lt;Leader&gt;k &lt;C-w&gt;k
 map &lt;Leader&gt;l &lt;C-w&gt;l
+map &lt;Leader&gt;= &lt;C-w&gt;=
 
 &quot; }}}
 
-&quot; Completion {{{
-
 filetype plugin on
-&quot;set omnifunc=syntaxcomplete#Complete
-&quot;let b:vcm_tab_complete = &apos;omni&apos;
-let g:deoplete#enable_at_startup = 1
-function! s:is_whitespace() &quot;{{{
-	let col = col(&apos;.&apos;) - 1
-	return ! col || getline(&apos;.&apos;)[col - 1] =~? &apos;\s&apos;
-endfunction &quot;}}}
-&quot; &lt;Tab&gt; completion:
-&quot; 1. If popup menu is visible, select and insert next item
-&quot; 2. Otherwise, if preceding chars are whitespace, insert tab char
-&quot; 3. Otherwise, start manual autocomplete
-imap &lt;silent&gt;&lt;expr&gt;&lt;Tab&gt; pumvisible() ? &quot;\&lt;C-n&gt;&quot;
-	\ : (&lt;SID&gt;is_whitespace() ? &quot;\&lt;Tab&gt;&quot;
-	\ : deoplete#mappings#manual_complete())
-
-smap &lt;silent&gt;&lt;expr&gt;&lt;Tab&gt; pumvisible() ? &quot;\&lt;C-n&gt;&quot;
-	\ : (&lt;SID&gt;is_whitespace() ? &quot;\&lt;Tab&gt;&quot;
-\ : deoplete#mappings#manual_complete())
-&quot;}}}
+set omnifunc=syntaxcomplete#Complete
 
 &quot; Golang {{{
 let g:go_fmt_command = &quot;goimports&quot;
