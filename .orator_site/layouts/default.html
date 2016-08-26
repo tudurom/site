@@ -1,0 +1,32 @@
+{{ define "head" }}
+<head>
+	{{ $title := index .Page.FrontMatter "title" }}
+	<title>{{ .SiteConfig.Title }}{{ if $title }} - {{ $title }}{{end}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="{{ .SiteConfig.Author }}">
+    <meta name="description" content="{{ .SiteConfig.Description }}">
+    <meta name="keywords" content="{{ .SiteConfig.Keywords }}">
+    <meta name="generator" content="Orator">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+{{ end }}
+
+{{ define "header" }}
+<a href="/"><h1>tudor roman</h1></a>
+{{ end }}
+
+{{ define "default" }}
+<!DOCTYPE html>
+<html>
+	{{ template "head" . }}
+
+	<body>
+
+		<main>
+			{{ template "header" . }}
+			{{ .Page.Content }}
+		</main>
+	</body>
+</html>
+{{ end }}
