@@ -35,11 +35,12 @@ for article in $(ls -1 | grep -Ev "res|tm"); do
         # generates page
         . "$PWD/res/template.html" > "../${url}/index.html"
 
-        index_links="${index_links} <li><span>${date}</span> <a href=\"${article}\">${title}</a></li>"
+        index_links="${index_links}\n<li><span>${date}</span> <a href=\"${article}\">${title}</a></li>"
     fi
 done
 
 echo "$(tput setaf 8)[ HOME ]$(tput setaf 10) Generating index page$(tput sgr0)"
+index_links="$(echo "$index_links" | tac)"
 export content="$index_links"
 links_page="$(. "${PWD}/res/post_list.html")"
 
