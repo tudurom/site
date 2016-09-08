@@ -15,7 +15,7 @@
 <a href="../../../../log.html">Log</a> | <a href="../../../../files.html">Files</a> | <a href="../../../../refs.html">Refs</a> | <a href="../../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> init.vim (3883B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> init.vim (4365B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -233,11 +233,35 @@
 <a href="#l215" id="l215">215</a>
 <a href="#l216" id="l216">216</a>
 <a href="#l217" id="l217">217</a>
+<a href="#l218" id="l218">218</a>
+<a href="#l219" id="l219">219</a>
+<a href="#l220" id="l220">220</a>
+<a href="#l221" id="l221">221</a>
+<a href="#l222" id="l222">222</a>
+<a href="#l223" id="l223">223</a>
+<a href="#l224" id="l224">224</a>
+<a href="#l225" id="l225">225</a>
+<a href="#l226" id="l226">226</a>
+<a href="#l227" id="l227">227</a>
+<a href="#l228" id="l228">228</a>
+<a href="#l229" id="l229">229</a>
+<a href="#l230" id="l230">230</a>
+<a href="#l231" id="l231">231</a>
+<a href="#l232" id="l232">232</a>
+<a href="#l233" id="l233">233</a>
+<a href="#l234" id="l234">234</a>
+<a href="#l235" id="l235">235</a>
+<a href="#l236" id="l236">236</a>
+<a href="#l237" id="l237">237</a>
+<a href="#l238" id="l238">238</a>
+<a href="#l239" id="l239">239</a>
+<a href="#l240" id="l240">240</a>
+<a href="#l241" id="l241">241</a>
 </pre></td><td><pre>
 &quot; ╻┏┓╻╻╺┳╸ ╻ ╻╻┏┳┓
 &quot; ┃┃┗┫┃ ┃  ┃┏┛┃┃┃┃
 &quot; ╹╹ ╹╹ ╹ ╹┗┛ ╹╹ ╹
-&quot; init.vim written with extensibility in mind
+&quot; init.vim without description
 
 filetype off
 
@@ -252,14 +276,11 @@ Plug &apos;ntpeters/vim-better-whitespace&apos;
 
 &quot; Simple tab completion
 Plug &apos;ajh17/vimcompletesme&apos;
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
 if executable(&apos;go&apos;)
-    Plug &apos;fatih/vim-go&apos;
+	Plug &apos;fatih/vim-go&apos;
 endif
 if executable(&apos;clang&apos;)
-    Plug &apos;justmao945/vim-clang&apos;
+	Plug &apos;rip-rip/clang_complete&apos;
 endif
 
 &quot; Syntax checking
@@ -268,12 +289,19 @@ Plug &apos;scrooloose/syntastic&apos;
 &quot; Show changes
 Plug &apos;airblade/vim-gitgutter&apos;
 
-&quot; One plugin to rule them all
-Plug &apos;sheerun/vim-polyglot&apos;
+&quot; Markdown
+Plug &apos;godlygeek/tabular&apos;
+Plug &apos;plasticboy/vim-markdown&apos;
 
-call plug#end()              &quot; required
-filetype plugin indent on    &quot; required
+Plug &apos;othree/html5.vim&apos;
 
+&quot; Tmux integration
+Plug &apos;christoomey/vim-tmux-navigator&apos;
+
+call plug#end()
+filetype plugin indent on
+
+let g:vim_markdown_frontmatter = 1
 &quot; }}}
 
 &quot; Essential settings {{{
@@ -283,7 +311,10 @@ syntax enable &quot; Enable syntax highlighting, duh
 set number    &quot; Looks better
 set backspace=indent,eol,start
 set tabstop=4
-set expandtab
+set noexpandtab
+set copyindent
+set preserveindent
+set softtabstop=0
 set shiftwidth=4
 set smartindent
 set cindent
@@ -306,11 +337,11 @@ set undodir=~/.config/nvim/tmp/undo/
 
 &quot; Make the folders automatically if they don&apos;t already exist.
 if !isdirectory(expand(&amp;backupdir))
-    call mkdir(expand(&amp;backupdir), &quot;p&quot;)
+	call mkdir(expand(&amp;backupdir), &quot;p&quot;)
 endif
 
 if !isdirectory(expand(&amp;undodir))
-    call mkdir(expand(&amp;undodir), &quot;p&quot;)
+	call mkdir(expand(&amp;undodir), &quot;p&quot;)
 endif
 
 &quot; Make undo work after the file is closed
@@ -342,12 +373,13 @@ cabbr Wq wq
 
 set background=dark
 colo shblah
+
 &quot; }}}
 
 &quot; NERD things {{{
 
 &quot; Toggle NERDTree
-map &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;
+&quot;map &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;
 
 &quot; }}}
 
@@ -378,9 +410,9 @@ set wrapmargin=0
 
 filetype plugin indent on
 augroup Filetypes
-    au!
+	au!
 
-    au BufRead,BufNewFile *.md setlocal textwidth=80 spell spelllang=en_us
+	au BufRead,BufNewFile *.md setlocal textwidth=80 spell spelllang=en_us
 
 augroup end
 
@@ -400,8 +432,10 @@ map &lt;Leader&gt;= &lt;C-w&gt;=
 
 &quot; }}}
 
+&quot; Completion {{{
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+&quot; }}}
 
 &quot; Golang {{{
 let g:go_fmt_command = &quot;goimports&quot;
@@ -450,6 +484,20 @@ dig t, 539
 &quot;inoremap &lt;Down&gt; &lt;NOP&gt;
 &quot;inoremap &lt;Left&gt; &lt;NOP&gt;
 &quot;inoremap &lt;Right&gt; &lt;NOP&gt;
+&quot; }}}
+
+&quot; Functions {{{
+:command! -nargs=1 -range SuperRetab &lt;line1&gt;,&lt;line2&gt;s/\v%(^ *)@&lt;= {&lt;args&gt;}/\t/g
+&quot; }}}
+
+&quot; Tmux integration {{{
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap &lt;silent&gt; &lt;BS&gt; :TmuxNavigateLeft&lt;cr&gt;
+nnoremap &lt;silent&gt; &lt;C-j&gt; :TmuxNavigateDown&lt;cr&gt;
+nnoremap &lt;silent&gt; &lt;C-k&gt; :TmuxNavigateUp&lt;cr&gt;
+nnoremap &lt;silent&gt; &lt;C-l&gt; :TmuxNavigateRight&lt;cr&gt;
+nnoremap &lt;silent&gt; &lt;C-\&gt; :TmuxNavigatePrevious&lt;cr&gt;
 &quot; }}}
 </pre></td></tr></table>
 </div>

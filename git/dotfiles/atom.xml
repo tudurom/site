@@ -4,6 +4,40 @@
 <subtitle>Small loan of configuration files.
 </subtitle>
 <entry>
+<id>4903e4c07b56627d49273196cd4adbb8b3c407da</id>
+<published>2016-09-05T11:53:23Z</published>
+<updated>2016-09-05T11:53:23Z</updated>
+<title type="text">6 bspwm workspaces</title>
+<link rel="alternate" type="text/html" href="commit/4903e4c07b56627d49273196cd4adbb8b3c407da.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 4903e4c07b56627d49273196cd4adbb8b3c407da
+parent d6968929a7e5c6dcc32dd715918d7232ba66761a
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Sep  5 14:53:23 +0300
+
+6 bspwm workspaces
+
+</content>
+</entry>
+<entry>
+<id>d6968929a7e5c6dcc32dd715918d7232ba66761a</id>
+<published>2016-09-01T19:43:37Z</published>
+<updated>2016-09-01T19:43:37Z</updated>
+<title type="text">small changer</title>
+<link rel="alternate" type="text/html" href="commit/d6968929a7e5c6dcc32dd715918d7232ba66761a.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit d6968929a7e5c6dcc32dd715918d7232ba66761a
+parent 1f51ddeef71769ce7ae2e34ab8e0b0751ee84c0e
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Sep  1 22:43:37 +0300
+
+small changer
+
+</content>
+</entry>
+<entry>
 <id>1f51ddeef71769ce7ae2e34ab8e0b0751ee84c0e</id>
 <published>2016-08-19T14:36:09Z</published>
 <updated>2016-08-19T14:36:09Z</updated>
@@ -1671,40 +1705,6 @@ Everything should now use sh instead of dash (dash should be symlinked to sh)
 disputils now caches all data at startup
 wmrc configs are loaded in .profile
 fuck cwm
-
-</content>
-</entry>
-<entry>
-<id>2a4814865dfae232c21bc63318e16a243d5eafd7</id>
-<published>2016-04-06T18:06:11Z</published>
-<updated>2016-04-06T18:06:11Z</updated>
-<title type="text">multimonitor, take 1</title>
-<link rel="alternate" type="text/html" href="commit/2a4814865dfae232c21bc63318e16a243d5eafd7.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit 2a4814865dfae232c21bc63318e16a243d5eafd7
-parent 0ab9a0ddeb099bc2dd04568d7721b3af30a6fa81
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Wed Apr  6 21:06:11 +0300
-
-multimonitor, take 1
-
-</content>
-</entry>
-<entry>
-<id>0ab9a0ddeb099bc2dd04568d7721b3af30a6fa81</id>
-<published>2016-04-05T15:26:54Z</published>
-<updated>2016-04-05T15:26:54Z</updated>
-<title type="text">thank xero for the cheatsheet</title>
-<link rel="alternate" type="text/html" href="commit/0ab9a0ddeb099bc2dd04568d7721b3af30a6fa81.html" /><author><name>Tudor</name>
-<email>xenogenesis@openmailbox.org</email>
-</author>
-<content type="text">commit 0ab9a0ddeb099bc2dd04568d7721b3af30a6fa81
-parent d2d9bc45549ea1ae74adc6fcbff9f3322f0150d3
-Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
-Date:   Tue Apr  5 18:26:54 +0300
-
-thank xero for the cheatsheet
 
 </content>
 </entry>

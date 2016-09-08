@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> .tmux.conf (1903B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> .tmux.conf (2600B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -111,6 +111,11 @@
 <a href="#l93" id="l93">93</a>
 <a href="#l94" id="l94">94</a>
 <a href="#l95" id="l95">95</a>
+<a href="#l96" id="l96">96</a>
+<a href="#l97" id="l97">97</a>
+<a href="#l98" id="l98">98</a>
+<a href="#l99" id="l99">99</a>
+<a href="#l100" id="l100">100</a>
 </pre></td><td><pre>
 # ╺┳╸┏┳┓╻ ╻╻ ╻
 #  ┃ ┃┃┃┃ ┃┏╋┛
@@ -192,7 +197,7 @@ set-option -g status-position bottom
 setw -g window-status-format &quot;#[bg=default]#[fg=colour8] #W &quot;
 setw -g window-status-current-format &quot;#[bg=default]#[fg=colour6] #W &quot;
 
-# Shortcuts (TODO) {{{
+# Shortcuts {{{
 
 # | splits vertically
 unbind %
@@ -204,7 +209,12 @@ bind - split-window -v
 # Toggle statusbar
 bind o set -g status
 bind O set status
-
+# smart pane switching with awareness of vim splits
+bind -n C-h run &quot;(tmux display-message -p &apos;#{pane_current_command}&apos; | grep -iq vim &amp;&amp; tmux send-keys C-h) || tmux select-pane -L&quot;
+bind -n C-j run &quot;(tmux display-message -p &apos;#{pane_current_command}&apos; | grep -iq vim &amp;&amp; tmux send-keys C-j) || tmux select-pane -D&quot;
+bind -n C-k run &quot;(tmux display-message -p &apos;#{pane_current_command}&apos; | grep -iq vim &amp;&amp; tmux send-keys C-k) || tmux select-pane -U&quot;
+bind -n C-l run &quot;(tmux display-message -p &apos;#{pane_current_command}&apos; | grep -iq vim &amp;&amp; tmux send-keys C-l) || tmux select-pane -R&quot;
+bind -n C-. run &quot;(tmux display-message -p &apos;#{pane_current_command}&apos; | grep -iq vim &amp;&amp; tmux send-keys &apos;C-\\&apos;) || tmux select-pane -l&quot;
 # }}}
 
 </pre></td></tr></table>

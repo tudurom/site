@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>windowchef, branch HEAD</title>
+<subtitle>windowchef is a stacking window cooker controlled by a remote control program, waitron
+</subtitle>
+<entry>
+<id>1175342d724a00288af7e0fdfa84edfa0236a04f</id>
+<published>2016-09-08T19:02:38Z</published>
+<updated>2016-09-08T19:02:38Z</updated>
+<title type="text">added man page</title>
+<link rel="alternate" type="text/html" href="commit/1175342d724a00288af7e0fdfa84edfa0236a04f.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 1175342d724a00288af7e0fdfa84edfa0236a04f
+parent b8afdf8bb339ce1169ac4075fb6db83e02d312e4
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Sep  8 22:02:38 +0300
+
+added man page
+
+</content>
+</entry>
+<entry>
+<id>b8afdf8bb339ce1169ac4075fb6db83e02d312e4</id>
+<published>2016-09-08T16:45:58Z</published>
+<updated>2016-09-08T16:45:58Z</updated>
+<title type="text">added two more items on the todo list</title>
+<link rel="alternate" type="text/html" href="commit/b8afdf8bb339ce1169ac4075fb6db83e02d312e4.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit b8afdf8bb339ce1169ac4075fb6db83e02d312e4
+parent 2d1db6223e2e376ce652da68f8b0030561cf76d9
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Sep  8 19:45:58 +0300
+
+added two more items on the todo list
+
+</content>
+</entry>
+<entry>
+<id>2d1db6223e2e376ce652da68f8b0030561cf76d9</id>
+<published>2016-09-08T15:41:37Z</published>
+<updated>2016-09-08T15:41:37Z</updated>
+<title type="text">window snap example in .sxhkdrc</title>
+<link rel="alternate" type="text/html" href="commit/2d1db6223e2e376ce652da68f8b0030561cf76d9.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 2d1db6223e2e376ce652da68f8b0030561cf76d9
+parent 35409fba8c00609c0da296abda11f77d57d4356b
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Sep  8 18:41:37 +0300
+
+window snap example in .sxhkdrc
+
+</content>
+</entry>
+<entry>
+<id>35409fba8c00609c0da296abda11f77d57d4356b</id>
+<published>2016-09-05T10:04:09Z</published>
+<updated>2016-09-05T10:04:15Z</updated>
+<title type="text">changes to fullscreen functions</title>
+<link rel="alternate" type="text/html" href="commit/35409fba8c00609c0da296abda11f77d57d4356b.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 35409fba8c00609c0da296abda11f77d57d4356b
+parent fffdc4245b3dd232d887b7d9adbc05d4085d794a
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Sep  5 13:04:09 +0300
+
+changes to fullscreen functions
+
+</content>
+</entry>
+<entry>
+<id>fffdc4245b3dd232d887b7d9adbc05d4085d794a</id>
+<published>2016-09-03T20:02:17Z</published>
+<updated>2016-09-03T20:02:17Z</updated>
+<title type="text">update readme</title>
+<link rel="alternate" type="text/html" href="commit/fffdc4245b3dd232d887b7d9adbc05d4085d794a.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit fffdc4245b3dd232d887b7d9adbc05d4085d794a
+parent 4c4ebf7b161cbc9dc90bc739bb6d95115b98ffc9
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Sep  3 23:02:17 +0300
+
+update readme
+
+</content>
+</entry>
+<entry>
+<id>4c4ebf7b161cbc9dc90bc739bb6d95115b98ffc9</id>
+<published>2016-09-03T17:56:27Z</published>
+<updated>2016-09-03T17:56:27Z</updated>
+<title type="text">make it work on older versions of xcb i&apos;m looking at you ubuntu</title>
+<link rel="alternate" type="text/html" href="commit/4c4ebf7b161cbc9dc90bc739bb6d95115b98ffc9.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 4c4ebf7b161cbc9dc90bc739bb6d95115b98ffc9
+parent 5f02ef119d24ba075a9809407ae741fc6df78191
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Sep  3 20:56:27 +0300
+
+make it work on older versions of xcb
+i&apos;m looking at you ubuntu
+
+</content>
+</entry>
+<entry>
+<id>5f02ef119d24ba075a9809407ae741fc6df78191</id>
+<published>2016-09-03T11:32:26Z</published>
+<updated>2016-09-03T11:32:26Z</updated>
+<title type="text">removed unused files</title>
+<link rel="alternate" type="text/html" href="commit/5f02ef119d24ba075a9809407ae741fc6df78191.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 5f02ef119d24ba075a9809407ae741fc6df78191
+parent 0790e4f98d15fce4784e8c1196263ce0222bd350
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Sep  3 14:32:26 +0300
+
+removed unused files
+
+</content>
+</entry>
+<entry>
+<id>0790e4f98d15fce4784e8c1196263ce0222bd350</id>
+<published>2016-09-03T11:23:41Z</published>
+<updated>2016-09-03T11:23:41Z</updated>
+<title type="text">raise windows in group when group activated</title>
+<link rel="alternate" type="text/html" href="commit/0790e4f98d15fce4784e8c1196263ce0222bd350.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 0790e4f98d15fce4784e8c1196263ce0222bd350
+parent 526f585135401e710718b81a20ee4e1d06326f18
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Sep  3 14:23:41 +0300
+
+raise windows in group when group activated
+
+</content>
+</entry>
+<entry>
+<id>526f585135401e710718b81a20ee4e1d06326f18</id>
+<published>2016-09-03T11:01:30Z</published>
+<updated>2016-09-03T11:01:30Z</updated>
+<title type="text">README</title>
+<link rel="alternate" type="text/html" href="commit/526f585135401e710718b81a20ee4e1d06326f18.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 526f585135401e710718b81a20ee4e1d06326f18
+parent b91d836e96cfc22805386c76534a13b3407a180f
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Sep  3 14:01:30 +0300
+
+README
+
+</content>
+</entry>
+<entry>
+<id>b91d836e96cfc22805386c76534a13b3407a180f</id>
+<published>2016-09-03T10:09:19Z</published>
+<updated>2016-09-03T10:09:19Z</updated>
+<title type="text">sloppy focus flag in config.h and license-related changes</title>
+<link rel="alternate" type="text/html" href="commit/b91d836e96cfc22805386c76534a13b3407a180f.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit b91d836e96cfc22805386c76534a13b3407a180f
+parent 7e76b1b0449adb8c0aacd58fb1854f36008e2368
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Sep  3 13:09:19 +0300
+
+sloppy focus flag in config.h and license-related changes
+
+</content>
+</entry>
+<entry>
+<id>7e76b1b0449adb8c0aacd58fb1854f36008e2368</id>
+<published>2016-09-02T20:03:43Z</published>
+<updated>2016-09-02T20:03:43Z</updated>
+<title type="text">init woooo! the wm itself is currently configured at compile time in config.h</title>
+<link rel="alternate" type="text/html" href="commit/7e76b1b0449adb8c0aacd58fb1854f36008e2368.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 7e76b1b0449adb8c0aacd58fb1854f36008e2368
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Sep  2 23:03:43 +0300
+
+init woooo!
+the wm itself is currently configured at compile time in config.h
+
+</content>
+</entry>
+</feed>

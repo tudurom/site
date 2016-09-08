@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>crux-ports, branch HEAD</title>
-<subtitle>WARNING: UNMAINTAINED!!! Ports for the CRUX Linux distro.
+<subtitle>Ports for the CRUX Linux distro.
 </subtitle>
+<entry>
+<id>8a0ce557e983280bdee81ed0dfcb29394ece3951</id>
+<published>2016-09-08T10:24:14Z</published>
+<updated>2016-09-08T10:24:14Z</updated>
+<title type="text">add prtstuff and patched pcre2</title>
+<link rel="alternate" type="text/html" href="commit/8a0ce557e983280bdee81ed0dfcb29394ece3951.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 8a0ce557e983280bdee81ed0dfcb29394ece3951
+parent 8d85f6316a9071164d78cd4ee0093558c68bd8c9
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Sep  8 13:24:14 +0300
+
+add prtstuff and patched pcre2
+
+</content>
+</entry>
 <entry>
 <id>8d85f6316a9071164d78cd4ee0093558c68bd8c9</id>
 <published>2016-05-14T20:57:05Z</published>

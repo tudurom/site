@@ -15,7 +15,7 @@
 <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> tilew (1701B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> tilew (1747B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -81,6 +81,8 @@
 <a href="#l63" id="l63">63</a>
 <a href="#l64" id="l64">64</a>
 <a href="#l65" id="l65">65</a>
+<a href="#l66" id="l66">66</a>
+<a href="#l67" id="l67">67</a>
 </pre></td><td><pre>
 #!/bin/sh
 #
@@ -109,18 +111,18 @@ LY=$(( SY + SH ))
 
 # Checks if a window is on a display
 isonmon() {
-  wid=&quot;$1&quot;
-  window_x=&quot;$(wattr x $wid)&quot;
-  window_y=&quot;$(wattr y $wid)&quot;
-  [ &quot;$window_x&quot; -ge &quot;$SX&quot; ] &amp;&amp; [ &quot;$window_y&quot; -ge &quot;$SY&quot; ] &amp;&amp;\
-  [ &quot;$window_x&quot; -le &quot;$LX&quot; ] &amp;&amp; [ &quot;$window_y&quot; -le &quot;$LY&quot; ]
+  	wid=&quot;$1&quot;
+  	window_x=&quot;$(wattr x $wid)&quot;
+  	window_y=&quot;$(wattr y $wid)&quot;
+  	[ &quot;$window_x&quot; -ge &quot;$SX&quot; ] &amp;&amp; [ &quot;$window_y&quot; -ge &quot;$SY&quot; ] &amp;&amp;\
+  		[ &quot;$window_x&quot; -le &quot;$LX&quot; ] &amp;&amp; [ &quot;$window_y&quot; -le &quot;$LY&quot; ]
 }
 
 # get the number of windows to put in the stacking area
 # only consider the windows on the focused monitor
 MAX=0
 for wid in $(lsw | grep -v $PFW); do
-  isonmon $wid &amp;&amp; MAX=$(( MAX + 1 ))
+  	isonmon $wid &amp;&amp; MAX=$(( MAX + 1 ))
 done
 
 # calculate usable screen size (without borders and gaps)
@@ -132,19 +134,21 @@ Y=$((2 * GAP + PANEL))
 wtp $(( SX + GAP )) $(( SY + Y )) $((MASTER - GAP - 2*BW)) $((SH - GAP - 2 * BW)) $PFW
 
 # and now, stack up all remaining windows on the right
-X=$(( SX + MASTER + GAP ))
-W=$(( SW - MASTER - GAP ))
-H=$(( SH / MAX - GAP - 2*BW ))
+if [ &quot;$MAX&quot; -gt 0 ]; then
+	X=$(( SX + MASTER + GAP ))
+	W=$(( SW - MASTER - GAP ))
+	H=$(( SH / MAX - GAP - 2*BW ))
 
-for wid in $(lsw|grep -v $PFW); do
-    window_x=&quot;$(wattr x $wid)&quot;
-    window_y=&quot;$(wattr y $wid)&quot;
-    # only move if the window is on the focused monitor
-    isonmon $wid &amp;&amp; {
-      wtp $X $Y $W $H $wid
-      Y=$((Y + H + GAP + 2*BW))
+	for wid in $(lsw|grep -v $PFW); do
+    	window_x=&quot;$(wattr x $wid)&quot;
+    	window_y=&quot;$(wattr y $wid)&quot;
+    	# only move if the window is on the focused monitor
+    	isonmon $wid &amp;&amp; {
+      	wtp $X $Y $W $H $wid
+      	Y=$((Y + H + GAP + 2*BW))
     }
 done
+fi
 
 # vim: set ft=sh :
 </pre></td></tr></table>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>add prtstuff and patched pcre2 - crux-ports - WARNING: UNMAINTAINED!!! Ports for the CRUX Linux distro.
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="crux-ports.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>crux-ports</h1><span class="desc">WARNING: UNMAINTAINED!!! Ports for the CRUX Linux distro.
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/crux-ports.git">git://thetudor.ddns.net/crux-ports.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/8a0ce557e983280bdee81ed0dfcb29394ece3951.html">8a0ce557e983280bdee81ed0dfcb29394ece3951</a>
+<b>parent</b> <a href="../commit/8d85f6316a9071164d78cd4ee0093558c68bd8c9.html">8d85f6316a9071164d78cd4ee0093558c68bd8c9</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Thu Sep  8 13:24:14 +0300
+
+add prtstuff and patched pcre2
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">libpcre2/.footprint</a></td><td> | </td><td class="num">110</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h1">libpcre2/.md5sum</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td><a href="#h2">libpcre2/Pkgfile</a></td><td> | </td><td class="num">23</td><td><span class="i">+++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h3">ncmpcpp/.md5sum</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h4">ncmpcpp/Pkgfile</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h5">prtstuff/.footprint</a></td><td> | </td><td class="num">40</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h6">prtstuff/.md5sum</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td><a href="#h7">prtstuff/Pkgfile</a></td><td> | </td><td class="num">22</td><td><span class="i">++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table>8 files changed, 199 insertions(+), 3 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/libpcre2/.footprint.html">libpcre2/.footprint</a> b/<a href="../file/libpcre2/.footprint.html">libpcre2/.footprint</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -0,0 +1,110 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+-rwxr-xr-x	root/root	usr/bin/pcre2-config
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+-rwxr-xr-x	root/root	usr/bin/pcre2grep
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+-rwxr-xr-x	root/root	usr/bin/pcre2test
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+drwxr-xr-x	root/root	usr/include/
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+-rw-r--r--	root/root	usr/include/pcre2.h
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+-rw-r--r--	root/root	usr/include/pcre2posix.h
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+drwxr-xr-x	root/root	usr/lib/
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+-rw-r--r--	root/root	usr/lib/libpcre2-32.a
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+-rwxr-xr-x	root/root	usr/lib/libpcre2-32.la
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+lrwxrwxrwx	root/root	usr/lib/libpcre2-32.so -&gt; libpcre2-32.so.0.3.0
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+lrwxrwxrwx	root/root	usr/lib/libpcre2-32.so.0 -&gt; libpcre2-32.so.0.3.0
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+-rwxr-xr-x	root/root	usr/lib/libpcre2-32.so.0.3.0
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+-rw-r--r--	root/root	usr/lib/libpcre2-8.a
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+-rwxr-xr-x	root/root	usr/lib/libpcre2-8.la
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+lrwxrwxrwx	root/root	usr/lib/libpcre2-8.so -&gt; libpcre2-8.so.0.3.0
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+lrwxrwxrwx	root/root	usr/lib/libpcre2-8.so.0 -&gt; libpcre2-8.so.0.3.0
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+-rwxr-xr-x	root/root	usr/lib/libpcre2-8.so.0.3.0
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+-rw-r--r--	root/root	usr/lib/libpcre2-posix.a
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+-rwxr-xr-x	root/root	usr/lib/libpcre2-posix.la
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+lrwxrwxrwx	root/root	usr/lib/libpcre2-posix.so -&gt; libpcre2-posix.so.0.0.1
+</a><a href="#h0-0-22" id="h0-0-22" class="i">+lrwxrwxrwx	root/root	usr/lib/libpcre2-posix.so.0 -&gt; libpcre2-posix.so.0.0.1
+</a><a href="#h0-0-23" id="h0-0-23" class="i">+-rwxr-xr-x	root/root	usr/lib/libpcre2-posix.so.0.0.1
+</a><a href="#h0-0-24" id="h0-0-24" class="i">+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+</a><a href="#h0-0-25" id="h0-0-25" class="i">+-rw-r--r--	root/root	usr/lib/pkgconfig/libpcre2-32.pc
+</a><a href="#h0-0-26" id="h0-0-26" class="i">+-rw-r--r--	root/root	usr/lib/pkgconfig/libpcre2-8.pc
+</a><a href="#h0-0-27" id="h0-0-27" class="i">+-rw-r--r--	root/root	usr/lib/pkgconfig/libpcre2-posix.pc
+</a><a href="#h0-0-28" id="h0-0-28" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h0-0-29" id="h0-0-29" class="i">+drwxr-xr-x	root/root	usr/share/man/
+</a><a href="#h0-0-30" id="h0-0-30" class="i">+drwxr-xr-x	root/root	usr/share/man/man1/
+</a><a href="#h0-0-31" id="h0-0-31" class="i">+-rw-r--r--	root/root	usr/share/man/man1/pcre2-config.1.gz
+</a><a href="#h0-0-32" id="h0-0-32" class="i">+-rw-r--r--	root/root	usr/share/man/man1/pcre2grep.1.gz
+</a><a href="#h0-0-33" id="h0-0-33" class="i">+-rw-r--r--	root/root	usr/share/man/man1/pcre2test.1.gz
+</a><a href="#h0-0-34" id="h0-0-34" class="i">+drwxr-xr-x	root/root	usr/share/man/man3/
+</a><a href="#h0-0-35" id="h0-0-35" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2.3.gz
+</a><a href="#h0-0-36" id="h0-0-36" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_callout_enumerate.3.gz
+</a><a href="#h0-0-37" id="h0-0-37" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_code_free.3.gz
+</a><a href="#h0-0-38" id="h0-0-38" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_compile.3.gz
+</a><a href="#h0-0-39" id="h0-0-39" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_compile_context_copy.3.gz
+</a><a href="#h0-0-40" id="h0-0-40" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_compile_context_create.3.gz
+</a><a href="#h0-0-41" id="h0-0-41" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_compile_context_free.3.gz
+</a><a href="#h0-0-42" id="h0-0-42" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_config.3.gz
+</a><a href="#h0-0-43" id="h0-0-43" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_dfa_match.3.gz
+</a><a href="#h0-0-44" id="h0-0-44" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_general_context_copy.3.gz
+</a><a href="#h0-0-45" id="h0-0-45" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_general_context_create.3.gz
+</a><a href="#h0-0-46" id="h0-0-46" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_general_context_free.3.gz
+</a><a href="#h0-0-47" id="h0-0-47" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_get_error_message.3.gz
+</a><a href="#h0-0-48" id="h0-0-48" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_get_mark.3.gz
+</a><a href="#h0-0-49" id="h0-0-49" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_get_ovector_count.3.gz
+</a><a href="#h0-0-50" id="h0-0-50" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_get_ovector_pointer.3.gz
+</a><a href="#h0-0-51" id="h0-0-51" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_get_startchar.3.gz
+</a><a href="#h0-0-52" id="h0-0-52" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_jit_compile.3.gz
+</a><a href="#h0-0-53" id="h0-0-53" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_jit_free_unused_memory.3.gz
+</a><a href="#h0-0-54" id="h0-0-54" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_jit_match.3.gz
+</a><a href="#h0-0-55" id="h0-0-55" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_jit_stack_assign.3.gz
+</a><a href="#h0-0-56" id="h0-0-56" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_jit_stack_create.3.gz
+</a><a href="#h0-0-57" id="h0-0-57" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_jit_stack_free.3.gz
+</a><a href="#h0-0-58" id="h0-0-58" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_maketables.3.gz
+</a><a href="#h0-0-59" id="h0-0-59" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_match.3.gz
+</a><a href="#h0-0-60" id="h0-0-60" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_match_context_copy.3.gz
+</a><a href="#h0-0-61" id="h0-0-61" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_match_context_create.3.gz
+</a><a href="#h0-0-62" id="h0-0-62" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_match_context_free.3.gz
+</a><a href="#h0-0-63" id="h0-0-63" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_match_data_create.3.gz
+</a><a href="#h0-0-64" id="h0-0-64" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_match_data_create_from_pattern.3.gz
+</a><a href="#h0-0-65" id="h0-0-65" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_match_data_free.3.gz
+</a><a href="#h0-0-66" id="h0-0-66" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_pattern_info.3.gz
+</a><a href="#h0-0-67" id="h0-0-67" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_serialize_decode.3.gz
+</a><a href="#h0-0-68" id="h0-0-68" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_serialize_encode.3.gz
+</a><a href="#h0-0-69" id="h0-0-69" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_serialize_free.3.gz
+</a><a href="#h0-0-70" id="h0-0-70" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_serialize_get_number_of_codes.3.gz
+</a><a href="#h0-0-71" id="h0-0-71" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_set_bsr.3.gz
+</a><a href="#h0-0-72" id="h0-0-72" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_set_callout.3.gz
+</a><a href="#h0-0-73" id="h0-0-73" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_set_character_tables.3.gz
+</a><a href="#h0-0-74" id="h0-0-74" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_set_compile_recursion_guard.3.gz
+</a><a href="#h0-0-75" id="h0-0-75" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_set_match_limit.3.gz
+</a><a href="#h0-0-76" id="h0-0-76" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_set_newline.3.gz
+</a><a href="#h0-0-77" id="h0-0-77" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_set_offset_limit.3.gz
+</a><a href="#h0-0-78" id="h0-0-78" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_set_parens_nest_limit.3.gz
+</a><a href="#h0-0-79" id="h0-0-79" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_set_recursion_limit.3.gz
+</a><a href="#h0-0-80" id="h0-0-80" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_set_recursion_memory_management.3.gz
+</a><a href="#h0-0-81" id="h0-0-81" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_substitute.3.gz
+</a><a href="#h0-0-82" id="h0-0-82" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_substring_copy_byname.3.gz
+</a><a href="#h0-0-83" id="h0-0-83" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_substring_copy_bynumber.3.gz
+</a><a href="#h0-0-84" id="h0-0-84" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_substring_free.3.gz
+</a><a href="#h0-0-85" id="h0-0-85" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_substring_get_byname.3.gz
+</a><a href="#h0-0-86" id="h0-0-86" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_substring_get_bynumber.3.gz
+</a><a href="#h0-0-87" id="h0-0-87" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_substring_length_byname.3.gz
+</a><a href="#h0-0-88" id="h0-0-88" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_substring_length_bynumber.3.gz
+</a><a href="#h0-0-89" id="h0-0-89" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_substring_list_free.3.gz
+</a><a href="#h0-0-90" id="h0-0-90" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_substring_list_get.3.gz
+</a><a href="#h0-0-91" id="h0-0-91" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_substring_nametable_scan.3.gz
+</a><a href="#h0-0-92" id="h0-0-92" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2_substring_number_from_name.3.gz
+</a><a href="#h0-0-93" id="h0-0-93" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2api.3.gz
+</a><a href="#h0-0-94" id="h0-0-94" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2build.3.gz
+</a><a href="#h0-0-95" id="h0-0-95" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2callout.3.gz
+</a><a href="#h0-0-96" id="h0-0-96" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2compat.3.gz
+</a><a href="#h0-0-97" id="h0-0-97" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2demo.3.gz
+</a><a href="#h0-0-98" id="h0-0-98" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2jit.3.gz
+</a><a href="#h0-0-99" id="h0-0-99" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2limits.3.gz
+</a><a href="#h0-0-100" id="h0-0-100" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2matching.3.gz
+</a><a href="#h0-0-101" id="h0-0-101" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2partial.3.gz
+</a><a href="#h0-0-102" id="h0-0-102" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2pattern.3.gz
+</a><a href="#h0-0-103" id="h0-0-103" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2perform.3.gz
+</a><a href="#h0-0-104" id="h0-0-104" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2posix.3.gz
+</a><a href="#h0-0-105" id="h0-0-105" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2sample.3.gz
+</a><a href="#h0-0-106" id="h0-0-106" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2serialize.3.gz
+</a><a href="#h0-0-107" id="h0-0-107" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2stack.3.gz
+</a><a href="#h0-0-108" id="h0-0-108" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2syntax.3.gz
+</a><a href="#h0-0-109" id="h0-0-109" class="i">+-rw-r--r--	root/root	usr/share/man/man3/pcre2unicode.3.gz
+</a><b>diff --git a/<a id="h1" href="../file/libpcre2/.md5sum.html">libpcre2/.md5sum</a> b/<a href="../file/libpcre2/.md5sum.html">libpcre2/.md5sum</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -0,0 +1 @@
+</a><a href="#h1-0-0" id="h1-0-0" class="i">+e79460519f916e3fcb204e59714bfd4a  pcre2-10.21.tar.bz2
+</a><b>diff --git a/<a id="h2" href="../file/libpcre2/Pkgfile.html">libpcre2/Pkgfile</a> b/<a href="../file/libpcre2/Pkgfile.html">libpcre2/Pkgfile</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1,23 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+# Description: Perl Compatible Regular Expressions
+</a><a href="#h2-0-1" id="h2-0-1" class="i">+# URL: http://www.pcre.org
+</a><a href="#h2-0-2" id="h2-0-2" class="i">+# Maintainer: Jose V Beneyto, sepen at crux dot nu
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+# Packager: Jose V Beneyto, sepen at crux dot nu
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+# Depends on:
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+name=libpcre2
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+version=10.21
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+release=2
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre2-$version.tar.bz2)
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+
+</a><a href="#h2-0-11" id="h2-0-11" class="i">+build() {
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+    cd pcre2-$version
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+
+</a><a href="#h2-0-14" id="h2-0-14" class="i">+    ./configure --prefix=/usr \
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+                --enable-jit  \
+</a><a href="#h2-0-16" id="h2-0-16" class="i">+                --enable-pcre2-32
+</a><a href="#h2-0-17" id="h2-0-17" class="i">+
+</a><a href="#h2-0-18" id="h2-0-18" class="i">+    make
+</a><a href="#h2-0-19" id="h2-0-19" class="i">+    make DESTDIR=$PKG install
+</a><a href="#h2-0-20" id="h2-0-20" class="i">+
+</a><a href="#h2-0-21" id="h2-0-21" class="i">+    rm -r $PKG/usr/share/doc
+</a><a href="#h2-0-22" id="h2-0-22" class="i">+}
+</a><b>diff --git a/<a id="h3" href="../file/ncmpcpp/.md5sum.html">ncmpcpp/.md5sum</a> b/<a href="../file/ncmpcpp/.md5sum.html">ncmpcpp/.md5sum</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -1 +1 @@
+</a><a href="#h3-0-0" id="h3-0-0" class="d">-674949625d31b553c7d607d151361d50  ncmpcpp-0.7.3.tar.bz2
+</a><a href="#h3-0-1" id="h3-0-1" class="i">+2edae67445a925175e75c223edc95ce7  ncmpcpp-0.7.5.tar.bz2
+</a><b>diff --git a/<a id="h4" href="../file/ncmpcpp/Pkgfile.html">ncmpcpp/Pkgfile</a> b/<a href="../file/ncmpcpp/Pkgfile.html">ncmpcpp/Pkgfile</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -2,10 +2,10 @@
+</a> # URL:         http://rybczak.net/ncmpcpp
+ # Packager:    Michael Savage, mike at mikejsavage dot co dot uk
+ # Maintainer:  6c37 Team, https://github.com/6c37/crux-ports/issues
+<a href="#h4-0-3" id="h4-0-3" class="d">-# Depends on:  ncurses libmpdclient boost taglib
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+# Depends on:  ncurses libmpdclient boost taglib fftw
+</a> 
+ name=ncmpcpp
+<a href="#h4-0-7" id="h4-0-7" class="d">-version=0.7.3
+</a><a href="#h4-0-8" id="h4-0-8" class="i">+version=0.7.5
+</a> release=1
+ source=(http://rybczak.net/ncmpcpp/stable/ncmpcpp-$version.tar.bz2)
+ 
+<b>diff --git a/<a id="h5" href="../file/prtstuff/.footprint.html">prtstuff/.footprint</a> b/<a href="../file/prtstuff/.footprint.html">prtstuff/.footprint</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -0,0 +1,40 @@
+</a><a href="#h5-0-0" id="h5-0-0" class="i">+drwxr-xr-x	root/root	etc/
+</a><a href="#h5-0-1" id="h5-0-1" class="i">+drwxr-xr-x	root/root	etc/prtstuff/
+</a><a href="#h5-0-2" id="h5-0-2" class="i">+-rw-r--r--	root/root	etc/prtstuff/config
+</a><a href="#h5-0-3" id="h5-0-3" class="i">+drwxr-xr-x	root/root	etc/prtstuff/pull/
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+-rw-r--r--	root/root	etc/prtstuff/pull/6c37
+</a><a href="#h5-0-5" id="h5-0-5" class="i">+-rw-r--r--	root/root	etc/prtstuff/pull/6c37-git
+</a><a href="#h5-0-6" id="h5-0-6" class="i">+-rw-r--r--	root/root	etc/prtstuff/pull/contrib
+</a><a href="#h5-0-7" id="h5-0-7" class="i">+-rw-r--r--	root/root	etc/prtstuff/pull/core
+</a><a href="#h5-0-8" id="h5-0-8" class="i">+-rw-r--r--	root/root	etc/prtstuff/pull/opt
+</a><a href="#h5-0-9" id="h5-0-9" class="i">+-rw-r--r--	root/root	etc/prtstuff/pull/xorg
+</a><a href="#h5-0-10" id="h5-0-10" class="i">+drwxr-xr-x	root/root	usr/
+</a><a href="#h5-0-11" id="h5-0-11" class="i">+drwxr-xr-x	root/root	usr/bin/
+</a><a href="#h5-0-12" id="h5-0-12" class="i">+-rwxr-xr-x	root/root	usr/bin/locprt
+</a><a href="#h5-0-13" id="h5-0-13" class="i">+-rwxr-xr-x	root/root	usr/bin/lsdep
+</a><a href="#h5-0-14" id="h5-0-14" class="i">+-rwxr-xr-x	root/root	usr/bin/lsdiff
+</a><a href="#h5-0-15" id="h5-0-15" class="i">+-rwxr-xr-x	root/root	usr/bin/lsprt
+</a><a href="#h5-0-16" id="h5-0-16" class="i">+-rwxr-xr-x	root/root	usr/bin/mkdep
+</a><a href="#h5-0-17" id="h5-0-17" class="i">+-rwxr-xr-x	root/root	usr/bin/mkdiff
+</a><a href="#h5-0-18" id="h5-0-18" class="i">+-rwxr-xr-x	root/root	usr/bin/mkprt
+</a><a href="#h5-0-19" id="h5-0-19" class="i">+-rwxr-xr-x	root/root	usr/bin/patchprt
+</a><a href="#h5-0-20" id="h5-0-20" class="i">+-rwxr-xr-x	root/root	usr/bin/printprt
+</a><a href="#h5-0-21" id="h5-0-21" class="i">+-rwxr-xr-x	root/root	usr/bin/provprt
+</a><a href="#h5-0-22" id="h5-0-22" class="i">+-rwxr-xr-x	root/root	usr/bin/pullprt
+</a><a href="#h5-0-23" id="h5-0-23" class="i">+drwxr-xr-x	root/root	usr/include/
+</a><a href="#h5-0-24" id="h5-0-24" class="i">+-rw-r--r--	root/root	usr/include/prtstuff
+</a><a href="#h5-0-25" id="h5-0-25" class="i">+drwxr-xr-x	root/root	usr/share/
+</a><a href="#h5-0-26" id="h5-0-26" class="i">+drwxr-xr-x	root/root	usr/share/fish/
+</a><a href="#h5-0-27" id="h5-0-27" class="i">+drwxr-xr-x	root/root	usr/share/fish/completions/
+</a><a href="#h5-0-28" id="h5-0-28" class="i">+-rw-r--r--	root/root	usr/share/fish/completions/cdp.fish
+</a><a href="#h5-0-29" id="h5-0-29" class="i">+-rw-r--r--	root/root	usr/share/fish/completions/locprt.fish
+</a><a href="#h5-0-30" id="h5-0-30" class="i">+-rw-r--r--	root/root	usr/share/fish/completions/lsdiff.fish
+</a><a href="#h5-0-31" id="h5-0-31" class="i">+-rw-r--r--	root/root	usr/share/fish/completions/lsprt.fish
+</a><a href="#h5-0-32" id="h5-0-32" class="i">+-rw-r--r--	root/root	usr/share/fish/completions/mkdep.fish
+</a><a href="#h5-0-33" id="h5-0-33" class="i">+-rw-r--r--	root/root	usr/share/fish/completions/mkdiff.fish
+</a><a href="#h5-0-34" id="h5-0-34" class="i">+-rw-r--r--	root/root	usr/share/fish/completions/mkprt.fish
+</a><a href="#h5-0-35" id="h5-0-35" class="i">+-rw-r--r--	root/root	usr/share/fish/completions/printprt.fish
+</a><a href="#h5-0-36" id="h5-0-36" class="i">+-rw-r--r--	root/root	usr/share/fish/completions/provprt.fish
+</a><a href="#h5-0-37" id="h5-0-37" class="i">+-rw-r--r--	root/root	usr/share/fish/completions/pullprt.fish
+</a><a href="#h5-0-38" id="h5-0-38" class="i">+drwxr-xr-x	root/root	usr/share/fish/functions/
+</a><a href="#h5-0-39" id="h5-0-39" class="i">+-rw-r--r--	root/root	usr/share/fish/functions/cdp.fish
+</a><b>diff --git a/<a id="h6" href="../file/prtstuff/.md5sum.html">prtstuff/.md5sum</a> b/<a href="../file/prtstuff/.md5sum.html">prtstuff/.md5sum</a></b>
+<b>diff --git a/<a id="h7" href="../file/prtstuff/Pkgfile.html">prtstuff/Pkgfile</a> b/<a href="../file/prtstuff/Pkgfile.html">prtstuff/Pkgfile</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -0,0 +1,22 @@
+</a><a href="#h7-0-0" id="h7-0-0" class="i">+# Description: CRUX port utilities without prt-get usage written in fish.
+</a><a href="#h7-0-1" id="h7-0-1" class="i">+# URL:         https://github.com/onodera-punpun/prt-stuff
+</a><a href="#h7-0-2" id="h7-0-2" class="i">+# Maintainer:  6c37 Team, https://github.com/6c37/crux-ports/issues
+</a><a href="#h7-0-3" id="h7-0-3" class="i">+# Depends on:  git getopts
+</a><a href="#h7-0-4" id="h7-0-4" class="i">+
+</a><a href="#h7-0-5" id="h7-0-5" class="i">+name=prtstuff
+</a><a href="#h7-0-6" id="h7-0-6" class="i">+version=git
+</a><a href="#h7-0-7" id="h7-0-7" class="i">+release=1
+</a><a href="#h7-0-8" id="h7-0-8" class="i">+source=()
+</a><a href="#h7-0-9" id="h7-0-9" class="i">+
+</a><a href="#h7-0-10" id="h7-0-10" class="i">+build () {
+</a><a href="#h7-0-11" id="h7-0-11" class="i">+	cd $PKGMK_SOURCE_DIR
+</a><a href="#h7-0-12" id="h7-0-12" class="i">+
+</a><a href="#h7-0-13" id="h7-0-13" class="i">+	if cd $name; then
+</a><a href="#h7-0-14" id="h7-0-14" class="i">+		git fetch -q; git reset --hard origin/master
+</a><a href="#h7-0-15" id="h7-0-15" class="i">+	else
+</a><a href="#h7-0-16" id="h7-0-16" class="i">+		git clone git://github.com/onodera-punpun/prtstuff $name
+</a><a href="#h7-0-17" id="h7-0-17" class="i">+		cd $name
+</a><a href="#h7-0-18" id="h7-0-18" class="i">+	fi
+</a><a href="#h7-0-19" id="h7-0-19" class="i">+
+</a><a href="#h7-0-20" id="h7-0-20" class="i">+	make DESTDIR=$PKG install
+</a><a href="#h7-0-21" id="h7-0-21" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>
