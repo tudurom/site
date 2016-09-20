@@ -4,6 +4,108 @@
 <subtitle>Ports for the CRUX Linux distro.
 </subtitle>
 <entry>
+<id>286fe801e895da530b81a615750cea189902e82c</id>
+<published>2016-09-20T16:36:15Z</published>
+<updated>2016-09-20T16:36:15Z</updated>
+<title type="text">stuff</title>
+<link rel="alternate" type="text/html" href="commit/286fe801e895da530b81a615750cea189902e82c.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 286fe801e895da530b81a615750cea189902e82c
+parent d001573bd4e722ac69a09c048d1405b36a18d9fc
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Sep 20 19:36:15 +0300
+
+stuff
+
+</content>
+</entry>
+<entry>
+<id>d001573bd4e722ac69a09c048d1405b36a18d9fc</id>
+<published>2016-09-19T13:59:07Z</published>
+<updated>2016-09-19T13:59:07Z</updated>
+<title type="text">cleanup part 2</title>
+<link rel="alternate" type="text/html" href="commit/d001573bd4e722ac69a09c048d1405b36a18d9fc.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit d001573bd4e722ac69a09c048d1405b36a18d9fc
+parent 2687f2d42e5414434f449dac1d4b9f86c45e9422
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Sep 19 16:59:07 +0300
+
+cleanup part 2
+
+</content>
+</entry>
+<entry>
+<id>2687f2d42e5414434f449dac1d4b9f86c45e9422</id>
+<published>2016-09-19T13:53:26Z</published>
+<updated>2016-09-19T13:53:26Z</updated>
+<title type="text">cleanup part 1</title>
+<link rel="alternate" type="text/html" href="commit/2687f2d42e5414434f449dac1d4b9f86c45e9422.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 2687f2d42e5414434f449dac1d4b9f86c45e9422
+parent c5bc33c39350b93312549c4ea4bafc348385621f
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Sep 19 16:53:26 +0300
+
+cleanup part 1
+
+</content>
+</entry>
+<entry>
+<id>c5bc33c39350b93312549c4ea4bafc348385621f</id>
+<published>2016-09-15T15:30:33Z</published>
+<updated>2016-09-15T15:30:33Z</updated>
+<title type="text">unclutter-xfixes: don&apos;t install license</title>
+<link rel="alternate" type="text/html" href="commit/c5bc33c39350b93312549c4ea4bafc348385621f.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit c5bc33c39350b93312549c4ea4bafc348385621f
+parent 4a52b9837bc175732b4408a85f835015f5da911f
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Sep 15 18:30:33 +0300
+
+unclutter-xfixes: don&apos;t install license
+
+</content>
+</entry>
+<entry>
+<id>4a52b9837bc175732b4408a85f835015f5da911f</id>
+<published>2016-09-13T14:49:57Z</published>
+<updated>2016-09-13T14:49:57Z</updated>
+<title type="text">remove: neofetch</title>
+<link rel="alternate" type="text/html" href="commit/4a52b9837bc175732b4408a85f835015f5da911f.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 4a52b9837bc175732b4408a85f835015f5da911f
+parent 51acdaf152793d2b5fad0c728bae4813dde83bf0
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Sep 13 17:49:57 +0300
+
+remove: neofetch
+
+</content>
+</entry>
+<entry>
+<id>51acdaf152793d2b5fad0c728bae4813dde83bf0</id>
+<published>2016-09-12T18:35:26Z</published>
+<updated>2016-09-12T18:35:26Z</updated>
+<title type="text">remove: go</title>
+<link rel="alternate" type="text/html" href="commit/51acdaf152793d2b5fad0c728bae4813dde83bf0.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 51acdaf152793d2b5fad0c728bae4813dde83bf0
+parent 8a0ce557e983280bdee81ed0dfcb29394ece3951
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Sep 12 21:35:26 +0300
+
+remove: go
+
+</content>
+</entry>
+<entry>
 <id>8a0ce557e983280bdee81ed0dfcb29394ece3951</id>
 <published>2016-09-08T10:24:14Z</published>
 <updated>2016-09-08T10:24:14Z</updated>

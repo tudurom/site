@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> config.h (280B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> config.h (657B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -30,18 +30,30 @@
 <a href="#l12" id="l12">12</a>
 <a href="#l13" id="l13">13</a>
 <a href="#l14" id="l14">14</a>
+<a href="#l15" id="l15">15</a>
+<a href="#l16" id="l16">16</a>
+<a href="#l17" id="l17">17</a>
+<a href="#l18" id="l18">18</a>
+<a href="#l19" id="l19">19</a>
+<a href="#l20" id="l20">20</a>
 </pre></td><td><pre>
 /* See the LICENSE file for copyright and license details. */
 
 #ifndef _CONFIG_H
 #define _CONFIG_H
 
-#define BORDER_WIDTH 3
-#define COLOR_FOCUS 0x3d637d
-#define COLOR_UNFOCUS 0x003b4f
+#define BORDER_WIDTH 5
+/* colors are HTML colors that start in &quot;0x&quot; instead of &quot;#&quot; */
+#define COLOR_FOCUS 0x97a293
+#define COLOR_UNFOCUS 0x393638
+/* gap between the window and the edge of the monitor
+ * when snapping or vertically/horizontally maximizing window */
 #define GAP 20
+/* where to place the cursor when moving/resizing the window */
 #define CURSOR_POSITION CENTER
+/* number of starting groups, can be modified with waitron at run-time */
 #define GROUPS 4
+/* focus windows after hovering them with the pointer */
 #define SLOPPY_FOCUS true
 
 #endif

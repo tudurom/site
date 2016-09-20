@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> types.h (909B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> types.h (919B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -65,13 +65,17 @@
 <a href="#l47" id="l47">47</a>
 <a href="#l48" id="l48">48</a>
 <a href="#l49" id="l49">49</a>
+<a href="#l50" id="l50">50</a>
+<a href="#l51" id="l51">51</a>
 </pre></td><td><pre>
 /* See the LICENSE file for copyright and license details. */
 
 #ifndef _TYPES_H
 #define _TYPES_H
 
-enum cursor_position {
+#include &lt;xcb/randr.h&gt;
+
+enum position {
 	BOTTOM_LEFT,
 	BOTTOM_RIGHT,
 	TOP_LEFT,
@@ -109,7 +113,7 @@ struct monitor {
 struct conf {
     int8_t border_width, gap;
     uint32_t focus_color, unfocus_color;
-    enum cursor_position cursor_position;
+    enum position cursor_position;
     uint32_t groups;
     bool sloppy_focus;
 };

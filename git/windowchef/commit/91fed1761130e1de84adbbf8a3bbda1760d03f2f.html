@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>configuration through waitron, man page for waitron - windowchef - windowchef is a stacking window cooker controlled by a remote control program, waitron
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="windowchef.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>windowchef</h1><span class="desc">windowchef is a stacking window cooker controlled by a remote control program, waitron
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/windowchef.git">git://thetudor.ddns.net/windowchef.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/91fed1761130e1de84adbbf8a3bbda1760d03f2f.html">91fed1761130e1de84adbbf8a3bbda1760d03f2f</a>
+<b>parent</b> <a href="../commit/6a21202ac0570b883509c0a5ea4c74303759fd66.html">6a21202ac0570b883509c0a5ea4c74303759fd66</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Wed Sep 14 21:01:45 +0300
+
+configuration through waitron, man page for waitron
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">Makefile</a></td><td> | </td><td class="num">4</td><td><span class="i">+++</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h1">README.md</a></td><td> | </td><td class="num">6</td><td><span class="i">++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h2">client.c</a></td><td> | </td><td class="num">169</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">--------------------</span></td></tr>
+<tr><td><a href="#h3">common.h</a></td><td> | </td><td class="num">8</td><td><span class="i">++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h4">config.h</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h5">config.mk</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h6">ipc.h</a></td><td> | </td><td class="num">14</td><td><span class="i">+++++++++++++</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h7">man/Makefile</a></td><td> | </td><td class="num">9</td><td><span class="i">++++++</span><span class="d">---</span></td></tr>
+<tr><td><a href="#h8">man/waitron.1</a></td><td> | </td><td class="num">170</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h9">man/waitron.1.html</a></td><td> | </td><td class="num">191</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h10">man/waitron.1.md</a></td><td> | </td><td class="num">149</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h11">man/windowchef.1</a></td><td> | </td><td class="num">112</td><td><span class="i">++++++</span><span class="d">-------------------------------------------------------------------------</span></td></tr>
+<tr><td><a href="#h12">man/windowchef.1.html</a></td><td> | </td><td class="num">64</td><td><span class="i">++++++++++</span><span class="d">------------------------------------------------------</span></td></tr>
+<tr><td><a href="#h13">man/windowchef.1.md</a></td><td> | </td><td class="num">96</td><td><span class="i">++++++++</span><span class="d">-----------------------------------------------------------------------</span></td></tr>
+<tr><td><a href="#h14">wm.c</a></td><td> | </td><td class="num">66</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">---------</span></td></tr>
+</table>15 files changed, 759 insertions(+), 303 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/Makefile.html">Makefile</a> b/<a href="../file/Makefile.html">Makefile</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -2,8 +2,10 @@ include config.mk
+</a> 
+ __NAME__ = windowchef
+ __NAME_CLIENT__ = waitron
+<a href="#h0-0-3" id="h0-0-3" class="i">+__THIS_VERSION__ = 0.1
+</a> NAME_DEFINES = -D__NAME__=\&quot;$(__NAME__)\&quot; \
+<a href="#h0-0-5" id="h0-0-5" class="d">-			   -D__NAME_CLIENT__=\&quot;$(__NAME_CLIENT__)\&quot;
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+			   -D__NAME_CLIENT__=\&quot;$(__NAME_CLIENT__)\&quot; \
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+			   -D__THIS_VERSION__=\&quot;$(__THIS_VERSION__)\&quot;
+</a> 
+ SRC = list.c wm.c client.c
+ OBJ = $(SRC:.c=.o)
+<b>diff --git a/<a id="h1" href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -1,6 +1,12 @@
+</a> Windowchef
+ ==========
+ 
+<a href="#h1-0-3" id="h1-0-3" class="i">+Disclaimer
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+----------
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+This software is a work in progress and may [break your workflow](https://xkcd.com/1172/) (yeah, it&apos;s that one xkcd comic, everyone
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+knows it).
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+
+</a> Cooking windows since 2016
+ --------------------------
+ 
+<b>diff --git a/<a id="h2" href="../file/client.c.html">client.c</a> b/<a href="../file/client.c.html">client.c</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -3,16 +3,67 @@
+</a> #include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+ #include &lt;string.h&gt;
+<a href="#h2-0-3" id="h2-0-3" class="i">+#include &lt;strings.h&gt;
+</a> #include &lt;stdbool.h&gt;
+ #include &lt;xcb/xcb.h&gt;
+ #include &lt;err.h&gt;
+ #include &lt;errno.h&gt;
+ 
+ #include &quot;ipc.h&quot;
+<a href="#h2-0-10" id="h2-0-10" class="i">+#include &quot;common.h&quot;
+</a> 
+<a href="#h2-0-12" id="h2-0-12" class="d">-#ifndef __NAME_CLIENT__
+</a><a href="#h2-0-13" id="h2-0-13" class="d">-#define __NAME_CLIENT__ &quot;client&quot;
+</a><a href="#h2-0-14" id="h2-0-14" class="d">-#endif
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+static bool fn_offset(uint32_t *, int, char **);
+</a><a href="#h2-0-16" id="h2-0-16" class="i">+static bool fn_naturals(uint32_t *, int, char **);
+</a><a href="#h2-0-17" id="h2-0-17" class="i">+static bool fn_bool(uint32_t *, int, char **);
+</a><a href="#h2-0-18" id="h2-0-18" class="i">+static bool fn_config(uint32_t *, int, char **);
+</a><a href="#h2-0-19" id="h2-0-19" class="i">+static bool fn_hex(uint32_t *, int, char **);
+</a><a href="#h2-0-20" id="h2-0-20" class="i">+
+</a><a href="#h2-0-21" id="h2-0-21" class="i">+struct Command {
+</a><a href="#h2-0-22" id="h2-0-22" class="i">+	char *string_command;
+</a><a href="#h2-0-23" id="h2-0-23" class="i">+	enum IPCCommand command;
+</a><a href="#h2-0-24" id="h2-0-24" class="i">+	int argc;
+</a><a href="#h2-0-25" id="h2-0-25" class="i">+	bool (*handler)(uint32_t *, int , char **);
+</a><a href="#h2-0-26" id="h2-0-26" class="i">+};
+</a><a href="#h2-0-27" id="h2-0-27" class="i">+
+</a><a href="#h2-0-28" id="h2-0-28" class="i">+struct ConfigEntry {
+</a><a href="#h2-0-29" id="h2-0-29" class="i">+	char *key;
+</a><a href="#h2-0-30" id="h2-0-30" class="i">+	enum IPCConfig config;
+</a><a href="#h2-0-31" id="h2-0-31" class="i">+	bool (*handler)(uint32_t *, int, char **);
+</a><a href="#h2-0-32" id="h2-0-32" class="i">+};
+</a><a href="#h2-0-33" id="h2-0-33" class="i">+
+</a><a href="#h2-0-34" id="h2-0-34" class="i">+/* vim-tabularize is cool, i swear */
+</a><a href="#h2-0-35" id="h2-0-35" class="i">+static struct Command c[] = {
+</a><a href="#h2-0-36" id="h2-0-36" class="i">+	{ &quot;window_move&quot;            , IPCWindowMove           ,  2 , fn_offset   } ,
+</a><a href="#h2-0-37" id="h2-0-37" class="i">+	{ &quot;window_move_absolute&quot;   , IPCWindowMoveAbsolute   ,  2 , fn_offset   } ,
+</a><a href="#h2-0-38" id="h2-0-38" class="i">+	{ &quot;window_resize&quot;          , IPCWindowResize         ,  2 , fn_offset   } ,
+</a><a href="#h2-0-39" id="h2-0-39" class="i">+	{ &quot;window_resize_absolute&quot; , IPCWindowResizeAbsolute ,  2 , fn_naturals } ,
+</a><a href="#h2-0-40" id="h2-0-40" class="i">+	{ &quot;window_maximize&quot;        , IPCWindowMaximize       ,  0 , NULL        } ,
+</a><a href="#h2-0-41" id="h2-0-41" class="i">+	{ &quot;window_hor_maximize&quot;    , IPCWindowHorMaximize    ,  0 , NULL        } ,
+</a><a href="#h2-0-42" id="h2-0-42" class="i">+	{ &quot;window_ver_maximize&quot;    , IPCWindowVerMaximize    ,  0 , NULL        } ,
+</a><a href="#h2-0-43" id="h2-0-43" class="i">+	{ &quot;window_close&quot;           , IPCWindowClose          ,  0 , NULL        } ,
+</a><a href="#h2-0-44" id="h2-0-44" class="i">+	{ &quot;window_put_in_grid&quot;     , IPCWindowPutInGrid      ,  4 , fn_naturals } ,
+</a><a href="#h2-0-45" id="h2-0-45" class="i">+	{ &quot;window_snap&quot;            , IPCWindowSnap           ,  1 , fn_naturals } ,
+</a><a href="#h2-0-46" id="h2-0-46" class="i">+	{ &quot;window_cycle&quot;           , IPCWindowCycle          ,  0 , NULL        } ,
+</a><a href="#h2-0-47" id="h2-0-47" class="i">+	{ &quot;window_rev_cycle&quot;       , IPCWindowRevCycle       ,  0 , NULL        } ,
+</a><a href="#h2-0-48" id="h2-0-48" class="i">+	{ &quot;group_add_window&quot;       , IPCGroupAddWindow       ,  1 , fn_naturals } ,
+</a><a href="#h2-0-49" id="h2-0-49" class="i">+	{ &quot;group_remove_window&quot;    , IPCGroupRemoveWindow    ,  0 , NULL        } ,
+</a><a href="#h2-0-50" id="h2-0-50" class="i">+	{ &quot;group_activate&quot;         , IPCGroupActivate        ,  1 , fn_naturals } ,
+</a><a href="#h2-0-51" id="h2-0-51" class="i">+	{ &quot;group_deactivate&quot;       , IPCGroupDeactivate      ,  1 , fn_naturals } ,
+</a><a href="#h2-0-52" id="h2-0-52" class="i">+	{ &quot;group_toggle&quot;           , IPCGroupToggle          ,  1 , fn_naturals } ,
+</a><a href="#h2-0-53" id="h2-0-53" class="i">+	{ &quot;wm_quit&quot;                , IPCWMQuit               ,  1 , fn_naturals } ,
+</a><a href="#h2-0-54" id="h2-0-54" class="i">+	{ &quot;wm_change_nr_of_groups&quot; , IPCWMChangeNrOfGroups   ,  1 , fn_naturals } ,
+</a><a href="#h2-0-55" id="h2-0-55" class="i">+	{ &quot;wm_config&quot;              , IPCWMConfig             ,  2 , fn_config   },
+</a><a href="#h2-0-56" id="h2-0-56" class="i">+};
+</a><a href="#h2-0-57" id="h2-0-57" class="i">+
+</a><a href="#h2-0-58" id="h2-0-58" class="i">+static struct ConfigEntry configs[] = {
+</a><a href="#h2-0-59" id="h2-0-59" class="i">+	{ &quot;border_width&quot;        , IPCConfigBorderWidth       , fn_naturals } ,
+</a><a href="#h2-0-60" id="h2-0-60" class="i">+	{ &quot;color_focused&quot;       , IPCConfigColorFocused      , fn_hex} ,
+</a><a href="#h2-0-61" id="h2-0-61" class="i">+	{ &quot;color_unfocused&quot;     , IPCConfigColorUnfocused    , fn_hex} ,
+</a><a href="#h2-0-62" id="h2-0-62" class="i">+	{ &quot;gap_width&quot;           , IPCConfigGapWidth          , fn_naturals } ,
+</a><a href="#h2-0-63" id="h2-0-63" class="i">+	{ &quot;cursor_position&quot;     , IPCConfigCursorPosition    , fn_naturals } ,
+</a><a href="#h2-0-64" id="h2-0-64" class="i">+	{ &quot;groups_nr&quot;           , IPCConfigGroupsNr          , fn_naturals } ,
+</a><a href="#h2-0-65" id="h2-0-65" class="i">+	{ &quot;enable_sloppy_focus&quot; , IPCConfigEnableSloppyFocus , fn_bool     } ,
+</a><a href="#h2-0-66" id="h2-0-66" class="i">+};
+</a> 
+ static bool
+ fn_offset(uint32_t *data, int argc, char **argv)
+<a href="#h2-1" id="h2-1" class="h">@@ -51,36 +102,66 @@ fn_naturals(uint32_t *data, int argc, char **argv)
+</a> 		return true;
+ }
+ 
+<a href="#h2-1-3" id="h2-1-3" class="d">-struct Command {
+</a><a href="#h2-1-4" id="h2-1-4" class="d">-	char *string_command;
+</a><a href="#h2-1-5" id="h2-1-5" class="d">-	enum IPCCommand command;
+</a><a href="#h2-1-6" id="h2-1-6" class="d">-	int argc;
+</a><a href="#h2-1-7" id="h2-1-7" class="d">-	bool (*handler)(uint32_t *, int , char **);
+</a><a href="#h2-1-8" id="h2-1-8" class="d">-};
+</a><a href="#h2-1-9" id="h2-1-9" class="i">+static bool
+</a><a href="#h2-1-10" id="h2-1-10" class="i">+fn_bool(uint32_t *data, int argc, char **argv) {
+</a><a href="#h2-1-11" id="h2-1-11" class="i">+	int i = 0;
+</a><a href="#h2-1-12" id="h2-1-12" class="i">+	char *arg;
+</a><a href="#h2-1-13" id="h2-1-13" class="i">+	do {
+</a><a href="#h2-1-14" id="h2-1-14" class="i">+		arg = argv[i];
+</a><a href="#h2-1-15" id="h2-1-15" class="i">+		if (strcasecmp(argv[i], &quot;true&quot;)
+</a><a href="#h2-1-16" id="h2-1-16" class="i">+					|| strcasecmp(arg, &quot;yes&quot;)
+</a><a href="#h2-1-17" id="h2-1-17" class="i">+					|| strcasecmp(arg, &quot;t&quot;)
+</a><a href="#h2-1-18" id="h2-1-18" class="i">+					|| strcasecmp(arg, &quot;y&quot;)
+</a><a href="#h2-1-19" id="h2-1-19" class="i">+					|| strcasecmp(arg, &quot;1&quot;))
+</a><a href="#h2-1-20" id="h2-1-20" class="i">+				data[i] = true;
+</a><a href="#h2-1-21" id="h2-1-21" class="i">+		else
+</a><a href="#h2-1-22" id="h2-1-22" class="i">+			data[i] = false;
+</a><a href="#h2-1-23" id="h2-1-23" class="i">+	} while (i &lt; argc);
+</a> 
+<a href="#h2-1-25" id="h2-1-25" class="d">-/* vim-tabularize is cool, i swear */
+</a><a href="#h2-1-26" id="h2-1-26" class="d">-static struct Command c[] = {
+</a><a href="#h2-1-27" id="h2-1-27" class="d">-	{ &quot;window_move&quot;            , IPCWindowMove           , 2 , fn_offset   }  ,
+</a><a href="#h2-1-28" id="h2-1-28" class="d">-	{ &quot;window_move_absolute&quot;   , IPCWindowMoveAbsolute   , 2 , fn_offset   }  ,
+</a><a href="#h2-1-29" id="h2-1-29" class="d">-	{ &quot;window_resize&quot;          , IPCWindowResize         , 2 , fn_offset   }  ,
+</a><a href="#h2-1-30" id="h2-1-30" class="d">-	{ &quot;window_resize_absolute&quot; , IPCWindowResizeAbsolute , 2 , fn_naturals }  ,
+</a><a href="#h2-1-31" id="h2-1-31" class="d">-	{ &quot;window_maximize&quot;        , IPCWindowMaximize       , 0 , NULL        } ,
+</a><a href="#h2-1-32" id="h2-1-32" class="d">-	{ &quot;window_hor_maximize&quot;    , IPCWindowHorMaximize    , 0 , NULL        } ,
+</a><a href="#h2-1-33" id="h2-1-33" class="d">-	{ &quot;window_ver_maximize&quot;    , IPCWindowVerMaximize    , 0 , NULL        } ,
+</a><a href="#h2-1-34" id="h2-1-34" class="d">-	{ &quot;window_close&quot;           , IPCWindowClose          , 0 , NULL        } ,
+</a><a href="#h2-1-35" id="h2-1-35" class="d">-	{ &quot;window_put_in_grid&quot;     , IPCWindowPutInGrid      , 4 , fn_naturals } ,
+</a><a href="#h2-1-36" id="h2-1-36" class="d">-	{ &quot;window_snap&quot;            , IPCWindowSnap           , 1 , fn_naturals } ,
+</a><a href="#h2-1-37" id="h2-1-37" class="d">-	{ &quot;window_cycle&quot;           , IPCWindowCycle          , 0 , NULL        } ,
+</a><a href="#h2-1-38" id="h2-1-38" class="d">-	{ &quot;window_rev_cycle&quot;       , IPCWindowRevCycle       , 0 , NULL        } ,
+</a><a href="#h2-1-39" id="h2-1-39" class="d">-	{ &quot;group_add_window&quot;       , IPCGroupAddWindow       , 1 , fn_naturals } ,
+</a><a href="#h2-1-40" id="h2-1-40" class="d">-	{ &quot;group_remove_window&quot;    , IPCGroupRemoveWindow    , 0 , NULL        } ,
+</a><a href="#h2-1-41" id="h2-1-41" class="d">-	{ &quot;group_activate&quot;         , IPCGroupActivate        , 1 , fn_naturals } ,
+</a><a href="#h2-1-42" id="h2-1-42" class="d">-	{ &quot;group_deactivate&quot;       , IPCGroupDeactivate      , 1 , fn_naturals } ,
+</a><a href="#h2-1-43" id="h2-1-43" class="d">-	{ &quot;group_toggle&quot;           , IPCGroupToggle          , 1 , fn_naturals } ,
+</a><a href="#h2-1-44" id="h2-1-44" class="d">-	{ &quot;wm_quit&quot;                , IPCWMQuit               , 1 , fn_naturals } ,
+</a><a href="#h2-1-45" id="h2-1-45" class="d">-	{ &quot;wm_change_nr_of_groups&quot; , IPCWMChangeNrOfGroups   , 1 , fn_naturals } ,
+</a><a href="#h2-1-46" id="h2-1-46" class="i">+	return true;
+</a><a href="#h2-1-47" id="h2-1-47" class="i">+}
+</a> 
+<a href="#h2-1-49" id="h2-1-49" class="d">-};
+</a><a href="#h2-1-50" id="h2-1-50" class="i">+static bool
+</a><a href="#h2-1-51" id="h2-1-51" class="i">+fn_config(uint32_t *data, int argc, char **argv) {
+</a><a href="#h2-1-52" id="h2-1-52" class="i">+	char *key, *value;
+</a><a href="#h2-1-53" id="h2-1-53" class="i">+	bool status;
+</a><a href="#h2-1-54" id="h2-1-54" class="i">+	int i;
+</a><a href="#h2-1-55" id="h2-1-55" class="i">+
+</a><a href="#h2-1-56" id="h2-1-56" class="i">+	key = argv[0];
+</a><a href="#h2-1-57" id="h2-1-57" class="i">+	value = argv[1];
+</a><a href="#h2-1-58" id="h2-1-58" class="i">+
+</a><a href="#h2-1-59" id="h2-1-59" class="i">+	i = 0;
+</a><a href="#h2-1-60" id="h2-1-60" class="i">+	while (i &lt; NR_IPC_CONFIGS &amp;&amp; strcmp(key, configs[i].key) != 0)
+</a><a href="#h2-1-61" id="h2-1-61" class="i">+		i++;
+</a><a href="#h2-1-62" id="h2-1-62" class="i">+
+</a><a href="#h2-1-63" id="h2-1-63" class="i">+	if (i &lt; NR_IPC_CONFIGS) {
+</a><a href="#h2-1-64" id="h2-1-64" class="i">+		/* XXX: hardcoded value */
+</a><a href="#h2-1-65" id="h2-1-65" class="i">+		data[0] = configs[i].config;
+</a><a href="#h2-1-66" id="h2-1-66" class="i">+		status = (configs[i].handler)(data + 1, argc - 1, argv + 1);
+</a><a href="#h2-1-67" id="h2-1-67" class="i">+
+</a><a href="#h2-1-68" id="h2-1-68" class="i">+		if (status == false)
+</a><a href="#h2-1-69" id="h2-1-69" class="i">+			errx(EXIT_FAILURE, &quot;malformed input&quot;);
+</a><a href="#h2-1-70" id="h2-1-70" class="i">+	} else {
+</a><a href="#h2-1-71" id="h2-1-71" class="i">+		errx(EXIT_FAILURE, &quot;no such config key&quot;);
+</a><a href="#h2-1-72" id="h2-1-72" class="i">+	}
+</a><a href="#h2-1-73" id="h2-1-73" class="i">+	return true;
+</a><a href="#h2-1-74" id="h2-1-74" class="i">+}
+</a><a href="#h2-1-75" id="h2-1-75" class="i">+
+</a><a href="#h2-1-76" id="h2-1-76" class="i">+static bool
+</a><a href="#h2-1-77" id="h2-1-77" class="i">+fn_hex(uint32_t *data, int argc, char **argv)
+</a><a href="#h2-1-78" id="h2-1-78" class="i">+{
+</a><a href="#h2-1-79" id="h2-1-79" class="i">+	int i = 0;
+</a><a href="#h2-1-80" id="h2-1-80" class="i">+	do {
+</a><a href="#h2-1-81" id="h2-1-81" class="i">+		errno = 0;
+</a><a href="#h2-1-82" id="h2-1-82" class="i">+		data[i] = strtol(argv[i], NULL, 16);
+</a><a href="#h2-1-83" id="h2-1-83" class="i">+		i++;
+</a><a href="#h2-1-84" id="h2-1-84" class="i">+	} while (i &lt; argc &amp;&amp; errno == 0);
+</a><a href="#h2-1-85" id="h2-1-85" class="i">+
+</a><a href="#h2-1-86" id="h2-1-86" class="i">+	if (errno != 0)
+</a><a href="#h2-1-87" id="h2-1-87" class="i">+		return false;
+</a><a href="#h2-1-88" id="h2-1-88" class="i">+	else
+</a><a href="#h2-1-89" id="h2-1-89" class="i">+		return true;
+</a><a href="#h2-1-90" id="h2-1-90" class="i">+}
+</a> 
+ xcb_connection_t *conn;
+ xcb_screen_t *scr;
+<a href="#h2-2" id="h2-2" class="h">@@ -137,10 +218,11 @@ send_command(struct Command *c, int argc, char **argv)
+</a> }
+ 
+ void
+<a href="#h2-2-3" id="h2-2-3" class="d">-usage()
+</a><a href="#h2-2-4" id="h2-2-4" class="i">+usage(char *name)
+</a> {
+<a href="#h2-2-6" id="h2-2-6" class="d">-	fprintf(stderr, &quot;Usage: %s &lt;command&gt; [args]...\n&quot;, __NAME_CLIENT__);
+</a><a href="#h2-2-7" id="h2-2-7" class="d">-
+</a><a href="#h2-2-8" id="h2-2-8" class="i">+	fprintf(stderr, &quot;Usage: %s &lt;command&gt; [args...]\n&quot;, name);
+</a><a href="#h2-2-9" id="h2-2-9" class="i">+	fprintf(stderr, &quot;\n&quot;);
+</a><a href="#h2-2-10" id="h2-2-10" class="i">+	fprintf(stderr, &quot;%s %s\n&quot;, __NAME_CLIENT__, __THIS_VERSION__);
+</a> 	exit(1);
+ }
+ 
+<a href="#h2-3" id="h2-3" class="h">@@ -149,10 +231,11 @@ int main(int argc, char **argv)
+</a> 	int i;
+ 	int command_argc;
+ 	char **command_argv;
+<a href="#h2-3-3" id="h2-3-3" class="d">-	init_xcb(&amp;conn);
+</a> 
+<a href="#h2-3-5" id="h2-3-5" class="d">-	if (argc == 1)
+</a><a href="#h2-3-6" id="h2-3-6" class="d">-		usage();
+</a><a href="#h2-3-7" id="h2-3-7" class="i">+	if (argc == 1 || (argc == 2 &amp;&amp; strcmp(argv[1], &quot;-h&quot;) == 0))
+</a><a href="#h2-3-8" id="h2-3-8" class="i">+		usage(argv[0]);
+</a><a href="#h2-3-9" id="h2-3-9" class="i">+
+</a><a href="#h2-3-10" id="h2-3-10" class="i">+	init_xcb(&amp;conn);
+</a> 
+ 	/* argc - program name - command to send */
+ 	command_argc = argc - 2;
+<a href="#h2-4" id="h2-4" class="h">@@ -163,11 +246,13 @@ int main(int argc, char **argv)
+</a> 		i++;
+ 
+ 	if (i &lt; NR_IPC_COMMANDS) {
+<a href="#h2-4-3" id="h2-4-3" class="d">-		if (command_argc &lt; c[i].argc)
+</a><a href="#h2-4-4" id="h2-4-4" class="d">-			errx(EXIT_FAILURE, &quot;not enough argmuents&quot;);
+</a><a href="#h2-4-5" id="h2-4-5" class="d">-		else if (command_argc &gt; c[i].argc)
+</a><a href="#h2-4-6" id="h2-4-6" class="d">-			warnx(&quot;too many arguments&quot;);
+</a><a href="#h2-4-7" id="h2-4-7" class="d">-		else
+</a><a href="#h2-4-8" id="h2-4-8" class="i">+		if (c[i].argc != -1) {
+</a><a href="#h2-4-9" id="h2-4-9" class="i">+			if (command_argc &lt; c[i].argc)
+</a><a href="#h2-4-10" id="h2-4-10" class="i">+				errx(EXIT_FAILURE, &quot;not enough argmuents&quot;);
+</a><a href="#h2-4-11" id="h2-4-11" class="i">+			else if (command_argc &gt; c[i].argc)
+</a><a href="#h2-4-12" id="h2-4-12" class="i">+				warnx(&quot;too many arguments&quot;);
+</a><a href="#h2-4-13" id="h2-4-13" class="i">+		}
+</a><a href="#h2-4-14" id="h2-4-14" class="i">+		if (c[i].argc == -1 || command_argc == c[i].argc)
+</a> 			send_command(&amp;c[i], command_argc, command_argv);
+ 
+ 	} else {
+<b>diff --git a/<a id="h3" href="../file/common.h.html">common.h</a> b/<a href="../file/common.h.html">common.h</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -9,4 +9,12 @@
+</a> #define DMSG(fmt, ...)
+ #endif
+ 
+<a href="#h3-0-3" id="h3-0-3" class="i">+#ifndef __NAME__
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+#define __NAME__ &quot;wm&quot;
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+#endif
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+#ifndef __THIS_VERSION__
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+#define __THIS_VERSION__ &quot;&quot;
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+#endif
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+
+</a> #endif
+<b>diff --git a/<a id="h4" href="../file/config.h.html">config.h</a> b/<a href="../file/config.h.html">config.h</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -3,7 +3,7 @@
+</a> #ifndef _CONFIG_H
+ #define _CONFIG_H
+ 
+<a href="#h4-0-3" id="h4-0-3" class="d">-#define BORDER_WIDTH 3
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+#define BORDER_WIDTH 5
+</a> /* colors are HTML colors that start in &quot;0x&quot; instead of &quot;#&quot; */
+ #define COLOR_FOCUS 0x3d637d
+ #define COLOR_UNFOCUS 0x003b4f
+<b>diff --git a/<a id="h5" href="../file/config.mk.html">config.mk</a> b/<a href="../file/config.mk.html">config.mk</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -2,5 +2,5 @@ PREFIX = /usr/local
+</a> MANPREFIX = /usr/local/share
+ MANDIR = $(MANPREFIX)/man/man1
+ 
+<a href="#h5-0-3" id="h5-0-3" class="d">-CFLAGS += -std=c99 -Wextra -g
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+CFLAGS += -std=c99 -Wextra -g -DD
+</a> LDFLAGS += -lxcb -lxcb-ewmh -lxcb-icccm -lxcb-randr
+<b>diff --git a/<a id="h6" href="../file/ipc.h.html">ipc.h</a> b/<a href="../file/ipc.h.html">ipc.h</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -28,7 +28,19 @@ enum IPCCommand {
+</a> 	IPCGroupToggle,
+ 	IPCWMQuit,
+ 	IPCWMChangeNrOfGroups,
+<a href="#h6-0-3" id="h6-0-3" class="d">-	NR_IPC_COMMANDS,
+</a><a href="#h6-0-4" id="h6-0-4" class="i">+	IPCWMConfig,
+</a><a href="#h6-0-5" id="h6-0-5" class="i">+	NR_IPC_COMMANDS
+</a><a href="#h6-0-6" id="h6-0-6" class="i">+};
+</a><a href="#h6-0-7" id="h6-0-7" class="i">+
+</a><a href="#h6-0-8" id="h6-0-8" class="i">+enum IPCConfig {
+</a><a href="#h6-0-9" id="h6-0-9" class="i">+	IPCConfigBorderWidth,
+</a><a href="#h6-0-10" id="h6-0-10" class="i">+	IPCConfigColorFocused,
+</a><a href="#h6-0-11" id="h6-0-11" class="i">+	IPCConfigColorUnfocused,
+</a><a href="#h6-0-12" id="h6-0-12" class="i">+	IPCConfigGapWidth,
+</a><a href="#h6-0-13" id="h6-0-13" class="i">+	IPCConfigCursorPosition,
+</a><a href="#h6-0-14" id="h6-0-14" class="i">+	IPCConfigGroupsNr,
+</a><a href="#h6-0-15" id="h6-0-15" class="i">+	IPCConfigEnableSloppyFocus,
+</a><a href="#h6-0-16" id="h6-0-16" class="i">+	NR_IPC_CONFIGS
+</a> };
+ 
+ enum SnapPosition {
+<b>diff --git a/<a id="h7" href="../file/man/Makefile.html">man/Makefile</a> b/<a href="../file/man/Makefile.html">man/Makefile</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -1,12 +1,15 @@
+</a> include ../config.mk
+ 
+<a href="#h7-0-2" id="h7-0-2" class="d">-MAN = windowchef.1
+</a><a href="#h7-0-3" id="h7-0-3" class="i">+MAN = windowchef.1 \
+</a><a href="#h7-0-4" id="h7-0-4" class="i">+	  waitron.1
+</a> MANUAL = &quot;Windowchef Manual&quot;
+ 
+ .POSIX:
+ 
+<a href="#h7-0-9" id="h7-0-9" class="d">-page:
+</a><a href="#h7-0-10" id="h7-0-10" class="d">-	ronn --manual=$(MANUAL) $(MAN).md
+</a><a href="#h7-0-11" id="h7-0-11" class="i">+all: $(MAN)
+</a><a href="#h7-0-12" id="h7-0-12" class="i">+
+</a><a href="#h7-0-13" id="h7-0-13" class="i">+%.1: *.1.md
+</a><a href="#h7-0-14" id="h7-0-14" class="i">+	ronn --manual=$(MANUAL) $@.md
+</a> 
+ clean:
+ 	rm *.1
+<b>diff --git a/<a id="h8" href="../file/man/waitron.1.html">man/waitron.1</a> b/<a href="../file/man/waitron.1.html">man/waitron.1</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -0,0 +1,170 @@
+</a><a href="#h8-0-0" id="h8-0-0" class="i">+.\&quot; generated with Ronn/v0.7.3
+</a><a href="#h8-0-1" id="h8-0-1" class="i">+.\&quot; http://github.com/rtomayko/ronn/tree/0.7.3
+</a><a href="#h8-0-2" id="h8-0-2" class="i">+.
+</a><a href="#h8-0-3" id="h8-0-3" class="i">+.TH &quot;WAITRON&quot; &quot;1&quot; &quot;September 2016&quot; &quot;&quot; &quot;Windowchef Manual&quot;
+</a><a href="#h8-0-4" id="h8-0-4" class="i">+.
+</a><a href="#h8-0-5" id="h8-0-5" class="i">+.SH &quot;NAME&quot;
+</a><a href="#h8-0-6" id="h8-0-6" class="i">+\fBwaitron\fR \- A client for windowchef(1)
+</a><a href="#h8-0-7" id="h8-0-7" class="i">+.
+</a><a href="#h8-0-8" id="h8-0-8" class="i">+.SH &quot;SYNOPSIS&quot;
+</a><a href="#h8-0-9" id="h8-0-9" class="i">+\fBwaitron\fR [\-h] \fIcommand\fR [\fIargs\fR\.\.\.]
+</a><a href="#h8-0-10" id="h8-0-10" class="i">+.
+</a><a href="#h8-0-11" id="h8-0-11" class="i">+.SH &quot;DESCRIPTION&quot;
+</a><a href="#h8-0-12" id="h8-0-12" class="i">+\fBwaitron\fR is the client for windowchef(1)\. It sends a given command to windowchef(1) as an X client message\. As a result, \fBwaitron\fR doesn\&apos;t print anything on \fBstdout\fR\.
+</a><a href="#h8-0-13" id="h8-0-13" class="i">+.
+</a><a href="#h8-0-14" id="h8-0-14" class="i">+.SH &quot;OPTIONS&quot;
+</a><a href="#h8-0-15" id="h8-0-15" class="i">+.
+</a><a href="#h8-0-16" id="h8-0-16" class="i">+.TP
+</a><a href="#h8-0-17" id="h8-0-17" class="i">+\fB\-h\fR
+</a><a href="#h8-0-18" id="h8-0-18" class="i">+Print usage and version information\.
+</a><a href="#h8-0-19" id="h8-0-19" class="i">+.
+</a><a href="#h8-0-20" id="h8-0-20" class="i">+.SH &quot;COMMANDS&quot;
+</a><a href="#h8-0-21" id="h8-0-21" class="i">+.
+</a><a href="#h8-0-22" id="h8-0-22" class="i">+.TP
+</a><a href="#h8-0-23" id="h8-0-23" class="i">+\fBwindow_move\fR \fIx\fR \fIy\fR
+</a><a href="#h8-0-24" id="h8-0-24" class="i">+Move the focused window \fIy\fR pixels horizontally and \fIy\fR pixels vertically\.
+</a><a href="#h8-0-25" id="h8-0-25" class="i">+.
+</a><a href="#h8-0-26" id="h8-0-26" class="i">+.TP
+</a><a href="#h8-0-27" id="h8-0-27" class="i">+\fBwindow_move_absolute\fR \fIx\fR \fIy\fR
+</a><a href="#h8-0-28" id="h8-0-28" class="i">+Move the focused window to the position given by \fIx\fR and \fIy\fR\.
+</a><a href="#h8-0-29" id="h8-0-29" class="i">+.
+</a><a href="#h8-0-30" id="h8-0-30" class="i">+.TP
+</a><a href="#h8-0-31" id="h8-0-31" class="i">+\fBwindow_resize\fR \fIx\fR \fIy\fR
+</a><a href="#h8-0-32" id="h8-0-32" class="i">+Resize the focused window based on the relative pixel values \fIx\fR and \fIy\fR\.
+</a><a href="#h8-0-33" id="h8-0-33" class="i">+.
+</a><a href="#h8-0-34" id="h8-0-34" class="i">+.TP
+</a><a href="#h8-0-35" id="h8-0-35" class="i">+\fBwindow_resize_absolute\fR \fIwidth\fR \fIheight\fR
+</a><a href="#h8-0-36" id="h8-0-36" class="i">+Resize the focused window up to \fIwidth\fR and \fIheight\fR\.
+</a><a href="#h8-0-37" id="h8-0-37" class="i">+.
+</a><a href="#h8-0-38" id="h8-0-38" class="i">+.TP
+</a><a href="#h8-0-39" id="h8-0-39" class="i">+\fBwindow_maximize\fR
+</a><a href="#h8-0-40" id="h8-0-40" class="i">+Hide the border and maximize the focused window on the current monitor\. Execute it again after maximizing to revert the state of the window\.
+</a><a href="#h8-0-41" id="h8-0-41" class="i">+.
+</a><a href="#h8-0-42" id="h8-0-42" class="i">+.TP
+</a><a href="#h8-0-43" id="h8-0-43" class="i">+\fBwindow_hor_maximize\fR
+</a><a href="#h8-0-44" id="h8-0-44" class="i">+Horizontally maximize the focused window on the current monitor, preserving its \fIx\fR component\. Leaves a gap at the left and right of the monitor that can be configured\. Execute it again after maximizing to revert the state of the window\.
+</a><a href="#h8-0-45" id="h8-0-45" class="i">+.
+</a><a href="#h8-0-46" id="h8-0-46" class="i">+.TP
+</a><a href="#h8-0-47" id="h8-0-47" class="i">+\fBwindow_ver_maximize\fR
+</a><a href="#h8-0-48" id="h8-0-48" class="i">+Vertically maximize the focused window on the current monitor, preserving its \fIy\fR component\. Leaves a gap at the top and bottom of the monitor whose width can be configured\. Execute it again after maximizing to revert the state of the window\.
+</a><a href="#h8-0-49" id="h8-0-49" class="i">+.
+</a><a href="#h8-0-50" id="h8-0-50" class="i">+.TP
+</a><a href="#h8-0-51" id="h8-0-51" class="i">+\fBwindow_close\fR
+</a><a href="#h8-0-52" id="h8-0-52" class="i">+Closes the focused window\.
+</a><a href="#h8-0-53" id="h8-0-53" class="i">+.
+</a><a href="#h8-0-54" id="h8-0-54" class="i">+.TP
+</a><a href="#h8-0-55" id="h8-0-55" class="i">+\fBwindow_put_in_grid\fR \fIgrid_width\fR \fIgrid_height\fR \fIcell_x\fR \fIcell_y\fR
+</a><a href="#h8-0-56" id="h8-0-56" class="i">+Moves and resizes the focused windows accordingly to fit in a cell defined by the \fIcell_x\fR and \fIcell_y\fR coordinates in a virtual grid with width \fIgrid_width\fR and height \fIgrid_height\fR on the current monitor\.
+</a><a href="#h8-0-57" id="h8-0-57" class="i">+.
+</a><a href="#h8-0-58" id="h8-0-58" class="i">+.TP
+</a><a href="#h8-0-59" id="h8-0-59" class="i">+\fBwindow_snap\fR \fIpos\fR
+</a><a href="#h8-0-60" id="h8-0-60" class="i">+Snap the window on the screen in a position defined by \fIpos\fR\. \fIpos\fR can be:
+</a><a href="#h8-0-61" id="h8-0-61" class="i">+.
+</a><a href="#h8-0-62" id="h8-0-62" class="i">+.IP
+</a><a href="#h8-0-63" id="h8-0-63" class="i">+\fB0\fR for top\-left\.
+</a><a href="#h8-0-64" id="h8-0-64" class="i">+.
+</a><a href="#h8-0-65" id="h8-0-65" class="i">+.IP
+</a><a href="#h8-0-66" id="h8-0-66" class="i">+\fB1\fR for to\-right\.
+</a><a href="#h8-0-67" id="h8-0-67" class="i">+.
+</a><a href="#h8-0-68" id="h8-0-68" class="i">+.IP
+</a><a href="#h8-0-69" id="h8-0-69" class="i">+\fB2\fR for bottom\-left\.
+</a><a href="#h8-0-70" id="h8-0-70" class="i">+.
+</a><a href="#h8-0-71" id="h8-0-71" class="i">+.IP
+</a><a href="#h8-0-72" id="h8-0-72" class="i">+\fB3\fR for bottom\-right\.
+</a><a href="#h8-0-73" id="h8-0-73" class="i">+.
+</a><a href="#h8-0-74" id="h8-0-74" class="i">+.IP
+</a><a href="#h8-0-75" id="h8-0-75" class="i">+\fB4\fR for the middle\.
+</a><a href="#h8-0-76" id="h8-0-76" class="i">+.
+</a><a href="#h8-0-77" id="h8-0-77" class="i">+.TP
+</a><a href="#h8-0-78" id="h8-0-78" class="i">+\fBwindow_cycle\fR
+</a><a href="#h8-0-79" id="h8-0-79" class="i">+Cycle through mapped windows\.
+</a><a href="#h8-0-80" id="h8-0-80" class="i">+.
+</a><a href="#h8-0-81" id="h8-0-81" class="i">+.TP
+</a><a href="#h8-0-82" id="h8-0-82" class="i">+\fBwindow_rev_cycle\fR
+</a><a href="#h8-0-83" id="h8-0-83" class="i">+Reverse cycle through mapped windows\.
+</a><a href="#h8-0-84" id="h8-0-84" class="i">+.
+</a><a href="#h8-0-85" id="h8-0-85" class="i">+.TP
+</a><a href="#h8-0-86" id="h8-0-86" class="i">+\fBgroup_add_window\fR \fIgroup_nr\fR
+</a><a href="#h8-0-87" id="h8-0-87" class="i">+Add the focused window to the \fIgroup_nr\fR group\.
+</a><a href="#h8-0-88" id="h8-0-88" class="i">+.
+</a><a href="#h8-0-89" id="h8-0-89" class="i">+.IP
+</a><a href="#h8-0-90" id="h8-0-90" class="i">+Group numbers start from 0 and end at \fIGROUPS_NO\fR \- 1\.
+</a><a href="#h8-0-91" id="h8-0-91" class="i">+.
+</a><a href="#h8-0-92" id="h8-0-92" class="i">+.TP
+</a><a href="#h8-0-93" id="h8-0-93" class="i">+\fBgroup_remove_window\fR
+</a><a href="#h8-0-94" id="h8-0-94" class="i">+Remove the focused window from its current group\.
+</a><a href="#h8-0-95" id="h8-0-95" class="i">+.
+</a><a href="#h8-0-96" id="h8-0-96" class="i">+.TP
+</a><a href="#h8-0-97" id="h8-0-97" class="i">+\fBgroup_activate\fR \fIgroup_nr\fR
+</a><a href="#h8-0-98" id="h8-0-98" class="i">+Map all windows that belong to the \fIgroup_nr\fR group\.
+</a><a href="#h8-0-99" id="h8-0-99" class="i">+.
+</a><a href="#h8-0-100" id="h8-0-100" class="i">+.TP
+</a><a href="#h8-0-101" id="h8-0-101" class="i">+\fBgroup_deactivate\fR \fIgroup_nr\fR
+</a><a href="#h8-0-102" id="h8-0-102" class="i">+Unmap all windows that belong to the \fIgroup_nr\fR group\.
+</a><a href="#h8-0-103" id="h8-0-103" class="i">+.
+</a><a href="#h8-0-104" id="h8-0-104" class="i">+.TP
+</a><a href="#h8-0-105" id="h8-0-105" class="i">+\fBgroup_toggle\fR \fIgroup_nr\fR
+</a><a href="#h8-0-106" id="h8-0-106" class="i">+Toggle the \fIgroup_nr\fR group\.
+</a><a href="#h8-0-107" id="h8-0-107" class="i">+.
+</a><a href="#h8-0-108" id="h8-0-108" class="i">+.TP
+</a><a href="#h8-0-109" id="h8-0-109" class="i">+\fBwm_quit\fR \fIexit_status\fR
+</a><a href="#h8-0-110" id="h8-0-110" class="i">+Quit windowchef with exit_status \fIexit_status\fR\.
+</a><a href="#h8-0-111" id="h8-0-111" class="i">+.
+</a><a href="#h8-0-112" id="h8-0-112" class="i">+.TP
+</a><a href="#h8-0-113" id="h8-0-113" class="i">+\fBwm_change_number_of_groups\fR \fInumber_of_groups\fR
+</a><a href="#h8-0-114" id="h8-0-114" class="i">+Change the number of maximum groups to \fInumber_of_groups\fR\.
+</a><a href="#h8-0-115" id="h8-0-115" class="i">+.
+</a><a href="#h8-0-116" id="h8-0-116" class="i">+.IP
+</a><a href="#h8-0-117" id="h8-0-117" class="i">+Windows that belong to a group that has a \fIgroup_nr\fR greater or equal to \fInumber_of_groups\fR will become orphaned\.
+</a><a href="#h8-0-118" id="h8-0-118" class="i">+.
+</a><a href="#h8-0-119" id="h8-0-119" class="i">+.TP
+</a><a href="#h8-0-120" id="h8-0-120" class="i">+\fBwm_config\fR \fIkey\fR [\fIvalue\fR\.\.\.]
+</a><a href="#h8-0-121" id="h8-0-121" class="i">+See \fICONFIGURING\fR\.
+</a><a href="#h8-0-122" id="h8-0-122" class="i">+.
+</a><a href="#h8-0-123" id="h8-0-123" class="i">+.SH &quot;CONFIGURING&quot;
+</a><a href="#h8-0-124" id="h8-0-124" class="i">+Configuring is done using the \fBwm_config\fR command\. Possible configuration keys are:
+</a><a href="#h8-0-125" id="h8-0-125" class="i">+.
+</a><a href="#h8-0-126" id="h8-0-126" class="i">+.TP
+</a><a href="#h8-0-127" id="h8-0-127" class="i">+\fBborder_width\fR \fIwidth\fR
+</a><a href="#h8-0-128" id="h8-0-128" class="i">+Sets the border width to \fIwidth\fR pixels\.
+</a><a href="#h8-0-129" id="h8-0-129" class="i">+.
+</a><a href="#h8-0-130" id="h8-0-130" class="i">+.TP
+</a><a href="#h8-0-131" id="h8-0-131" class="i">+\fBcolor_focused\fR, \fBcolor_unfocused\fR \fIcolor\fR
+</a><a href="#h8-0-132" id="h8-0-132" class="i">+Sets the border color to \fIcolor\fR for the focused and unfocused state respectively\. \fIcolor\fR is a hexadecimal value that may or may not start witht he \fB0x\fR prefix\. Example: \fB0x1234ef\fR\.
+</a><a href="#h8-0-133" id="h8-0-133" class="i">+.
+</a><a href="#h8-0-134" id="h8-0-134" class="i">+.TP
+</a><a href="#h8-0-135" id="h8-0-135" class="i">+\fBgap_width\fR \fIwidth\fR
+</a><a href="#h8-0-136" id="h8-0-136" class="i">+Sets the window gap value to \fIwidth\fR\.
+</a><a href="#h8-0-137" id="h8-0-137" class="i">+.
+</a><a href="#h8-0-138" id="h8-0-138" class="i">+.TP
+</a><a href="#h8-0-139" id="h8-0-139" class="i">+\fBcursor_position\fR \fIpos\fR
+</a><a href="#h8-0-140" id="h8-0-140" class="i">+Sets the position of the cursor when moving or resizing windows\. Possible values for \fIpos\fR are:
+</a><a href="#h8-0-141" id="h8-0-141" class="i">+.
+</a><a href="#h8-0-142" id="h8-0-142" class="i">+.IP
+</a><a href="#h8-0-143" id="h8-0-143" class="i">+\fBtopleft\fR
+</a><a href="#h8-0-144" id="h8-0-144" class="i">+.
+</a><a href="#h8-0-145" id="h8-0-145" class="i">+.IP
+</a><a href="#h8-0-146" id="h8-0-146" class="i">+\fBtopright\fR
+</a><a href="#h8-0-147" id="h8-0-147" class="i">+.
+</a><a href="#h8-0-148" id="h8-0-148" class="i">+.IP
+</a><a href="#h8-0-149" id="h8-0-149" class="i">+\fBbottomleft\fR
+</a><a href="#h8-0-150" id="h8-0-150" class="i">+.
+</a><a href="#h8-0-151" id="h8-0-151" class="i">+.IP
+</a><a href="#h8-0-152" id="h8-0-152" class="i">+\fBbottomright\fR
+</a><a href="#h8-0-153" id="h8-0-153" class="i">+.
+</a><a href="#h8-0-154" id="h8-0-154" class="i">+.IP
+</a><a href="#h8-0-155" id="h8-0-155" class="i">+\fBmiddle\fR
+</a><a href="#h8-0-156" id="h8-0-156" class="i">+.
+</a><a href="#h8-0-157" id="h8-0-157" class="i">+.TP
+</a><a href="#h8-0-158" id="h8-0-158" class="i">+\fBgroups_nr\fR \fInr\fR
+</a><a href="#h8-0-159" id="h8-0-159" class="i">+Sets the number of groups to \fInr\fR\. If \fInr\fR is less than the current number of groups, window that belong to groups whose numbers are greater than \fInr\fR will be mapped to screen and assigned to the null group\.
+</a><a href="#h8-0-160" id="h8-0-160" class="i">+.
+</a><a href="#h8-0-161" id="h8-0-161" class="i">+.TP
+</a><a href="#h8-0-162" id="h8-0-162" class="i">+\fBenable_sloppy_focus\fR \fIenable\fR
+</a><a href="#h8-0-163" id="h8-0-163" class="i">+Enable sloppy focus\. \fIenable\fR can be \fBtrue\fR, \fBt\fR, \fByes\fR, \fBy\fR, \fB1\fR, \fBfalse\fR, \fBf\fR, \fBno\fR, \fBn\fR or \fB0\fR\.
+</a><a href="#h8-0-164" id="h8-0-164" class="i">+.
+</a><a href="#h8-0-165" id="h8-0-165" class="i">+.SH &quot;SEE ALSO&quot;
+</a><a href="#h8-0-166" id="h8-0-166" class="i">+windowchef(1), sxhkd(1)
+</a><a href="#h8-0-167" id="h8-0-167" class="i">+.
+</a><a href="#h8-0-168" id="h8-0-168" class="i">+.SH &quot;AUTHOR&quot;
+</a><a href="#h8-0-169" id="h8-0-169" class="i">+Tudor Roman \fB&lt;tudurom at gmail dot com&gt;\fR
+</a><b>diff --git a/<a id="h9" href="../file/man/waitron.1.html.html">man/waitron.1.html</a> b/<a href="../file/man/waitron.1.html.html">man/waitron.1.html</a></b>
+<a href="#h9-0" id="h9-0" class="h">@@ -0,0 +1,191 @@
+</a><a href="#h9-0-0" id="h9-0-0" class="i">+&lt;!DOCTYPE html&gt;
+</a><a href="#h9-0-1" id="h9-0-1" class="i">+&lt;html&gt;
+</a><a href="#h9-0-2" id="h9-0-2" class="i">+&lt;head&gt;
+</a><a href="#h9-0-3" id="h9-0-3" class="i">+  &lt;meta http-equiv=&apos;content-type&apos; value=&apos;text/html;charset=utf8&apos;&gt;
+</a><a href="#h9-0-4" id="h9-0-4" class="i">+  &lt;meta name=&apos;generator&apos; value=&apos;Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)&apos;&gt;
+</a><a href="#h9-0-5" id="h9-0-5" class="i">+  &lt;title&gt;waitron(1) - A client for windowchef(1)&lt;/title&gt;
+</a><a href="#h9-0-6" id="h9-0-6" class="i">+  &lt;style type=&apos;text/css&apos; media=&apos;all&apos;&gt;
+</a><a href="#h9-0-7" id="h9-0-7" class="i">+  /* style: man */
+</a><a href="#h9-0-8" id="h9-0-8" class="i">+  body#manpage {margin:0}
+</a><a href="#h9-0-9" id="h9-0-9" class="i">+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+</a><a href="#h9-0-10" id="h9-0-10" class="i">+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+</a><a href="#h9-0-11" id="h9-0-11" class="i">+  .mp h2 {margin:10px 0 0 0}
+</a><a href="#h9-0-12" id="h9-0-12" class="i">+  .mp &gt; p,.mp &gt; pre,.mp &gt; ul,.mp &gt; ol,.mp &gt; dl {margin-left:8ex}
+</a><a href="#h9-0-13" id="h9-0-13" class="i">+  .mp h3 {margin:0 0 0 4ex}
+</a><a href="#h9-0-14" id="h9-0-14" class="i">+  .mp dt {margin:0;clear:left}
+</a><a href="#h9-0-15" id="h9-0-15" class="i">+  .mp dt.flush {float:left;width:8ex}
+</a><a href="#h9-0-16" id="h9-0-16" class="i">+  .mp dd {margin:0 0 0 9ex}
+</a><a href="#h9-0-17" id="h9-0-17" class="i">+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+</a><a href="#h9-0-18" id="h9-0-18" class="i">+  .mp pre {margin-bottom:20px}
+</a><a href="#h9-0-19" id="h9-0-19" class="i">+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+</a><a href="#h9-0-20" id="h9-0-20" class="i">+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+</a><a href="#h9-0-21" id="h9-0-21" class="i">+  .mp img {display:block;margin:auto}
+</a><a href="#h9-0-22" id="h9-0-22" class="i">+  .mp h1.man-title {display:none}
+</a><a href="#h9-0-23" id="h9-0-23" class="i">+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+</a><a href="#h9-0-24" id="h9-0-24" class="i">+  .mp h2 {font-size:16px;line-height:1.25}
+</a><a href="#h9-0-25" id="h9-0-25" class="i">+  .mp h1 {font-size:20px;line-height:2}
+</a><a href="#h9-0-26" id="h9-0-26" class="i">+  .mp {text-align:justify;background:#fff}
+</a><a href="#h9-0-27" id="h9-0-27" class="i">+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+</a><a href="#h9-0-28" id="h9-0-28" class="i">+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+</a><a href="#h9-0-29" id="h9-0-29" class="i">+  .mp u {text-decoration:underline}
+</a><a href="#h9-0-30" id="h9-0-30" class="i">+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+</a><a href="#h9-0-31" id="h9-0-31" class="i">+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+</a><a href="#h9-0-32" id="h9-0-32" class="i">+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+</a><a href="#h9-0-33" id="h9-0-33" class="i">+  .mp b.man-ref {font-weight:normal;color:#434241}
+</a><a href="#h9-0-34" id="h9-0-34" class="i">+  .mp pre {padding:0 4ex}
+</a><a href="#h9-0-35" id="h9-0-35" class="i">+  .mp pre code {font-weight:normal;color:#434241}
+</a><a href="#h9-0-36" id="h9-0-36" class="i">+  .mp h2+pre,h3+pre {padding-left:0}
+</a><a href="#h9-0-37" id="h9-0-37" class="i">+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+</a><a href="#h9-0-38" id="h9-0-38" class="i">+  ol.man-decor {width:100%}
+</a><a href="#h9-0-39" id="h9-0-39" class="i">+  ol.man-decor li.tl {text-align:left}
+</a><a href="#h9-0-40" id="h9-0-40" class="i">+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+</a><a href="#h9-0-41" id="h9-0-41" class="i">+  ol.man-decor li.tr {text-align:right;float:right}
+</a><a href="#h9-0-42" id="h9-0-42" class="i">+  &lt;/style&gt;
+</a><a href="#h9-0-43" id="h9-0-43" class="i">+&lt;/head&gt;
+</a><a href="#h9-0-44" id="h9-0-44" class="i">+&lt;!--
+</a><a href="#h9-0-45" id="h9-0-45" class="i">+  The following styles are deprecated and will be removed at some point:
+</a><a href="#h9-0-46" id="h9-0-46" class="i">+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+</a><a href="#h9-0-47" id="h9-0-47" class="i">+
+</a><a href="#h9-0-48" id="h9-0-48" class="i">+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+</a><a href="#h9-0-49" id="h9-0-49" class="i">+  .man-navigation should be used instead.
+</a><a href="#h9-0-50" id="h9-0-50" class="i">+--&gt;
+</a><a href="#h9-0-51" id="h9-0-51" class="i">+&lt;body id=&apos;manpage&apos;&gt;
+</a><a href="#h9-0-52" id="h9-0-52" class="i">+  &lt;div class=&apos;mp&apos; id=&apos;man&apos;&gt;
+</a><a href="#h9-0-53" id="h9-0-53" class="i">+
+</a><a href="#h9-0-54" id="h9-0-54" class="i">+  &lt;div class=&apos;man-navigation&apos; style=&apos;display:none&apos;&gt;
+</a><a href="#h9-0-55" id="h9-0-55" class="i">+    &lt;a href=&quot;#NAME&quot;&gt;NAME&lt;/a&gt;
+</a><a href="#h9-0-56" id="h9-0-56" class="i">+    &lt;a href=&quot;#SYNOPSIS&quot;&gt;SYNOPSIS&lt;/a&gt;
+</a><a href="#h9-0-57" id="h9-0-57" class="i">+    &lt;a href=&quot;#DESCRIPTION&quot;&gt;DESCRIPTION&lt;/a&gt;
+</a><a href="#h9-0-58" id="h9-0-58" class="i">+    &lt;a href=&quot;#OPTIONS&quot;&gt;OPTIONS&lt;/a&gt;
+</a><a href="#h9-0-59" id="h9-0-59" class="i">+    &lt;a href=&quot;#COMMANDS&quot;&gt;COMMANDS&lt;/a&gt;
+</a><a href="#h9-0-60" id="h9-0-60" class="i">+    &lt;a href=&quot;#CONFIGURING&quot;&gt;CONFIGURING&lt;/a&gt;
+</a><a href="#h9-0-61" id="h9-0-61" class="i">+    &lt;a href=&quot;#SEE-ALSO&quot;&gt;SEE ALSO&lt;/a&gt;
+</a><a href="#h9-0-62" id="h9-0-62" class="i">+    &lt;a href=&quot;#AUTHOR&quot;&gt;AUTHOR&lt;/a&gt;
+</a><a href="#h9-0-63" id="h9-0-63" class="i">+  &lt;/div&gt;
+</a><a href="#h9-0-64" id="h9-0-64" class="i">+
+</a><a href="#h9-0-65" id="h9-0-65" class="i">+  &lt;ol class=&apos;man-decor man-head man head&apos;&gt;
+</a><a href="#h9-0-66" id="h9-0-66" class="i">+    &lt;li class=&apos;tl&apos;&gt;waitron(1)&lt;/li&gt;
+</a><a href="#h9-0-67" id="h9-0-67" class="i">+    &lt;li class=&apos;tc&apos;&gt;Windowchef Manual&lt;/li&gt;
+</a><a href="#h9-0-68" id="h9-0-68" class="i">+    &lt;li class=&apos;tr&apos;&gt;waitron(1)&lt;/li&gt;
+</a><a href="#h9-0-69" id="h9-0-69" class="i">+  &lt;/ol&gt;
+</a><a href="#h9-0-70" id="h9-0-70" class="i">+
+</a><a href="#h9-0-71" id="h9-0-71" class="i">+  &lt;h2 id=&quot;NAME&quot;&gt;NAME&lt;/h2&gt;
+</a><a href="#h9-0-72" id="h9-0-72" class="i">+&lt;p class=&quot;man-name&quot;&gt;
+</a><a href="#h9-0-73" id="h9-0-73" class="i">+  &lt;code&gt;waitron&lt;/code&gt; - &lt;span class=&quot;man-whatis&quot;&gt;A client for &lt;span class=&quot;man-ref&quot;&gt;windowchef&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+</a><a href="#h9-0-74" id="h9-0-74" class="i">+&lt;/p&gt;
+</a><a href="#h9-0-75" id="h9-0-75" class="i">+
+</a><a href="#h9-0-76" id="h9-0-76" class="i">+&lt;h2 id=&quot;SYNOPSIS&quot;&gt;SYNOPSIS&lt;/h2&gt;
+</a><a href="#h9-0-77" id="h9-0-77" class="i">+
+</a><a href="#h9-0-78" id="h9-0-78" class="i">+&lt;p&gt;&lt;code&gt;waitron&lt;/code&gt; [-h] &lt;var&gt;command&lt;/var&gt; [&lt;var&gt;args&lt;/var&gt;...]&lt;/p&gt;
+</a><a href="#h9-0-79" id="h9-0-79" class="i">+
+</a><a href="#h9-0-80" id="h9-0-80" class="i">+&lt;h2 id=&quot;DESCRIPTION&quot;&gt;DESCRIPTION&lt;/h2&gt;
+</a><a href="#h9-0-81" id="h9-0-81" class="i">+
+</a><a href="#h9-0-82" id="h9-0-82" class="i">+&lt;p&gt;&lt;code&gt;waitron&lt;/code&gt; is the client for &lt;span class=&quot;man-ref&quot;&gt;windowchef&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;. It sends a given command to
+</a><a href="#h9-0-83" id="h9-0-83" class="i">+&lt;span class=&quot;man-ref&quot;&gt;windowchef&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt; as an X client message. As a result, &lt;code&gt;waitron&lt;/code&gt; doesn&apos;t print
+</a><a href="#h9-0-84" id="h9-0-84" class="i">+anything on &lt;code&gt;stdout&lt;/code&gt;.&lt;/p&gt;
+</a><a href="#h9-0-85" id="h9-0-85" class="i">+
+</a><a href="#h9-0-86" id="h9-0-86" class="i">+&lt;h2 id=&quot;OPTIONS&quot;&gt;OPTIONS&lt;/h2&gt;
+</a><a href="#h9-0-87" id="h9-0-87" class="i">+
+</a><a href="#h9-0-88" id="h9-0-88" class="i">+&lt;dl&gt;
+</a><a href="#h9-0-89" id="h9-0-89" class="i">+&lt;dt class=&quot;flush&quot;&gt;&lt;code&gt;-h&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;  Print usage and version information.&lt;/dd&gt;
+</a><a href="#h9-0-90" id="h9-0-90" class="i">+&lt;/dl&gt;
+</a><a href="#h9-0-91" id="h9-0-91" class="i">+
+</a><a href="#h9-0-92" id="h9-0-92" class="i">+
+</a><a href="#h9-0-93" id="h9-0-93" class="i">+&lt;h2 id=&quot;COMMANDS&quot;&gt;COMMANDS&lt;/h2&gt;
+</a><a href="#h9-0-94" id="h9-0-94" class="i">+
+</a><a href="#h9-0-95" id="h9-0-95" class="i">+&lt;dl&gt;
+</a><a href="#h9-0-96" id="h9-0-96" class="i">+&lt;dt&gt;&lt;code&gt;window_move&lt;/code&gt; &lt;var&gt;x&lt;/var&gt; &lt;var&gt;y&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Move the focused window &lt;var&gt;y&lt;/var&gt; pixels horizontally and &lt;var&gt;y&lt;/var&gt; pixels
+</a><a href="#h9-0-97" id="h9-0-97" class="i">+  vertically.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-98" id="h9-0-98" class="i">+&lt;dt&gt;&lt;code&gt;window_move_absolute&lt;/code&gt; &lt;var&gt;x&lt;/var&gt; &lt;var&gt;y&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Move the focused window to the position given by &lt;var&gt;x&lt;/var&gt; and &lt;var&gt;y&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-99" id="h9-0-99" class="i">+&lt;dt&gt;&lt;code&gt;window_resize&lt;/code&gt; &lt;var&gt;x&lt;/var&gt; &lt;var&gt;y&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Resize the focused window based on the relative pixel values &lt;var&gt;x&lt;/var&gt; and &lt;var&gt;y&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-100" id="h9-0-100" class="i">+&lt;dt&gt;&lt;code&gt;window_resize_absolute&lt;/code&gt; &lt;var&gt;width&lt;/var&gt; &lt;var&gt;height&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Resize the focused window up to &lt;var&gt;width&lt;/var&gt; and &lt;var&gt;height&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-101" id="h9-0-101" class="i">+&lt;dt&gt;&lt;code&gt;window_maximize&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Hide the border and maximize the focused window on the current monitor.
+</a><a href="#h9-0-102" id="h9-0-102" class="i">+  Execute it again after maximizing to revert the state of the window.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-103" id="h9-0-103" class="i">+&lt;dt&gt;&lt;code&gt;window_hor_maximize&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Horizontally maximize the focused window on the current monitor, preserving
+</a><a href="#h9-0-104" id="h9-0-104" class="i">+  its &lt;var&gt;x&lt;/var&gt; component. Leaves a gap at the left and right of the monitor that
+</a><a href="#h9-0-105" id="h9-0-105" class="i">+  can be configured. Execute it again after maximizing to revert the state of the window.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-106" id="h9-0-106" class="i">+&lt;dt&gt;&lt;code&gt;window_ver_maximize&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Vertically maximize the focused window on the current monitor, preserving
+</a><a href="#h9-0-107" id="h9-0-107" class="i">+  its &lt;var&gt;y&lt;/var&gt; component. Leaves a gap at the top and bottom of the monitor whose
+</a><a href="#h9-0-108" id="h9-0-108" class="i">+  width can be configured. Execute it again after maximizing to revert the state of the window.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-109" id="h9-0-109" class="i">+&lt;dt&gt;&lt;code&gt;window_close&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Closes the focused window.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-110" id="h9-0-110" class="i">+&lt;dt&gt;&lt;code&gt;window_put_in_grid&lt;/code&gt; &lt;var&gt;grid_width&lt;/var&gt; &lt;var&gt;grid_height&lt;/var&gt; &lt;var&gt;cell_x&lt;/var&gt; &lt;var&gt;cell_y&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Moves and resizes the focused windows accordingly to fit in a cell defined
+</a><a href="#h9-0-111" id="h9-0-111" class="i">+  by the &lt;var&gt;cell_x&lt;/var&gt; and &lt;var&gt;cell_y&lt;/var&gt; coordinates in a virtual grid with width
+</a><a href="#h9-0-112" id="h9-0-112" class="i">+  &lt;var&gt;grid_width&lt;/var&gt; and height &lt;var&gt;grid_height&lt;/var&gt; on the current monitor.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-113" id="h9-0-113" class="i">+&lt;dt&gt;&lt;code&gt;window_snap&lt;/code&gt; &lt;var&gt;pos&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Snap the window on the screen in a position defined by &lt;var&gt;pos&lt;/var&gt;. &lt;var&gt;pos&lt;/var&gt; can be:&lt;/p&gt;
+</a><a href="#h9-0-114" id="h9-0-114" class="i">+
+</a><a href="#h9-0-115" id="h9-0-115" class="i">+&lt;p&gt;  &lt;code&gt;0&lt;/code&gt; for top-left.&lt;/p&gt;
+</a><a href="#h9-0-116" id="h9-0-116" class="i">+
+</a><a href="#h9-0-117" id="h9-0-117" class="i">+&lt;p&gt;  &lt;code&gt;1&lt;/code&gt; for to-right.&lt;/p&gt;
+</a><a href="#h9-0-118" id="h9-0-118" class="i">+
+</a><a href="#h9-0-119" id="h9-0-119" class="i">+&lt;p&gt;  &lt;code&gt;2&lt;/code&gt; for bottom-left.&lt;/p&gt;
+</a><a href="#h9-0-120" id="h9-0-120" class="i">+
+</a><a href="#h9-0-121" id="h9-0-121" class="i">+&lt;p&gt;  &lt;code&gt;3&lt;/code&gt; for bottom-right.&lt;/p&gt;
+</a><a href="#h9-0-122" id="h9-0-122" class="i">+
+</a><a href="#h9-0-123" id="h9-0-123" class="i">+&lt;p&gt;  &lt;code&gt;4&lt;/code&gt; for the middle.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-124" id="h9-0-124" class="i">+&lt;dt&gt;&lt;code&gt;window_cycle&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Cycle through mapped windows.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-125" id="h9-0-125" class="i">+&lt;dt&gt;&lt;code&gt;window_rev_cycle&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Reverse cycle through mapped windows.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-126" id="h9-0-126" class="i">+&lt;dt&gt;&lt;code&gt;group_add_window&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Add the focused window to the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;
+</a><a href="#h9-0-127" id="h9-0-127" class="i">+
+</a><a href="#h9-0-128" id="h9-0-128" class="i">+&lt;p&gt;  Group numbers start from 0 and end at &lt;var&gt;GROUPS_NO&lt;/var&gt; - 1.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-129" id="h9-0-129" class="i">+&lt;dt&gt;&lt;code&gt;group_remove_window&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Remove the focused window from its current group.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-130" id="h9-0-130" class="i">+&lt;dt&gt;&lt;code&gt;group_activate&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Map all windows that belong to the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-131" id="h9-0-131" class="i">+&lt;dt&gt;&lt;code&gt;group_deactivate&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Unmap all windows that belong to the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-132" id="h9-0-132" class="i">+&lt;dt&gt;&lt;code&gt;group_toggle&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Toggle the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-133" id="h9-0-133" class="i">+&lt;dt&gt;&lt;code&gt;wm_quit&lt;/code&gt; &lt;var&gt;exit_status&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Quit windowchef with exit_status &lt;var&gt;exit_status&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-134" id="h9-0-134" class="i">+&lt;dt&gt;&lt;code&gt;wm_change_number_of_groups&lt;/code&gt; &lt;var&gt;number_of_groups&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Change the number of maximum groups to &lt;var&gt;number_of_groups&lt;/var&gt;.&lt;/p&gt;
+</a><a href="#h9-0-135" id="h9-0-135" class="i">+
+</a><a href="#h9-0-136" id="h9-0-136" class="i">+&lt;p&gt;  Windows that belong to a group that has a &lt;var&gt;group_nr&lt;/var&gt; greater or equal to
+</a><a href="#h9-0-137" id="h9-0-137" class="i">+  &lt;var&gt;number_of_groups&lt;/var&gt; will become orphaned.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-138" id="h9-0-138" class="i">+&lt;dt&gt;&lt;code&gt;wm_config&lt;/code&gt; &lt;var&gt;key&lt;/var&gt; [&lt;var&gt;value&lt;/var&gt;...]&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  See &lt;a href=&quot;#CONFIGURING&quot; title=&quot;CONFIGURING&quot; data-bare-link=&quot;true&quot;&gt;CONFIGURING&lt;/a&gt;.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-139" id="h9-0-139" class="i">+&lt;/dl&gt;
+</a><a href="#h9-0-140" id="h9-0-140" class="i">+
+</a><a href="#h9-0-141" id="h9-0-141" class="i">+
+</a><a href="#h9-0-142" id="h9-0-142" class="i">+&lt;h2 id=&quot;CONFIGURING&quot;&gt;CONFIGURING&lt;/h2&gt;
+</a><a href="#h9-0-143" id="h9-0-143" class="i">+
+</a><a href="#h9-0-144" id="h9-0-144" class="i">+&lt;p&gt;Configuring is done using the &lt;code&gt;wm_config&lt;/code&gt; command. Possible configuration keys
+</a><a href="#h9-0-145" id="h9-0-145" class="i">+are:&lt;/p&gt;
+</a><a href="#h9-0-146" id="h9-0-146" class="i">+
+</a><a href="#h9-0-147" id="h9-0-147" class="i">+&lt;dl&gt;
+</a><a href="#h9-0-148" id="h9-0-148" class="i">+&lt;dt&gt;&lt;code&gt;border_width&lt;/code&gt; &lt;var&gt;width&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Sets the border width to &lt;var&gt;width&lt;/var&gt; pixels.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-149" id="h9-0-149" class="i">+&lt;dt&gt;&lt;code&gt;color_focused&lt;/code&gt;, &lt;code&gt;color_unfocused&lt;/code&gt; &lt;var&gt;color&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Sets the border color to &lt;var&gt;color&lt;/var&gt; for the focused and unfocused state respectively.
+</a><a href="#h9-0-150" id="h9-0-150" class="i">+  &lt;var&gt;color&lt;/var&gt; is a hexadecimal value that may or may not start witht he &lt;code&gt;0x&lt;/code&gt;
+</a><a href="#h9-0-151" id="h9-0-151" class="i">+  prefix. Example: &lt;code&gt;0x1234ef&lt;/code&gt;.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-152" id="h9-0-152" class="i">+&lt;dt&gt;&lt;code&gt;gap_width&lt;/code&gt; &lt;var&gt;width&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Sets the window gap value to &lt;var&gt;width&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-153" id="h9-0-153" class="i">+&lt;dt&gt;&lt;code&gt;cursor_position&lt;/code&gt; &lt;var&gt;pos&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Sets the position of the cursor when moving or resizing windows. Possible
+</a><a href="#h9-0-154" id="h9-0-154" class="i">+  values for &lt;var&gt;pos&lt;/var&gt; are:&lt;/p&gt;
+</a><a href="#h9-0-155" id="h9-0-155" class="i">+
+</a><a href="#h9-0-156" id="h9-0-156" class="i">+&lt;p&gt;  &lt;code&gt;topleft&lt;/code&gt;&lt;/p&gt;
+</a><a href="#h9-0-157" id="h9-0-157" class="i">+
+</a><a href="#h9-0-158" id="h9-0-158" class="i">+&lt;p&gt;  &lt;code&gt;topright&lt;/code&gt;&lt;/p&gt;
+</a><a href="#h9-0-159" id="h9-0-159" class="i">+
+</a><a href="#h9-0-160" id="h9-0-160" class="i">+&lt;p&gt;  &lt;code&gt;bottomleft&lt;/code&gt;&lt;/p&gt;
+</a><a href="#h9-0-161" id="h9-0-161" class="i">+
+</a><a href="#h9-0-162" id="h9-0-162" class="i">+&lt;p&gt;  &lt;code&gt;bottomright&lt;/code&gt;&lt;/p&gt;
+</a><a href="#h9-0-163" id="h9-0-163" class="i">+
+</a><a href="#h9-0-164" id="h9-0-164" class="i">+&lt;p&gt;  &lt;code&gt;middle&lt;/code&gt;&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-165" id="h9-0-165" class="i">+&lt;dt&gt;&lt;code&gt;groups_nr&lt;/code&gt; &lt;var&gt;nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Sets the number of groups to &lt;var&gt;nr&lt;/var&gt;. If &lt;var&gt;nr&lt;/var&gt; is less than the current number
+</a><a href="#h9-0-166" id="h9-0-166" class="i">+  of groups, window that belong to groups whose numbers are greater than &lt;var&gt;nr&lt;/var&gt;
+</a><a href="#h9-0-167" id="h9-0-167" class="i">+  will be mapped to screen and assigned to the null group.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-168" id="h9-0-168" class="i">+&lt;dt&gt;&lt;code&gt;enable_sloppy_focus&lt;/code&gt; &lt;var&gt;enable&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Enable sloppy focus. &lt;var&gt;enable&lt;/var&gt; can be &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;t&lt;/code&gt;, &lt;code&gt;yes&lt;/code&gt;, &lt;code&gt;y&lt;/code&gt;, &lt;code&gt;1&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt;,
+</a><a href="#h9-0-169" id="h9-0-169" class="i">+  &lt;code&gt;f&lt;/code&gt;, &lt;code&gt;no&lt;/code&gt;, &lt;code&gt;n&lt;/code&gt; or &lt;code&gt;0&lt;/code&gt;.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h9-0-170" id="h9-0-170" class="i">+&lt;/dl&gt;
+</a><a href="#h9-0-171" id="h9-0-171" class="i">+
+</a><a href="#h9-0-172" id="h9-0-172" class="i">+
+</a><a href="#h9-0-173" id="h9-0-173" class="i">+&lt;h2 id=&quot;SEE-ALSO&quot;&gt;SEE ALSO&lt;/h2&gt;
+</a><a href="#h9-0-174" id="h9-0-174" class="i">+
+</a><a href="#h9-0-175" id="h9-0-175" class="i">+&lt;p&gt;&lt;span class=&quot;man-ref&quot;&gt;windowchef&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;sxhkd&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+</a><a href="#h9-0-176" id="h9-0-176" class="i">+
+</a><a href="#h9-0-177" id="h9-0-177" class="i">+&lt;h2 id=&quot;AUTHOR&quot;&gt;AUTHOR&lt;/h2&gt;
+</a><a href="#h9-0-178" id="h9-0-178" class="i">+
+</a><a href="#h9-0-179" id="h9-0-179" class="i">+&lt;p&gt;Tudor Roman &lt;code&gt;&amp;lt;tudurom at gmail dot com&gt;&lt;/code&gt;&lt;/p&gt;
+</a><a href="#h9-0-180" id="h9-0-180" class="i">+
+</a><a href="#h9-0-181" id="h9-0-181" class="i">+
+</a><a href="#h9-0-182" id="h9-0-182" class="i">+  &lt;ol class=&apos;man-decor man-foot man foot&apos;&gt;
+</a><a href="#h9-0-183" id="h9-0-183" class="i">+    &lt;li class=&apos;tl&apos;&gt;&lt;/li&gt;
+</a><a href="#h9-0-184" id="h9-0-184" class="i">+    &lt;li class=&apos;tc&apos;&gt;September 2016&lt;/li&gt;
+</a><a href="#h9-0-185" id="h9-0-185" class="i">+    &lt;li class=&apos;tr&apos;&gt;waitron(1)&lt;/li&gt;
+</a><a href="#h9-0-186" id="h9-0-186" class="i">+  &lt;/ol&gt;
+</a><a href="#h9-0-187" id="h9-0-187" class="i">+
+</a><a href="#h9-0-188" id="h9-0-188" class="i">+  &lt;/div&gt;
+</a><a href="#h9-0-189" id="h9-0-189" class="i">+&lt;/body&gt;
+</a><a href="#h9-0-190" id="h9-0-190" class="i">+&lt;/html&gt;
+</a><b>diff --git a/<a id="h10" href="../file/man/waitron.1.md.html">man/waitron.1.md</a> b/<a href="../file/man/waitron.1.md.html">man/waitron.1.md</a></b>
+<a href="#h10-0" id="h10-0" class="h">@@ -0,0 +1,149 @@
+</a><a href="#h10-0-0" id="h10-0-0" class="i">+waitron(1) -- A client for windowchef(1)
+</a><a href="#h10-0-1" id="h10-0-1" class="i">+==========================================
+</a><a href="#h10-0-2" id="h10-0-2" class="i">+
+</a><a href="#h10-0-3" id="h10-0-3" class="i">+## SYNOPSIS
+</a><a href="#h10-0-4" id="h10-0-4" class="i">+
+</a><a href="#h10-0-5" id="h10-0-5" class="i">+`waitron` [-h] &lt;command&gt; [&lt;args&gt;...]
+</a><a href="#h10-0-6" id="h10-0-6" class="i">+
+</a><a href="#h10-0-7" id="h10-0-7" class="i">+## DESCRIPTION
+</a><a href="#h10-0-8" id="h10-0-8" class="i">+
+</a><a href="#h10-0-9" id="h10-0-9" class="i">+`waitron` is the client for windowchef(1). It sends a given command to
+</a><a href="#h10-0-10" id="h10-0-10" class="i">+windowchef(1) as an X client message. As a result, `waitron` doesn&apos;t print
+</a><a href="#h10-0-11" id="h10-0-11" class="i">+anything on `stdout`.
+</a><a href="#h10-0-12" id="h10-0-12" class="i">+
+</a><a href="#h10-0-13" id="h10-0-13" class="i">+## OPTIONS
+</a><a href="#h10-0-14" id="h10-0-14" class="i">+
+</a><a href="#h10-0-15" id="h10-0-15" class="i">+* `-h`:
+</a><a href="#h10-0-16" id="h10-0-16" class="i">+	Print usage and version information.
+</a><a href="#h10-0-17" id="h10-0-17" class="i">+
+</a><a href="#h10-0-18" id="h10-0-18" class="i">+## COMMANDS
+</a><a href="#h10-0-19" id="h10-0-19" class="i">+
+</a><a href="#h10-0-20" id="h10-0-20" class="i">+* `window_move` &lt;x&gt; &lt;y&gt;:
+</a><a href="#h10-0-21" id="h10-0-21" class="i">+	Move the focused window &lt;y&gt; pixels horizontally and &lt;y&gt; pixels
+</a><a href="#h10-0-22" id="h10-0-22" class="i">+	vertically.
+</a><a href="#h10-0-23" id="h10-0-23" class="i">+
+</a><a href="#h10-0-24" id="h10-0-24" class="i">+* `window_move_absolute` &lt;x&gt; &lt;y&gt;:
+</a><a href="#h10-0-25" id="h10-0-25" class="i">+	Move the focused window to the position given by &lt;x&gt; and &lt;y&gt;.
+</a><a href="#h10-0-26" id="h10-0-26" class="i">+
+</a><a href="#h10-0-27" id="h10-0-27" class="i">+* `window_resize` &lt;x&gt; &lt;y&gt;:
+</a><a href="#h10-0-28" id="h10-0-28" class="i">+	Resize the focused window based on the relative pixel values &lt;x&gt; and &lt;y&gt;.
+</a><a href="#h10-0-29" id="h10-0-29" class="i">+
+</a><a href="#h10-0-30" id="h10-0-30" class="i">+* `window_resize_absolute` &lt;width&gt; &lt;height&gt;:
+</a><a href="#h10-0-31" id="h10-0-31" class="i">+	Resize the focused window up to &lt;width&gt; and &lt;height&gt;.
+</a><a href="#h10-0-32" id="h10-0-32" class="i">+
+</a><a href="#h10-0-33" id="h10-0-33" class="i">+* `window_maximize`:
+</a><a href="#h10-0-34" id="h10-0-34" class="i">+	Hide the border and maximize the focused window on the current monitor.
+</a><a href="#h10-0-35" id="h10-0-35" class="i">+	Execute it again after maximizing to revert the state of the window.
+</a><a href="#h10-0-36" id="h10-0-36" class="i">+
+</a><a href="#h10-0-37" id="h10-0-37" class="i">+* `window_hor_maximize`:
+</a><a href="#h10-0-38" id="h10-0-38" class="i">+	Horizontally maximize the focused window on the current monitor, preserving
+</a><a href="#h10-0-39" id="h10-0-39" class="i">+	its &lt;x&gt; component. Leaves a gap at the left and right of the monitor that
+</a><a href="#h10-0-40" id="h10-0-40" class="i">+	can be configured. Execute it again after maximizing to revert the state of the window.
+</a><a href="#h10-0-41" id="h10-0-41" class="i">+
+</a><a href="#h10-0-42" id="h10-0-42" class="i">+* `window_ver_maximize`:
+</a><a href="#h10-0-43" id="h10-0-43" class="i">+	Vertically maximize the focused window on the current monitor, preserving
+</a><a href="#h10-0-44" id="h10-0-44" class="i">+	its &lt;y&gt; component. Leaves a gap at the top and bottom of the monitor whose
+</a><a href="#h10-0-45" id="h10-0-45" class="i">+	width can be configured. Execute it again after maximizing to revert the state of the window.
+</a><a href="#h10-0-46" id="h10-0-46" class="i">+
+</a><a href="#h10-0-47" id="h10-0-47" class="i">+* `window_close`:
+</a><a href="#h10-0-48" id="h10-0-48" class="i">+	Closes the focused window.
+</a><a href="#h10-0-49" id="h10-0-49" class="i">+
+</a><a href="#h10-0-50" id="h10-0-50" class="i">+* `window_put_in_grid` &lt;grid_width&gt; &lt;grid_height&gt; &lt;cell_x&gt; &lt;cell_y&gt;:
+</a><a href="#h10-0-51" id="h10-0-51" class="i">+	Moves and resizes the focused windows accordingly to fit in a cell defined
+</a><a href="#h10-0-52" id="h10-0-52" class="i">+	by the &lt;cell_x&gt; and &lt;cell_y&gt; coordinates in a virtual grid with width
+</a><a href="#h10-0-53" id="h10-0-53" class="i">+	&lt;grid_width&gt; and height &lt;grid_height&gt; on the current monitor.
+</a><a href="#h10-0-54" id="h10-0-54" class="i">+
+</a><a href="#h10-0-55" id="h10-0-55" class="i">+* `window_snap` &lt;pos&gt;:
+</a><a href="#h10-0-56" id="h10-0-56" class="i">+	Snap the window on the screen in a position defined by &lt;pos&gt;. &lt;pos&gt; can be:
+</a><a href="#h10-0-57" id="h10-0-57" class="i">+
+</a><a href="#h10-0-58" id="h10-0-58" class="i">+	`0` for top-left.
+</a><a href="#h10-0-59" id="h10-0-59" class="i">+
+</a><a href="#h10-0-60" id="h10-0-60" class="i">+	`1` for to-right.
+</a><a href="#h10-0-61" id="h10-0-61" class="i">+
+</a><a href="#h10-0-62" id="h10-0-62" class="i">+	`2` for bottom-left.
+</a><a href="#h10-0-63" id="h10-0-63" class="i">+
+</a><a href="#h10-0-64" id="h10-0-64" class="i">+	`3` for bottom-right.
+</a><a href="#h10-0-65" id="h10-0-65" class="i">+
+</a><a href="#h10-0-66" id="h10-0-66" class="i">+	`4` for the middle.
+</a><a href="#h10-0-67" id="h10-0-67" class="i">+
+</a><a href="#h10-0-68" id="h10-0-68" class="i">+* `window_cycle`:
+</a><a href="#h10-0-69" id="h10-0-69" class="i">+	Cycle through mapped windows.
+</a><a href="#h10-0-70" id="h10-0-70" class="i">+
+</a><a href="#h10-0-71" id="h10-0-71" class="i">+* `window_rev_cycle`:
+</a><a href="#h10-0-72" id="h10-0-72" class="i">+	Reverse cycle through mapped windows.
+</a><a href="#h10-0-73" id="h10-0-73" class="i">+
+</a><a href="#h10-0-74" id="h10-0-74" class="i">+* `group_add_window` &lt;group_nr&gt;:
+</a><a href="#h10-0-75" id="h10-0-75" class="i">+	Add the focused window to the &lt;group_nr&gt; group.
+</a><a href="#h10-0-76" id="h10-0-76" class="i">+
+</a><a href="#h10-0-77" id="h10-0-77" class="i">+	Group numbers start from 0 and end at &lt;GROUPS_NO&gt; - 1.
+</a><a href="#h10-0-78" id="h10-0-78" class="i">+
+</a><a href="#h10-0-79" id="h10-0-79" class="i">+* `group_remove_window`:
+</a><a href="#h10-0-80" id="h10-0-80" class="i">+	Remove the focused window from its current group.
+</a><a href="#h10-0-81" id="h10-0-81" class="i">+
+</a><a href="#h10-0-82" id="h10-0-82" class="i">+* `group_activate` &lt;group_nr&gt;:
+</a><a href="#h10-0-83" id="h10-0-83" class="i">+	Map all windows that belong to the &lt;group_nr&gt; group.
+</a><a href="#h10-0-84" id="h10-0-84" class="i">+
+</a><a href="#h10-0-85" id="h10-0-85" class="i">+* `group_deactivate` &lt;group_nr&gt;:
+</a><a href="#h10-0-86" id="h10-0-86" class="i">+	Unmap all windows that belong to the &lt;group_nr&gt; group.
+</a><a href="#h10-0-87" id="h10-0-87" class="i">+
+</a><a href="#h10-0-88" id="h10-0-88" class="i">+* `group_toggle` &lt;group_nr&gt;:
+</a><a href="#h10-0-89" id="h10-0-89" class="i">+	Toggle the &lt;group_nr&gt; group.
+</a><a href="#h10-0-90" id="h10-0-90" class="i">+
+</a><a href="#h10-0-91" id="h10-0-91" class="i">+* `wm_quit` &lt;exit_status&gt;:
+</a><a href="#h10-0-92" id="h10-0-92" class="i">+	Quit windowchef with exit_status &lt;exit_status&gt;.
+</a><a href="#h10-0-93" id="h10-0-93" class="i">+
+</a><a href="#h10-0-94" id="h10-0-94" class="i">+* `wm_change_number_of_groups` &lt;number_of_groups&gt;:
+</a><a href="#h10-0-95" id="h10-0-95" class="i">+	Change the number of maximum groups to &lt;number_of_groups&gt;.
+</a><a href="#h10-0-96" id="h10-0-96" class="i">+
+</a><a href="#h10-0-97" id="h10-0-97" class="i">+	Windows that belong to a group that has a &lt;group_nr&gt; greater or equal to
+</a><a href="#h10-0-98" id="h10-0-98" class="i">+	&lt;number_of_groups&gt; will become orphaned.
+</a><a href="#h10-0-99" id="h10-0-99" class="i">+
+</a><a href="#h10-0-100" id="h10-0-100" class="i">+* `wm_config` &lt;key&gt; [&lt;value&gt;...]:
+</a><a href="#h10-0-101" id="h10-0-101" class="i">+	See [CONFIGURING][].
+</a><a href="#h10-0-102" id="h10-0-102" class="i">+
+</a><a href="#h10-0-103" id="h10-0-103" class="i">+## CONFIGURING
+</a><a href="#h10-0-104" id="h10-0-104" class="i">+
+</a><a href="#h10-0-105" id="h10-0-105" class="i">+Configuring is done using the `wm_config` command. Possible configuration keys
+</a><a href="#h10-0-106" id="h10-0-106" class="i">+are:
+</a><a href="#h10-0-107" id="h10-0-107" class="i">+
+</a><a href="#h10-0-108" id="h10-0-108" class="i">+* `border_width` &lt;width&gt;:
+</a><a href="#h10-0-109" id="h10-0-109" class="i">+	Sets the border width to &lt;width&gt; pixels.
+</a><a href="#h10-0-110" id="h10-0-110" class="i">+
+</a><a href="#h10-0-111" id="h10-0-111" class="i">+* `color_focused`, `color_unfocused` &lt;color&gt;:
+</a><a href="#h10-0-112" id="h10-0-112" class="i">+	Sets the border color to &lt;color&gt; for the focused and unfocused state respectively.
+</a><a href="#h10-0-113" id="h10-0-113" class="i">+	&lt;color&gt; is a hexadecimal value that may or may not start witht he `0x`
+</a><a href="#h10-0-114" id="h10-0-114" class="i">+	prefix. Example: `0x1234ef`.
+</a><a href="#h10-0-115" id="h10-0-115" class="i">+
+</a><a href="#h10-0-116" id="h10-0-116" class="i">+* `gap_width` &lt;width&gt;:
+</a><a href="#h10-0-117" id="h10-0-117" class="i">+	Sets the window gap value to &lt;width&gt;.
+</a><a href="#h10-0-118" id="h10-0-118" class="i">+
+</a><a href="#h10-0-119" id="h10-0-119" class="i">+* `cursor_position` &lt;pos&gt;:
+</a><a href="#h10-0-120" id="h10-0-120" class="i">+	Sets the position of the cursor when moving or resizing windows. Possible
+</a><a href="#h10-0-121" id="h10-0-121" class="i">+	values for &lt;pos&gt; are:
+</a><a href="#h10-0-122" id="h10-0-122" class="i">+
+</a><a href="#h10-0-123" id="h10-0-123" class="i">+	`topleft`
+</a><a href="#h10-0-124" id="h10-0-124" class="i">+
+</a><a href="#h10-0-125" id="h10-0-125" class="i">+	`topright`
+</a><a href="#h10-0-126" id="h10-0-126" class="i">+
+</a><a href="#h10-0-127" id="h10-0-127" class="i">+	`bottomleft`
+</a><a href="#h10-0-128" id="h10-0-128" class="i">+
+</a><a href="#h10-0-129" id="h10-0-129" class="i">+	`bottomright`
+</a><a href="#h10-0-130" id="h10-0-130" class="i">+
+</a><a href="#h10-0-131" id="h10-0-131" class="i">+	`middle`
+</a><a href="#h10-0-132" id="h10-0-132" class="i">+
+</a><a href="#h10-0-133" id="h10-0-133" class="i">+* `groups_nr` &lt;nr&gt;:
+</a><a href="#h10-0-134" id="h10-0-134" class="i">+	Sets the number of groups to &lt;nr&gt;. If &lt;nr&gt; is less than the current number
+</a><a href="#h10-0-135" id="h10-0-135" class="i">+	of groups, window that belong to groups whose numbers are greater than &lt;nr&gt;
+</a><a href="#h10-0-136" id="h10-0-136" class="i">+	will be mapped to screen and assigned to the null group.
+</a><a href="#h10-0-137" id="h10-0-137" class="i">+
+</a><a href="#h10-0-138" id="h10-0-138" class="i">+* `enable_sloppy_focus` &lt;enable&gt;:
+</a><a href="#h10-0-139" id="h10-0-139" class="i">+	Enable sloppy focus. &lt;enable&gt; can be `true`, `t`, `yes`, `y`, `1`, `false`,
+</a><a href="#h10-0-140" id="h10-0-140" class="i">+	`f`, `no`, `n` or `0`.
+</a><a href="#h10-0-141" id="h10-0-141" class="i">+
+</a><a href="#h10-0-142" id="h10-0-142" class="i">+## SEE ALSO
+</a><a href="#h10-0-143" id="h10-0-143" class="i">+
+</a><a href="#h10-0-144" id="h10-0-144" class="i">+windowchef(1), sxhkd(1)
+</a><a href="#h10-0-145" id="h10-0-145" class="i">+
+</a><a href="#h10-0-146" id="h10-0-146" class="i">+## AUTHOR
+</a><a href="#h10-0-147" id="h10-0-147" class="i">+
+</a><a href="#h10-0-148" id="h10-0-148" class="i">+Tudor Roman `&lt;tudurom at gmail dot com&gt;`
+</a><b>diff --git a/<a id="h11" href="../file/man/windowchef.1.html">man/windowchef.1</a> b/<a href="../file/man/windowchef.1.html">man/windowchef.1</a></b>
+<a href="#h11-0" id="h11-0" class="h">@@ -7,118 +7,22 @@
+</a> \fBwindowchef\fR \- A static window cooker
+ .
+ .SH &quot;SYNOPSIS&quot;
+<a href="#h11-0-3" id="h11-0-3" class="d">-\fBwindowchef\fR [\-v]
+</a><a href="#h11-0-4" id="h11-0-4" class="i">+\fBwindowchef\fR [\-h]
+</a> .
+ .SH &quot;DESCRIPTION&quot;
+<a href="#h11-0-7" id="h11-0-7" class="d">-\fBwindowchef\fR is a stacking window manager that doesn\&apos;t handle keyboard or pointer inputs\. It is controlled by \fBwaitron\fR and configured by editing the \fBconfig\.h\fR file and recompiling\.
+</a><a href="#h11-0-8" id="h11-0-8" class="i">+\fBwindowchef\fR is a stacking window manager that doesn\&apos;t handle keyboard or pointer inputs\. It is controlled and configured by \fBwaitron\fR\.
+</a> .
+ .SH &quot;OPTIONS&quot;
+ .
+ .TP
+<a href="#h11-0-13" id="h11-0-13" class="d">-\fB\-v\fR
+</a><a href="#h11-0-14" id="h11-0-14" class="d">-Print version information\.
+</a><a href="#h11-0-15" id="h11-0-15" class="i">+\fB\-h\fR
+</a><a href="#h11-0-16" id="h11-0-16" class="i">+Print usage and version information\.
+</a> .
+<a href="#h11-0-18" id="h11-0-18" class="d">-.SH &quot;COMMANDS&quot;
+</a><a href="#h11-0-19" id="h11-0-19" class="d">-.
+</a><a href="#h11-0-20" id="h11-0-20" class="d">-.TP
+</a><a href="#h11-0-21" id="h11-0-21" class="d">-\fBwindow_move\fR \fIx\fR \fIy\fR
+</a><a href="#h11-0-22" id="h11-0-22" class="d">-Move the focused window \fIy\fR pixels horizontally and \fIy\fR pixels vertically\.
+</a><a href="#h11-0-23" id="h11-0-23" class="d">-.
+</a><a href="#h11-0-24" id="h11-0-24" class="d">-.TP
+</a><a href="#h11-0-25" id="h11-0-25" class="d">-\fBwindow_move_absolute\fR \fIx\fR \fIy\fR
+</a><a href="#h11-0-26" id="h11-0-26" class="d">-Move the focused window to the position given by \fIx\fR and \fIy\fR\.
+</a><a href="#h11-0-27" id="h11-0-27" class="d">-.
+</a><a href="#h11-0-28" id="h11-0-28" class="d">-.TP
+</a><a href="#h11-0-29" id="h11-0-29" class="d">-\fBwindow_resize\fR \fIx\fR \fIy\fR
+</a><a href="#h11-0-30" id="h11-0-30" class="d">-Resize the focused window based on the relative pixel values \fIx\fR and \fIy\fR\.
+</a><a href="#h11-0-31" id="h11-0-31" class="d">-.
+</a><a href="#h11-0-32" id="h11-0-32" class="d">-.TP
+</a><a href="#h11-0-33" id="h11-0-33" class="d">-\fBwindow_resize_absolute\fR \fIwidth\fR \fIheight\fR
+</a><a href="#h11-0-34" id="h11-0-34" class="d">-Resize the focused window up to \fIwidth\fR and \fIheight\fR\.
+</a><a href="#h11-0-35" id="h11-0-35" class="d">-.
+</a><a href="#h11-0-36" id="h11-0-36" class="d">-.TP
+</a><a href="#h11-0-37" id="h11-0-37" class="d">-\fBwindow_maximize\fR
+</a><a href="#h11-0-38" id="h11-0-38" class="d">-Hide the border and maximize the focused window on the current monitor\. Execute it again after maximizing to revert the state of the window\.
+</a><a href="#h11-0-39" id="h11-0-39" class="d">-.
+</a><a href="#h11-0-40" id="h11-0-40" class="d">-.TP
+</a><a href="#h11-0-41" id="h11-0-41" class="d">-\fBwindow_hor_maximize\fR
+</a><a href="#h11-0-42" id="h11-0-42" class="d">-Horizontally maximize the focused window on the current monitor, preserving its \fIx\fR component\. Leaves a gap at the left and right of the monitor that can be configured\. Execute it again after maximizing to revert the state of the window\.
+</a><a href="#h11-0-43" id="h11-0-43" class="d">-.
+</a><a href="#h11-0-44" id="h11-0-44" class="d">-.TP
+</a><a href="#h11-0-45" id="h11-0-45" class="d">-\fBwindow_ver_maximize\fR
+</a><a href="#h11-0-46" id="h11-0-46" class="d">-Vertically maximize the focused window on the current monitor, preserving its \fIy\fR component\. Leaves a gap at the top and bottom of the monitor whose width can be configured\. Execute it again after maximizing to revert the state of the window\.
+</a><a href="#h11-0-47" id="h11-0-47" class="d">-.
+</a><a href="#h11-0-48" id="h11-0-48" class="d">-.TP
+</a><a href="#h11-0-49" id="h11-0-49" class="d">-\fBwindow_close\fR
+</a><a href="#h11-0-50" id="h11-0-50" class="d">-Closes the focused window\.
+</a><a href="#h11-0-51" id="h11-0-51" class="d">-.
+</a><a href="#h11-0-52" id="h11-0-52" class="d">-.TP
+</a><a href="#h11-0-53" id="h11-0-53" class="d">-\fBwindow_put_in_grid\fR \fIgrid_width\fR \fIgrid_height\fR \fIcell_x\fR \fIcell_y\fR
+</a><a href="#h11-0-54" id="h11-0-54" class="d">-Moves and resizes the focused windows accordingly to fit in a cell defined by the \fIcell_x\fR and \fIcell_y\fR coordinates in a virtual grid with width \fIgrid_width\fR and height \fIgrid_height\fR on the current monitor\.
+</a><a href="#h11-0-55" id="h11-0-55" class="d">-.
+</a><a href="#h11-0-56" id="h11-0-56" class="d">-.TP
+</a><a href="#h11-0-57" id="h11-0-57" class="d">-\fBwindow_snap\fR \fIpos\fR
+</a><a href="#h11-0-58" id="h11-0-58" class="d">-Snap the window on the screen in a position defined by \fIpos\fR\. \fIpos\fR can be:
+</a><a href="#h11-0-59" id="h11-0-59" class="d">-.
+</a><a href="#h11-0-60" id="h11-0-60" class="d">-.IP
+</a><a href="#h11-0-61" id="h11-0-61" class="d">-\fB0\fR for top\-left\.
+</a><a href="#h11-0-62" id="h11-0-62" class="d">-.
+</a><a href="#h11-0-63" id="h11-0-63" class="d">-.IP
+</a><a href="#h11-0-64" id="h11-0-64" class="d">-\fB1\fR for to\-right\.
+</a><a href="#h11-0-65" id="h11-0-65" class="d">-.
+</a><a href="#h11-0-66" id="h11-0-66" class="d">-.IP
+</a><a href="#h11-0-67" id="h11-0-67" class="d">-\fB2\fR for bottom\-left\.
+</a><a href="#h11-0-68" id="h11-0-68" class="d">-.
+</a><a href="#h11-0-69" id="h11-0-69" class="d">-.IP
+</a><a href="#h11-0-70" id="h11-0-70" class="d">-\fB3\fR for bottom\-right\.
+</a><a href="#h11-0-71" id="h11-0-71" class="d">-.
+</a><a href="#h11-0-72" id="h11-0-72" class="d">-.IP
+</a><a href="#h11-0-73" id="h11-0-73" class="d">-\fB4\fR for the middle\.
+</a><a href="#h11-0-74" id="h11-0-74" class="d">-.
+</a><a href="#h11-0-75" id="h11-0-75" class="d">-.TP
+</a><a href="#h11-0-76" id="h11-0-76" class="d">-\fBwindow_cycle\fR
+</a><a href="#h11-0-77" id="h11-0-77" class="d">-Cycle through mapped windows\.
+</a><a href="#h11-0-78" id="h11-0-78" class="d">-.
+</a><a href="#h11-0-79" id="h11-0-79" class="d">-.TP
+</a><a href="#h11-0-80" id="h11-0-80" class="d">-\fBwindow_rev_cycle\fR
+</a><a href="#h11-0-81" id="h11-0-81" class="d">-Reverse cycle through mapped windows\.
+</a><a href="#h11-0-82" id="h11-0-82" class="d">-.
+</a><a href="#h11-0-83" id="h11-0-83" class="d">-.TP
+</a><a href="#h11-0-84" id="h11-0-84" class="d">-\fBgroup_add_window\fR \fIgroup_nr\fR
+</a><a href="#h11-0-85" id="h11-0-85" class="d">-Add the focused window to the \fIgroup_nr\fR group\.
+</a><a href="#h11-0-86" id="h11-0-86" class="d">-.
+</a><a href="#h11-0-87" id="h11-0-87" class="d">-.IP
+</a><a href="#h11-0-88" id="h11-0-88" class="d">-Group numbers start from 0 and end at \fIGROUPS_NO\fR \- 1\.
+</a><a href="#h11-0-89" id="h11-0-89" class="d">-.
+</a><a href="#h11-0-90" id="h11-0-90" class="d">-.TP
+</a><a href="#h11-0-91" id="h11-0-91" class="d">-\fBgroup_remove_window\fR
+</a><a href="#h11-0-92" id="h11-0-92" class="d">-Remove the focused window from its current group\.
+</a><a href="#h11-0-93" id="h11-0-93" class="d">-.
+</a><a href="#h11-0-94" id="h11-0-94" class="d">-.TP
+</a><a href="#h11-0-95" id="h11-0-95" class="d">-\fBgroup_activate\fR \fIgroup_nr\fR
+</a><a href="#h11-0-96" id="h11-0-96" class="d">-Map all windows that belong to the \fIgroup_nr\fR group\.
+</a><a href="#h11-0-97" id="h11-0-97" class="d">-.
+</a><a href="#h11-0-98" id="h11-0-98" class="d">-.TP
+</a><a href="#h11-0-99" id="h11-0-99" class="d">-\fBgroup_deactivate\fR \fIgroup_nr\fR
+</a><a href="#h11-0-100" id="h11-0-100" class="d">-Unmap all windows that belong to the \fIgroup_nr\fR group\.
+</a><a href="#h11-0-101" id="h11-0-101" class="d">-.
+</a><a href="#h11-0-102" id="h11-0-102" class="d">-.TP
+</a><a href="#h11-0-103" id="h11-0-103" class="d">-\fBgroup_toggle\fR \fIgroup_nr\fR
+</a><a href="#h11-0-104" id="h11-0-104" class="d">-Toggle the \fIgroup_nr\fR group\.
+</a><a href="#h11-0-105" id="h11-0-105" class="d">-.
+</a><a href="#h11-0-106" id="h11-0-106" class="d">-.TP
+</a><a href="#h11-0-107" id="h11-0-107" class="d">-\fBwm_quit\fR \fIexit_status\fR
+</a><a href="#h11-0-108" id="h11-0-108" class="d">-Quit windowchef with exit_status \fIexit_status\fR\.
+</a><a href="#h11-0-109" id="h11-0-109" class="d">-.
+</a><a href="#h11-0-110" id="h11-0-110" class="d">-.TP
+</a><a href="#h11-0-111" id="h11-0-111" class="d">-\fBwm_change_number_of_groups\fR \fInumber_of_groups\fR
+</a><a href="#h11-0-112" id="h11-0-112" class="d">-Change the number of maximum groups to \fInumber_of_groups\fR\.
+</a><a href="#h11-0-113" id="h11-0-113" class="d">-.
+</a><a href="#h11-0-114" id="h11-0-114" class="d">-.IP
+</a><a href="#h11-0-115" id="h11-0-115" class="d">-Windows that belong to a group that has a \fIgroup_nr\fR greater or equal to \fInumber_of_groups\fR will become orphaned\.
+</a><a href="#h11-0-116" id="h11-0-116" class="i">+.SH &quot;SEE ALSO&quot;
+</a><a href="#h11-0-117" id="h11-0-117" class="i">+waitron(1), sxhkd(1), xinit(1)
+</a> .
+ .SH &quot;AUTHOR&quot;
+ Tudor Roman \fB&lt;tudurom at gmail dot com&gt;\fR
+ .
+<a href="#h11-0-122" id="h11-0-122" class="d">-.SH &quot;DISCLAIMER&quot;
+</a><a href="#h11-0-123" id="h11-0-123" class="d">-I deleted all the manpages from my system by mistake while writing this thing\.
+</a><a href="#h11-0-124" id="h11-0-124" class="i">+.SH &quot;DERP&quot;
+</a><a href="#h11-0-125" id="h11-0-125" class="i">+I deleted all the manpages from my system by mistake while writing this manual page\.
+</a><b>diff --git a/<a id="h12" href="../file/man/windowchef.1.html.html">man/windowchef.1.html</a> b/<a href="../file/man/windowchef.1.html.html">man/windowchef.1.html</a></b>
+<a href="#h12-0" id="h12-0" class="h">@@ -57,9 +57,9 @@
+</a>     &lt;a href=&quot;#SYNOPSIS&quot;&gt;SYNOPSIS&lt;/a&gt;
+     &lt;a href=&quot;#DESCRIPTION&quot;&gt;DESCRIPTION&lt;/a&gt;
+     &lt;a href=&quot;#OPTIONS&quot;&gt;OPTIONS&lt;/a&gt;
+<a href="#h12-0-3" id="h12-0-3" class="d">-    &lt;a href=&quot;#COMMANDS&quot;&gt;COMMANDS&lt;/a&gt;
+</a><a href="#h12-0-4" id="h12-0-4" class="i">+    &lt;a href=&quot;#SEE-ALSO&quot;&gt;SEE ALSO&lt;/a&gt;
+</a>     &lt;a href=&quot;#AUTHOR&quot;&gt;AUTHOR&lt;/a&gt;
+<a href="#h12-0-6" id="h12-0-6" class="d">-    &lt;a href=&quot;#DISCLAIMER&quot;&gt;DISCLAIMER&lt;/a&gt;
+</a><a href="#h12-0-7" id="h12-0-7" class="i">+    &lt;a href=&quot;#DERP&quot;&gt;DERP&lt;/a&gt;
+</a>   &lt;/div&gt;
+ 
+   &lt;ol class=&apos;man-decor man-head man head&apos;&gt;
+<a href="#h12-1" id="h12-1" class="h">@@ -75,76 +75,32 @@
+</a> 
+ &lt;h2 id=&quot;SYNOPSIS&quot;&gt;SYNOPSIS&lt;/h2&gt;
+ 
+<a href="#h12-1-3" id="h12-1-3" class="d">-&lt;p&gt;&lt;code&gt;windowchef&lt;/code&gt; [-v]&lt;/p&gt;
+</a><a href="#h12-1-4" id="h12-1-4" class="i">+&lt;p&gt;&lt;code&gt;windowchef&lt;/code&gt; [-h]&lt;/p&gt;
+</a> 
+ &lt;h2 id=&quot;DESCRIPTION&quot;&gt;DESCRIPTION&lt;/h2&gt;
+ 
+ &lt;p&gt;&lt;code&gt;windowchef&lt;/code&gt; is a stacking window manager that doesn&apos;t handle keyboard or
+<a href="#h12-1-9" id="h12-1-9" class="d">-pointer inputs. It is controlled by &lt;code&gt;waitron&lt;/code&gt; and configured by editing the
+</a><a href="#h12-1-10" id="h12-1-10" class="d">-&lt;code&gt;config.h&lt;/code&gt; file and recompiling.&lt;/p&gt;
+</a><a href="#h12-1-11" id="h12-1-11" class="i">+pointer inputs. It is controlled and configured by &lt;code&gt;waitron&lt;/code&gt;.&lt;/p&gt;
+</a> 
+ &lt;h2 id=&quot;OPTIONS&quot;&gt;OPTIONS&lt;/h2&gt;
+ 
+ &lt;dl&gt;
+<a href="#h12-1-16" id="h12-1-16" class="d">-&lt;dt class=&quot;flush&quot;&gt;&lt;code&gt;-v&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;  Print version information.&lt;/dd&gt;
+</a><a href="#h12-1-17" id="h12-1-17" class="i">+&lt;dt class=&quot;flush&quot;&gt;&lt;code&gt;-h&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;  Print usage and version information.&lt;/dd&gt;
+</a> &lt;/dl&gt;
+ 
+ 
+<a href="#h12-1-21" id="h12-1-21" class="d">-&lt;h2 id=&quot;COMMANDS&quot;&gt;COMMANDS&lt;/h2&gt;
+</a><a href="#h12-1-22" id="h12-1-22" class="d">-
+</a><a href="#h12-1-23" id="h12-1-23" class="d">-&lt;dl&gt;
+</a><a href="#h12-1-24" id="h12-1-24" class="d">-&lt;dt&gt;&lt;code&gt;window_move&lt;/code&gt; &lt;var&gt;x&lt;/var&gt; &lt;var&gt;y&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Move the focused window &lt;var&gt;y&lt;/var&gt; pixels horizontally and &lt;var&gt;y&lt;/var&gt; pixels
+</a><a href="#h12-1-25" id="h12-1-25" class="d">-  vertically.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-26" id="h12-1-26" class="d">-&lt;dt&gt;&lt;code&gt;window_move_absolute&lt;/code&gt; &lt;var&gt;x&lt;/var&gt; &lt;var&gt;y&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Move the focused window to the position given by &lt;var&gt;x&lt;/var&gt; and &lt;var&gt;y&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-27" id="h12-1-27" class="d">-&lt;dt&gt;&lt;code&gt;window_resize&lt;/code&gt; &lt;var&gt;x&lt;/var&gt; &lt;var&gt;y&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Resize the focused window based on the relative pixel values &lt;var&gt;x&lt;/var&gt; and &lt;var&gt;y&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-28" id="h12-1-28" class="d">-&lt;dt&gt;&lt;code&gt;window_resize_absolute&lt;/code&gt; &lt;var&gt;width&lt;/var&gt; &lt;var&gt;height&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Resize the focused window up to &lt;var&gt;width&lt;/var&gt; and &lt;var&gt;height&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-29" id="h12-1-29" class="d">-&lt;dt&gt;&lt;code&gt;window_maximize&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Hide the border and maximize the focused window on the current monitor.
+</a><a href="#h12-1-30" id="h12-1-30" class="d">-  Execute it again after maximizing to revert the state of the window.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-31" id="h12-1-31" class="d">-&lt;dt&gt;&lt;code&gt;window_hor_maximize&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Horizontally maximize the focused window on the current monitor, preserving
+</a><a href="#h12-1-32" id="h12-1-32" class="d">-  its &lt;var&gt;x&lt;/var&gt; component. Leaves a gap at the left and right of the monitor that
+</a><a href="#h12-1-33" id="h12-1-33" class="d">-  can be configured. Execute it again after maximizing to revert the state of the window.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-34" id="h12-1-34" class="d">-&lt;dt&gt;&lt;code&gt;window_ver_maximize&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Vertically maximize the focused window on the current monitor, preserving
+</a><a href="#h12-1-35" id="h12-1-35" class="d">-  its &lt;var&gt;y&lt;/var&gt; component. Leaves a gap at the top and bottom of the monitor whose
+</a><a href="#h12-1-36" id="h12-1-36" class="d">-  width can be configured. Execute it again after maximizing to revert the state of the window.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-37" id="h12-1-37" class="d">-&lt;dt&gt;&lt;code&gt;window_close&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Closes the focused window.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-38" id="h12-1-38" class="d">-&lt;dt&gt;&lt;code&gt;window_put_in_grid&lt;/code&gt; &lt;var&gt;grid_width&lt;/var&gt; &lt;var&gt;grid_height&lt;/var&gt; &lt;var&gt;cell_x&lt;/var&gt; &lt;var&gt;cell_y&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Moves and resizes the focused windows accordingly to fit in a cell defined
+</a><a href="#h12-1-39" id="h12-1-39" class="d">-  by the &lt;var&gt;cell_x&lt;/var&gt; and &lt;var&gt;cell_y&lt;/var&gt; coordinates in a virtual grid with width
+</a><a href="#h12-1-40" id="h12-1-40" class="d">-  &lt;var&gt;grid_width&lt;/var&gt; and height &lt;var&gt;grid_height&lt;/var&gt; on the current monitor.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-41" id="h12-1-41" class="d">-&lt;dt&gt;&lt;code&gt;window_snap&lt;/code&gt; &lt;var&gt;pos&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Snap the window on the screen in a position defined by &lt;var&gt;pos&lt;/var&gt;. &lt;var&gt;pos&lt;/var&gt; can be:&lt;/p&gt;
+</a><a href="#h12-1-42" id="h12-1-42" class="d">-
+</a><a href="#h12-1-43" id="h12-1-43" class="d">-&lt;p&gt;  &lt;code&gt;0&lt;/code&gt; for top-left.&lt;/p&gt;
+</a><a href="#h12-1-44" id="h12-1-44" class="d">-
+</a><a href="#h12-1-45" id="h12-1-45" class="d">-&lt;p&gt;  &lt;code&gt;1&lt;/code&gt; for to-right.&lt;/p&gt;
+</a><a href="#h12-1-46" id="h12-1-46" class="d">-
+</a><a href="#h12-1-47" id="h12-1-47" class="d">-&lt;p&gt;  &lt;code&gt;2&lt;/code&gt; for bottom-left.&lt;/p&gt;
+</a><a href="#h12-1-48" id="h12-1-48" class="d">-
+</a><a href="#h12-1-49" id="h12-1-49" class="d">-&lt;p&gt;  &lt;code&gt;3&lt;/code&gt; for bottom-right.&lt;/p&gt;
+</a><a href="#h12-1-50" id="h12-1-50" class="d">-
+</a><a href="#h12-1-51" id="h12-1-51" class="d">-&lt;p&gt;  &lt;code&gt;4&lt;/code&gt; for the middle.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-52" id="h12-1-52" class="d">-&lt;dt&gt;&lt;code&gt;window_cycle&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Cycle through mapped windows.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-53" id="h12-1-53" class="d">-&lt;dt&gt;&lt;code&gt;window_rev_cycle&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Reverse cycle through mapped windows.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-54" id="h12-1-54" class="d">-&lt;dt&gt;&lt;code&gt;group_add_window&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Add the focused window to the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;
+</a><a href="#h12-1-55" id="h12-1-55" class="d">-
+</a><a href="#h12-1-56" id="h12-1-56" class="d">-&lt;p&gt;  Group numbers start from 0 and end at &lt;var&gt;GROUPS_NO&lt;/var&gt; - 1.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-57" id="h12-1-57" class="d">-&lt;dt&gt;&lt;code&gt;group_remove_window&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Remove the focused window from its current group.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-58" id="h12-1-58" class="d">-&lt;dt&gt;&lt;code&gt;group_activate&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Map all windows that belong to the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-59" id="h12-1-59" class="d">-&lt;dt&gt;&lt;code&gt;group_deactivate&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Unmap all windows that belong to the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-60" id="h12-1-60" class="d">-&lt;dt&gt;&lt;code&gt;group_toggle&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Toggle the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-61" id="h12-1-61" class="d">-&lt;dt&gt;&lt;code&gt;wm_quit&lt;/code&gt; &lt;var&gt;exit_status&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Quit windowchef with exit_status &lt;var&gt;exit_status&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-62" id="h12-1-62" class="d">-&lt;dt&gt;&lt;code&gt;wm_change_number_of_groups&lt;/code&gt; &lt;var&gt;number_of_groups&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Change the number of maximum groups to &lt;var&gt;number_of_groups&lt;/var&gt;.&lt;/p&gt;
+</a><a href="#h12-1-63" id="h12-1-63" class="d">-
+</a><a href="#h12-1-64" id="h12-1-64" class="d">-&lt;p&gt;  Windows that belong to a group that has a &lt;var&gt;group_nr&lt;/var&gt; greater or equal to
+</a><a href="#h12-1-65" id="h12-1-65" class="d">-  &lt;var&gt;number_of_groups&lt;/var&gt; will become orphaned.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h12-1-66" id="h12-1-66" class="d">-&lt;/dl&gt;
+</a><a href="#h12-1-67" id="h12-1-67" class="i">+&lt;h2 id=&quot;SEE-ALSO&quot;&gt;SEE ALSO&lt;/h2&gt;
+</a> 
+<a href="#h12-1-69" id="h12-1-69" class="i">+&lt;p&gt;&lt;span class=&quot;man-ref&quot;&gt;waitron&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;sxhkd&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;xinit&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+</a> 
+ &lt;h2 id=&quot;AUTHOR&quot;&gt;AUTHOR&lt;/h2&gt;
+ 
+ &lt;p&gt;Tudor Roman &lt;code&gt;&amp;lt;tudurom at gmail dot com&gt;&lt;/code&gt;&lt;/p&gt;
+ 
+<a href="#h12-1-75" id="h12-1-75" class="d">-&lt;h2 id=&quot;DISCLAIMER&quot;&gt;DISCLAIMER&lt;/h2&gt;
+</a><a href="#h12-1-76" id="h12-1-76" class="i">+&lt;h2 id=&quot;DERP&quot;&gt;DERP&lt;/h2&gt;
+</a> 
+<a href="#h12-1-78" id="h12-1-78" class="d">-&lt;p&gt;I deleted all the manpages from my system by mistake while writing this thing.&lt;/p&gt;
+</a><a href="#h12-1-79" id="h12-1-79" class="i">+&lt;p&gt;I deleted all the manpages from my system by mistake while writing this manual
+</a><a href="#h12-1-80" id="h12-1-80" class="i">+page.&lt;/p&gt;
+</a> 
+ 
+   &lt;ol class=&apos;man-decor man-foot man foot&apos;&gt;
+<b>diff --git a/<a id="h13" href="../file/man/windowchef.1.md.html">man/windowchef.1.md</a> b/<a href="../file/man/windowchef.1.md.html">man/windowchef.1.md</a></b>
+<a href="#h13-0" id="h13-0" class="h">@@ -3,105 +3,27 @@ windowchef(1) -- A static window cooker
+</a> 
+ ## SYNOPSIS
+ 
+<a href="#h13-0-3" id="h13-0-3" class="d">-`windowchef` [-v]
+</a><a href="#h13-0-4" id="h13-0-4" class="i">+`windowchef` [-h]
+</a> 
+ ## DESCRIPTION
+ 
+ `windowchef` is a stacking window manager that doesn&apos;t handle keyboard or
+<a href="#h13-0-9" id="h13-0-9" class="d">-pointer inputs. It is controlled by `waitron` and configured by editing the
+</a><a href="#h13-0-10" id="h13-0-10" class="d">-`config.h` file and recompiling.
+</a><a href="#h13-0-11" id="h13-0-11" class="i">+pointer inputs. It is controlled and configured by `waitron`.
+</a> 
+ ## OPTIONS
+ 
+<a href="#h13-0-15" id="h13-0-15" class="d">-* `-v`:
+</a><a href="#h13-0-16" id="h13-0-16" class="d">-	Print version information.
+</a><a href="#h13-0-17" id="h13-0-17" class="i">+* `-h`:
+</a><a href="#h13-0-18" id="h13-0-18" class="i">+	Print usage and version information.
+</a> 
+<a href="#h13-0-20" id="h13-0-20" class="d">-## COMMANDS
+</a><a href="#h13-0-21" id="h13-0-21" class="i">+## SEE ALSO
+</a> 
+<a href="#h13-0-23" id="h13-0-23" class="d">-* `window_move` &lt;x&gt; &lt;y&gt;:
+</a><a href="#h13-0-24" id="h13-0-24" class="d">-	Move the focused window &lt;y&gt; pixels horizontally and &lt;y&gt; pixels
+</a><a href="#h13-0-25" id="h13-0-25" class="d">-	vertically.
+</a><a href="#h13-0-26" id="h13-0-26" class="d">-
+</a><a href="#h13-0-27" id="h13-0-27" class="d">-* `window_move_absolute` &lt;x&gt; &lt;y&gt;:
+</a><a href="#h13-0-28" id="h13-0-28" class="d">-	Move the focused window to the position given by &lt;x&gt; and &lt;y&gt;.
+</a><a href="#h13-0-29" id="h13-0-29" class="d">-
+</a><a href="#h13-0-30" id="h13-0-30" class="d">-* `window_resize` &lt;x&gt; &lt;y&gt;:
+</a><a href="#h13-0-31" id="h13-0-31" class="d">-	Resize the focused window based on the relative pixel values &lt;x&gt; and &lt;y&gt;.
+</a><a href="#h13-0-32" id="h13-0-32" class="d">-
+</a><a href="#h13-0-33" id="h13-0-33" class="d">-* `window_resize_absolute` &lt;width&gt; &lt;height&gt;:
+</a><a href="#h13-0-34" id="h13-0-34" class="d">-	Resize the focused window up to &lt;width&gt; and &lt;height&gt;.
+</a><a href="#h13-0-35" id="h13-0-35" class="d">-
+</a><a href="#h13-0-36" id="h13-0-36" class="d">-* `window_maximize`:
+</a><a href="#h13-0-37" id="h13-0-37" class="d">-	Hide the border and maximize the focused window on the current monitor.
+</a><a href="#h13-0-38" id="h13-0-38" class="d">-	Execute it again after maximizing to revert the state of the window.
+</a><a href="#h13-0-39" id="h13-0-39" class="d">-
+</a><a href="#h13-0-40" id="h13-0-40" class="d">-* `window_hor_maximize`:
+</a><a href="#h13-0-41" id="h13-0-41" class="d">-	Horizontally maximize the focused window on the current monitor, preserving
+</a><a href="#h13-0-42" id="h13-0-42" class="d">-	its &lt;x&gt; component. Leaves a gap at the left and right of the monitor that
+</a><a href="#h13-0-43" id="h13-0-43" class="d">-	can be configured. Execute it again after maximizing to revert the state of the window.
+</a><a href="#h13-0-44" id="h13-0-44" class="d">-
+</a><a href="#h13-0-45" id="h13-0-45" class="d">-* `window_ver_maximize`:
+</a><a href="#h13-0-46" id="h13-0-46" class="d">-	Vertically maximize the focused window on the current monitor, preserving
+</a><a href="#h13-0-47" id="h13-0-47" class="d">-	its &lt;y&gt; component. Leaves a gap at the top and bottom of the monitor whose
+</a><a href="#h13-0-48" id="h13-0-48" class="d">-	width can be configured. Execute it again after maximizing to revert the state of the window.
+</a><a href="#h13-0-49" id="h13-0-49" class="d">-
+</a><a href="#h13-0-50" id="h13-0-50" class="d">-* `window_close`:
+</a><a href="#h13-0-51" id="h13-0-51" class="d">-	Closes the focused window.
+</a><a href="#h13-0-52" id="h13-0-52" class="d">-
+</a><a href="#h13-0-53" id="h13-0-53" class="d">-* `window_put_in_grid` &lt;grid_width&gt; &lt;grid_height&gt; &lt;cell_x&gt; &lt;cell_y&gt;:
+</a><a href="#h13-0-54" id="h13-0-54" class="d">-	Moves and resizes the focused windows accordingly to fit in a cell defined
+</a><a href="#h13-0-55" id="h13-0-55" class="d">-	by the &lt;cell_x&gt; and &lt;cell_y&gt; coordinates in a virtual grid with width
+</a><a href="#h13-0-56" id="h13-0-56" class="d">-	&lt;grid_width&gt; and height &lt;grid_height&gt; on the current monitor.
+</a><a href="#h13-0-57" id="h13-0-57" class="d">-
+</a><a href="#h13-0-58" id="h13-0-58" class="d">-* `window_snap` &lt;pos&gt;:
+</a><a href="#h13-0-59" id="h13-0-59" class="d">-	Snap the window on the screen in a position defined by &lt;pos&gt;. &lt;pos&gt; can be:
+</a><a href="#h13-0-60" id="h13-0-60" class="d">-
+</a><a href="#h13-0-61" id="h13-0-61" class="d">-	`0` for top-left.
+</a><a href="#h13-0-62" id="h13-0-62" class="d">-
+</a><a href="#h13-0-63" id="h13-0-63" class="d">-	`1` for to-right.
+</a><a href="#h13-0-64" id="h13-0-64" class="d">-
+</a><a href="#h13-0-65" id="h13-0-65" class="d">-	`2` for bottom-left.
+</a><a href="#h13-0-66" id="h13-0-66" class="d">-
+</a><a href="#h13-0-67" id="h13-0-67" class="d">-	`3` for bottom-right.
+</a><a href="#h13-0-68" id="h13-0-68" class="d">-
+</a><a href="#h13-0-69" id="h13-0-69" class="d">-	`4` for the middle.
+</a><a href="#h13-0-70" id="h13-0-70" class="d">-
+</a><a href="#h13-0-71" id="h13-0-71" class="d">-* `window_cycle`:
+</a><a href="#h13-0-72" id="h13-0-72" class="d">-	Cycle through mapped windows.
+</a><a href="#h13-0-73" id="h13-0-73" class="d">-
+</a><a href="#h13-0-74" id="h13-0-74" class="d">-* `window_rev_cycle`:
+</a><a href="#h13-0-75" id="h13-0-75" class="d">-	Reverse cycle through mapped windows.
+</a><a href="#h13-0-76" id="h13-0-76" class="d">-
+</a><a href="#h13-0-77" id="h13-0-77" class="d">-* `group_add_window` &lt;group_nr&gt;:
+</a><a href="#h13-0-78" id="h13-0-78" class="d">-	Add the focused window to the &lt;group_nr&gt; group.
+</a><a href="#h13-0-79" id="h13-0-79" class="d">-
+</a><a href="#h13-0-80" id="h13-0-80" class="d">-	Group numbers start from 0 and end at &lt;GROUPS_NO&gt; - 1.
+</a><a href="#h13-0-81" id="h13-0-81" class="d">-
+</a><a href="#h13-0-82" id="h13-0-82" class="d">-* `group_remove_window`:
+</a><a href="#h13-0-83" id="h13-0-83" class="d">-	Remove the focused window from its current group.
+</a><a href="#h13-0-84" id="h13-0-84" class="d">-
+</a><a href="#h13-0-85" id="h13-0-85" class="d">-* `group_activate` &lt;group_nr&gt;:
+</a><a href="#h13-0-86" id="h13-0-86" class="d">-	Map all windows that belong to the &lt;group_nr&gt; group.
+</a><a href="#h13-0-87" id="h13-0-87" class="d">-
+</a><a href="#h13-0-88" id="h13-0-88" class="d">-* `group_deactivate` &lt;group_nr&gt;:
+</a><a href="#h13-0-89" id="h13-0-89" class="d">-	Unmap all windows that belong to the &lt;group_nr&gt; group.
+</a><a href="#h13-0-90" id="h13-0-90" class="d">-
+</a><a href="#h13-0-91" id="h13-0-91" class="d">-* `group_toggle` &lt;group_nr&gt;:
+</a><a href="#h13-0-92" id="h13-0-92" class="d">-	Toggle the &lt;group_nr&gt; group.
+</a><a href="#h13-0-93" id="h13-0-93" class="d">-
+</a><a href="#h13-0-94" id="h13-0-94" class="d">-* `wm_quit` &lt;exit_status&gt;:
+</a><a href="#h13-0-95" id="h13-0-95" class="d">-	Quit windowchef with exit_status &lt;exit_status&gt;.
+</a><a href="#h13-0-96" id="h13-0-96" class="d">-
+</a><a href="#h13-0-97" id="h13-0-97" class="d">-* `wm_change_number_of_groups` &lt;number_of_groups&gt;:
+</a><a href="#h13-0-98" id="h13-0-98" class="d">-	Change the number of maximum groups to &lt;number_of_groups&gt;.
+</a><a href="#h13-0-99" id="h13-0-99" class="d">-
+</a><a href="#h13-0-100" id="h13-0-100" class="d">-	Windows that belong to a group that has a &lt;group_nr&gt; greater or equal to
+</a><a href="#h13-0-101" id="h13-0-101" class="d">-	&lt;number_of_groups&gt; will become orphaned.
+</a><a href="#h13-0-102" id="h13-0-102" class="i">+waitron(1), sxhkd(1), xinit(1)
+</a> 
+ ## AUTHOR
+ 
+ Tudor Roman `&lt;tudurom at gmail dot com&gt;`
+ 
+<a href="#h13-0-108" id="h13-0-108" class="d">-## DISCLAIMER
+</a><a href="#h13-0-109" id="h13-0-109" class="i">+## DERP
+</a> 
+<a href="#h13-0-111" id="h13-0-111" class="d">-I deleted all the manpages from my system by mistake while writing this thing.
+</a><a href="#h13-0-112" id="h13-0-112" class="i">+I deleted all the manpages from my system by mistake while writing this manual
+</a><a href="#h13-0-113" id="h13-0-113" class="i">+page.
+</a><b>diff --git a/<a id="h14" href="../file/wm.c.html">wm.c</a> b/<a href="../file/wm.c.html">wm.c</a></b>
+<a href="#h14-0" id="h14-0" class="h">@@ -19,10 +19,6 @@
+</a> #include &quot;types.h&quot;
+ #include &quot;config.h&quot;
+ 
+<a href="#h14-0-3" id="h14-0-3" class="d">-#ifndef __NAME__
+</a><a href="#h14-0-4" id="h14-0-4" class="d">-#define __NAME__ &quot;wm&quot;
+</a><a href="#h14-0-5" id="h14-0-5" class="d">-#endif
+</a><a href="#h14-0-6" id="h14-0-6" class="d">-
+</a> #define EVENT_MASK(ev) ((ev &amp; ~0x80))
+ /* XCB event with the biggest values */
+ #define LAST_XCB_EVENT XCB_GET_MODIFIER_MAPPING
+<a href="#h14-1" id="h14-1" class="h">@@ -138,6 +134,9 @@ static void ipc_group_deactivate(uint32_t *);
+</a> static void ipc_group_toggle(uint32_t *);
+ static void ipc_wm_quit(uint32_t *);
+ static void ipc_wm_change_nr_of_groups(uint32_t *);
+<a href="#h14-1-3" id="h14-1-3" class="i">+static void ipc_wm_config(uint32_t *);
+</a><a href="#h14-1-4" id="h14-1-4" class="i">+
+</a><a href="#h14-1-5" id="h14-1-5" class="i">+static void usage(char *);
+</a> 
+ /*
+  * Gracefully disconnect.
+<a href="#h14-2" id="h14-2" class="h">@@ -1720,6 +1719,7 @@ register_ipc_handlers(void)
+</a> 	ipc_handlers[IPCGroupToggle]          = ipc_group_toggle;
+ 	ipc_handlers[IPCWMQuit]               = ipc_wm_quit;
+ 	ipc_handlers[IPCWMChangeNrOfGroups]   = ipc_wm_change_nr_of_groups;
+<a href="#h14-2-3" id="h14-2-3" class="i">+	ipc_handlers[IPCWMConfig]             = ipc_wm_config;
+</a> }
+ 
+ static void
+<a href="#h14-3" id="h14-3" class="h">@@ -2036,7 +2036,7 @@ void ipc_window_rev_cycle(uint32_t *d)
+</a> static void
+ ipc_group_add_window(uint32_t *d) {
+ 	if (focused_win != NULL)
+<a href="#h14-3-3" id="h14-3-3" class="d">-		group_add_window(focused_win, d[0]);
+</a><a href="#h14-3-4" id="h14-3-4" class="i">+		group_add_window(focused_win, d[0] - 1);
+</a> }
+ 
+ static void
+<a href="#h14-4" id="h14-4" class="h">@@ -2048,17 +2048,17 @@ ipc_group_remove_window(uint32_t *d) {
+</a> 
+ static void
+ ipc_group_activate(uint32_t *d) {
+<a href="#h14-4-3" id="h14-4-3" class="d">-	group_activate(d[0]);
+</a><a href="#h14-4-4" id="h14-4-4" class="i">+	group_activate(d[0] - 1);
+</a> }
+ 
+ static void
+ ipc_group_deactivate(uint32_t *d) {
+<a href="#h14-4-9" id="h14-4-9" class="d">-	group_activate(d[0]);
+</a><a href="#h14-4-10" id="h14-4-10" class="i">+	group_activate(d[0] - 1);
+</a> }
+ 
+ static void
+ ipc_group_toggle(uint32_t *d) {
+<a href="#h14-4-15" id="h14-4-15" class="d">-	group_toggle(d[0]);
+</a><a href="#h14-4-16" id="h14-4-16" class="i">+	group_toggle(d[0] - 1);
+</a> }
+ 
+ static void
+<a href="#h14-5" id="h14-5" class="h">@@ -2074,8 +2074,56 @@ ipc_wm_change_nr_of_groups(uint32_t *d)
+</a> 	change_nr_of_groups(d[0]);
+ }
+ 
+<a href="#h14-5-3" id="h14-5-3" class="d">-int main(int argc, char **argv)
+</a><a href="#h14-5-4" id="h14-5-4" class="i">+static void
+</a><a href="#h14-5-5" id="h14-5-5" class="i">+ipc_wm_config(uint32_t *d)
+</a><a href="#h14-5-6" id="h14-5-6" class="i">+{
+</a><a href="#h14-5-7" id="h14-5-7" class="i">+	enum IPCConfig key;
+</a><a href="#h14-5-8" id="h14-5-8" class="i">+	uint32_t value;
+</a><a href="#h14-5-9" id="h14-5-9" class="i">+
+</a><a href="#h14-5-10" id="h14-5-10" class="i">+	key = d[0];
+</a><a href="#h14-5-11" id="h14-5-11" class="i">+	value = d[1];
+</a><a href="#h14-5-12" id="h14-5-12" class="i">+
+</a><a href="#h14-5-13" id="h14-5-13" class="i">+	switch (key) {
+</a><a href="#h14-5-14" id="h14-5-14" class="i">+		case IPCConfigBorderWidth:
+</a><a href="#h14-5-15" id="h14-5-15" class="i">+			conf.border_width = value;
+</a><a href="#h14-5-16" id="h14-5-16" class="i">+			break;
+</a><a href="#h14-5-17" id="h14-5-17" class="i">+		case IPCConfigColorFocused:
+</a><a href="#h14-5-18" id="h14-5-18" class="i">+			conf.focus_color = value;
+</a><a href="#h14-5-19" id="h14-5-19" class="i">+			break;
+</a><a href="#h14-5-20" id="h14-5-20" class="i">+		case IPCConfigColorUnfocused:
+</a><a href="#h14-5-21" id="h14-5-21" class="i">+			conf.unfocus_color = value;
+</a><a href="#h14-5-22" id="h14-5-22" class="i">+			break;
+</a><a href="#h14-5-23" id="h14-5-23" class="i">+		case IPCConfigGapWidth:
+</a><a href="#h14-5-24" id="h14-5-24" class="i">+			conf.gap = value;
+</a><a href="#h14-5-25" id="h14-5-25" class="i">+			break;
+</a><a href="#h14-5-26" id="h14-5-26" class="i">+		case IPCConfigCursorPosition:
+</a><a href="#h14-5-27" id="h14-5-27" class="i">+			conf.cursor_position = value;
+</a><a href="#h14-5-28" id="h14-5-28" class="i">+			break;
+</a><a href="#h14-5-29" id="h14-5-29" class="i">+		case IPCConfigGroupsNr:
+</a><a href="#h14-5-30" id="h14-5-30" class="i">+			change_nr_of_groups(value);
+</a><a href="#h14-5-31" id="h14-5-31" class="i">+			break;
+</a><a href="#h14-5-32" id="h14-5-32" class="i">+		case IPCConfigEnableSloppyFocus:
+</a><a href="#h14-5-33" id="h14-5-33" class="i">+			conf.sloppy_focus = value;
+</a><a href="#h14-5-34" id="h14-5-34" class="i">+			break;
+</a><a href="#h14-5-35" id="h14-5-35" class="i">+		default:
+</a><a href="#h14-5-36" id="h14-5-36" class="i">+			break;
+</a><a href="#h14-5-37" id="h14-5-37" class="i">+	}
+</a><a href="#h14-5-38" id="h14-5-38" class="i">+}
+</a><a href="#h14-5-39" id="h14-5-39" class="i">+
+</a><a href="#h14-5-40" id="h14-5-40" class="i">+static void
+</a><a href="#h14-5-41" id="h14-5-41" class="i">+usage(char *name)
+</a><a href="#h14-5-42" id="h14-5-42" class="i">+{
+</a><a href="#h14-5-43" id="h14-5-43" class="i">+	fprintf(stderr, &quot;Usage: %s [-h]\n&quot;, name);
+</a><a href="#h14-5-44" id="h14-5-44" class="i">+	fprintf(stderr, &quot;\n&quot;);
+</a><a href="#h14-5-45" id="h14-5-45" class="i">+	fprintf(stderr, &quot;%s %s\n&quot;, __NAME__, __THIS_VERSION__);
+</a><a href="#h14-5-46" id="h14-5-46" class="i">+
+</a><a href="#h14-5-47" id="h14-5-47" class="i">+	exit(EXIT_FAILURE);
+</a><a href="#h14-5-48" id="h14-5-48" class="i">+}
+</a><a href="#h14-5-49" id="h14-5-49" class="i">+
+</a><a href="#h14-5-50" id="h14-5-50" class="i">+int main(int argc, char *argv[])
+</a> {
+<a href="#h14-5-52" id="h14-5-52" class="i">+	if (argc == 2 &amp;&amp; strcmp(argv[1], &quot;-h&quot;) == 0)
+</a><a href="#h14-5-53" id="h14-5-53" class="i">+		usage(argv[0]);
+</a> 	atexit(cleanup);
+ 
+ 	register_event_handlers();
+</pre>
+</div>
+</body>
+</html>

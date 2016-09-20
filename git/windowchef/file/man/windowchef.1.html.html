@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> windowchef.1.html (7503B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> windowchef.1.html (4566B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -139,41 +139,6 @@
 <a href="#l121" id="l121">121</a>
 <a href="#l122" id="l122">122</a>
 <a href="#l123" id="l123">123</a>
-<a href="#l124" id="l124">124</a>
-<a href="#l125" id="l125">125</a>
-<a href="#l126" id="l126">126</a>
-<a href="#l127" id="l127">127</a>
-<a href="#l128" id="l128">128</a>
-<a href="#l129" id="l129">129</a>
-<a href="#l130" id="l130">130</a>
-<a href="#l131" id="l131">131</a>
-<a href="#l132" id="l132">132</a>
-<a href="#l133" id="l133">133</a>
-<a href="#l134" id="l134">134</a>
-<a href="#l135" id="l135">135</a>
-<a href="#l136" id="l136">136</a>
-<a href="#l137" id="l137">137</a>
-<a href="#l138" id="l138">138</a>
-<a href="#l139" id="l139">139</a>
-<a href="#l140" id="l140">140</a>
-<a href="#l141" id="l141">141</a>
-<a href="#l142" id="l142">142</a>
-<a href="#l143" id="l143">143</a>
-<a href="#l144" id="l144">144</a>
-<a href="#l145" id="l145">145</a>
-<a href="#l146" id="l146">146</a>
-<a href="#l147" id="l147">147</a>
-<a href="#l148" id="l148">148</a>
-<a href="#l149" id="l149">149</a>
-<a href="#l150" id="l150">150</a>
-<a href="#l151" id="l151">151</a>
-<a href="#l152" id="l152">152</a>
-<a href="#l153" id="l153">153</a>
-<a href="#l154" id="l154">154</a>
-<a href="#l155" id="l155">155</a>
-<a href="#l156" id="l156">156</a>
-<a href="#l157" id="l157">157</a>
-<a href="#l158" id="l158">158</a>
 </pre></td><td><pre>
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -234,9 +199,9 @@
     &lt;a href=&quot;#SYNOPSIS&quot;&gt;SYNOPSIS&lt;/a&gt;
     &lt;a href=&quot;#DESCRIPTION&quot;&gt;DESCRIPTION&lt;/a&gt;
     &lt;a href=&quot;#OPTIONS&quot;&gt;OPTIONS&lt;/a&gt;
-    &lt;a href=&quot;#COMMANDS&quot;&gt;COMMANDS&lt;/a&gt;
+    &lt;a href=&quot;#SEE-ALSO&quot;&gt;SEE ALSO&lt;/a&gt;
     &lt;a href=&quot;#AUTHOR&quot;&gt;AUTHOR&lt;/a&gt;
-    &lt;a href=&quot;#DISCLAIMER&quot;&gt;DISCLAIMER&lt;/a&gt;
+    &lt;a href=&quot;#DERP&quot;&gt;DERP&lt;/a&gt;
   &lt;/div&gt;
 
   &lt;ol class=&apos;man-decor man-head man head&apos;&gt;
@@ -252,76 +217,41 @@
 
 &lt;h2 id=&quot;SYNOPSIS&quot;&gt;SYNOPSIS&lt;/h2&gt;
 
-&lt;p&gt;&lt;code&gt;windowchef&lt;/code&gt; [-v]&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;windowchef&lt;/code&gt; [-h]&lt;/p&gt;
 
 &lt;h2 id=&quot;DESCRIPTION&quot;&gt;DESCRIPTION&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;windowchef&lt;/code&gt; is a stacking window manager that doesn&apos;t handle keyboard or
-pointer inputs. It is controlled by &lt;code&gt;waitron&lt;/code&gt; and configured by editing the
-&lt;code&gt;config.h&lt;/code&gt; file and recompiling.&lt;/p&gt;
+pointer inputs. It is controlled and configured by &lt;code&gt;waitron&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;At startup,
+&lt;code&gt;windowchef&lt;/code&gt; runs a script located at &lt;code&gt;$XDG_CONFIG_HOME/windowchef/windowchefrc&lt;/code&gt;
+(&lt;code&gt;$XDG_CONFIG_HOME&lt;/code&gt; is usually &lt;code&gt;~/.config&lt;/code&gt;). The path of the config file can be
+overridden with the &lt;code&gt;-c&lt;/code&gt; flag.&lt;/p&gt;
 
 &lt;h2 id=&quot;OPTIONS&quot;&gt;OPTIONS&lt;/h2&gt;
 
 &lt;dl&gt;
-&lt;dt class=&quot;flush&quot;&gt;&lt;code&gt;-v&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;  Print version information.&lt;/dd&gt;
+&lt;dt class=&quot;flush&quot;&gt;&lt;code&gt;-h&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Print usage and version information.&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;-c&lt;/code&gt; &lt;var&gt;config_path&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Load script from &lt;var&gt;config_path&lt;/var&gt; instead of
+  &lt;code&gt;$XDG_CONFIG_HOME/windowchef/windowchefrc&lt;/code&gt;.&lt;/p&gt;&lt;/dd&gt;
 &lt;/dl&gt;
 
 
-&lt;h2 id=&quot;COMMANDS&quot;&gt;COMMANDS&lt;/h2&gt;
+&lt;h2 id=&quot;SEE-ALSO&quot;&gt;SEE ALSO&lt;/h2&gt;
 
-&lt;dl&gt;
-&lt;dt&gt;&lt;code&gt;window_move&lt;/code&gt; &lt;var&gt;x&lt;/var&gt; &lt;var&gt;y&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Move the focused window &lt;var&gt;y&lt;/var&gt; pixels horizontally and &lt;var&gt;y&lt;/var&gt; pixels
-  vertically.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;window_move_absolute&lt;/code&gt; &lt;var&gt;x&lt;/var&gt; &lt;var&gt;y&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Move the focused window to the position given by &lt;var&gt;x&lt;/var&gt; and &lt;var&gt;y&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;window_resize&lt;/code&gt; &lt;var&gt;x&lt;/var&gt; &lt;var&gt;y&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Resize the focused window based on the relative pixel values &lt;var&gt;x&lt;/var&gt; and &lt;var&gt;y&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;window_resize_absolute&lt;/code&gt; &lt;var&gt;width&lt;/var&gt; &lt;var&gt;height&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Resize the focused window up to &lt;var&gt;width&lt;/var&gt; and &lt;var&gt;height&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;window_maximize&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Hide the border and maximize the focused window on the current monitor.
-  Execute it again after maximizing to revert the state of the window.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;window_hor_maximize&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Horizontally maximize the focused window on the current monitor, preserving
-  its &lt;var&gt;x&lt;/var&gt; component. Leaves a gap at the left and right of the monitor that
-  can be configured. Execute it again after maximizing to revert the state of the window.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;window_ver_maximize&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Vertically maximize the focused window on the current monitor, preserving
-  its &lt;var&gt;y&lt;/var&gt; component. Leaves a gap at the top and bottom of the monitor whose
-  width can be configured. Execute it again after maximizing to revert the state of the window.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;window_close&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Closes the focused window.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;window_put_in_grid&lt;/code&gt; &lt;var&gt;grid_width&lt;/var&gt; &lt;var&gt;grid_height&lt;/var&gt; &lt;var&gt;cell_x&lt;/var&gt; &lt;var&gt;cell_y&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Moves and resizes the focused windows accordingly to fit in a cell defined
-  by the &lt;var&gt;cell_x&lt;/var&gt; and &lt;var&gt;cell_y&lt;/var&gt; coordinates in a virtual grid with width
-  &lt;var&gt;grid_width&lt;/var&gt; and height &lt;var&gt;grid_height&lt;/var&gt; on the current monitor.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;window_snap&lt;/code&gt; &lt;var&gt;pos&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Snap the window on the screen in a position defined by &lt;var&gt;pos&lt;/var&gt;. &lt;var&gt;pos&lt;/var&gt; can be:&lt;/p&gt;
-
-&lt;p&gt;  &lt;code&gt;0&lt;/code&gt; for top-left.&lt;/p&gt;
-
-&lt;p&gt;  &lt;code&gt;1&lt;/code&gt; for to-right.&lt;/p&gt;
-
-&lt;p&gt;  &lt;code&gt;2&lt;/code&gt; for bottom-left.&lt;/p&gt;
-
-&lt;p&gt;  &lt;code&gt;3&lt;/code&gt; for bottom-right.&lt;/p&gt;
-
-&lt;p&gt;  &lt;code&gt;4&lt;/code&gt; for the middle.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;window_cycle&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Cycle through mapped windows.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;window_rev_cycle&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Reverse cycle through mapped windows.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;group_add_window&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Add the focused window to the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;
-
-&lt;p&gt;  Group numbers start from 0 and end at &lt;var&gt;GROUPS_NO&lt;/var&gt; - 1.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;group_remove_window&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Remove the focused window from its current group.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;group_activate&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Map all windows that belong to the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;group_deactivate&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Unmap all windows that belong to the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;group_toggle&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Toggle the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;wm_quit&lt;/code&gt; &lt;var&gt;exit_status&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Quit windowchef with exit_status &lt;var&gt;exit_status&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;wm_change_number_of_groups&lt;/code&gt; &lt;var&gt;number_of_groups&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Change the number of maximum groups to &lt;var&gt;number_of_groups&lt;/var&gt;.&lt;/p&gt;
-
-&lt;p&gt;  Windows that belong to a group that has a &lt;var&gt;group_nr&lt;/var&gt; greater or equal to
-  &lt;var&gt;number_of_groups&lt;/var&gt; will become orphaned.&lt;/p&gt;&lt;/dd&gt;
-&lt;/dl&gt;
-
+&lt;p&gt;&lt;span class=&quot;man-ref&quot;&gt;waitron&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;sxhkd&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;xinit&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;AUTHOR&quot;&gt;AUTHOR&lt;/h2&gt;
 
 &lt;p&gt;Tudor Roman &lt;code&gt;&amp;lt;tudurom at gmail dot com&gt;&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;DISCLAIMER&quot;&gt;DISCLAIMER&lt;/h2&gt;
+&lt;p&gt;The default color scheme that comes with &lt;code&gt;windowchef&lt;/code&gt; is &lt;a href=&quot;https://github.com/dkeg/crayolo#5725&quot;&gt;5725&lt;/a&gt; by dkeg.&lt;/p&gt;
 
-&lt;p&gt;I deleted all the manpages from my system by mistake while writing this thing.&lt;/p&gt;
+&lt;h2 id=&quot;DERP&quot;&gt;DERP&lt;/h2&gt;
+
+&lt;p&gt;I deleted all the manpages from my system by mistake while writing this manual
+page.&lt;/p&gt;
 
 
   &lt;ol class=&apos;man-decor man-foot man foot&apos;&gt;

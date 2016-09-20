@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> wm.c (50701B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> wm.c (52905B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -2103,6 +2103,98 @@
 <a href="#l2085" id="l2085">2085</a>
 <a href="#l2086" id="l2086">2086</a>
 <a href="#l2087" id="l2087">2087</a>
+<a href="#l2088" id="l2088">2088</a>
+<a href="#l2089" id="l2089">2089</a>
+<a href="#l2090" id="l2090">2090</a>
+<a href="#l2091" id="l2091">2091</a>
+<a href="#l2092" id="l2092">2092</a>
+<a href="#l2093" id="l2093">2093</a>
+<a href="#l2094" id="l2094">2094</a>
+<a href="#l2095" id="l2095">2095</a>
+<a href="#l2096" id="l2096">2096</a>
+<a href="#l2097" id="l2097">2097</a>
+<a href="#l2098" id="l2098">2098</a>
+<a href="#l2099" id="l2099">2099</a>
+<a href="#l2100" id="l2100">2100</a>
+<a href="#l2101" id="l2101">2101</a>
+<a href="#l2102" id="l2102">2102</a>
+<a href="#l2103" id="l2103">2103</a>
+<a href="#l2104" id="l2104">2104</a>
+<a href="#l2105" id="l2105">2105</a>
+<a href="#l2106" id="l2106">2106</a>
+<a href="#l2107" id="l2107">2107</a>
+<a href="#l2108" id="l2108">2108</a>
+<a href="#l2109" id="l2109">2109</a>
+<a href="#l2110" id="l2110">2110</a>
+<a href="#l2111" id="l2111">2111</a>
+<a href="#l2112" id="l2112">2112</a>
+<a href="#l2113" id="l2113">2113</a>
+<a href="#l2114" id="l2114">2114</a>
+<a href="#l2115" id="l2115">2115</a>
+<a href="#l2116" id="l2116">2116</a>
+<a href="#l2117" id="l2117">2117</a>
+<a href="#l2118" id="l2118">2118</a>
+<a href="#l2119" id="l2119">2119</a>
+<a href="#l2120" id="l2120">2120</a>
+<a href="#l2121" id="l2121">2121</a>
+<a href="#l2122" id="l2122">2122</a>
+<a href="#l2123" id="l2123">2123</a>
+<a href="#l2124" id="l2124">2124</a>
+<a href="#l2125" id="l2125">2125</a>
+<a href="#l2126" id="l2126">2126</a>
+<a href="#l2127" id="l2127">2127</a>
+<a href="#l2128" id="l2128">2128</a>
+<a href="#l2129" id="l2129">2129</a>
+<a href="#l2130" id="l2130">2130</a>
+<a href="#l2131" id="l2131">2131</a>
+<a href="#l2132" id="l2132">2132</a>
+<a href="#l2133" id="l2133">2133</a>
+<a href="#l2134" id="l2134">2134</a>
+<a href="#l2135" id="l2135">2135</a>
+<a href="#l2136" id="l2136">2136</a>
+<a href="#l2137" id="l2137">2137</a>
+<a href="#l2138" id="l2138">2138</a>
+<a href="#l2139" id="l2139">2139</a>
+<a href="#l2140" id="l2140">2140</a>
+<a href="#l2141" id="l2141">2141</a>
+<a href="#l2142" id="l2142">2142</a>
+<a href="#l2143" id="l2143">2143</a>
+<a href="#l2144" id="l2144">2144</a>
+<a href="#l2145" id="l2145">2145</a>
+<a href="#l2146" id="l2146">2146</a>
+<a href="#l2147" id="l2147">2147</a>
+<a href="#l2148" id="l2148">2148</a>
+<a href="#l2149" id="l2149">2149</a>
+<a href="#l2150" id="l2150">2150</a>
+<a href="#l2151" id="l2151">2151</a>
+<a href="#l2152" id="l2152">2152</a>
+<a href="#l2153" id="l2153">2153</a>
+<a href="#l2154" id="l2154">2154</a>
+<a href="#l2155" id="l2155">2155</a>
+<a href="#l2156" id="l2156">2156</a>
+<a href="#l2157" id="l2157">2157</a>
+<a href="#l2158" id="l2158">2158</a>
+<a href="#l2159" id="l2159">2159</a>
+<a href="#l2160" id="l2160">2160</a>
+<a href="#l2161" id="l2161">2161</a>
+<a href="#l2162" id="l2162">2162</a>
+<a href="#l2163" id="l2163">2163</a>
+<a href="#l2164" id="l2164">2164</a>
+<a href="#l2165" id="l2165">2165</a>
+<a href="#l2166" id="l2166">2166</a>
+<a href="#l2167" id="l2167">2167</a>
+<a href="#l2168" id="l2168">2168</a>
+<a href="#l2169" id="l2169">2169</a>
+<a href="#l2170" id="l2170">2170</a>
+<a href="#l2171" id="l2171">2171</a>
+<a href="#l2172" id="l2172">2172</a>
+<a href="#l2173" id="l2173">2173</a>
+<a href="#l2174" id="l2174">2174</a>
+<a href="#l2175" id="l2175">2175</a>
+<a href="#l2176" id="l2176">2176</a>
+<a href="#l2177" id="l2177">2177</a>
+<a href="#l2178" id="l2178">2178</a>
+<a href="#l2179" id="l2179">2179</a>
 </pre></td><td><pre>
 /* See the LICENSE file for copyright and license details. */
 
@@ -2118,16 +2210,13 @@
 #include &lt;stdlib.h&gt;
 #include &lt;string.h&gt;
 #include &lt;unistd.h&gt;
+#include &lt;getopt.h&gt;
 
 #include &quot;common.h&quot;
 #include &quot;ipc.h&quot;
 #include &quot;list.h&quot;
 #include &quot;types.h&quot;
 #include &quot;config.h&quot;
-
-#ifndef __NAME__
-#define __NAME__ &quot;wm&quot;
-#endif
 
 #define EVENT_MASK(ev) ((ev &amp; ~0x80))
 /* XCB event with the biggest values */
@@ -2244,6 +2333,11 @@ static void ipc_group_deactivate(uint32_t *);
 static void ipc_group_toggle(uint32_t *);
 static void ipc_wm_quit(uint32_t *);
 static void ipc_wm_change_nr_of_groups(uint32_t *);
+static void ipc_wm_config(uint32_t *);
+
+static void usage(char *);
+static void load_defaults(void);
+static void load_config(char *);
 
 /*
  * Gracefully disconnect.
@@ -2320,14 +2414,6 @@ setup(void)
 		ATOMS[i] = get_atom(atom_names[i]);
 
 	randr_base = setup_randr();
-
-	conf.border_width    = BORDER_WIDTH;
-	conf.focus_color     = COLOR_FOCUS;
-	conf.unfocus_color   = COLOR_UNFOCUS;
-	conf.gap             = GAP;
-	conf.cursor_position = CURSOR_POSITION;
-	conf.groups          = GROUPS;
-	conf.sloppy_focus    = SLOPPY_FOCUS;
 
 	group_in_use = malloc(conf.groups * sizeof(bool));
 	for (uint32_t i = 0; i &lt; conf.groups; i++)
@@ -3003,6 +3089,7 @@ maximize_window(struct client *client, int16_t mon_x, int16_t mon_y, uint16_t mo
 	resize_window_absolute(client-&gt;window, client-&gt;geom.width, client-&gt;geom.height);
 	client-&gt;maxed = true;
 	xcb_ewmh_set_wm_state(ewmh, client-&gt;window, 2, state);
+	set_focused_no_raise(client);
 }
 
 static void
@@ -3181,19 +3268,20 @@ center_pointer(struct client *client)
 
 	switch (conf.cursor_position) {
 	case TOP_LEFT:
-		cur_x = 0;
-		cur_y = 0;
+		cur_x = -conf.border_width;
+		cur_y = -conf.border_width;
 		break;
 	case TOP_RIGHT:
-		cur_x = client-&gt;geom.width;
-		cur_y = 0;
+		cur_x = client-&gt;geom.width + conf.border_width;
+		cur_y = 0 - conf.border_width;
 		break;
 	case BOTTOM_LEFT:
-		cur_x = client-&gt;geom.width;
+		cur_x = 0 - conf.border_width;
+		cur_y = client-&gt;geom.height + conf.border_width;
 		break;
 	case BOTTOM_RIGHT:
-		cur_x = client-&gt;geom.width;
-		cur_y = client-&gt;geom.height;
+		cur_x = client-&gt;geom.width + conf.border_width;
+		cur_y = client-&gt;geom.height + conf.border_width;
 		break;
 	case CENTER:
 		cur_x = client-&gt;geom.width / 2;
@@ -3437,6 +3525,7 @@ change_nr_of_groups(uint32_t groups) {
 		for (item = win_list; item != NULL; item = item-&gt;next) {
 			client = item-&gt;data;
 			if (client-&gt;group &gt;= groups) {
+				group_activate(client-&gt;group);
 				client-&gt;group = NULL_GROUP;
 				update_wm_desktop(client);
 			}
@@ -3825,6 +3914,7 @@ register_ipc_handlers(void)
 	ipc_handlers[IPCGroupToggle]          = ipc_group_toggle;
 	ipc_handlers[IPCWMQuit]               = ipc_wm_quit;
 	ipc_handlers[IPCWMChangeNrOfGroups]   = ipc_wm_change_nr_of_groups;
+	ipc_handlers[IPCWMConfig]             = ipc_wm_config;
 }
 
 static void
@@ -4086,27 +4176,27 @@ ipc_window_snap(uint32_t *d)
 	get_monitor_size(focused_win, &amp;mon_x, &amp;mon_y, &amp;mon_w, &amp;mon_h);
 
 	switch (mode) {
-		case SnapTopLeft:
+		case TOP_LEFT:
 			win_x = mon_x + conf.gap;
 			win_y = mon_y + conf.gap;
 			break;
 
-		case SnapTopRight:
+		case TOP_RIGHT:
 			win_x = mon_x + mon_w - conf.gap - win_w;
 			win_y = mon_y + conf.gap;
 			break;
 
-		case SnapBottomLeft:
+		case BOTTOM_LEFT:
 			win_x = mon_x + conf.gap;
 			win_y = mon_y + mon_h - conf.gap - win_h;
 			break;
 
-		case SnapBottomRight:
+		case BOTTOM_RIGHT:
 			win_x = mon_x + mon_w - conf.gap - win_w;
 			win_y = mon_y + mon_h - conf.gap - win_h;
 			break;
 
-		case SnapMiddle:
+		case CENTER:
 			win_x = mon_x + (mon_w - win_w) / 2;
 			win_y = mon_y + (mon_h - win_h) / 2;
 			break;
@@ -4141,7 +4231,7 @@ void ipc_window_rev_cycle(uint32_t *d)
 static void
 ipc_group_add_window(uint32_t *d) {
 	if (focused_win != NULL)
-		group_add_window(focused_win, d[0]);
+		group_add_window(focused_win, d[0] - 1);
 }
 
 static void
@@ -4153,17 +4243,17 @@ ipc_group_remove_window(uint32_t *d) {
 
 static void
 ipc_group_activate(uint32_t *d) {
-	group_activate(d[0]);
+	group_activate(d[0] - 1);
 }
 
 static void
 ipc_group_deactivate(uint32_t *d) {
-	group_activate(d[0]);
+	group_activate(d[0] - 1);
 }
 
 static void
 ipc_group_toggle(uint32_t *d) {
-	group_toggle(d[0]);
+	group_toggle(d[0] - 1);
 }
 
 static void
@@ -4179,14 +4269,108 @@ ipc_wm_change_nr_of_groups(uint32_t *d)
 	change_nr_of_groups(d[0]);
 }
 
-int main(int argc, char **argv)
+static void
+ipc_wm_config(uint32_t *d)
 {
+	enum IPCConfig key;
+	uint32_t value;
+
+	key = d[0];
+	value = d[1];
+
+	switch (key) {
+		case IPCConfigBorderWidth:
+			conf.border_width = value;
+			break;
+		case IPCConfigColorFocused:
+			conf.focus_color = value;
+			break;
+		case IPCConfigColorUnfocused:
+			conf.unfocus_color = value;
+			break;
+		case IPCConfigGapWidth:
+			conf.gap = value;
+			break;
+		case IPCConfigCursorPosition:
+			conf.cursor_position = value;
+			break;
+		case IPCConfigGroupsNr:
+			change_nr_of_groups(value);
+			break;
+		case IPCConfigEnableSloppyFocus:
+			conf.sloppy_focus = value;
+			break;
+		default:
+			break;
+	}
+}
+
+static void
+usage(char *name)
+{
+	fprintf(stderr, &quot;Usage: %s [-h]\n&quot;, name);
+	fprintf(stderr, &quot;\n&quot;);
+	fprintf(stderr, &quot;%s %s\n&quot;, __NAME__, __THIS_VERSION__);
+
+	exit(EXIT_FAILURE);
+}
+
+static void
+load_defaults(void)
+{
+	conf.border_width    = BORDER_WIDTH;
+	conf.focus_color     = COLOR_FOCUS;
+	conf.unfocus_color   = COLOR_UNFOCUS;
+	conf.gap             = GAP;
+	conf.cursor_position = CURSOR_POSITION;
+	conf.groups          = GROUPS;
+	conf.sloppy_focus    = SLOPPY_FOCUS;
+}
+
+static void
+load_config(char *config_path)
+{
+	if (fork() == 0) {
+		setsid();
+		DMSG(&quot;loading %s\n&quot;, config_path);
+		execl(config_path, config_path, NULL);
+		errx(EXIT_FAILURE, &quot;couldn&apos;t load config file&quot;);
+	}
+}
+
+int main(int argc, char *argv[])
+{
+	int opt;
+	char *config_path = malloc(MAXLEN * sizeof(char));
+	config_path[0] = &apos;\0&apos;;
+	while ((opt = getopt(argc, argv, &quot;hc:&quot;)) != -1) {
+		switch (opt) {
+			case &apos;h&apos;:
+				usage(argv[0]);
+				break;
+			case &apos;c&apos;:
+				snprintf(config_path, MAXLEN * sizeof(char), &quot;%s&quot;, optarg);
+				break;
+		}
+	}
 	atexit(cleanup);
 
 	register_event_handlers();
 	register_ipc_handlers();
 	if (setup() &lt; 0)
 		errx(EXIT_FAILURE, &quot;error connecting to X&quot;);
+	/* if not set, get path of the rc file */
+	if (config_path[0] == &apos;\0&apos;) {
+		char *xdg_home = getenv(&quot;XDG_CONFIG_HOME&quot;);
+		if (xdg_home != NULL)
+			snprintf(config_path, MAXLEN * sizeof(char), &quot;%s/%s/%s&quot;, xdg_home, __NAME__, __CONFIG_NAME__);
+		else
+			snprintf(config_path, MAXLEN * sizeof(char), &quot;%s/%s/%s/%s&quot;, getenv(&quot;HOME&quot;), &quot;.config&quot;,
+					__NAME__, __CONFIG_NAME__);
+	}
+	/* execute config file */
+	load_defaults();
+	load_config(config_path);
 	run();
 
 	return exit_code;

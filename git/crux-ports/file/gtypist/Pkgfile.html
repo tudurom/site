@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> Pkgfile (503B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> Pkgfile (557B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -38,10 +38,11 @@
 <a href="#l20" id="l20">20</a>
 <a href="#l21" id="l21">21</a>
 <a href="#l22" id="l22">22</a>
+<a href="#l23" id="l23">23</a>
 </pre></td><td><pre>
 # Description: Universal typing tutor.
 # URL:         http://www.gnu.org/software/gtypist
-# Packager:    tudurom, xenogenesis@openmailbox.org
+# Maintainer:  Tudor Roman, tudurom at gmail dot com
 # Depends on:  ncurses perl
 
 name=gtypist
@@ -60,6 +61,7 @@ build() {
     make
 
     make prefix=$PKG/usr install
+    rm -rf $PKG/usr/share/info $PKG/usr/share/locale
 }
 </pre></td></tr></table>
 </div>

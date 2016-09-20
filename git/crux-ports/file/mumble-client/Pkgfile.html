@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> Pkgfile (1186B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> Pkgfile (1145B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -53,18 +53,16 @@
 <a href="#l35" id="l35">35</a>
 <a href="#l36" id="l36">36</a>
 <a href="#l37" id="l37">37</a>
-<a href="#l38" id="l38">38</a>
 </pre></td><td><pre>
 # Description: Voice chat application (client only!)
 # URL:         http://mumble.sourceforge.net
-# Packager:    ??
-# Maintainer:  tudurom, xenogenesis@openmailbox.org
+# Maintainer:  Tudor Roman, tudurom at gmail dot com
 # Depends on:  boost qt4 speex libsndfile protobuf
 
 name=mumble-client
-version=1.2.9
+version=1.2.16
 release=1
-source=(http://downloads.sourceforge.net/project/mumble/Mumble/$version/mumble-$version.tar.gz)
+source=(https://github.com/mumble-voip/mumble/archive/$version.tar.gz)
 
 build() {
 	cd mumble-$version

@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> Pkgfile (374B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> Pkgfile (421B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -32,14 +32,16 @@
 <a href="#l14" id="l14">14</a>
 <a href="#l15" id="l15">15</a>
 <a href="#l16" id="l16">16</a>
+<a href="#l17" id="l17">17</a>
+<a href="#l18" id="l18">18</a>
 </pre></td><td><pre>
 # Description: Program to easily change brightness on backlight-controllers.
 # URL:         https://github.com/haikarainen/light
-# Packager:    tudurom, xenogenesis@openmailbox.org
-# Depends on:
+# Maintainer:  Tudor Roman, tudurom at gmail dot com
+# Depends on:  help2man
 
 name=light
-version=0.9
+version=1.0
 release=1
 source=(https://github.com/haikarainen/light/archive/v${version}.zip)
 
@@ -48,6 +50,8 @@ build() {
 
     make
     make DESTDIR=&quot;$PKG/&quot; install
+
+    chmod 755 $PKG/usr/bin/${name}
 }
 </pre></td></tr></table>
 </div>

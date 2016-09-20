@@ -4,6 +4,227 @@
 <subtitle>windowchef is a stacking window cooker controlled by a remote control program, waitron
 </subtitle>
 <entry>
+<id>25ec980ed504b60a7a2cde639b7ceded9ae42b8a</id>
+<published>2016-09-19T16:36:03Z</published>
+<updated>2016-09-19T16:36:03Z</updated>
+<title type="text">turned on optimization</title>
+<link rel="alternate" type="text/html" href="commit/25ec980ed504b60a7a2cde639b7ceded9ae42b8a.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 25ec980ed504b60a7a2cde639b7ceded9ae42b8a
+parent 8514de247ebc625b9620d85ae2de9ba5421c2624
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Sep 19 19:36:03 +0300
+
+turned on optimization
+
+</content>
+</entry>
+<entry>
+<id>8514de247ebc625b9620d85ae2de9ba5421c2624</id>
+<published>2016-09-16T19:17:39Z</published>
+<updated>2016-09-16T19:17:39Z</updated>
+<title type="text">fix manpage installing</title>
+<link rel="alternate" type="text/html" href="commit/8514de247ebc625b9620d85ae2de9ba5421c2624.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 8514de247ebc625b9620d85ae2de9ba5421c2624
+parent 227b52d3b6c6ca120ec4648543d97dc3aa6f28d3
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Sep 16 22:17:39 +0300
+
+fix manpage installing
+
+</content>
+</entry>
+<entry>
+<id>227b52d3b6c6ca120ec4648543d97dc3aa6f28d3</id>
+<published>2016-09-16T19:15:28Z</published>
+<updated>2016-09-16T19:15:28Z</updated>
+<title type="text">add mkdir in makefile</title>
+<link rel="alternate" type="text/html" href="commit/227b52d3b6c6ca120ec4648543d97dc3aa6f28d3.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 227b52d3b6c6ca120ec4648543d97dc3aa6f28d3
+parent dbcf72ada7c57d5f7492fc3100538d2561398bc7
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Sep 16 22:15:28 +0300
+
+add mkdir in makefile
+
+</content>
+</entry>
+<entry>
+<id>dbcf72ada7c57d5f7492fc3100538d2561398bc7</id>
+<published>2016-09-16T18:27:15Z</published>
+<updated>2016-09-16T18:27:15Z</updated>
+<title type="text">fix readme</title>
+<link rel="alternate" type="text/html" href="commit/dbcf72ada7c57d5f7492fc3100538d2561398bc7.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit dbcf72ada7c57d5f7492fc3100538d2561398bc7
+parent d80aed4b2ab0b57efa7ec1c14e8a4cccb55ba7ec
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Sep 16 21:27:15 +0300
+
+fix readme
+
+</content>
+</entry>
+<entry>
+<id>d80aed4b2ab0b57efa7ec1c14e8a4cccb55ba7ec</id>
+<published>2016-09-16T18:13:44Z</published>
+<updated>2016-09-16T18:13:44Z</updated>
+<title type="text">unified format for snapping windows and setting the cursor position</title>
+<link rel="alternate" type="text/html" href="commit/d80aed4b2ab0b57efa7ec1c14e8a4cccb55ba7ec.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit d80aed4b2ab0b57efa7ec1c14e8a4cccb55ba7ec
+parent 860b7f221107b4a9ebc7e14ed63e3c0ce7aaf9ff
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Sep 16 21:13:44 +0300
+
+unified format for snapping windows and setting the cursor position
+
+</content>
+</entry>
+<entry>
+<id>860b7f221107b4a9ebc7e14ed63e3c0ce7aaf9ff</id>
+<published>2016-09-16T17:32:57Z</published>
+<updated>2016-09-16T17:32:57Z</updated>
+<title type="text">forgot about that case</title>
+<link rel="alternate" type="text/html" href="commit/860b7f221107b4a9ebc7e14ed63e3c0ce7aaf9ff.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 860b7f221107b4a9ebc7e14ed63e3c0ce7aaf9ff
+parent 5571f15aeded3d1942f91f554ad73af0fa421a39
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Sep 16 20:32:57 +0300
+
+forgot about that case
+
+</content>
+</entry>
+<entry>
+<id>5571f15aeded3d1942f91f554ad73af0fa421a39</id>
+<published>2016-09-16T16:45:08Z</published>
+<updated>2016-09-16T16:45:08Z</updated>
+<title type="text">updated bundled windowchefrc with options from config.h</title>
+<link rel="alternate" type="text/html" href="commit/5571f15aeded3d1942f91f554ad73af0fa421a39.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 5571f15aeded3d1942f91f554ad73af0fa421a39
+parent 1433e1391f223de1e5b0dd630b265c70036273c6
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Sep 16 19:45:08 +0300
+
+updated bundled windowchefrc with options from config.h
+
+</content>
+</entry>
+<entry>
+<id>1433e1391f223de1e5b0dd630b265c70036273c6</id>
+<published>2016-09-16T16:43:54Z</published>
+<updated>2016-09-16T16:43:54Z</updated>
+<title type="text">removed debug flag and misc tweaks</title>
+<link rel="alternate" type="text/html" href="commit/1433e1391f223de1e5b0dd630b265c70036273c6.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 1433e1391f223de1e5b0dd630b265c70036273c6
+parent 3b3233fc298ae5de1cfcbf6f9a0712d20e29f0a3
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Sep 16 19:43:54 +0300
+
+removed debug flag and misc tweaks
+
+</content>
+</entry>
+<entry>
+<id>3b3233fc298ae5de1cfcbf6f9a0712d20e29f0a3</id>
+<published>2016-09-15T19:18:12Z</published>
+<updated>2016-09-15T19:18:12Z</updated>
+<title type="text">proper configuration support</title>
+<link rel="alternate" type="text/html" href="commit/3b3233fc298ae5de1cfcbf6f9a0712d20e29f0a3.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 3b3233fc298ae5de1cfcbf6f9a0712d20e29f0a3
+parent fcc4dd192f7c242e84b7a155d4bcd9fcd1021504
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Sep 15 22:18:12 +0300
+
+proper configuration support
+
+</content>
+</entry>
+<entry>
+<id>fcc4dd192f7c242e84b7a155d4bcd9fcd1021504</id>
+<published>2016-09-14T18:09:33Z</published>
+<updated>2016-09-14T18:09:33Z</updated>
+<title type="text">added uninstall rule to makefile</title>
+<link rel="alternate" type="text/html" href="commit/fcc4dd192f7c242e84b7a155d4bcd9fcd1021504.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit fcc4dd192f7c242e84b7a155d4bcd9fcd1021504
+parent 91fed1761130e1de84adbbf8a3bbda1760d03f2f
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Sep 14 21:09:33 +0300
+
+added uninstall rule to makefile
+
+</content>
+</entry>
+<entry>
+<id>91fed1761130e1de84adbbf8a3bbda1760d03f2f</id>
+<published>2016-09-14T18:01:45Z</published>
+<updated>2016-09-14T18:01:45Z</updated>
+<title type="text">configuration through waitron, man page for waitron</title>
+<link rel="alternate" type="text/html" href="commit/91fed1761130e1de84adbbf8a3bbda1760d03f2f.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 91fed1761130e1de84adbbf8a3bbda1760d03f2f
+parent 6a21202ac0570b883509c0a5ea4c74303759fd66
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Sep 14 21:01:45 +0300
+
+configuration through waitron, man page for waitron
+
+</content>
+</entry>
+<entry>
+<id>6a21202ac0570b883509c0a5ea4c74303759fd66</id>
+<published>2016-09-12T17:44:07Z</published>
+<updated>2016-09-12T17:44:07Z</updated>
+<title type="text">added comments in config.h</title>
+<link rel="alternate" type="text/html" href="commit/6a21202ac0570b883509c0a5ea4c74303759fd66.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 6a21202ac0570b883509c0a5ea4c74303759fd66
+parent bbb02018ba6dcdf0121959d57ad3fc6d427234fa
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Sep 12 20:44:07 +0300
+
+added comments in config.h
+
+</content>
+</entry>
+<entry>
+<id>bbb02018ba6dcdf0121959d57ad3fc6d427234fa</id>
+<published>2016-09-12T17:10:01Z</published>
+<updated>2016-09-12T17:10:01Z</updated>
+<title type="text">focus window after maximizing</title>
+<link rel="alternate" type="text/html" href="commit/bbb02018ba6dcdf0121959d57ad3fc6d427234fa.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit bbb02018ba6dcdf0121959d57ad3fc6d427234fa
+parent 1175342d724a00288af7e0fdfa84edfa0236a04f
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Sep 12 20:10:01 +0300
+
+focus window after maximizing
+
+</content>
+</entry>
+<entry>
 <id>1175342d724a00288af7e0fdfa84edfa0236a04f</id>
 <published>2016-09-08T19:02:38Z</published>
 <updated>2016-09-08T19:02:38Z</updated>

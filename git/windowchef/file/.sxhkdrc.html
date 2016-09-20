@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> .sxhkdrc (798B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> .sxhkdrc (835B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -94,8 +94,8 @@ alt + Tab
 alt + shift + Tab
   waitron window_rev_cycle
 
-super + {_,shift +}{1-6}
-  waitron {group_toggle,group_add_window} {1-6}
+super + {_,shift +}{1-4}
+  waitron {group_toggle,group_add_window} {1-4}
 
 super + ctrl + r
   waitron group_remove_window
@@ -104,7 +104,7 @@ super + Return
   urxvt
 
 super + {Insert,Prior,Delete,Next,End}
-  waitron window_snap {0,1,2,3,4}
+  waitron window_snap {topleft,topright,bottomleft,bottomright,middle}
 </pre></td></tr></table>
 </div>
 </body>
