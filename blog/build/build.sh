@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/bin/dash
 
 MAIN_PAGE_TITLE="tudor's blog"
 
+index_links=""
 for article in $(ls -1 | grep -Ev "res|tm"); do
     # only consider directories
     # the res dir is special. skip it
@@ -20,7 +21,7 @@ for article in $(ls -1 | grep -Ev "res|tm"); do
         ext="$(echo ${article}/content.* | rev | cut -d'.' -f1 | rev)"
         case "$ext" in
             md)
-                gen_post="$(mark "${article}/content.md")"
+                gen_post="$(blackfriday-tool "${article}/content.md")"
                 ;;
             mup)
                 gen_post="$(mortup -u "${article}/content.mup")"

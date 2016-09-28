@@ -5,6 +5,10 @@
         <meta charset="utf-8">
 
         <link rel="stylesheet" href="/blog/css/main.css">
+        <link rel="stylesheet" href="/css/solarized-light.css">
+
+        <script src="/js/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
     </head>
 
     <body>
@@ -23,37 +27,51 @@
     </div>
 
     <div class="post content">
-        <h3 id="story">Story</h3>
-<p>I have fairly long fingers. They may grow even longer one day, I’m not even 18
+        <h3>Story</h3>
+
+<p>I have fairly long fingers. They may grow even longer one day, I&rsquo;m not even 18
 yet.
-However, I have one small, actually pretty big problem: my small finger can’t
+However, I have one small, actually pretty big problem: my small finger can&rsquo;t
 reach backspace, the most frequently used key!</p>
-<p>And there’s another problem: I use Vim and I can’t reach the escape key with my
+
+<p>And there&rsquo;s another problem: I use Vim and I can&rsquo;t reach the escape key with my
 small finger!</p>
-<h3 id="solution">Solution</h3>
+
+<h3>Solution</h3>
+
 <p>Inspired by the Colemak layout that I already use on all my touch-screen enabled
-devices (I will learn it one day, don’t worry), I mapped backspace to the caps
+devices (I will learn it one day, don&rsquo;t worry), I mapped backspace to the caps
 lock key.</p>
+
 <p>But what about escape?</p>
-<p>Luckily, there’s another key on this big keyboard that I don’t use at all: the
-right alt key, also called “AltGr”. So I mapped escape to it.</p>
-<h3 id="how-">How?</h3>
-<p>I use a UNIX-like operating system called “Linux”. You may have heard about it.</p>
+
+<p>Luckily, there&rsquo;s another key on this big keyboard that I don&rsquo;t use at all: the
+right alt key, also called &ldquo;AltGr&rdquo;. So I mapped escape to it.</p>
+
+<h3>How?</h3>
+
+<p>I use a UNIX-like operating system called &ldquo;Linux&rdquo;. You may have heard about it.</p>
+
 <p>Some UNIX-like OS-es come with a tool called <code>xmodmap</code> in their repositories. It
 modifies keymaps.</p>
+
 <p>That sounds like the perfect tool to map these keys! And it really is, with a
 catch: changes are available only when using the X window system.</p>
-<p>Here’s my <code>.xmodmaprc</code>:</p>
-<pre><code>! <span class="hljs-built_in">remove</span> caps
+
+<p>Here&rsquo;s my <code>.xmodmaprc</code>:</p>
+
+<pre><code>! remove caps
 clear lock
-<span class="hljs-built_in">remove</span> Lock = Caps_Lock
-<span class="hljs-built_in">remove</span> Shift = Caps_Lock
+remove Lock = Caps_Lock
+remove Shift = Caps_Lock
 
 keysym Alt_R = Escape
 
-! <span class="hljs-keyword">make</span> caps backspace
+! make caps backspace
 keysym Caps_Lock = BackSpace
-</code></pre><p>And that’s it! Now I have to get used to it…</p>
+</code></pre>
+
+<p>And that&rsquo;s it! Now I have to get used to it&hellip;</p>
     </div>
 </div>
             <hr />

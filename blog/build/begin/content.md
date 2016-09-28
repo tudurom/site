@@ -35,14 +35,6 @@ From [O-Zone's *Dragostea din tei*](https://www.youtube.com/watch?v=jRx5PrAlUdY)
 
 ### Tables
 
-|Qt|    Item   |Price                          |
-|--|-----------|-----:                         |
-|1 |apple juice|10 lei                         |
-|2 |pear juice |11 lei                         |
-|  |           |yeah the price is right aligned|
-
-Text between tables.
-
 |             a | b            |     c    |
 |--------------:|--------------|:--------:|
 | Right aligned | Left aligned | Centered |
