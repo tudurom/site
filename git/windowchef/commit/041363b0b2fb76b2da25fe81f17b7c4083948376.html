@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>update man page - windowchef - windowchef is a stacking window cooker controlled by a remote control program, waitron
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="windowchef.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>windowchef</h1><span class="desc">windowchef is a stacking window cooker controlled by a remote control program, waitron
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/windowchef.git">git://thetudor.ddns.net/windowchef.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/041363b0b2fb76b2da25fe81f17b7c4083948376.html">041363b0b2fb76b2da25fe81f17b7c4083948376</a>
+<b>parent</b> <a href="../commit/5e6b37740d2df05d3b2ea63099f51a7fcee4a98f.html">5e6b37740d2df05d3b2ea63099f51a7fcee4a98f</a>
+<b>Author:</b> Tudor Roman &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Oct  2 20:24:21 +0300
+
+update man page
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">man/waitron.1</a></td><td> | </td><td class="num">8</td><td><span class="i">++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h1">man/waitron.1.html</a></td><td> | </td><td class="num">4</td><td><span class="i">++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h2">man/waitron.1.md</a></td><td> | </td><td class="num">8</td><td><span class="i">++++++++</span><span class="d"></span></td></tr>
+</table>3 files changed, 20 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/man/waitron.1.html">man/waitron.1</a> b/<a href="../file/man/waitron.1.html">man/waitron.1</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -82,6 +82,14 @@ Cycle through mapped windows\.
+</a> Reverse cycle through mapped windows\.
+ .
+ .TP
+<a href="#h0-0-3" id="h0-0-3" class="i">+\fBwindow_cycle_in_group\fR
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+Cycle trough mapped windows that belong to the same group as the focused window\.
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+.
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+.TP
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+\fBwindow_rev_cycle_in_group\fR
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+Reverse cycle through mapped windows that belong to the same group as the focused window\.
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+.
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+.TP
+</a> \fBwindow_focus\fR \fIid\fR
+ Focus window by \fIid\fR\. The \fIid\fR can be found using pfw(1) or lsw(1) from wmutils \fIhttps://github\.com/wmutils/core/\fR\.
+ .
+<b>diff --git a/<a id="h1" href="../file/man/waitron.1.html.html">man/waitron.1.html</a> b/<a href="../file/man/waitron.1.html.html">man/waitron.1.html</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -126,6 +126,10 @@ anything on &lt;code&gt;stdout&lt;/code&gt;.&lt;/p&gt;
+</a> &lt;dt&gt;&lt;code&gt;window_snap&lt;/code&gt; &lt;var&gt;POSITION&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Snap the window on the screen in a position defined by &lt;var&gt;POSITION&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
+ &lt;dt&gt;&lt;code&gt;window_cycle&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Cycle through mapped windows.&lt;/p&gt;&lt;/dd&gt;
+ &lt;dt&gt;&lt;code&gt;window_rev_cycle&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Reverse cycle through mapped windows.&lt;/p&gt;&lt;/dd&gt;
+<a href="#h1-0-3" id="h1-0-3" class="i">+&lt;dt&gt;&lt;code&gt;window_cycle_in_group&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Cycle trough mapped windows that belong to the same group as the
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+  focused window.&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+&lt;dt&gt;&lt;code&gt;window_rev_cycle_in_group&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Reverse cycle through mapped windows that belong to the same group as the
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+  focused window.&lt;/p&gt;&lt;/dd&gt;
+</a> &lt;dt&gt;&lt;code&gt;window_focus&lt;/code&gt; &lt;var&gt;id&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Focus window by &lt;var&gt;id&lt;/var&gt;. The &lt;var&gt;id&lt;/var&gt; can be found using &lt;span class=&quot;man-ref&quot;&gt;pfw&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt; or &lt;span class=&quot;man-ref&quot;&gt;lsw&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt; from
+   &lt;a href=&quot;https://github.com/wmutils/core/&quot;&gt;wmutils&lt;/a&gt;.&lt;/p&gt;&lt;/dd&gt;
+ &lt;dt&gt;&lt;code&gt;group_add_window&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Add the focused window to the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;
+<b>diff --git a/<a id="h2" href="../file/man/waitron.1.md.html">man/waitron.1.md</a> b/<a href="../file/man/waitron.1.md.html">man/waitron.1.md</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -73,6 +73,14 @@ anything on `stdout`.
+</a> * `window_rev_cycle`:
+ 	Reverse cycle through mapped windows.
+ 
+<a href="#h2-0-3" id="h2-0-3" class="i">+* `window_cycle_in_group`:
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+	Cycle trough mapped windows that belong to the same group as the
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+	focused window.
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+* `window_rev_cycle_in_group`:
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+	Reverse cycle through mapped windows that belong to the same group as the
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+	focused window.
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+
+</a> * `window_focus` &lt;id&gt;:
+ 	Focus window by &lt;id&gt;. The &lt;id&gt; can be found using pfw(1) or lsw(1) from
+ 	[wmutils](https://github.com/wmutils/core/).
+</pre>
+</div>
+</body>
+</html>

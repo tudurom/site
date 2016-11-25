@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> wm.c (52905B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> wm.c (59388B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -2195,6 +2195,275 @@
 <a href="#l2177" id="l2177">2177</a>
 <a href="#l2178" id="l2178">2178</a>
 <a href="#l2179" id="l2179">2179</a>
+<a href="#l2180" id="l2180">2180</a>
+<a href="#l2181" id="l2181">2181</a>
+<a href="#l2182" id="l2182">2182</a>
+<a href="#l2183" id="l2183">2183</a>
+<a href="#l2184" id="l2184">2184</a>
+<a href="#l2185" id="l2185">2185</a>
+<a href="#l2186" id="l2186">2186</a>
+<a href="#l2187" id="l2187">2187</a>
+<a href="#l2188" id="l2188">2188</a>
+<a href="#l2189" id="l2189">2189</a>
+<a href="#l2190" id="l2190">2190</a>
+<a href="#l2191" id="l2191">2191</a>
+<a href="#l2192" id="l2192">2192</a>
+<a href="#l2193" id="l2193">2193</a>
+<a href="#l2194" id="l2194">2194</a>
+<a href="#l2195" id="l2195">2195</a>
+<a href="#l2196" id="l2196">2196</a>
+<a href="#l2197" id="l2197">2197</a>
+<a href="#l2198" id="l2198">2198</a>
+<a href="#l2199" id="l2199">2199</a>
+<a href="#l2200" id="l2200">2200</a>
+<a href="#l2201" id="l2201">2201</a>
+<a href="#l2202" id="l2202">2202</a>
+<a href="#l2203" id="l2203">2203</a>
+<a href="#l2204" id="l2204">2204</a>
+<a href="#l2205" id="l2205">2205</a>
+<a href="#l2206" id="l2206">2206</a>
+<a href="#l2207" id="l2207">2207</a>
+<a href="#l2208" id="l2208">2208</a>
+<a href="#l2209" id="l2209">2209</a>
+<a href="#l2210" id="l2210">2210</a>
+<a href="#l2211" id="l2211">2211</a>
+<a href="#l2212" id="l2212">2212</a>
+<a href="#l2213" id="l2213">2213</a>
+<a href="#l2214" id="l2214">2214</a>
+<a href="#l2215" id="l2215">2215</a>
+<a href="#l2216" id="l2216">2216</a>
+<a href="#l2217" id="l2217">2217</a>
+<a href="#l2218" id="l2218">2218</a>
+<a href="#l2219" id="l2219">2219</a>
+<a href="#l2220" id="l2220">2220</a>
+<a href="#l2221" id="l2221">2221</a>
+<a href="#l2222" id="l2222">2222</a>
+<a href="#l2223" id="l2223">2223</a>
+<a href="#l2224" id="l2224">2224</a>
+<a href="#l2225" id="l2225">2225</a>
+<a href="#l2226" id="l2226">2226</a>
+<a href="#l2227" id="l2227">2227</a>
+<a href="#l2228" id="l2228">2228</a>
+<a href="#l2229" id="l2229">2229</a>
+<a href="#l2230" id="l2230">2230</a>
+<a href="#l2231" id="l2231">2231</a>
+<a href="#l2232" id="l2232">2232</a>
+<a href="#l2233" id="l2233">2233</a>
+<a href="#l2234" id="l2234">2234</a>
+<a href="#l2235" id="l2235">2235</a>
+<a href="#l2236" id="l2236">2236</a>
+<a href="#l2237" id="l2237">2237</a>
+<a href="#l2238" id="l2238">2238</a>
+<a href="#l2239" id="l2239">2239</a>
+<a href="#l2240" id="l2240">2240</a>
+<a href="#l2241" id="l2241">2241</a>
+<a href="#l2242" id="l2242">2242</a>
+<a href="#l2243" id="l2243">2243</a>
+<a href="#l2244" id="l2244">2244</a>
+<a href="#l2245" id="l2245">2245</a>
+<a href="#l2246" id="l2246">2246</a>
+<a href="#l2247" id="l2247">2247</a>
+<a href="#l2248" id="l2248">2248</a>
+<a href="#l2249" id="l2249">2249</a>
+<a href="#l2250" id="l2250">2250</a>
+<a href="#l2251" id="l2251">2251</a>
+<a href="#l2252" id="l2252">2252</a>
+<a href="#l2253" id="l2253">2253</a>
+<a href="#l2254" id="l2254">2254</a>
+<a href="#l2255" id="l2255">2255</a>
+<a href="#l2256" id="l2256">2256</a>
+<a href="#l2257" id="l2257">2257</a>
+<a href="#l2258" id="l2258">2258</a>
+<a href="#l2259" id="l2259">2259</a>
+<a href="#l2260" id="l2260">2260</a>
+<a href="#l2261" id="l2261">2261</a>
+<a href="#l2262" id="l2262">2262</a>
+<a href="#l2263" id="l2263">2263</a>
+<a href="#l2264" id="l2264">2264</a>
+<a href="#l2265" id="l2265">2265</a>
+<a href="#l2266" id="l2266">2266</a>
+<a href="#l2267" id="l2267">2267</a>
+<a href="#l2268" id="l2268">2268</a>
+<a href="#l2269" id="l2269">2269</a>
+<a href="#l2270" id="l2270">2270</a>
+<a href="#l2271" id="l2271">2271</a>
+<a href="#l2272" id="l2272">2272</a>
+<a href="#l2273" id="l2273">2273</a>
+<a href="#l2274" id="l2274">2274</a>
+<a href="#l2275" id="l2275">2275</a>
+<a href="#l2276" id="l2276">2276</a>
+<a href="#l2277" id="l2277">2277</a>
+<a href="#l2278" id="l2278">2278</a>
+<a href="#l2279" id="l2279">2279</a>
+<a href="#l2280" id="l2280">2280</a>
+<a href="#l2281" id="l2281">2281</a>
+<a href="#l2282" id="l2282">2282</a>
+<a href="#l2283" id="l2283">2283</a>
+<a href="#l2284" id="l2284">2284</a>
+<a href="#l2285" id="l2285">2285</a>
+<a href="#l2286" id="l2286">2286</a>
+<a href="#l2287" id="l2287">2287</a>
+<a href="#l2288" id="l2288">2288</a>
+<a href="#l2289" id="l2289">2289</a>
+<a href="#l2290" id="l2290">2290</a>
+<a href="#l2291" id="l2291">2291</a>
+<a href="#l2292" id="l2292">2292</a>
+<a href="#l2293" id="l2293">2293</a>
+<a href="#l2294" id="l2294">2294</a>
+<a href="#l2295" id="l2295">2295</a>
+<a href="#l2296" id="l2296">2296</a>
+<a href="#l2297" id="l2297">2297</a>
+<a href="#l2298" id="l2298">2298</a>
+<a href="#l2299" id="l2299">2299</a>
+<a href="#l2300" id="l2300">2300</a>
+<a href="#l2301" id="l2301">2301</a>
+<a href="#l2302" id="l2302">2302</a>
+<a href="#l2303" id="l2303">2303</a>
+<a href="#l2304" id="l2304">2304</a>
+<a href="#l2305" id="l2305">2305</a>
+<a href="#l2306" id="l2306">2306</a>
+<a href="#l2307" id="l2307">2307</a>
+<a href="#l2308" id="l2308">2308</a>
+<a href="#l2309" id="l2309">2309</a>
+<a href="#l2310" id="l2310">2310</a>
+<a href="#l2311" id="l2311">2311</a>
+<a href="#l2312" id="l2312">2312</a>
+<a href="#l2313" id="l2313">2313</a>
+<a href="#l2314" id="l2314">2314</a>
+<a href="#l2315" id="l2315">2315</a>
+<a href="#l2316" id="l2316">2316</a>
+<a href="#l2317" id="l2317">2317</a>
+<a href="#l2318" id="l2318">2318</a>
+<a href="#l2319" id="l2319">2319</a>
+<a href="#l2320" id="l2320">2320</a>
+<a href="#l2321" id="l2321">2321</a>
+<a href="#l2322" id="l2322">2322</a>
+<a href="#l2323" id="l2323">2323</a>
+<a href="#l2324" id="l2324">2324</a>
+<a href="#l2325" id="l2325">2325</a>
+<a href="#l2326" id="l2326">2326</a>
+<a href="#l2327" id="l2327">2327</a>
+<a href="#l2328" id="l2328">2328</a>
+<a href="#l2329" id="l2329">2329</a>
+<a href="#l2330" id="l2330">2330</a>
+<a href="#l2331" id="l2331">2331</a>
+<a href="#l2332" id="l2332">2332</a>
+<a href="#l2333" id="l2333">2333</a>
+<a href="#l2334" id="l2334">2334</a>
+<a href="#l2335" id="l2335">2335</a>
+<a href="#l2336" id="l2336">2336</a>
+<a href="#l2337" id="l2337">2337</a>
+<a href="#l2338" id="l2338">2338</a>
+<a href="#l2339" id="l2339">2339</a>
+<a href="#l2340" id="l2340">2340</a>
+<a href="#l2341" id="l2341">2341</a>
+<a href="#l2342" id="l2342">2342</a>
+<a href="#l2343" id="l2343">2343</a>
+<a href="#l2344" id="l2344">2344</a>
+<a href="#l2345" id="l2345">2345</a>
+<a href="#l2346" id="l2346">2346</a>
+<a href="#l2347" id="l2347">2347</a>
+<a href="#l2348" id="l2348">2348</a>
+<a href="#l2349" id="l2349">2349</a>
+<a href="#l2350" id="l2350">2350</a>
+<a href="#l2351" id="l2351">2351</a>
+<a href="#l2352" id="l2352">2352</a>
+<a href="#l2353" id="l2353">2353</a>
+<a href="#l2354" id="l2354">2354</a>
+<a href="#l2355" id="l2355">2355</a>
+<a href="#l2356" id="l2356">2356</a>
+<a href="#l2357" id="l2357">2357</a>
+<a href="#l2358" id="l2358">2358</a>
+<a href="#l2359" id="l2359">2359</a>
+<a href="#l2360" id="l2360">2360</a>
+<a href="#l2361" id="l2361">2361</a>
+<a href="#l2362" id="l2362">2362</a>
+<a href="#l2363" id="l2363">2363</a>
+<a href="#l2364" id="l2364">2364</a>
+<a href="#l2365" id="l2365">2365</a>
+<a href="#l2366" id="l2366">2366</a>
+<a href="#l2367" id="l2367">2367</a>
+<a href="#l2368" id="l2368">2368</a>
+<a href="#l2369" id="l2369">2369</a>
+<a href="#l2370" id="l2370">2370</a>
+<a href="#l2371" id="l2371">2371</a>
+<a href="#l2372" id="l2372">2372</a>
+<a href="#l2373" id="l2373">2373</a>
+<a href="#l2374" id="l2374">2374</a>
+<a href="#l2375" id="l2375">2375</a>
+<a href="#l2376" id="l2376">2376</a>
+<a href="#l2377" id="l2377">2377</a>
+<a href="#l2378" id="l2378">2378</a>
+<a href="#l2379" id="l2379">2379</a>
+<a href="#l2380" id="l2380">2380</a>
+<a href="#l2381" id="l2381">2381</a>
+<a href="#l2382" id="l2382">2382</a>
+<a href="#l2383" id="l2383">2383</a>
+<a href="#l2384" id="l2384">2384</a>
+<a href="#l2385" id="l2385">2385</a>
+<a href="#l2386" id="l2386">2386</a>
+<a href="#l2387" id="l2387">2387</a>
+<a href="#l2388" id="l2388">2388</a>
+<a href="#l2389" id="l2389">2389</a>
+<a href="#l2390" id="l2390">2390</a>
+<a href="#l2391" id="l2391">2391</a>
+<a href="#l2392" id="l2392">2392</a>
+<a href="#l2393" id="l2393">2393</a>
+<a href="#l2394" id="l2394">2394</a>
+<a href="#l2395" id="l2395">2395</a>
+<a href="#l2396" id="l2396">2396</a>
+<a href="#l2397" id="l2397">2397</a>
+<a href="#l2398" id="l2398">2398</a>
+<a href="#l2399" id="l2399">2399</a>
+<a href="#l2400" id="l2400">2400</a>
+<a href="#l2401" id="l2401">2401</a>
+<a href="#l2402" id="l2402">2402</a>
+<a href="#l2403" id="l2403">2403</a>
+<a href="#l2404" id="l2404">2404</a>
+<a href="#l2405" id="l2405">2405</a>
+<a href="#l2406" id="l2406">2406</a>
+<a href="#l2407" id="l2407">2407</a>
+<a href="#l2408" id="l2408">2408</a>
+<a href="#l2409" id="l2409">2409</a>
+<a href="#l2410" id="l2410">2410</a>
+<a href="#l2411" id="l2411">2411</a>
+<a href="#l2412" id="l2412">2412</a>
+<a href="#l2413" id="l2413">2413</a>
+<a href="#l2414" id="l2414">2414</a>
+<a href="#l2415" id="l2415">2415</a>
+<a href="#l2416" id="l2416">2416</a>
+<a href="#l2417" id="l2417">2417</a>
+<a href="#l2418" id="l2418">2418</a>
+<a href="#l2419" id="l2419">2419</a>
+<a href="#l2420" id="l2420">2420</a>
+<a href="#l2421" id="l2421">2421</a>
+<a href="#l2422" id="l2422">2422</a>
+<a href="#l2423" id="l2423">2423</a>
+<a href="#l2424" id="l2424">2424</a>
+<a href="#l2425" id="l2425">2425</a>
+<a href="#l2426" id="l2426">2426</a>
+<a href="#l2427" id="l2427">2427</a>
+<a href="#l2428" id="l2428">2428</a>
+<a href="#l2429" id="l2429">2429</a>
+<a href="#l2430" id="l2430">2430</a>
+<a href="#l2431" id="l2431">2431</a>
+<a href="#l2432" id="l2432">2432</a>
+<a href="#l2433" id="l2433">2433</a>
+<a href="#l2434" id="l2434">2434</a>
+<a href="#l2435" id="l2435">2435</a>
+<a href="#l2436" id="l2436">2436</a>
+<a href="#l2437" id="l2437">2437</a>
+<a href="#l2438" id="l2438">2438</a>
+<a href="#l2439" id="l2439">2439</a>
+<a href="#l2440" id="l2440">2440</a>
+<a href="#l2441" id="l2441">2441</a>
+<a href="#l2442" id="l2442">2442</a>
+<a href="#l2443" id="l2443">2443</a>
+<a href="#l2444" id="l2444">2444</a>
+<a href="#l2445" id="l2445">2445</a>
+<a href="#l2446" id="l2446">2446</a>
+<a href="#l2447" id="l2447">2447</a>
+<a href="#l2448" id="l2448">2448</a>
 </pre></td><td><pre>
 /* See the LICENSE file for copyright and license details. */
 
@@ -2228,7 +2497,7 @@ enum { WM_DELETE_WINDOW, _IPC_ATOM_COMMAND, NR_ATOMS };
 
 /* connection to the X server */
 static xcb_connection_t *conn;
-static xcb_ewmh_connection_t*ewmh;
+static xcb_ewmh_connection_t *ewmh;
 static xcb_screen_t *scr;
 static struct client *focused_win;
 static struct conf conf;
@@ -2238,7 +2507,10 @@ static int scrno;
 static int  randr_base;
 static bool halt;
 static int  exit_code;
-static bool *group_in_use;
+static bool *group_in_use = NULL;
+static enum mouse_mode current_mouse_mode = MOUSE_NONE;
+static struct client * hovered_client = NULL;
+static bool hovering_mouse = false;
 /* list of all windows. NULL is the empty list */
 static struct list_item *win_list   = NULL;
 static struct list_item *mon_list   = NULL;
@@ -2283,6 +2555,8 @@ static void vmaximize_window(struct client *, int16_t, uint16_t);
 static void unmaximize_window(struct client *);
 static void cycle_window(struct client *);
 static void rcycle_window(struct client *);
+static void cycle_window_in_group(struct client *);
+static void rcycle_window_in_group(struct client *);
 static void save_original_size(struct client *);
 static xcb_atom_t get_atom(char *);
 static bool get_pointer_location(xcb_window_t *, int16_t *, int16_t *);
@@ -2291,7 +2565,6 @@ static struct client * find_client(xcb_window_t *);
 static bool get_geometry(xcb_window_t *, int16_t *, int16_t *, uint16_t *, uint16_t *);
 static void set_borders(struct client *client, uint32_t);
 static bool is_mapped(xcb_window_t);
-static uint16_t get_border_width(xcb_window_t);
 static void free_window(struct client *);
 static void add_to_client_list(xcb_window_t);
 static void update_client_list(void);
@@ -2302,6 +2575,9 @@ static void group_activate(uint32_t);
 static void group_deactivate(uint32_t);
 static void group_toggle(uint32_t);
 static void change_nr_of_groups(uint32_t);
+static void mouse_start(enum mouse_mode);
+static void mouse_stop(void);
+static void mouse_toggle(enum mouse_mode);
 static void register_event_handlers(void);
 static void event_configure_request(xcb_generic_event_t *);
 static void event_destroy_notify(xcb_generic_event_t *);
@@ -2312,6 +2588,8 @@ static void event_unmap_notify(xcb_generic_event_t *);
 static void event_configure_notify(xcb_generic_event_t *);
 static void event_circulate_request(xcb_generic_event_t *);
 static void event_client_message(xcb_generic_event_t *);
+static void event_focus_out(xcb_generic_event_t *);
+static void event_motion_notify(xcb_generic_event_t *);
 static void register_ipc_handlers(void);
 static void ipc_window_move(uint32_t *);
 static void ipc_window_move_absolute(uint32_t *);
@@ -2326,13 +2604,18 @@ static void ipc_window_put_in_grid(uint32_t *);
 static void ipc_window_snap(uint32_t *);
 static void ipc_window_cycle(uint32_t *);
 static void ipc_window_rev_cycle(uint32_t *);
+static void ipc_window_cycle_in_group(uint32_t *);
+static void ipc_window_rev_cycle_in_group(uint32_t *);
+static void ipc_window_focus(uint32_t *);
 static void ipc_group_add_window(uint32_t *);
 static void ipc_group_remove_window(uint32_t *);
 static void ipc_group_activate(uint32_t *);
 static void ipc_group_deactivate(uint32_t *);
 static void ipc_group_toggle(uint32_t *);
+static void ipc_mouse_start(uint32_t *);
+static void ipc_mouse_stop(uint32_t *);
+static void ipc_mouse_toggle(uint32_t *);
 static void ipc_wm_quit(uint32_t *);
-static void ipc_wm_change_nr_of_groups(uint32_t *);
 static void ipc_wm_config(uint32_t *);
 
 static void usage(char *);
@@ -2346,12 +2629,14 @@ static void load_config(char *);
 static void
 cleanup(void)
 {
+	xcb_set_input_focus(conn, XCB_NONE, XCB_INPUT_FOCUS_POINTER_ROOT,
+			XCB_CURRENT_TIME);
 	if (ewmh != NULL)
 		xcb_ewmh_connection_wipe(ewmh);
-	if (conn != NULL)
-		xcb_disconnect(conn);
 	if (win_list != NULL)
 		list_delete_all_items(&amp;win_list);
+	if (conn != NULL)
+		xcb_disconnect(conn);
 }
 
 /*
@@ -2375,13 +2660,15 @@ setup(void)
 	focused_win = NULL;
 
 	mask = XCB_CW_EVENT_MASK;
-	values[0] = XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY | \
-		XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT;
+	values[0] = XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY
+		| XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT;
 	xcb_generic_error_t *e = xcb_request_check(conn,
 			xcb_change_window_attributes_checked(conn, scr-&gt;root,
 				mask, values));
-	if (e != NULL)
+	if (e != NULL) {
+		free(e);
 		errx(EXIT_FAILURE, &quot;Another window manager is already running.&quot;);
+	}
 
 	/* initialize ewmh variables */
 	ewmh = calloc(1, sizeof(xcb_ewmh_connection_t));
@@ -2402,7 +2689,7 @@ setup(void)
 		ewmh-&gt;_NET_WM_STATE_MAXIMIZED_HORZ , ewmh-&gt;_NET_WM_NAME                 ,
 		ewmh-&gt;_NET_WM_ICON_NAME            , ewmh-&gt;_NET_WM_WINDOW_TYPE          ,
 		ewmh-&gt;_NET_WM_WINDOW_TYPE_DOCK     , ewmh-&gt;_NET_WM_PID                  ,
-		ewmh-&gt;_NET_WM_WINDOW_TYPE_TOOLBAR  ,
+		ewmh-&gt;_NET_WM_WINDOW_TYPE_TOOLBAR  , ewmh-&gt;_NET_WM_WINDOW_TYPE_DESKTOP  ,
 	};
 	xcb_ewmh_set_supported(ewmh, scrno, sizeof(supported_atoms) / sizeof(xcb_atom_t), supported_atoms);
 
@@ -2418,7 +2705,6 @@ setup(void)
 	group_in_use = malloc(conf.groups * sizeof(bool));
 	for (uint32_t i = 0; i &lt; conf.groups; i++)
 		group_in_use[i] = false;
-
 	return 0;
 }
 
@@ -2616,9 +2902,14 @@ add_monitor(xcb_randr_output_t mon, char *name, int16_t x, int16_t y, uint16_t w
 	struct list_item *item;
 	struct monitor *monitor = malloc(sizeof(struct monitor));
 
-	item = list_add_item(&amp;mon_list);
-	if (item == NULL || monitor == NULL)
+	if (monitor == NULL)
 		return NULL;
+
+	item = list_add_item(&amp;mon_list);
+	if (item == NULL) {
+		free(monitor);
+		return NULL;
+	}
 
 	item-&gt;data = monitor;
 	monitor-&gt;item = item;
@@ -2724,8 +3015,9 @@ setup_window(xcb_window_t win)
 		unsigned int i = 0;
 		/* if the window is a toolbar or a dock, map it and ignore it */
 		while (i &lt; win_type.atoms_len &amp;&amp;
-			(atom = win_type.atoms[i]) != ewmh-&gt;_NET_WM_WINDOW_TYPE_TOOLBAR &amp;&amp;
-			atom != ewmh-&gt;_NET_WM_WINDOW_TYPE_DOCK)
+			(atom = win_type.atoms[i]) != ewmh-&gt;_NET_WM_WINDOW_TYPE_TOOLBAR
+			&amp;&amp; atom != ewmh-&gt;_NET_WM_WINDOW_TYPE_DOCK
+			&amp;&amp; atom != ewmh-&gt;_NET_WM_WINDOW_TYPE_DESKTOP)
 			i++;
 
 		if (i &lt; win_type.atoms_len) {
@@ -2736,7 +3028,7 @@ setup_window(xcb_window_t win)
 	}
 
 	/* subscribe to events */
-	values[0] = XCB_EVENT_MASK_ENTER_WINDOW;
+	values[0] = XCB_EVENT_MASK_ENTER_WINDOW | XCB_EVENT_MASK_FOCUS_CHANGE;
 	xcb_change_window_attributes(conn, win, XCB_CW_EVENT_MASK, values);
 
 	/* in case of fire */
@@ -2929,12 +3221,11 @@ static void
 move_window(xcb_window_t win, int16_t x, int16_t y)
 {
 	int16_t win_x, win_y;
-	uint16_t win_w, win_h, win_b;
+	uint16_t win_w, win_h;
 
 	if (!is_mapped(win) || win == scr-&gt;root)
 		return;
 
-	win_b = get_border_width(win);
 	get_geometry(&amp;win, &amp;win_x, &amp;win_y, &amp;win_w, &amp;win_h);
 
 	win_x += x;
@@ -3093,7 +3384,8 @@ maximize_window(struct client *client, int16_t mon_x, int16_t mon_y, uint16_t mo
 }
 
 static void
-hmaximize_window(struct client *client, int16_t mon_x, uint16_t mon_width) {
+hmaximize_window(struct client *client, int16_t mon_x, uint16_t mon_width)
+{
 	if (client == NULL || (client-&gt;max_width != 0 &amp;&amp; mon_width &gt; client-&gt;max_width))
 		return;
 
@@ -3107,8 +3399,8 @@ hmaximize_window(struct client *client, int16_t mon_x, uint16_t mon_width) {
 
 	if (client-&gt;geom.width != mon_width)
 		save_original_size(client);
-	client-&gt;geom.x = mon_x + conf.gap - conf.border_width;
-	client-&gt;geom.width = mon_width - 2 * conf.gap;
+	client-&gt;geom.x = mon_x + conf.gap_left;
+	client-&gt;geom.width = mon_width - conf.gap_left - conf.gap_right - 2 * conf.border_width;
 	client-&gt;vmaxed = client-&gt;maxed = false;
 
 	teleport_window(client-&gt;window, client-&gt;geom.x, client-&gt;geom.y);
@@ -3119,7 +3411,8 @@ hmaximize_window(struct client *client, int16_t mon_x, uint16_t mon_width) {
 }
 
 static void
-vmaximize_window(struct client *client, int16_t mon_y, uint16_t mon_height) {
+vmaximize_window(struct client *client, int16_t mon_y, uint16_t mon_height)
+{
 	if (client == NULL || (client-&gt;max_height != 0 &amp;&amp; mon_height &gt; client-&gt;max_height))
 		return;
 
@@ -3134,8 +3427,8 @@ vmaximize_window(struct client *client, int16_t mon_y, uint16_t mon_height) {
 	if (client-&gt;geom.height != mon_height)
 		save_original_size(client);
 
-	client-&gt;geom.y = mon_y + conf.gap - conf.border_width;
-	client-&gt;geom.height = mon_height - 2 * conf.gap;
+	client-&gt;geom.y = mon_y + conf.gap_up;
+	client-&gt;geom.height = mon_height - conf.gap_up - conf.gap_down - 2 * conf.border_width;
 	client-&gt;hmaxed = client-&gt;maxed = false;
 
 	teleport_window(client-&gt;window, client-&gt;geom.x, client-&gt;geom.y);
@@ -3145,7 +3438,8 @@ vmaximize_window(struct client *client, int16_t mon_y, uint16_t mon_height) {
 }
 
 static void
-unmaximize_window(struct client *client) {
+unmaximize_window(struct client *client)
+{
 	xcb_atom_t state[] = {
 		XCB_ICCCM_WM_STATE_NORMAL,
 		XCB_NONE
@@ -3169,8 +3463,8 @@ cycle_window(struct client *client)
 
 	item = win_list;
 	if (client != NULL)
-		while (item != NULL &amp;&amp; item-&gt;data != client)
-			item = item-&gt;next;
+			while (item != NULL &amp;&amp; item-&gt;data != client)
+				item = item-&gt;next;
 
 	/* if item is not found item will be null
 	 * and we&apos;ll get a nice segmentation fault. may the debugger be with you */
@@ -3180,7 +3474,7 @@ cycle_window(struct client *client)
 			if (item == NULL)
 				item = win_list;
 			data = item-&gt;data;
-		} while (item != NULL &amp;&amp; !data-&gt;mapped);
+		} while (!data-&gt;mapped);
 
 	if (item != NULL &amp;&amp; item-&gt;data != client)
 		set_focused(item-&gt;data);
@@ -3189,28 +3483,104 @@ cycle_window(struct client *client)
 static void
 rcycle_window(struct client *client)
 {
-	struct list_item *item;
+	struct list_item *item = NULL;
 	struct list_item *last_item;
+	struct list_item *client_item;
 	struct client *data;
 
+	if (win_list == NULL)
+		return;
+
+	/* find last window */
 	item = win_list;
-	if (client != NULL) {
-		while (item != NULL &amp;&amp; item-&gt;data != client)
-			item = item-&gt;next;
-
+	while (item != NULL) {
 		last_item = item;
-		while (last_item-&gt;next != NULL)
-			last_item = last_item-&gt;next;
-
-		do {
-			item = item-&gt;prev;
-			if (item == NULL)
-				item = last_item;
-			data = item-&gt;data;
-		} while (item != NULL &amp;&amp; !data-&gt;mapped);
+		item = item-&gt;next;
 	}
 
+	/* find item of client */
+	item = win_list;
+	while (item != NULL &amp;&amp; item-&gt;data != client)
+		item = item-&gt;next;
+
+	if (item == NULL)
+		item = last_item;
+
+	client_item = item;
+
+	item = client_item;
+	do {
+		item = item-&gt;prev;
+		if (item == NULL)
+			item = last_item;
+		data = item-&gt;data;
+	} while (!data-&gt;mapped);
+
 	if (item != NULL &amp;&amp; item-&gt;data != client)
+		set_focused(item-&gt;data);
+}
+
+static void
+cycle_window_in_group(struct client *client)
+{
+	struct list_item *item;
+	struct client *data;
+
+	if (client == NULL)
+		return;
+
+	item = win_list;
+	while (item != NULL &amp;&amp; item-&gt;data != client)
+		item = item-&gt;next;
+	if (item != NULL)
+		do {
+			item = item-&gt;next;
+			if (item == NULL)
+				item = win_list;
+			data = item-&gt;data;
+		} while (!data-&gt;mapped || data-&gt;group != client-&gt;group);
+
+	if (item != NULL &amp;&amp; data != client &amp;&amp; data-&gt;group == client-&gt;group)
+		set_focused(item-&gt;data);
+}
+
+static void
+rcycle_window_in_group(struct client *client)
+{
+	struct list_item *item = NULL;
+	struct list_item *last_item;
+	struct list_item *client_item;
+	struct client *data;
+
+	if (win_list == NULL || client == NULL)
+		return;
+
+	/* find item of client */
+	item = win_list;
+	while (item != NULL &amp;&amp; item-&gt;data != client)
+		item = item-&gt;next;
+
+	if (item == NULL)
+		return;
+
+	client_item = item;
+
+	/* find last window */
+	item = win_list;
+	while (item != NULL) {
+		last_item = item;
+		item = item-&gt;next;
+	}
+
+	item = client_item;
+	do {
+		item = item-&gt;prev;
+		if (item == NULL)
+			item = last_item;
+		data = item-&gt;data;
+	} while (!data-&gt;mapped || data-&gt;group != client-&gt;group);
+
+	if (item != NULL &amp;&amp; data != client &amp;&amp; data-&gt;group == client-&gt;group)
 		set_focused(item-&gt;data);
 }
 
@@ -3286,6 +3656,8 @@ center_pointer(struct client *client)
 	case CENTER:
 		cur_x = client-&gt;geom.width / 2;
 		cur_y = client-&gt;geom.height / 2;
+		break;
+	default: break;
 	}
 
 	xcb_warp_pointer(conn, XCB_NONE, client-&gt;window, 0, 0, 0, 0, cur_x, cur_y);
@@ -3340,7 +3712,8 @@ get_geometry(xcb_window_t *win, int16_t *x, int16_t *y, uint16_t *width, uint16_
  */
 
 static void
-set_borders(struct client *client, uint32_t color) {
+set_borders(struct client *client, uint32_t color)
+{
 	if (client == NULL)
 		return;
 	uint32_t values[1];
@@ -3370,23 +3743,6 @@ is_mapped(xcb_window_t win)
 	free(r);
 
 	return yes;
-}
-
-/*
- * Returns the widht of the window border in pixels.
- */
-
-static uint16_t
-get_border_width(xcb_window_t win)
-{
-	xcb_get_geometry_reply_t *r = xcb_get_geometry_reply(conn,
-			xcb_get_geometry(conn, win),
-			NULL);
-	uint16_t w = r-&gt;border_width;
-
-	free(r);
-
-	return w;
 }
 
 /*
@@ -3450,13 +3806,15 @@ update_client_list(void)
 }
 
 static void
-update_wm_desktop(struct client *client) {
+update_wm_desktop(struct client *client)
+{
 	if (client != NULL)
 		xcb_ewmh_set_wm_desktop(ewmh, client-&gt;window, client-&gt;group);
 }
 
 static void
-group_add_window(struct client *client, uint32_t group) {
+group_add_window(struct client *client, uint32_t group)
+{
 	if (client != NULL &amp;&amp; group &lt; conf.groups) {
 		client-&gt;group = group;
 		update_wm_desktop(client);
@@ -3465,7 +3823,8 @@ group_add_window(struct client *client, uint32_t group) {
 }
 
 static void
-group_remove_window(struct client *client) {
+group_remove_window(struct client *client)
+{
 	if (client != NULL) {
 		client-&gt;group = NULL_GROUP;
 		update_wm_desktop(client);
@@ -3488,7 +3847,8 @@ group_activate(uint32_t group) {
 }
 
 static void
-group_deactivate(uint32_t group) {
+group_deactivate(uint32_t group)
+{
 	struct list_item *item;
 	struct client *client;
 
@@ -3501,7 +3861,8 @@ group_deactivate(uint32_t group) {
 }
 
 static void
-group_toggle(uint32_t group) {
+group_toggle(uint32_t group)
+{
 	if (group_in_use[group])
 		group_deactivate(group);
 	else
@@ -3509,7 +3870,8 @@ group_toggle(uint32_t group) {
 }
 
 static void
-change_nr_of_groups(uint32_t groups) {
+change_nr_of_groups(uint32_t groups)
+{
 	bool *copy = malloc(groups * sizeof(bool));
 	uint32_t until = groups &lt; conf.groups ? groups : conf.groups;
 	struct list_item *item;
@@ -3518,13 +3880,10 @@ change_nr_of_groups(uint32_t groups) {
 	for (uint32_t i = 0; i &lt; until; i++)
 		copy[i] = group_in_use[i];
 
-	free(group_in_use);
-	group_in_use = copy;
-
 	if (groups &lt; conf.groups)
 		for (item = win_list; item != NULL; item = item-&gt;next) {
 			client = item-&gt;data;
-			if (client-&gt;group &gt;= groups) {
+			if (client-&gt;group != NULL_GROUP &amp;&amp; client-&gt;group &gt;= groups) {
 				group_activate(client-&gt;group);
 				client-&gt;group = NULL_GROUP;
 				update_wm_desktop(client);
@@ -3532,8 +3891,47 @@ change_nr_of_groups(uint32_t groups) {
 		}
 
 	conf.groups = groups;
-
+	free(group_in_use);
+	group_in_use = copy;
 }
+
+static void
+mouse_start(enum mouse_mode mode)
+{
+	hovering_mouse = true;
+	xcb_query_pointer_reply_t *ptr;
+	ptr = xcb_query_pointer_reply(conn,
+			xcb_query_pointer(conn, scr-&gt;root), NULL);
+	hovered_client = find_client(&amp;ptr-&gt;child);
+	if (hovered_client != NULL &amp;&amp; ptr != NULL) {
+		current_mouse_mode = mode;
+		xcb_grab_pointer(conn, false, scr-&gt;root,
+				XCB_EVENT_MASK_BUTTON_RELEASE
+				| XCB_EVENT_MASK_BUTTON_MOTION
+				| XCB_EVENT_MASK_POINTER_MOTION_HINT,
+				XCB_GRAB_MODE_ASYNC, XCB_GRAB_MODE_ASYNC,
+				XCB_NONE, XCB_NONE, XCB_CURRENT_TIME);
+	}
+}
+
+static void
+mouse_stop(void)
+{
+	hovering_mouse = false;
+	current_mouse_mode = MOUSE_NONE;
+	xcb_ungrab_pointer(conn, XCB_CURRENT_TIME);
+	hovered_client = NULL;
+}
+
+static void
+mouse_toggle(enum mouse_mode mode)
+{
+	if (hovering_mouse)
+		mouse_stop();
+	else
+		mouse_start(mode);
+}
+
 /*
  * Adds X event handlers to the array.
  */
@@ -3545,13 +3943,16 @@ register_event_handlers(void)
 		events[i] = NULL;
 
 	events[XCB_CONFIGURE_REQUEST] = event_configure_request;
-	events[XCB_DESTROY_NOTIFY] = event_destroy_notify;
-	events[XCB_ENTER_NOTIFY] = event_enter_notify;
-	events[XCB_MAP_REQUEST] = event_map_request;
-	events[XCB_MAP_NOTIFY] = event_map_notify;
-	events[XCB_UNMAP_NOTIFY] = event_unmap_notify;
-	events[XCB_CLIENT_MESSAGE] = event_client_message;
-	events[XCB_CONFIGURE_NOTIFY] = event_configure_notify;
+	events[XCB_DESTROY_NOTIFY]    = event_destroy_notify;
+	events[XCB_ENTER_NOTIFY]      = event_enter_notify;
+	events[XCB_MAP_REQUEST]       = event_map_request;
+	events[XCB_MAP_NOTIFY]        = event_map_notify;
+	events[XCB_UNMAP_NOTIFY]      = event_unmap_notify;
+	events[XCB_CLIENT_MESSAGE]    = event_client_message;
+	events[XCB_CONFIGURE_NOTIFY]  = event_configure_notify;
+	events[XCB_CIRCULATE_REQUEST] = event_circulate_request;
+	events[XCB_FOCUS_OUT]         = event_focus_out;
+	events[XCB_MOTION_NOTIFY]     = event_motion_notify;
 }
 
 /*
@@ -3669,17 +4070,14 @@ event_enter_notify(xcb_generic_event_t *ev)
 
 	if (conf.sloppy_focus == false)
 		return;
-	if (e-&gt;mode == XCB_NOTIFY_MODE_NORMAL ||
-			e-&gt;mode == XCB_NOTIFY_MODE_UNGRAB) {
-		if (focused_win != NULL &amp;&amp; e-&gt;event == focused_win-&gt;window)
-			return;
 
-		client = find_client(&amp;e-&gt;event);
-		if (client == NULL || client-&gt;maxed)
-			return;
+	if (focused_win != NULL &amp;&amp; e-&gt;event == focused_win-&gt;window)
+		return;
 
+	client = find_client(&amp;e-&gt;event);
+
+	if (client != NULL &amp;&amp; !client-&gt;maxed)
 		set_focused_no_raise(client);
-	}
 }
 
 /*
@@ -3700,8 +4098,11 @@ event_map_request(xcb_generic_event_t *ev)
 	if (find_client(&amp;e-&gt;window) != NULL)
 		return;
 
+	xcb_map_window(conn, e-&gt;window);
 	client = setup_window(e-&gt;window);
 
+	if (client == NULL)
+		return;
 	if (!client-&gt;geom.set_by_user) {
 		if (!get_pointer_location(&amp;scr-&gt;root, &amp;client-&gt;geom.x, &amp;client-&gt;geom.y))
 			client-&gt;geom.x = client-&gt;geom.y = 0;
@@ -3719,7 +4120,6 @@ event_map_request(xcb_generic_event_t *ev)
 
 	fit_on_screen(client);
 
-	xcb_map_window(conn, client-&gt;window);
 	xcb_change_property(conn, XCB_PROP_MODE_REPLACE, client-&gt;window,
 			ewmh-&gt;_NET_WM_STATE, ewmh-&gt;_NET_WM_STATE, 32, 2, data);
 
@@ -3888,6 +4288,74 @@ event_client_message(xcb_generic_event_t *ev)
 	}
 }
 
+static void
+event_focus_out(xcb_generic_event_t *ev)
+{
+	(void)(ev);
+	xcb_get_input_focus_reply_t *focus = xcb_get_input_focus_reply(conn,
+			xcb_get_input_focus(conn), NULL);
+	struct client *client = NULL;
+
+	if (focused_win != NULL &amp;&amp; focus-&gt;focus == focused_win-&gt;window)
+		return;
+
+	if (focus-&gt;focus == scr-&gt;root) {
+		focused_win = NULL;
+	} else {
+		client = find_client(&amp;focus-&gt;focus);
+		if (client != NULL)
+			set_focused_no_raise(client);
+	}
+}
+
+static void
+event_motion_notify(xcb_generic_event_t *ev)
+{
+	int16_t to_x, to_y;
+
+	(void)(ev);
+	xcb_query_pointer_reply_t *ptr;
+	ptr = xcb_query_pointer_reply(conn,
+			xcb_query_pointer(conn, scr-&gt;root), NULL);
+
+	if (hovered_client == NULL || ptr == NULL)
+		return;
+
+	switch (current_mouse_mode) {
+		case MOUSE_MOVE:
+			if (ptr-&gt;root_x + hovered_client-&gt;geom.width / 2
+					&gt; scr-&gt;width_in_pixels - 2 * conf.border_width)
+				to_x = scr-&gt;width_in_pixels - hovered_client-&gt;geom.width
+					- 2 * conf.border_width;
+			else
+				to_x = ptr-&gt;root_x - hovered_client-&gt;geom.width / 2;
+
+			if (ptr-&gt;root_y + hovered_client-&gt;geom.height / 2
+					&gt; scr-&gt;height_in_pixels - 2 * conf.border_width)
+				to_y = scr-&gt;height_in_pixels - hovered_client-&gt;geom.height
+					- 2 * conf.border_width;
+			else
+				to_y = ptr-&gt;root_y - hovered_client-&gt;geom.height / 2;
+
+			if (ptr-&gt;root_x &lt; hovered_client-&gt;geom.width / 2)
+				to_x = 0;
+			if (ptr-&gt;root_y &lt; hovered_client-&gt;geom.height / 2)
+				to_y = 0;
+
+			teleport_window(hovered_client-&gt;window, to_x, to_y);
+			hovered_client-&gt;geom.x = to_x;
+			hovered_client-&gt;geom.y = to_y;
+			break;
+
+		case MOUSE_RESIZE:
+			resize_window_absolute(hovered_client-&gt;window,
+					ptr-&gt;root_x - hovered_client-&gt;geom.x,
+					ptr-&gt;root_y - hovered_client-&gt;geom.y);
+		default:
+			break;
+	}
+}
+
 /*
  * Populates array with functions for handling IPC commands.
  */
@@ -3895,26 +4363,31 @@ event_client_message(xcb_generic_event_t *ev)
 static void
 register_ipc_handlers(void)
 {
-	ipc_handlers[IPCWindowMove]           = ipc_window_move;
-	ipc_handlers[IPCWindowMoveAbsolute]   = ipc_window_move_absolute;
-	ipc_handlers[IPCWindowResize]         = ipc_window_resize;
-	ipc_handlers[IPCWindowResizeAbsolute] = ipc_window_resize_absolute;
-	ipc_handlers[IPCWindowMaximize]       = ipc_window_maximize;
-	ipc_handlers[IPCWindowHorMaximize]    = ipc_window_hor_maximize;
-	ipc_handlers[IPCWindowVerMaximize]    = ipc_window_ver_maximize;
-	ipc_handlers[IPCWindowClose]          = ipc_window_close;
-	ipc_handlers[IPCWindowPutInGrid]      = ipc_window_put_in_grid;
-	ipc_handlers[IPCWindowSnap]           = ipc_window_snap;
-	ipc_handlers[IPCWindowCycle]          = ipc_window_cycle;
-	ipc_handlers[IPCWindowRevCycle]       = ipc_window_rev_cycle;
-	ipc_handlers[IPCGroupAddWindow]       = ipc_group_add_window;
-	ipc_handlers[IPCGroupRemoveWindow]    = ipc_group_remove_window;
-	ipc_handlers[IPCGroupActivate]        = ipc_group_activate;
-	ipc_handlers[IPCGroupDeactivate]      = ipc_group_deactivate;
-	ipc_handlers[IPCGroupToggle]          = ipc_group_toggle;
-	ipc_handlers[IPCWMQuit]               = ipc_wm_quit;
-	ipc_handlers[IPCWMChangeNrOfGroups]   = ipc_wm_change_nr_of_groups;
-	ipc_handlers[IPCWMConfig]             = ipc_wm_config;
+	ipc_handlers[IPCWindowMove]            = ipc_window_move;
+	ipc_handlers[IPCWindowMoveAbsolute]    = ipc_window_move_absolute;
+	ipc_handlers[IPCWindowResize]          = ipc_window_resize;
+	ipc_handlers[IPCWindowResizeAbsolute]  = ipc_window_resize_absolute;
+	ipc_handlers[IPCWindowMaximize]        = ipc_window_maximize;
+	ipc_handlers[IPCWindowHorMaximize]     = ipc_window_hor_maximize;
+	ipc_handlers[IPCWindowVerMaximize]     = ipc_window_ver_maximize;
+	ipc_handlers[IPCWindowClose]           = ipc_window_close;
+	ipc_handlers[IPCWindowPutInGrid]       = ipc_window_put_in_grid;
+	ipc_handlers[IPCWindowSnap]            = ipc_window_snap;
+	ipc_handlers[IPCWindowCycle]           = ipc_window_cycle;
+	ipc_handlers[IPCWindowRevCycle]        = ipc_window_rev_cycle;
+	ipc_handlers[IPCWindowCycleInGroup]    = ipc_window_cycle_in_group;
+	ipc_handlers[IPCWindowRevCycleInGroup] = ipc_window_rev_cycle_in_group;
+	ipc_handlers[IPCWindowFocus]           = ipc_window_focus;
+	ipc_handlers[IPCGroupAddWindow]        = ipc_group_add_window;
+	ipc_handlers[IPCGroupRemoveWindow]     = ipc_group_remove_window;
+	ipc_handlers[IPCGroupActivate]         = ipc_group_activate;
+	ipc_handlers[IPCGroupDeactivate]       = ipc_group_deactivate;
+	ipc_handlers[IPCGroupToggle]           = ipc_group_toggle;
+	ipc_handlers[IPCMouseStart]            = ipc_mouse_start;
+	ipc_handlers[IPCMouseStop]             = ipc_mouse_stop;
+	ipc_handlers[IPCMouseToggle]           = ipc_mouse_toggle;
+	ipc_handlers[IPCWMQuit]                = ipc_wm_quit;
+	ipc_handlers[IPCWMConfig]              = ipc_wm_config;
 }
 
 static void
@@ -4042,7 +4515,8 @@ ipc_window_resize_absolute(uint32_t *d)
 }
 
 static void
-ipc_window_maximize(uint32_t *d) {
+ipc_window_maximize(uint32_t *d)
+{
 	(void)(d);
 	int16_t mon_x, mon_y;
 	uint16_t mon_w, mon_h;
@@ -4140,15 +4614,20 @@ ipc_window_put_in_grid(uint32_t *d)
 	}
 
 	get_monitor_size(focused_win, &amp;mon_x, &amp;mon_y, &amp;mon_w, &amp;mon_h);
-	step_x = mon_w / grid_width;
-	step_y = mon_h / grid_height;
+	/* width and height of windows in the grid */
+	step_x = (mon_w - (grid_width - 1) * conf.grid_gap
+			- grid_width * 2 * conf.border_width - conf.gap_left - conf.gap_right) / grid_width;
+	step_y = (mon_h - (grid_width - 1) * conf.grid_gap
+			- grid_width * 2 * conf.border_width - conf.gap_up - conf.gap_down) / grid_height;
 	DMSG(&quot;%d %d %d %d %d %d\n&quot;, grid_width, grid_height, grid_x, grid_y, step_x, step_y);
 
 	focused_win-&gt;geom.width = step_x;
 	focused_win-&gt;geom.height = step_y;
 
-	focused_win-&gt;geom.x = mon_x + grid_x * step_x;
-	focused_win-&gt;geom.y = mon_y + grid_y * step_y;
+	focused_win-&gt;geom.x = mon_x + conf.gap_left
+		+ grid_x * (conf.grid_gap + 2 * conf.border_width + step_x);
+	focused_win-&gt;geom.y = mon_y + conf.gap_up
+		+ grid_y * (conf.grid_gap + 2 * conf.border_width + step_y);
 
 	teleport_window(focused_win-&gt;window, focused_win-&gt;geom.x, focused_win-&gt;geom.y);
 	resize_window_absolute(focused_win-&gt;window, focused_win-&gt;geom.width, focused_win-&gt;geom.height);
@@ -4177,23 +4656,23 @@ ipc_window_snap(uint32_t *d)
 
 	switch (mode) {
 		case TOP_LEFT:
-			win_x = mon_x + conf.gap;
-			win_y = mon_y + conf.gap;
+			win_x = mon_x + conf.gap_left;
+			win_y = mon_y + conf.gap_up;
 			break;
 
 		case TOP_RIGHT:
-			win_x = mon_x + mon_w - conf.gap - win_w;
-			win_y = mon_y + conf.gap;
+			win_x = mon_x + mon_w - conf.gap_right - win_w;
+			win_y = mon_y + conf.gap_up;
 			break;
 
 		case BOTTOM_LEFT:
-			win_x = mon_x + conf.gap;
-			win_y = mon_y + mon_h - conf.gap - win_h;
+			win_x = mon_x + conf.gap_left;
+			win_y = mon_y + mon_h - conf.gap_down - win_h;
 			break;
 
 		case BOTTOM_RIGHT:
-			win_x = mon_x + mon_w - conf.gap - win_w;
-			win_y = mon_y + mon_h - conf.gap - win_h;
+			win_x = mon_x + mon_w - conf.gap_right - win_w;
+			win_y = mon_y + mon_h - conf.gap_down - win_h;
 			break;
 
 		case CENTER:
@@ -4202,7 +4681,7 @@ ipc_window_snap(uint32_t *d)
 			break;
 
 		default:
-		 	return;
+			return;
 	}
 
 	focused_win-&gt;geom.x = win_x;
@@ -4229,76 +4708,130 @@ void ipc_window_rev_cycle(uint32_t *d)
 }
 
 static void
-ipc_group_add_window(uint32_t *d) {
+ipc_window_cycle_in_group(uint32_t *d)
+{
+	(void)(d);
+
+	if (focused_win == NULL)
+		return;
+
+	cycle_window_in_group(focused_win);
+}
+static void
+ipc_window_rev_cycle_in_group(uint32_t *d)
+{
+	(void)(d);
+
+	rcycle_window_in_group(focused_win);
+}
+
+static void
+ipc_window_focus(uint32_t *d)
+{
+	struct client *client = find_client(&amp;d[0]);
+
+	if (client != NULL)
+		set_focused(client);
+}
+
+static void
+ipc_group_add_window(uint32_t *d)
+{
 	if (focused_win != NULL)
 		group_add_window(focused_win, d[0] - 1);
 }
 
 static void
-ipc_group_remove_window(uint32_t *d) {
+ipc_group_remove_window(uint32_t *d)
+{
 	(void)(d);
 	if (focused_win != NULL)
 		group_remove_window(focused_win);
 }
 
 static void
-ipc_group_activate(uint32_t *d) {
+ipc_group_activate(uint32_t *d)
+{
 	group_activate(d[0] - 1);
 }
 
 static void
-ipc_group_deactivate(uint32_t *d) {
+ipc_group_deactivate(uint32_t *d)
+{
 	group_activate(d[0] - 1);
 }
 
 static void
-ipc_group_toggle(uint32_t *d) {
+ipc_group_toggle(uint32_t *d)
+{
 	group_toggle(d[0] - 1);
 }
 
 static void
-ipc_wm_quit(uint32_t *d) {
+ipc_mouse_start(uint32_t *d)
+{
+	mouse_start(d[0]);
+}
+
+static void
+ipc_mouse_stop(uint32_t *d)
+{
+	(void)(d);
+	mouse_stop();
+}
+
+static void
+ipc_mouse_toggle(uint32_t *d)
+{
+	mouse_toggle(d[0]);
+}
+
+static void
+ipc_wm_quit(uint32_t *d)
+{
 	uint32_t code = d[0];
 	halt = true;
 	exit_code = code;
 }
 
 static void
-ipc_wm_change_nr_of_groups(uint32_t *d)
-{
-	change_nr_of_groups(d[0]);
-}
-
-static void
 ipc_wm_config(uint32_t *d)
 {
 	enum IPCConfig key;
-	uint32_t value;
 
 	key = d[0];
-	value = d[1];
 
 	switch (key) {
 		case IPCConfigBorderWidth:
-			conf.border_width = value;
+			conf.border_width = d[1];
 			break;
 		case IPCConfigColorFocused:
-			conf.focus_color = value;
+			conf.focus_color = d[1];
 			break;
 		case IPCConfigColorUnfocused:
-			conf.unfocus_color = value;
+			conf.unfocus_color = d[1];
 			break;
 		case IPCConfigGapWidth:
-			conf.gap = value;
+			switch (d[1]) {
+				case LEFT: conf.gap_left   = d[2]; break;
+				case BOTTOM: conf.gap_down = d[2]; break;
+				case TOP: conf.gap_up      = d[2]; break;
+				case RIGHT: conf.gap_right = d[2]; break;
+				case ALL: conf.gap_left = conf.gap_down
+						  = conf.gap_up = conf.gap_right = d[2];
+				default: break;
+			}
 			break;
+		case IPCConfigGridGapWidth:
+			conf.grid_gap = d[1];
 		case IPCConfigCursorPosition:
-			conf.cursor_position = value;
+			conf.cursor_position = d[1];
 			break;
 		case IPCConfigGroupsNr:
-			change_nr_of_groups(value);
+			change_nr_of_groups(d[1]);
 			break;
 		case IPCConfigEnableSloppyFocus:
-			conf.sloppy_focus = value;
+			conf.sloppy_focus = d[1];
 			break;
 		default:
 			break;
@@ -4321,7 +4854,9 @@ load_defaults(void)
 	conf.border_width    = BORDER_WIDTH;
 	conf.focus_color     = COLOR_FOCUS;
 	conf.unfocus_color   = COLOR_UNFOCUS;
-	conf.gap             = GAP;
+	conf.gap_left = conf.gap_down
+		= conf.gap_up = conf.gap_right = GAP;
+	conf.grid_gap        = GRID_GAP;
 	conf.cursor_position = CURSOR_POSITION;
 	conf.groups          = GROUPS;
 	conf.sloppy_focus    = SLOPPY_FOCUS;
@@ -4357,6 +4892,8 @@ int main(int argc, char *argv[])
 
 	register_event_handlers();
 	register_ipc_handlers();
+	load_defaults();
+
 	if (setup() &lt; 0)
 		errx(EXIT_FAILURE, &quot;error connecting to X&quot;);
 	/* if not set, get path of the rc file */
@@ -4369,9 +4906,10 @@ int main(int argc, char *argv[])
 					__NAME__, __CONFIG_NAME__);
 	}
 	/* execute config file */
-	load_defaults();
 	load_config(config_path);
 	run();
+
+	free(config_path);
 
 	return exit_code;
 }

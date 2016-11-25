@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Merge pull request #3 from neosilky/memfix - windowchef - windowchef is a stacking window cooker controlled by a remote control program, waitron
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="windowchef.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>windowchef</h1><span class="desc">windowchef is a stacking window cooker controlled by a remote control program, waitron
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/windowchef.git">git://thetudor.ddns.net/windowchef.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/f5e810dee75425dc5d630d15a5d3e5f0e0bb7371.html">f5e810dee75425dc5d630d15a5d3e5f0e0bb7371</a>
+<b>parent</b> <a href="../commit/4f9f61265e5bc749feb2be6cd4da858d1f4170bd.html">4f9f61265e5bc749feb2be6cd4da858d1f4170bd</a>
+<b>Author:</b> Tudor Roman &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Thu Sep 29 20:21:47 +0300
+
+Merge pull request #3 from neosilky/memfix
+
+wm.c: free malloc&apos;d variable upon error
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">wm.c</a></td><td> | </td><td class="num">6</td><td><span class="i">++++</span><span class="d">--</span></td></tr>
+</table>1 file changed, 4 insertions(+), 2 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/wm.c.html">wm.c</a> b/<a href="../file/wm.c.html">wm.c</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -183,8 +183,10 @@ setup(void)
+</a> 	xcb_generic_error_t *e = xcb_request_check(conn,
+ 			xcb_change_window_attributes_checked(conn, scr-&gt;root,
+ 				mask, values));
+<a href="#h0-0-3" id="h0-0-3" class="d">-	if (e != NULL)
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+	if (e != NULL) {
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+		free(e);
+</a> 		errx(EXIT_FAILURE, &quot;Another window manager is already running.&quot;);
+<a href="#h0-0-7" id="h0-0-7" class="i">+	}
+</a> 
+ 	/* initialize ewmh variables */
+ 	ewmh = calloc(1, sizeof(xcb_ewmh_connection_t));
+<a href="#h0-1" id="h0-1" class="h">@@ -2053,7 +2055,7 @@ ipc_window_snap(uint32_t *d)
+</a> 			break;
+ 
+ 		default:
+<a href="#h0-1-3" id="h0-1-3" class="d">-		 	return;
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+			return;
+</a> 	}
+ 
+ 	focused_win-&gt;geom.x = win_x;
+</pre>
+</div>
+</body>
+</html>

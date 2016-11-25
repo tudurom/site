@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> config.mk (164B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> config.mk (162B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -24,10 +24,10 @@
 <a href="#l6" id="l6">6</a>
 </pre></td><td><pre>
 PREFIX = /usr/local
-MANPREFIX = /usr/local/share/man
+MANPREFIX = $(PREFIX)/share/man
 MANDIR = $(MANPREFIX)/man1
 
-CFLAGS += -std=c99 -Wextra -O2
+CFLAGS += -std=c99 -Wextra -g
 LDFLAGS += -lxcb -lxcb-ewmh -lxcb-icccm -lxcb-randr
 </pre></td></tr></table>
 </div>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>Merge pull request #1 from neosilky/memfix - windowchef - windowchef is a stacking window cooker controlled by a remote control program, waitron
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="windowchef.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>windowchef</h1><span class="desc">windowchef is a stacking window cooker controlled by a remote control program, waitron
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/windowchef.git">git://thetudor.ddns.net/windowchef.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/0761f632c852402608d1a7641444b21b2a576a3f.html">0761f632c852402608d1a7641444b21b2a576a3f</a>
+<b>parent</b> <a href="../commit/c5f96b2a1eb72e1aa9045195f3c9498744910eec.html">c5f96b2a1eb72e1aa9045195f3c9498744910eec</a>
+<b>Author:</b> Tudor Roman &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Tue Sep 27 20:13:18 +0300
+
+Merge pull request #1 from neosilky/memfix
+
+wm.c: cleanup malloc&apos;d variable if error
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">wm.c</a></td><td> | </td><td class="num">7</td><td><span class="i">++++++</span><span class="d">-</span></td></tr>
+</table>1 file changed, 6 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/wm.c.html">wm.c</a> b/<a href="../file/wm.c.html">wm.c</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -420,9 +420,14 @@ add_monitor(xcb_randr_output_t mon, char *name, int16_t x, int16_t y, uint16_t w
+</a> 	struct list_item *item;
+ 	struct monitor *monitor = malloc(sizeof(struct monitor));
+ 
+<a href="#h0-0-3" id="h0-0-3" class="i">+	if (monitor == NULL)
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+		return NULL;
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+
+</a> 	item = list_add_item(&amp;mon_list);
+<a href="#h0-0-7" id="h0-0-7" class="d">-	if (item == NULL || monitor == NULL)
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+	if (item == NULL) {
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+		free(monitor);
+</a> 		return NULL;
+<a href="#h0-0-11" id="h0-0-11" class="i">+	}
+</a> 
+ 	item-&gt;data = monitor;
+ 	monitor-&gt;item = item;
+</pre>
+</div>
+</body>
+</html>

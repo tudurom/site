@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> .sxhkdrc (835B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> .sxhkdrc (922B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -60,51 +60,57 @@
 <a href="#l42" id="l42">42</a>
 <a href="#l43" id="l43">43</a>
 <a href="#l44" id="l44">44</a>
+<a href="#l45" id="l45">45</a>
+<a href="#l46" id="l46">46</a>
+<a href="#l47" id="l47">47</a>
 </pre></td><td><pre>
 super + {h,j,k,l}
-  waitron window_move {-20 0, 0 20, 0 -20, 20 0}
+  ./waitron window_move {-20 0, 0 20, 0 -20, 20 0}
 
 super + alt + {h,j,k,l}
-  waitron window_resize {-20 0, 0 20, 0 -20, 20 0}
+  ./waitron window_resize {-20 0, 0 20, 0 -20, 20 0}
 
 super + shift + {h,j,k,l}
-  waitron window_move {-50 0, 0 50, 0 -50, 50 0}
+  ./waitron window_move {-50 0, 0 50, 0 -50, 50 0}
 
 super + shift + alt + {h,j,k,l}
-  waitron window_resize {-50 0, 0 50, 0 -50, 50 0}
+  ./waitron window_resize {-50 0, 0 50, 0 -50, 50 0}
 
 super + alt + Escape
-  waitron wm_quit 0
+  ./waitron wm_quit 0
 
 super + f
-  waitron window_maximize
+  ./waitron window_maximize
 
 super + w
-  waitron window_close
+  ./waitron window_close
 
 super + b
-  waitron window_hor_maximize
+  ./waitron window_hor_maximize
 
 super + v
-  waitron window_ver_maximize
+  ./waitron window_ver_maximize
 
 alt + Tab
-  waitron window_cycle
+  ./waitron window_cycle
 
 alt + shift + Tab
-  waitron window_rev_cycle
+  ./waitron window_rev_cycle
 
 super + {_,shift +}{1-4}
-  waitron {group_toggle,group_add_window} {1-4}
+  ./waitron {group_toggle,group_add_window} {1-4}
 
 super + ctrl + r
-  waitron group_remove_window
+  ./waitron group_remove_window
 
 super + Return
   urxvt
 
 super + {Insert,Prior,Delete,Next,End}
-  waitron window_snap {topleft,topright,bottomleft,bottomright,middle}
+  ./waitron window_snap {topleft,topright,bottomleft,bottomright,middle}
+
+super + {_,alt +}t
+  ./waitron mouse_toggle {move,resize}
 </pre></td></tr></table>
 </div>
 </body>

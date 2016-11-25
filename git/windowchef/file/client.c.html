@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> client.c (7469B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> client.c (8909B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -310,6 +310,54 @@
 <a href="#l292" id="l292">292</a>
 <a href="#l293" id="l293">293</a>
 <a href="#l294" id="l294">294</a>
+<a href="#l295" id="l295">295</a>
+<a href="#l296" id="l296">296</a>
+<a href="#l297" id="l297">297</a>
+<a href="#l298" id="l298">298</a>
+<a href="#l299" id="l299">299</a>
+<a href="#l300" id="l300">300</a>
+<a href="#l301" id="l301">301</a>
+<a href="#l302" id="l302">302</a>
+<a href="#l303" id="l303">303</a>
+<a href="#l304" id="l304">304</a>
+<a href="#l305" id="l305">305</a>
+<a href="#l306" id="l306">306</a>
+<a href="#l307" id="l307">307</a>
+<a href="#l308" id="l308">308</a>
+<a href="#l309" id="l309">309</a>
+<a href="#l310" id="l310">310</a>
+<a href="#l311" id="l311">311</a>
+<a href="#l312" id="l312">312</a>
+<a href="#l313" id="l313">313</a>
+<a href="#l314" id="l314">314</a>
+<a href="#l315" id="l315">315</a>
+<a href="#l316" id="l316">316</a>
+<a href="#l317" id="l317">317</a>
+<a href="#l318" id="l318">318</a>
+<a href="#l319" id="l319">319</a>
+<a href="#l320" id="l320">320</a>
+<a href="#l321" id="l321">321</a>
+<a href="#l322" id="l322">322</a>
+<a href="#l323" id="l323">323</a>
+<a href="#l324" id="l324">324</a>
+<a href="#l325" id="l325">325</a>
+<a href="#l326" id="l326">326</a>
+<a href="#l327" id="l327">327</a>
+<a href="#l328" id="l328">328</a>
+<a href="#l329" id="l329">329</a>
+<a href="#l330" id="l330">330</a>
+<a href="#l331" id="l331">331</a>
+<a href="#l332" id="l332">332</a>
+<a href="#l333" id="l333">333</a>
+<a href="#l334" id="l334">334</a>
+<a href="#l335" id="l335">335</a>
+<a href="#l336" id="l336">336</a>
+<a href="#l337" id="l337">337</a>
+<a href="#l338" id="l338">338</a>
+<a href="#l339" id="l339">339</a>
+<a href="#l340" id="l340">340</a>
+<a href="#l341" id="l341">341</a>
+<a href="#l342" id="l342">342</a>
 </pre></td><td><pre>
 /* See the LICENSE file for copyright and license details. */
 
@@ -335,6 +383,8 @@ static bool fn_bool(uint32_t *, int, char **);
 static bool fn_config(uint32_t *, int, char **);
 static bool fn_hex(uint32_t *, int, char **);
 static bool fn_position(uint32_t *, int, char **);
+static bool fn_mouse(uint32_t *, int, char **);
+static bool fn_gap(uint32_t *, int, char **);
 
 struct Command {
 	char *string_command;
@@ -351,34 +401,40 @@ struct ConfigEntry {
 
 /* vim-tabularize is cool, i swear */
 static struct Command c[] = {
-	{ &quot;window_move&quot;            , IPCWindowMove           ,  2 , fn_offset   } ,
-	{ &quot;window_move_absolute&quot;   , IPCWindowMoveAbsolute   ,  2 , fn_offset   } ,
-	{ &quot;window_resize&quot;          , IPCWindowResize         ,  2 , fn_offset   } ,
-	{ &quot;window_resize_absolute&quot; , IPCWindowResizeAbsolute ,  2 , fn_naturals } ,
-	{ &quot;window_maximize&quot;        , IPCWindowMaximize       ,  0 , NULL        } ,
-	{ &quot;window_hor_maximize&quot;    , IPCWindowHorMaximize    ,  0 , NULL        } ,
-	{ &quot;window_ver_maximize&quot;    , IPCWindowVerMaximize    ,  0 , NULL        } ,
-	{ &quot;window_close&quot;           , IPCWindowClose          ,  0 , NULL        } ,
-	{ &quot;window_put_in_grid&quot;     , IPCWindowPutInGrid      ,  4 , fn_naturals } ,
-	{ &quot;window_snap&quot;            , IPCWindowSnap           ,  1 , fn_position } ,
-	{ &quot;window_cycle&quot;           , IPCWindowCycle          ,  0 , NULL        } ,
-	{ &quot;window_rev_cycle&quot;       , IPCWindowRevCycle       ,  0 , NULL        } ,
-	{ &quot;group_add_window&quot;       , IPCGroupAddWindow       ,  1 , fn_naturals } ,
-	{ &quot;group_remove_window&quot;    , IPCGroupRemoveWindow    ,  0 , NULL        } ,
-	{ &quot;group_activate&quot;         , IPCGroupActivate        ,  1 , fn_naturals } ,
-	{ &quot;group_deactivate&quot;       , IPCGroupDeactivate      ,  1 , fn_naturals } ,
-	{ &quot;group_toggle&quot;           , IPCGroupToggle          ,  1 , fn_naturals } ,
-	{ &quot;wm_quit&quot;                , IPCWMQuit               ,  1 , fn_naturals } ,
-	{ &quot;wm_change_nr_of_groups&quot; , IPCWMChangeNrOfGroups   ,  1 , fn_naturals } ,
-	{ &quot;wm_config&quot;              , IPCWMConfig             ,  2 , fn_config   },
+	{ &quot;window_move&quot;               , IPCWindowMove            ,  2 , fn_offset   } ,
+	{ &quot;window_move_absolute&quot;      , IPCWindowMoveAbsolute    ,  2 , fn_offset   } ,
+	{ &quot;window_resize&quot;             , IPCWindowResize          ,  2 , fn_offset   } ,
+	{ &quot;window_resize_absolute&quot;    , IPCWindowResizeAbsolute  ,  2 , fn_naturals } ,
+	{ &quot;window_maximize&quot;           , IPCWindowMaximize        ,  0 , NULL        } ,
+	{ &quot;window_hor_maximize&quot;       , IPCWindowHorMaximize     ,  0 , NULL        } ,
+	{ &quot;window_ver_maximize&quot;       , IPCWindowVerMaximize     ,  0 , NULL        } ,
+	{ &quot;window_close&quot;              , IPCWindowClose           ,  0 , NULL        } ,
+	{ &quot;window_put_in_grid&quot;        , IPCWindowPutInGrid       ,  4 , fn_naturals } ,
+	{ &quot;window_snap&quot;               , IPCWindowSnap            ,  1 , fn_position } ,
+	{ &quot;window_cycle&quot;              , IPCWindowCycle           ,  0 , NULL        } ,
+	{ &quot;window_rev_cycle&quot;          , IPCWindowRevCycle        ,  0 , NULL        } ,
+	{ &quot;window_cycle_in_group&quot;     , IPCWindowCycleInGroup    ,  0 , NULL        } ,
+	{ &quot;window_rev_cycle_in_group&quot; , IPCWindowRevCycleInGroup ,  0 , NULL        } ,
+	{ &quot;window_focus&quot;              , IPCWindowFocus           ,  1 , fn_hex      } ,
+	{ &quot;group_add_window&quot;          , IPCGroupAddWindow        ,  1 , fn_naturals } ,
+	{ &quot;group_remove_window&quot;       , IPCGroupRemoveWindow     ,  0 , NULL        } ,
+	{ &quot;group_activate&quot;            , IPCGroupActivate         ,  1 , fn_naturals } ,
+	{ &quot;group_deactivate&quot;          , IPCGroupDeactivate       ,  1 , fn_naturals } ,
+	{ &quot;group_toggle&quot;              , IPCGroupToggle           ,  1 , fn_naturals } ,
+	{ &quot;mouse_start&quot;               , IPCMouseStart            ,  1 , fn_mouse    } ,
+	{ &quot;mouse_stop&quot;                , IPCMouseStop             ,  0 , NULL        } ,
+	{ &quot;mouse_toggle&quot;              , IPCMouseToggle           ,  1 , fn_mouse    } ,
+	{ &quot;wm_quit&quot;                   , IPCWMQuit                ,  1 , fn_naturals } ,
+	{ &quot;wm_config&quot;                 , IPCWMConfig              , -1 , fn_config   },
 };
 
 static struct ConfigEntry configs[] = {
 	{ &quot;border_width&quot;        , IPCConfigBorderWidth       , fn_naturals } ,
 	{ &quot;color_focused&quot;       , IPCConfigColorFocused      , fn_hex      } ,
 	{ &quot;color_unfocused&quot;     , IPCConfigColorUnfocused    , fn_hex      } ,
-	{ &quot;gap_width&quot;           , IPCConfigGapWidth          , fn_naturals } ,
-	{ &quot;cursor_position&quot;     , IPCConfigCursorPosition    , fn_position   } ,
+	{ &quot;gap_width&quot;           , IPCConfigGapWidth          , fn_gap      } ,
+	{ &quot;grid_gap_width&quot;      , IPCConfigGridGapWidth      , fn_naturals } ,
+	{ &quot;cursor_position&quot;     , IPCConfigCursorPosition    , fn_position } ,
 	{ &quot;groups_nr&quot;           , IPCConfigGroupsNr          , fn_naturals } ,
 	{ &quot;enable_sloppy_focus&quot; , IPCConfigEnableSloppyFocus , fn_bool     } ,
 };
@@ -454,7 +510,6 @@ fn_config(uint32_t *data, int argc, char **argv) {
 		i++;
 
 	if (i &lt; NR_IPC_CONFIGS) {
-		/* XXX: hardcoded value */
 		data[0] = configs[i].config;
 		status = (configs[i].handler)(data + 1, argc - 1, argv + 1);
 
@@ -498,6 +553,16 @@ fn_position(uint32_t *data, int argc, char **argv)
 		snap_pos = BOTTOM_RIGHT;
 	else if (strcasecmp(pos, &quot;middle&quot;) == 0)
 		snap_pos = CENTER;
+	else if (strcasecmp(pos, &quot;left&quot;) == 0)
+		snap_pos = LEFT;
+	else if (strcasecmp(pos, &quot;bottom&quot;) == 0)
+		snap_pos = BOTTOM;
+	else if (strcasecmp(pos, &quot;top&quot;) == 0)
+		snap_pos = TOP;
+	else if (strcasecmp(pos, &quot;right&quot;) == 0)
+		snap_pos = RIGHT;
+	else if (strcasecmp(pos, &quot;all&quot;) == 0)
+		snap_pos = ALL;
 	else
 		return false;
 
@@ -505,6 +570,37 @@ fn_position(uint32_t *data, int argc, char **argv)
 	data[0] = snap_pos;
 
 	return true;
+}
+
+static bool
+fn_mouse(uint32_t *data, int argc, char **argv)
+{
+	char *pos = argv[0];
+	enum mouse_mode mode;
+
+	if (strcasecmp(pos, &quot;move&quot;) == 0)
+		mode = MOUSE_MOVE;
+	else if (strcasecmp(pos, &quot;resize&quot;) == 0)
+		mode = MOUSE_RESIZE;
+	else
+		return false;
+
+	(void)(argc);
+	data[0] = mode;
+
+	return true;
+}
+
+static bool
+fn_gap(uint32_t *data, int argc, char **argv)
+{
+	(void)(argc);
+	bool status = true;
+
+	status = status &amp;&amp; fn_position(data, 1, argv);
+	status = status &amp;&amp; fn_naturals(data + 1, 1, argv + 1);
+
+	return status;
 }
 
 static void

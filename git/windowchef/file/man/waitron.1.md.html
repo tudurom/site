@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> waitron.1.md (4029B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> waitron.1.md (4872B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -154,6 +154,34 @@
 <a href="#l136" id="l136">136</a>
 <a href="#l137" id="l137">137</a>
 <a href="#l138" id="l138">138</a>
+<a href="#l139" id="l139">139</a>
+<a href="#l140" id="l140">140</a>
+<a href="#l141" id="l141">141</a>
+<a href="#l142" id="l142">142</a>
+<a href="#l143" id="l143">143</a>
+<a href="#l144" id="l144">144</a>
+<a href="#l145" id="l145">145</a>
+<a href="#l146" id="l146">146</a>
+<a href="#l147" id="l147">147</a>
+<a href="#l148" id="l148">148</a>
+<a href="#l149" id="l149">149</a>
+<a href="#l150" id="l150">150</a>
+<a href="#l151" id="l151">151</a>
+<a href="#l152" id="l152">152</a>
+<a href="#l153" id="l153">153</a>
+<a href="#l154" id="l154">154</a>
+<a href="#l155" id="l155">155</a>
+<a href="#l156" id="l156">156</a>
+<a href="#l157" id="l157">157</a>
+<a href="#l158" id="l158">158</a>
+<a href="#l159" id="l159">159</a>
+<a href="#l160" id="l160">160</a>
+<a href="#l161" id="l161">161</a>
+<a href="#l162" id="l162">162</a>
+<a href="#l163" id="l163">163</a>
+<a href="#l164" id="l164">164</a>
+<a href="#l165" id="l165">165</a>
+<a href="#l166" id="l166">166</a>
 </pre></td><td><pre>
 waitron(1) -- A client for windowchef(1)
 ==========================================
@@ -182,6 +210,9 @@ anything on `stdout`.
 	true values: `true` | `t` | `yes` | `y` | `1`
 
 	false values: `false` | `f` | `no` | `n` | `0`
+
+* `MOUSE`:
+	move | resize
 
 ## COMMANDS
 
@@ -219,6 +250,7 @@ anything on `stdout`.
 	Moves and resizes the focused windows accordingly to fit in a cell defined
 	by the &lt;cell_x&gt; and &lt;cell_y&gt; coordinates in a virtual grid with width
 	&lt;grid_width&gt; and height &lt;grid_height&gt; on the current monitor.
+	Gaps around the windows in the grid can be added along with monitor gaps.
 
 * `window_snap` &lt;POSITION&gt;:
 	Snap the window on the screen in a position defined by &lt;POSITION&gt;.
@@ -228,6 +260,18 @@ anything on `stdout`.
 
 * `window_rev_cycle`:
 	Reverse cycle through mapped windows.
+
+* `window_cycle_in_group`:
+	Cycle trough mapped windows that belong to the same group as the
+	focused window.
+
+* `window_rev_cycle_in_group`:
+	Reverse cycle through mapped windows that belong to the same group as the
+	focused window.
+
+* `window_focus` &lt;id&gt;:
+	Focus window by &lt;id&gt;. The &lt;id&gt; can be found using pfw(1) or lsw(1) from
+	[wmutils](https://github.com/wmutils/core/).
 
 * `group_add_window` &lt;group_nr&gt;:
 	Add the focused window to the &lt;group_nr&gt; group.
@@ -245,6 +289,15 @@ anything on `stdout`.
 
 * `group_toggle` &lt;group_nr&gt;:
 	Toggle the &lt;group_nr&gt; group.
+
+* `mouse_start` &lt;MOUSE&gt;:
+	Start tracking the pointer to move/resize the mouse.
+
+* `mouse_stop`:
+	Stop tracking the pointer.
+
+* `mouse_toggle` &lt;MOUSE&gt;:
+	If already tracking, stop. Else, track.
 
 * `wm_quit` &lt;exit_status&gt;:
 	Quit windowchef with exit_status &lt;exit_status&gt;.
@@ -271,12 +324,15 @@ are:
 	&lt;color&gt; is a hexadecimal value that may or may not start witht he `0x`
 	prefix. Example: `0x1234ef`.
 
-* `gap_width` &lt;width&gt;:
-	Sets the window gap value to &lt;width&gt;.
+* `gap_width` &lt;POSITION&gt; &lt;width&gt;:
+	Sets the window gap at &lt;POSITION&gt; to &lt;width&gt;. &lt;POSITION&gt; can be equal to
+	`all` to set all gaps to &lt;POSITION&gt;.
+
+* `grid_gap_width` &lt;width&gt;:
+	Sets the window gap value used in virtual grids to &lt;width&gt;.
 
 * `cursor_position` &lt;POSITION&gt;:
-	Sets the position of the cursor when moving or resizing windows. Possible
-	values for &lt;pos&gt; are:
+	Sets the position of the cursor when moving or resizing windows.
 
 * `groups_nr` &lt;nr&gt;:
 	Sets the number of groups to &lt;nr&gt;. If &lt;nr&gt; is less than the current number
@@ -288,7 +344,7 @@ are:
 
 ## SEE ALSO
 
-windowchef(1), sxhkd(1)
+windowchef(1), sxhkd(1), wmutils(1), pfw(1), lsw(1)
 
 ## AUTHOR
 

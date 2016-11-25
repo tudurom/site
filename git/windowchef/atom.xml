@@ -4,6 +4,435 @@
 <subtitle>windowchef is a stacking window cooker controlled by a remote control program, waitron
 </subtitle>
 <entry>
+<id>ca4b71b76e71c4d8d203eeec413a97b1a045b75e</id>
+<published>2016-10-07T17:43:11Z</published>
+<updated>2016-10-07T17:43:11Z</updated>
+<title type="text">fixed wrong gap on vertically/horizontally maximizing windows</title>
+<link rel="alternate" type="text/html" href="commit/ca4b71b76e71c4d8d203eeec413a97b1a045b75e.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit ca4b71b76e71c4d8d203eeec413a97b1a045b75e
+parent 0e515099f7d1a53a5840a15dd7aa4006c129ca05
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Oct  7 20:43:11 +0300
+
+fixed wrong gap on vertically/horizontally maximizing windows
+
+</content>
+</entry>
+<entry>
+<id>0e515099f7d1a53a5840a15dd7aa4006c129ca05</id>
+<published>2016-10-07T17:31:15Z</published>
+<updated>2016-10-07T17:31:15Z</updated>
+<title type="text">gaps for each part of the screen!</title>
+<link rel="alternate" type="text/html" href="commit/0e515099f7d1a53a5840a15dd7aa4006c129ca05.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 0e515099f7d1a53a5840a15dd7aa4006c129ca05
+parent 0486a60fe46268b2dc68f5f04e0fa262871b8f8c
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Oct  7 20:31:15 +0300
+
+gaps for each part of the screen!
+
+</content>
+</entry>
+<entry>
+<id>0486a60fe46268b2dc68f5f04e0fa262871b8f8c</id>
+<published>2016-10-04T20:14:54Z</published>
+<updated>2016-10-04T20:14:54Z</updated>
+<title type="text">remove debug messages</title>
+<link rel="alternate" type="text/html" href="commit/0486a60fe46268b2dc68f5f04e0fa262871b8f8c.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 0486a60fe46268b2dc68f5f04e0fa262871b8f8c
+parent 44a4d5b04557e151d99f313e9f930814edc6f11d
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Oct  4 23:14:54 +0300
+
+remove debug messages
+
+</content>
+</entry>
+<entry>
+<id>44a4d5b04557e151d99f313e9f930814edc6f11d</id>
+<published>2016-10-04T20:14:21Z</published>
+<updated>2016-10-04T20:14:21Z</updated>
+<title type="text">mouse! (the beginning)</title>
+<link rel="alternate" type="text/html" href="commit/44a4d5b04557e151d99f313e9f930814edc6f11d.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 44a4d5b04557e151d99f313e9f930814edc6f11d
+parent 6b1fa383d165f920e2b1c8c689e116e19f879f24
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Oct  4 23:14:21 +0300
+
+mouse! (the beginning)
+
+</content>
+</entry>
+<entry>
+<id>6b1fa383d165f920e2b1c8c689e116e19f879f24</id>
+<published>2016-10-04T16:43:55Z</published>
+<updated>2016-10-04T16:43:55Z</updated>
+<title type="text">remove infinite borders skeleton</title>
+<link rel="alternate" type="text/html" href="commit/6b1fa383d165f920e2b1c8c689e116e19f879f24.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 6b1fa383d165f920e2b1c8c689e116e19f879f24
+parent a44189ab8c0b250b54ff11bbb4184997a6969af4
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Oct  4 19:43:55 +0300
+
+remove infinite borders skeleton
+
+</content>
+</entry>
+<entry>
+<id>a44189ab8c0b250b54ff11bbb4184997a6969af4</id>
+<published>2016-10-04T15:57:13Z</published>
+<updated>2016-10-04T15:57:13Z</updated>
+<title type="text">fix math for virtual grids</title>
+<link rel="alternate" type="text/html" href="commit/a44189ab8c0b250b54ff11bbb4184997a6969af4.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit a44189ab8c0b250b54ff11bbb4184997a6969af4
+parent f68bc07491bd55c3e0babb1a9bab7de43088312b
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Oct  4 18:57:13 +0300
+
+fix math for virtual grids
+
+</content>
+</entry>
+<entry>
+<id>f68bc07491bd55c3e0babb1a9bab7de43088312b</id>
+<published>2016-10-02T17:35:59Z</published>
+<updated>2016-10-02T17:35:59Z</updated>
+<title type="text">if no window focused, cycle/rcycle focuses the first/last window</title>
+<link rel="alternate" type="text/html" href="commit/f68bc07491bd55c3e0babb1a9bab7de43088312b.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit f68bc07491bd55c3e0babb1a9bab7de43088312b
+parent 041363b0b2fb76b2da25fe81f17b7c4083948376
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun Oct  2 20:35:59 +0300
+
+if no window focused, cycle/rcycle focuses the first/last window
+
+</content>
+</entry>
+<entry>
+<id>041363b0b2fb76b2da25fe81f17b7c4083948376</id>
+<published>2016-10-02T17:24:21Z</published>
+<updated>2016-10-02T17:24:21Z</updated>
+<title type="text">update man page</title>
+<link rel="alternate" type="text/html" href="commit/041363b0b2fb76b2da25fe81f17b7c4083948376.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 041363b0b2fb76b2da25fe81f17b7c4083948376
+parent 5e6b37740d2df05d3b2ea63099f51a7fcee4a98f
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun Oct  2 20:24:21 +0300
+
+update man page
+
+</content>
+</entry>
+<entry>
+<id>5e6b37740d2df05d3b2ea63099f51a7fcee4a98f</id>
+<published>2016-10-02T17:02:46Z</published>
+<updated>2016-10-02T17:02:46Z</updated>
+<title type="text">grid gaps and cycle in groups</title>
+<link rel="alternate" type="text/html" href="commit/5e6b37740d2df05d3b2ea63099f51a7fcee4a98f.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 5e6b37740d2df05d3b2ea63099f51a7fcee4a98f
+parent b057e42a2f13820a6d869f2a38fd34f32ec22a59
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun Oct  2 20:02:46 +0300
+
+grid gaps and cycle in groups
+
+</content>
+</entry>
+<entry>
+<id>b057e42a2f13820a6d869f2a38fd34f32ec22a59</id>
+<published>2016-10-01T17:40:00Z</published>
+<updated>2016-10-01T17:40:00Z</updated>
+<title type="text">window gaps in virtual grids</title>
+<link rel="alternate" type="text/html" href="commit/b057e42a2f13820a6d869f2a38fd34f32ec22a59.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit b057e42a2f13820a6d869f2a38fd34f32ec22a59
+parent f3c8852f1bce88fb6d96f4132a4ecfc2720749bb
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Oct  1 20:40:00 +0300
+
+window gaps in virtual grids
+
+</content>
+</entry>
+<entry>
+<id>f3c8852f1bce88fb6d96f4132a4ecfc2720749bb</id>
+<published>2016-10-01T09:59:42Z</published>
+<updated>2016-10-01T09:59:42Z</updated>
+<title type="text">lay down foundation for unlimited borders</title>
+<link rel="alternate" type="text/html" href="commit/f3c8852f1bce88fb6d96f4132a4ecfc2720749bb.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit f3c8852f1bce88fb6d96f4132a4ecfc2720749bb
+parent 3df6b815a2fe00b2da99a3fa5ac1daa8db1b457a
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Oct  1 12:59:42 +0300
+
+lay down foundation for unlimited borders
+
+</content>
+</entry>
+<entry>
+<id>3df6b815a2fe00b2da99a3fa5ac1daa8db1b457a</id>
+<published>2016-09-29T18:41:51Z</published>
+<updated>2016-09-29T18:41:51Z</updated>
+<title type="text">fixed makefile</title>
+<link rel="alternate" type="text/html" href="commit/3df6b815a2fe00b2da99a3fa5ac1daa8db1b457a.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 3df6b815a2fe00b2da99a3fa5ac1daa8db1b457a
+parent 77c7bfde79b20de7200be79309185a84fc5fab05
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Sep 29 21:41:51 +0300
+
+fixed makefile
+
+</content>
+</entry>
+<entry>
+<id>77c7bfde79b20de7200be79309185a84fc5fab05</id>
+<published>2016-09-29T18:20:12Z</published>
+<updated>2016-09-29T18:20:12Z</updated>
+<title type="text">don&apos;t require the user to build the manual page</title>
+<link rel="alternate" type="text/html" href="commit/77c7bfde79b20de7200be79309185a84fc5fab05.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 77c7bfde79b20de7200be79309185a84fc5fab05
+parent f5e810dee75425dc5d630d15a5d3e5f0e0bb7371
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Sep 29 21:20:12 +0300
+
+don&apos;t require the user to build the manual page
+
+</content>
+</entry>
+<entry>
+<id>f5e810dee75425dc5d630d15a5d3e5f0e0bb7371</id>
+<published>2016-09-29T17:21:47Z</published>
+<updated>2016-09-29T17:21:47Z</updated>
+<title type="text">Merge pull request #3 from neosilky/memfix</title>
+<link rel="alternate" type="text/html" href="commit/f5e810dee75425dc5d630d15a5d3e5f0e0bb7371.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit f5e810dee75425dc5d630d15a5d3e5f0e0bb7371
+parent 4f9f61265e5bc749feb2be6cd4da858d1f4170bd
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Sep 29 20:21:47 +0300
+
+Merge pull request #3 from neosilky/memfix
+
+wm.c: free malloc&apos;d variable upon error
+</content>
+</entry>
+<entry>
+<id>4f9f61265e5bc749feb2be6cd4da858d1f4170bd</id>
+<published>2016-09-29T17:19:45Z</published>
+<updated>2016-09-29T17:19:45Z</updated>
+<title type="text">ewmh support for desktop type windows</title>
+<link rel="alternate" type="text/html" href="commit/4f9f61265e5bc749feb2be6cd4da858d1f4170bd.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 4f9f61265e5bc749feb2be6cd4da858d1f4170bd
+parent 000644e094a25996197bf2a0a7e302be340ce29b
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Sep 29 20:19:45 +0300
+
+ewmh support for desktop type windows
+
+</content>
+</entry>
+<entry>
+<id>000644e094a25996197bf2a0a7e302be340ce29b</id>
+<published>2016-09-28T18:56:22Z</published>
+<updated>2016-09-28T18:56:22Z</updated>
+<title type="text">removed ipc command wm_change_nr_of_groups and fixed the groups_nr config option</title>
+<link rel="alternate" type="text/html" href="commit/000644e094a25996197bf2a0a7e302be340ce29b.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 000644e094a25996197bf2a0a7e302be340ce29b
+parent baaeeb8d21568e2bd2887702054d5f19aa803bcb
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Sep 28 21:56:22 +0300
+
+removed ipc command wm_change_nr_of_groups and fixed the groups_nr config option
+
+</content>
+</entry>
+<entry>
+<id>baaeeb8d21568e2bd2887702054d5f19aa803bcb</id>
+<published>2016-09-28T12:15:54Z</published>
+<updated>2016-09-28T12:15:54Z</updated>
+<title type="text">Merge pull request #4 from neosilky/invalidread</title>
+<link rel="alternate" type="text/html" href="commit/baaeeb8d21568e2bd2887702054d5f19aa803bcb.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit baaeeb8d21568e2bd2887702054d5f19aa803bcb
+parent 262cafdd3412eca50522d61bbe5734c3e70fd84b
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Sep 28 15:15:54 +0300
+
+Merge pull request #4 from neosilky/invalidread
+
+wm.c: fix invalid read error
+</content>
+</entry>
+<entry>
+<id>262cafdd3412eca50522d61bbe5734c3e70fd84b</id>
+<published>2016-09-27T17:13:33Z</published>
+<updated>2016-09-27T17:13:33Z</updated>
+<title type="text">Merge pull request #2 from neosilky/memfix2</title>
+<link rel="alternate" type="text/html" href="commit/262cafdd3412eca50522d61bbe5734c3e70fd84b.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 262cafdd3412eca50522d61bbe5734c3e70fd84b
+parent 0761f632c852402608d1a7641444b21b2a576a3f
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Sep 27 20:13:33 +0300
+
+Merge pull request #2 from neosilky/memfix2
+
+wm.c: cleanup malloc&apos;d variable
+</content>
+</entry>
+<entry>
+<id>0761f632c852402608d1a7641444b21b2a576a3f</id>
+<published>2016-09-27T17:13:18Z</published>
+<updated>2016-09-27T17:13:18Z</updated>
+<title type="text">Merge pull request #1 from neosilky/memfix</title>
+<link rel="alternate" type="text/html" href="commit/0761f632c852402608d1a7641444b21b2a576a3f.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 0761f632c852402608d1a7641444b21b2a576a3f
+parent c5f96b2a1eb72e1aa9045195f3c9498744910eec
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Sep 27 20:13:18 +0300
+
+Merge pull request #1 from neosilky/memfix
+
+wm.c: cleanup malloc&apos;d variable if error
+</content>
+</entry>
+<entry>
+<id>c5f96b2a1eb72e1aa9045195f3c9498744910eec</id>
+<published>2016-09-26T18:03:14Z</published>
+<updated>2016-09-26T18:03:14Z</updated>
+<title type="text">durkn</title>
+<link rel="alternate" type="text/html" href="commit/c5f96b2a1eb72e1aa9045195f3c9498744910eec.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit c5f96b2a1eb72e1aa9045195f3c9498744910eec
+parent 9e6885fa6533509fe49394aa888d1bd488a4d48b
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Sep 26 21:03:14 +0300
+
+durkn
+
+</content>
+</entry>
+<entry>
+<id>9e6885fa6533509fe49394aa888d1bd488a4d48b</id>
+<published>2016-09-26T15:53:45Z</published>
+<updated>2016-09-26T15:53:45Z</updated>
+<title type="text">README changes</title>
+<link rel="alternate" type="text/html" href="commit/9e6885fa6533509fe49394aa888d1bd488a4d48b.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 9e6885fa6533509fe49394aa888d1bd488a4d48b
+parent a9fd53702c484edc4dfd01763c180ffb82990515
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Mon Sep 26 18:53:45 +0300
+
+README changes
+
+</content>
+</entry>
+<entry>
+<id>a9fd53702c484edc4dfd01763c180ffb82990515</id>
+<published>2016-09-25T15:59:09Z</published>
+<updated>2016-09-25T15:59:09Z</updated>
+<title type="text">make windowchef handle focus events from other programs (like wtf(1))</title>
+<link rel="alternate" type="text/html" href="commit/a9fd53702c484edc4dfd01763c180ffb82990515.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit a9fd53702c484edc4dfd01763c180ffb82990515
+parent 6a0c967210d3cdb00de8c3a70b54f9ed7989e9ba
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun Sep 25 18:59:09 +0300
+
+make windowchef handle focus events from other programs (like wtf(1))
+
+</content>
+</entry>
+<entry>
+<id>6a0c967210d3cdb00de8c3a70b54f9ed7989e9ba</id>
+<published>2016-09-24T19:02:01Z</published>
+<updated>2016-09-24T19:02:01Z</updated>
+<title type="text">added ipc_window_focus and fixed code style</title>
+<link rel="alternate" type="text/html" href="commit/6a0c967210d3cdb00de8c3a70b54f9ed7989e9ba.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 6a0c967210d3cdb00de8c3a70b54f9ed7989e9ba
+parent e38691066f80a6f7028e37f0a6a22c60f79db06e
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Sep 24 22:02:01 +0300
+
+added ipc_window_focus and fixed code style
+
+</content>
+</entry>
+<entry>
+<id>e38691066f80a6f7028e37f0a6a22c60f79db06e</id>
+<published>2016-09-21T18:36:09Z</published>
+<updated>2016-09-21T18:36:09Z</updated>
+<title type="text">fix segfault when reverse cycling</title>
+<link rel="alternate" type="text/html" href="commit/e38691066f80a6f7028e37f0a6a22c60f79db06e.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit e38691066f80a6f7028e37f0a6a22c60f79db06e
+parent 9282952ea230007828c9871149335f4f1b6d2ee3
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Wed Sep 21 21:36:09 +0300
+
+fix segfault when reverse cycling
+
+</content>
+</entry>
+<entry>
+<id>9282952ea230007828c9871149335f4f1b6d2ee3</id>
+<published>2016-09-20T18:38:08Z</published>
+<updated>2016-09-20T18:38:08Z</updated>
+<title type="text">fix segfault when window is ignored</title>
+<link rel="alternate" type="text/html" href="commit/9282952ea230007828c9871149335f4f1b6d2ee3.html" /><author><name>Tudor</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 9282952ea230007828c9871149335f4f1b6d2ee3
+parent 25ec980ed504b60a7a2cde639b7ceded9ae42b8a
+Author: Tudor &lt;xenogenesis@openmailbox.org&gt;
+Date:   Tue Sep 20 21:38:08 +0300
+
+fix segfault when window is ignored
+
+</content>
+</entry>
+<entry>
 <id>25ec980ed504b60a7a2cde639b7ceded9ae42b8a</id>
 <published>2016-09-19T16:36:03Z</published>
 <updated>2016-09-19T16:36:03Z</updated>

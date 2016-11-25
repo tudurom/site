@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>ewmh support for desktop type windows - windowchef - windowchef is a stacking window cooker controlled by a remote control program, waitron
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="windowchef.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>windowchef</h1><span class="desc">windowchef is a stacking window cooker controlled by a remote control program, waitron
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/windowchef.git">git://thetudor.ddns.net/windowchef.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/4f9f61265e5bc749feb2be6cd4da858d1f4170bd.html">4f9f61265e5bc749feb2be6cd4da858d1f4170bd</a>
+<b>parent</b> <a href="../commit/000644e094a25996197bf2a0a7e302be340ce29b.html">000644e094a25996197bf2a0a7e302be340ce29b</a>
+<b>Author:</b> Tudor Roman &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Thu Sep 29 20:19:45 +0300
+
+ewmh support for desktop type windows
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">wm.c</a></td><td> | </td><td class="num">7</td><td><span class="i">++++</span><span class="d">---</span></td></tr>
+</table>1 file changed, 4 insertions(+), 3 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/wm.c.html">wm.c</a> b/<a href="../file/wm.c.html">wm.c</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -205,7 +205,7 @@ setup(void)
+</a> 		ewmh-&gt;_NET_WM_STATE_MAXIMIZED_HORZ , ewmh-&gt;_NET_WM_NAME                 ,
+ 		ewmh-&gt;_NET_WM_ICON_NAME            , ewmh-&gt;_NET_WM_WINDOW_TYPE          ,
+ 		ewmh-&gt;_NET_WM_WINDOW_TYPE_DOCK     , ewmh-&gt;_NET_WM_PID                  ,
+<a href="#h0-0-3" id="h0-0-3" class="d">-		ewmh-&gt;_NET_WM_WINDOW_TYPE_TOOLBAR  ,
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+		ewmh-&gt;_NET_WM_WINDOW_TYPE_TOOLBAR  , ewmh-&gt;_NET_WM_WINDOW_TYPE_DESKTOP  ,
+</a> 	};
+ 	xcb_ewmh_set_supported(ewmh, scrno, sizeof(supported_atoms) / sizeof(xcb_atom_t), supported_atoms);
+ 
+<a href="#h0-1" id="h0-1" class="h">@@ -532,8 +532,9 @@ setup_window(xcb_window_t win)
+</a> 		unsigned int i = 0;
+ 		/* if the window is a toolbar or a dock, map it and ignore it */
+ 		while (i &lt; win_type.atoms_len &amp;&amp;
+<a href="#h0-1-3" id="h0-1-3" class="d">-			(atom = win_type.atoms[i]) != ewmh-&gt;_NET_WM_WINDOW_TYPE_TOOLBAR &amp;&amp;
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-			atom != ewmh-&gt;_NET_WM_WINDOW_TYPE_DOCK)
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+			(atom = win_type.atoms[i]) != ewmh-&gt;_NET_WM_WINDOW_TYPE_TOOLBAR
+</a><a href="#h0-1-6" id="h0-1-6" class="i">+			&amp;&amp; atom != ewmh-&gt;_NET_WM_WINDOW_TYPE_DOCK
+</a><a href="#h0-1-7" id="h0-1-7" class="i">+			&amp;&amp; atom != ewmh-&gt;_NET_WM_WINDOW_TYPE_DESKTOP)
+</a> 			i++;
+ 
+ 		if (i &lt; win_type.atoms_len) {
+</pre>
+</div>
+</body>
+</html>

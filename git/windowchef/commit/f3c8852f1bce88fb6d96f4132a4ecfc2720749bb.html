@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>lay down foundation for unlimited borders - windowchef - windowchef is a stacking window cooker controlled by a remote control program, waitron
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="windowchef.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>windowchef</h1><span class="desc">windowchef is a stacking window cooker controlled by a remote control program, waitron
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/windowchef.git">git://thetudor.ddns.net/windowchef.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/f3c8852f1bce88fb6d96f4132a4ecfc2720749bb.html">f3c8852f1bce88fb6d96f4132a4ecfc2720749bb</a>
+<b>parent</b> <a href="../commit/3df6b815a2fe00b2da99a3fa5ac1daa8db1b457a.html">3df6b815a2fe00b2da99a3fa5ac1daa8db1b457a</a>
+<b>Author:</b> Tudor Roman &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sat Oct  1 12:59:42 +0300
+
+lay down foundation for unlimited borders
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">.sxhkdrc</a></td><td> | </td><td class="num">28</td><td><span class="i">++++++++++++++</span><span class="d">--------------</span></td></tr>
+<tr><td><a href="#h1">config.h</a></td><td> | </td><td class="num">5</td><td><span class="i">+++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h2">ipc.h</a></td><td> | </td><td class="num">2</td><td><span class="i">++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h3">man/waitron.1</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h4">man/waitron.1.html</a></td><td> | </td><td class="num">5</td><td><span class="i">++</span><span class="d">---</span></td></tr>
+<tr><td><a href="#h5">man/waitron.1.md</a></td><td> | </td><td class="num">3</td><td><span class="i">+</span><span class="d">--</span></td></tr>
+<tr><td><a href="#h6">types.h</a></td><td> | </td><td class="num">6</td><td><span class="i">++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h7">windowchefrc</a></td><td> | </td><td class="num">14</td><td><span class="i">+++++++</span><span class="d">-------</span></td></tr>
+<tr><td><a href="#h8">wm.c</a></td><td> | </td><td class="num">48</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table>9 files changed, 87 insertions(+), 28 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.sxhkdrc.html">.sxhkdrc</a> b/<a href="../file/.sxhkdrc.html">.sxhkdrc</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,44 +1,44 @@
+</a> super + {h,j,k,l}
+<a href="#h0-0-1" id="h0-0-1" class="d">-  waitron window_move {-20 0, 0 20, 0 -20, 20 0}
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+  ./waitron window_move {-20 0, 0 20, 0 -20, 20 0}
+</a> 
+ super + alt + {h,j,k,l}
+<a href="#h0-0-5" id="h0-0-5" class="d">-  waitron window_resize {-20 0, 0 20, 0 -20, 20 0}
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+  ./waitron window_resize {-20 0, 0 20, 0 -20, 20 0}
+</a> 
+ super + shift + {h,j,k,l}
+<a href="#h0-0-9" id="h0-0-9" class="d">-  waitron window_move {-50 0, 0 50, 0 -50, 50 0}
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+  ./waitron window_move {-50 0, 0 50, 0 -50, 50 0}
+</a> 
+ super + shift + alt + {h,j,k,l}
+<a href="#h0-0-13" id="h0-0-13" class="d">-  waitron window_resize {-50 0, 0 50, 0 -50, 50 0}
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+  ./waitron window_resize {-50 0, 0 50, 0 -50, 50 0}
+</a> 
+ super + alt + Escape
+<a href="#h0-0-17" id="h0-0-17" class="d">-  waitron wm_quit 0
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+  ./waitron wm_quit 0
+</a> 
+ super + f
+<a href="#h0-0-21" id="h0-0-21" class="d">-  waitron window_maximize
+</a><a href="#h0-0-22" id="h0-0-22" class="i">+  ./waitron window_maximize
+</a> 
+ super + w
+<a href="#h0-0-25" id="h0-0-25" class="d">-  waitron window_close
+</a><a href="#h0-0-26" id="h0-0-26" class="i">+  ./waitron window_close
+</a> 
+ super + b
+<a href="#h0-0-29" id="h0-0-29" class="d">-  waitron window_hor_maximize
+</a><a href="#h0-0-30" id="h0-0-30" class="i">+  ./waitron window_hor_maximize
+</a> 
+ super + v
+<a href="#h0-0-33" id="h0-0-33" class="d">-  waitron window_ver_maximize
+</a><a href="#h0-0-34" id="h0-0-34" class="i">+  ./waitron window_ver_maximize
+</a> 
+ alt + Tab
+<a href="#h0-0-37" id="h0-0-37" class="d">-  waitron window_cycle
+</a><a href="#h0-0-38" id="h0-0-38" class="i">+  ./waitron window_cycle
+</a> 
+ alt + shift + Tab
+<a href="#h0-0-41" id="h0-0-41" class="d">-  waitron window_rev_cycle
+</a><a href="#h0-0-42" id="h0-0-42" class="i">+  ./waitron window_rev_cycle
+</a> 
+ super + {_,shift +}{1-4}
+<a href="#h0-0-45" id="h0-0-45" class="d">-  waitron {group_toggle,group_add_window} {1-4}
+</a><a href="#h0-0-46" id="h0-0-46" class="i">+  ./waitron {group_toggle,group_add_window} {1-4}
+</a> 
+ super + ctrl + r
+<a href="#h0-0-49" id="h0-0-49" class="d">-  waitron group_remove_window
+</a><a href="#h0-0-50" id="h0-0-50" class="i">+  ./waitron group_remove_window
+</a> 
+ super + Return
+   urxvt
+ 
+ super + {Insert,Prior,Delete,Next,End}
+<a href="#h0-0-56" id="h0-0-56" class="d">-  waitron window_snap {topleft,topright,bottomleft,bottomright,middle}
+</a><a href="#h0-0-57" id="h0-0-57" class="i">+  ./waitron window_snap {topleft,topright,bottomleft,bottomright,middle}
+</a><b>diff --git a/<a id="h1" href="../file/config.h.html">config.h</a> b/<a href="../file/config.h.html">config.h</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -4,16 +4,21 @@
+</a> #define _CONFIG_H
+ 
+ #define BORDER_WIDTH 5
+<a href="#h1-0-3" id="h1-0-3" class="i">+
+</a> /* colors are HTML colors that start in &quot;0x&quot; instead of &quot;#&quot; */
+ #define COLOR_FOCUS 0x97a293
+ #define COLOR_UNFOCUS 0x393638
+<a href="#h1-0-7" id="h1-0-7" class="i">+
+</a> /* gap between the window and the edge of the monitor
+  * when snapping or vertically/horizontally maximizing window */
+ #define GAP 20
+<a href="#h1-0-11" id="h1-0-11" class="i">+
+</a> /* where to place the cursor when moving/resizing the window */
+ #define CURSOR_POSITION CENTER
+<a href="#h1-0-14" id="h1-0-14" class="i">+
+</a> /* number of starting groups, can be modified with waitron at run-time */
+ #define GROUPS 4
+<a href="#h1-0-17" id="h1-0-17" class="i">+
+</a> /* focus windows after hovering them with the pointer */
+ #define SLOPPY_FOCUS true
+ 
+<b>diff --git a/<a id="h2" href="../file/ipc.h.html">ipc.h</a> b/<a href="../file/ipc.h.html">ipc.h</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -27,6 +27,7 @@ enum IPCCommand {
+</a> 	IPCGroupActivate,
+ 	IPCGroupDeactivate,
+ 	IPCGroupToggle,
+<a href="#h2-0-3" id="h2-0-3" class="i">+	IPCBorderSet,
+</a> 	IPCWMQuit,
+ 	IPCWMConfig,
+ 	NR_IPC_COMMANDS
+<a href="#h2-1" id="h2-1" class="h">@@ -40,6 +41,7 @@ enum IPCConfig {
+</a> 	IPCConfigCursorPosition,
+ 	IPCConfigGroupsNr,
+ 	IPCConfigEnableSloppyFocus,
+<a href="#h2-1-3" id="h2-1-3" class="i">+	IPCConfigNrOfBorders,
+</a> 	NR_IPC_CONFIGS
+ };
+ 
+<b>diff --git a/<a id="h3" href="../file/man/waitron.1.html">man/waitron.1</a> b/<a href="../file/man/waitron.1.html">man/waitron.1</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -1,7 +1,7 @@
+</a> .\&quot; generated with Ronn/v0.7.3
+ .\&quot; http://github.com/rtomayko/ronn/tree/0.7.3
+ .
+<a href="#h3-0-3" id="h3-0-3" class="d">-.TH &quot;WAITRON&quot; &quot;1&quot; &quot;September 2016&quot; &quot;&quot; &quot;Windowchef Manual&quot;
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+.TH &quot;WAITRON&quot; &quot;1&quot; &quot;October 2016&quot; &quot;&quot; &quot;Windowchef Manual&quot;
+</a> .
+ .SH &quot;NAME&quot;
+ \fBwaitron\fR \- A client for windowchef(1)
+<a href="#h3-1" id="h3-1" class="h">@@ -140,7 +140,7 @@ Sets the window gap value to \fIwidth\fR\.
+</a> .
+ .TP
+ \fBcursor_position\fR \fIPOSITION\fR
+<a href="#h3-1-3" id="h3-1-3" class="d">-Sets the position of the cursor when moving or resizing windows\. Possible values for \fIpos\fR are:
+</a><a href="#h3-1-4" id="h3-1-4" class="i">+Sets the position of the cursor when moving or resizing windows\.
+</a> .
+ .TP
+ \fBgroups_nr\fR \fInr\fR
+<b>diff --git a/<a id="h4" href="../file/man/waitron.1.html.html">man/waitron.1.html</a> b/<a href="../file/man/waitron.1.html.html">man/waitron.1.html</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -154,8 +154,7 @@ are:&lt;/p&gt;
+</a>   &lt;var&gt;color&lt;/var&gt; is a hexadecimal value that may or may not start witht he &lt;code&gt;0x&lt;/code&gt;
+   prefix. Example: &lt;code&gt;0x1234ef&lt;/code&gt;.&lt;/p&gt;&lt;/dd&gt;
+ &lt;dt&gt;&lt;code&gt;gap_width&lt;/code&gt; &lt;var&gt;width&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Sets the window gap value to &lt;var&gt;width&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
+<a href="#h4-0-3" id="h4-0-3" class="d">-&lt;dt&gt;&lt;code&gt;cursor_position&lt;/code&gt; &lt;var&gt;POSITION&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Sets the position of the cursor when moving or resizing windows. Possible
+</a><a href="#h4-0-4" id="h4-0-4" class="d">-  values for &lt;var&gt;pos&lt;/var&gt; are:&lt;/p&gt;&lt;/dd&gt;
+</a><a href="#h4-0-5" id="h4-0-5" class="i">+&lt;dt&gt;&lt;code&gt;cursor_position&lt;/code&gt; &lt;var&gt;POSITION&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Sets the position of the cursor when moving or resizing windows.&lt;/p&gt;&lt;/dd&gt;
+</a> &lt;dt&gt;&lt;code&gt;groups_nr&lt;/code&gt; &lt;var&gt;nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Sets the number of groups to &lt;var&gt;nr&lt;/var&gt;. If &lt;var&gt;nr&lt;/var&gt; is less than the current number
+   of groups, window that belong to groups whose numbers are greater than &lt;var&gt;nr&lt;/var&gt;
+   will be mapped to screen and assigned to the null group.&lt;/p&gt;&lt;/dd&gt;
+<a href="#h4-1" id="h4-1" class="h">@@ -174,7 +173,7 @@ are:&lt;/p&gt;
+</a> 
+   &lt;ol class=&apos;man-decor man-foot man foot&apos;&gt;
+     &lt;li class=&apos;tl&apos;&gt;&lt;/li&gt;
+<a href="#h4-1-3" id="h4-1-3" class="d">-    &lt;li class=&apos;tc&apos;&gt;September 2016&lt;/li&gt;
+</a><a href="#h4-1-4" id="h4-1-4" class="i">+    &lt;li class=&apos;tc&apos;&gt;October 2016&lt;/li&gt;
+</a>     &lt;li class=&apos;tr&apos;&gt;waitron(1)&lt;/li&gt;
+   &lt;/ol&gt;
+ 
+<b>diff --git a/<a id="h5" href="../file/man/waitron.1.md.html">man/waitron.1.md</a> b/<a href="../file/man/waitron.1.md.html">man/waitron.1.md</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -122,8 +122,7 @@ are:
+</a> 	Sets the window gap value to &lt;width&gt;.
+ 
+ * `cursor_position` &lt;POSITION&gt;:
+<a href="#h5-0-3" id="h5-0-3" class="d">-	Sets the position of the cursor when moving or resizing windows. Possible
+</a><a href="#h5-0-4" id="h5-0-4" class="d">-	values for &lt;pos&gt; are:
+</a><a href="#h5-0-5" id="h5-0-5" class="i">+	Sets the position of the cursor when moving or resizing windows.
+</a> 
+ * `groups_nr` &lt;nr&gt;:
+ 	Sets the number of groups to &lt;nr&gt;. If &lt;nr&gt; is less than the current number
+<b>diff --git a/<a id="h6" href="../file/types.h.html">types.h</a> b/<a href="../file/types.h.html">types.h</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -46,6 +46,12 @@ struct conf {
+</a>     enum position cursor_position;
+     uint32_t groups;
+     bool sloppy_focus;
+<a href="#h6-0-3" id="h6-0-3" class="i">+    uint8_t borders;
+</a><a href="#h6-0-4" id="h6-0-4" class="i">+};
+</a><a href="#h6-0-5" id="h6-0-5" class="i">+
+</a><a href="#h6-0-6" id="h6-0-6" class="i">+struct border {
+</a><a href="#h6-0-7" id="h6-0-7" class="i">+	int8_t width;
+</a><a href="#h6-0-8" id="h6-0-8" class="i">+	uint32_t color;
+</a> };
+ 
+ #endif
+<b>diff --git a/<a id="h7" href="../file/windowchefrc.html">windowchefrc</a> b/<a href="../file/windowchefrc.html">windowchefrc</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -1,9 +1,9 @@
+</a> #!/bin/sh
+ 
+<a href="#h7-0-2" id="h7-0-2" class="d">-waitron wm_config border_width 5
+</a><a href="#h7-0-3" id="h7-0-3" class="d">-waitron wm_config color_focused 0x97a293
+</a><a href="#h7-0-4" id="h7-0-4" class="d">-waitron wm_config color_unfocused 0x393638
+</a><a href="#h7-0-5" id="h7-0-5" class="d">-waitron wm_config gap_width 20
+</a><a href="#h7-0-6" id="h7-0-6" class="d">-waitron wm_config cursor_position middle
+</a><a href="#h7-0-7" id="h7-0-7" class="d">-waitron wm_config groups_nr 4
+</a><a href="#h7-0-8" id="h7-0-8" class="d">-waitron wm_config enable_sloppy_focus true
+</a><a href="#h7-0-9" id="h7-0-9" class="i">+./waitron wm_config border_width 5
+</a><a href="#h7-0-10" id="h7-0-10" class="i">+./waitron wm_config color_focused 0x97a293
+</a><a href="#h7-0-11" id="h7-0-11" class="i">+./waitron wm_config color_unfocused 0x393638
+</a><a href="#h7-0-12" id="h7-0-12" class="i">+./waitron wm_config gap_width 20
+</a><a href="#h7-0-13" id="h7-0-13" class="i">+./waitron wm_config cursor_position middle
+</a><a href="#h7-0-14" id="h7-0-14" class="i">+./waitron wm_config groups_nr 4
+</a><a href="#h7-0-15" id="h7-0-15" class="i">+./waitron wm_config enable_sloppy_focus true
+</a><b>diff --git a/<a id="h8" href="../file/wm.c.html">wm.c</a> b/<a href="../file/wm.c.html">wm.c</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -41,6 +41,7 @@ static int  randr_base;
+</a> static bool halt;
+ static int  exit_code;
+ static bool *group_in_use;
+<a href="#h8-0-3" id="h8-0-3" class="i">+static struct border *borders_in_use;
+</a> /* list of all windows. NULL is the empty list */
+ static struct list_item *win_list   = NULL;
+ static struct list_item *mon_list   = NULL;
+<a href="#h8-1" id="h8-1" class="h">@@ -104,6 +105,8 @@ static void group_activate(uint32_t);
+</a> static void group_deactivate(uint32_t);
+ static void group_toggle(uint32_t);
+ static void change_nr_of_groups(uint32_t);
+<a href="#h8-1-3" id="h8-1-3" class="i">+static void change_nr_of_borders(uint8_t);
+</a><a href="#h8-1-4" id="h8-1-4" class="i">+static void border_modify(uint8_t, uint8_t, uint32_t);
+</a> static void register_event_handlers(void);
+ static void event_configure_request(xcb_generic_event_t *);
+ static void event_destroy_notify(xcb_generic_event_t *);
+<a href="#h8-2" id="h8-2" class="h">@@ -224,6 +227,11 @@ setup(void)
+</a> 	for (uint32_t i = 0; i &lt; conf.groups; i++)
+ 		group_in_use[i] = false;
+ 
+<a href="#h8-2-3" id="h8-2-3" class="i">+	borders_in_use = malloc(conf.groups * sizeof(struct border));
+</a><a href="#h8-2-4" id="h8-2-4" class="i">+	for (uint8_t i = 0; i &lt; conf.borders; i++) {
+</a><a href="#h8-2-5" id="h8-2-5" class="i">+		borders_in_use[i].color = 0xffffff;
+</a><a href="#h8-2-6" id="h8-2-6" class="i">+		borders_in_use[i].width = 0;
+</a><a href="#h8-2-7" id="h8-2-7" class="i">+	}
+</a> 	return 0;
+ }
+ 
+<a href="#h8-3" id="h8-3" class="h">@@ -1112,6 +1120,7 @@ center_pointer(struct client *client)
+</a> 	case CENTER:
+ 		cur_x = client-&gt;geom.width / 2;
+ 		cur_y = client-&gt;geom.height / 2;
+<a href="#h8-3-3" id="h8-3-3" class="i">+		break;
+</a> 	}
+ 
+ 	xcb_warp_pointer(conn, XCB_NONE, client-&gt;window, 0, 0, 0, 0, cur_x, cur_y);
+<a href="#h8-4" id="h8-4" class="h">@@ -1365,6 +1374,44 @@ change_nr_of_groups(uint32_t groups)
+</a> 	free(group_in_use);
+ 	group_in_use = copy;
+ }
+<a href="#h8-4-3" id="h8-4-3" class="i">+
+</a><a href="#h8-4-4" id="h8-4-4" class="i">+static void
+</a><a href="#h8-4-5" id="h8-4-5" class="i">+change_nr_of_borders(uint8_t border_nr)
+</a><a href="#h8-4-6" id="h8-4-6" class="i">+{
+</a><a href="#h8-4-7" id="h8-4-7" class="i">+	uint8_t to = border_nr &lt; conf.borders ? border_nr : conf.borders;
+</a><a href="#h8-4-8" id="h8-4-8" class="i">+
+</a><a href="#h8-4-9" id="h8-4-9" class="i">+	if (border_nr &gt;= conf.borders)
+</a><a href="#h8-4-10" id="h8-4-10" class="i">+		return;
+</a><a href="#h8-4-11" id="h8-4-11" class="i">+
+</a><a href="#h8-4-12" id="h8-4-12" class="i">+	struct border *new_borders;
+</a><a href="#h8-4-13" id="h8-4-13" class="i">+	new_borders = malloc(border_nr * sizeof(struct border));
+</a><a href="#h8-4-14" id="h8-4-14" class="i">+
+</a><a href="#h8-4-15" id="h8-4-15" class="i">+	if (new_borders == NULL)
+</a><a href="#h8-4-16" id="h8-4-16" class="i">+		return;
+</a><a href="#h8-4-17" id="h8-4-17" class="i">+
+</a><a href="#h8-4-18" id="h8-4-18" class="i">+	for (uint8_t i = 0; i &lt; to; i++)
+</a><a href="#h8-4-19" id="h8-4-19" class="i">+		new_borders[i] = borders_in_use[i];
+</a><a href="#h8-4-20" id="h8-4-20" class="i">+
+</a><a href="#h8-4-21" id="h8-4-21" class="i">+	if (border_nr &gt; conf.borders)
+</a><a href="#h8-4-22" id="h8-4-22" class="i">+		for (uint8_t i = to; i &lt; border_nr; i++) {
+</a><a href="#h8-4-23" id="h8-4-23" class="i">+			new_borders[i].width = 0;
+</a><a href="#h8-4-24" id="h8-4-24" class="i">+			new_borders[i].color = 0xffffff;
+</a><a href="#h8-4-25" id="h8-4-25" class="i">+		}
+</a><a href="#h8-4-26" id="h8-4-26" class="i">+
+</a><a href="#h8-4-27" id="h8-4-27" class="i">+	free(borders_in_use);
+</a><a href="#h8-4-28" id="h8-4-28" class="i">+	borders_in_use = new_borders;
+</a><a href="#h8-4-29" id="h8-4-29" class="i">+}
+</a><a href="#h8-4-30" id="h8-4-30" class="i">+
+</a><a href="#h8-4-31" id="h8-4-31" class="i">+static void
+</a><a href="#h8-4-32" id="h8-4-32" class="i">+border_modify(uint8_t border_nr, uint8_t width, uint32_t color)
+</a><a href="#h8-4-33" id="h8-4-33" class="i">+{
+</a><a href="#h8-4-34" id="h8-4-34" class="i">+	if (border_nr &gt;= conf.borders)
+</a><a href="#h8-4-35" id="h8-4-35" class="i">+		return;
+</a><a href="#h8-4-36" id="h8-4-36" class="i">+
+</a><a href="#h8-4-37" id="h8-4-37" class="i">+	borders_in_use[border_nr].width = width;
+</a><a href="#h8-4-38" id="h8-4-38" class="i">+	borders_in_use[border_nr].color = color;
+</a><a href="#h8-4-39" id="h8-4-39" class="i">+}
+</a><a href="#h8-4-40" id="h8-4-40" class="i">+
+</a> /*
+  * Adds X event handlers to the array.
+  */
+<a href="#h8-5" id="h8-5" class="h">@@ -2187,6 +2234,7 @@ load_defaults(void)
+</a> 	conf.cursor_position = CURSOR_POSITION;
+ 	conf.groups          = GROUPS;
+ 	conf.sloppy_focus    = SLOPPY_FOCUS;
+<a href="#h8-5-3" id="h8-5-3" class="i">+	conf.borders         = 1;
+</a> }
+ 
+ static void
+</pre>
+</div>
+</body>
+</html>

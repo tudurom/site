@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>make windowchef handle focus events from other programs (like wtf(1)) - windowchef - windowchef is a stacking window cooker controlled by a remote control program, waitron
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="windowchef.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>windowchef</h1><span class="desc">windowchef is a stacking window cooker controlled by a remote control program, waitron
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/windowchef.git">git://thetudor.ddns.net/windowchef.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/a9fd53702c484edc4dfd01763c180ffb82990515.html">a9fd53702c484edc4dfd01763c180ffb82990515</a>
+<b>parent</b> <a href="../commit/6a0c967210d3cdb00de8c3a70b54f9ed7989e9ba.html">6a0c967210d3cdb00de8c3a70b54f9ed7989e9ba</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Sep 25 18:59:09 +0300
+
+make windowchef handle focus events from other programs (like wtf(1))
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">wm.c</a></td><td> | </td><td class="num">41</td><td><span class="i">++++++++++++++++++++++++++++++</span><span class="d">-----------</span></td></tr>
+</table>1 file changed, 30 insertions(+), 11 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/wm.c.html">wm.c</a> b/<a href="../file/wm.c.html">wm.c</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -114,6 +114,7 @@ static void event_unmap_notify(xcb_generic_event_t *);
+</a> static void event_configure_notify(xcb_generic_event_t *);
+ static void event_circulate_request(xcb_generic_event_t *);
+ static void event_client_message(xcb_generic_event_t *);
+<a href="#h0-0-3" id="h0-0-3" class="i">+static void event_focus_out(xcb_generic_event_t *);
+</a> static void register_ipc_handlers(void);
+ static void ipc_window_move(uint32_t *);
+ static void ipc_window_move_absolute(uint32_t *);
+<a href="#h0-1" id="h0-1" class="h">@@ -178,8 +179,8 @@ setup(void)
+</a> 	focused_win = NULL;
+ 
+ 	mask = XCB_CW_EVENT_MASK;
+<a href="#h0-1-3" id="h0-1-3" class="d">-	values[0] = XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY | \
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-		XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT;
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+	values[0] = XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY
+</a><a href="#h0-1-6" id="h0-1-6" class="i">+		| XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT;
+</a> 	xcb_generic_error_t *e = xcb_request_check(conn,
+ 			xcb_change_window_attributes_checked(conn, scr-&gt;root,
+ 				mask, values));
+<a href="#h0-2" id="h0-2" class="h">@@ -539,7 +540,7 @@ setup_window(xcb_window_t win)
+</a> 	}
+ 
+ 	/* subscribe to events */
+<a href="#h0-2-3" id="h0-2-3" class="d">-	values[0] = XCB_EVENT_MASK_ENTER_WINDOW;
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+	values[0] = XCB_EVENT_MASK_ENTER_WINDOW | XCB_EVENT_MASK_FOCUS_CHANGE;
+</a> 	xcb_change_window_attributes(conn, win, XCB_CW_EVENT_MASK, values);
+ 
+ 	/* in case of fire */
+<a href="#h0-3" id="h0-3" class="h">@@ -1378,6 +1379,7 @@ register_event_handlers(void)
+</a> 	events[XCB_CLIENT_MESSAGE]    = event_client_message;
+ 	events[XCB_CONFIGURE_NOTIFY]  = event_configure_notify;
+ 	events[XCB_CIRCULATE_REQUEST] = event_circulate_request;
+<a href="#h0-3-3" id="h0-3-3" class="i">+	events[XCB_FOCUS_OUT]         = event_focus_out;
+</a> }
+ 
+ /*
+<a href="#h0-4" id="h0-4" class="h">@@ -1495,17 +1497,14 @@ event_enter_notify(xcb_generic_event_t *ev)
+</a> 
+ 	if (conf.sloppy_focus == false)
+ 		return;
+<a href="#h0-4-3" id="h0-4-3" class="d">-	if (e-&gt;mode == XCB_NOTIFY_MODE_NORMAL ||
+</a><a href="#h0-4-4" id="h0-4-4" class="d">-			e-&gt;mode == XCB_NOTIFY_MODE_UNGRAB) {
+</a><a href="#h0-4-5" id="h0-4-5" class="d">-		if (focused_win != NULL &amp;&amp; e-&gt;event == focused_win-&gt;window)
+</a><a href="#h0-4-6" id="h0-4-6" class="d">-			return;
+</a> 
+<a href="#h0-4-8" id="h0-4-8" class="d">-		client = find_client(&amp;e-&gt;event);
+</a><a href="#h0-4-9" id="h0-4-9" class="d">-		if (client == NULL || client-&gt;maxed)
+</a><a href="#h0-4-10" id="h0-4-10" class="d">-			return;
+</a><a href="#h0-4-11" id="h0-4-11" class="i">+	if (focused_win != NULL &amp;&amp; e-&gt;event == focused_win-&gt;window)
+</a><a href="#h0-4-12" id="h0-4-12" class="i">+		return;
+</a> 
+<a href="#h0-4-14" id="h0-4-14" class="i">+	client = find_client(&amp;e-&gt;event);
+</a><a href="#h0-4-15" id="h0-4-15" class="i">+
+</a><a href="#h0-4-16" id="h0-4-16" class="i">+	if (client != NULL &amp;&amp; !client-&gt;maxed)
+</a> 		set_focused_no_raise(client);
+<a href="#h0-4-18" id="h0-4-18" class="d">-	}
+</a> }
+ 
+ /*
+<a href="#h0-5" id="h0-5" class="h">@@ -1716,6 +1715,26 @@ event_client_message(xcb_generic_event_t *ev)
+</a> 	}
+ }
+ 
+<a href="#h0-5-3" id="h0-5-3" class="i">+static void
+</a><a href="#h0-5-4" id="h0-5-4" class="i">+event_focus_out(xcb_generic_event_t *ev)
+</a><a href="#h0-5-5" id="h0-5-5" class="i">+{
+</a><a href="#h0-5-6" id="h0-5-6" class="i">+	(void)(ev);
+</a><a href="#h0-5-7" id="h0-5-7" class="i">+	xcb_get_input_focus_reply_t *focus = xcb_get_input_focus_reply(conn,
+</a><a href="#h0-5-8" id="h0-5-8" class="i">+			xcb_get_input_focus(conn), NULL);
+</a><a href="#h0-5-9" id="h0-5-9" class="i">+	struct client *client = NULL;
+</a><a href="#h0-5-10" id="h0-5-10" class="i">+
+</a><a href="#h0-5-11" id="h0-5-11" class="i">+	if (focused_win != NULL &amp;&amp; focus-&gt;focus == focused_win-&gt;window)
+</a><a href="#h0-5-12" id="h0-5-12" class="i">+		return;
+</a><a href="#h0-5-13" id="h0-5-13" class="i">+
+</a><a href="#h0-5-14" id="h0-5-14" class="i">+	if (focus-&gt;focus == scr-&gt;root) {
+</a><a href="#h0-5-15" id="h0-5-15" class="i">+		focused_win = NULL;
+</a><a href="#h0-5-16" id="h0-5-16" class="i">+	} else {
+</a><a href="#h0-5-17" id="h0-5-17" class="i">+		client = find_client(&amp;focus-&gt;focus);
+</a><a href="#h0-5-18" id="h0-5-18" class="i">+		if (client != NULL)
+</a><a href="#h0-5-19" id="h0-5-19" class="i">+			set_focused_no_raise(client);
+</a><a href="#h0-5-20" id="h0-5-20" class="i">+	}
+</a><a href="#h0-5-21" id="h0-5-21" class="i">+}
+</a><a href="#h0-5-22" id="h0-5-22" class="i">+
+</a> /*
+  * Populates array with functions for handling IPC commands.
+  */
+</pre>
+</div>
+</body>
+</html>

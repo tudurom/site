@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>README changes - windowchef - windowchef is a stacking window cooker controlled by a remote control program, waitron
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="windowchef.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>windowchef</h1><span class="desc">windowchef is a stacking window cooker controlled by a remote control program, waitron
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/windowchef.git">git://thetudor.ddns.net/windowchef.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/9e6885fa6533509fe49394aa888d1bd488a4d48b.html">9e6885fa6533509fe49394aa888d1bd488a4d48b</a>
+<b>parent</b> <a href="../commit/a9fd53702c484edc4dfd01763c180ffb82990515.html">a9fd53702c484edc4dfd01763c180ffb82990515</a>
+<b>Author:</b> Tudor &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Mon Sep 26 18:53:45 +0300
+
+README changes
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">README.md</a></td><td> | </td><td class="num">18</td><td><span class="i">+++++++++</span><span class="d">---------</span></td></tr>
+</table>1 file changed, 9 insertions(+), 9 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -15,7 +15,7 @@ pointer inputs. A third party program (like `sxhkd`) is needed in order to
+</a> translate keyboard and pointer events to `waitron` commands.
+ 
+ Waitron is a program that sends commands to the window manager through X client
+<a href="#h0-0-3" id="h0-0-3" class="d">-messages. Waitron doesn&apos;t print anything on success. The commands and the
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+messages. It doesn&apos;t print anything on success. The commands and the
+</a> parameters are fed as program arguments and waitron delivers them to the
+ windowchef.
+ 
+<a href="#h0-1" id="h0-1" class="h">@@ -26,12 +26,13 @@ icccm.
+</a> Usage
+ -----
+ 
+<a href="#h0-1-3" id="h0-1-3" class="d">-See the bundled `.sxhkdrc` and `config.h` for an example of a basic
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-configuration.
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+See the bundled `.sxhkdrc` and `.windowchefrc` for an example of a basic
+</a><a href="#h0-1-6" id="h0-1-6" class="i">+configuration. Additionally, you can read the manual page (`windowchef(1)`).
+</a> 
+<a href="#h0-1-8" id="h0-1-8" class="d">-You can configure windowchef by editing the `config.h` file.
+</a><a href="#h0-1-9" id="h0-1-9" class="i">+The default configuration file is `~/.config/bspwm/bspwmrc`. It is usually
+</a><a href="#h0-1-10" id="h0-1-10" class="i">+a shell script that calls `waitron wm_config` for configuration. See the
+</a><a href="#h0-1-11" id="h0-1-11" class="i">+manual page for `waitron(1)` for details regarding this topic.
+</a> 
+<a href="#h0-1-13" id="h0-1-13" class="d">-Additionally, you can read the man page (`windowchef(1)`).
+</a> 
+ Features
+ --------
+<a href="#h0-2" id="h0-2" class="h">@@ -39,7 +40,7 @@ Features
+</a> * Move, teleport, enlarge/shrink and resize windows
+ * Maximize windows vertically/horizontally/fully
+ 	* Supports maximizing via EWMH
+<a href="#h0-2-3" id="h0-2-3" class="d">-* Close windows (either killing them or via ICCCM)
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+* Close windows (either by killing them or via ICCCM)
+</a> * Put windows in a virtual grid.
+ * Snap windows in the corners or in the middle of the screen
+ * Cycle windows forwards and backwards
+<a href="#h0-3" id="h0-3" class="h">@@ -50,12 +51,11 @@ Features
+</a> * Gaps around the monitor
+ * Configuration script. Windowchef loads a given script at startup that can be
+ 	used for configuration with waitron.
+<a href="#h0-3-3" id="h0-3-3" class="i">+* 100% compatible with window management utilities (e.g. [wmutils](https://github.com/wmutils/)). Windowchef will update its internal state if programs attempt to manage windows. It also applies the correct window decorations when a program focuses a window. This makes it possible to use it as a &quot;backend&quot; with wm utilities.
+</a> 
+ ### Soon to come
+ 
+<a href="#h0-3-7" id="h0-3-7" class="d">-- [ ] Infinite number of borders
+</a><a href="#h0-3-8" id="h0-3-8" class="d">-- [ ] Move windows with the mouse
+</a><a href="#h0-3-9" id="h0-3-9" class="d">-- [ ] Resize windows with the mouse
+</a><a href="#h0-3-10" id="h0-3-10" class="i">+- [ ] Configurable number of borders
+</a> 
+ ### Groups
+ 
+</pre>
+</div>
+</body>
+</html>

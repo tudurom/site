@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> types.h (919B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> types.h (1002B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -67,6 +67,18 @@
 <a href="#l49" id="l49">49</a>
 <a href="#l50" id="l50">50</a>
 <a href="#l51" id="l51">51</a>
+<a href="#l52" id="l52">52</a>
+<a href="#l53" id="l53">53</a>
+<a href="#l54" id="l54">54</a>
+<a href="#l55" id="l55">55</a>
+<a href="#l56" id="l56">56</a>
+<a href="#l57" id="l57">57</a>
+<a href="#l58" id="l58">58</a>
+<a href="#l59" id="l59">59</a>
+<a href="#l60" id="l60">60</a>
+<a href="#l61" id="l61">61</a>
+<a href="#l62" id="l62">62</a>
+<a href="#l63" id="l63">63</a>
 </pre></td><td><pre>
 /* See the LICENSE file for copyright and license details. */
 
@@ -80,42 +92,54 @@ enum position {
 	BOTTOM_RIGHT,
 	TOP_LEFT,
 	TOP_RIGHT,
-	CENTER
+	CENTER,
+	LEFT,
+	BOTTOM,
+	TOP,
+	RIGHT,
+	ALL,
+};
+
+enum mouse_mode {
+	MOUSE_NONE,
+	MOUSE_MOVE,
+	MOUSE_RESIZE,
 };
 
 struct window_geom {
-    int16_t x, y;
-    uint16_t width, height;
-    bool set_by_user;
+	int16_t x, y;
+	uint16_t width, height;
+	bool set_by_user;
 };
 
 struct client {
-    xcb_window_t window;
-    struct window_geom geom;
-    struct window_geom orig_geom;
-    bool maxed, hmaxed, vmaxed;
-    struct list_item *item;
-    struct monitor *monitor;
-    uint16_t min_width, min_height;
-    uint16_t max_width, max_height;
-    bool mapped;
-    uint32_t group;
+	xcb_window_t window;
+	struct window_geom geom;
+	struct window_geom orig_geom;
+	bool maxed, hmaxed, vmaxed;
+	struct list_item *item;
+	struct monitor *monitor;
+	uint16_t min_width, min_height;
+	uint16_t max_width, max_height;
+	bool mapped;
+	uint32_t group;
 };
 
 struct monitor {
-    xcb_randr_output_t monitor;
-    char *name;
-    int16_t x, y;
-    uint16_t width, height;
-    struct list_item *item;
+	xcb_randr_output_t monitor;
+	char *name;
+	int16_t x, y;
+	uint16_t width, height;
+	struct list_item *item;
 };
 
 struct conf {
-    int8_t border_width, gap;
-    uint32_t focus_color, unfocus_color;
-    enum position cursor_position;
-    uint32_t groups;
-    bool sloppy_focus;
+	int8_t border_width, grid_gap;
+	int8_t gap_left, gap_down, gap_up, gap_right;
+	uint32_t focus_color, unfocus_color;
+	enum position cursor_position;
+	uint32_t groups;
+	bool sloppy_focus;
 };
 
 #endif
