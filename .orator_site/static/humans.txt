@@ -1,1 +1,19 @@
-Guess who built the site!
+/* http://humanstxt.org/ */
+
+/* site */
+	standards: html5, css3, css, javascript
+	software: neovim, git, orator
+
+/* designer */
+	author: Tudor Ioan Roman
+	email: tudurom@gmail.com
+
+/* orator */
+	site: https://github.com/tudurom/orator/
+	copyright: 2016 Tudor Ioan Roman
+	license: ISC
+
+/* highlightjs */
+	site: https://highlightjs.org/
+	copyright: 2006 Ivan Sagalaev
+	license: BSD-3

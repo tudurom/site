@@ -64,15 +64,10 @@ a {
     text-decoration: none;
 }
 
-a:link, a:visited {
+a:link, a:visited, .fakelink {
     color: #6385a6;
+    cursor: pointer;
 }
-
-/*
-a:visited {
-    color: #456472;
-}
-*/
 
 code {
     font-family: "Roboto Mono", monospace;
@@ -82,4 +77,21 @@ code {
 pre code {
     font-family: "Roboto Mono", monospace;
     color: #c0c5ce;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	padding-left: 1em;
+	text-indent: -.7em;
+}
+
+li:before {
+	content: "*";
+	color: #456472;
+	padding-right: 0.5em;
 }

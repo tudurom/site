@@ -28,7 +28,7 @@ for article in $(ls -1 | grep -Ev "res|tm"); do
                 ;;
         esac
         export content="$gen_post"
-        export page_title="$title │ $MAIN_PAGE_TITLE"
+        export page_title="$title - $MAIN_PAGE_TITLE"
         gen_post="$(. "$PWD/res/post.html")"
         export content="$gen_post"
         # title and subtitle are already exported

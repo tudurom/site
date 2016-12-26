@@ -1,5 +1,0 @@
-User-agent: Teoma
-Disallow: /
-User-agent: *
-Disallow:
-Disallow: /git/*/commit/

@@ -1,7 +1,9 @@
 {{ define "head" }}
 <head>
 	{{ $title := index .Page.FrontMatter "title" }}
-	<title>{{ .SiteConfig.Title }}{{ if $title }} - {{ $title }}{{end}}</title>
+	<title>
+		{{ if $title }}{{ $title }} - {{end}}{{ .SiteConfig.Title }}
+	</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="{{ .SiteConfig.Author }}">
@@ -9,7 +11,8 @@
     <meta name="keywords" content="{{ .SiteConfig.Keywords }}">
     <meta name="generator" content="Orator">
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/solarized-light.css">
+    <link rel="stylesheet" href="/css/solarized-dark.css">
+    <link rel="icon" href="/favicon.png">
 
 	<script src="/js/highlight.pack.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
