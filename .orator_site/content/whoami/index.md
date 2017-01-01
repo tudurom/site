@@ -34,9 +34,10 @@ Romanian, C, English, Go, JavaScript, POSIX shell, Ruby\*, French\*
 
 ### Software I made
 
-* [windowchef](https://github.com/tudurom/windowchef)
-* [orator](https://github.com/tudurom/orator)
-* [albumify](https://github.com/gnotclub/albumify-next)
+* [windowchef](https://github.com/tudurom/windowchef/)
+* [orator](https://github.com/tudurom/orator/)
+* [albumify](https://github.com/gnotclub/albumify-next/)
+* [rainbou](https://github.com/tudurom/rainbou/)
 
 ### People and inspirational sites
 
