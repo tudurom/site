@@ -38,7 +38,7 @@ Romanian, C, English, Go, JavaScript, POSIX shell, Ruby\*, French\*
 * [orator](https://github.com/tudurom/orator)
 * [albumify](https://github.com/gnotclub/albumify-next)
 
-### People, friends and inspirational sites
+### People and inspirational sites
 
 <div id="people"></div>
 
@@ -47,6 +47,7 @@ Romanian, C, English, Go, JavaScript, POSIX shell, Ruby\*, French\*
 * [apk](https://pluvi.us/)
 * [arc](http://arcetera.moe/) (RIP domain)
 * [dcat](https://lyngvaer.no/)
+* [Thoughtbot blog](https://robots.thoughtbot.com/)
 * [neeasade](http://neeasade.net/)
 * [rocx](http://rocx.rocks/)
 * [suckless](http://suckless.org/)
