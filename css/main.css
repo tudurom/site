@@ -96,3 +96,13 @@ li:before {
 	color: #456472;
 	padding-right: 0.5em;
 }
+
+.home-links {
+	display: table;
+	border-spacing: 10px;
+	margin-left: -10px;
+}
+
+.home-links a {
+	display: table-cell;
+}
