@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>monocle mode and cleanup - windowchef - windowchef is a stacking window cooker controlled by a remote control program, waitron
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="windowchef.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>windowchef</h1><span class="desc">windowchef is a stacking window cooker controlled by a remote control program, waitron
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/windowchef.git">git://thetudor.ddns.net/windowchef.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/35892064b312d596e0a25d4625fc71fbf06c2550.html">35892064b312d596e0a25d4625fc71fbf06c2550</a>
+<b>parent</b> <a href="../commit/ca4b71b76e71c4d8d203eeec413a97b1a045b75e.html">ca4b71b76e71c4d8d203eeec413a97b1a045b75e</a>
+<b>Author:</b> Tudor Roman &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Sun Oct  9 14:08:24 +0300
+
+monocle mode and cleanup
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">.sxhkdrc</a></td><td> | </td><td class="num">3</td><td><span class="i">+++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h1">client.c</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td><a href="#h2">config.mk</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h3">ipc.h</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td><a href="#h4">man/waitron.1</a></td><td> | </td><td class="num">4</td><td><span class="i">++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h5">man/waitron.1.html</a></td><td> | </td><td class="num">2</td><td><span class="i">++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h6">man/waitron.1.md</a></td><td> | </td><td class="num">4</td><td><span class="i">++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h7">types.h</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h8">wm.c</a></td><td> | </td><td class="num">170</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">---------------------------</span></td></tr>
+</table>9 files changed, 130 insertions(+), 59 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.sxhkdrc.html">.sxhkdrc</a> b/<a href="../file/.sxhkdrc.html">.sxhkdrc</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -25,6 +25,9 @@ super + b
+</a> super + v
+   ./waitron window_ver_maximize
+ 
+<a href="#h0-0-3" id="h0-0-3" class="i">+super + m
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+  ./waitron window_monocle
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+
+</a> alt + Tab
+   ./waitron window_cycle
+ 
+<b>diff --git a/<a id="h1" href="../file/client.c.html">client.c</a> b/<a href="../file/client.c.html">client.c</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -47,6 +47,7 @@ static struct Command c[] = {
+</a> 	{ &quot;window_maximize&quot;           , IPCWindowMaximize        ,  0 , NULL        } ,
+ 	{ &quot;window_hor_maximize&quot;       , IPCWindowHorMaximize     ,  0 , NULL        } ,
+ 	{ &quot;window_ver_maximize&quot;       , IPCWindowVerMaximize     ,  0 , NULL        } ,
+<a href="#h1-0-3" id="h1-0-3" class="i">+	{ &quot;window_monocle&quot;            , IPCWindowMonocle         ,  0 , NULL        } ,
+</a> 	{ &quot;window_close&quot;              , IPCWindowClose           ,  0 , NULL        } ,
+ 	{ &quot;window_put_in_grid&quot;        , IPCWindowPutInGrid       ,  4 , fn_naturals } ,
+ 	{ &quot;window_snap&quot;               , IPCWindowSnap            ,  1 , fn_position } ,
+<b>diff --git a/<a id="h2" href="../file/config.mk.html">config.mk</a> b/<a href="../file/config.mk.html">config.mk</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -2,5 +2,5 @@ PREFIX = /usr/local
+</a> MANPREFIX = $(PREFIX)/share/man
+ MANDIR = $(MANPREFIX)/man1
+ 
+<a href="#h2-0-3" id="h2-0-3" class="d">-CFLAGS += -std=c99 -Wextra -g
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+CFLAGS += -std=c99 -Wextra -g -DD
+</a> LDFLAGS += -lxcb -lxcb-ewmh -lxcb-icccm -lxcb-randr
+<b>diff --git a/<a id="h3" href="../file/ipc.h.html">ipc.h</a> b/<a href="../file/ipc.h.html">ipc.h</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -16,6 +16,7 @@ enum IPCCommand {
+</a> 	IPCWindowMaximize,
+ 	IPCWindowHorMaximize,
+ 	IPCWindowVerMaximize,
+<a href="#h3-0-3" id="h3-0-3" class="i">+	IPCWindowMonocle,
+</a> 	IPCWindowClose,
+ 	IPCWindowPutInGrid,
+ 	IPCWindowSnap,
+<b>diff --git a/<a id="h4" href="../file/man/waitron.1.html">man/waitron.1</a> b/<a href="../file/man/waitron.1.html">man/waitron.1</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -66,6 +66,10 @@ Horizontally maximize the focused window on the current monitor, preserving its 
+</a> Vertically maximize the focused window on the current monitor, preserving its \fIy\fR component\. Leaves a gap at the top and bottom of the monitor whose width can be configured\. Execute it again after maximizing to revert the state of the window\.
+ .
+ .TP
+<a href="#h4-0-3" id="h4-0-3" class="i">+\fBwindow_monocle\fR
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+Puts the window in the &quot;monocled&quot; state: full screen but with borders visible\. Monocle mode respects gaps\.
+</a><a href="#h4-0-5" id="h4-0-5" class="i">+.
+</a><a href="#h4-0-6" id="h4-0-6" class="i">+.TP
+</a> \fBwindow_close\fR
+ Closes the focused window\.
+ .
+<b>diff --git a/<a id="h5" href="../file/man/waitron.1.html.html">man/waitron.1.html</a> b/<a href="../file/man/waitron.1.html.html">man/waitron.1.html</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -119,6 +119,8 @@ anything on &lt;code&gt;stdout&lt;/code&gt;.&lt;/p&gt;
+</a> &lt;dt&gt;&lt;code&gt;window_ver_maximize&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Vertically maximize the focused window on the current monitor, preserving
+   its &lt;var&gt;y&lt;/var&gt; component. Leaves a gap at the top and bottom of the monitor whose
+   width can be configured. Execute it again after maximizing to revert the state of the window.&lt;/p&gt;&lt;/dd&gt;
+<a href="#h5-0-3" id="h5-0-3" class="i">+&lt;dt&gt;&lt;code&gt;window_monocle&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Puts the window in the &quot;monocled&quot; state: full screen but with borders
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+  visible. Monocle mode respects gaps.&lt;/p&gt;&lt;/dd&gt;
+</a> &lt;dt&gt;&lt;code&gt;window_close&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Closes the focused window.&lt;/p&gt;&lt;/dd&gt;
+ &lt;dt&gt;&lt;code&gt;window_put_in_grid&lt;/code&gt; &lt;var&gt;grid_width&lt;/var&gt; &lt;var&gt;grid_height&lt;/var&gt; &lt;var&gt;cell_x&lt;/var&gt; &lt;var&gt;cell_y&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Moves and resizes the focused windows accordingly to fit in a cell defined
+   by the &lt;var&gt;cell_x&lt;/var&gt; and &lt;var&gt;cell_y&lt;/var&gt; coordinates in a virtual grid with width
+<b>diff --git a/<a id="h6" href="../file/man/waitron.1.md.html">man/waitron.1.md</a> b/<a href="../file/man/waitron.1.md.html">man/waitron.1.md</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -58,6 +58,10 @@ anything on `stdout`.
+</a> 	its &lt;y&gt; component. Leaves a gap at the top and bottom of the monitor whose
+ 	width can be configured. Execute it again after maximizing to revert the state of the window.
+ 
+<a href="#h6-0-3" id="h6-0-3" class="i">+* `window_monocle`:
+</a><a href="#h6-0-4" id="h6-0-4" class="i">+	Puts the window in the &quot;monocled&quot; state: full screen but with borders
+</a><a href="#h6-0-5" id="h6-0-5" class="i">+	visible. Monocle mode respects gaps.
+</a><a href="#h6-0-6" id="h6-0-6" class="i">+
+</a> * `window_close`:
+ 	Closes the focused window.
+ 
+<b>diff --git a/<a id="h7" href="../file/types.h.html">types.h</a> b/<a href="../file/types.h.html">types.h</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -34,7 +34,7 @@ struct client {
+</a> 	xcb_window_t window;
+ 	struct window_geom geom;
+ 	struct window_geom orig_geom;
+<a href="#h7-0-3" id="h7-0-3" class="d">-	bool maxed, hmaxed, vmaxed;
+</a><a href="#h7-0-4" id="h7-0-4" class="i">+	bool maxed, hmaxed, vmaxed, monocled;
+</a> 	struct list_item *item;
+ 	struct monitor *monitor;
+ 	uint16_t min_width, min_height;
+<b>diff --git a/<a id="h8" href="../file/wm.c.html">wm.c</a> b/<a href="../file/wm.c.html">wm.c</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -80,11 +80,11 @@ static void teleport_window(xcb_window_t, int16_t, int16_t);
+</a> static void move_window(xcb_window_t , int16_t, int16_t);
+ static void resize_window_absolute(xcb_window_t, uint16_t, uint16_t);
+ static void resize_window(xcb_window_t, int16_t, int16_t);
+<a href="#h8-0-3" id="h8-0-3" class="d">-static void resize_window_limit(struct client *);
+</a> static void fit_on_screen(struct client *);
+ static void maximize_window(struct client *, int16_t, int16_t, uint16_t, uint16_t);
+ static void hmaximize_window(struct client *, int16_t, uint16_t);
+ static void vmaximize_window(struct client *, int16_t, uint16_t);
+<a href="#h8-0-8" id="h8-0-8" class="i">+static void monocle_window(struct client *, int16_t, int16_t, uint16_t, uint16_t);
+</a> static void unmaximize_window(struct client *);
+ static void cycle_window(struct client *);
+ static void rcycle_window(struct client *);
+<a href="#h8-1" id="h8-1" class="h">@@ -131,6 +131,7 @@ static void ipc_window_resize_absolute(uint32_t *);
+</a> static void ipc_window_maximize(uint32_t *);
+ static void ipc_window_hor_maximize(uint32_t *);
+ static void ipc_window_ver_maximize(uint32_t *);
+<a href="#h8-1-3" id="h8-1-3" class="i">+static void ipc_window_monocle(uint32_t *);
+</a> static void ipc_window_unmaximize(uint32_t *);
+ static void ipc_window_close(uint32_t *);
+ static void ipc_window_put_in_grid(uint32_t *);
+<a href="#h8-2" id="h8-2" class="h">@@ -241,6 +242,10 @@ setup(void)
+</a> 	return 0;
+ }
+ 
+<a href="#h8-2-3" id="h8-2-3" class="i">+/*
+</a><a href="#h8-2-4" id="h8-2-4" class="i">+ * Tells the server we want to use randr.
+</a><a href="#h8-2-5" id="h8-2-5" class="i">+ */
+</a><a href="#h8-2-6" id="h8-2-6" class="i">+
+</a> static int
+ setup_randr(void)
+ {
+<a href="#h8-3" id="h8-3" class="h">@@ -262,6 +267,10 @@ setup_randr(void)
+</a> 	return base;
+ }
+ 
+<a href="#h8-3-3" id="h8-3-3" class="i">+/*
+</a><a href="#h8-3-4" id="h8-3-4" class="i">+ * Get information regarding randr.
+</a><a href="#h8-3-5" id="h8-3-5" class="i">+ */
+</a><a href="#h8-3-6" id="h8-3-6" class="i">+
+</a> static void
+ get_randr(void)
+ {
+<a href="#h8-4" id="h8-4" class="h">@@ -284,6 +293,10 @@ get_randr(void)
+</a> 	free(r);
+ }
+ 
+<a href="#h8-4-3" id="h8-4-3" class="i">+/*
+</a><a href="#h8-4-4" id="h8-4-4" class="i">+ * Gets information about connected outputs.
+</a><a href="#h8-4-5" id="h8-4-5" class="i">+ */
+</a><a href="#h8-4-6" id="h8-4-6" class="i">+
+</a> static void
+ get_outputs(xcb_randr_output_t *outputs, int len, xcb_timestamp_t timestamp)
+ {
+<a href="#h8-5" id="h8-5" class="h">@@ -377,6 +390,10 @@ get_outputs(xcb_randr_output_t *outputs, int len, xcb_timestamp_t timestamp)
+</a> 	}
+ }
+ 
+<a href="#h8-5-3" id="h8-5-3" class="i">+/*
+</a><a href="#h8-5-4" id="h8-5-4" class="i">+ * Finds a monitor in the list.
+</a><a href="#h8-5-5" id="h8-5-5" class="i">+ */
+</a><a href="#h8-5-6" id="h8-5-6" class="i">+
+</a> struct monitor *
+ find_monitor(xcb_randr_output_t mon)
+ {
+<a href="#h8-6" id="h8-6" class="h">@@ -393,6 +410,10 @@ find_monitor(xcb_randr_output_t mon)
+</a> 		return item-&gt;data;
+ }
+ 
+<a href="#h8-6-3" id="h8-6-3" class="i">+/*
+</a><a href="#h8-6-4" id="h8-6-4" class="i">+ * Find a monitor in the list by its coordinates.
+</a><a href="#h8-6-5" id="h8-6-5" class="i">+ */
+</a><a href="#h8-6-6" id="h8-6-6" class="i">+
+</a> static struct monitor *
+ find_monitor_by_coord(int16_t x, int16_t y)
+ {
+<a href="#h8-7" id="h8-7" class="h">@@ -410,6 +431,10 @@ find_monitor_by_coord(int16_t x, int16_t y)
+</a> 	return m;
+ }
+ 
+<a href="#h8-7-3" id="h8-7-3" class="i">+/*
+</a><a href="#h8-7-4" id="h8-7-4" class="i">+ * Find cloned (mirrored) outputs.
+</a><a href="#h8-7-5" id="h8-7-5" class="i">+ */
+</a><a href="#h8-7-6" id="h8-7-6" class="i">+
+</a> struct monitor *
+ find_clones(xcb_randr_output_t mon, int16_t x, int16_t y)
+ {
+<a href="#h8-8" id="h8-8" class="h">@@ -429,6 +454,10 @@ find_clones(xcb_randr_output_t mon, int16_t x, int16_t y)
+</a> 		return clonemon;
+ }
+ 
+<a href="#h8-8-3" id="h8-8-3" class="i">+/*
+</a><a href="#h8-8-4" id="h8-8-4" class="i">+ * Add a monitor to the global monitor list.
+</a><a href="#h8-8-5" id="h8-8-5" class="i">+ */
+</a><a href="#h8-8-6" id="h8-8-6" class="i">+
+</a> static struct monitor *
+ add_monitor(xcb_randr_output_t mon, char *name, int16_t x, int16_t y, uint16_t width, uint16_t height)
+ {
+<a href="#h8-9" id="h8-9" class="h">@@ -456,6 +485,10 @@ add_monitor(xcb_randr_output_t mon, char *name, int16_t x, int16_t y, uint16_t w
+</a> 	return monitor;
+ }
+ 
+<a href="#h8-9-3" id="h8-9-3" class="i">+/*
+</a><a href="#h8-9-4" id="h8-9-4" class="i">+ * Free a monitor from the global monitor list.
+</a><a href="#h8-9-5" id="h8-9-5" class="i">+ */
+</a><a href="#h8-9-6" id="h8-9-6" class="i">+
+</a> static void
+ free_monitor(struct monitor *mon)
+ {
+<a href="#h8-10" id="h8-10" class="h">@@ -465,6 +498,10 @@ free_monitor(struct monitor *mon)
+</a> 	list_delete_item(&amp;mon_list, item);
+ }
+ 
+<a href="#h8-10-3" id="h8-10-3" class="i">+/*
+</a><a href="#h8-10-4" id="h8-10-4" class="i">+ * Get information about a certain monitor situated in a window: coordinates and size.
+</a><a href="#h8-10-5" id="h8-10-5" class="i">+ */
+</a><a href="#h8-10-6" id="h8-10-6" class="i">+
+</a> static void
+ get_monitor_size(struct client *client, int16_t *mon_x, int16_t *mon_y, uint16_t *mon_width, uint16_t *mon_height)
+ {
+<a href="#h8-11" id="h8-11" class="h">@@ -487,6 +524,10 @@ get_monitor_size(struct client *client, int16_t *mon_x, int16_t *mon_y, uint16_t
+</a> 	}
+ }
+ 
+<a href="#h8-11-3" id="h8-11-3" class="i">+/*
+</a><a href="#h8-11-4" id="h8-11-4" class="i">+ * Arrange clients on a monitor.
+</a><a href="#h8-11-5" id="h8-11-5" class="i">+ */
+</a><a href="#h8-11-6" id="h8-11-6" class="i">+
+</a> static void
+ arrange_by_monitor(struct monitor *mon)
+ {
+<a href="#h8-12" id="h8-12" class="h">@@ -502,7 +543,7 @@ arrange_by_monitor(struct monitor *mon)
+</a> }
+ 
+ /*
+<a href="#h8-12-3" id="h8-12-3" class="d">- * Waits for events and handles them.
+</a><a href="#h8-12-4" id="h8-12-4" class="i">+ * Wait for events and handle them.
+</a>  */
+ 
+ static void
+<a href="#h8-13" id="h8-13" class="h">@@ -578,16 +619,15 @@ setup_window(xcb_window_t win)
+</a> 	if (client == NULL)
+ 		return NULL;
+ 
+<a href="#h8-13-3" id="h8-13-3" class="i">+	/* initialize variables */
+</a> 	item-&gt;data = client;
+ 	client-&gt;item = item;
+ 	client-&gt;window = win;
+ 	client-&gt;geom.x = client-&gt;geom.y = client-&gt;geom.width
+ 				   = client-&gt;geom.height
+<a href="#h8-13-9" id="h8-13-9" class="d">-				   = client-&gt;min_width = client-&gt;min_height
+</a><a href="#h8-13-10" id="h8-13-10" class="d">-				   = client-&gt;max_width = client-&gt;max_height = 0;
+</a><a href="#h8-13-11" id="h8-13-11" class="d">-	client-&gt;max_width  = scr-&gt;width_in_pixels;
+</a><a href="#h8-13-12" id="h8-13-12" class="d">-	client-&gt;max_height = scr-&gt;height_in_pixels;
+</a><a href="#h8-13-13" id="h8-13-13" class="d">-	client-&gt;maxed   = client-&gt;hmaxed = client-&gt;vmaxed = client-&gt;geom.set_by_user = false;
+</a><a href="#h8-13-14" id="h8-13-14" class="i">+				   = client-&gt;min_width = client-&gt;min_height;
+</a><a href="#h8-13-15" id="h8-13-15" class="i">+	client-&gt;maxed  = client-&gt;hmaxed = client-&gt;vmaxed
+</a><a href="#h8-13-16" id="h8-13-16" class="i">+		= client-&gt;monocled = client-&gt;geom.set_by_user = false;
+</a> 	client-&gt;monitor = NULL;
+ 	client-&gt;mapped  = false;
+ 	client-&gt;group   = NULL_GROUP;
+<a href="#h8-14" id="h8-14" class="h">@@ -606,11 +646,6 @@ setup_window(xcb_window_t win)
+</a> 		client-&gt;min_height = hints.min_height;
+ 	}
+ 
+<a href="#h8-14-3" id="h8-14-3" class="d">-	if (hints.flags &amp; XCB_ICCCM_SIZE_HINT_P_MAX_SIZE) {
+</a><a href="#h8-14-4" id="h8-14-4" class="d">-		client-&gt;max_width = hints.max_width;
+</a><a href="#h8-14-5" id="h8-14-5" class="d">-		client-&gt;max_height = hints.max_height;
+</a><a href="#h8-14-6" id="h8-14-6" class="d">-	}
+</a><a href="#h8-14-7" id="h8-14-7" class="d">-
+</a> 	return client;
+ }
+ 
+<a href="#h8-15" id="h8-15" class="h">@@ -705,8 +740,6 @@ close_window(struct client *client)
+</a> 		delete_window(win);
+ 	else
+ 		xcb_kill_client(conn, win);
+<a href="#h8-15-3" id="h8-15-3" class="d">-
+</a><a href="#h8-15-4" id="h8-15-4" class="d">-	free_window(client);
+</a> }
+ 
+ /*
+<a href="#h8-16" id="h8-16" class="h">@@ -797,14 +830,9 @@ resize_window(xcb_window_t win, int16_t w, int16_t h)
+</a> 	resize_window_absolute(win, win_w + w, win_h + h);
+ }
+ 
+<a href="#h8-16-3" id="h8-16-3" class="d">-static void
+</a><a href="#h8-16-4" id="h8-16-4" class="d">-resize_window_limit(struct client *client)
+</a><a href="#h8-16-5" id="h8-16-5" class="d">-{
+</a><a href="#h8-16-6" id="h8-16-6" class="d">-	int16_t mon_x, mon_y;
+</a><a href="#h8-16-7" id="h8-16-7" class="d">-	uint16_t mon_width, mon_height;
+</a><a href="#h8-16-8" id="h8-16-8" class="d">-
+</a><a href="#h8-16-9" id="h8-16-9" class="d">-	get_monitor_size(client, &amp;mon_x, &amp;mon_y, &amp;mon_width, &amp;mon_height);
+</a><a href="#h8-16-10" id="h8-16-10" class="d">-}
+</a><a href="#h8-16-11" id="h8-16-11" class="i">+/*
+</a><a href="#h8-16-12" id="h8-16-12" class="i">+ * Fit window on screen if too big.
+</a><a href="#h8-16-13" id="h8-16-13" class="i">+ */
+</a> 
+ static void
+ fit_on_screen(struct client *client)
+<a href="#h8-17" id="h8-17" class="h">@@ -889,11 +917,10 @@ maximize_window(struct client *client, int16_t mon_x, int16_t mon_y, uint16_t mo
+</a> 		XCB_NONE
+ 	};
+ 
+<a href="#h8-17-3" id="h8-17-3" class="d">-	if (client == NULL || (client-&gt;max_width != 0 &amp;&amp; mon_width &gt; client-&gt;max_width)
+</a><a href="#h8-17-4" id="h8-17-4" class="d">-			|| (client-&gt;max_height != 0 &amp;&amp; mon_height &gt; client-&gt;max_height))
+</a><a href="#h8-17-5" id="h8-17-5" class="i">+	if (client == NULL)
+</a> 		return;
+ 
+<a href="#h8-17-8" id="h8-17-8" class="d">-	if (client-&gt;vmaxed || client-&gt;hmaxed)
+</a><a href="#h8-17-9" id="h8-17-9" class="i">+	if (client-&gt;vmaxed || client-&gt;hmaxed || client-&gt;monocled)
+</a> 		unmaximize_window(client);
+ 
+ 	/* maximized windows don&apos;t have borders */
+<a href="#h8-18" id="h8-18" class="h">@@ -907,7 +934,6 @@ maximize_window(struct client *client, int16_t mon_x, int16_t mon_y, uint16_t mo
+</a> 	client-&gt;geom.y = mon_y;
+ 	client-&gt;geom.width = mon_width;
+ 	client-&gt;geom.height = mon_height;
+<a href="#h8-18-3" id="h8-18-3" class="d">-	client-&gt;vmaxed = client-&gt;hmaxed = false;
+</a> 
+ 	teleport_window(client-&gt;window, client-&gt;geom.x, client-&gt;geom.y);
+ 	resize_window_absolute(client-&gt;window, client-&gt;geom.width, client-&gt;geom.height);
+<a href="#h8-19" id="h8-19" class="h">@@ -919,7 +945,7 @@ maximize_window(struct client *client, int16_t mon_x, int16_t mon_y, uint16_t mo
+</a> static void
+ hmaximize_window(struct client *client, int16_t mon_x, uint16_t mon_width)
+ {
+<a href="#h8-19-3" id="h8-19-3" class="d">-	if (client == NULL || (client-&gt;max_width != 0 &amp;&amp; mon_width &gt; client-&gt;max_width))
+</a><a href="#h8-19-4" id="h8-19-4" class="i">+	if (client == NULL)
+</a> 		return;
+ 
+ 	xcb_atom_t state[] = {
+<a href="#h8-20" id="h8-20" class="h">@@ -927,14 +953,13 @@ hmaximize_window(struct client *client, int16_t mon_x, uint16_t mon_width)
+</a> 		XCB_NONE
+ 	};
+ 
+<a href="#h8-20-3" id="h8-20-3" class="d">-	if (client-&gt;maxed || client-&gt;vmaxed)
+</a><a href="#h8-20-4" id="h8-20-4" class="i">+	if (client-&gt;maxed || client-&gt;vmaxed || client-&gt;monocled)
+</a> 		unmaximize_window(client);
+ 
+ 	if (client-&gt;geom.width != mon_width)
+ 		save_original_size(client);
+ 	client-&gt;geom.x = mon_x + conf.gap_left;
+ 	client-&gt;geom.width = mon_width - conf.gap_left - conf.gap_right - 2 * conf.border_width;
+<a href="#h8-20-11" id="h8-20-11" class="d">-	client-&gt;vmaxed = client-&gt;maxed = false;
+</a> 
+ 	teleport_window(client-&gt;window, client-&gt;geom.x, client-&gt;geom.y);
+ 	resize_window_absolute(client-&gt;window, client-&gt;geom.width, client-&gt;geom.height);
+<a href="#h8-21" id="h8-21" class="h">@@ -946,7 +971,7 @@ hmaximize_window(struct client *client, int16_t mon_x, uint16_t mon_width)
+</a> static void
+ vmaximize_window(struct client *client, int16_t mon_y, uint16_t mon_height)
+ {
+<a href="#h8-21-3" id="h8-21-3" class="d">-	if (client == NULL || (client-&gt;max_height != 0 &amp;&amp; mon_height &gt; client-&gt;max_height))
+</a><a href="#h8-21-4" id="h8-21-4" class="i">+	if (client == NULL)
+</a> 		return;
+ 
+ 	xcb_atom_t state[] = {
+<a href="#h8-22" id="h8-22" class="h">@@ -954,7 +979,7 @@ vmaximize_window(struct client *client, int16_t mon_y, uint16_t mon_height)
+</a> 		XCB_NONE
+ 	};
+ 
+<a href="#h8-22-3" id="h8-22-3" class="d">-	if (client-&gt;maxed || client-&gt;hmaxed)
+</a><a href="#h8-22-4" id="h8-22-4" class="i">+	if (client-&gt;maxed || client-&gt;hmaxed || client-&gt;monocled)
+</a> 		unmaximize_window(client);
+ 
+ 	if (client-&gt;geom.height != mon_height)
+<a href="#h8-23" id="h8-23" class="h">@@ -962,7 +987,6 @@ vmaximize_window(struct client *client, int16_t mon_y, uint16_t mon_height)
+</a> 
+ 	client-&gt;geom.y = mon_y + conf.gap_up;
+ 	client-&gt;geom.height = mon_height - conf.gap_up - conf.gap_down - 2 * conf.border_width;
+<a href="#h8-23-3" id="h8-23-3" class="d">-	client-&gt;hmaxed = client-&gt;maxed = false;
+</a> 
+ 	teleport_window(client-&gt;window, client-&gt;geom.x, client-&gt;geom.y);
+ 	resize_window_absolute(client-&gt;window, client-&gt;geom.width, client-&gt;geom.height);
+<a href="#h8-24" id="h8-24" class="h">@@ -971,6 +995,29 @@ vmaximize_window(struct client *client, int16_t mon_y, uint16_t mon_height)
+</a> }
+ 
+ static void
+<a href="#h8-24-3" id="h8-24-3" class="i">+monocle_window(struct client *client, int16_t mon_x, int16_t mon_y, uint16_t mon_width, uint16_t mon_height)
+</a><a href="#h8-24-4" id="h8-24-4" class="i">+{
+</a><a href="#h8-24-5" id="h8-24-5" class="i">+	if (client == NULL)
+</a><a href="#h8-24-6" id="h8-24-6" class="i">+		return;
+</a><a href="#h8-24-7" id="h8-24-7" class="i">+
+</a><a href="#h8-24-8" id="h8-24-8" class="i">+	if (client-&gt;maxed || client-&gt;vmaxed || client-&gt;monocled)
+</a><a href="#h8-24-9" id="h8-24-9" class="i">+		unmaximize_window(client);
+</a><a href="#h8-24-10" id="h8-24-10" class="i">+
+</a><a href="#h8-24-11" id="h8-24-11" class="i">+	save_original_size(client);
+</a><a href="#h8-24-12" id="h8-24-12" class="i">+
+</a><a href="#h8-24-13" id="h8-24-13" class="i">+	client-&gt;geom.x = mon_x + conf.gap_left;
+</a><a href="#h8-24-14" id="h8-24-14" class="i">+	client-&gt;geom.y = mon_y + conf.gap_up;
+</a><a href="#h8-24-15" id="h8-24-15" class="i">+	client-&gt;geom.width = mon_width - 2 * conf.border_width
+</a><a href="#h8-24-16" id="h8-24-16" class="i">+		- conf.gap_left - conf.gap_right;
+</a><a href="#h8-24-17" id="h8-24-17" class="i">+	client-&gt;geom.height = mon_height - 2 * conf.border_width
+</a><a href="#h8-24-18" id="h8-24-18" class="i">+		- conf.gap_left - conf.gap_right;
+</a><a href="#h8-24-19" id="h8-24-19" class="i">+	teleport_window(client-&gt;window, client-&gt;geom.x, client-&gt;geom.y);
+</a><a href="#h8-24-20" id="h8-24-20" class="i">+	resize_window_absolute(client-&gt;window, client-&gt;geom.width, client-&gt;geom.height);
+</a><a href="#h8-24-21" id="h8-24-21" class="i">+	client-&gt;monocled = true;
+</a><a href="#h8-24-22" id="h8-24-22" class="i">+	set_focused_no_raise(client);
+</a><a href="#h8-24-23" id="h8-24-23" class="i">+}
+</a><a href="#h8-24-24" id="h8-24-24" class="i">+
+</a><a href="#h8-24-25" id="h8-24-25" class="i">+static void
+</a> unmaximize_window(struct client *client)
+ {
+ 	xcb_atom_t state[] = {
+<a href="#h8-25" id="h8-25" class="h">@@ -981,11 +1028,13 @@ unmaximize_window(struct client *client)
+</a> 	client-&gt;geom.y = client-&gt;orig_geom.y;
+ 	client-&gt;geom.width = client-&gt;orig_geom.width;
+ 	client-&gt;geom.height = client-&gt;orig_geom.height;
+<a href="#h8-25-3" id="h8-25-3" class="d">-	client-&gt;maxed = client-&gt;hmaxed = client-&gt;vmaxed = false;
+</a><a href="#h8-25-4" id="h8-25-4" class="i">+	client-&gt;maxed = client-&gt;maxed = client-&gt;hmaxed
+</a><a href="#h8-25-5" id="h8-25-5" class="i">+		= client-&gt;vmaxed = client-&gt;monocled = false;
+</a> 
+ 	teleport_window(client-&gt;window, client-&gt;geom.x, client-&gt;geom.y);
+ 	resize_window_absolute(client-&gt;window, client-&gt;geom.width, client-&gt;geom.height);
+ 	xcb_ewmh_set_wm_state(ewmh, client-&gt;window, 2, state);
+<a href="#h8-25-10" id="h8-25-10" class="i">+	set_borders(client, conf.unfocus_color);
+</a> }
+ 
+ static void
+<a href="#h8-26" id="h8-26" class="h">@@ -1287,6 +1336,7 @@ free_window(struct client *client)
+</a> {
+ 	struct list_item *item;
+ 
+<a href="#h8-26-3" id="h8-26-3" class="i">+	DMSG(&quot;freeing 0x%08x\n&quot;, client-&gt;window);
+</a> 	item = client-&gt;item;
+ 
+ 	free(client);
+<a href="#h8-27" id="h8-27" class="h">@@ -1504,19 +1554,19 @@ event_configure_request(xcb_generic_event_t *ev)
+</a> 	if (client != NULL) {
+ 
+ 		if (e-&gt;value_mask &amp; XCB_CONFIG_WINDOW_X
+<a href="#h8-27-3" id="h8-27-3" class="d">-				&amp;&amp; !client-&gt;maxed &amp;&amp; !client-&gt;hmaxed)
+</a><a href="#h8-27-4" id="h8-27-4" class="i">+				&amp;&amp; !client-&gt;maxed &amp;&amp; !client-&gt;monocled &amp;&amp; !client-&gt;hmaxed)
+</a> 			client-&gt;geom.x = e-&gt;x;
+ 
+ 		if (e-&gt;value_mask &amp; XCB_CONFIG_WINDOW_Y
+<a href="#h8-27-8" id="h8-27-8" class="d">-				&amp;&amp; !client-&gt;maxed &amp;&amp; !client-&gt;vmaxed)
+</a><a href="#h8-27-9" id="h8-27-9" class="i">+				&amp;&amp; !client-&gt;maxed &amp;&amp; !client-&gt;monocled &amp;&amp; !client-&gt;vmaxed)
+</a> 			client-&gt;geom.y = e-&gt;y;
+ 
+ 		if (e-&gt;value_mask &amp; XCB_CONFIG_WINDOW_WIDTH
+<a href="#h8-27-13" id="h8-27-13" class="d">-				&amp;&amp; !client-&gt;maxed &amp;&amp; !client-&gt;hmaxed)
+</a><a href="#h8-27-14" id="h8-27-14" class="i">+				&amp;&amp; !client-&gt;maxed &amp;&amp; !client-&gt;monocled &amp;&amp; !client-&gt;hmaxed)
+</a> 			client-&gt;geom.width= e-&gt;width;
+ 
+ 		if (e-&gt;value_mask &amp; XCB_CONFIG_WINDOW_HEIGHT
+<a href="#h8-27-18" id="h8-27-18" class="d">-				&amp;&amp; !client-&gt;maxed &amp;&amp; !client-&gt;vmaxed)
+</a><a href="#h8-27-19" id="h8-27-19" class="i">+				&amp;&amp; !client-&gt;maxed &amp;&amp; !client-&gt;monocled &amp;&amp; !client-&gt;vmaxed)
+</a> 			client-&gt;geom.height = e-&gt;height;
+ 
+ 		if (e-&gt;value_mask &amp; XCB_CONFIG_WINDOW_STACK_MODE) {
+<a href="#h8-28" id="h8-28" class="h">@@ -1609,7 +1659,7 @@ event_enter_notify(xcb_generic_event_t *ev)
+</a> 
+ 	client = find_client(&amp;e-&gt;event);
+ 
+<a href="#h8-28-3" id="h8-28-3" class="d">-	if (client != NULL &amp;&amp; !client-&gt;maxed)
+</a><a href="#h8-28-4" id="h8-28-4" class="i">+	if (client != NULL)
+</a> 		set_focused_no_raise(client);
+ }
+ 
+<a href="#h8-29" id="h8-29" class="h">@@ -1777,6 +1827,7 @@ event_client_message(xcb_generic_event_t *ev)
+</a> 		vmaxed = client-&gt;vmaxed;
+ 		hmaxed = client-&gt;hmaxed;
+ 		get_monitor_size(client, &amp;mon_x, &amp;mon_y, &amp;mon_w, &amp;mon_h);
+<a href="#h8-29-3" id="h8-29-3" class="i">+
+</a> 		/* We handle only two states at the same time */
+ 		for (int i = 0; i &lt; 2; i++) {
+ 			xcb_atom_t state = e-&gt;data.data32[i + 1];
+<a href="#h8-30" id="h8-30" class="h">@@ -1903,6 +1954,7 @@ register_ipc_handlers(void)
+</a> 	ipc_handlers[IPCWindowMaximize]        = ipc_window_maximize;
+ 	ipc_handlers[IPCWindowHorMaximize]     = ipc_window_hor_maximize;
+ 	ipc_handlers[IPCWindowVerMaximize]     = ipc_window_ver_maximize;
+<a href="#h8-30-3" id="h8-30-3" class="i">+	ipc_handlers[IPCWindowMonocle]         = ipc_window_monocle;
+</a> 	ipc_handlers[IPCWindowClose]           = ipc_window_close;
+ 	ipc_handlers[IPCWindowPutInGrid]       = ipc_window_put_in_grid;
+ 	ipc_handlers[IPCWindowSnap]            = ipc_window_snap;
+<a href="#h8-31" id="h8-31" class="h">@@ -1998,12 +2050,6 @@ ipc_window_resize(uint32_t *d)
+</a> 		ah = 0;
+ 	DMSG(&quot;aw: %d\tah: %d\n&quot;, aw, ah);
+ 
+<a href="#h8-31-3" id="h8-31-3" class="d">-	if (focused_win-&gt;max_width != 0 &amp;&amp; aw &gt; focused_win-&gt;max_width)
+</a><a href="#h8-31-4" id="h8-31-4" class="d">-		aw = focused_win-&gt;max_width;
+</a><a href="#h8-31-5" id="h8-31-5" class="d">-
+</a><a href="#h8-31-6" id="h8-31-6" class="d">-	if (focused_win-&gt;max_height != 0 &amp;&amp; ah &gt; focused_win-&gt;max_height)
+</a><a href="#h8-31-7" id="h8-31-7" class="d">-		ah = focused_win-&gt;max_height;
+</a><a href="#h8-31-8" id="h8-31-8" class="d">-
+</a> 	if (focused_win-&gt;min_width != 0 &amp;&amp; aw &lt; focused_win-&gt;min_width)
+ 		aw = focused_win-&gt;min_width;
+ 
+<a href="#h8-32" id="h8-32" class="h">@@ -2028,12 +2074,6 @@ ipc_window_resize_absolute(uint32_t *d)
+</a> 	w = d[0];
+ 	h = d[1];
+ 
+<a href="#h8-32-3" id="h8-32-3" class="d">-	if (focused_win-&gt;max_width != 0 &amp;&amp; w &gt; focused_win-&gt;max_width)
+</a><a href="#h8-32-4" id="h8-32-4" class="d">-		w = focused_win-&gt;max_width;
+</a><a href="#h8-32-5" id="h8-32-5" class="d">-
+</a><a href="#h8-32-6" id="h8-32-6" class="d">-	if (focused_win-&gt;max_height != 0 &amp;&amp; h &gt; focused_win-&gt;max_height)
+</a><a href="#h8-32-7" id="h8-32-7" class="d">-		h = focused_win-&gt;max_height;
+</a><a href="#h8-32-8" id="h8-32-8" class="d">-
+</a> 	if (focused_win-&gt;min_width != 0 &amp;&amp; w &lt; focused_win-&gt;min_width)
+ 		w = focused_win-&gt;min_width;
+ 
+<a href="#h8-33" id="h8-33" class="h">@@ -2074,13 +2114,10 @@ ipc_window_hor_maximize(uint32_t *d)
+</a> 	(void)(d);
+ 	int16_t mon_x, mon_y;
+ 	uint16_t mon_w;
+<a href="#h8-33-3" id="h8-33-3" class="d">-	bool was_hmaxed;
+</a> 
+ 	if (focused_win == NULL)
+ 		return;
+ 
+<a href="#h8-33-8" id="h8-33-8" class="d">-	was_hmaxed = focused_win-&gt;hmaxed;
+</a><a href="#h8-33-9" id="h8-33-9" class="d">-
+</a> 	if (focused_win-&gt;hmaxed) {
+ 		unmaximize_window(focused_win);
+ 		set_focused(focused_win);
+<a href="#h8-34" id="h8-34" class="h">@@ -2098,13 +2135,10 @@ ipc_window_ver_maximize(uint32_t *d)
+</a> 	(void)(d);
+ 	int16_t mon_x, mon_y;
+ 	uint16_t mon_h;
+<a href="#h8-34-3" id="h8-34-3" class="d">-	bool was_hmaxed;
+</a> 
+ 	if (focused_win == NULL)
+ 		return;
+ 
+<a href="#h8-34-8" id="h8-34-8" class="d">-	was_hmaxed = focused_win-&gt;hmaxed;
+</a><a href="#h8-34-9" id="h8-34-9" class="d">-
+</a> 	if (focused_win-&gt;vmaxed) {
+ 		unmaximize_window(focused_win);
+ 		set_focused(focused_win);
+<a href="#h8-35" id="h8-35" class="h">@@ -2117,6 +2151,27 @@ ipc_window_ver_maximize(uint32_t *d)
+</a> }
+ 
+ static void
+<a href="#h8-35-3" id="h8-35-3" class="i">+ipc_window_monocle(uint32_t *d)
+</a><a href="#h8-35-4" id="h8-35-4" class="i">+{
+</a><a href="#h8-35-5" id="h8-35-5" class="i">+	(void)(d);
+</a><a href="#h8-35-6" id="h8-35-6" class="i">+	int16_t mon_x, mon_y;
+</a><a href="#h8-35-7" id="h8-35-7" class="i">+	uint16_t mon_w, mon_h;
+</a><a href="#h8-35-8" id="h8-35-8" class="i">+
+</a><a href="#h8-35-9" id="h8-35-9" class="i">+	if (focused_win == NULL)
+</a><a href="#h8-35-10" id="h8-35-10" class="i">+		return;
+</a><a href="#h8-35-11" id="h8-35-11" class="i">+
+</a><a href="#h8-35-12" id="h8-35-12" class="i">+	if (focused_win-&gt;monocled) {
+</a><a href="#h8-35-13" id="h8-35-13" class="i">+		unmaximize_window(focused_win);
+</a><a href="#h8-35-14" id="h8-35-14" class="i">+		set_focused(focused_win);
+</a><a href="#h8-35-15" id="h8-35-15" class="i">+	} else {
+</a><a href="#h8-35-16" id="h8-35-16" class="i">+		get_monitor_size(focused_win, &amp;mon_x, &amp;mon_y, &amp;mon_w, &amp;mon_h);
+</a><a href="#h8-35-17" id="h8-35-17" class="i">+		monocle_window(focused_win, mon_x, mon_y, mon_w, mon_h);
+</a><a href="#h8-35-18" id="h8-35-18" class="i">+	}
+</a><a href="#h8-35-19" id="h8-35-19" class="i">+
+</a><a href="#h8-35-20" id="h8-35-20" class="i">+	xcb_flush(conn);
+</a><a href="#h8-35-21" id="h8-35-21" class="i">+}
+</a><a href="#h8-35-22" id="h8-35-22" class="i">+
+</a><a href="#h8-35-23" id="h8-35-23" class="i">+static void
+</a> ipc_window_close(uint32_t *d)
+ {
+ 	(void)(d);
+<a href="#h8-36" id="h8-36" class="h">@@ -2141,7 +2196,8 @@ ipc_window_put_in_grid(uint32_t *d)
+</a> 	if (focused_win == NULL || grid_x &gt;= grid_width || grid_y &gt;= grid_height)
+ 		return;
+ 
+<a href="#h8-36-3" id="h8-36-3" class="d">-	if (focused_win-&gt;maxed || focused_win-&gt;vmaxed || focused_win-&gt;hmaxed) {
+</a><a href="#h8-36-4" id="h8-36-4" class="i">+	if (focused_win-&gt;maxed || focused_win-&gt;vmaxed
+</a><a href="#h8-36-5" id="h8-36-5" class="i">+			|| focused_win-&gt;hmaxed || focused_win-&gt;monocled) {
+</a> 		unmaximize_window(focused_win);
+ 		set_focused(focused_win);
+ 	}
+</pre>
+</div>
+</body>
+</html>

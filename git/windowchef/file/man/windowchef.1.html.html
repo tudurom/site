@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> windowchef.1.html (4566B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> windowchef.1.html (4724B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -145,7 +145,7 @@
 &lt;head&gt;
   &lt;meta http-equiv=&apos;content-type&apos; value=&apos;text/html;charset=utf8&apos;&gt;
   &lt;meta name=&apos;generator&apos; value=&apos;Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)&apos;&gt;
-  &lt;title&gt;windowchef(1) - A static window cooker&lt;/title&gt;
+  &lt;title&gt;windowchef(1) - A stacking window cooker&lt;/title&gt;
   &lt;style type=&apos;text/css&apos; media=&apos;all&apos;&gt;
   /* style: man */
   body#manpage {margin:0}
@@ -212,12 +212,12 @@
 
   &lt;h2 id=&quot;NAME&quot;&gt;NAME&lt;/h2&gt;
 &lt;p class=&quot;man-name&quot;&gt;
-  &lt;code&gt;windowchef&lt;/code&gt; - &lt;span class=&quot;man-whatis&quot;&gt;A static window cooker&lt;/span&gt;
+  &lt;code&gt;windowchef&lt;/code&gt; - &lt;span class=&quot;man-whatis&quot;&gt;A stacking window cooker&lt;/span&gt;
 &lt;/p&gt;
 
 &lt;h2 id=&quot;SYNOPSIS&quot;&gt;SYNOPSIS&lt;/h2&gt;
 
-&lt;p&gt;&lt;code&gt;windowchef&lt;/code&gt; [-h]&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;windowchef&lt;/code&gt; [-h|-c &lt;var&gt;config_path&lt;/var&gt;]&lt;/p&gt;
 
 &lt;h2 id=&quot;DESCRIPTION&quot;&gt;DESCRIPTION&lt;/h2&gt;
 
@@ -226,7 +226,7 @@ pointer inputs. It is controlled and configured by &lt;code&gt;waitron&lt;/code&
 
 &lt;p&gt;At startup,
 &lt;code&gt;windowchef&lt;/code&gt; runs a script located at &lt;code&gt;$XDG_CONFIG_HOME/windowchef/windowchefrc&lt;/code&gt;
-(&lt;code&gt;$XDG_CONFIG_HOME&lt;/code&gt; is usually &lt;code&gt;~/.config&lt;/code&gt;). The path of the config file can be
+(&lt;code&gt;$XDG_CONFIG_HOME&lt;/code&gt; is usually &lt;code&gt;~/.config&lt;/code&gt;). The path of the configuration file can be
 overridden with the &lt;code&gt;-c&lt;/code&gt; flag.&lt;/p&gt;
 
 &lt;h2 id=&quot;OPTIONS&quot;&gt;OPTIONS&lt;/h2&gt;
@@ -240,7 +240,7 @@ overridden with the &lt;code&gt;-c&lt;/code&gt; flag.&lt;/p&gt;
 
 &lt;h2 id=&quot;SEE-ALSO&quot;&gt;SEE ALSO&lt;/h2&gt;
 
-&lt;p&gt;&lt;span class=&quot;man-ref&quot;&gt;waitron&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;sxhkd&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;xinit&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;man-ref&quot;&gt;waitron&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;sxhkd&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;xinit&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;xmmv&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;xmrs&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;AUTHOR&quot;&gt;AUTHOR&lt;/h2&gt;
 
@@ -256,7 +256,7 @@ page.&lt;/p&gt;
 
   &lt;ol class=&apos;man-decor man-foot man foot&apos;&gt;
     &lt;li class=&apos;tl&apos;&gt;&lt;/li&gt;
-    &lt;li class=&apos;tc&apos;&gt;September 2016&lt;/li&gt;
+    &lt;li class=&apos;tc&apos;&gt;December 2016&lt;/li&gt;
     &lt;li class=&apos;tr&apos;&gt;windowchef(1)&lt;/li&gt;
   &lt;/ol&gt;
 

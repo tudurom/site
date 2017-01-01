@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>repaint borders when colors or border width are changed - windowchef - windowchef is a stacking window cooker controlled by a remote control program, waitron
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="windowchef.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>windowchef</h1><span class="desc">windowchef is a stacking window cooker controlled by a remote control program, waitron
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/windowchef.git">git://thetudor.ddns.net/windowchef.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/8e9b471b78414b9c9ddae83a400c7c7e47785691.html">8e9b471b78414b9c9ddae83a400c7c7e47785691</a>
+<b>parent</b> <a href="../commit/36db937c62e51bdb827cf3fdad5363a33060ae68.html">36db937c62e51bdb827cf3fdad5363a33060ae68</a>
+<b>Author:</b> Tudor Roman &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Fri Dec 16 19:36:28 +0200
+
+repaint borders when colors or border width are changed
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">wm.c</a></td><td> | </td><td class="num">20</td><td><span class="i">++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table>1 file changed, 20 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/wm.c.html">wm.c</a> b/<a href="../file/wm.c.html">wm.c</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -114,6 +114,7 @@ static void change_nr_of_groups(uint32_t);
+</a> static void mouse_start(enum mouse_mode);
+ static void mouse_stop(void);
+ static void mouse_toggle(enum mouse_mode);
+<a href="#h0-0-3" id="h0-0-3" class="i">+static void refresh_borders(void);
+</a> static void update_ewmh_wm_state(struct client *);
+ static void handle_wm_state(struct client *, xcb_atom_t, unsigned int);
+ static void register_event_handlers(void);
+<a href="#h0-1" id="h0-1" class="h">@@ -1550,6 +1551,22 @@ mouse_toggle(enum mouse_mode mode)
+</a> }
+ 
+ static void
+<a href="#h0-1-3" id="h0-1-3" class="i">+refresh_borders(void)
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+{
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+	struct list_item *item;
+</a><a href="#h0-1-6" id="h0-1-6" class="i">+	struct client *client;
+</a><a href="#h0-1-7" id="h0-1-7" class="i">+
+</a><a href="#h0-1-8" id="h0-1-8" class="i">+	for (item = win_list; item != NULL; item = item-&gt;next) {
+</a><a href="#h0-1-9" id="h0-1-9" class="i">+		client = item-&gt;data;
+</a><a href="#h0-1-10" id="h0-1-10" class="i">+
+</a><a href="#h0-1-11" id="h0-1-11" class="i">+		if (client == focused_win)
+</a><a href="#h0-1-12" id="h0-1-12" class="i">+			set_borders(client, conf.focus_color);
+</a><a href="#h0-1-13" id="h0-1-13" class="i">+		else
+</a><a href="#h0-1-14" id="h0-1-14" class="i">+			set_borders(client, conf.unfocus_color);
+</a><a href="#h0-1-15" id="h0-1-15" class="i">+	}
+</a><a href="#h0-1-16" id="h0-1-16" class="i">+}
+</a><a href="#h0-1-17" id="h0-1-17" class="i">+
+</a><a href="#h0-1-18" id="h0-1-18" class="i">+static void
+</a> update_ewmh_wm_state(struct client *client)
+ {
+ 	int i;
+<a href="#h0-2" id="h0-2" class="h">@@ -2500,12 +2517,15 @@ ipc_wm_config(uint32_t *d)
+</a> 	switch (key) {
+ 		case IPCConfigBorderWidth:
+ 			conf.border_width = d[1];
+<a href="#h0-2-3" id="h0-2-3" class="i">+			refresh_borders();
+</a> 			break;
+ 		case IPCConfigColorFocused:
+ 			conf.focus_color = d[1];
+<a href="#h0-2-7" id="h0-2-7" class="i">+			refresh_borders();
+</a> 			break;
+ 		case IPCConfigColorUnfocused:
+ 			conf.unfocus_color = d[1];
+<a href="#h0-2-11" id="h0-2-11" class="i">+			refresh_borders();
+</a> 			break;
+ 		case IPCConfigGapWidth:
+ 			switch (d[1]) {
+</pre>
+</div>
+</body>
+</html>

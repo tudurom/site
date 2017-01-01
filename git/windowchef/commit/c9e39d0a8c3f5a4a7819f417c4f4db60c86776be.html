@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>fix #16 - windowchef - windowchef is a stacking window cooker controlled by a remote control program, waitron
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="windowchef.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>windowchef</h1><span class="desc">windowchef is a stacking window cooker controlled by a remote control program, waitron
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/windowchef.git">git://thetudor.ddns.net/windowchef.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/c9e39d0a8c3f5a4a7819f417c4f4db60c86776be.html">c9e39d0a8c3f5a4a7819f417c4f4db60c86776be</a>
+<b>parent</b> <a href="../commit/fd658f843f0f6774fd6abca388ac772bb841a999.html">fd658f843f0f6774fd6abca388ac772bb841a999</a>
+<b>Author:</b> Tudor Roman &lt;<a href="mailto:xenogenesis@openmailbox.org">xenogenesis@openmailbox.org</a>&gt;
+<b>Date:</b>   Thu Nov 10 19:32:28 +0200
+
+fix #16
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">wm.c</a></td><td> | </td><td class="num">4</td><td><span class="i">++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h1">xephyr.sh</a></td><td> | </td><td class="num">3</td><td><span class="i">++</span><span class="d">-</span></td></tr>
+</table>2 files changed, 6 insertions(+), 1 deletion(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/wm.c.html">wm.c</a> b/<a href="../file/wm.c.html">wm.c</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1686,6 +1686,10 @@ event_map_request(xcb_generic_event_t *ev)
+</a> 	if (client == NULL) {
+ 		client = setup_window(e-&gt;window);
+ 
+<a href="#h0-0-3" id="h0-0-3" class="i">+		/* client is a dock or some kind of window that needs to be ignored */
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+		if (client == NULL)
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+			return;
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+
+</a> 		if (!client-&gt;geom.set_by_user) {
+ 			if (!get_pointer_location(&amp;scr-&gt;root, &amp;client-&gt;geom.x, &amp;client-&gt;geom.y))
+ 				client-&gt;geom.x = client-&gt;geom.y = 0;
+<b>diff --git a/<a id="h1" href="../file/xephyr.sh.html">xephyr.sh</a> b/<a href="../file/xephyr.sh.html">xephyr.sh</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -7,4 +7,5 @@ sleep 1
+</a> 
+ export DISPLAY=:$D
+ sxhkd -c .sxhkdrc &amp;
+<a href="#h1-0-3" id="h1-0-3" class="d">-exec ./windowchef -c windowchefrc
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+#exec ./windowchef -c windowchefrc
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+xterm
+</a></pre>
+</div>
+</body>
+</html>

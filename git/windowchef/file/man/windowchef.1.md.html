@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> windowchef.1.md (943B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> windowchef.1.md (987B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -57,12 +57,12 @@
 <a href="#l39" id="l39">39</a>
 <a href="#l40" id="l40">40</a>
 </pre></td><td><pre>
-windowchef(1) -- A static window cooker
+windowchef(1) -- A stacking window cooker
 =====================================
 
 ## SYNOPSIS
 
-`windowchef` [-h]
+`windowchef` [-h|-c &lt;config_path&gt;]
 
 ## DESCRIPTION
 
@@ -71,7 +71,7 @@ pointer inputs. It is controlled and configured by `waitron`.
 
 At startup,
 `windowchef` runs a script located at `$XDG_CONFIG_HOME/windowchef/windowchefrc`
-(`$XDG_CONFIG_HOME` is usually `~/.config`). The path of the config file can be
+(`$XDG_CONFIG_HOME` is usually `~/.config`). The path of the configuration file can be
 overridden with the `-c` flag.
 
 ## OPTIONS
@@ -85,7 +85,7 @@ overridden with the `-c` flag.
 
 ## SEE ALSO
 
-waitron(1), sxhkd(1), xinit(1)
+waitron(1), sxhkd(1), xinit(1), xmmv(1), xmrs(1)
 
 ## AUTHOR
 

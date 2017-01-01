@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> ipc.h (947B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> ipc.h (995B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -68,6 +68,7 @@
 <a href="#l50" id="l50">50</a>
 <a href="#l51" id="l51">51</a>
 <a href="#l52" id="l52">52</a>
+<a href="#l53" id="l53">53</a>
 </pre></td><td><pre>
 /* See the LICENSE file for copyright and license details. */
 
@@ -87,6 +88,7 @@ enum IPCCommand {
 	IPCWindowMaximize,
 	IPCWindowHorMaximize,
 	IPCWindowVerMaximize,
+	IPCWindowMonocle,
 	IPCWindowClose,
 	IPCWindowPutInGrid,
 	IPCWindowSnap,
@@ -100,9 +102,7 @@ enum IPCCommand {
 	IPCGroupActivate,
 	IPCGroupDeactivate,
 	IPCGroupToggle,
-	IPCMouseStart,
-	IPCMouseStop,
-	IPCMouseToggle,
+	IPCGroupActivateSpecific,
 	IPCWMQuit,
 	IPCWMConfig,
 	NR_IPC_COMMANDS
@@ -117,6 +117,8 @@ enum IPCConfig {
 	IPCConfigCursorPosition,
 	IPCConfigGroupsNr,
 	IPCConfigEnableSloppyFocus,
+	IPCConfigStickyWindows,
+	IPCConfigEnableBorders,
 	NR_IPC_CONFIGS
 };
 

@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> README.md (4538B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> README.md (6041B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -148,6 +148,44 @@
 <a href="#l130" id="l130">130</a>
 <a href="#l131" id="l131">131</a>
 <a href="#l132" id="l132">132</a>
+<a href="#l133" id="l133">133</a>
+<a href="#l134" id="l134">134</a>
+<a href="#l135" id="l135">135</a>
+<a href="#l136" id="l136">136</a>
+<a href="#l137" id="l137">137</a>
+<a href="#l138" id="l138">138</a>
+<a href="#l139" id="l139">139</a>
+<a href="#l140" id="l140">140</a>
+<a href="#l141" id="l141">141</a>
+<a href="#l142" id="l142">142</a>
+<a href="#l143" id="l143">143</a>
+<a href="#l144" id="l144">144</a>
+<a href="#l145" id="l145">145</a>
+<a href="#l146" id="l146">146</a>
+<a href="#l147" id="l147">147</a>
+<a href="#l148" id="l148">148</a>
+<a href="#l149" id="l149">149</a>
+<a href="#l150" id="l150">150</a>
+<a href="#l151" id="l151">151</a>
+<a href="#l152" id="l152">152</a>
+<a href="#l153" id="l153">153</a>
+<a href="#l154" id="l154">154</a>
+<a href="#l155" id="l155">155</a>
+<a href="#l156" id="l156">156</a>
+<a href="#l157" id="l157">157</a>
+<a href="#l158" id="l158">158</a>
+<a href="#l159" id="l159">159</a>
+<a href="#l160" id="l160">160</a>
+<a href="#l161" id="l161">161</a>
+<a href="#l162" id="l162">162</a>
+<a href="#l163" id="l163">163</a>
+<a href="#l164" id="l164">164</a>
+<a href="#l165" id="l165">165</a>
+<a href="#l166" id="l166">166</a>
+<a href="#l167" id="l167">167</a>
+<a href="#l168" id="l168">168</a>
+<a href="#l169" id="l169">169</a>
+<a href="#l170" id="l170">170</a>
 </pre></td><td><pre>
 Windowchef
 ==========
@@ -174,6 +212,21 @@ Windowchef is written in C with the help of the XCB library for
 communicating with the X server. It supports randr and a subset of ewmh and
 icccm.
 
+Rationale
+---------
+
+Window managers are spreading like rats these days (I may be wrong). So what do you want to achieve with this one?
+
+What I want to achieve by writing windowchef is a simple window manager that
+provides basic functionality for a more minimal, yet comfortable workflow while
+being easily extensible using the standard UNIX way: shell scripts. Cool
+features like sorting windows by size on a specific monitor are not
+included in windowchef. Instead, the user is encouraged to write a script that
+does this using available tools like [wmutils](https://github.com/wmutils)
+for window manipulation and [disputils](https://arcetera.moe/git/disputils/log.html) for getting information regarding randr outputs.
+
+Have fun!
+
 Usage
 -----
 
@@ -183,6 +236,35 @@ configuration. Additionally, you can read the manual page (`windowchef(1)`).
 The default configuration file is `~/.config/windowchef/windowchefrc`. It is usually
 a shell script that calls `waitron wm_config` for configuration. See the
 manual page for `waitron(1)` for details regarding this topic.
+
+
+Dependencies
+------------
+
+Windowchef depends on `xcb` to communicate with the X11 server, `xcb-randr` to
+gather information about connected displays and `xcb-util-wm` for ewmh and icccm helper functions.
+
+I couldn&apos;t find compiled documentation for `xcb-util-wm` so I compiled it and
+put it on my website [here](http://thetudor.ddns.net/res).
+
+Building windowchef and installing it
+-------------------------------------
+
+Available in the AUR:
+
+* [windowchef](https://aur.archlinux.org/packages/windowchef/)
+* [windowchef-git](https://aur.archlinux.org/packages/windowchef-git/)
+
+First, you may need to tweak the search path for some operating systems (e.g.
+OpenBSD) in `config.mk`.
+
+Then, just `make` it:
+
+```bash
+$ make
+$ sudo make install
+```
+The `Makefile` respects the `DESTDIR` and `PREFIX` variables.
 
 
 Features
@@ -198,8 +280,10 @@ Features
 * cwm-like window groups
 	* Add or remove windows to a group
 	* Activate/Deactivate/Toggle a group
+	* groups can be &quot;sticky&quot;: windows are assigned to the currently
+		selected group automatically
 * Simple and stylish solid-color border. Width can be configured
-* Gaps around the monitor
+* Gaps around the monitor and around the cells of the virtual grid(s).
 * Configuration script. Windowchef loads a given script at startup that can be
 	used for configuration with waitron.
 * 100% compatible with window management utilities (e.g. [wmutils](https://github.com/wmutils/)). Windowchef will update its internal state if programs attempt to manage windows. It also applies the correct window decorations when a program focuses a window. This makes it possible to use it as a &quot;backend&quot; with wm utilities.
@@ -219,6 +303,9 @@ at the same time.
 Windowchef allows you to add/remove windows to/from groups, show groups, hide
 groups or toggle them.
 
+You can also activate *sticky group mode*. When activated, new windows are
+automatically assigned to the currently selected group. Together with the `group_activate_specific` command (see `waitron(1)`), a workspace-like workflow can be achieved.
+
 ### Virtual grids
 
 You can tell windowchef to move and resize a window so it can fit in a cell
@@ -236,6 +323,19 @@ grid and put my window in the cell at `x = 0`, `y = 2`:
 +-----------------------+
 ```
 
+Using the mouse
+---------------
+
+Windowchef doesn&apos;t offer any mouse moving/resizing features. You can emulate
+that with `xmmv(1)` and `xmrs(1)` from wmutils&apos; `opt`.
+
+`.sxhkdrc`:
+
+```
+super + {_,alt +} t
+	{xmmv,xmrs}
+```
+
 Bars and panels
 ---------------
 
@@ -244,30 +344,6 @@ windows with the `_NET_WM_WINDOW_TYPE_DOCK` type. Panels can get
 information about the state of the window manager through ewmh properties.
 
 Tested with [lemonbar](https://github.com/lemonboy/bar).
-
-Dependencies
-------------
-
-Windowchef depends on `xcb` to communicate with the X11 server, `xcb-randr` to
-gather information about connected displays and `xcb-util-wm` for ewmh and icccm helper functions.
-
-I couldn&apos;t find compiled documentation for `xcb-util-wm` so I compiled it and
-put it on my website [here](http://thetudor.ddns.net/res).
-
-Building windowchef and installing it
--------------------------------------
-
-First, you may need to tweak the search path for some operating systems (e.g.
-OpenBSD) in `config.mk`.
-
-Then, just `make` it:
-
-```bash
-$ make
-$ sudo make install
-```
-The `Makefile` respects the `DESTDIR` and `PREFIX` variables.
-
 
 Thanks
 ------
@@ -279,7 +355,7 @@ the essentials of X11 development.
 
 Thanks to venam, Michaell Cardell and baskerville for the window managers they
 made: 2bwm, mcwm and bspwm (ironically they all end in wm :). Their
-programs were and still are a very good source of inspirationfor anyone who
+programs were and still are a very good source of inspiration for anyone who
 wants to write a window manager.
 </pre></td></tr></table>
 </div>

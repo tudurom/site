@@ -15,7 +15,7 @@
 <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> client.c (8909B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> client.c (8612B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -339,25 +339,6 @@
 <a href="#l321" id="l321">321</a>
 <a href="#l322" id="l322">322</a>
 <a href="#l323" id="l323">323</a>
-<a href="#l324" id="l324">324</a>
-<a href="#l325" id="l325">325</a>
-<a href="#l326" id="l326">326</a>
-<a href="#l327" id="l327">327</a>
-<a href="#l328" id="l328">328</a>
-<a href="#l329" id="l329">329</a>
-<a href="#l330" id="l330">330</a>
-<a href="#l331" id="l331">331</a>
-<a href="#l332" id="l332">332</a>
-<a href="#l333" id="l333">333</a>
-<a href="#l334" id="l334">334</a>
-<a href="#l335" id="l335">335</a>
-<a href="#l336" id="l336">336</a>
-<a href="#l337" id="l337">337</a>
-<a href="#l338" id="l338">338</a>
-<a href="#l339" id="l339">339</a>
-<a href="#l340" id="l340">340</a>
-<a href="#l341" id="l341">341</a>
-<a href="#l342" id="l342">342</a>
 </pre></td><td><pre>
 /* See the LICENSE file for copyright and license details. */
 
@@ -383,7 +364,6 @@ static bool fn_bool(uint32_t *, int, char **);
 static bool fn_config(uint32_t *, int, char **);
 static bool fn_hex(uint32_t *, int, char **);
 static bool fn_position(uint32_t *, int, char **);
-static bool fn_mouse(uint32_t *, int, char **);
 static bool fn_gap(uint32_t *, int, char **);
 
 struct Command {
@@ -408,6 +388,7 @@ static struct Command c[] = {
 	{ &quot;window_maximize&quot;           , IPCWindowMaximize        ,  0 , NULL        } ,
 	{ &quot;window_hor_maximize&quot;       , IPCWindowHorMaximize     ,  0 , NULL        } ,
 	{ &quot;window_ver_maximize&quot;       , IPCWindowVerMaximize     ,  0 , NULL        } ,
+	{ &quot;window_monocle&quot;            , IPCWindowMonocle         ,  0 , NULL        } ,
 	{ &quot;window_close&quot;              , IPCWindowClose           ,  0 , NULL        } ,
 	{ &quot;window_put_in_grid&quot;        , IPCWindowPutInGrid       ,  4 , fn_naturals } ,
 	{ &quot;window_snap&quot;               , IPCWindowSnap            ,  1 , fn_position } ,
@@ -421,22 +402,22 @@ static struct Command c[] = {
 	{ &quot;group_activate&quot;            , IPCGroupActivate         ,  1 , fn_naturals } ,
 	{ &quot;group_deactivate&quot;          , IPCGroupDeactivate       ,  1 , fn_naturals } ,
 	{ &quot;group_toggle&quot;              , IPCGroupToggle           ,  1 , fn_naturals } ,
-	{ &quot;mouse_start&quot;               , IPCMouseStart            ,  1 , fn_mouse    } ,
-	{ &quot;mouse_stop&quot;                , IPCMouseStop             ,  0 , NULL        } ,
-	{ &quot;mouse_toggle&quot;              , IPCMouseToggle           ,  1 , fn_mouse    } ,
+	{ &quot;group_activate_specific&quot;   , IPCGroupActivateSpecific ,  1 , fn_naturals } ,
 	{ &quot;wm_quit&quot;                   , IPCWMQuit                ,  1 , fn_naturals } ,
 	{ &quot;wm_config&quot;                 , IPCWMConfig              , -1 , fn_config   },
 };
 
 static struct ConfigEntry configs[] = {
-	{ &quot;border_width&quot;        , IPCConfigBorderWidth       , fn_naturals } ,
-	{ &quot;color_focused&quot;       , IPCConfigColorFocused      , fn_hex      } ,
-	{ &quot;color_unfocused&quot;     , IPCConfigColorUnfocused    , fn_hex      } ,
-	{ &quot;gap_width&quot;           , IPCConfigGapWidth          , fn_gap      } ,
-	{ &quot;grid_gap_width&quot;      , IPCConfigGridGapWidth      , fn_naturals } ,
-	{ &quot;cursor_position&quot;     , IPCConfigCursorPosition    , fn_position } ,
-	{ &quot;groups_nr&quot;           , IPCConfigGroupsNr          , fn_naturals } ,
-	{ &quot;enable_sloppy_focus&quot; , IPCConfigEnableSloppyFocus , fn_bool     } ,
+	{ &quot;border_width&quot;        , IPCConfigBorderWidth       , fn_naturals },
+	{ &quot;color_focused&quot;       , IPCConfigColorFocused      , fn_hex      },
+	{ &quot;color_unfocused&quot;     , IPCConfigColorUnfocused    , fn_hex      },
+	{ &quot;gap_width&quot;           , IPCConfigGapWidth          , fn_gap      },
+	{ &quot;grid_gap_width&quot;      , IPCConfigGridGapWidth      , fn_naturals },
+	{ &quot;cursor_position&quot;     , IPCConfigCursorPosition    , fn_position },
+	{ &quot;groups_nr&quot;           , IPCConfigGroupsNr          , fn_naturals },
+	{ &quot;enable_sloppy_focus&quot; , IPCConfigEnableSloppyFocus , fn_bool     },
+	{ &quot;sticky_windows&quot;      , IPCConfigStickyWindows     , fn_bool     },
+	{ &quot;enable_borders&quot;      , IPCConfigEnableBorders     , fn_bool     },
 };
 
 static bool
@@ -573,25 +554,6 @@ fn_position(uint32_t *data, int argc, char **argv)
 }
 
 static bool
-fn_mouse(uint32_t *data, int argc, char **argv)
-{
-	char *pos = argv[0];
-	enum mouse_mode mode;
-
-	if (strcasecmp(pos, &quot;move&quot;) == 0)
-		mode = MOUSE_MOVE;
-	else if (strcasecmp(pos, &quot;resize&quot;) == 0)
-		mode = MOUSE_RESIZE;
-	else
-		return false;
-
-	(void)(argc);
-	data[0] = mode;
-
-	return true;
-}
-
-static bool
 fn_gap(uint32_t *data, int argc, char **argv)
 {
 	(void)(argc);
@@ -685,7 +647,7 @@ int main(int argc, char **argv)
 	if (i &lt; NR_IPC_COMMANDS) {
 		if (c[i].argc != -1) {
 			if (command_argc &lt; c[i].argc)
-				errx(EXIT_FAILURE, &quot;not enough argmuents&quot;);
+				errx(EXIT_FAILURE, &quot;not enough arguments&quot;);
 			else if (command_argc &gt; c[i].argc)
 				warnx(&quot;too many arguments&quot;);
 		}

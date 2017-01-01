@@ -4,6 +4,500 @@
 <subtitle>windowchef is a stacking window cooker controlled by a remote control program, waitron
 </subtitle>
 <entry>
+<id>08224b23c6f51adbdfe4c7a888a73fe0f0e68269</id>
+<published>2017-01-01T13:30:03Z</published>
+<updated>2017-01-01T13:30:03Z</updated>
+<title type="text">deactivate group if there are no windows assigned to it</title>
+<link rel="alternate" type="text/html" href="commit/08224b23c6f51adbdfe4c7a888a73fe0f0e68269.html" /><author><name>Tudor Roman</name>
+<email>tudurom@gmail.com</email>
+</author>
+<content type="text">commit 08224b23c6f51adbdfe4c7a888a73fe0f0e68269
+parent d9f2c4570bd79a32dd393dccec8c80151f72ec8f
+Author: Tudor Roman &lt;tudurom@gmail.com&gt;
+Date:   Sun Jan  1 15:30:03 +0200
+
+deactivate group if there are no windows assigned to it
+
+</content>
+</entry>
+<entry>
+<id>d9f2c4570bd79a32dd393dccec8c80151f72ec8f</id>
+<published>2017-01-01T01:30:46Z</published>
+<updated>2017-01-01T01:30:46Z</updated>
+<title type="text">readme: typo</title>
+<link rel="alternate" type="text/html" href="commit/d9f2c4570bd79a32dd393dccec8c80151f72ec8f.html" /><author><name>Tudor Roman</name>
+<email>tudurom@gmail.com</email>
+</author>
+<content type="text">commit d9f2c4570bd79a32dd393dccec8c80151f72ec8f
+parent 3f4aada5384d7eca8a08681e1265d7bf91539e8b
+Author: Tudor Roman &lt;tudurom@gmail.com&gt;
+Date:   Sun Jan  1 03:30:46 +0200
+
+readme: typo
+
+</content>
+</entry>
+<entry>
+<id>3f4aada5384d7eca8a08681e1265d7bf91539e8b</id>
+<published>2016-12-31T18:04:25Z</published>
+<updated>2016-12-31T18:04:25Z</updated>
+<title type="text">new feature: get a list of active groups through root window property</title>
+<link rel="alternate" type="text/html" href="commit/3f4aada5384d7eca8a08681e1265d7bf91539e8b.html" /><author><name>Tudor Roman</name>
+<email>tudurom@gmail.com</email>
+</author>
+<content type="text">commit 3f4aada5384d7eca8a08681e1265d7bf91539e8b
+parent 43e77aefc6126bb1f4a026e2fbd080cfbe793812
+Author: Tudor Roman &lt;tudurom@gmail.com&gt;
+Date:   Sat Dec 31 20:04:25 +0200
+
+new feature: get a list of active groups through root window property
+
+</content>
+</entry>
+<entry>
+<id>43e77aefc6126bb1f4a026e2fbd080cfbe793812</id>
+<published>2016-12-30T19:50:15Z</published>
+<updated>2016-12-30T19:50:15Z</updated>
+<title type="text">small license change</title>
+<link rel="alternate" type="text/html" href="commit/43e77aefc6126bb1f4a026e2fbd080cfbe793812.html" /><author><name>Tudor Roman</name>
+<email>tudurom@gmail.com</email>
+</author>
+<content type="text">commit 43e77aefc6126bb1f4a026e2fbd080cfbe793812
+parent 6b89dbfd7a2cc668bbad99fff3b3239f6c385439
+Author: Tudor Roman &lt;tudurom@gmail.com&gt;
+Date:   Fri Dec 30 21:50:15 +0200
+
+small license change
+
+</content>
+</entry>
+<entry>
+<id>6b89dbfd7a2cc668bbad99fff3b3239f6c385439</id>
+<published>2016-12-21T13:26:32Z</published>
+<updated>2016-12-21T13:26:32Z</updated>
+<title type="text">removed mouse functions</title>
+<link rel="alternate" type="text/html" href="commit/6b89dbfd7a2cc668bbad99fff3b3239f6c385439.html" /><author><name>Tudor Roman</name>
+<email>tudurom@gmail.com</email>
+</author>
+<content type="text">commit 6b89dbfd7a2cc668bbad99fff3b3239f6c385439
+parent 50273eae17b0c98f3e9a2560ec06b89a850f0b32
+Author: Tudor Roman &lt;tudurom@gmail.com&gt;
+Date:   Wed Dec 21 15:26:32 +0200
+
+removed mouse functions
+
+</content>
+</entry>
+<entry>
+<id>50273eae17b0c98f3e9a2560ec06b89a850f0b32</id>
+<published>2016-12-20T14:15:06Z</published>
+<updated>2016-12-20T14:15:06Z</updated>
+<title type="text">fixes</title>
+<link rel="alternate" type="text/html" href="commit/50273eae17b0c98f3e9a2560ec06b89a850f0b32.html" /><author><name>Tudor Roman</name>
+<email>tudurom@gmail.com</email>
+</author>
+<content type="text">commit 50273eae17b0c98f3e9a2560ec06b89a850f0b32
+parent 8e9b471b78414b9c9ddae83a400c7c7e47785691
+Author: Tudor Roman &lt;tudurom@gmail.com&gt;
+Date:   Tue Dec 20 16:15:06 +0200
+
+fixes
+
+</content>
+</entry>
+<entry>
+<id>8e9b471b78414b9c9ddae83a400c7c7e47785691</id>
+<published>2016-12-16T17:36:28Z</published>
+<updated>2016-12-16T17:36:28Z</updated>
+<title type="text">repaint borders when colors or border width are changed</title>
+<link rel="alternate" type="text/html" href="commit/8e9b471b78414b9c9ddae83a400c7c7e47785691.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 8e9b471b78414b9c9ddae83a400c7c7e47785691
+parent 36db937c62e51bdb827cf3fdad5363a33060ae68
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Dec 16 19:36:28 +0200
+
+repaint borders when colors or border width are changed
+
+</content>
+</entry>
+<entry>
+<id>36db937c62e51bdb827cf3fdad5363a33060ae68</id>
+<published>2016-12-09T12:24:31Z</published>
+<updated>2016-12-09T12:24:31Z</updated>
+<title type="text">always set the border width</title>
+<link rel="alternate" type="text/html" href="commit/36db937c62e51bdb827cf3fdad5363a33060ae68.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 36db937c62e51bdb827cf3fdad5363a33060ae68
+parent 82c831d0dd083cdaa2b487e2fe8a42f184ae4297
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Dec  9 14:24:31 +0200
+
+always set the border width
+
+</content>
+</entry>
+<entry>
+<id>82c831d0dd083cdaa2b487e2fe8a42f184ae4297</id>
+<published>2016-12-09T11:56:04Z</published>
+<updated>2016-12-09T11:56:04Z</updated>
+<title type="text">added option to disable border drawing</title>
+<link rel="alternate" type="text/html" href="commit/82c831d0dd083cdaa2b487e2fe8a42f184ae4297.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 82c831d0dd083cdaa2b487e2fe8a42f184ae4297
+parent 88e1b4e5c8a58777d34d937db15bade4a95d2681
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Dec  9 13:56:04 +0200
+
+added option to disable border drawing
+
+</content>
+</entry>
+<entry>
+<id>88e1b4e5c8a58777d34d937db15bade4a95d2681</id>
+<published>2016-12-08T13:33:36Z</published>
+<updated>2016-12-08T13:33:36Z</updated>
+<title type="text">bump version</title>
+<link rel="alternate" type="text/html" href="commit/88e1b4e5c8a58777d34d937db15bade4a95d2681.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 88e1b4e5c8a58777d34d937db15bade4a95d2681
+parent c6bbf557fbcc4a26a123ee18c5157cbb0b3d81d3
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Dec  8 15:33:36 +0200
+
+bump version
+
+</content>
+</entry>
+<entry>
+<id>c6bbf557fbcc4a26a123ee18c5157cbb0b3d81d3</id>
+<published>2016-12-03T20:53:35Z</published>
+<updated>2016-12-03T20:53:35Z</updated>
+<title type="text">Merge branch &apos;master&apos; of https://github.com/tudurom/windowchef</title>
+<link rel="alternate" type="text/html" href="commit/c6bbf557fbcc4a26a123ee18c5157cbb0b3d81d3.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit c6bbf557fbcc4a26a123ee18c5157cbb0b3d81d3
+parent aa40cba9b65dd5c4b1d7191458eba8bc4a1b93ca
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Dec  3 22:53:35 +0200
+
+Merge branch &apos;master&apos; of https://github.com/tudurom/windowchef
+
+</content>
+</entry>
+<entry>
+<id>aa40cba9b65dd5c4b1d7191458eba8bc4a1b93ca</id>
+<published>2016-12-03T20:52:20Z</published>
+<updated>2016-12-03T20:52:20Z</updated>
+<title type="text">better debug messages</title>
+<link rel="alternate" type="text/html" href="commit/aa40cba9b65dd5c4b1d7191458eba8bc4a1b93ca.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit aa40cba9b65dd5c4b1d7191458eba8bc4a1b93ca
+parent abd0cf2f9929e755ee114052d3431680c012d66e
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Dec  3 22:52:20 +0200
+
+better debug messages
+
+</content>
+</entry>
+<entry>
+<id>abd0cf2f9929e755ee114052d3431680c012d66e</id>
+<published>2016-12-03T17:20:40Z</published>
+<updated>2016-12-03T17:20:40Z</updated>
+<title type="text">reworked ewmh window states</title>
+<link rel="alternate" type="text/html" href="commit/abd0cf2f9929e755ee114052d3431680c012d66e.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit abd0cf2f9929e755ee114052d3431680c012d66e
+parent d25a369a650c9a4f363bbf097b1a5019f6ca6527
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Dec  3 19:20:40 +0200
+
+reworked ewmh window states
+
+</content>
+</entry>
+<entry>
+<id>d25a369a650c9a4f363bbf097b1a5019f6ca6527</id>
+<published>2016-12-01T14:54:06Z</published>
+<updated>2016-12-01T14:54:06Z</updated>
+<title type="text">fixed typo</title>
+<link rel="alternate" type="text/html" href="commit/d25a369a650c9a4f363bbf097b1a5019f6ca6527.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit d25a369a650c9a4f363bbf097b1a5019f6ca6527
+parent b8d6c4c482def0c62ebd44c2f92ebf5f691af2c4
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Dec  1 16:54:06 +0200
+
+fixed typo
+
+</content>
+</entry>
+<entry>
+<id>b8d6c4c482def0c62ebd44c2f92ebf5f691af2c4</id>
+<published>2016-11-18T14:45:06Z</published>
+<updated>2016-11-18T14:45:06Z</updated>
+<title type="text">added group_activate_specific</title>
+<link rel="alternate" type="text/html" href="commit/b8d6c4c482def0c62ebd44c2f92ebf5f691af2c4.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit b8d6c4c482def0c62ebd44c2f92ebf5f691af2c4
+parent d6654456171ce1c72fed282b7f41bc966fc3703a
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Nov 18 16:45:06 +0200
+
+added group_activate_specific
+
+</content>
+</entry>
+<entry>
+<id>d6654456171ce1c72fed282b7f41bc966fc3703a</id>
+<published>2016-11-10T17:38:56Z</published>
+<updated>2016-11-10T17:38:56Z</updated>
+<title type="text">bump version</title>
+<link rel="alternate" type="text/html" href="commit/d6654456171ce1c72fed282b7f41bc966fc3703a.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit d6654456171ce1c72fed282b7f41bc966fc3703a
+parent 6100528e32fb9bf0c7ee0b394c5890325051a4cb
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Nov 10 19:38:56 +0200
+
+bump version
+
+</content>
+</entry>
+<entry>
+<id>6100528e32fb9bf0c7ee0b394c5890325051a4cb</id>
+<published>2016-11-10T17:36:09Z</published>
+<updated>2016-11-10T17:36:09Z</updated>
+<title type="text">forgot about you, sorry xephyr.sh</title>
+<link rel="alternate" type="text/html" href="commit/6100528e32fb9bf0c7ee0b394c5890325051a4cb.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 6100528e32fb9bf0c7ee0b394c5890325051a4cb
+parent c9e39d0a8c3f5a4a7819f417c4f4db60c86776be
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Nov 10 19:36:09 +0200
+
+forgot about you, sorry xephyr.sh
+
+</content>
+</entry>
+<entry>
+<id>c9e39d0a8c3f5a4a7819f417c4f4db60c86776be</id>
+<published>2016-11-10T17:32:28Z</published>
+<updated>2016-11-10T17:32:28Z</updated>
+<title type="text">fix #16</title>
+<link rel="alternate" type="text/html" href="commit/c9e39d0a8c3f5a4a7819f417c4f4db60c86776be.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit c9e39d0a8c3f5a4a7819f417c4f4db60c86776be
+parent fd658f843f0f6774fd6abca388ac772bb841a999
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Thu Nov 10 19:32:28 +0200
+
+fix #16
+
+</content>
+</entry>
+<entry>
+<id>fd658f843f0f6774fd6abca388ac772bb841a999</id>
+<published>2016-10-28T18:52:52Z</published>
+<updated>2016-10-28T18:52:52Z</updated>
+<title type="text">updated readme</title>
+<link rel="alternate" type="text/html" href="commit/fd658f843f0f6774fd6abca388ac772bb841a999.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit fd658f843f0f6774fd6abca388ac772bb841a999
+parent 02d95a488cb009fff0ef31ee186746d13b9443e1
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Oct 28 21:52:52 +0300
+
+updated readme
+
+</content>
+</entry>
+<entry>
+<id>02d95a488cb009fff0ef31ee186746d13b9443e1</id>
+<published>2016-10-28T18:07:27Z</published>
+<updated>2016-10-28T18:07:27Z</updated>
+<title type="text">removed useless value from config.h</title>
+<link rel="alternate" type="text/html" href="commit/02d95a488cb009fff0ef31ee186746d13b9443e1.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 02d95a488cb009fff0ef31ee186746d13b9443e1
+parent 4d862732edd1ae472b38bbdd633efa4ecd323b49
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Oct 28 21:07:27 +0300
+
+removed useless value from config.h
+
+</content>
+</entry>
+<entry>
+<id>4d862732edd1ae472b38bbdd633efa4ecd323b49</id>
+<published>2016-10-28T13:34:24Z</published>
+<updated>2016-10-28T13:34:24Z</updated>
+<title type="text">removed workspace mode, added sticky windows setting</title>
+<link rel="alternate" type="text/html" href="commit/4d862732edd1ae472b38bbdd633efa4ecd323b49.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 4d862732edd1ae472b38bbdd633efa4ecd323b49
+parent 679a6b7d94113f319085b0978a621637db82139b
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Oct 28 16:34:24 +0300
+
+removed workspace mode, added sticky windows setting
+
+</content>
+</entry>
+<entry>
+<id>679a6b7d94113f319085b0978a621637db82139b</id>
+<published>2016-10-23T18:03:53Z</published>
+<updated>2016-10-23T18:03:53Z</updated>
+<title type="text">workspaces!</title>
+<link rel="alternate" type="text/html" href="commit/679a6b7d94113f319085b0978a621637db82139b.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 679a6b7d94113f319085b0978a621637db82139b
+parent c8aff9fb2b0b7b80d0ae6a577511bbb4814dcb79
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun Oct 23 21:03:53 +0300
+
+workspaces!
+
+</content>
+</entry>
+<entry>
+<id>c8aff9fb2b0b7b80d0ae6a577511bbb4814dcb79</id>
+<published>2016-10-22T12:37:35Z</published>
+<updated>2016-10-22T12:37:35Z</updated>
+<title type="text">allow windows to be mapped/unmapped externally at any time</title>
+<link rel="alternate" type="text/html" href="commit/c8aff9fb2b0b7b80d0ae6a577511bbb4814dcb79.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit c8aff9fb2b0b7b80d0ae6a577511bbb4814dcb79
+parent c54351f1b8b7a44aefce87df67255a56b5d32ddf
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Oct 22 15:37:35 +0300
+
+allow windows to be mapped/unmapped externally at any time
+
+</content>
+</entry>
+<entry>
+<id>c54351f1b8b7a44aefce87df67255a56b5d32ddf</id>
+<published>2016-10-15T11:17:48Z</published>
+<updated>2016-10-15T11:17:48Z</updated>
+<title type="text">remove debug flag</title>
+<link rel="alternate" type="text/html" href="commit/c54351f1b8b7a44aefce87df67255a56b5d32ddf.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit c54351f1b8b7a44aefce87df67255a56b5d32ddf
+parent a3c6479a5dad0dc0e62d7e961a7dbe2b6020b308
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Oct 15 14:17:48 +0300
+
+remove debug flag
+
+</content>
+</entry>
+<entry>
+<id>a3c6479a5dad0dc0e62d7e961a7dbe2b6020b308</id>
+<published>2016-10-15T10:02:02Z</published>
+<updated>2016-10-15T10:02:02Z</updated>
+<title type="text">Merge pull request #14 from n1kolas/monoclefix</title>
+<link rel="alternate" type="text/html" href="commit/a3c6479a5dad0dc0e62d7e961a7dbe2b6020b308.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit a3c6479a5dad0dc0e62d7e961a7dbe2b6020b308
+parent f799e3d95d5ee8ad935014a36010b2e032b089fc
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sat Oct 15 13:02:02 +0300
+
+Merge pull request #14 from n1kolas/monoclefix
+
+fix monocle window height using wrong gap variables
+</content>
+</entry>
+<entry>
+<id>f799e3d95d5ee8ad935014a36010b2e032b089fc</id>
+<published>2016-10-14T17:30:15Z</published>
+<updated>2016-10-14T17:30:15Z</updated>
+<title type="text">don&apos;t move windows with the mouse if maxed</title>
+<link rel="alternate" type="text/html" href="commit/f799e3d95d5ee8ad935014a36010b2e032b089fc.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit f799e3d95d5ee8ad935014a36010b2e032b089fc
+parent ec6aeacf809ef82262580d52a215ec45548c4e4a
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Oct 14 20:30:15 +0300
+
+don&apos;t move windows with the mouse if maxed
+
+</content>
+</entry>
+<entry>
+<id>ec6aeacf809ef82262580d52a215ec45548c4e4a</id>
+<published>2016-10-14T18:35:02Z</published>
+<updated>2016-10-14T18:35:02Z</updated>
+<title type="text">include rationale in readme</title>
+<link rel="alternate" type="text/html" href="commit/ec6aeacf809ef82262580d52a215ec45548c4e4a.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit ec6aeacf809ef82262580d52a215ec45548c4e4a
+parent fa790d749135d8750103bbe191e63dddd1897282
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Oct 14 21:35:02 +0300
+
+include rationale in readme
+
+</content>
+</entry>
+<entry>
+<id>fa790d749135d8750103bbe191e63dddd1897282</id>
+<published>2016-10-14T18:24:40Z</published>
+<updated>2016-10-14T18:24:40Z</updated>
+<title type="text">typo? i think</title>
+<link rel="alternate" type="text/html" href="commit/fa790d749135d8750103bbe191e63dddd1897282.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit fa790d749135d8750103bbe191e63dddd1897282
+parent 35892064b312d596e0a25d4625fc71fbf06c2550
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Fri Oct 14 21:24:40 +0300
+
+typo? i think
+
+</content>
+</entry>
+<entry>
+<id>35892064b312d596e0a25d4625fc71fbf06c2550</id>
+<published>2016-10-09T11:08:24Z</published>
+<updated>2016-10-09T11:08:24Z</updated>
+<title type="text">monocle mode and cleanup</title>
+<link rel="alternate" type="text/html" href="commit/35892064b312d596e0a25d4625fc71fbf06c2550.html" /><author><name>Tudor Roman</name>
+<email>xenogenesis@openmailbox.org</email>
+</author>
+<content type="text">commit 35892064b312d596e0a25d4625fc71fbf06c2550
+parent ca4b71b76e71c4d8d203eeec413a97b1a045b75e
+Author: Tudor Roman &lt;xenogenesis@openmailbox.org&gt;
+Date:   Sun Oct  9 14:08:24 +0300
+
+monocle mode and cleanup
+
+</content>
+</entry>
+<entry>
 <id>ca4b71b76e71c4d8d203eeec413a97b1a045b75e</id>
 <published>2016-10-07T17:43:11Z</published>
 <updated>2016-10-07T17:43:11Z</updated>

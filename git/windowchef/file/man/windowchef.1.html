@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> windowchef.1 (1168B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> windowchef.1 (1216B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -58,19 +58,19 @@
 .\&quot; generated with Ronn/v0.7.3
 .\&quot; http://github.com/rtomayko/ronn/tree/0.7.3
 .
-.TH &quot;WINDOWCHEF&quot; &quot;1&quot; &quot;September 2016&quot; &quot;&quot; &quot;Windowchef Manual&quot;
+.TH &quot;WINDOWCHEF&quot; &quot;1&quot; &quot;December 2016&quot; &quot;&quot; &quot;Windowchef Manual&quot;
 .
 .SH &quot;NAME&quot;
-\fBwindowchef\fR \- A static window cooker
+\fBwindowchef\fR \- A stacking window cooker
 .
 .SH &quot;SYNOPSIS&quot;
-\fBwindowchef\fR [\-h]
+\fBwindowchef\fR [\-h|\-c \fIconfig_path\fR]
 .
 .SH &quot;DESCRIPTION&quot;
 \fBwindowchef\fR is a stacking window manager that doesn\&apos;t handle keyboard or pointer inputs\. It is controlled and configured by \fBwaitron\fR\.
 .
 .P
-At startup, \fBwindowchef\fR runs a script located at \fB$XDG_CONFIG_HOME/windowchef/windowchefrc\fR (\fB$XDG_CONFIG_HOME\fR is usually \fB~/\.config\fR)\. The path of the config file can be overridden with the \fB\-c\fR flag\.
+At startup, \fBwindowchef\fR runs a script located at \fB$XDG_CONFIG_HOME/windowchef/windowchefrc\fR (\fB$XDG_CONFIG_HOME\fR is usually \fB~/\.config\fR)\. The path of the configuration file can be overridden with the \fB\-c\fR flag\.
 .
 .SH &quot;OPTIONS&quot;
 .
@@ -83,7 +83,7 @@ Print usage and version information\.
 Load script from \fIconfig_path\fR instead of \fB$XDG_CONFIG_HOME/windowchef/windowchefrc\fR\.
 .
 .SH &quot;SEE ALSO&quot;
-waitron(1), sxhkd(1), xinit(1)
+waitron(1), sxhkd(1), xinit(1), xmmv(1), xmrs(1)
 .
 .SH &quot;AUTHOR&quot;
 Tudor Roman \fB&lt;tudurom at gmail dot com&gt;\fR

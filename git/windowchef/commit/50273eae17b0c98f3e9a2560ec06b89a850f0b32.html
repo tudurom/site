@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>fixes - windowchef - windowchef is a stacking window cooker controlled by a remote control program, waitron
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="windowchef.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>windowchef</h1><span class="desc">windowchef is a stacking window cooker controlled by a remote control program, waitron
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/windowchef.git">git://thetudor.ddns.net/windowchef.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/50273eae17b0c98f3e9a2560ec06b89a850f0b32.html">50273eae17b0c98f3e9a2560ec06b89a850f0b32</a>
+<b>parent</b> <a href="../commit/8e9b471b78414b9c9ddae83a400c7c7e47785691.html">8e9b471b78414b9c9ddae83a400c7c7e47785691</a>
+<b>Author:</b> Tudor Roman &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Tue Dec 20 16:15:06 +0200
+
+fixes
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">README.md</a></td><td> | </td><td class="num">10</td><td><span class="i">++++</span><span class="d">------</span></td></tr>
+<tr><td><a href="#h1">wm.c</a></td><td> | </td><td class="num">5</td><td><span class="i">+++++</span><span class="d"></span></td></tr>
+</table>2 files changed, 9 insertions(+), 6 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -91,7 +91,8 @@ Features
+</a> * cwm-like window groups
+ 	* Add or remove windows to a group
+ 	* Activate/Deactivate/Toggle a group
+<a href="#h0-0-3" id="h0-0-3" class="d">-* Workspaces instead of groups if you want
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+	* groups can be &quot;sticky&quot;: windows are assigned to the currently
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+		selected group automatically
+</a> * Mouse mode that can be either active or inactive. While active, the window is
+ 	moved/resized on click to the coordinates of the mouse pointer.
+ * Simple and stylish solid-color border. Width can be configured
+<a href="#h0-1" id="h0-1" class="h">@@ -115,11 +116,8 @@ at the same time.
+</a> Windowchef allows you to add/remove windows to/from groups, show groups, hide
+ groups or toggle them.
+ 
+<a href="#h0-1-3" id="h0-1-3" class="d">-### Workspaces
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-
+</a><a href="#h0-1-5" id="h0-1-5" class="d">-Instead of using groups, you may want to enable workspaces. Workspaces are, in
+</a><a href="#h0-1-6" id="h0-1-6" class="d">-fact, groups with the particularity that only one workspace can be active at the
+</a><a href="#h0-1-7" id="h0-1-7" class="d">-same time.
+</a><a href="#h0-1-8" id="h0-1-8" class="i">+You can also activate *sticky group mode*. When activated, new windows are
+</a><a href="#h0-1-9" id="h0-1-9" class="i">+automatically assigned to the currently selected group.
+</a> 
+ ### Virtual grids
+ 
+<b>diff --git a/<a id="h1" href="../file/wm.c.html">wm.c</a> b/<a href="../file/wm.c.html">wm.c</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -1471,6 +1471,7 @@ group_toggle(uint32_t group)
+</a> 		group_deactivate(group);
+ 	else
+ 		group_activate(group);
+<a href="#h1-0-3" id="h1-0-3" class="i">+	last_group = group;
+</a> }
+ 
+ static void
+<a href="#h1-1" id="h1-1" class="h">@@ -2026,6 +2027,10 @@ event_motion_notify(xcb_generic_event_t *ev)
+</a> 			resize_window_absolute(hovered_client-&gt;window,
+ 					ptr-&gt;root_x - hovered_client-&gt;geom.x,
+ 					ptr-&gt;root_y - hovered_client-&gt;geom.y);
+<a href="#h1-1-3" id="h1-1-3" class="i">+			hovered_client-&gt;geom.width =
+</a><a href="#h1-1-4" id="h1-1-4" class="i">+				ptr-&gt;root_x - hovered_client-&gt;geom.x;
+</a><a href="#h1-1-5" id="h1-1-5" class="i">+			hovered_client-&gt;geom.height =
+</a><a href="#h1-1-6" id="h1-1-6" class="i">+				ptr-&gt;root_y - hovered_client-&gt;geom.y;
+</a> 		default:
+ 			break;
+ 	}
+</pre>
+</div>
+</body>
+</html>

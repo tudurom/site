@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> waitron.1.md (4872B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> waitron.1.md (5595B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -182,6 +182,25 @@
 <a href="#l164" id="l164">164</a>
 <a href="#l165" id="l165">165</a>
 <a href="#l166" id="l166">166</a>
+<a href="#l167" id="l167">167</a>
+<a href="#l168" id="l168">168</a>
+<a href="#l169" id="l169">169</a>
+<a href="#l170" id="l170">170</a>
+<a href="#l171" id="l171">171</a>
+<a href="#l172" id="l172">172</a>
+<a href="#l173" id="l173">173</a>
+<a href="#l174" id="l174">174</a>
+<a href="#l175" id="l175">175</a>
+<a href="#l176" id="l176">176</a>
+<a href="#l177" id="l177">177</a>
+<a href="#l178" id="l178">178</a>
+<a href="#l179" id="l179">179</a>
+<a href="#l180" id="l180">180</a>
+<a href="#l181" id="l181">181</a>
+<a href="#l182" id="l182">182</a>
+<a href="#l183" id="l183">183</a>
+<a href="#l184" id="l184">184</a>
+<a href="#l185" id="l185">185</a>
 </pre></td><td><pre>
 waitron(1) -- A client for windowchef(1)
 ==========================================
@@ -211,9 +230,6 @@ anything on `stdout`.
 
 	false values: `false` | `f` | `no` | `n` | `0`
 
-* `MOUSE`:
-	move | resize
-
 ## COMMANDS
 
 * `window_move` &lt;x&gt; &lt;y&gt;:
@@ -242,6 +258,10 @@ anything on `stdout`.
 	Vertically maximize the focused window on the current monitor, preserving
 	its &lt;y&gt; component. Leaves a gap at the top and bottom of the monitor whose
 	width can be configured. Execute it again after maximizing to revert the state of the window.
+
+* `window_monocle`:
+	Puts the window in the &quot;monocled&quot; state: full screen but with borders
+	visible. Monocle mode respects gaps.
 
 * `window_close`:
 	Closes the focused window.
@@ -290,14 +310,8 @@ anything on `stdout`.
 * `group_toggle` &lt;group_nr&gt;:
 	Toggle the &lt;group_nr&gt; group.
 
-* `mouse_start` &lt;MOUSE&gt;:
-	Start tracking the pointer to move/resize the mouse.
-
-* `mouse_stop`:
-	Stop tracking the pointer.
-
-* `mouse_toggle` &lt;MOUSE&gt;:
-	If already tracking, stop. Else, track.
+* `group_activate_specific` &lt;group_nr&gt;:
+	Activate group &lt;group_nr&gt; and deactivate the rest.
 
 * `wm_quit` &lt;exit_status&gt;:
 	Quit windowchef with exit_status &lt;exit_status&gt;.
@@ -308,8 +322,22 @@ anything on `stdout`.
 	Windows that belong to a group that has a &lt;group_nr&gt; greater or equal to
 	&lt;number_of_groups&gt; will become orphaned.
 
-* `wm_config` &lt;key&gt; [&lt;value&gt;...]:
+* `wm_config` &lt;key&gt; [&lt;values&gt;...]:
 	See [CONFIGURING][].
+
+## QUERYING
+
+Information about the current state of windowchef is made available through
+X properties of the root window. Example:
+
+```
+xprop -root WINDOWCHEF_ACTIVE_GROUPS
+```
+
+Here is a list of exposed properties:
+
+* `WINDOWCHEF_ACTIVE_GROUPS`:
+	An integer list of currently active groups.
 
 ## CONFIGURING
 
@@ -321,7 +349,7 @@ are:
 
 * `color_focused`, `color_unfocused` &lt;color&gt;:
 	Sets the border color to &lt;color&gt; for the focused and unfocused state respectively.
-	&lt;color&gt; is a hexadecimal value that may or may not start witht he `0x`
+	&lt;color&gt; is a hexadecimal value that may or may not start with `0x`
 	prefix. Example: `0x1234ef`.
 
 * `gap_width` &lt;POSITION&gt; &lt;width&gt;:
@@ -342,9 +370,19 @@ are:
 * `enable_sloppy_focus` &lt;BOOL&gt;:
 	Enable sloppy focus.
 
+* `sticky_windows` &lt;BOOL&gt;:
+	If &lt;sticky_windows&gt; is true, new windows will be assigned to the last
+	activated group automatically. Recommended for people who like using
+	workspaces over groups.
+
+* `enable_borders` &lt;BOOL&gt;:
+	If true, border colors will be set each time a window gets/loses focus.
+	Setting it to false is useful when using another program to draw the borders
+	(example: `chwb2` from wmutils).
+
 ## SEE ALSO
 
-windowchef(1), sxhkd(1), wmutils(1), pfw(1), lsw(1)
+windowchef(1), sxhkd(1), wmutils(1), pfw(1), lsw(1), chwb2(1), lemonbar(1)
 
 ## AUTHOR
 

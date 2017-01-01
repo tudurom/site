@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en" />
+<title>new feature: get a list of active groups through root window property - windowchef - windowchef is a stacking window cooker controlled by a remote control program, waitron
+</title>
+<link rel="icon" type="image/png" href="../favicon.png" />
+<link rel="alternate" type="application/atom+xml" title="windowchef.git Atom Feed" href="../atom.xml" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+<table><tr><td><a href="../../"><img src="../logo.png" alt="" width="32" height="32" /></a></td><td><h1>windowchef</h1><span class="desc">windowchef is a stacking window cooker controlled by a remote control program, waitron
+</span></td></tr><tr class="url"><td></td><td>git clone <a href="git://thetudor.ddns.net/windowchef.git">git://thetudor.ddns.net/windowchef.git</a></td></tr><tr><td></td><td>
+<a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/LICENSE.html">LICENSE</a></td></tr></table>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/3f4aada5384d7eca8a08681e1265d7bf91539e8b.html">3f4aada5384d7eca8a08681e1265d7bf91539e8b</a>
+<b>parent</b> <a href="../commit/43e77aefc6126bb1f4a026e2fbd080cfbe793812.html">43e77aefc6126bb1f4a026e2fbd080cfbe793812</a>
+<b>Author:</b> Tudor Roman &lt;<a href="mailto:tudurom@gmail.com">tudurom@gmail.com</a>&gt;
+<b>Date:</b>   Sat Dec 31 20:04:25 +0200
+
+new feature: get a list of active groups through root window property
+
+<b>Diffstat:</b>
+<table><tr><td><a href="#h0">README.md</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h1">config.mk</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td><a href="#h2">man/waitron.1</a></td><td> | </td><td class="num">20</td><td><span class="i">++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h3">man/waitron.1.html</a></td><td> | </td><td class="num">16</td><td><span class="i">++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h4">man/waitron.1.md</a></td><td> | </td><td class="num">14</td><td><span class="i">++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td><a href="#h5">wm.c</a></td><td> | </td><td class="num">32</td><td><span class="i">++++++++++++++++++++++++++++++</span><span class="d">--</span></td></tr>
+</table>6 files changed, 82 insertions(+), 4 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -115,7 +115,7 @@ Windowchef allows you to add/remove windows to/from groups, show groups, hide
+</a> groups or toggle them.
+ 
+ You can also activate *sticky group mode*. When activated, new windows are
+<a href="#h0-0-3" id="h0-0-3" class="d">-automatically assigned to the currently selected group.
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+automatically assigned to the currently selected group. Together with the `group_active_specific` command (see `waitron(1)`), a workspace-like workflow can be achieved.
+</a> 
+ ### Virtual grids
+ 
+<b>diff --git a/<a id="h1" href="../file/config.mk.html">config.mk</a> b/<a href="../file/config.mk.html">config.mk</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -2,5 +2,5 @@ PREFIX = /usr/local
+</a> MANPREFIX = $(PREFIX)/share/man
+ MANDIR = $(MANPREFIX)/man1
+ 
+<a href="#h1-0-3" id="h1-0-3" class="d">-CFLAGS += -std=c99 -Wextra -g
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+CFLAGS += -std=c99 -Wextra -O2
+</a> LDFLAGS += -lxcb -lxcb-ewmh -lxcb-icccm -lxcb-randr
+<b>diff --git a/<a id="h2" href="../file/man/waitron.1.html">man/waitron.1</a> b/<a href="../file/man/waitron.1.html">man/waitron.1</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -139,6 +139,26 @@ Windows that belong to a group that has a \fIgroup_nr\fR greater or equal to \fI
+</a> \fBwm_config\fR \fIkey\fR [\fIvalues\fR\.\.\.]
+ See \fICONFIGURING\fR\.
+ .
+<a href="#h2-0-3" id="h2-0-3" class="i">+.SH &quot;QUERYING&quot;
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+Information about the current state of windowchef is made available through X properties of the root window\. Example:
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+.
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+.IP &quot;&quot; 4
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+.
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+.nf
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+xprop \-root WINDOWCHEF_ACTIVE_GROUPS
+</a><a href="#h2-0-11" id="h2-0-11" class="i">+.
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+.fi
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+.
+</a><a href="#h2-0-14" id="h2-0-14" class="i">+.IP &quot;&quot; 0
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+.
+</a><a href="#h2-0-16" id="h2-0-16" class="i">+.P
+</a><a href="#h2-0-17" id="h2-0-17" class="i">+Here is a list of exposed properties:
+</a><a href="#h2-0-18" id="h2-0-18" class="i">+.
+</a><a href="#h2-0-19" id="h2-0-19" class="i">+.TP
+</a><a href="#h2-0-20" id="h2-0-20" class="i">+\fBWINDOWCHEF_ACTIVE_GROUPS\fR
+</a><a href="#h2-0-21" id="h2-0-21" class="i">+An integer list of currently active groups\.
+</a><a href="#h2-0-22" id="h2-0-22" class="i">+.
+</a> .SH &quot;CONFIGURING&quot;
+ Configuring is done using the \fBwm_config\fR command\. Possible configuration keys are:
+ .
+<b>diff --git a/<a id="h3" href="../file/man/waitron.1.html.html">man/waitron.1.html</a> b/<a href="../file/man/waitron.1.html.html">man/waitron.1.html</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -59,6 +59,7 @@
+</a>     &lt;a href=&quot;#OPTIONS&quot;&gt;OPTIONS&lt;/a&gt;
+     &lt;a href=&quot;#COMMON-DEFINITIONS&quot;&gt;COMMON DEFINITIONS&lt;/a&gt;
+     &lt;a href=&quot;#COMMANDS&quot;&gt;COMMANDS&lt;/a&gt;
+<a href="#h3-0-3" id="h3-0-3" class="i">+    &lt;a href=&quot;#QUERYING&quot;&gt;QUERYING&lt;/a&gt;
+</a>     &lt;a href=&quot;#CONFIGURING&quot;&gt;CONFIGURING&lt;/a&gt;
+     &lt;a href=&quot;#SEE-ALSO&quot;&gt;SEE ALSO&lt;/a&gt;
+     &lt;a href=&quot;#AUTHOR&quot;&gt;AUTHOR&lt;/a&gt;
+<a href="#h3-1" id="h3-1" class="h">@@ -151,6 +152,21 @@ anything on &lt;code&gt;stdout&lt;/code&gt;.&lt;/p&gt;
+</a> &lt;/dl&gt;
+ 
+ 
+<a href="#h3-1-3" id="h3-1-3" class="i">+&lt;h2 id=&quot;QUERYING&quot;&gt;QUERYING&lt;/h2&gt;
+</a><a href="#h3-1-4" id="h3-1-4" class="i">+
+</a><a href="#h3-1-5" id="h3-1-5" class="i">+&lt;p&gt;Information about the current state of windowchef is made available through
+</a><a href="#h3-1-6" id="h3-1-6" class="i">+X properties of the root window. Example:&lt;/p&gt;
+</a><a href="#h3-1-7" id="h3-1-7" class="i">+
+</a><a href="#h3-1-8" id="h3-1-8" class="i">+&lt;pre&gt;&lt;code&gt;xprop -root WINDOWCHEF_ACTIVE_GROUPS
+</a><a href="#h3-1-9" id="h3-1-9" class="i">+&lt;/code&gt;&lt;/pre&gt;
+</a><a href="#h3-1-10" id="h3-1-10" class="i">+
+</a><a href="#h3-1-11" id="h3-1-11" class="i">+&lt;p&gt;Here is a list of exposed properties:&lt;/p&gt;
+</a><a href="#h3-1-12" id="h3-1-12" class="i">+
+</a><a href="#h3-1-13" id="h3-1-13" class="i">+&lt;dl&gt;
+</a><a href="#h3-1-14" id="h3-1-14" class="i">+&lt;dt&gt;&lt;code&gt;WINDOWCHEF_ACTIVE_GROUPS&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;  An integer list of currently active groups.&lt;/dd&gt;
+</a><a href="#h3-1-15" id="h3-1-15" class="i">+&lt;/dl&gt;
+</a><a href="#h3-1-16" id="h3-1-16" class="i">+
+</a><a href="#h3-1-17" id="h3-1-17" class="i">+
+</a> &lt;h2 id=&quot;CONFIGURING&quot;&gt;CONFIGURING&lt;/h2&gt;
+ 
+ &lt;p&gt;Configuring is done using the &lt;code&gt;wm_config&lt;/code&gt; command. Possible configuration keys
+<b>diff --git a/<a id="h4" href="../file/man/waitron.1.md.html">man/waitron.1.md</a> b/<a href="../file/man/waitron.1.md.html">man/waitron.1.md</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -121,6 +121,20 @@ anything on `stdout`.
+</a> * `wm_config` &lt;key&gt; [&lt;values&gt;...]:
+ 	See [CONFIGURING][].
+ 
+<a href="#h4-0-3" id="h4-0-3" class="i">+## QUERYING
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+
+</a><a href="#h4-0-5" id="h4-0-5" class="i">+Information about the current state of windowchef is made available through
+</a><a href="#h4-0-6" id="h4-0-6" class="i">+X properties of the root window. Example:
+</a><a href="#h4-0-7" id="h4-0-7" class="i">+
+</a><a href="#h4-0-8" id="h4-0-8" class="i">+```
+</a><a href="#h4-0-9" id="h4-0-9" class="i">+xprop -root WINDOWCHEF_ACTIVE_GROUPS
+</a><a href="#h4-0-10" id="h4-0-10" class="i">+```
+</a><a href="#h4-0-11" id="h4-0-11" class="i">+
+</a><a href="#h4-0-12" id="h4-0-12" class="i">+Here is a list of exposed properties:
+</a><a href="#h4-0-13" id="h4-0-13" class="i">+
+</a><a href="#h4-0-14" id="h4-0-14" class="i">+* `WINDOWCHEF_ACTIVE_GROUPS`:
+</a><a href="#h4-0-15" id="h4-0-15" class="i">+	An integer list of currently active groups.
+</a><a href="#h4-0-16" id="h4-0-16" class="i">+
+</a> ## CONFIGURING
+ 
+ Configuring is done using the `wm_config` command. Possible configuration keys
+<b>diff --git a/<a id="h5" href="../file/wm.c.html">wm.c</a> b/<a href="../file/wm.c.html">wm.c</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -26,7 +26,7 @@
+</a> #define NULL_GROUP 0xffffffff
+ 
+ /* atoms identifiers */
+<a href="#h5-0-3" id="h5-0-3" class="d">-enum { WM_DELETE_WINDOW, _IPC_ATOM_COMMAND, NR_ATOMS };
+</a><a href="#h5-0-4" id="h5-0-4" class="i">+enum { WM_DELETE_WINDOW, WINDOWCHEF_ACTIVE_GROUPS, _IPC_ATOM_COMMAND, NR_ATOMS };
+</a> 
+ /* connection to the X server */
+ static xcb_connection_t *conn;
+<a href="#h5-1" id="h5-1" class="h">@@ -48,6 +48,7 @@ static struct list_item *win_list   = NULL;
+</a> static struct list_item *mon_list   = NULL;
+ static char *atom_names[NR_ATOMS] = {
+ 	&quot;WM_DELETE_WINDOW&quot;,
+<a href="#h5-1-3" id="h5-1-3" class="i">+	&quot;WINDOWCHEF_ACTIVE_GROUPS&quot;,
+</a> 	ATOM_COMMAND,
+ };
+ static xcb_atom_t ATOMS[NR_ATOMS];
+<a href="#h5-2" id="h5-2" class="h">@@ -108,6 +109,7 @@ static void group_activate(uint32_t);
+</a> static void group_deactivate(uint32_t);
+ static void group_toggle(uint32_t);
+ static void group_activate_specific(uint32_t);
+<a href="#h5-2-3" id="h5-2-3" class="i">+static void update_group_list(void);
+</a> static void change_nr_of_groups(uint32_t);
+ static void refresh_borders(void);
+ static void update_ewmh_wm_state(struct client *);
+<a href="#h5-3" id="h5-3" class="h">@@ -549,6 +551,7 @@ run(void)
+</a> {
+ 	xcb_generic_event_t *ev;
+ 
+<a href="#h5-3-3" id="h5-3-3" class="i">+	update_group_list();
+</a> 	halt = false;
+ 	exit_code = 0;
+ 	while (!halt) {
+<a href="#h5-4" id="h5-4" class="h">@@ -1402,8 +1405,9 @@ group_add_window(struct client *client, uint32_t group)
+</a> {
+ 	if (client != NULL &amp;&amp; group &lt; conf.groups) {
+ 		client-&gt;group = group;
+<a href="#h5-4-3" id="h5-4-3" class="d">-		update_wm_desktop(client);
+</a> 		group_in_use[group] = true;
+<a href="#h5-4-5" id="h5-4-5" class="i">+		update_wm_desktop(client);
+</a><a href="#h5-4-6" id="h5-4-6" class="i">+		update_group_list();
+</a> 	}
+ }
+ 
+<a href="#h5-5" id="h5-5" class="h">@@ -1433,6 +1437,7 @@ group_activate(uint32_t group) {
+</a> 	}
+ 	group_in_use[group] = true;
+ 	last_group = group;
+<a href="#h5-5-3" id="h5-5-3" class="i">+	update_group_list();
+</a> }
+ 
+ static void
+<a href="#h5-6" id="h5-6" class="h">@@ -1450,6 +1455,7 @@ group_deactivate(uint32_t group)
+</a> 			xcb_unmap_window(conn, client-&gt;window);
+ 	}
+ 	group_in_use[group] = false;
+<a href="#h5-6-3" id="h5-6-3" class="i">+	update_group_list();
+</a> }
+ 
+ static void
+<a href="#h5-7" id="h5-7" class="h">@@ -1463,6 +1469,7 @@ group_toggle(uint32_t group)
+</a> 	else
+ 		group_activate(group);
+ 	last_group = group;
+<a href="#h5-7-3" id="h5-7-3" class="i">+	update_group_list();
+</a> }
+ 
+ static void
+<a href="#h5-8" id="h5-8" class="h">@@ -1477,6 +1484,27 @@ group_activate_specific(uint32_t group)
+</a> 		else
+ 			group_deactivate(i);
+ 	}
+<a href="#h5-8-3" id="h5-8-3" class="i">+	update_group_list();
+</a><a href="#h5-8-4" id="h5-8-4" class="i">+}
+</a><a href="#h5-8-5" id="h5-8-5" class="i">+
+</a><a href="#h5-8-6" id="h5-8-6" class="i">+static void update_group_list(void)
+</a><a href="#h5-8-7" id="h5-8-7" class="i">+{
+</a><a href="#h5-8-8" id="h5-8-8" class="i">+	bool first = true;
+</a><a href="#h5-8-9" id="h5-8-9" class="i">+
+</a><a href="#h5-8-10" id="h5-8-10" class="i">+	for (unsigned int i = 0; i &lt; conf.groups; i++) {
+</a><a href="#h5-8-11" id="h5-8-11" class="i">+		if (group_in_use[i]) {
+</a><a href="#h5-8-12" id="h5-8-12" class="i">+			uint8_t mode = XCB_PROP_MODE_APPEND;
+</a><a href="#h5-8-13" id="h5-8-13" class="i">+			uint32_t data[] = { i + 1 };
+</a><a href="#h5-8-14" id="h5-8-14" class="i">+			if (first) {
+</a><a href="#h5-8-15" id="h5-8-15" class="i">+				mode = XCB_PROP_MODE_REPLACE;
+</a><a href="#h5-8-16" id="h5-8-16" class="i">+				first = false;
+</a><a href="#h5-8-17" id="h5-8-17" class="i">+			}
+</a><a href="#h5-8-18" id="h5-8-18" class="i">+			xcb_change_property(conn, mode, scr-&gt;root, ATOMS[WINDOWCHEF_ACTIVE_GROUPS], XCB_ATOM_INTEGER, 32, 1, data);
+</a><a href="#h5-8-19" id="h5-8-19" class="i">+		}
+</a><a href="#h5-8-20" id="h5-8-20" class="i">+	}
+</a><a href="#h5-8-21" id="h5-8-21" class="i">+
+</a><a href="#h5-8-22" id="h5-8-22" class="i">+	if (first)
+</a><a href="#h5-8-23" id="h5-8-23" class="i">+		xcb_change_property(conn, XCB_PROP_MODE_REPLACE, scr-&gt;root, ATOMS[WINDOWCHEF_ACTIVE_GROUPS], XCB_ATOM_INTEGER, 32, 0, NULL);
+</a> }
+ 
+ static void
+</pre>
+</div>
+</body>
+</html>

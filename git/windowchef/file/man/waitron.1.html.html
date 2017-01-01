@@ -15,7 +15,7 @@
 <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/LICENSE.html">LICENSE</a></td></tr></table>
 <hr/>
 <div id="content">
-<p> waitron.1.html (11001B)</p><hr/><table id="blob"><tr><td class="num"><pre>
+<p> waitron.1.html (11984B)</p><hr/><table id="blob"><tr><td class="num"><pre>
 <a href="#l1" id="l1">1</a>
 <a href="#l2" id="l2">2</a>
 <a href="#l3" id="l3">3</a>
@@ -209,6 +209,27 @@
 <a href="#l191" id="l191">191</a>
 <a href="#l192" id="l192">192</a>
 <a href="#l193" id="l193">193</a>
+<a href="#l194" id="l194">194</a>
+<a href="#l195" id="l195">195</a>
+<a href="#l196" id="l196">196</a>
+<a href="#l197" id="l197">197</a>
+<a href="#l198" id="l198">198</a>
+<a href="#l199" id="l199">199</a>
+<a href="#l200" id="l200">200</a>
+<a href="#l201" id="l201">201</a>
+<a href="#l202" id="l202">202</a>
+<a href="#l203" id="l203">203</a>
+<a href="#l204" id="l204">204</a>
+<a href="#l205" id="l205">205</a>
+<a href="#l206" id="l206">206</a>
+<a href="#l207" id="l207">207</a>
+<a href="#l208" id="l208">208</a>
+<a href="#l209" id="l209">209</a>
+<a href="#l210" id="l210">210</a>
+<a href="#l211" id="l211">211</a>
+<a href="#l212" id="l212">212</a>
+<a href="#l213" id="l213">213</a>
+<a href="#l214" id="l214">214</a>
 </pre></td><td><pre>
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -271,6 +292,7 @@
     &lt;a href=&quot;#OPTIONS&quot;&gt;OPTIONS&lt;/a&gt;
     &lt;a href=&quot;#COMMON-DEFINITIONS&quot;&gt;COMMON DEFINITIONS&lt;/a&gt;
     &lt;a href=&quot;#COMMANDS&quot;&gt;COMMANDS&lt;/a&gt;
+    &lt;a href=&quot;#QUERYING&quot;&gt;QUERYING&lt;/a&gt;
     &lt;a href=&quot;#CONFIGURING&quot;&gt;CONFIGURING&lt;/a&gt;
     &lt;a href=&quot;#SEE-ALSO&quot;&gt;SEE ALSO&lt;/a&gt;
     &lt;a href=&quot;#AUTHOR&quot;&gt;AUTHOR&lt;/a&gt;
@@ -311,7 +333,6 @@ anything on &lt;code&gt;stdout&lt;/code&gt;.&lt;/p&gt;
 &lt;dt class=&quot;flush&quot;&gt;&lt;code&gt;BOOL&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  true values: &lt;code&gt;true&lt;/code&gt; | &lt;code&gt;t&lt;/code&gt; | &lt;code&gt;yes&lt;/code&gt; | &lt;code&gt;y&lt;/code&gt; | &lt;code&gt;1&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;  false values: &lt;code&gt;false&lt;/code&gt; | &lt;code&gt;f&lt;/code&gt; | &lt;code&gt;no&lt;/code&gt; | &lt;code&gt;n&lt;/code&gt; | &lt;code&gt;0&lt;/code&gt;&lt;/p&gt;&lt;/dd&gt;
-&lt;dt class=&quot;flush&quot;&gt;&lt;code&gt;MOUSE&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  move | resize&lt;/p&gt;&lt;/dd&gt;
 &lt;/dl&gt;
 
 
@@ -331,6 +352,8 @@ anything on &lt;code&gt;stdout&lt;/code&gt;.&lt;/p&gt;
 &lt;dt&gt;&lt;code&gt;window_ver_maximize&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Vertically maximize the focused window on the current monitor, preserving
   its &lt;var&gt;y&lt;/var&gt; component. Leaves a gap at the top and bottom of the monitor whose
   width can be configured. Execute it again after maximizing to revert the state of the window.&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;window_monocle&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Puts the window in the &quot;monocled&quot; state: full screen but with borders
+  visible. Monocle mode respects gaps.&lt;/p&gt;&lt;/dd&gt;
 &lt;dt&gt;&lt;code&gt;window_close&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Closes the focused window.&lt;/p&gt;&lt;/dd&gt;
 &lt;dt&gt;&lt;code&gt;window_put_in_grid&lt;/code&gt; &lt;var&gt;grid_width&lt;/var&gt; &lt;var&gt;grid_height&lt;/var&gt; &lt;var&gt;cell_x&lt;/var&gt; &lt;var&gt;cell_y&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Moves and resizes the focused windows accordingly to fit in a cell defined
   by the &lt;var&gt;cell_x&lt;/var&gt; and &lt;var&gt;cell_y&lt;/var&gt; coordinates in a virtual grid with width
@@ -352,15 +375,28 @@ anything on &lt;code&gt;stdout&lt;/code&gt;.&lt;/p&gt;
 &lt;dt&gt;&lt;code&gt;group_activate&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Map all windows that belong to the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;&lt;/dd&gt;
 &lt;dt&gt;&lt;code&gt;group_deactivate&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Unmap all windows that belong to the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;&lt;/dd&gt;
 &lt;dt&gt;&lt;code&gt;group_toggle&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Toggle the &lt;var&gt;group_nr&lt;/var&gt; group.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;mouse_start&lt;/code&gt; &lt;var&gt;MOUSE&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Start tracking the pointer to move/resize the mouse.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;mouse_stop&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Stop tracking the pointer.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;mouse_toggle&lt;/code&gt; &lt;var&gt;MOUSE&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  If already tracking, stop. Else, track.&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;group_activate_specific&lt;/code&gt; &lt;var&gt;group_nr&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Activate group &lt;var&gt;group_nr&lt;/var&gt; and deactivate the rest.&lt;/p&gt;&lt;/dd&gt;
 &lt;dt&gt;&lt;code&gt;wm_quit&lt;/code&gt; &lt;var&gt;exit_status&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Quit windowchef with exit_status &lt;var&gt;exit_status&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
 &lt;dt&gt;&lt;code&gt;wm_change_number_of_groups&lt;/code&gt; &lt;var&gt;number_of_groups&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Change the number of maximum groups to &lt;var&gt;number_of_groups&lt;/var&gt;.&lt;/p&gt;
 
 &lt;p&gt;  Windows that belong to a group that has a &lt;var&gt;group_nr&lt;/var&gt; greater or equal to
   &lt;var&gt;number_of_groups&lt;/var&gt; will become orphaned.&lt;/p&gt;&lt;/dd&gt;
-&lt;dt&gt;&lt;code&gt;wm_config&lt;/code&gt; &lt;var&gt;key&lt;/var&gt; [&lt;var&gt;value&lt;/var&gt;...]&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  See &lt;a href=&quot;#CONFIGURING&quot; title=&quot;CONFIGURING&quot; data-bare-link=&quot;true&quot;&gt;CONFIGURING&lt;/a&gt;.&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;wm_config&lt;/code&gt; &lt;var&gt;key&lt;/var&gt; [&lt;var&gt;values&lt;/var&gt;...]&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  See &lt;a href=&quot;#CONFIGURING&quot; title=&quot;CONFIGURING&quot; data-bare-link=&quot;true&quot;&gt;CONFIGURING&lt;/a&gt;.&lt;/p&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+
+
+&lt;h2 id=&quot;QUERYING&quot;&gt;QUERYING&lt;/h2&gt;
+
+&lt;p&gt;Information about the current state of windowchef is made available through
+X properties of the root window. Example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;xprop -root WINDOWCHEF_ACTIVE_GROUPS
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is a list of exposed properties:&lt;/p&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;&lt;code&gt;WINDOWCHEF_ACTIVE_GROUPS&lt;/code&gt;&lt;/dt&gt;&lt;dd&gt;  An integer list of currently active groups.&lt;/dd&gt;
 &lt;/dl&gt;
 
 
@@ -372,7 +408,7 @@ are:&lt;/p&gt;
 &lt;dl&gt;
 &lt;dt&gt;&lt;code&gt;border_width&lt;/code&gt; &lt;var&gt;width&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Sets the border width to &lt;var&gt;width&lt;/var&gt; pixels.&lt;/p&gt;&lt;/dd&gt;
 &lt;dt&gt;&lt;code&gt;color_focused&lt;/code&gt;, &lt;code&gt;color_unfocused&lt;/code&gt; &lt;var&gt;color&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Sets the border color to &lt;var&gt;color&lt;/var&gt; for the focused and unfocused state respectively.
-  &lt;var&gt;color&lt;/var&gt; is a hexadecimal value that may or may not start witht he &lt;code&gt;0x&lt;/code&gt;
+  &lt;var&gt;color&lt;/var&gt; is a hexadecimal value that may or may not start with &lt;code&gt;0x&lt;/code&gt;
   prefix. Example: &lt;code&gt;0x1234ef&lt;/code&gt;.&lt;/p&gt;&lt;/dd&gt;
 &lt;dt&gt;&lt;code&gt;gap_width&lt;/code&gt; &lt;var&gt;POSITION&lt;/var&gt; &lt;var&gt;width&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Sets the window gap at &lt;var&gt;POSITION&lt;/var&gt; to &lt;var&gt;width&lt;/var&gt;. &lt;var&gt;POSITION&lt;/var&gt; can be equal to
   &lt;code&gt;all&lt;/code&gt; to set all gaps to &lt;var&gt;POSITION&lt;/var&gt;.&lt;/p&gt;&lt;/dd&gt;
@@ -382,12 +418,18 @@ are:&lt;/p&gt;
   of groups, window that belong to groups whose numbers are greater than &lt;var&gt;nr&lt;/var&gt;
   will be mapped to screen and assigned to the null group.&lt;/p&gt;&lt;/dd&gt;
 &lt;dt&gt;&lt;code&gt;enable_sloppy_focus&lt;/code&gt; &lt;var&gt;BOOL&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  Enable sloppy focus.&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;sticky_windows&lt;/code&gt; &lt;var&gt;BOOL&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  If &lt;var&gt;sticky_windows&lt;/var&gt; is true, new windows will be assigned to the last
+  activated group automatically. Recommended for people who like using
+  workspaces over groups.&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;enable_borders&lt;/code&gt; &lt;var&gt;BOOL&lt;/var&gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;  If true, border colors will be set each time a window gets/loses focus.
+  Setting it to false is useful when using another program to draw the borders
+  (example: &lt;code&gt;chwb2&lt;/code&gt; from wmutils).&lt;/p&gt;&lt;/dd&gt;
 &lt;/dl&gt;
 
 
 &lt;h2 id=&quot;SEE-ALSO&quot;&gt;SEE ALSO&lt;/h2&gt;
 
-&lt;p&gt;&lt;span class=&quot;man-ref&quot;&gt;windowchef&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;sxhkd&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;wmutils&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;pfw&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;lsw&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;man-ref&quot;&gt;windowchef&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;sxhkd&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;wmutils&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;pfw&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;lsw&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;chwb2&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;man-ref&quot;&gt;lemonbar&lt;span class=&quot;s&quot;&gt;(1)&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;AUTHOR&quot;&gt;AUTHOR&lt;/h2&gt;
 
@@ -396,7 +438,7 @@ are:&lt;/p&gt;
 
   &lt;ol class=&apos;man-decor man-foot man foot&apos;&gt;
     &lt;li class=&apos;tl&apos;&gt;&lt;/li&gt;
-    &lt;li class=&apos;tc&apos;&gt;October 2016&lt;/li&gt;
+    &lt;li class=&apos;tc&apos;&gt;December 2016&lt;/li&gt;
     &lt;li class=&apos;tr&apos;&gt;waitron(1)&lt;/li&gt;
   &lt;/ol&gt;
 
