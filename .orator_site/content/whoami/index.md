@@ -40,6 +40,8 @@ Romanian, C, English, Go, JavaScript, POSIX shell, Ruby\*, French\*
 
 ### People, friends and inspirational sites
 
+<div id="people"></div>
+
 * [2f30](http://2f30.org/)
 * [aiju](http://aiju.de/)
 * [apk](https://pluvi.us/)

@@ -1,9 +1,6 @@
-vida
----------
+Blag
+====
 
-vida is a simple and beautiful jekyll theme.
-You can see demo [here](http://syaning.com/vida/).
+Sources for http://thetudor.ddns.net/blog/.
 
-### License
-
-MIT
+Forked from [vida](https://github.com/syaning/vida/).

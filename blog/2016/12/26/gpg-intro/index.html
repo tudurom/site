@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="the blog of Tudor Roman">
-    <meta name="author" content="Tudor Roman">
-    <meta name="keywords" content="tudor roman, tudor's blog, blog, linux, unix">
-    <meta name="theme-color" content="#2aa198">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="the blog of Tudor Roman">
+	<meta name="author" content="Tudor Roman">
+	<meta name="keywords" content="tudor roman, tudor's blog, blog, linux, unix">
+	<meta name="theme-color" content="#2aa198">
 
 	<meta property="og:title" content="An Intro to GPG">
 	<meta property="og:type" content="article">
@@ -14,35 +14,57 @@
 	<meta property="og:author" content="Tudor Roman">
 	<meta property="og:site_name" content="tudor's blog">
 
-    <link rel="stylesheet" href="/blog/css/main.css">
-    <title>An Intro to GPG - tudor's blog</title>
+	<!-- jekyll-feed gem required -->
+	<link type="application/atom+xml" rel="alternate" href="/feed.xml" title="tudor's blog" />
+
+	<link rel="stylesheet" href="/blog/css/main.css">
+	<title>An Intro to GPG - tudor's blog</title>
 </head>
 <body>
-    <main>
-        <header class="site-header">
-            <h1 class="site-title"><a href="/blog/">tudor's blog</a></h1>
-            <!--
-            <nav class="site-nav">
-                <a href="/blog/sample/" class="">Sample</a>
-                <a href="/blog/about/" class="">About</a>
-            </nav>
-            -->
-        </header>
-        <article class="post">
+	<main>
+		<header class="site-header">
+			<h1 class="site-title"><a href="/blog/">tudor's blog</a></h1>
+			<nav class="site-nav">
+				
+					
+				
+					
+	            	<a href="/blog/about/" class="">About</a>
+	            	
+				
+					
+	            	<a href="/blog/" class=""></a>
+	            	
+				
+					
+	            	<a href="/blog/css/main.css" class=""></a>
+	            	
+				
+					
+	            	<a href="/blog/feed.xml" class=""></a>
+	            	
+				
+					
+	            	<a href="/blog/feed.xslt.xml" class=""></a>
+	            	
+				
+			</nav>
+		</header>
+		<article class="post">
     <h2 class="post-header">An Intro to GPG</h2>
     <p class="post-subtitle">The free alternative to PGP</p>
     <p class="post-meta">2016-12-26</p>
-    <p><a href="https://www.gnupg.org/">GnuPG (GPG)</a> is a program that does two important things:</p>
+    <p>GPG is the most popular implementation of the <a href="http://openpgp.org/">OpenPGP</a>
+standard, because it’s <a href="http://i.imgur.com/Brs9J9U.jpg">free as in freedom</a> and
+because it’s widely use by many projects to verify software and emails, <a href="https://www.kernel.org/signature.html">including the Linux Kernel</a>.</p>
+
+<p><a href="https://www.gnupg.org/">GnuPG (GPG)</a> is a program that does two important things:</p>
 
 <ol>
   <li>encrypt/decrypt data so only people you know and trust are able to use it;</li>
   <li>sign/verify files so you know if the data you received via email or any other
 medium was sent to you by a person that you know and trust.</li>
 </ol>
-
-<p>GPG is the most popular implementation of the <a href="http://openpgp.org/">OpenPGP</a>
-standard, because it’s <a href="http://i.imgur.com/Brs9J9U.jpg">free as in freedom</a> and
-because it’s widely use by many projects to verify software and emails, <a href="https://www.kernel.org/signature.html">including the Linux Kernel</a>.</p>
 
 <h3 id="quick-and-easy-gpg-usage">Quick and easy GPG usage</h3>
 
@@ -192,9 +214,16 @@ program like GnuPG can be very useful to the computer user.</p>
     
 </article>
 
-        <hr />
-        <a href="/" id="back_link">Root</a>
-    </main>
-    
+		<footer>
+			<hr />
+			<nav class="footer-nav">
+				<ul>
+					<a href="/" id="back_link">Root</a>
+					<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width: 0; float: right;" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+				</ul>
+			</nav>
+	    </footer>
+	</main>
+	
 </body>
 </html>

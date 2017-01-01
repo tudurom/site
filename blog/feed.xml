@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/blog/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2017-01-01T03:11:18+02:00</updated><id>/blog//</id><title type="html">tudor’s blog</title><entry><title type="html">An Intro to GPG</title><link href="/blog/2016/12/26/gpg-intro/" rel="alternate" type="text/html" title="An Intro to GPG" /><published>2016-12-26T00:00:00+02:00</published><updated>2016-12-26T00:00:00+02:00</updated><id>/blog/2016/12/26/gpg-intro</id><content type="html" xml:base="/blog/2016/12/26/gpg-intro/">&lt;p&gt;GPG is the most popular implementation of the &lt;a href=&quot;http://openpgp.org/&quot;&gt;OpenPGP&lt;/a&gt;
+standard, because it’s &lt;a href=&quot;http://i.imgur.com/Brs9J9U.jpg&quot;&gt;free as in freedom&lt;/a&gt; and
+because it’s widely use by many projects to verify software and emails, &lt;a href=&quot;https://www.kernel.org/signature.html&quot;&gt;including the Linux Kernel&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.gnupg.org/&quot;&gt;GnuPG (GPG)&lt;/a&gt; is a program that does two important things:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;encrypt/decrypt data so only people you know and trust are able to use it;&lt;/li&gt;
+  &lt;li&gt;sign/verify files so you know if the data you received via email or any other
+medium was sent to you by a person that you know and trust.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;quick-and-easy-gpg-usage&quot;&gt;Quick and easy GPG usage&lt;/h3&gt;
+
+&lt;p&gt;First, install it. In the Arch Linux repositories it’s called &lt;a href=&quot;https://www.archlinux.org/packages/core/x86_64/gnupg/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gnupg&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pacman -S gnupg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now generate a &lt;em&gt;key pair&lt;/em&gt;. After you complete this step you will get a &lt;em&gt;secret
+key&lt;/em&gt; and a &lt;em&gt;public key&lt;/em&gt;. The secret key must be kept secret, otherwise there is
+no point in using GPG. The public
+key must be given to anyone who wishes to sign or encrypt data for you.&lt;/p&gt;
+
+&lt;p&gt;To generate the key pair:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --gen-key
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You will be asked for your real name, your email addresses and a passphrase. Make sure that
+the data you enter is correct and &lt;strong&gt;real&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The keys will be added to your &lt;em&gt;key ring&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next up, you need to export your public key in a shareable format, so others can
+download and view it easily. PGP public keys are by default stored in binary. To
+make them readable, you need to &lt;em&gt;armor&lt;/em&gt; them.&lt;/p&gt;
+
+&lt;p&gt;To export an ASCII armored public key, first you need the id of your key pair.
+To get it, first run:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --list-secret keys
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;My output looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/home/tudurom/.gnupg/pubring.kbx
+--------------------------------
+sec   rsa2048 2016-12-17 [SC]
+      58359B0A5EEF806EBCBCDFCE5AFEDD03CA5A1EA4
+uid           [ultimate] Tudor Ioan Roman &amp;lt;tudurom@gmail.com&amp;gt;
+ssb   rsa2048 2016-12-17 [E]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The key pair id is that last identifier next to &lt;code class=&quot;highlighter-rouge&quot;&gt;sec&lt;/code&gt;. That’s &lt;code class=&quot;highlighter-rouge&quot;&gt;58359B0A5EEF806EBCBCDFCE5AFEDD03CA5A1EA4&lt;/code&gt; for me.&lt;/p&gt;
+
+&lt;p&gt;Next up, to export the ASCII armored public key, run:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --export --armor &amp;lt;id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It should return something like:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQENBFhVjCIBCACeXZg+7xqys/KQYV9bJhAm5/JMVxzHMLQgoZImcW2qMbBJCGEH
+...blah blah skipping...
+gpd1de2VA3RheUTzThuBbmyOk7+vo2w5fSyfc1+USDM=
+=4HiE
+-----END PGP PUBLIC KEY BLOCK-----
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Congratulations, you now have your public key! Save it to a file and give it to
+your friends or put it online (we will discuss about putting your key online
+later in this article).&lt;/p&gt;
+
+&lt;p&gt;Let’s say that your friend sent you your public key. How do you import it?&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# if the key is online in its own file&lt;/span&gt;
+curl -sL http://pub.iotek.org/p/qSwl8V2 | gpg --import
+&lt;span class=&quot;c&quot;&gt;# if the key is on your disk in its own file&lt;/span&gt;
+gpg --import key.pub
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ok, you exchanged keys with your friend(s), now you’re ready to sign and encrypt
+files!&lt;/p&gt;
+
+&lt;p&gt;To sign files:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg -o &amp;lt;signed_file&amp;gt; --sign &amp;lt;file_to_be_signed&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To encrypt files:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg -o &amp;lt;encrypted_file&amp;gt; --encrypt --recipient &amp;lt;recipient1&amp;gt; --recipient
+&lt;span class=&quot;gp&quot;&gt;&amp;lt;recipient2&amp;gt; &lt;/span&gt;... &amp;lt;file_to_encrypt&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Where &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;recipient&amp;gt;&lt;/code&gt; can be a public key id or an email address.&lt;/p&gt;
+
+&lt;p&gt;Suppose I am your friend and I sent you &lt;a href=&quot;http://pub.iotek.org/p/DuV2LWH&quot;&gt;this signed
+file&lt;/a&gt;. You can verify or get the original file
+with the &lt;code class=&quot;highlighter-rouge&quot;&gt;--verify&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;--decrypt&lt;/code&gt; commands.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -sL http://pub.iotek.org/p/DuV2LWH | gpg -o cat.png --decrypt
+curl -sL http://pub.iotek.org/p/DuV2LWH | gpg --verify
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;putting-your-key-online&quot;&gt;Putting your key online&lt;/h3&gt;
+
+&lt;p&gt;There are three ways of putting your public key online:&lt;/p&gt;
+
+&lt;h4 id=&quot;1-using-a-key-server&quot;&gt;1. Using a key server&lt;/h4&gt;
+
+&lt;p&gt;One popular keyserver is the &lt;a href=&quot;http://pgp.mit.edu/&quot;&gt;MIT PGP Public Key Server&lt;/a&gt;.
+Paste your ASCII armored public key in the text box and press “Submit”.&lt;/p&gt;
+
+&lt;p&gt;You can search for keys using GnuPG:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --search-keys tudurom
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;2-uploading-the-key-on-your-website&quot;&gt;2. Uploading the key on your website&lt;/h4&gt;
+
+&lt;p&gt;I’m pretty sure you know how to upload files to your webserver.&lt;/p&gt;
+
+&lt;h4 id=&quot;3-using-other-services-example-keybase&quot;&gt;3. Using other services (example: Keybase)&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://keybase.io&quot;&gt;Keybase&lt;/a&gt; is a service that maps your identity to your
+public keys, and vice versa.&lt;/p&gt;
+
+&lt;p&gt;On Keybase you can send your public key(s) and map them to different online
+services like Facebook, Twitter, Reddit or GitHub. This way your keys are more
+trustworthy.&lt;/p&gt;
+
+&lt;p&gt;I’m &lt;a href=&quot;https://keybase.io/tudurom/&quot;&gt;@tudurom&lt;/a&gt; on Keybase.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;GPG is a very powerful and useful tool that allows us to sign and encrypt
+files cryptographically from trusted people. Cryptography has become very
+important to our lives, carrying the confidence found in our physical world to
+the electronic world. As such, knowledge on how to use a cryptographic
+program like GnuPG can be very useful to the computer user.&lt;/p&gt;
+
+&lt;p&gt;I hope that you learned something useful from this article. Happy hacking!&lt;/p&gt;</content><summary type="html">GPG is the most popular implementation of the OpenPGP
+standard, because it’s free as in freedom and
+because it’s widely use by many projects to verify software and emails, including the Linux Kernel.</summary></entry></feed>

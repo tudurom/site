@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['xcb_5fewmh_5fconnection_5ft',['xcb_ewmh_connection_t',['../structxcb__ewmh__connection__t.html',1,'']]],
+  ['xcb_5fewmh_5fcoordinates_5ft',['xcb_ewmh_coordinates_t',['../structxcb__ewmh__coordinates__t.html',1,'']]],
+  ['xcb_5fewmh_5fgeometry_5ft',['xcb_ewmh_geometry_t',['../structxcb__ewmh__geometry__t.html',1,'']]],
+  ['xcb_5fewmh_5fget_5fatoms_5freply_5ft',['xcb_ewmh_get_atoms_reply_t',['../structxcb__ewmh__get__atoms__reply__t.html',1,'']]],
+  ['xcb_5fewmh_5fget_5fdesktop_5flayout_5freply_5ft',['xcb_ewmh_get_desktop_layout_reply_t',['../structxcb__ewmh__get__desktop__layout__reply__t.html',1,'']]],
+  ['xcb_5fewmh_5fget_5fdesktop_5fviewport_5freply_5ft',['xcb_ewmh_get_desktop_viewport_reply_t',['../structxcb__ewmh__get__desktop__viewport__reply__t.html',1,'']]],
+  ['xcb_5fewmh_5fget_5fextents_5freply_5ft',['xcb_ewmh_get_extents_reply_t',['../structxcb__ewmh__get__extents__reply__t.html',1,'']]],
+  ['xcb_5fewmh_5fget_5futf8_5fstrings_5freply_5ft',['xcb_ewmh_get_utf8_strings_reply_t',['../structxcb__ewmh__get__utf8__strings__reply__t.html',1,'']]],
+  ['xcb_5fewmh_5fget_5fwindows_5freply_5ft',['xcb_ewmh_get_windows_reply_t',['../structxcb__ewmh__get__windows__reply__t.html',1,'']]],
+  ['xcb_5fewmh_5fget_5fwm_5ffullscreen_5fmonitors_5freply_5ft',['xcb_ewmh_get_wm_fullscreen_monitors_reply_t',['../structxcb__ewmh__get__wm__fullscreen__monitors__reply__t.html',1,'']]],
+  ['xcb_5fewmh_5fget_5fwm_5ficon_5freply_5ft',['xcb_ewmh_get_wm_icon_reply_t',['../structxcb__ewmh__get__wm__icon__reply__t.html',1,'']]],
+  ['xcb_5fewmh_5fget_5fworkarea_5freply_5ft',['xcb_ewmh_get_workarea_reply_t',['../structxcb__ewmh__get__workarea__reply__t.html',1,'']]],
+  ['xcb_5fewmh_5fwm_5ficon_5fiterator_5ft',['xcb_ewmh_wm_icon_iterator_t',['../structxcb__ewmh__wm__icon__iterator__t.html',1,'']]],
+  ['xcb_5fewmh_5fwm_5fstrut_5fpartial_5ft',['xcb_ewmh_wm_strut_partial_t',['../structxcb__ewmh__wm__strut__partial__t.html',1,'']]],
+  ['xcb_5ficccm_5fget_5ftext_5fproperty_5freply_5ft',['xcb_icccm_get_text_property_reply_t',['../structxcb__icccm__get__text__property__reply__t.html',1,'']]],
+  ['xcb_5ficccm_5fget_5fwm_5fclass_5freply_5ft',['xcb_icccm_get_wm_class_reply_t',['../structxcb__icccm__get__wm__class__reply__t.html',1,'']]],
+  ['xcb_5ficccm_5fget_5fwm_5fcolormap_5fwindows_5freply_5ft',['xcb_icccm_get_wm_colormap_windows_reply_t',['../structxcb__icccm__get__wm__colormap__windows__reply__t.html',1,'']]],
+  ['xcb_5ficccm_5fget_5fwm_5fprotocols_5freply_5ft',['xcb_icccm_get_wm_protocols_reply_t',['../structxcb__icccm__get__wm__protocols__reply__t.html',1,'']]],
+  ['xcb_5ficccm_5fwm_5fhints_5ft',['xcb_icccm_wm_hints_t',['../structxcb__icccm__wm__hints__t.html',1,'']]],
+  ['xcb_5fsize_5fhints_5ft',['xcb_size_hints_t',['../structxcb__size__hints__t.html',1,'']]]
+];

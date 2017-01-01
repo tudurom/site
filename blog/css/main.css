@@ -123,6 +123,19 @@ hr {
   border: none;
   border-top: 2px solid #ddd; }
 
+.footer-nav {
+  display: inline-block;
+  width: 100%; }
+  .footer-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+  .footer-nav li {
+    float: left; }
+    .footer-nav li a {
+      display: block;
+      padding: .5em 1em; }
+
 main {
   max-width: 48rem;
   margin: 0 auto 3rem;
