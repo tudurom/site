@@ -16,8 +16,8 @@ encourages programs to cooperate.
 This website is a collection of my thoughts and work and I hope people can learn
 from this website. I also have a [blog](/blog).
 
-I usually make all my projects open-source. They are public on [this
-  site](/git) and [on GitHub](https://github.com/tudurom).
+I usually make all my projects open-source. They are public on
+[GitHub](https://github.com/tudurom/).
 
 ### I speak in a multitude of languages:
 
