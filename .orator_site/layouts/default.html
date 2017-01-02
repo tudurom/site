@@ -10,6 +10,9 @@
     <meta name="description" content="{{ .SiteConfig.Description }}">
     <meta name="keywords" content="{{ .SiteConfig.Keywords }}">
     <meta name="generator" content="Orator">
+
+	<meta name="theme-color" content="{{ index .SiteConfig.Extra "themecolor" }}">
+
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/solarized-dark.css">
     <link rel="icon" href="/favicon.png">

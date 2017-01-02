@@ -4,4 +4,5 @@ description: "This is tudurom's webspace. Here I share different kinds of inform
 keywords: "random site website tudor roman tudurom useful git blog github swamp golang go orator"
 author: "Tudor Roman"
 basePath: ""
-extra: {}
+extra:
+    themecolor: "#456472"

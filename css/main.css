@@ -14,11 +14,11 @@ body {
 main {
     display: block;
     position: relative;
-    padding-top: 10vh;
-    left: 15vw;
+    padding: 10vh 15vw;
     max-width: 70vw;
     color: #c0c5ce;
-    margin-bottom: 200px;
+    /*margin-bottom: 200px;*/
+    text-align: justify;
 }
 
 h1 {
