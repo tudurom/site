@@ -38,6 +38,7 @@ Romanian, C, English, Go, JavaScript, POSIX shell, Ruby\*, French\*
 * [orator](https://github.com/tudurom/orator/)
 * [albumify](https://github.com/gnotclub/albumify-next/)
 * [rainbou](https://github.com/tudurom/rainbou/)
+* [dotfiles](https://github.com/tudurom/dotfiles/)
 
 ### People and inspirational sites
 
