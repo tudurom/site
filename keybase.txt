@@ -1,12 +1,12 @@
 ==================================================================
-https://keybase.io/tudurom
+https://keybase.io/tudu
 --------------------------------------------------------------------
 
 I hereby claim:
 
   * I am an admin of http://thetudor.ddns.net
-  * I am tudurom (https://keybase.io/tudurom) on keybase.
-  * I have a public key ASCNORcprWoTUY2COhjj2RGtYsepvhl5tBpGtnOCJQlZGQo
+  * I am tudu (https://keybase.io/tudu) on keybase.
+  * I have a public key with fingerprint 5835 9B0A 5EEF 806E BCBC  DFCE 5AFE DD03 CA5A 1EA4
 
 To do so, I am signing this object:
 
@@ -14,10 +14,12 @@ To do so, I am signing this object:
     "body": {
         "key": {
             "eldest_kid": "010166ebdc7597844b84ddb71cfbead8e1173afd0399af8e5409f4069a74754ad4ad0a",
+            "fingerprint": "58359b0a5eef806ebcbcdfce5afedd03ca5a1ea4",
             "host": "keybase.io",
-            "kid": "01208d391729ad6a13518d823a18e3d911ad62c7a9be1979b41a46b67382250959190a",
-            "uid": "41184ac0934983483b099ef390337b19",
-            "username": "tudurom"
+            "key_id": "5afedd03ca5a1ea4",
+            "kid": "010166ebdc7597844b84ddb71cfbead8e1173afd0399af8e5409f4069a74754ad4ad0a",
+            "uid": "1ac7439ded48e2b4bd79af6c827c8c19",
+            "username": "tudu"
         },
         "service": {
             "hostname": "thetudor.ddns.net",
@@ -26,29 +28,39 @@ To do so, I am signing this object:
         "type": "web_service_binding",
         "version": 1
     },
-    "client": {
-        "name": "keybase.io go client",
-        "version": "1.0.18"
-    },
-    "ctime": 1482002765,
-    "expire_in": 504576000,
-    "merkle_root": {
-        "ctime": 1482002654,
-        "hash": "586090145e0e4943023a86846dd66b8d9254d877abd745be997c0e15bdc2f16371fa5e803710bf7dc731db5f413c23fe320d428e84986b570b3f6e290fabec8d",
-        "seqno": 765474
-    },
-    "prev": "0d5e215d5a1a69151fc578e4a9b9a2b23c3d7e4b61a348f0af38d0a932474af1",
-    "seqno": 9,
+    "ctime": 1483819228,
+    "expire_in": 157680000,
+    "prev": "09006408c1f5cd2faf629d1c1f796b90c0c21cfc0e3a37e91d22c9450d387ac3",
+    "seqno": 19,
     "tag": "signature"
 }
 
 which yields the signature:
 
-hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgjTkXKa1qE1GNgjoY49kRrWLHqb4ZebQaRrZzgiUJWRkKp3BheWxvYWTFAvd7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTAxNjZlYmRjNzU5Nzg0NGI4NGRkYjcxY2ZiZWFkOGUxMTczYWZkMDM5OWFmOGU1NDA5ZjQwNjlhNzQ3NTRhZDRhZDBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwOGQzOTE3MjlhZDZhMTM1MThkODIzYTE4ZTNkOTExYWQ2MmM3YTliZTE5NzliNDFhNDZiNjczODIyNTA5NTkxOTBhIiwidWlkIjoiNDExODRhYzA5MzQ5ODM0ODNiMDk5ZWYzOTAzMzdiMTkiLCJ1c2VybmFtZSI6InR1ZHVyb20ifSwic2VydmljZSI6eyJob3N0bmFtZSI6InRoZXR1ZG9yLmRkbnMubmV0IiwicHJvdG9jb2wiOiJodHRwOiJ9LCJ0eXBlIjoid2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC4xOCJ9LCJjdGltZSI6MTQ4MjAwMjc2NSwiZXhwaXJlX2luIjo1MDQ1NzYwMDAsIm1lcmtsZV9yb290Ijp7ImN0aW1lIjoxNDgyMDAyNjU0LCJoYXNoIjoiNTg2MDkwMTQ1ZTBlNDk0MzAyM2E4Njg0NmRkNjZiOGQ5MjU0ZDg3N2FiZDc0NWJlOTk3YzBlMTViZGMyZjE2MzcxZmE1ZTgwMzcxMGJmN2RjNzMxZGI1ZjQxM2MyM2ZlMzIwZDQyOGU4NDk4NmI1NzBiM2Y2ZTI5MGZhYmVjOGQiLCJzZXFubyI6NzY1NDc0fSwicHJldiI6IjBkNWUyMTVkNWExYTY5MTUxZmM1NzhlNGE5YjlhMmIyM2MzZDdlNGI2MWEzNDhmMGFmMzhkMGE5MzI0NzRhZjEiLCJzZXFubyI6OSwidGFnIjoic2lnbmF0dXJlIn2jc2lnxEAfzk+9Y9bASrmBbMu83QtGZONLGBf5dF4Z6GuUVWiZImd1AywDBZ3fmXtz06jsFy4DbXfBUZc2uWce7sBBi38PqHNpZ190eXBlIKRoYXNogqR0eXBlCKV2YWx1ZcQginzzit1hsg5NLZbOd2iY18cFEWs5cpjz24/h4/A0cAajdGFnzQICp3ZlcnNpb24B
+-----BEGIN PGP MESSAGE-----
+
+owGtUltIFFEY3m3VbCOK6F4rOvWQZHrmtjNnSZMiCEyDICkrlzPnnFkHbWabHTUT
+KbSLpg8WRWEX7frSPQuKlMKIYgMjDcOw7EGUwujqQwXVGcm3HjscOPz//33f+f6f
+v3maz5PsLfr12hcvSjnvffpO82zasXawmtMsUsWFqrlSOv7QMkJjTrjUIFyIAzzg
+g0GqEazIUFElSVMlQjSFx7pGEVEpzysi0gkQIUS6SmUJQF0CQYgUSZElRNgFiMvg
+dMOMUDtqG6bDZGVVlKEGkEyprgKmjzVMdExlpFPCxDCSEU+RxIglVsxlMHMaitFM
+w2I5FoTH7f0D/599l4/L8QgrkggJJZJKBU3SiMJoQawKClYxD11gjNom2k4Z2ikn
+5VxNBscyFQam7lDdLiaqJZQBLDuTEDOWaVKHkaO25VjYKmPlEseJhly2UxV14ZVU
+C/8VCmuGSdgcGaGC2jHDMrkQz5DYMVxlXlJFlYeCoGZwdGfUsGnYcBGyElQBO+43
+tMIdDgQgKIHNzLkuYyLorBUBEp6FCgxqEGCABTYpDKiIRIVCnggChpIMiKgqCIuc
+29sO02LikBlFESYaMyImcsptytX4G7xigseb7AnMSUvYJJ/wF3/cY3Z0DHZPLF/i
+JHfzPP4pMyYyvh+Tf2UtG6u7qS7NPTSl9GBL55ojPfMMc1va7Or1eaDWFN88O/yk
+IKv3Y+u5y3WBxfEZfdktrz5U7OrdMNReeDRp3Qrz5c/aRZc6ob97+oHChRfA7696
+29Kt2Xful7U3fpp5pvpifeG5+On3Oc1XWtP7A6sf512f/7b/9N7Ktnutjau64zkP
+GobHjg0N3E3df5HrKugbe9rUsPzsykePm4as2pZZRmreaP5N37bukf4NU3PehK6O
+Jp3fGYkM37k7eKP42twePjdU3PQ568up3t3J305WtQ8kBq7s088cfxFIuZX/1bvR
+7ojPX2L4mh6OJSzoyqnRj/aNbHle/23x7VG1ccH3PQuPpBcc/wM=
+=D4u8
+-----END PGP MESSAGE-----
 
 And finally, I am proving ownership of this host by posting or
 appending to this document.
 
-View my publicly-auditable identity here: https://keybase.io/tudurom
+View my publicly-auditable identity here: https://keybase.io/tudu
 
 ==================================================================
