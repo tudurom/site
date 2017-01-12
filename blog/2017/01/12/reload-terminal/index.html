@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="the blog of Tudor Roman">
+	<meta name="author" content="Tudor Roman">
+	<meta name="keywords" content="tudor roman, tudor's blog, blog, linux, unix">
+	<meta name="theme-color" content="#333">
+
+	<meta property="og:title" content="Reloading terminal settings on the fly">
+	<meta property="og:type" content="article">
+	<meta property="og:description" content="the blog of Tudor Roman">
+	<meta property="og:author" content="Tudor Roman">
+	<meta property="og:site_name" content="tudor's blog">
+
+	<!-- jekyll-feed gem required -->
+	<link type="application/atom+xml" rel="alternate" href="/feed.xml" title="tudor's blog" />
+
+	<link rel="stylesheet" href="/blog/css/main.css">
+	<title>Reloading terminal settings on the fly - tudor's blog</title>
+</head>
+<body>
+	<main>
+		<header class="site-header">
+			<h1 class="site-title"><a href="/blog/">tudor's blog</a></h1>
+			<nav class="site-nav">
+				
+					
+				
+					
+					
+						<a href="/blog/about/" class="">About</a>
+					
+	            	
+				
+					
+					
+	            	
+				
+					
+					
+	            	
+				
+					
+					
+	            	
+				
+					
+					
+	            	
+				
+			</nav>
+		</header>
+		<article class="post">
+    <h2 class="post-header">Reloading terminal settings on the fly</h2>
+    <p class="post-subtitle"></p>
+    <p class="post-meta">2017-01-12</p>
+    <p>One of the most useful programs from the UNIX user’s toolbox is the terminal
+emulator. Because it’s one of the most used tools and contains a lot of text,
+many users prefer to customize their terminal with custom fonts and color
+schemes, to make it more readable, or to make it look good. Often, the
+user wants to reload the configuration file. Some sophisticated emulators
+reload themselves automatically on file change, others need restarting.</p>
+
+<p>However, many of them support escape codes for changing color values and
+some support specific codes for setting the background/foreground colors and
+even font.</p>
+
+<p>This article is meant to be a guide, or cheat sheet, for such codes. My terminal
+emulator of choice is <a href="https://wiki.archlinux.org/index.php/Rxvt-unicode"><code class="highlighter-rouge">rxvt-unicode</code></a> (aka <code class="highlighter-rouge">urxvt</code>), because it’s lightweight
+(it doesn’t have heavy dependencies like gtk or libvte), fast, and is configured
+easily through the X resource database (<code class="highlighter-rouge">xrdb</code>).</p>
+
+<h3 id="list-of-codes">List of codes</h3>
+
+<ul>
+  <li>
+    <p>Set color</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  \033]4;${CODE};${COLOR}\007
+</code></pre>
+    </div>
+
+    <p><code class="highlighter-rouge">${CODE}</code> is the code of the terminal color (from 0 to 15).
+  <code class="highlighter-rouge">${COLOR}</code> is a color in RGB HEX form (aka HTML color). Example: <code class="highlighter-rouge">#1a2b3c</code>.</p>
+  </li>
+  <li>
+    <p>Set foreground color</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  \033]10;${COLOR}\007
+  \033]12;${COLOR}\007
+  \033]13;${COLOR}\007
+</code></pre>
+    </div>
+
+    <p>All 3 of them.</p>
+  </li>
+  <li>
+    <p>Set background color</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  \033]11;${COLOR}\007
+  \033]14;${COLOR}\007
+  \033]708;${COLOR}\007
+</code></pre>
+    </div>
+
+    <p>Again, all 3 of them.</p>
+  </li>
+  <li>
+    <p>Set font (tested only with <code class="highlighter-rouge">urxvt</code>)</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  \033]50;${FONT}\007
+</code></pre>
+    </div>
+
+    <p><code class="highlighter-rouge">${FONT}</code> is the font descriptor. For <code class="highlighter-rouge">urxvt</code>, it is an <a href="https://wiki.archlinux.org/index.php/X_Logical_Font_Description">XLFD</a> or an XFT descriptor (like <code class="highlighter-rouge">xft:Terminus:pixelsize=12</code>).</p>
+  </li>
+</ul>
+
+<h3 id="wrap-up">Wrap-up</h3>
+
+<p>Using these codes you can make make a theme switcher, or a basic color switcher,
+	  anything you like!</p>
+
+<p>Here is an example color switcher:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+
+usage<span class="o">()</span> <span class="o">{</span>
+	<span class="nb">echo</span> <span class="s2">"Usage: </span><span class="k">$(</span>basename <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span><span class="k">)</span><span class="s2"> &lt;color scheme&gt;"</span> &gt;&amp;2
+	<span class="nb">exit </span>1
+<span class="o">}</span>
+
+<span class="nb">test</span> -f <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">||</span> usage
+
+<span class="nv">sequences</span><span class="o">=</span><span class="s2">""</span>
+
+set_color<span class="o">()</span> <span class="o">{</span>
+	sequences+<span class="o">=</span><span class="s2">"</span><span class="se">\0</span><span class="s2">33]4;</span><span class="k">${</span><span class="nv">1</span><span class="k">}</span><span class="s2">;</span><span class="k">${</span><span class="nv">2</span><span class="k">}</span><span class="se">\0</span><span class="s2">07"</span>
+<span class="o">}</span>
+
+set_special<span class="o">()</span> <span class="o">{</span>
+	sequences+<span class="o">=</span><span class="s2">"</span><span class="se">\0</span><span class="s2">33]</span><span class="k">${</span><span class="nv">1</span><span class="k">}</span><span class="s2">;</span><span class="k">${</span><span class="nv">2</span><span class="k">}</span><span class="se">\0</span><span class="s2">07"</span>
+<span class="o">}</span>
+
+<span class="c"># colorcolumns is a script that takes colors from an X resources file</span>
+<span class="c"># and prints them by key and by color</span>
+<span class="nv">IFS</span><span class="o">=</span><span class="nv">$'</span><span class="se">\n</span><span class="s1">'
+for line in $(colorcolumns "$1"); do
+	key="$(echo $line | awk '</span><span class="o">{</span>print <span class="nv">$1</span><span class="o">}</span><span class="s1">' | tr -d '</span>:<span class="s1">')"
+	color="$(echo $line | awk '</span><span class="o">{</span>print <span class="nv">$2</span><span class="o">}</span><span class="s1">')"
+
+	case "$key" in
+		color*)
+			colorcode="$(echo "$key" | grep -o '</span><span class="o">[</span>0-9]<span class="se">\+</span><span class="s1">')"
+			set_color "$colorcode" "$color"
+			;;
+		foreground)
+			set_special 10 "$color"
+			set_special 12 "$color"
+			set_special 13 "$color"
+			;;
+		background)
+			set_special 11 "$color"
+			set_special 14 "$color"
+			set_special 708 "$color"
+			;;
+	esac
+done
+
+# send codes to all terminals
+for term in /dev/pts/[0-9]*; do
+	printf "%b" "$sequences" &gt; "$term"
+done
+
+# save changes for future instances
+xrdb -merge "$1"
+</span></code></pre>
+</div>
+
+<p>To change the font, I do</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="k">for </span>term <span class="k">in</span> /dev/pts/[0-9]<span class="k">*</span>; <span class="k">do
+	</span><span class="nb">printf</span> <span class="s1">'\33]50;%s\007'</span> <span class="s2">"</span><span class="nv">$TERM_FONT</span><span class="s2">"</span> &gt; <span class="s2">"</span><span class="nv">$term</span><span class="s2">"</span>
+<span class="k">done</span>
+</code></pre>
+</div>
+
+<p>Have fun switching colors!</p>
+
+<p>Oh, here’s a video of the color switcher in action: <a href="http://thetudor.ddns.net/pub/colors.mkv">ka-chow</a>.</p>
+
+
+    
+</article>
+
+		<footer>
+			<hr />
+			<nav class="footer-nav">
+				<ul>
+					<a href="/" id="back_link">Root</a>
+					<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width: 0; float: right;" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+				</ul>
+			</nav>
+	    </footer>
+	</main>
+	
+</body>
+</html>
