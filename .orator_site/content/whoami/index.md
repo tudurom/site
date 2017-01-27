@@ -47,7 +47,7 @@ Romanian, C, English, Go, JavaScript, POSIX shell, Ruby\*, French\*
 * [2f30](http://2f30.org/)
 * [aiju](http://aiju.de/)
 * [apk](https://pluvi.us/)
-* [arc](http://arcetera.moe/) (RIP domain)
+* [arc](http://arcetera.moe/)
 * [dcat](https://lyngvaer.no/)
 * [Thoughtbot blog](https://robots.thoughtbot.com/)
 * [neeasade](http://neeasade.net/)
