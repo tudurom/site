@@ -12,13 +12,13 @@ body {
 }
 
 main {
-    display: block;
-    position: relative;
-    padding: 10vh 15vw;
-    max-width: 70vw;
+	/*display: block;*/
+    padding: 10vh 2rem;
+    max-width: 48rem;
+    margin: 0 auto 3rem;
     color: #c0c5ce;
     /*margin-bottom: 200px;*/
-    text-align: justify;
+    text-align: left;
 }
 
 h1 {
