@@ -54,5 +54,5 @@ Romanian, C, English, Go, JavaScript, POSIX shell, Ruby\*, French\*
 * [rocx](http://rocx.rocks/)
 * [suckless](http://suckless.org/)
 * [venam](https://venam.nixers.net/blog/)
-* [xero](http:s//xero.nu/)
+* [xero](http://xero.nu/)
 * [z3bra](https://z3bra.org/)

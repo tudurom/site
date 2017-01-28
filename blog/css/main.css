@@ -137,6 +137,36 @@ hr {
       display: block;
       padding: .5em 1em; }
 
+.row {
+  display: flex; }
+
+.col {
+  flex: 1; }
+
+@media (max-width: 48em) {
+  .row {
+    flex-direction: column; }
+
+  .col {
+    flex: 0 0 auto; } }
+@media (min-width: 48em) {
+  .col-tenth {
+    flex: 0 0 10%; }
+
+  .col-eigth {
+    flex: 0 0 12.5%; }
+
+  .col-fifth {
+    flex: 0 0 20%; }
+
+  .col-quarter {
+    flex: 0 0 25%; }
+
+  .col-third {
+    flex: 0 0 33.3333334%; }
+
+  .col-half {
+    flex: 0 0 50%; } }
 main {
   max-width: 48rem;
   margin: 0 auto 3rem;
@@ -164,7 +194,8 @@ main {
     .posts > li span {
       color: #a0a0a0;
       margin-right: 1.5rem;
-      font-size: 0.875rem; }
+      font-size: 0.875rem;
+      font-family: "Fira Mono", monospace; }
     .posts > li a {
       color: #333;
       text-decoration: none; }
