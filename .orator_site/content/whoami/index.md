@@ -39,20 +39,3 @@ Romanian, C, English, Go, JavaScript, POSIX shell, Ruby\*, French\*
 * [albumify](https://github.com/gnotclub/albumify-next/)
 * [rainbou](https://github.com/tudurom/rainbou/)
 * [dotfiles](https://github.com/tudurom/dotfiles/)
-
-### People and inspirational sites
-
-<div id="people"></div>
-
-* [2f30](http://2f30.org/)
-* [aiju](http://aiju.de/)
-* [apk](https://pluvi.us/)
-* [arc](http://arcetera.moe/)
-* [dcat](https://lyngvaer.no/)
-* [Thoughtbot blog](https://robots.thoughtbot.com/)
-* [neeasade](http://neeasade.net/)
-* [rocx](http://rocx.rocks/)
-* [suckless](http://suckless.org/)
-* [venam](https://venam.nixers.net/blog/)
-* [xero](http://xero.nu/)
-* [z3bra](https://z3bra.org/)
