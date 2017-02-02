@@ -4,7 +4,7 @@ https://keybase.io/tudu
 
 I hereby claim:
 
-  * I am an admin of http://thetudor.ddns.net
+  * I am an admin of https://tudorr.xyz
   * I am tudu (https://keybase.io/tudu) on keybase.
   * I have a public key with fingerprint 5835 9B0A 5EEF 806E BCBC  DFCE 5AFE DD03 CA5A 1EA4
 
@@ -21,17 +21,22 @@ To do so, I am signing this object:
             "uid": "1ac7439ded48e2b4bd79af6c827c8c19",
             "username": "tudu"
         },
+        "revoke": {
+            "sig_ids": [
+                "e26a0c1f679cb5426a2f9a78dfd19f30efbd64ea9af651d0be7c4a930990b49b0f"
+            ]
+        },
         "service": {
-            "hostname": "thetudor.ddns.net",
-            "protocol": "http:"
+            "hostname": "tudorr.xyz",
+            "protocol": "https:"
         },
         "type": "web_service_binding",
         "version": 1
     },
-    "ctime": 1483819228,
+    "ctime": 1486059093,
     "expire_in": 157680000,
-    "prev": "09006408c1f5cd2faf629d1c1f796b90c0c21cfc0e3a37e91d22c9450d387ac3",
-    "seqno": 19,
+    "prev": "3009321e9e3c0f1b715565f010839f64e12cd511ebe7de1944da27379d4dd40b",
+    "seqno": 26,
     "tag": "signature"
 }
 
@@ -39,23 +44,25 @@ which yields the signature:
 
 -----BEGIN PGP MESSAGE-----
 
-owGtUltIFFEY3m3VbCOK6F4rOvWQZHrmtjNnSZMiCEyDICkrlzPnnFkHbWabHTUT
-KbSLpg8WRWEX7frSPQuKlMKIYgMjDcOw7EGUwujqQwXVGcm3HjscOPz//33f+f6f
-v3maz5PsLfr12hcvSjnvffpO82zasXawmtMsUsWFqrlSOv7QMkJjTrjUIFyIAzzg
-g0GqEazIUFElSVMlQjSFx7pGEVEpzysi0gkQIUS6SmUJQF0CQYgUSZElRNgFiMvg
-dMOMUDtqG6bDZGVVlKEGkEyprgKmjzVMdExlpFPCxDCSEU+RxIglVsxlMHMaitFM
-w2I5FoTH7f0D/599l4/L8QgrkggJJZJKBU3SiMJoQawKClYxD11gjNom2k4Z2ikn
-5VxNBscyFQam7lDdLiaqJZQBLDuTEDOWaVKHkaO25VjYKmPlEseJhly2UxV14ZVU
-C/8VCmuGSdgcGaGC2jHDMrkQz5DYMVxlXlJFlYeCoGZwdGfUsGnYcBGyElQBO+43
-tMIdDgQgKIHNzLkuYyLorBUBEp6FCgxqEGCABTYpDKiIRIVCnggChpIMiKgqCIuc
-29sO02LikBlFESYaMyImcsptytX4G7xigseb7AnMSUvYJJ/wF3/cY3Z0DHZPLF/i
-JHfzPP4pMyYyvh+Tf2UtG6u7qS7NPTSl9GBL55ojPfMMc1va7Or1eaDWFN88O/yk
-IKv3Y+u5y3WBxfEZfdktrz5U7OrdMNReeDRp3Qrz5c/aRZc6ob97+oHChRfA7696
-29Kt2Xful7U3fpp5pvpifeG5+On3Oc1XWtP7A6sf512f/7b/9N7Ktnutjau64zkP
-GobHjg0N3E3df5HrKugbe9rUsPzsykePm4as2pZZRmreaP5N37bukf4NU3PehK6O
-Jp3fGYkM37k7eKP42twePjdU3PQ568up3t3J305WtQ8kBq7s088cfxFIuZX/1bvR
-7ojPX2L4mh6OJSzoyqnRj/aNbHle/23x7VG1ccH3PQuPpBcc/wM=
-=D4u8
+owGtkn9oVlUYx9+9s5qLJAX9p1l2KCxY2zn3nnPvPa8YkZDOQohK5yTfzo/nzNvs
+3nf3vXvnnDq1Rk0jkuk/mhiViIwwIWa0SUvTyuJF0YqCkf1RuSwTGmlI2bkj6Z/+
+7HLgch6+z+f5Ps9zXr2tNldX0/bXeO2ptjvfqvlsQuZaByu6F8lY96BCL+qAqR+s
+1VBOix2hRgWECSaeB1Irn3E/oFQGVGvpE2UkCB0AIb4rjMYu58IEwCjmhmKPC5/6
+jAptDxaoEZkwaoeklIRRarEscBmXWDAAE2DLV1Jpo4AJA9rClGCCgKA2cU1czjKs
+OSnK0BTGNmYvxSl7/6H/n313TeGIUD51uQZNA3Akldq3aZ4KHF8FivBMWIYkEs+B
+VaddugttbEQJVOIOyGZaDtut4TIqrELgeAIrYjyfK8movTnGVg200YQbF4OR2qMg
+Mj4jGkvwFRXcxZxjSe3QDHrasm21Sqim4NmE/q0cJ0nTup711lEpidNYxWttfE2a
+lsqFzFPaU8qE3SCLh/5hFGUYabsem1KBpBzGESoQK1VpmEEJDTzMOOZuI4J1pTCB
+YpgpmO8F2H5ZIahYpoutxiHAwVXYEDtsxjxm7CoClxvbE3GUZoSAbUkD4ZRq4fiu
+z7VdDcUSZV11RjEqOJ41Ktot0w4uEmlXAmhj/UCNOy1XU5ebO+fuaa1sT/3qXzdH
+o6PfVm886Zvy2XvO1U+//Ubkga9vud5yeM/bX75UvHWg89KutLepIVz1+sJ5LWnz
+sm3Vh6/Pz1ebBj+vvdx9dMOcihrav/zKincfPNLw/qPzFu/Dl/nq6Jvd1W1L+6s7
+DmzfcezZpHVT/p5Xvj+68uTwj2ceyS88NDz53aTOyaE/J9WRLSOjE2Ob9p/rax97
+cVbfhk/3PXHhHZcfHJ49fu7E0IVdO2f/NPPnXz6pa/B+WKCS57fsfe2Ni9f67xdn
+/jj/wuLlW2etHMnvbm4ei8Lc2cOFmVv54890tsy/2vzVF3eYuaeuvnxpc+XNk9Hp
+8RnHbv79qb7kwKLfZnS8t2Tg4kRyPLfig/zI+vu6F3R/uOga/+jeJScOXmm76/hg
+/5MPPTb8sfM3
+=lJ2X
 -----END PGP MESSAGE-----
 
 And finally, I am proving ownership of this host by posting or
@@ -64,3 +71,4 @@ appending to this document.
 View my publicly-auditable identity here: https://keybase.io/tudu
 
 ==================================================================
+
