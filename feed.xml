@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/blog/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2017-02-19T22:19:34+02:00</updated><id>/blog//</id><title type="html">tudor’s blog</title><subtitle>the blog of Tudor Roman</subtitle><author><name>Tudor Roman</name></author><entry><title type="html">Unicode Braille Characters</title><link href="/blog/2017/01/28/braille-chars/" rel="alternate" type="text/html" title="Unicode Braille Characters" /><published>2017-01-28T19:32:34+02:00</published><updated>2017-01-28T19:32:34+02:00</updated><id>/blog/2017/01/28/braille-chars</id><content type="html" xml:base="/blog/2017/01/28/braille-chars/">&lt;p&gt;&lt;a href=&quot;http://www.unicode.org/charts/PDF/U2800.pdf&quot;&gt;Unicode braille characters&lt;/a&gt; are made by &lt;a href=&quot;https://en.wikipedia.org/wiki/Bitwise_operation#OR&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;OR&lt;/code&gt;-ing&lt;/a&gt; the &lt;a href=&quot;https://unicode-table.com/en/2800/&quot;&gt;blank braille symbol&lt;/a&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;0x2800&lt;/code&gt;) with a byte that defines the raised dots. A braille symbol has 8 different dots, thus it fits perfectly in a byte.&lt;/p&gt;
+
+&lt;p&gt;The dot order:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;0 3
+1 4
+2 5
+6 7
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For example, the unicode code point for “⢎” is &lt;code class=&quot;highlighter-rouge&quot;&gt;0x2800 | 2 | 4 | 8 | 128 =
+0x288E&lt;/code&gt;, because the byte that defines the raised dots, in binary notation,
+	equals:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;76543210
+--------
+10001110
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Programs that use unicode braille characters in funny ways: &lt;a href=&quot;https://github.com/dcat/tplot&quot;&gt;tplot&lt;/a&gt;, &lt;a href=&quot;https://github.com/tudurom/brclock&quot;&gt;brclock&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Sample code:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;locale.h&amp;gt;
+#include &amp;lt;stdint.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#define BRAILLE_EMPTY 0x2800
+#define URANDOM &quot;/dev/urandom&quot;
+&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;/* read a random byte from /dev/urandom */&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;uint8_t&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_rnd_byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;FILE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fopen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;URANDOM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;rb&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;uint8_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;fread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;fclose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;cm&quot;&gt;/* set locale according to environment variables */&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;setlocale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LC_ALL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+	&lt;span class=&quot;kt&quot;&gt;uint8_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dots&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_rnd_byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%lc&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BRAILLE_EMPTY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>Tudor Roman</name></author><summary type="html">Unicode braille characters are made by OR-ing the blank braille symbol (0x2800) with a byte that defines the raised dots. A braille symbol has 8 different dots, thus it fits perfectly in a byte.</summary></entry><entry><title type="html">Reloading terminal settings on the fly</title><link href="/blog/2017/01/12/reload-terminal/" rel="alternate" type="text/html" title="Reloading terminal settings on the fly" /><published>2017-01-12T16:21:00+02:00</published><updated>2017-01-12T16:21:00+02:00</updated><id>/blog/2017/01/12/reload-terminal</id><content type="html" xml:base="/blog/2017/01/12/reload-terminal/">&lt;p&gt;One of the most useful programs from the UNIX user’s toolbox is the terminal
+emulator. Because it’s one of the most used tools and contains a lot of text,
+many users prefer to customize their terminal with custom fonts and color
+schemes, to make it more readable, or to make it look good. Often, the
+user wants to reload the configuration file. Some sophisticated emulators
+reload themselves automatically on file change, others need restarting.&lt;/p&gt;
+
+&lt;p&gt;However, many of them support escape codes for changing color values and
+some support specific codes for setting the background/foreground colors and
+even font.&lt;/p&gt;
+
+&lt;p&gt;This article is meant to be a guide, or cheat sheet, for such codes. My terminal
+emulator of choice is &lt;a href=&quot;https://wiki.archlinux.org/index.php/Rxvt-unicode&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rxvt-unicode&lt;/code&gt;&lt;/a&gt; (aka &lt;code class=&quot;highlighter-rouge&quot;&gt;urxvt&lt;/code&gt;), because it’s lightweight
+(it doesn’t have heavy dependencies like gtk or libvte), fast, and is configured
+easily through the X resource database (&lt;code class=&quot;highlighter-rouge&quot;&gt;xrdb&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h3 id=&quot;list-of-codes&quot;&gt;List of codes&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Set color&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  \033]4;${CODE};${COLOR}\007
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;${CODE}&lt;/code&gt; is the code of the terminal color (from 0 to 15).
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;${COLOR}&lt;/code&gt; is a color in RGB HEX form (aka HTML color). Example: &lt;code class=&quot;highlighter-rouge&quot;&gt;#1a2b3c&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Set foreground color&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  \033]10;${COLOR}\007
+  \033]12;${COLOR}\007
+  \033]13;${COLOR}\007
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;All 3 of them.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Set background color&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  \033]11;${COLOR}\007
+  \033]14;${COLOR}\007
+  \033]708;${COLOR}\007
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;Again, all 3 of them.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Set font (tested only with &lt;code class=&quot;highlighter-rouge&quot;&gt;urxvt&lt;/code&gt;)&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  \033]50;${FONT}\007
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;${FONT}&lt;/code&gt; is the font descriptor. For &lt;code class=&quot;highlighter-rouge&quot;&gt;urxvt&lt;/code&gt;, it is an &lt;a href=&quot;https://wiki.archlinux.org/index.php/X_Logical_Font_Description&quot;&gt;XLFD&lt;/a&gt; or an XFT descriptor (like &lt;code class=&quot;highlighter-rouge&quot;&gt;xft:Terminus:pixelsize=12&lt;/code&gt;).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;wrap-up&quot;&gt;Wrap-up&lt;/h3&gt;
+
+&lt;p&gt;Using these codes you can make make a theme switcher, or a basic color switcher,
+	  anything you like!&lt;/p&gt;
+
+&lt;p&gt;Here is an example color switcher:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+
+usage&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Usage: &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;basename &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &amp;lt;color scheme&amp;gt;&quot;&lt;/span&gt; &amp;gt;&amp;amp;2
+	&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; -f &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; usage
+
+&lt;span class=&quot;nv&quot;&gt;sequences&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
+
+set_color&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	sequences+&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;33]4;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;07&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+set_special&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	sequences+&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;33]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;07&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# colorcolumns is a script that takes colors from an X resources file&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# and prints them by key and by color&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;IFS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'
+for line in $(colorcolumns &quot;$1&quot;); do
+	key=&quot;$(echo $line | awk '&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;print &lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;' | tr -d '&lt;/span&gt;:&lt;span class=&quot;s1&quot;&gt;')&quot;
+	color=&quot;$(echo $line | awk '&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;print &lt;span class=&quot;nv&quot;&gt;$2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;')&quot;
+
+	case &quot;$key&quot; in
+		color*)
+			colorcode=&quot;$(echo &quot;$key&quot; | grep -o '&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0-9]&lt;span class=&quot;se&quot;&gt;\+&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;')&quot;
+			set_color &quot;$colorcode&quot; &quot;$color&quot;
+			;;
+		foreground)
+			set_special 10 &quot;$color&quot;
+			set_special 12 &quot;$color&quot;
+			set_special 13 &quot;$color&quot;
+			;;
+		background)
+			set_special 11 &quot;$color&quot;
+			set_special 14 &quot;$color&quot;
+			set_special 708 &quot;$color&quot;
+			;;
+	esac
+done
+
+# send codes to all terminals
+for term in /dev/pts/[0-9]*; do
+	printf &quot;%b&quot; &quot;$sequences&quot; &amp;gt; &quot;$term&quot;
+done
+
+# save changes for future instances
+xrdb -merge &quot;$1&quot;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To change the font, I do&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;term &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; /dev/pts/[0-9]&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;do
+	&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'\33]50;%s\007'&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$TERM_FONT&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$term&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Have fun switching colors!&lt;/p&gt;
+
+&lt;p&gt;Oh, here’s a video of the color switcher in action: &lt;a href=&quot;http://thetudor.ddns.net/pub/colors.mkv&quot;&gt;ka-chow&lt;/a&gt;.&lt;/p&gt;</content><author><name>Tudor Roman</name></author><summary type="html">One of the most useful programs from the UNIX user’s toolbox is the terminal
+emulator. Because it’s one of the most used tools and contains a lot of text,
+many users prefer to customize their terminal with custom fonts and color
+schemes, to make it more readable, or to make it look good. Often, the
+user wants to reload the configuration file. Some sophisticated emulators
+reload themselves automatically on file change, others need restarting.</summary></entry><entry><title type="html">High resolution TTY with the nvidia proprietary driver</title><link href="/blog/2017/01/08/nvidia-tty/" rel="alternate" type="text/html" title="High resolution TTY with the nvidia proprietary driver" /><published>2017-01-08T00:00:00+02:00</published><updated>2017-01-08T00:00:00+02:00</updated><id>/blog/2017/01/08/nvidia-tty</id><content type="html" xml:base="/blog/2017/01/08/nvidia-tty/">&lt;p&gt;My laptop is a ThinkPad T430 with discrete NVIDIA graphics. It can switch between integrated
+graphics (Intel) and discrete.&lt;/p&gt;
+
+&lt;p&gt;You may know that graphics switching is &lt;em&gt;hard&lt;/em&gt; on laptops with NVIDIA discrete
+graphics. I wish I could use integrated graphics by default and just use NVIDIA
+for video acceleration, but I can’t. &lt;a href=&quot;http://bumblebee-project.org/&quot;&gt;Bumblebee&lt;/a&gt;
+doesn’t work. Also, I’m using my laptop mainly with mouse, keyboard and monitor
+plugged in, making it a full-fledged PC. The external monitor is full-HD, it
+looks horrible connected through VGA, forcing me to use the DisplayPort
+connection. The problem is that the DisplayPort is hardwired to the NVIDIA card
+(according to &lt;code class=&quot;highlighter-rouge&quot;&gt;xrandr&lt;/code&gt; I have &lt;a href=&quot;http://pub.iotek.org/p/z7r3RmK.png&quot;&gt;6 DP connections??&lt;/a&gt;). Because the monitor is connected to the discrete card, it doesn’t output anything, only the GRUB prompt (how does that even work?). Luckily, I can switch between the two graphics modes from the UEFI/BIOS menu.&lt;/p&gt;
+
+&lt;p&gt;The problem is that I get low resolution in the TTY. I solved this problem with
+a GRUB trick and pure luck.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/GRUB/&quot;&gt;GRUB&lt;/a&gt; can be configured to use a
+specific video mode and then transfer the graphics payload to the Linux kernel.
+That means that the TTY will use the same video mode and the same resolution.
+GRUB can also automatically select the best video mode available. The problem is
+that the NVIDIA card doesn’t report all video modes available, making GRUB, and
+implicitly the kernel, use a low resolution video mode.&lt;/p&gt;
+
+&lt;p&gt;The hack I discovered is that I can supply the resolution of the laptop display
+as my preferable video mode and it will just work. I got native resolution in
+the TTY (yay).&lt;/p&gt;
+
+&lt;p&gt;Here is how it works:&lt;/p&gt;
+
+&lt;p&gt;The video mode is set in the &lt;code class=&quot;highlighter-rouge&quot;&gt;GRUB_GFXMODE&lt;/code&gt; variable from the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/default/grub&lt;/code&gt; configuration file. To keep the video mode after Linux
+boots, set
+&lt;code class=&quot;highlighter-rouge&quot;&gt;GRUB_GFXPAYLOAD_LINUX&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;keep&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To get native resolution, just set &lt;code class=&quot;highlighter-rouge&quot;&gt;GRUB_GFXMODE&lt;/code&gt; to your native resolution and
+append &lt;code class=&quot;highlighter-rouge&quot;&gt;x32&lt;/code&gt; to it (that’s 32 bit color depth). My setting is
+&lt;code class=&quot;highlighter-rouge&quot;&gt;GRUB_GFXMODE=1600x900x32&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;grub-mkconfig&lt;/code&gt; to generate the configuration file, reboot and you’re
+done!&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# grub-mkconfig -o /boot/grub/grub.cfg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>Tudor Roman</name></author><summary type="html">My laptop is a ThinkPad T430 with discrete NVIDIA graphics. It can switch between integrated
+graphics (Intel) and discrete.</summary></entry><entry><title type="html">An Intro to GPG</title><link href="/blog/2016/12/25/gpg-intro/" rel="alternate" type="text/html" title="An Intro to GPG" /><published>2016-12-25T22:00:00+02:00</published><updated>2016-12-25T22:00:00+02:00</updated><id>/blog/2016/12/25/gpg-intro</id><content type="html" xml:base="/blog/2016/12/25/gpg-intro/">&lt;p&gt;GPG is the most popular implementation of the &lt;a href=&quot;http://openpgp.org/&quot;&gt;OpenPGP&lt;/a&gt;
+standard, because it’s &lt;a href=&quot;http://i.imgur.com/Brs9J9U.jpg&quot;&gt;free as in freedom&lt;/a&gt; and
+because it’s widely use by many projects to verify software and emails, &lt;a href=&quot;https://www.kernel.org/signature.html&quot;&gt;including the Linux Kernel&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.gnupg.org/&quot;&gt;GnuPG (GPG)&lt;/a&gt; is a program that does two important things:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;encrypt/decrypt data so only people you know and trust are able to use it;&lt;/li&gt;
+  &lt;li&gt;sign/verify files so you know if the data you received via email or any other
+medium was sent to you by a person that you know and trust.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;quick-and-easy-gpg-usage&quot;&gt;Quick and easy GPG usage&lt;/h3&gt;
+
+&lt;p&gt;First, install it. In the Arch Linux repositories it’s called &lt;a href=&quot;https://www.archlinux.org/packages/core/x86_64/gnupg/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gnupg&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pacman -S gnupg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now generate a &lt;em&gt;key pair&lt;/em&gt;. After you complete this step you will get a &lt;em&gt;secret
+key&lt;/em&gt; and a &lt;em&gt;public key&lt;/em&gt;. The secret key must be kept secret, otherwise there is
+no point in using GPG. The public
+key must be given to anyone who wishes to sign or encrypt data for you.&lt;/p&gt;
+
+&lt;p&gt;To generate the key pair:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --gen-key
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You will be asked for your real name, your email addresses and a passphrase. Make sure that
+the data you enter is correct and &lt;strong&gt;real&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The keys will be added to your &lt;em&gt;key ring&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next up, you need to export your public key in a shareable format, so others can
+download and view it easily. PGP public keys are by default stored in binary. To
+make them readable, you need to &lt;em&gt;armor&lt;/em&gt; them.&lt;/p&gt;
+
+&lt;p&gt;To export an ASCII armored public key, first you need the id of your key pair.
+To get it, first run:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --list-secret keys
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;My output looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/home/tudurom/.gnupg/pubring.kbx
+--------------------------------
+sec   rsa2048 2016-12-17 [SC]
+      58359B0A5EEF806EBCBCDFCE5AFEDD03CA5A1EA4
+uid           [ultimate] Tudor Ioan Roman &amp;lt;tudurom@gmail.com&amp;gt;
+ssb   rsa2048 2016-12-17 [E]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The key pair id is that last identifier next to &lt;code class=&quot;highlighter-rouge&quot;&gt;sec&lt;/code&gt;. That’s &lt;code class=&quot;highlighter-rouge&quot;&gt;58359B0A5EEF806EBCBCDFCE5AFEDD03CA5A1EA4&lt;/code&gt; for me.&lt;/p&gt;
+
+&lt;p&gt;Next up, to export the ASCII armored public key, run:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --export --armor &amp;lt;id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It should return something like:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQENBFhVjCIBCACeXZg+7xqys/KQYV9bJhAm5/JMVxzHMLQgoZImcW2qMbBJCGEH
+...blah blah skipping...
+gpd1de2VA3RheUTzThuBbmyOk7+vo2w5fSyfc1+USDM=
+=4HiE
+-----END PGP PUBLIC KEY BLOCK-----
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Congratulations, you now have your public key! Save it to a file and give it to
+your friends or put it online (we will discuss about putting your key online
+later in this article).&lt;/p&gt;
+
+&lt;p&gt;Let’s say that your friend sent you your public key. How do you import it?&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# if the key is online in its own file&lt;/span&gt;
+curl -sL http://pub.iotek.org/p/qSwl8V2 | gpg --import
+&lt;span class=&quot;c&quot;&gt;# if the key is on your disk in its own file&lt;/span&gt;
+gpg --import key.pub
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ok, you exchanged keys with your friend(s), now you’re ready to sign and encrypt
+files!&lt;/p&gt;
+
+&lt;p&gt;To sign files:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg -o &amp;lt;signed_file&amp;gt; --sign &amp;lt;file_to_be_signed&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To encrypt files:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg -o &amp;lt;encrypted_file&amp;gt; --encrypt --recipient &amp;lt;recipient1&amp;gt; --recipient
+&lt;span class=&quot;gp&quot;&gt;&amp;lt;recipient2&amp;gt; &lt;/span&gt;... &amp;lt;file_to_encrypt&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Where &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;recipient&amp;gt;&lt;/code&gt; can be a public key id or an email address.&lt;/p&gt;
+
+&lt;p&gt;Suppose I am your friend and I sent you &lt;a href=&quot;http://pub.iotek.org/p/DuV2LWH&quot;&gt;this signed
+file&lt;/a&gt;. You can verify or get the original file
+with the &lt;code class=&quot;highlighter-rouge&quot;&gt;--verify&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;--decrypt&lt;/code&gt; commands.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -sL http://pub.iotek.org/p/DuV2LWH | gpg -o cat.png --decrypt
+curl -sL http://pub.iotek.org/p/DuV2LWH | gpg --verify
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;putting-your-key-online&quot;&gt;Putting your key online&lt;/h3&gt;
+
+&lt;p&gt;There are three ways of putting your public key online:&lt;/p&gt;
+
+&lt;h4 id=&quot;1-using-a-key-server&quot;&gt;1. Using a key server&lt;/h4&gt;
+
+&lt;p&gt;One popular keyserver is the &lt;a href=&quot;http://pgp.mit.edu/&quot;&gt;MIT PGP Public Key Server&lt;/a&gt;.
+Paste your ASCII armored public key in the text box and press “Submit”.&lt;/p&gt;
+
+&lt;p&gt;You can search for keys using GnuPG:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --search-keys tudurom
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;2-uploading-the-key-on-your-website&quot;&gt;2. Uploading the key on your website&lt;/h4&gt;
+
+&lt;p&gt;I’m pretty sure you know how to upload files to your webserver.&lt;/p&gt;
+
+&lt;h4 id=&quot;3-using-other-services-example-keybase&quot;&gt;3. Using other services (example: Keybase)&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://keybase.io&quot;&gt;Keybase&lt;/a&gt; is a service that maps your identity to your
+public keys, and vice versa.&lt;/p&gt;
+
+&lt;p&gt;On Keybase you can send your public key(s) and map them to different online
+services like Facebook, Twitter, Reddit or GitHub. This way your keys are more
+trustworthy.&lt;/p&gt;
+
+&lt;p&gt;I’m &lt;a href=&quot;https://keybase.io/tudurom/&quot;&gt;@tudurom&lt;/a&gt; on Keybase.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;GPG is a very powerful and useful tool that allows us to sign and encrypt
+files cryptographically from trusted people. Cryptography has become very
+important to our lives, carrying the confidence found in our physical world to
+the electronic world. As such, knowledge on how to use a cryptographic
+program like GnuPG can be very useful to the computer user.&lt;/p&gt;
+
+&lt;p&gt;I hope that you learned something useful from this article. Happy hacking!&lt;/p&gt;</content><author><name>Tudor Roman</name></author><summary type="html">GPG is the most popular implementation of the OpenPGP
+standard, because it’s free as in freedom and
+because it’s widely use by many projects to verify software and emails, including the Linux Kernel.</summary></entry></feed>
