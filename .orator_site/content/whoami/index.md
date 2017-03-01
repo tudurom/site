@@ -37,5 +37,6 @@ Romanian, C, English, Go, JavaScript, POSIX shell, Ruby\*, French\*
 * [windowchef](https://github.com/tudurom/windowchef/)
 * [orator](https://github.com/tudurom/orator/)
 * [albumify](https://github.com/gnotclub/albumify-next/)
+* [ruler](https://github.com/tudurom/ruler/)
 * [rainbou](https://github.com/tudurom/rainbou/)
 * [dotfiles](https://github.com/tudurom/dotfiles/)
