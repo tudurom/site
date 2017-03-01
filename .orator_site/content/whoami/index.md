@@ -29,7 +29,7 @@ Romanian, C, English, Go, JavaScript, POSIX shell, Ruby\*, French\*
 
 * [PGP public key](/pgp.pub)
 * [SSH public key](/ssh.pub)
-* <span class="fakelink" onclick="this.innerHTML = atob('PGEgaHJlZj0ibWFpbHRvOnR1ZHVyb21AZ21haWwuY29tIj50dWR1cm9tQGdtYWlsLmNvbTwvYT4K')">email</span>
+* <span class="fakelink" onclick="this.innerHTML = atob('PGEgaHJlZj0ibWFpbHRvOnR1ZG9yQHR1ZG9yci54eXoiPnR1ZG9yQHR1ZG9yci54eXo8L2E+')">email</span>
 * [GitHub](https://github.com/tudurom)
 
 ### Software I made
