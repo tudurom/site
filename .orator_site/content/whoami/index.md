@@ -34,9 +34,9 @@ Romanian, C, English, Go, JavaScript, POSIX shell, Ruby\*, French\*
 
 ### Software I made
 
-* [windowchef](https://github.com/tudurom/windowchef/)
-* [orator](https://github.com/tudurom/orator/)
-* [albumify](https://github.com/gnotclub/albumify-next/)
-* [ruler](https://github.com/tudurom/ruler/)
-* [rainbou](https://github.com/tudurom/rainbou/)
-* [dotfiles](https://github.com/tudurom/dotfiles/)
+* [windowchef](https://github.com/tudurom/windowchef/) - scriptable stacking window manager.
+* [orator](https://github.com/tudurom/orator/) - static site generator (used to build this site).
+* [albumify](https://github.com/gnotclub/albumify-next/) - image album generator.
+* [ruler](https://github.com/tudurom/ruler/) - window rule daemon.
+* [rainbou](https://github.com/tudurom/rainbou/) - color scheme config file generator.
+* [dotfiles](https://github.com/tudurom/dotfiles/) - files of the dots.
