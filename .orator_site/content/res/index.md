@@ -28,7 +28,7 @@ Resources
 * [apk](https://pluvi.us/)
 * [arc](http://arcetera.moe/)
 * [dcat](https://lyngvaer.no/)
-* [Thoughtbot blog](https://robots.thoughtbot.com/)
+* [The Gnot Club](https://github.com/gnotclub/)
 * [neeasade](http://neeasade.net/)
 * [rocx](http://rocx.rocks/)
 * [suckless](http://suckless.org/)
