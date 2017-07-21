@@ -6,9 +6,7 @@ title: whoami
 [tudurom](https://www.youtube.com/watch?v=U5u-X4bocr4)
 -------
 
-Hey, my name is Tudor and I study computer science at the
-["Tudor Vianu" National College of Computer Science](https://en.wikipedia.org/wiki/Tudor_Vianu_National_College_of_Computer_Science)
-in [Bucharest, Romania](https://en.wikipedia.org/wiki/Bucharest). Online I'm known as "tudurom".
+Hey, my name is Tudor and I'm online known as "tudurom".
 My passion and hobby is designing and writing computer programs. I like [the UNIX
 philosophy](https://en.wikipedia.org/wiki/Unix_philosophy) because of the way it
 encourages programs to cooperate.
