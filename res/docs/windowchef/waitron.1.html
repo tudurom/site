@@ -62,6 +62,7 @@
     <a href="#QUERYING">QUERYING</a>
     <a href="#CONFIGURING">CONFIGURING</a>
     <a href="#SEE-ALSO">SEE ALSO</a>
+    <a href="#REPORTING-BUGS">REPORTING BUGS</a>
     <a href="#AUTHOR">AUTHOR</a>
   </div>
 
@@ -78,7 +79,7 @@
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<p><code>waitron</code> [-h] <var>command</var> [<var>args</var>...]</p>
+<p><code>waitron</code> [-hv] <var>command</var> [<var>args</var>...]</p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -89,7 +90,8 @@ anything on <code>stdout</code>.</p>
 <h2 id="OPTIONS">OPTIONS</h2>
 
 <dl>
-<dt class="flush"><code>-h</code></dt><dd>  Print usage and version information.</dd>
+<dt class="flush"><code>-h</code></dt><dd><p>  Print usage.</p></dd>
+<dt class="flush"><code>-v</code></dt><dd><p>  Print version information.</p></dd>
 </dl>
 
 
@@ -100,6 +102,7 @@ anything on <code>stdout</code>.</p>
 <dt class="flush"><code>BOOL</code></dt><dd><p>  true values: <code>true</code> | <code>t</code> | <code>yes</code> | <code>y</code> | <code>1</code></p>
 
 <p>  false values: <code>false</code> | <code>f</code> | <code>no</code> | <code>n</code> | <code>0</code></p></dd>
+<dt><code>DIRECTION</code></dt><dd><p>  <code>up</code> | <code>down</code> | <code>left</code> | <code>right</code> | <code>north</code> | <code>south</code> | <code>west</code> | <code>east</code></p></dd>
 </dl>
 
 
@@ -113,6 +116,7 @@ anything on <code>stdout</code>.</p>
 <dt><code>window_resize_absolute</code> <var>width</var> <var>height</var></dt><dd><p>  Resize the focused window up to <var>width</var> and <var>height</var>.</p></dd>
 <dt><code>window_maximize</code></dt><dd><p>  Hide the border and maximize the focused window on the current monitor.
   Execute it again after maximizing to revert the state of the window.</p></dd>
+<dt><code>window_unmaximize</code></dt><dd><p>  If the currently focused window is maximized in any way (fully, vertically, horizontally, monocled), return it to normal state.</p></dd>
 <dt><code>window_hor_maximize</code></dt><dd><p>  Horizontally maximize the focused window on the current monitor, preserving
   its <var>x</var> component. Leaves a gap at the left and right of the monitor that
   can be configured. Execute it again after maximizing to revert the state of the window.</p></dd>
@@ -135,10 +139,14 @@ anything on <code>stdout</code>.</p>
   focused window.</p></dd>
 <dt><code>window_focus</code> <var>id</var></dt><dd><p>  Focus window by <var>id</var>. The <var>id</var> can be found using <span class="man-ref">pfw<span class="s">(1)</span></span> or <span class="man-ref">lsw<span class="s">(1)</span></span> from
   <a href="https://github.com/wmutils/core/">wmutils</a>.</p></dd>
+<dt><code>window_focus_last</code></dt><dd><p>  Focus the window that was focused before the currently focused window.</p></dd>
+<dt><code>window_cardinal_focus</code> <var>DIRECTION</var></dt><dd><p>  Focus the closest window in a direction, relative to the currently
+  currently focused window. Does nothing if there is no window focused.</p></dd>
 <dt><code>group_add_window</code> <var>group_nr</var></dt><dd><p>  Add the focused window to the <var>group_nr</var> group.</p>
 
 <p>  Group numbers start from 0 and end at <var>GROUPS_NO</var> - 1.</p></dd>
 <dt><code>group_remove_window</code></dt><dd><p>  Remove the focused window from its current group.</p></dd>
+<dt><code>group_remove_all_windows</code> <var>group_nr</var></dt><dd><p>  Remove all windows from the <var>group_nr</var> group.</p></dd>
 <dt><code>group_activate</code> <var>group_nr</var></dt><dd><p>  Map all windows that belong to the <var>group_nr</var> group.</p></dd>
 <dt><code>group_deactivate</code> <var>group_nr</var></dt><dd><p>  Unmap all windows that belong to the <var>group_nr</var> group.</p></dd>
 <dt><code>group_toggle</code> <var>group_nr</var></dt><dd><p>  Toggle the <var>group_nr</var> group.</p></dd>
@@ -184,6 +192,7 @@ are:</p>
 <dt><code>groups_nr</code> <var>nr</var></dt><dd><p>  Sets the number of groups to <var>nr</var>. If <var>nr</var> is less than the current number
   of groups, window that belong to groups whose numbers are greater than <var>nr</var>
   will be mapped to screen and assigned to the null group.</p></dd>
+<dt><code>enable_resize_hints</code> <var>BOOL</var></dt><dd><p>  If true, <code>windowchef</code> will respect window resize hints as defined by ICCCM. Most terminal emulators should have this feature.</p></dd>
 <dt><code>enable_sloppy_focus</code> <var>BOOL</var></dt><dd><p>  Enable sloppy focus.</p></dd>
 <dt><code>sticky_windows</code> <var>BOOL</var></dt><dd><p>  If <var>sticky_windows</var> is true, new windows will be assigned to the last
   activated group automatically. Recommended for people who like using
@@ -191,6 +200,10 @@ are:</p>
 <dt><code>enable_borders</code> <var>BOOL</var></dt><dd><p>  If true, border colors will be set each time a window gets/loses focus.
   Setting it to false is useful when using another program to draw the borders
   (example: <code>chwb2</code> from wmutils).</p></dd>
+<dt><code>enable_last_window_focusing</code> <var>BOOL</var></dt><dd><p>  If true, when the currently focused window is unmapped or closed, <code>windowchef</code> will focus the
+  previously focused window. See the <code>window_focus_last</code> command.</p></dd>
+<dt><code>apply_settings</code> <var>BOOL</var></dt><dd><p>  If true, then some settings will be applied on all windows instead of newly created windows.
+  True by default.</p></dd>
 </dl>
 
 
@@ -198,14 +211,18 @@ are:</p>
 
 <p><span class="man-ref">windowchef<span class="s">(1)</span></span>, <span class="man-ref">sxhkd<span class="s">(1)</span></span>, <span class="man-ref">wmutils<span class="s">(1)</span></span>, <span class="man-ref">pfw<span class="s">(1)</span></span>, <span class="man-ref">lsw<span class="s">(1)</span></span>, <span class="man-ref">chwb2<span class="s">(1)</span></span>, <span class="man-ref">lemonbar<span class="s">(1)</span></span></p>
 
+<h2 id="REPORTING-BUGS">REPORTING BUGS</h2>
+
+<p><code>windowchef</code> issue tracker: https://github.com/tudurom/windowchef/issues</p>
+
 <h2 id="AUTHOR">AUTHOR</h2>
 
 <p>Tudor Roman <code>&lt;tudurom at gmail dot com></code></p>
 
 
   <ol class='man-decor man-foot man foot'>
-    <li class='tl'></li>
-    <li class='tc'>December 2016</li>
+    <li class='tl'>Windowchef</li>
+    <li class='tc'>July 2017</li>
     <li class='tr'>waitron(1)</li>
   </ol>
 
