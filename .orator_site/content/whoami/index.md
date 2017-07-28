@@ -19,7 +19,7 @@ I usually make all my projects open-source. They are public on
 
 ### I speak in a multitude of languages:
 
-Romanian, C, English, Go, JavaScript, POSIX shell, Ruby\*, French\*
+Romanian, C, English, Go, JavaScript, POSIX shell, CSS3, HTML5, \*Ruby
 
 ##### \* I speak very rarely in these languages or I'm not very experienced with them
 

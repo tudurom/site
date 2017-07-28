@@ -9,15 +9,25 @@
 body {
     background-color: var(--bg-color);
     font-family: "Share Tech Mono", monospace;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 main {
 	/*display: block;*/
     padding: 10vh 2rem;
-    max-width: 48rem;
+	width: 100%;
     margin: 0 auto 3rem;
     color: var(--fg-color);
     text-align: left;
+	hyphens: auto;
+}
+
+@media only screen and (min-width: 900px) {
+	main {
+		width: 900px;
+	}
 }
 
 h1 {
@@ -97,11 +107,17 @@ li:before {
 }
 
 .home-links {
-	display: table;
-	border-spacing: 10px;
-	margin-left: -10px;
+	display: block;
+	margin: 5px auto;
 }
 
-.home-links a {
-	display: table-cell;
+.home-links li::before {
+	content: "";
+}
+
+.home-links li {
+	display: inline-block;
+	list-style: none;
+	margin: 0 5px;
+	padding: 0;
 }
