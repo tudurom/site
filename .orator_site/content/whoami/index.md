@@ -12,9 +12,9 @@ philosophy](https://en.wikipedia.org/wiki/Unix_philosophy) because of the way it
 encourages programs to cooperate.
 
 This website is a collection of my thoughts and work and I hope people can learn
-from this website. I also have a [blog](/blog).
+from it. I also have a [blog](/blog).
 
-I usually make all my projects open-source. They are public on
+I usually make my projects open-source. They are public on
 [GitHub](https://github.com/tudurom/).
 
 ### I speak in a multitude of languages:
@@ -27,8 +27,14 @@ Romanian, C, English, Go, JavaScript, POSIX shell, CSS3, HTML5, \*Ruby
 
 * [PGP public key](/pgp.pub)
 * [SSH public key](/ssh.pub)
-* <span class="fakelink" onclick="this.innerHTML = atob('PGEgaHJlZj0ibWFpbHRvOnR1ZG9yQHR1ZG9yci54eXoiPnR1ZG9yQHR1ZG9yci54eXo8L2E+')">email</span>
+* <span id="email"><noscript><a href="http://www.google.com/recaptcha/mailhide/d?k=01LsNWB77Nmvhu-8_AZvNJYQ==&c=nGgmrOzd6xO53hSFLa9Eb5z1mMnkdGauQmD9YYhmBB8=">email</a></noscript></span>
 * [GitHub](https://github.com/tudurom)
+
+<script>
+document.getElementById('email').innerHTML =
+`<span class="fakelink" onclick="this.innerHTML = atob('PGEgaHJlZj0ibWFpbHRvOnR1ZG9yQHR1ZG9yci54eXoiPnR1ZG9yQHR1ZG9yci54eXo8L2E+')">email</span>
+`
+</script>
 
 ### Software I made
 

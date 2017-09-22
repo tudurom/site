@@ -40,9 +40,9 @@ philosophy</a> because of the way it
 encourages programs to cooperate.</p>
 
 <p>This website is a collection of my thoughts and work and I hope people can learn
-from this website. I also have a <a href="/blog">blog</a>.</p>
+from it. I also have a <a href="/blog">blog</a>.</p>
 
-<p>I usually make all my projects open-source. They are public on
+<p>I usually make my projects open-source. They are public on
 <a href="https://github.com/tudurom/">GitHub</a>.</p>
 
 <h3>I speak in a multitude of languages:</h3>
@@ -56,9 +56,15 @@ from this website. I also have a <a href="/blog">blog</a>.</p>
 <ul>
 <li><a href="/pgp.pub">PGP public key</a></li>
 <li><a href="/ssh.pub">SSH public key</a></li>
-<li><span class="fakelink" onclick="this.innerHTML = atob('PGEgaHJlZj0ibWFpbHRvOnR1ZG9yQHR1ZG9yci54eXoiPnR1ZG9yQHR1ZG9yci54eXo8L2E+')">email</span></li>
+<li><span id="email"><noscript><a href="http://www.google.com/recaptcha/mailhide/d?k=01LsNWB77Nmvhu-8_AZvNJYQ==&c=nGgmrOzd6xO53hSFLa9Eb5z1mMnkdGauQmD9YYhmBB8=">email</a></noscript></span></li>
 <li><a href="https://github.com/tudurom">GitHub</a></li>
 </ul>
+
+<script>
+document.getElementById('email').innerHTML =
+`<span class="fakelink" onclick="this.innerHTML = atob('PGEgaHJlZj0ibWFpbHRvOnR1ZG9yQHR1ZG9yci54eXoiPnR1ZG9yQHR1ZG9yci54eXo8L2E+')">email</span>
+`
+</script>
 
 <h3>Software I made</h3>
 
