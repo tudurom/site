@@ -58,7 +58,7 @@
     <p class="post-subtitle">The free alternative to PGP</p>
     <p class="post-meta">2016-12-25 22:00:00+02:00</p>
     <p>GPG is the most popular implementation of the <a href="http://openpgp.org/">OpenPGP</a>
-standard, because it’s <a href="http://i.imgur.com/Brs9J9U.jpg">free as in freedom</a> and
+standard, because it’s <a href="https://i.imgur.com/Brs9J9U.jpg">free as in freedom</a> and
 because it’s widely use by many projects to verify software and emails, <a href="https://www.kernel.org/signature.html">including the Linux Kernel</a>.</p>
 
 <p><a href="https://www.gnupg.org/">GnuPG (GPG)</a> is a program that does two important things:</p>
@@ -142,7 +142,7 @@ later in this article).</p>
 <p>Let’s say that your friend sent you your public key. How do you import it?</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># if the key is online in its own file</span>
-curl -sL http://pub.iotek.org/p/qSwl8V2 | gpg --import
+curl -sL https://tudorr.xyz/pgp.pub | gpg --import
 <span class="c"># if the key is on your disk in its own file</span>
 gpg --import key.pub
 </code></pre>
@@ -165,12 +165,12 @@ files!</p>
 </div>
 <p>Where <code class="highlighter-rouge">&lt;recipient&gt;</code> can be a public key id or an email address.</p>
 
-<p>Suppose I am your friend and I sent you <a href="http://pub.iotek.org/p/DuV2LWH">this signed
+<p>Suppose I am your friend and I sent you <a href="https://pub.tudorr.xyz/signed_file">this signed
 file</a>. You can verify or get the original file
 with the <code class="highlighter-rouge">--verify</code> or <code class="highlighter-rouge">--decrypt</code> commands.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>curl -sL http://pub.iotek.org/p/DuV2LWH | gpg -o cat.png --decrypt
-curl -sL http://pub.iotek.org/p/DuV2LWH | gpg --verify
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>curl -sL https://pub.tudorr.xyz/signed_file | gpg -o cat.png --decrypt
+curl -sL https://pub.tudorr.xyz/signed_file | gpg --verify
 </code></pre>
 </div>
 
@@ -189,6 +189,8 @@ Paste your ASCII armored public key in the text box and press “Submit”.</p>
 </code></pre>
 </div>
 
+<p>It is recommended to use the most recent key.</p>
+
 <h4 id="2-uploading-the-key-on-your-website">2. Uploading the key on your website</h4>
 
 <p>I’m pretty sure you know how to upload files to your webserver.</p>
@@ -202,7 +204,7 @@ public keys, and vice versa.</p>
 services like Facebook, Twitter, Reddit or GitHub. This way your keys are more
 trustworthy.</p>
 
-<p>I’m <a href="https://keybase.io/tudurom/">@tudurom</a> on Keybase.</p>
+<p>I’m <a href="https://keybase.io/tudu/">@tudu</a> on Keybase.</p>
 
 <h3 id="conclusion">Conclusion</h3>
 

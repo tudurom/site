@@ -67,7 +67,7 @@ body {
 
 p {
   text-align: justify;
-  word-break: break-word; }
+  word-wrap: break-word; }
 
 a {
   color: #0074d9;
@@ -82,7 +82,7 @@ h4,
 h5,
 h6 {
   font-weight: 300;
-  word-break: break-word; }
+  word-wrap: break-word; }
 
 blockquote {
   font-style: italic;
