@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/blog/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2017-10-28T20:00:26+03:00</updated><id>/blog//</id><title type="html">tudor’s blog</title><subtitle>the blog of Tudor Roman</subtitle><author><name>Tudor Roman</name></author><entry><title type="html">How to learn Computer Programming</title><link href="/blog/2017/10/27/how-to-programming/" rel="alternate" type="text/html" title="How to learn Computer Programming" /><published>2017-10-27T19:03:47+03:00</published><updated>2017-10-27T19:03:47+03:00</updated><id>/blog/2017/10/27/how-to-programming</id><content type="html" xml:base="/blog/2017/10/27/how-to-programming/">&lt;p&gt;Computer programming is one of the things that make you feel like a creator, you
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/blog/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2017-10-29T13:39:02+02:00</updated><id>/blog//</id><title type="html">tudor’s blog</title><subtitle>the blog of Tudor Roman</subtitle><author><name>Tudor Roman</name></author><entry><title type="html">How to learn Computer Programming</title><link href="/blog/2017/10/27/how-to-programming/" rel="alternate" type="text/html" title="How to learn Computer Programming" /><published>2017-10-27T19:03:47+03:00</published><updated>2017-10-27T19:03:47+03:00</updated><id>/blog/2017/10/27/how-to-programming</id><content type="html" xml:base="/blog/2017/10/27/how-to-programming/">&lt;p&gt;Computer programming is one of the things that make you feel like a creator, you
 create algorithms that imply data structures, relationships, interaction,
 basically anything that involves data, an abstract construct that carries
 information. Being a computer programmer makes you the master of your data. It
@@ -100,7 +100,7 @@ for programming learners, because it forces you to write efficient, from-scratch
 code. And it has a pretty strict type system.&lt;/p&gt;
 
 &lt;p&gt;In C you have to define the data type for each and every variable and array you
-use. There is no such thing as iterators, you have to keep and index and iterate
+use. There is no such thing as iterators, you have to keep an index and iterate
 manually through the array. It doesn’t have any kinds of shortcuts, which is
 good for first-time programmers.&lt;/p&gt;
 
@@ -112,10 +112,10 @@ world, let alone programming. If you don’t have a high enough degree self resp
 
 &lt;p&gt;We exercised programming by solving computer science problems on sites like
 &lt;a href=&quot;http://codeforces.com&quot;&gt;codeforces&lt;/a&gt;, &lt;a href=&quot;https://csacademy.com&quot;&gt;csacademy&lt;/a&gt;,
-&lt;a href=&quot;http://acm.timus.ru&quot;&gt;timus&lt;/a&gt; and &lt;a href=&quot;http://varena&quot;&gt;varena&lt;/a&gt; (varena is available only in
+&lt;a href=&quot;http://acm.timus.ru&quot;&gt;timus&lt;/a&gt; and &lt;a href=&quot;http://varena.ro/&quot;&gt;varena&lt;/a&gt; (varena is available only in
 Romanian). These problems are short tasks that have very tight memory and time constraints, forcing
 the solver to think each data structure, algorithm and variable declaration
-carefully.&lt;/p&gt;
+carefully. &lt;a href=&quot;http://codeforces.com/contest/580/problem/B&quot;&gt;Example problem&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Over the years I learned many algorithms, like &lt;a href=&quot;https://en.wikipedia.org/wiki/Selection_sort&quot;&gt;select sort&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/Quicksort&quot;&gt;quicksort&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/Breadth-first_search&quot;&gt;breadth-first search&lt;/a&gt; and many more. There are many online resources for learning these, such as &lt;a href=&quot;https://apps.topcoder.com/forums/?module=Main&quot;&gt;The Topcoder Forum&lt;/a&gt;.&lt;/p&gt;
 
@@ -129,8 +129,8 @@ CSAcademy!&lt;/p&gt;
 &lt;p&gt;The main difference between competitive programming (solving problems) and
 real-word programming is that you have much more constraints than time and
 memory and that usually you don’t make only the solution, you also make the
-problem, and you generally have more freedom in the whole project. It’s
-game-changing.&lt;/p&gt;
+problem, and you generally have more freedom in the whole project. It’s a whole
+new world.&lt;/p&gt;
 
 &lt;p&gt;To get started, you need to make &lt;em&gt;projects&lt;/em&gt;, &lt;strong&gt;lots&lt;/strong&gt; of them, like a simple
 snake clone with text-based graphics, or a text-based adventure, a web
@@ -222,7 +222,8 @@ my needs. It all felt spectacular, I was in charge of every aspect of the
 operating system I was using.&lt;/p&gt;
 
 &lt;p&gt;Afterwards I tried to “rice” my system. It was looking magnificent “back then”
-(2015), but now I think that it looks absolutely horrible.&lt;/p&gt;
+(2015), but now I think that it looks absolutely horrible. &lt;a href=&quot;https://i.redd.it/1n8wmuly19kz.png&quot;&gt;Here is a recent
+screenshot&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;And I went down the rabbit hole. This is the time when the dedication and
 curiosity traits for programming are being put to good use.&lt;/p&gt;
@@ -230,9 +231,10 @@ curiosity traits for programming are being put to good use.&lt;/p&gt;
 &lt;p&gt;I ended up writing pretty much my own mini desktop environment by gluing
 together scripts and little programs. For example I made a status bar script
 that uses &lt;a href=&quot;https://github.com/lemonboy/bar&quot;&gt;lemonbar&lt;/a&gt; to display the current time, date, currently
-playing song, speaker volume and workspaces.&lt;/p&gt;
+playing song, speaker volume and workspaces. &lt;a href=&quot;https://github.com/tudurom/dotfiles/blob/980dc58ad655fbe01d9baf4e2e00957e27399b2c/wm/bin/minbar&quot;&gt;This is the script in its current
+state&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;And that’s the moment I realized how beautiful the &lt;a href=&quot;https://en.wikipedia.org/wiki/Unix_philosophy&quot;&gt;Unix philosophy&lt;/a&gt; is. A decades-old philosophy that say that programs should do one thing and do it well and communicate each other through the simple channel of text, encouraging composition. And that’s exactly what I was doing with the bar script. It was pulling information &lt;em&gt;as text&lt;/em&gt; from programs like &lt;code class=&quot;highlighter-rouge&quot;&gt;amixer&lt;/code&gt; that provides sound device information, processed it with other small programs like &lt;code class=&quot;highlighter-rouge&quot;&gt;grep&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt; and finally gave it to &lt;code class=&quot;highlighter-rouge&quot;&gt;lemonbar&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;And that’s the moment I realized how beautiful the &lt;a href=&quot;https://en.wikipedia.org/wiki/Unix_philosophy&quot;&gt;Unix philosophy&lt;/a&gt; is. A decades-old philosophy that say that programs should do one thing and do it well and communicate to each other through the simple channel of text and pipes, encouraging composition. And that’s exactly what I was doing with the bar script. It was pulling information &lt;em&gt;as text&lt;/em&gt; from programs like &lt;code class=&quot;highlighter-rouge&quot;&gt;amixer&lt;/code&gt; that provides sound device information, processed it with other small programs like &lt;code class=&quot;highlighter-rouge&quot;&gt;grep&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt; and finally gave it to &lt;code class=&quot;highlighter-rouge&quot;&gt;lemonbar&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;It was a symphony of programs. Many performers (programs) making up a musical
 masterpiece, following the instructions of the music paper, coordinated by the
@@ -301,7 +303,7 @@ such as limited EWMH support.&lt;/li&gt;
 
 &lt;p&gt;The “remote-control” goal has come advantages. The user can configure keyboard
 shortcuts for moving the windows by using a program like
-&lt;a href=&quot;https://github.com/baskerville&quot;&gt;shxkd&lt;/a&gt; that executes commands for certain
+&lt;a href=&quot;https://github.com/baskerville/sxhkd&quot;&gt;shxkd&lt;/a&gt; that executes commands for certain
 configured shortcuts, while also making it possible for external programs to
 interact with the window manager, thus adhering to the Unix philosophy.&lt;/p&gt;
 

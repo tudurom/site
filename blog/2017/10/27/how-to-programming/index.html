@@ -159,7 +159,7 @@ for programming learners, because it forces you to write efficient, from-scratch
 code. And it has a pretty strict type system.</p>
 
 <p>In C you have to define the data type for each and every variable and array you
-use. There is no such thing as iterators, you have to keep and index and iterate
+use. There is no such thing as iterators, you have to keep an index and iterate
 manually through the array. It doesn’t have any kinds of shortcuts, which is
 good for first-time programmers.</p>
 
@@ -171,10 +171,10 @@ world, let alone programming. If you don’t have a high enough degree self resp
 
 <p>We exercised programming by solving computer science problems on sites like
 <a href="http://codeforces.com">codeforces</a>, <a href="https://csacademy.com">csacademy</a>,
-<a href="http://acm.timus.ru">timus</a> and <a href="http://varena">varena</a> (varena is available only in
+<a href="http://acm.timus.ru">timus</a> and <a href="http://varena.ro/">varena</a> (varena is available only in
 Romanian). These problems are short tasks that have very tight memory and time constraints, forcing
 the solver to think each data structure, algorithm and variable declaration
-carefully.</p>
+carefully. <a href="http://codeforces.com/contest/580/problem/B">Example problem</a>.</p>
 
 <p>Over the years I learned many algorithms, like <a href="https://en.wikipedia.org/wiki/Selection_sort">select sort</a>, <a href="https://en.wikipedia.org/wiki/Quicksort">quicksort</a>, <a href="https://en.wikipedia.org/wiki/Breadth-first_search">breadth-first search</a> and many more. There are many online resources for learning these, such as <a href="https://apps.topcoder.com/forums/?module=Main">The Topcoder Forum</a>.</p>
 
@@ -188,8 +188,8 @@ CSAcademy!</p>
 <p>The main difference between competitive programming (solving problems) and
 real-word programming is that you have much more constraints than time and
 memory and that usually you don’t make only the solution, you also make the
-problem, and you generally have more freedom in the whole project. It’s
-game-changing.</p>
+problem, and you generally have more freedom in the whole project. It’s a whole
+new world.</p>
 
 <p>To get started, you need to make <em>projects</em>, <strong>lots</strong> of them, like a simple
 snake clone with text-based graphics, or a text-based adventure, a web
@@ -281,7 +281,8 @@ my needs. It all felt spectacular, I was in charge of every aspect of the
 operating system I was using.</p>
 
 <p>Afterwards I tried to “rice” my system. It was looking magnificent “back then”
-(2015), but now I think that it looks absolutely horrible.</p>
+(2015), but now I think that it looks absolutely horrible. <a href="https://i.redd.it/1n8wmuly19kz.png">Here is a recent
+screenshot</a>.</p>
 
 <p>And I went down the rabbit hole. This is the time when the dedication and
 curiosity traits for programming are being put to good use.</p>
@@ -289,9 +290,10 @@ curiosity traits for programming are being put to good use.</p>
 <p>I ended up writing pretty much my own mini desktop environment by gluing
 together scripts and little programs. For example I made a status bar script
 that uses <a href="https://github.com/lemonboy/bar">lemonbar</a> to display the current time, date, currently
-playing song, speaker volume and workspaces.</p>
+playing song, speaker volume and workspaces. <a href="https://github.com/tudurom/dotfiles/blob/980dc58ad655fbe01d9baf4e2e00957e27399b2c/wm/bin/minbar">This is the script in its current
+state</a>.</p>
 
-<p>And that’s the moment I realized how beautiful the <a href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix philosophy</a> is. A decades-old philosophy that say that programs should do one thing and do it well and communicate each other through the simple channel of text, encouraging composition. And that’s exactly what I was doing with the bar script. It was pulling information <em>as text</em> from programs like <code class="highlighter-rouge">amixer</code> that provides sound device information, processed it with other small programs like <code class="highlighter-rouge">grep</code> and <code class="highlighter-rouge">sed</code> and finally gave it to <code class="highlighter-rouge">lemonbar</code>.</p>
+<p>And that’s the moment I realized how beautiful the <a href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix philosophy</a> is. A decades-old philosophy that say that programs should do one thing and do it well and communicate to each other through the simple channel of text and pipes, encouraging composition. And that’s exactly what I was doing with the bar script. It was pulling information <em>as text</em> from programs like <code class="highlighter-rouge">amixer</code> that provides sound device information, processed it with other small programs like <code class="highlighter-rouge">grep</code> and <code class="highlighter-rouge">sed</code> and finally gave it to <code class="highlighter-rouge">lemonbar</code>.</p>
 
 <p>It was a symphony of programs. Many performers (programs) making up a musical
 masterpiece, following the instructions of the music paper, coordinated by the
@@ -360,7 +362,7 @@ such as limited EWMH support.</li>
 
 <p>The “remote-control” goal has come advantages. The user can configure keyboard
 shortcuts for moving the windows by using a program like
-<a href="https://github.com/baskerville">shxkd</a> that executes commands for certain
+<a href="https://github.com/baskerville/sxhkd">shxkd</a> that executes commands for certain
 configured shortcuts, while also making it possible for external programs to
 interact with the window manager, thus adhering to the Unix philosophy.</p>
 
