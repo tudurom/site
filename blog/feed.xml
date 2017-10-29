@@ -1,4 +1,423 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/blog/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2017-04-17T23:52:20+03:00</updated><id>/blog//</id><title type="html">tudor’s blog</title><subtitle>the blog of Tudor Roman</subtitle><author><name>Tudor Roman</name></author><entry><title type="html">Dynamically reloading Neovim</title><link href="/blog/2017/03/03/dynamically-reloading-neovim/" rel="alternate" type="text/html" title="Dynamically reloading Neovim" /><published>2017-03-03T20:38:34+02:00</published><updated>2017-03-03T20:38:34+02:00</updated><id>/blog/2017/03/03/dynamically-reloading-neovim</id><content type="html" xml:base="/blog/2017/03/03/dynamically-reloading-neovim/">&lt;p&gt;While writing my &lt;a href=&quot;https://github.com/tudurom/dotfiles/tree/master/wm/&quot;&gt;“shell based desktop environment”&lt;/a&gt;, more specifically its dynamic themes feature, I realized that, unlike regular Vim, Neovim doesn’t have flags likes &lt;code class=&quot;highlighter-rouge&quot;&gt;--servername&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;--remote-send&lt;/code&gt; and such, so there was no way I could send a message to all Neovim instances to reload themselves. This problem remained unsolved for a month or so.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/blog/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2017-10-29T13:39:02+02:00</updated><id>/blog//</id><title type="html">tudor’s blog</title><subtitle>the blog of Tudor Roman</subtitle><author><name>Tudor Roman</name></author><entry><title type="html">How to learn Computer Programming</title><link href="/blog/2017/10/27/how-to-programming/" rel="alternate" type="text/html" title="How to learn Computer Programming" /><published>2017-10-27T19:03:47+03:00</published><updated>2017-10-27T19:03:47+03:00</updated><id>/blog/2017/10/27/how-to-programming</id><content type="html" xml:base="/blog/2017/10/27/how-to-programming/">&lt;p&gt;Computer programming is one of the things that make you feel like a creator, you
+create algorithms that imply data structures, relationships, interaction,
+basically anything that involves data, an abstract construct that carries
+information. Being a computer programmer makes you the master of your data. It
+lets you take a break from our conflict-filled, merciless world in favor of the
+logical, perfect, digital realm. Programming implies creativity, ambition,
+curiosity, and most importantly, fun, empowering your freedom of doing amazing
+things.&lt;/p&gt;
+
+&lt;p&gt;But how does one become the master of their own logical world?&lt;/p&gt;
+
+&lt;p&gt;I am going to share my on-going experience and some observations that I made
+along the way.&lt;/p&gt;
+
+&lt;h3 id=&quot;some-background&quot;&gt;Some background&lt;/h3&gt;
+
+&lt;p&gt;I have always been fascinated by computers, big boxes filled with electronics
+that eat electricity and produce data. When I was a young(er) boy I was carelessly
+fiddling around with the control panel in Windows XP, trying to uncover every
+function of the operating system, and then reading more about them on the
+internet. It was &lt;em&gt;clearly&lt;/em&gt; some kind of magic, and I wanted to master it.&lt;/p&gt;
+
+&lt;p&gt;I decided to study hard and go to a computer science-oriented high school, that
+also had middle school classes, in fifth grade. There, I joined the CS computer
+club hosted by &lt;a href=&quot;http://cristian.francu.com&quot;&gt;Cristian Frâncu&lt;/a&gt; where I started
+learning serious stuff basically from scratch.&lt;/p&gt;
+
+&lt;h3 id=&quot;beginning-programming&quot;&gt;Beginning programming&lt;/h3&gt;
+
+&lt;p&gt;The basis of programming is &lt;a href=&quot;https://en.wikipedia.org/wiki/Computational_thinking&quot;&gt;computational thinking&lt;/a&gt;. To think “computationally”, you must develop your abstract thinking (the &lt;em&gt;abstraction&lt;/em&gt; component of computational thinking) to be able to create &lt;em&gt;algorithms&lt;/em&gt;, an ordered sequence of rules that the computer executes. Programming implies elaborating an algorithm and implementing it for the machine.&lt;/p&gt;
+
+&lt;p&gt;In fifth grade, we first learned basic algorithms and represented them with flowcharts. One
+example is an algorithm that determines whether an integer is a palindrome or
+not.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/69LSgr9.png&quot; alt=&quot;palindrome flowchart&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Credit: Cristian Frâncu. Licensed under GNU FDL&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Instead of beginning programming with some simple programming
+language like Python, we were beginning with algorithms. And that’s the moment I
+realized that’s the right thing to do.&lt;/p&gt;
+
+&lt;p&gt;Another important thing that everyone should learn when starting learning how to
+program is &lt;a href=&quot;https://en.wikipedia.org/wiki/Structured_programming&quot;&gt;structured programming&lt;/a&gt;. I can’t emphasis this enough, it &lt;strong&gt;is&lt;/strong&gt; a game-changer. Basically don’t use &lt;code class=&quot;highlighter-rouge&quot;&gt;goto&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;break&lt;/code&gt; instructions unless absolutely necessary.&lt;/p&gt;
+
+&lt;p&gt;For example, let’s write a simple array search. We’re trying to find an element
+&lt;code class=&quot;highlighter-rouge&quot;&gt;e&lt;/code&gt; in the array &lt;code class=&quot;highlighter-rouge&quot;&gt;arr&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;found x&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;At a first glance, it does what it should: it prints “found x” if &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; is a
+member of &lt;code class=&quot;highlighter-rouge&quot;&gt;arr&lt;/code&gt;. But the algorithm itself sounds broken.&lt;/p&gt;
+
+&lt;p&gt;The algorithm should be the following:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Take each element of &lt;code class=&quot;highlighter-rouge&quot;&gt;arr&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;If the element equals &lt;code class=&quot;highlighter-rouge&quot;&gt;e&lt;/code&gt;, print “found x”&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;What the code above actually does:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Take each element of &lt;code class=&quot;highlighter-rouge&quot;&gt;arr&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;If the element equals &lt;code class=&quot;highlighter-rouge&quot;&gt;e&lt;/code&gt;, print “found x”&lt;/li&gt;
+  &lt;li&gt;Abort the search.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A better, structured programming code is the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;found x&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;moving-on-with-actual-programming&quot;&gt;Moving on with actual programming&lt;/h3&gt;
+
+&lt;p&gt;After “mastering” flowcharts, it was time to learn a real programming language.
+And we (at the CS club), as fresh programming learners, started with C.&lt;/p&gt;
+
+&lt;p&gt;And let me tell you why C is the best programming language for beginners. Not
+Python, not Ruby, not Scratch (god forbid), but C.&lt;/p&gt;
+
+&lt;p&gt;C is very simple, and pretty close to the metal. Not as close to the metal as
+assembly, yet still not as high-level as Python. It is the perfect middle ground
+for programming learners, because it forces you to write efficient, from-scratch
+code. And it has a pretty strict type system.&lt;/p&gt;
+
+&lt;p&gt;In C you have to define the data type for each and every variable and array you
+use. There is no such thing as iterators, you have to keep an index and iterate
+manually through the array. It doesn’t have any kinds of shortcuts, which is
+good for first-time programmers.&lt;/p&gt;
+
+&lt;p&gt;You’re constantly reminded that computer
+programming is serious stuff and you must treat it like so. You can’t leave
+unused variables scattered in the code or forget to indent your code. You’re
+making an ass out of yourself. Ignorance is the worst thing that destroys the
+world, let alone programming. If you don’t have a high enough degree self respect, or a high enough degree of respect for programming, then you’re wasting your time. Either exercise your self respect, or just give up on programming, it’s a waste of time if you lack the necessary dedication.&lt;/p&gt;
+
+&lt;p&gt;We exercised programming by solving computer science problems on sites like
+&lt;a href=&quot;http://codeforces.com&quot;&gt;codeforces&lt;/a&gt;, &lt;a href=&quot;https://csacademy.com&quot;&gt;csacademy&lt;/a&gt;,
+&lt;a href=&quot;http://acm.timus.ru&quot;&gt;timus&lt;/a&gt; and &lt;a href=&quot;http://varena.ro/&quot;&gt;varena&lt;/a&gt; (varena is available only in
+Romanian). These problems are short tasks that have very tight memory and time constraints, forcing
+the solver to think each data structure, algorithm and variable declaration
+carefully. &lt;a href=&quot;http://codeforces.com/contest/580/problem/B&quot;&gt;Example problem&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Over the years I learned many algorithms, like &lt;a href=&quot;https://en.wikipedia.org/wiki/Selection_sort&quot;&gt;select sort&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/Quicksort&quot;&gt;quicksort&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/Breadth-first_search&quot;&gt;breadth-first search&lt;/a&gt; and many more. There are many online resources for learning these, such as &lt;a href=&quot;https://apps.topcoder.com/forums/?module=Main&quot;&gt;The Topcoder Forum&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Further reading: &lt;a href=&quot;http://algopedia.ro/wiki/index.php/Introduction_to_Algorithms&quot;&gt;Introduction to Algorithms&lt;/a&gt; by Cristian Frâncu, &lt;a href=&quot;https://web.stanford.edu/class/cs101/&quot;&gt;CS101 - Introduction to Computing Principles&lt;/a&gt; by Stanford University.&lt;/p&gt;
+
+&lt;p&gt;Also, make sure to participate in online CS contests held by Codeforces and
+CSAcademy!&lt;/p&gt;
+
+&lt;h3 id=&quot;drifting-to-real-world-programming&quot;&gt;Drifting to real-world programming&lt;/h3&gt;
+
+&lt;p&gt;The main difference between competitive programming (solving problems) and
+real-word programming is that you have much more constraints than time and
+memory and that usually you don’t make only the solution, you also make the
+problem, and you generally have more freedom in the whole project. It’s a whole
+new world.&lt;/p&gt;
+
+&lt;p&gt;To get started, you need to make &lt;em&gt;projects&lt;/em&gt;, &lt;strong&gt;lots&lt;/strong&gt; of them, like a simple
+snake clone with text-based graphics, or a text-based adventure, a web
+application, anything!&lt;/p&gt;
+
+&lt;p&gt;This is the step that requires the most &lt;em&gt;dedication&lt;/em&gt;. It is one of the hardest
+steps in the process of learning computer programming.&lt;/p&gt;
+
+&lt;h3 id=&quot;trying-new-things&quot;&gt;Trying new things&lt;/h3&gt;
+
+&lt;p&gt;Diversity, in good measure, is very good for you in general, not just for
+programming. Experiment with new programming languages, learn how to make
+web apps, fiddle with micro-controllers like the &lt;a href=&quot;https://www.arduino.cc/en/Guide/Introduction&quot;&gt;Arduino&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I first started by reading &lt;a href=&quot;http://www.headfirstlabs.com/books/hfjava/&quot;&gt;Head First Java&lt;/a&gt;,
+that’s when I learned about object-oriented programming, the first real programming 
+paradigm that I’ve learned. It was mind blowing, so structured, so hierarchical, it 
+has changed my way of thinking. Although the Java programming language is well-known
+as an ugly language and platform, the underlying concepts are very useful for a
+programmer.&lt;/p&gt;
+
+&lt;p&gt;In one summer vacation I tried to make a video game using the amazing &lt;a href=&quot;https://libgdx.badlogicgames.com/&quot;&gt;LibGDX&lt;/a&gt; game development library. I discovered eventually that game dev is not for me, mostly because it implies making art assets. Still, the math involved with it is very useful.&lt;/p&gt;
+
+&lt;p&gt;And Java’s ugliness convinced me to learn Ruby and eventually Ruby on Rails.
+My dad gave me this neat idea to make a simple online educational platform
+where students can read lessons and submit homework. Each student was assigned
+a class, and each class had a set of lessons. It was for my mom, she is a
+teacher. And I started writing that thing using Ruby on Rails. My knowledge of
+Rails was null at the moment, I learned it as I progressed.&lt;/p&gt;
+
+&lt;p&gt;And I learned about the &lt;a href=&quot;https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller&quot;&gt;Model-view-controller&lt;/a&gt; pattern, &lt;a href=&quot;https://en.wikipedia.org/wiki/SQL&quot;&gt;SQL&lt;/a&gt;
+databases, templates (for the views), &lt;a href=&quot;https://en.wikipedia.org/wiki/HTML&quot;&gt;HTML&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/Cascading_Style_Sheets&quot;&gt;CSS&lt;/a&gt; etcetera. One
+important observation I’ve made is that all those components that make up a
+system must be separated. You can’t just mix up the views with the controllers.
+They are all separate things that interact with each other. Breaking up big
+components into smaller components is very important when working with
+computers.&lt;/p&gt;
+
+&lt;p&gt;The point is, never stop exploring. Curiosity is a very important trait for
+anyone who wants to excel in the field.&lt;/p&gt;
+
+&lt;h3 id=&quot;communities&quot;&gt;Communities&lt;/h3&gt;
+
+&lt;p&gt;It’s always a good idea to find people who are interested in the same things as
+you. You can share opinions, help each others and &lt;em&gt;learn&lt;/em&gt;. When talking about
+computer programming, the biggest communities can always be found on the web.&lt;/p&gt;
+
+&lt;p&gt;The ground-breaking moment as a young programmer was when I discovered one of
+the biggest online community of people: &lt;a href=&quot;https://reddit.com/&quot;&gt;Reddit&lt;/a&gt; and a
+couple of subreddits that I found to be interesting: &lt;a href=&quot;https://redit.com/r/programming&quot;&gt;/r/programming&lt;/a&gt;,
+&lt;a href=&quot;https://reddit.com/r/learnprogramming&quot;&gt;/r/learnprogramming&lt;/a&gt; (very useful resource), &lt;a href=&quot;https://reddit.com/r/linux&quot;&gt;/r/linux&lt;/a&gt;,
+&lt;a href=&quot;https://reddit.com/r/polandball&quot;&gt;/r/polandball&lt;/a&gt;, &lt;a href=&quot;https://reddit.com/r/listentothis&quot;&gt;/r/listentothis&lt;/a&gt; and many others.&lt;/p&gt;
+
+&lt;p&gt;However, it is always better to always have friends around you, whom you can
+talk face-to-face about programming. Being in a CS-oriented school for 4 years
+certainly helped me find such people, although many of them continued with
+competitive programming (which is very sad in my opinion). My boy
+&lt;a href=&quot;https://cip.fun&quot;&gt;Ciprian Ionescu&lt;/a&gt; is probably my only friend who fully
+understands me when I’m talking about programming stuff, and I can’t stress it
+enough, you &lt;strong&gt;need&lt;/strong&gt; such people in your life.&lt;/p&gt;
+
+&lt;h3 id=&quot;unix-and-ricing&quot;&gt;Unix and ricing&lt;/h3&gt;
+
+&lt;p&gt;I had this neat idea of installing Linux in dual-boot on my laptop. And the
+first Linux distro that I installed on my laptop was &lt;a href=&quot;https://archlinux.org/&quot;&gt;Arch
+Linux&lt;/a&gt; because the best way to learn something (in
+this case Linux) for me is &lt;a href=&quot;http://blog.z3bra.org/2013/08/the-hard-way.html&quot;&gt;the hard way&lt;/a&gt;, as described by master &lt;a href=&quot;http://z3bra.org&quot;&gt;z3bra&lt;/a&gt;. Make sure to read the article, it’s very good.&lt;/p&gt;
+
+&lt;p&gt;So I downloaded the ISO, booted it up, and followed the &lt;a href=&quot;https://wiki.archlinux.org/index.php/installation_guide&quot;&gt;installation guide&lt;/a&gt;. I went all or nothing. Without prior experience. That was going to be &lt;strong&gt;FUN&lt;/strong&gt;. Ten minutes later, it booted. Afterwards I created a user, installed some essentials programs like Firefox and the X server and continued the journey of learning Linux blindfolded.&lt;/p&gt;
+
+&lt;p&gt;Now, time for some back-story. Two weeks before I begun my Linux journey I
+discovered &lt;a href=&quot;https://reddit.com/r/unixporn&quot;&gt;/r/unixporn&lt;/a&gt; (not NSFW, I promise!).
+It’s a subreddit dedicated to desktop customization on Unix-like platforms
+(usually Linux). And it was Unix for a reason. Many posts that hit the
+frontpage at that time featured tiling &lt;a href=&quot;https://wiki.installgentoo.com/index.php/GNU/Linux_ricing#Window_Managers&quot;&gt;window managers&lt;/a&gt;. Instead of running a
+full-fledged &lt;a href=&quot;https://wiki.installgentoo.com/index.php/GNU/Linux_ricing#Desktop_Environments&quot;&gt;desktop environment&lt;/a&gt; like GNOME or KDE, users were using
+lightweight programs called “window managers” that have the job of, well,
+managing windows: resizing them, listening to their requests (and fulfilling
+them), grouping them by workspaces and others. Every window manager has its
+bells and whistles, the most popular on unixporn being &lt;a href=&quot;https://i3wm.org/&quot;&gt;i3&lt;/a&gt;. i3 is a
+tiling window manager, meaning that instead of just putting windows on the
+screen, windows in i3 always take as much space as possible on the screen,
+like tiles of different sizes on a wall. It it lightweight, easy to use and
+has a simple configuration file syntax.&lt;/p&gt;
+
+&lt;p&gt;Back to my Linux experience, instead of installing a familiar desktop
+environment to begin with, I just installed i3 and configured it to suit some of
+my needs. It all felt spectacular, I was in charge of every aspect of the
+operating system I was using.&lt;/p&gt;
+
+&lt;p&gt;Afterwards I tried to “rice” my system. It was looking magnificent “back then”
+(2015), but now I think that it looks absolutely horrible. &lt;a href=&quot;https://i.redd.it/1n8wmuly19kz.png&quot;&gt;Here is a recent
+screenshot&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;And I went down the rabbit hole. This is the time when the dedication and
+curiosity traits for programming are being put to good use.&lt;/p&gt;
+
+&lt;p&gt;I ended up writing pretty much my own mini desktop environment by gluing
+together scripts and little programs. For example I made a status bar script
+that uses &lt;a href=&quot;https://github.com/lemonboy/bar&quot;&gt;lemonbar&lt;/a&gt; to display the current time, date, currently
+playing song, speaker volume and workspaces. &lt;a href=&quot;https://github.com/tudurom/dotfiles/blob/980dc58ad655fbe01d9baf4e2e00957e27399b2c/wm/bin/minbar&quot;&gt;This is the script in its current
+state&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;And that’s the moment I realized how beautiful the &lt;a href=&quot;https://en.wikipedia.org/wiki/Unix_philosophy&quot;&gt;Unix philosophy&lt;/a&gt; is. A decades-old philosophy that say that programs should do one thing and do it well and communicate to each other through the simple channel of text and pipes, encouraging composition. And that’s exactly what I was doing with the bar script. It was pulling information &lt;em&gt;as text&lt;/em&gt; from programs like &lt;code class=&quot;highlighter-rouge&quot;&gt;amixer&lt;/code&gt; that provides sound device information, processed it with other small programs like &lt;code class=&quot;highlighter-rouge&quot;&gt;grep&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt; and finally gave it to &lt;code class=&quot;highlighter-rouge&quot;&gt;lemonbar&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;It was a symphony of programs. Many performers (programs) making up a musical
+masterpiece, following the instructions of the music paper, coordinated by the
+conductor. Truly beautiful.&lt;/p&gt;
+
+&lt;p&gt;Remember when I said something about breaking big pieces of code into smaller
+pieces? The Unix philosophy is exactly that, taken to the next level.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-nixers&quot;&gt;The Nixers&lt;/h3&gt;
+
+&lt;p&gt;Around the time I was fiddling with scripts on my Linux desktop I discovered a
+great community of people who had the same passion for Unix as I did:
+&lt;a href=&quot;https://nixers.net/&quot;&gt;Nixers&lt;/a&gt;. And they have an IRC channel for talking stuff
+about Unix!&lt;/p&gt;
+
+&lt;p&gt;I chipped in, talked to many great people (they should be listed on my
+&lt;a href=&quot;https://tudorr.xyz/res/&quot;&gt;resources page&lt;/a&gt;) about Unix, programming, desktop
+customization, philosophy… Learning things is always easier with friends!&lt;/p&gt;
+
+&lt;p&gt;Two members of nixers, z3bra and &lt;a href=&quot;https://lyngvaer.no/&quot;&gt;dcat&lt;/a&gt; wrote a great
+set of small programs names &lt;a href=&quot;https://github.com/wmutils/&quot;&gt;wmutils&lt;/a&gt;. One
+program prints the ID of the currently focused window, another one moves a
+window… You can figure out that they are only very simple programs with very
+simple jobs that can be combined in an infinity of possibilities.&lt;/p&gt;
+
+&lt;p&gt;Using these programs I ditched the window manager I was using at that time in
+favor of a set of scripts based on wmutils that together made up a simple
+window manager. My shell-script based desktop environment was almost fully
+script-based. I eventually extended it and added a notification system and
+other stuff, inspired by &lt;a href=&quot;http://blog.z3bra.org/2014/04/pop-it-up.html&quot;&gt;z3bra’s post “Pop it up!”&lt;/a&gt;. But the whole hacked around window manager was so simple, it lacked a ton of useful features, like multi-display support. It was limited to only one display.&lt;/p&gt;
+
+&lt;p&gt;I wrote a set of small programs in wmutils-esque fashion called
+&lt;a href=&quot;https://github.com/tudurom/disputils&quot;&gt;disputils&lt;/a&gt;. I modified some parts of
+the shell glue window manager and it eventually had multi-display support.&lt;/p&gt;
+
+&lt;p&gt;But what about protocols like &lt;a href=&quot;https://en.wikipedia.org/wiki/Extended_Window_Manager_Hints&quot;&gt;EWMH&lt;/a&gt; that define for example how a window should request to be maximized (for example when you double click the Youtube player)? It was clearly not in the X11 spec, and wmutils had absolutely no support for it.&lt;/p&gt;
+
+&lt;p&gt;It was clearly the time for something more complex.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-big-project&quot;&gt;The big project&lt;/h3&gt;
+
+&lt;p&gt;I’ve already told you to make a lot of software projects, big and small, to
+practice the art of programming.&lt;/p&gt;
+
+&lt;p&gt;Eventually you will end up starting you first &lt;strong&gt;big&lt;/strong&gt; project. I followed the
+hard way and made my very own window manager. I named it
+&lt;a href=&quot;https://github.com/tudurom/windowchef&quot;&gt;windowchef&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;These are the steps I followed in order to make something:&lt;/p&gt;
+
+&lt;h4 id=&quot;know-your-target&quot;&gt;Know your target&lt;/h4&gt;
+
+&lt;p&gt;So I was going to write a window manager. What should be the goals of the
+project? I settled upon these goals:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It should be very simple&lt;/li&gt;
+  &lt;li&gt;It should be 100% compatible with wmutils and other window manipulation
+tools&lt;/li&gt;
+  &lt;li&gt;It should do one thing and do it well: manage the damn windows&lt;/li&gt;
+  &lt;li&gt;It should have a limited, but big enough for comfortable usage, feature set,
+such as limited EWMH support.&lt;/li&gt;
+  &lt;li&gt;It should configured and controlled entirely from a “remote-control” program.&lt;/li&gt;
+  &lt;li&gt;It shouldn’t handle keyboard input at all.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The “remote-control” goal has come advantages. The user can configure keyboard
+shortcuts for moving the windows by using a program like
+&lt;a href=&quot;https://github.com/baskerville/sxhkd&quot;&gt;shxkd&lt;/a&gt; that executes commands for certain
+configured shortcuts, while also making it possible for external programs to
+interact with the window manager, thus adhering to the Unix philosophy.&lt;/p&gt;
+
+&lt;h4 id=&quot;start-small&quot;&gt;Start small&lt;/h4&gt;
+
+&lt;p&gt;After having some goals in mind, I started implementing something simple.
+First, I made a program that is barely considered a window manager, letting
+the X server to do most of the work. My program could spawn terminal windows
+under the mouse pointer and focus the windows under the pointer.
+&lt;a href=&quot;https://github.com/dcat/swm&quot;&gt;swm&lt;/a&gt;’s source code by dcat helped me a lot.&lt;/p&gt;
+
+&lt;h4 id=&quot;moving-on&quot;&gt;Moving on&lt;/h4&gt;
+
+&lt;p&gt;One window manager that is pretty close in goals to mine is
+&lt;a href=&quot;https://github.com/venam/2bwm&quot;&gt;2bwm&lt;/a&gt;. I started studying its source code and
+implemented the basic stuff in mine (a window manager requires quite a lot of
+boilerplate code). I soon had a working prototype that could draw borders and
+move and resize windows with commands from the client. I implemented a very
+simple client that can only send commands without receiving answers, inspired by
+&lt;a href=&quot;https://www.uninformativ.de/blog/postings/2016-01-05/0/POSTING-en.html&quot;&gt;this post about vain’s katriawm&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In a couple of weeks windowchef was &lt;a href=&quot;https://www.reddit.com/r/unixporn/comments/54m0y0/oc_my_window_manager_is_ready_to_share/&quot;&gt;done&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;open-source&quot;&gt;Open source&lt;/h3&gt;
+
+&lt;p&gt;I’m writing this article because I want to help people to learn from my
+experiences and eventually I will learn from their experiences. This is why
+people have blogs, to share their experiences and findings.&lt;/p&gt;
+
+&lt;p&gt;I love the open-source community. It’s one of the best things that has ever
+happened to software in general. I always open source all my programs to let
+people study and learn from my programs. Sometimes people send patches / pull
+requests, it makes me really happy!&lt;/p&gt;
+
+&lt;p&gt;I really, really encourage everyone to use and contribute to open-source
+projects. You’re helping everyone, especially yourself.&lt;/p&gt;
+
+&lt;p&gt;My first real steps into opensource were when I published a silly web app
+called &lt;a href=&quot;https://github.com/tudurom/albumify&quot;&gt;“Albumify”&lt;/a&gt;. It lets people make &lt;a href=&quot;https://imgur.com&quot;&gt;imgur&lt;/a&gt;-like picture
+albums, entirely client-side. And it looked horrible:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://pub.tudorr.xyz/blog/how-to-programming/albumify-old.png&quot; alt=&quot;The Old Albumify&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And I advertised this silly project on /r/unixporn…&lt;/p&gt;
+
+&lt;p&gt;The next day I woke up with this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://pub.tudorr.xyz/blog/how-to-programming/firstpr.png&quot; alt=&quot;My first pull request&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I was stoked!!! Someone actually liked my work and decided to improve it! This
+is how the web site looked after some “minor” changes by Dylan:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://pub.tudorr.xyz/blog/how-to-programming/albumify.png&quot; alt=&quot;The new albumify&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It was entirely different. Of course, to return the favor, I contributed to his
+big project, &lt;a href=&quot;https://github.com/dylanaraps/neofetch&quot;&gt;neofetch&lt;/a&gt;. I was his
+first contributor!&lt;/p&gt;
+
+&lt;p&gt;Now, windowchef actually gained traction. As of today it has 116 stars on
+GitHub, it actually has users! It is also included in the software
+repositories of &lt;a href=&quot;https://voidlinux.eu/&quot;&gt;Void Linux&lt;/a&gt;. One of the beauties of
+opensource is that people can come with &lt;a href=&quot;https://github.com/tudurom/windowchef/pulls?q=is%3Apr+is%3Aclosed&quot;&gt;all sorts of pull requests&lt;/a&gt;. Some of them were pretty big, like &lt;a href=&quot;https://github.com/tudurom/windowchef/pull/27&quot;&gt;this one&lt;/a&gt; that implements cardinal focus. You can tell the WM to focus the first window in a given direction.&lt;/p&gt;
+
+&lt;p&gt;So you shouldn’t just opensource your code to make it easier to study, you
+should also make it opensource for a confidence boost ;)&lt;/p&gt;
+
+&lt;h3 id=&quot;real-life-projects&quot;&gt;Real-life projects&lt;/h3&gt;
+
+&lt;p&gt;When you feel that you’re ready, you should pull the trigger and make that
+dream project of yours come to life. I started the &lt;a href=&quot;https://github.com/xmc-dev&quot;&gt;XMC
+Project&lt;/a&gt; together with &lt;a href=&quot;https://cip.fun&quot;&gt;Ciprian&lt;/a&gt;.
+It will be a very flexible CS problem platform and contest manager kinda like
+Codeforces based on microservices. I have already implemented the
+authentication and authorization server, based on OAuth2. It feels real. And so
+it will be.&lt;/p&gt;
+
+&lt;p&gt;Sadly I don’t have any experience in the development industry, I’m
+currently in 9th
+grade.&lt;/p&gt;
+
+&lt;p&gt;So in conclusion, to learn programming:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Be in the correct mindset. Be curious, ambitious, dedicate yourself to the
+arts of computer programming.&lt;/li&gt;
+  &lt;li&gt;Start with the basics: algorithms. Learn C, be close to the algorithms and
+the machine.&lt;/li&gt;
+  &lt;li&gt;Solve harder problems, learn data structures.&lt;/li&gt;
+  &lt;li&gt;Make your own software projects. Lots of them, anything that comes in 
+your mind.&lt;/li&gt;
+  &lt;li&gt;Learn new technologies, programming languages, design patterns, while
+making your own projects.&lt;/li&gt;
+  &lt;li&gt;Be in charge of your personal machine. Use Linux, customize your desktop
+experience.&lt;/li&gt;
+  &lt;li&gt;Join programming communities. Meet new people. Learn with them! Join online
+forums!&lt;/li&gt;
+  &lt;li&gt;Share your projects, opensource anything. If you made something you’re
+truly proud of, post about it on &lt;a href=&quot;https://reddit.com/&quot;&gt;reddit&lt;/a&gt;, &lt;a href=&quot;https://news.ycombinator.com/&quot;&gt;Hacker
+News&lt;/a&gt;, forums. Make yourself known. If you
+don’t stand out nobody will approach you.&lt;/li&gt;
+  &lt;li&gt;Be open to criticism and software contributions. Contribute to other
+projects, criticise others!&lt;/li&gt;
+  &lt;li&gt;Always keep learning.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Thank you for reading, have a nice day! If you’re interested, you can find all
+my software projects on &lt;a href=&quot;https://github.com/tudurom&quot;&gt;my GitHub&lt;/a&gt;.&lt;/p&gt;</content><author><name>Tudor Roman</name></author><summary type="html">Computer programming is one of the things that make you feel like a creator, you
+create algorithms that imply data structures, relationships, interaction,
+basically anything that involves data, an abstract construct that carries
+information. Being a computer programmer makes you the master of your data. It
+lets you take a break from our conflict-filled, merciless world in favor of the
+logical, perfect, digital realm. Programming implies creativity, ambition,
+curiosity, and most importantly, fun, empowering your freedom of doing amazing
+things.</summary></entry><entry><title type="html">Dynamically reloading Neovim</title><link href="/blog/2017/03/03/dynamically-reloading-neovim/" rel="alternate" type="text/html" title="Dynamically reloading Neovim" /><published>2017-03-03T20:38:34+02:00</published><updated>2017-03-03T20:38:34+02:00</updated><id>/blog/2017/03/03/dynamically-reloading-neovim</id><content type="html" xml:base="/blog/2017/03/03/dynamically-reloading-neovim/">&lt;p&gt;While writing my &lt;a href=&quot;https://github.com/tudurom/dotfiles/tree/master/wm/&quot;&gt;“shell based desktop environment”&lt;/a&gt;, more specifically its dynamic themes feature, I realized that, unlike regular Vim, Neovim doesn’t have flags likes &lt;code class=&quot;highlighter-rouge&quot;&gt;--servername&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;--remote-send&lt;/code&gt; and such, so there was no way I could send a message to all Neovim instances to reload themselves. This problem remained unsolved for a month or so.&lt;/p&gt;
 
 &lt;p&gt;Then, while I was a bit bored, I read &lt;a href=&quot;https://neovim.io/news/&quot;&gt;Neovim’s news page&lt;/a&gt;. Scrolling down a bit, I found this:&lt;/p&gt;
 
@@ -234,7 +653,7 @@ doesn’t work. Also, I’m using my laptop mainly with mouse, keyboard and moni
 plugged in, making it a full-fledged PC. The external monitor is full-HD, it
 looks horrible connected through VGA, forcing me to use the DisplayPort
 connection. The problem is that the DisplayPort is hardwired to the NVIDIA card
-(according to &lt;code class=&quot;highlighter-rouge&quot;&gt;xrandr&lt;/code&gt; I have &lt;a href=&quot;http://pub.iotek.org/p/z7r3RmK.png&quot;&gt;6 DP connections??&lt;/a&gt;). Because the monitor is connected to the discrete card, it doesn’t output anything, only the GRUB prompt (how does that even work?). Luckily, I can switch between the two graphics modes from the UEFI/BIOS menu.&lt;/p&gt;
+(according to &lt;code class=&quot;highlighter-rouge&quot;&gt;xrandr&lt;/code&gt; I have &lt;a href=&quot;https://ptpb.pw/CrVO.png&quot;&gt;6 DP connections??&lt;/a&gt;). Because the monitor is connected to the discrete card, it doesn’t output anything, only the GRUB prompt (how does that even work?). Luckily, I can switch between the two graphics modes from the UEFI/BIOS menu.&lt;/p&gt;
 
 &lt;p&gt;The problem is that I get low resolution in the TTY. I solved this problem with
 a GRUB trick and pure luck.&lt;/p&gt;
@@ -268,7 +687,7 @@ done!&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;</content><author><name>Tudor Roman</name></author><summary type="html">My laptop is a ThinkPad T430 with discrete NVIDIA graphics. It can switch between integrated
 graphics (Intel) and discrete.</summary></entry><entry><title type="html">An Intro to GPG</title><link href="/blog/2016/12/25/gpg-intro/" rel="alternate" type="text/html" title="An Intro to GPG" /><published>2016-12-25T22:00:00+02:00</published><updated>2016-12-25T22:00:00+02:00</updated><id>/blog/2016/12/25/gpg-intro</id><content type="html" xml:base="/blog/2016/12/25/gpg-intro/">&lt;p&gt;GPG is the most popular implementation of the &lt;a href=&quot;http://openpgp.org/&quot;&gt;OpenPGP&lt;/a&gt;
-standard, because it’s &lt;a href=&quot;http://i.imgur.com/Brs9J9U.jpg&quot;&gt;free as in freedom&lt;/a&gt; and
+standard, because it’s &lt;a href=&quot;https://i.imgur.com/Brs9J9U.jpg&quot;&gt;free as in freedom&lt;/a&gt; and
 because it’s widely use by many projects to verify software and emails, &lt;a href=&quot;https://www.kernel.org/signature.html&quot;&gt;including the Linux Kernel&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://www.gnupg.org/&quot;&gt;GnuPG (GPG)&lt;/a&gt; is a program that does two important things:&lt;/p&gt;
@@ -352,7 +771,7 @@ later in this article).&lt;/p&gt;
 &lt;p&gt;Let’s say that your friend sent you your public key. How do you import it?&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# if the key is online in its own file&lt;/span&gt;
-curl -sL http://pub.iotek.org/p/qSwl8V2 | gpg --import
+curl -sL https://tudorr.xyz/pgp.pub | gpg --import
 &lt;span class=&quot;c&quot;&gt;# if the key is on your disk in its own file&lt;/span&gt;
 gpg --import key.pub
 &lt;/code&gt;&lt;/pre&gt;
@@ -375,12 +794,12 @@ files!&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Where &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;recipient&amp;gt;&lt;/code&gt; can be a public key id or an email address.&lt;/p&gt;
 
-&lt;p&gt;Suppose I am your friend and I sent you &lt;a href=&quot;http://pub.iotek.org/p/DuV2LWH&quot;&gt;this signed
+&lt;p&gt;Suppose I am your friend and I sent you &lt;a href=&quot;https://pub.tudorr.xyz/signed_file&quot;&gt;this signed
 file&lt;/a&gt;. You can verify or get the original file
 with the &lt;code class=&quot;highlighter-rouge&quot;&gt;--verify&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;--decrypt&lt;/code&gt; commands.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -sL http://pub.iotek.org/p/DuV2LWH | gpg -o cat.png --decrypt
-curl -sL http://pub.iotek.org/p/DuV2LWH | gpg --verify
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -sL https://pub.tudorr.xyz/signed_file | gpg -o cat.png --decrypt
+curl -sL https://pub.tudorr.xyz/signed_file | gpg --verify
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -399,6 +818,8 @@ Paste your ASCII armored public key in the text box and press “Submit”.&lt;/
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
+&lt;p&gt;It is recommended to use the most recent key.&lt;/p&gt;
+
 &lt;h4 id=&quot;2-uploading-the-key-on-your-website&quot;&gt;2. Uploading the key on your website&lt;/h4&gt;
 
 &lt;p&gt;I’m pretty sure you know how to upload files to your webserver.&lt;/p&gt;
@@ -412,7 +833,7 @@ public keys, and vice versa.&lt;/p&gt;
 services like Facebook, Twitter, Reddit or GitHub. This way your keys are more
 trustworthy.&lt;/p&gt;
 
-&lt;p&gt;I’m &lt;a href=&quot;https://keybase.io/tudurom/&quot;&gt;@tudurom&lt;/a&gt; on Keybase.&lt;/p&gt;
+&lt;p&gt;I’m &lt;a href=&quot;https://keybase.io/tudu/&quot;&gt;@tudu&lt;/a&gt; on Keybase.&lt;/p&gt;
 
 &lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
 
