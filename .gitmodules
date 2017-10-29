@@ -1,0 +1,3 @@
+[submodule "dintzic"]
+	path = dintzic
+	url = https://github.com/tudurom/dintzi_client
