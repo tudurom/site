@@ -21,7 +21,13 @@ Programs that together can be used to make a lightweight desktop environment.
 
 ### Real stuff
 
-* [XMC](https://github.com/xmc-dev) - XMC Manages Contests. CS contest manager. Work In Progress.
+* [XMC](https://github.com/xmc-dev/xmc) - XMC Manages Contests. CS contest manager. Work In Progress.
+* VPerf - Contest manager for the "Performanțe Vianiste" multidisciplinary
+	contest held by the Tudor Vianu National College of Computer Science.
+	* [Server](https://github.com/CNITV/vperf-server) - Server component,
+		written in Go. This is written by me.
+	* [Web Client](https://github.com/CNITV/vperf-web) - Client component, runs
+		in the browser. Made by [Ciprian](https://cip.fun)
 
 ### Telegram bots
 

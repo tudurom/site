@@ -13,7 +13,7 @@ main {
     margin: 0 auto 3rem;
     color: var(--fg-color);
     text-align: left;
-	hyphens: auto;
+	word-wrap: normal;
 }
 
 @media only screen and (min-width: 900px) {
