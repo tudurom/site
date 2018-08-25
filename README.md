@@ -1,3 +1,3 @@
-[website](http://thetudor.ddns.net) sources
+[website](https://tudorr.xyz) sources
 
 Generated with Orator.
