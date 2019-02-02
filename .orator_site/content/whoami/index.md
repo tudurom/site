@@ -3,10 +3,11 @@ layout: default
 title: whoami
 ---
 
-[tudurom](https://www.youtube.com/watch?v=U5u-X4bocr4)
+[Tudor-Ioan Roman](https://www.youtube.com/watch?v=U5u-X4bocr4)
 -------
 
-Hey, my name is Tudor and I'm online known as "tudurom".
+I go by the handle "tudurom" on some sites (GitHub, reddit).
+
 My passion and hobby is designing and writing computer programs. I like [the UNIX
 philosophy](https://en.wikipedia.org/wiki/Unix_philosophy) because of the way it
 encourages programs to cooperate.
@@ -19,7 +20,7 @@ I usually make my projects open-source. They are public on
 
 ### I speak in a multitude of languages:
 
-Romanian, C, English, Go, JavaScript, POSIX shell, CSS3, HTML5, \*Ruby
+Romanian, C, English, Go, JavaScript, POSIX shell, \*CSS3, HTML5, \*Ruby
 
 ##### \* I speak very rarely in these languages or I'm not very experienced with them
 
@@ -32,7 +33,7 @@ Romanian, C, English, Go, JavaScript, POSIX shell, CSS3, HTML5, \*Ruby
 
 <script>
 document.getElementById('email').innerHTML =
-`<span class="fakelink" onclick="this.innerHTML = atob('PGEgaHJlZj0ibWFpbHRvOnR1ZG9yQHR1ZG9yci54eXoiPnR1ZG9yQHR1ZG9yci54eXo8L2E+')">email</span>
+`<span class="fakelink" onclick="this.innerHTML = atob('dHVkdXJvbUBnbWFpbC5jb20=')">email</span>
 `
 </script>
 
