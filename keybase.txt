@@ -4,7 +4,7 @@ https://keybase.io/tudu
 
 I hereby claim:
 
-  * I am an admin of https://tudorr.xyz
+  * I am an admin of https://tudorr.ro
   * I am tudu (https://keybase.io/tudu) on keybase.
   * I have a public key with fingerprint 5835 9B0A 5EEF 806E BCBC  DFCE 5AFE DD03 CA5A 1EA4
 
@@ -27,7 +27,7 @@ To do so, I am signing this object:
             ]
         },
         "service": {
-            "hostname": "tudorr.xyz",
+            "hostname": "tudorr.ro",
             "protocol": "https:"
         },
         "type": "web_service_binding",

@@ -35,7 +35,7 @@ Many of the features listed above are optional and can be disabled.
 
 ### Screenshot
 
-[![Screenshot](https://pub.tudorr.xyz/windowchef.png)](https://pub.tudorr.xyz/windowchef.png)
+[![Screenshot](https://pub.tudorr.ro/windowchef.png)](https://pub.tudorr.ro/windowchef.png)
 
 Here we have a GNU Emacs window in monocle mode. At the top there is a `lemonbar` panel
 and on the right is a `lemonbar` notification.

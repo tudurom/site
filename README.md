@@ -1,3 +1,3 @@
-[website](https://tudorr.xyz) sources
+[website](https://tudorr.ro) sources
 
 Generated with Orator.
