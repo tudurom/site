@@ -29,10 +29,10 @@
         "homepage": null,
         "owner": "tudurom",
         "repo": "orator",
-        "rev": "04c00c3573271820affc516f4d82299fd0473ae1",
-        "sha256": "1c3s12jbm42m0nc20cj8vwwwp48ck6yzavbflmdvbf7psnmc0xgp",
+        "rev": "5568c5da06d8bd11ed309d61187bf4c4dd3f30e7",
+        "sha256": "1idcn9qkvfg3bc1m3nbqpsjvs5fm1c62gdz04i7hkbpx2308zqyg",
         "type": "tarball",
-        "url": "https://github.com/tudurom/orator/archive/04c00c3573271820affc516f4d82299fd0473ae1.tar.gz",
+        "url": "https://github.com/tudurom/orator/archive/5568c5da06d8bd11ed309d61187bf4c4dd3f30e7.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
