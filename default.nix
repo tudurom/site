@@ -1,7 +1,4 @@
-{ sources ? import ./nix/sources.nix
-, pkgs ? import sources.nixpkgs { }
-, orator ? import sources.orator }:
-
+{ pkgs ? import <nixpkgs>, orator, ... }:
 pkgs.stdenv.mkDerivation rec {
   name = "tudorSite";
   version = "unstable";
