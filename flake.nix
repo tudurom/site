@@ -14,24 +14,7 @@
     packageName = "site";
     oratorPkg = inputs.orator.packages.${system}.orator;
   in {
-    packages.${packageName} = pkgs.stdenv.mkDerivation rec {
-      name = packageName;
-      version = "unstable";
-
-      src = ./.;
-
-      buildInputs = [ oratorPkg ];
-      dontInstall = true;
-
-      buildPhase = ''
-        buildDir="$(pwd)"
-
-        cp -rf $src/* "$buildDir"
-        orator
-        mv ./gen "$out"
-      '';
-    };
-
+    packages.${packageName} = import ./default.nix { inherit pkgs; orator = oratorPkg; };
     defaultPackage = self.packages.${system}.${packageName};
 
     devShell = pkgs.mkShell {
