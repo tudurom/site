@@ -9,7 +9,7 @@ title: whoami
 I go by the handle "tudurom" or "tudorr" on some sites.
 
 This website is a collection of my thoughts and work and I hope people can learn
-from it. I also have a [blog](/blog).
+from it. I also have a [blog](/blog/).
 I usually make my projects open-source. They are public on
 [GitHub](https://github.com/tudurom/), [GitLab](https://gitlab.com/tudorr/), [Sourcehut](https://sr.ht/~tudor/).
 
