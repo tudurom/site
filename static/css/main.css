@@ -24,16 +24,14 @@ main {
 
 h1 {
     color: var(--color10);
-    font-family: "Envy Code R";
-    font-weight: bold;
+    font-family: "JetBrains Mono";
     font-size: 2em;
 }
 
 h2 {
     color: var(--color1);
     font-size: 1.5em;
-    font-family: "Envy Code R";
-    font-weight: bold;
+    font-family: "JetBrains Mono";
 }
 
 h2 a:link,
@@ -43,15 +41,13 @@ h2 a:visited {
 }
 
 h3 {
-    font-family: "Envy Code R";
-    font-weight: normal;
+    font-family: "JetBrains Mono";
     color: var(--color6);
     font-size: 1.5em;
 }
 
 h4 {
-    font-family: "Envy Code R";
-    font-weight: normal;
+    font-family: "JetBrains Mono";
     color: var(--color6);
     font-size: 1em;
 }
@@ -59,7 +55,7 @@ h4 {
 h5 {
     color: var(--color1);
     font-size: 0.7em;
-    font-family: "Share Tech Mono";
+    font-family: "JetBrains Mono";
 }
 
 a {
