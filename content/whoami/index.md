@@ -23,7 +23,7 @@ I usually make my projects open-source. They are public on
 
 <script>
 document.getElementById('email').innerHTML =
-`<span class="fakelink" onclick="this.innerHTML = atob('dHVkb3JAdHVkb3JyLnJv')">email</span>
+`<a href="javascript:;" class="fakelink" onclick="this.innerHTML = atob('dHVkb3JAdHVkb3JyLnJv')">email</a>
 `
 </script>
 

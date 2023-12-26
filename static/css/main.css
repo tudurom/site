@@ -42,7 +42,7 @@ h2 a:visited {
 
 h3 {
     font-family: "JetBrains Mono";
-    color: var(--color6);
+    color: var(--color10);
     font-size: 1.5em;
 }
 
@@ -58,45 +58,44 @@ h5 {
     font-family: "JetBrains Mono";
 }
 
+h1, h2, h3, h4, h5, h6 {
+	text-transform: lowercase;
+}
+
 a {
     text-decoration: none;
 }
 
 a:link, a:visited, .fakelink {
-    color: var(--color4);
+    color: var(--color10);
     cursor: pointer;
 }
 
-code {
-    font-family: "Roboto Mono", monospace;
+pre, code {
+    font-family: "Share Tech Mono", monospace;
     color: var(--color15);
 }
 
+/*
 pre code {
-    font-family: "Roboto Mono", monospace;
+    font-family: "Share Tech Mono", monospace;
     color: var(--fg-color);
 }
-
-ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
+*/
 
 li {
-	padding-left: 1em;
-	text-indent: -.7em;
+	list-style-type: "*";
+	padding-inline-start: 1ch;
 }
 
-li:before {
-	content: "*";
-	color: var(--color8);
-	padding-right: 0.5em;
+li::marker {
+	color: var(--color4);
 }
 
 .home-links {
 	display: block;
 	margin: 5px auto;
+	padding: 0;
 }
 
 .home-links li::before {
