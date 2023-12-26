@@ -12,7 +12,7 @@ for others to enjoy.
 
 ### Code sharing websites
 
-* [My Git](https://git.tudorr.ro/)
+* [My Code Pantry](https://git.tudorr.ro/)
 * [GitLab](https://gitlab.com/tudor)
 * [GitHub](https://github.com/tudurom)
 * [Sourcehut](https://sr.ht/~tudor)
