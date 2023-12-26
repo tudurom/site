@@ -3,7 +3,7 @@ layout: default
 title: whoami
 ---
 
-[Tudor-Ioan Roman](https://www.youtube.com/watch?v=U5u-X4bocr4)
+<span style="text-transform: none">[Tudor-Ioan Roman](https://www.youtube.com/watch?v=U5u-X4bocr4)</span>
 -------
 
 I go by the handle "tudurom" or "tudorr" on some sites.
